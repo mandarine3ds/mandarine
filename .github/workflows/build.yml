@@ -1,4 +1,4 @@
-name: citra-build
+name: citra-enhanced-build
 
 on:
   push:
@@ -20,6 +20,24 @@ jobs:
         with:
           name: source
           path: artifacts/
+  installer:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+      - run: pip install pyqt6 pyinstaller pywin32 requests
+      - name: Build
+        shell: bash
+        run: |
+          chmod +x .ci/installer.sh
+          ./.ci/installer.sh
+      - name: Upload Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Enhanced-Installer
+          path: build/enhanced-installer/installer.exe
   linux:
     runs-on: ubuntu-latest
     strategy:
