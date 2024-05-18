@@ -11,7 +11,6 @@
   </strong>Feel free to download this build and test it, if you run into any bugs please open an issue on GitHub or contact me on the Discord / Telegram</strong>
 </p>
 
-
 <p align="center">
   <img src="https://img.shields.io/github/downloads/Gamer64ytb/Citra-Enhanced/total" alt="GitHub all releases"/>
   <a href="https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest">
@@ -60,4 +59,3 @@ Pls try to keep the proper code formatting for PRs as well, clang-format will he
 ## Organization
 
 For now there are no plans about making an organization, due to reasons of the past.
-
