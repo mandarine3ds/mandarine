@@ -27,28 +27,29 @@
 
 # Installation
 
-## Windows
+## ✅ Stable builds
 
-**For Windows we made an installer to simplify updating the builds** 
-Get it [here](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/Android-APK.zip)
+### 🪟 Windows
+
+#### For Windows we made an installer to simplify updating the builds to the latest version
+- Get it [here](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/Enhanced-Installer.zip)
 
 ### Other platforms
 
-|Platform|Download|
+|Platform|Link|
 |--------|--------|
-|[Windows](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest)|[Download](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/windows-msvc.zip)|
-|[Android](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest)|[Download](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/Android-APK.zip)|
-|[Linux](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest)|[Download](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/linux-appimage.zip)|
-|[Mac OS build](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest)|[Download](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/macos-universal.zip)|
+| 📱 Android|[APK](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/Android-APK.zip)|
+| 🐧 Linux|[AppImage](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/linux-appimage.zip)|
+| 🍎 Mac OS|[Universal](https://github.com/Gamer64ytb/Citra-Enhanced/releases/latest/download/macos-universal.zip)|
 
-### Dev Builds (Untested stuff, and may be buggy)
+## ⚠️ Dev Builds (Pre-release software, may be buggy)
 
 |Platform|Status|Download|
 |--------|------------|--------|
-|Windows build|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Windows MSVC](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/windows-msvc.zip)|
-|Android build|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Android-APK](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/Android-APK.zip)|
-|Linux build|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/linux-appimage.zip)|
-|Mac OS build (untested)|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/macos-universal.zip)|
+| 🪟 Windows|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Windows MSVC](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/windows-msvc.zip)|
+| 📱 Android|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Android-APK](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/Android-APK.zip)|
+| 🐧 Linux|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/linux-appimage.zip)|
+| 🍎 Mac OS|[![Qt Build](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/build.yml/badge.svg)](https://github.com/Gamer64ytb/Citra-Enhanced/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/Gamer64ytb/Citra-Enhanced/workflows/build/master/macos-universal.zip)|
 
 ## Contribution
 
