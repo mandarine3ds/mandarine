@@ -51,7 +51,7 @@
           <item>
            <widget class="QLabel" name="theme_label">
             <property name="text">
-             <string>(Lemonade is looking for translators as well</string>
+             <string>Citra-Enahnced uses a custom UX stylesheet . Please report bugs on our github</string>
             </property>
            </widget>
           </item>
