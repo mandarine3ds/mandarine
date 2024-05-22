@@ -49,7 +49,8 @@ enum class IntSetting(
     PRIORITY_BOOST("priority_boost", Settings.SECTION_CORE, 1),
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, 0),
     TEXTURE_FILTER("texture_filter", Settings.SECTION_RENDERER, 0),
-    USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1);
+    USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),
+    ASPECT_RATIO("aspect_ratio", Settings.SECTION_RENDERER, 0);
 
     override var int: Int = defaultValue
 
@@ -79,7 +80,8 @@ enum class IntSetting(
             DEBUG_RENDERER,
             CPU_JIT,
             ASYNC_CUSTOM_LOADING,
-            AUDIO_INPUT_TYPE
+            AUDIO_INPUT_TYPE,
+            ASPECT_RATIO
         )
 
         fun from(key: String): IntSetting? = IntSetting.values().firstOrNull { it.key == key }

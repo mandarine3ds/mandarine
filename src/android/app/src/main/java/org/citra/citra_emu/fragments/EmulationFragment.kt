@@ -24,6 +24,7 @@ import android.content.res.Configuration
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
+import android.util.DisplayMetrics
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.Insets
@@ -56,6 +57,7 @@ import org.citra.citra_emu.databinding.FragmentEmulationBinding
 import org.citra.citra_emu.display.ScreenAdjustmentUtil
 import org.citra.citra_emu.display.ScreenLayout
 import org.citra.citra_emu.features.settings.model.SettingsViewModel
+import org.citra.citra_emu.features.settings.model.IntSetting
 import org.citra.citra_emu.features.settings.ui.SettingsActivity
 import org.citra.citra_emu.features.settings.utils.SettingsFile
 import org.citra.citra_emu.model.Game
@@ -172,6 +174,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             binding.doneControlConfig.visibility = View.GONE
             binding.surfaceInputOverlay.setIsInEditMode(false)
         }
+
+        updateAspectRatio()
 
         // Show/hide the "Show FPS" overlay
         updateShowFpsOverlay()
@@ -421,6 +425,26 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         }
     }
 
+    private fun updateAspectRatio() {
+        val activityOrientation = resources.configuration
+        val displayMetrics = requireContext().resources.displayMetrics
+        val screenWidth = displayMetrics.widthPixels
+        val screenHeight = displayMetrics.heightPixels
+
+        val aspectRatio = when (IntSetting.ASPECT_RATIO.int) {
+            0 -> Pair(1280, 720) // 16:9
+            1 -> Pair(1280, 960) // 4:3
+            2 -> Pair(1280, 548) // 21:9
+            3 -> Pair(1280, 800) // 16:10
+            else -> Pair(screenWidth, screenHeight) // Stretch to fit window
+        }
+
+        if (NativeLibrary.isRunning()) {
+            binding.surfaceEmulation.setDimensions(aspectRatio.first, aspectRatio.second, activityOrientation)
+            emulationState.updateSurface()
+        }
+    }
+
     private fun togglePause() {
         if(emulationState.isPaused) {
             emulationState.unpause()
@@ -438,6 +462,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         } else {
             setupCitraDirectoriesThenStartEmulation()
         }
+
+        updateAspectRatio()
     }
 
     override fun onPause() {
@@ -1158,6 +1184,13 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             this.surface = surface
             if (this.surface != null) {
                 runWithValidSurface()
+            }
+        }
+
+        @Synchronized
+        fun updateSurface() {
+            surface?.let {
+                NativeLibrary.surfaceChanged(it)
             }
         }
 

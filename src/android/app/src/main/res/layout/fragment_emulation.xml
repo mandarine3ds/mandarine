@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <!-- This is what everything is rendered to during emulation -->
-        <SurfaceView
+        <org.citra.citra_emu.view.SurfaceView
             android:id="@+id/surface_emulation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,6 +20,12 @@
             android:defaultFocusHighlightEnabled="false"
             android:focusable="false"
             android:focusableInTouchMode="false" />
+
+        <FrameLayout
+            android:id="@+id/overlay_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom">
 
         <!-- This is the onscreen input overlay -->
         <org.citra.citra_emu.overlay.InputOverlay
@@ -40,6 +46,8 @@
             android:layout_gravity="center"
             android:text="@string/emulation_done"
             android:visibility="gone" />
+
+     </FrameLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/loading_indicator"
