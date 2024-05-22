@@ -441,7 +441,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         }
 
         if (NativeLibrary.isRunning()) {
-            if (!aspectRatio == null) {
+            if (aspectRatio != null) {
                 binding.surfaceEmulation.setDimensions(aspectRatio.first, aspectRatio.second, activityOrientation)
                 emulationState.updateSurface()
             }
