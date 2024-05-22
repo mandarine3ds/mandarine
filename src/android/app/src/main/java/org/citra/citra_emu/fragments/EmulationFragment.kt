@@ -432,16 +432,19 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         val screenHeight = displayMetrics.heightPixels
 
         val aspectRatio = when (IntSetting.ASPECT_RATIO.int) {
-            0 -> Pair(1280, 720) // 16:9
-            1 -> Pair(1280, 960) // 4:3
-            2 -> Pair(1280, 548) // 21:9
-            3 -> Pair(1280, 800) // 16:10
+            0 -> null
+            1 -> Pair(1280, 720) // 16:9
+            2 -> Pair(1280, 960) // 4:3
+            3 -> Pair(1280, 548) // 21:9
+            4 -> Pair(1280, 800) // 16:10
             else -> Pair(screenWidth, screenHeight) // Stretch to fit window
         }
 
         if (NativeLibrary.isRunning()) {
-            binding.surfaceEmulation.setDimensions(aspectRatio.first, aspectRatio.second, activityOrientation)
-            emulationState.updateSurface()
+            if (!aspectRatio == null) {
+                binding.surfaceEmulation.setDimensions(aspectRatio.first, aspectRatio.second, activityOrientation)
+                emulationState.updateSurface()
+            }
         }
     }
 

@@ -281,6 +281,7 @@
     <string name="preload_textures">Preload Custom Textures</string>
     <string name="preload_textures_description">Loads all custom textures into memory. This feature can use a lot of memory.</string>
     <string name="aspect_ratio">Aspect ratio</string>
+    <string name="ratio_auto">Auto</string>
     <string name="ratio_default">Default (16:9)</string>
     <string name="ratio_four_three">4:3</string>
     <string name="ratio_twenty_one_nine">21:9 (Ultra Wide)</string>  

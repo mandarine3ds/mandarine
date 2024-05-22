@@ -261,6 +261,7 @@
     </integer-array>
 
     <string-array name="aspectRatioNames">
+        <item>@string/ratio_auto</item>
         <item>@string/ratio_default</item>
         <item>@string/ratio_four_three</item>
         <item>@string/ratio_twenty_one_nine</item>
@@ -274,6 +275,7 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
     </integer-array>
 
     <string-array name="countries">
