@@ -243,7 +243,7 @@ static Core::System::ResultStatus RunCitra(const std::string& filepath) {
     return Core::System::ResultStatus::Success;
 }
 
-void EnableAdrenoTurboMode() {
+void EnableAdrenoTurboMode(bool enable) {
 #if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
     adrenotools_set_turbo(true);
 #endif
@@ -326,8 +326,9 @@ void JNICALL Java_org_citra_citra_1emu_NativeLibrary_initializeGpuDriver(
                         GetJString(env, custom_driver_name), GetJString(env, file_redirect_dir));
 }
 
-void JNICALL Java_org_citra_citra_1emu_NativeLibrary_EnableAdrenoTurboMode() {
-    EnableAdrenoTurboMode()
+void JNICALL Java_org_citra_citra_1emu_NativeLibrary_enableAdrenoTurboMode(
+    JNIEnv* env, jobject obj, jboolean enable) {
+    EnableAdrenoTurboMode(enable)
 }
 
 void Java_org_citra_citra_1emu_NativeLibrary_notifyOrientationChange([[maybe_unused]] JNIEnv* env,
