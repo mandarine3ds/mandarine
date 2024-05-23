@@ -435,7 +435,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             0 -> null
             1 -> Pair(1280, 720) // 16:9
             2 -> Pair(1280, 960) // 4:3
-            3 -> Pair(1280, 548) // 21:9
+            3 -> Pair(1280, 549) // 21:9
             4 -> Pair(1280, 800) // 16:10
             else -> Pair(screenWidth, screenHeight) // Stretch to fit window
         }
