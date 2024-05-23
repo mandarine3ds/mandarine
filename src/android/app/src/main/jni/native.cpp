@@ -243,6 +243,12 @@ static Core::System::ResultStatus RunCitra(const std::string& filepath) {
     return Core::System::ResultStatus::Success;
 }
 
+void EnableAdrenoTurboMode() {
+#if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
+    adrenotools_set_turbo(true);
+#endif
+}
+
 void InitializeGpuDriver(const std::string& hook_lib_dir, const std::string& custom_driver_dir,
                          const std::string& custom_driver_name,
                          const std::string& file_redirect_dir) {
@@ -318,6 +324,10 @@ void JNICALL Java_org_citra_citra_1emu_NativeLibrary_initializeGpuDriver(
     jstring custom_driver_name, jstring file_redirect_dir) {
     InitializeGpuDriver(GetJString(env, hook_lib_dir), GetJString(env, custom_driver_dir),
                         GetJString(env, custom_driver_name), GetJString(env, file_redirect_dir));
+}
+
+void JNICALL Java_org_citra_citra_1emu_NativeLibrary_EnableAdrenoTurboMode() {
+    EnableAdrenoTurboMode()
 }
 
 void Java_org_citra_citra_1emu_NativeLibrary_notifyOrientationChange([[maybe_unused]] JNIEnv* env,
