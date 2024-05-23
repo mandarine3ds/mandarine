@@ -444,6 +444,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             if (aspectRatio != null) {
                 binding.surfaceEmulation.setDimensions(aspectRatio.first, aspectRatio.second, activityOrientation)
                 emulationState.updateSurface()
+                Log.warning("[EmulationFragment] Setting dimensions: ${aspectRatio.first}x${aspectRatio.second}")
             }
         }
     }
