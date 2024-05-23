@@ -319,6 +319,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 RunnableSetting(
                     R.string.console_id,
                     0,
+                    0,
                     false,
                     { settingsAdapter.onClickRegenerateConsoleId() },
                     { "0x${SystemSaveGame.getConsoleId().toHexString().uppercase()}" }
