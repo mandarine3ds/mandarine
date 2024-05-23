@@ -328,7 +328,7 @@ void JNICALL Java_org_citra_citra_1emu_NativeLibrary_initializeGpuDriver(
 
 void JNICALL Java_org_citra_citra_1emu_NativeLibrary_enableAdrenoTurboMode(
     JNIEnv* env, jobject obj, jboolean enable) {
-    EnableAdrenoTurboMode(enable)
+    EnableAdrenoTurboMode(enable);
 }
 
 void Java_org_citra_citra_1emu_NativeLibrary_notifyOrientationChange([[maybe_unused]] JNIEnv* env,
