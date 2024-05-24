@@ -176,7 +176,7 @@ object NativeLibrary {
         fileRedirectDir: String?
     )
 
-    external fun enableAdrenoTurboMode(boolean enable)
+    external fun enableAdrenoTurboMode(enable: Boolean)
 
     external fun areKeysAvailable(): Boolean
 
