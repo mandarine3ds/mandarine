@@ -10,6 +10,7 @@ import org.citra.citra_emu.databinding.ListItemSettingSwitchBinding
 import org.citra.citra_emu.features.settings.model.view.SettingsItem
 import org.citra.citra_emu.features.settings.model.view.SwitchSetting
 import org.citra.citra_emu.features.settings.ui.SettingsAdapter
+import org.citra.citra_emu.utils.GpuDriverHelper
 
 class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter: SettingsAdapter) :
     SettingViewHolder(binding.root, adapter) {
@@ -45,15 +46,28 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
 
     override fun onClick(clicked: View) {
         if (setting.isEditable) {
-            binding.switchWidget.toggle()
+            if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
+                if (!GpuDriverHelper.supportsCustomDriverLoading) {
+                    adapter.onClickDisabledSetting()
+                }
+            } else {
+                binding.switchWidget.toggle()
+            }
         } else {
             adapter.onClickDisabledSetting()
         }
     }
 
-    override fun onLongClick(clicked: View): Boolean {
+    override fun onLongClick(clicked: View, item: SettingsItem): Boolean {
         if (setting.isEditable) {
-            return adapter.onLongClick(setting.setting!!, bindingAdapterPosition)
+            if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
+                if (!GpuDriverHelper.supportsCustomDriverLoading) {
+                    adapter.onClickDisabledSetting()
+                    return false
+                }
+            } else {
+                return adapter.onLongClick(setting.setting!!, bindingAdapterPosition)
+            }
         } else {
             adapter.onClickDisabledSetting()
         }
