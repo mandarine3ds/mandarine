@@ -44,7 +44,7 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
         }
     }
 
-    override fun onClick(clicked: View) {
+    override fun onClick(clicked: View, item: SettingsItem) {
         if (setting.isEditable) {
             if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
                 if (!GpuDriverHelper.supportsCustomDriverLoading) {
