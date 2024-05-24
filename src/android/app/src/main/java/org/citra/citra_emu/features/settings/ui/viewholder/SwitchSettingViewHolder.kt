@@ -36,8 +36,15 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
 
         binding.switchWidget.isEnabled = setting.isEditable
         if (setting.isEditable) {
-            binding.textSettingName.alpha = 1f
-            binding.textSettingDescription.alpha = 1f
+            if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
+                if (!GpuDriverHelper.supportsCustomDriverLoading) {
+                    binding.textSettingName.alpha = 0.5f
+                    binding.textSettingDescription.alpha = 0.5f
+                } else {
+                    binding.textSettingName.alpha = 1f
+                    binding.textSettingDescription.alpha = 1f
+                }
+            }
         } else {
             binding.textSettingName.alpha = 0.5f
             binding.textSettingDescription.alpha = 0.5f
