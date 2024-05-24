@@ -16,7 +16,8 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
     SettingViewHolder(binding.root, adapter) {
 
     private lateinit var setting: SwitchSetting
-
+    private lateinit var item: SettingsItem
+    
     override fun bind(item: SettingsItem) {
         setting = item as SwitchSetting
         binding.textSettingName.setText(item.nameId)
@@ -36,8 +37,8 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
 
         binding.switchWidget.isEnabled = setting.isEditable
         if (setting.isEditable) {
-            if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
-                if (!GpuDriverHelper.supportsCustomDriverLoading) {
+            if (item.nameId == R.string.force_max_gpu_clocks) {
+                if (!GpuDriverHelper.supportsCustomDriverLoading()) {
                     binding.textSettingName.alpha = 0.5f
                     binding.textSettingDescription.alpha = 0.5f
                 } else {
@@ -51,10 +52,10 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
         }
     }
 
-    override fun onClick(clicked: View, item: SettingsItem) {
+    override fun onClick(clicked: View) {
         if (setting.isEditable) {
-            if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
-                if (!GpuDriverHelper.supportsCustomDriverLoading) {
+            if (item.nameId == R.string.force_max_gpu_clocks) {
+                if (!GpuDriverHelper.supportsCustomDriverLoading()) {
                     adapter.onClickDisabledSetting()
                 }
             } else {
@@ -65,10 +66,10 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
         }
     }
 
-    override fun onLongClick(clicked: View, item: SettingsItem): Boolean {
+    override fun onLongClick(clicked: View): Boolean {
         if (setting.isEditable) {
-            if (item.nameId == "FORCE_MAX_GPU_CLOCKS") {
-                if (!GpuDriverHelper.supportsCustomDriverLoading) {
+            if (item.nameId == R.string.force_max_gpu_clocks) {
+                if (!GpuDriverHelper.supportsCustomDriverLoading()) {
                     adapter.onClickDisabledSetting()
                     return false
                 }
