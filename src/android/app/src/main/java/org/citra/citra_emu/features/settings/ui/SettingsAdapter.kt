@@ -455,8 +455,7 @@ class SettingsAdapter(
         MessageDialogFragment.newInstance(
             R.string.force_max_gpu_clocks_unsupported,
             R.string.force_max_gpu_clocks_desc_unsupported
-        ).show((fragmentView as SettingsFragment).childFragmentManager, MessageDialohFragment.TAG)
-
+        ).show((fragmentView as SettingsFragment).childFragmentManager, MessageDialogFragment.TAG)
     }
     
     fun onClickRegenerateConsoleId() {
