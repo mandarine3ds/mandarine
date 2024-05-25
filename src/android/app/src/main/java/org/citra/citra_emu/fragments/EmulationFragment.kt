@@ -1126,15 +1126,13 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         @Synchronized
         fun unpause() {
-            if (!binding.drawerLayout.isOpen) {
-                if (state != State.RUNNING) {
-                    state = State.RUNNING
-                    Log.debug("[EmulationFragment] Unpausing emulation.")
+            if (state != State.RUNNING) {
+                state = State.RUNNING
+                Log.debug("[EmulationFragment] Unpausing emulation.")
 
-                    NativeLibrary.unPauseEmulation()
-                } else {
-                    Log.warning("[EmulationFragment] Unpause called while already running.")
-                }
+                NativeLibrary.unPauseEmulation()
+            } else {
+                Log.warning("[EmulationFragment] Unpause called while already running.")
             }
         }
 
