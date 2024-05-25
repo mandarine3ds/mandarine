@@ -60,7 +60,7 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
     override fun onClick(clicked: View) {
         if (setting.isEditable) {
             if (!isForceMaxGpuClocksClickable()) { 
-                adapter.onForceMaximumGpuClocksDisabledSetting()
+                adapter.onForceMaximumGpuClocksDisabled()
             } else {
                 binding.switchWidget.toggle()
             }
