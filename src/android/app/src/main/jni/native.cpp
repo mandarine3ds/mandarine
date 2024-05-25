@@ -245,7 +245,7 @@ static Core::System::ResultStatus RunCitra(const std::string& filepath) {
 
 void EnableAdrenoTurboMode(bool enable) {
 #if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
-    adrenotools_set_turbo(true);
+    adrenotools_set_turbo(enable);
 #endif
 }
 
