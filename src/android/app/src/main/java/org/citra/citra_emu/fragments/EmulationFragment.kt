@@ -192,12 +192,16 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             }
 
             override fun onDrawerOpened(drawerView: View) {
-                NativeLibrary.pauseEmulation()
+                if (!emulationState.isPaused) {
+                    emulationState.pause()
+                }
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             }
 
             override fun onDrawerClosed(drawerView: View) {
-                NativeLibrary.unPauseEmulation()
+                if (emulationState.isPaused) {
+                    emulationState.unpause()
+                }
                 binding.drawerLayout.setDrawerLockMode(EmulationMenuSettings.drawerLockMode)
             }
 
@@ -422,7 +426,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
     }
 
     private fun togglePause() {
-        if(emulationState.isPaused) {
+        if (emulationState.isPaused) {
             emulationState.unpause()
         } else {
             emulationState.pause()
@@ -431,6 +435,9 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
     override fun onResume() {
         super.onResume()
+        if (emulationState.isPaused) {
+            emulationState.unpause()
+        }
         Choreographer.getInstance().postFrameCallback(this)
 
         if (DirectoryInitialization.areCitraDirectoriesReady()) {
@@ -441,12 +448,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
     }
 
     override fun onPause() {
-        if (NativeLibrary.isRunning()) {
-            if (!binding.drawerLayout.isOpen) {
-                Handler(Looper.getMainLooper()).postDelayed({
-                        binding.drawerLayout.open()
-                }, 500) // 500 milliseconds delay
-            }
+        if (!emulationState.isPaused) {
+            emulationState.pause()
         }
         Choreographer.getInstance().removeFrameCallback(this)
         super.onPause()
@@ -1115,9 +1118,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             if (state != State.PAUSED) {
                 state = State.PAUSED
                 Log.debug("[EmulationFragment] Pausing emulation.")
-
-                // Release the surface before pausing, since emulation has to be running for that.
-                NativeLibrary.surfaceDestroyed()
                 NativeLibrary.pauseEmulation()
             } else {
                 Log.warning("[EmulationFragment] Pause called while already paused.")
@@ -1126,13 +1126,15 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         @Synchronized
         fun unpause() {
-            if (state != State.RUNNING) {
-                state = State.RUNNING
-                Log.debug("[EmulationFragment] Unpausing emulation.")
+            if (!binding.drawerLayout.isOpen) {
+                if (state != State.RUNNING) {
+                    state = State.RUNNING
+                    Log.debug("[EmulationFragment] Unpausing emulation.")
 
-                NativeLibrary.unPauseEmulation()
-            } else {
-                Log.warning("[EmulationFragment] Unpause called while already running.")
+                    NativeLibrary.unPauseEmulation()
+                } else {
+                    Log.warning("[EmulationFragment] Unpause called while already running.")
+                }
             }
         }
 
@@ -1170,7 +1172,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                 Log.debug("[EmulationFragment] Surface destroyed.")
                 when (state) {
                     State.RUNNING -> {
-                        NativeLibrary.surfaceDestroyed()
                         state = State.PAUSED
                     }
 
