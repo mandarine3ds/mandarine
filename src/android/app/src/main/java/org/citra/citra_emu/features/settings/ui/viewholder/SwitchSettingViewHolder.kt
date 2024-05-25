@@ -37,7 +37,12 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
             adapter.onBooleanClick(item, bindingAdapterPosition, binding.switchWidget.isChecked)
         }
 
-        binding.switchWidget.isEnabled = setting.isEditable
+        binding.switchWidget.isEnabled = if (setting.isEditable) {
+        isForceMaxGpuClocksClickable()
+        } else { 
+            setting.isEditable
+        }
+
         if (setting.isEditable) {
             if (!isForceMaxGpuClocksClickable()) {
                 binding.textSettingName.alpha = 0.5f
@@ -55,7 +60,7 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
     override fun onClick(clicked: View) {
         if (setting.isEditable) {
             if (!isForceMaxGpuClocksClickable()) { 
-                adapter.onClickDisabledSetting()
+                adapter.onForceMaximumGpuClocksDisabledSetting()
             } else {
                 binding.switchWidget.toggle()
             }
@@ -67,7 +72,7 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
     override fun onLongClick(clicked: View): Boolean {
         if (setting.isEditable) {
             if (!isForceMaxGpuClocksClickable()) { 
-                adapter.onClickDisabledSetting()
+                adapter.onForceMaximumGpuClocksDisabled()
                 return false
             } else {
                 return adapter.onLongClick(setting.setting!!, bindingAdapterPosition)
