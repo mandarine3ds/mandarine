@@ -79,7 +79,7 @@ class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter
     }
 
     private fun isForceMaxGpuClocksClickable(): Boolean {
-        return if (settingItem.nameId == R.string.force_max_gpu_clocks) {
+        return if (settingitem.nameId == R.string.force_max_gpu_clocks) {
             GpuDriverHelper.supportsCustomDriverLoading()
         } else {
             true
