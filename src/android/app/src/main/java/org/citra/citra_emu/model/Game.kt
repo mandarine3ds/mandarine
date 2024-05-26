@@ -5,9 +5,13 @@
 package org.citra.citra_emu.model
 
 import android.os.Parcelable
+import android.content.Intent
+import android.net.Uri
 import java.util.HashSet
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
+import org.citra.citra_emu.CitraApplication
+import org.citra.citra_emu.activities.EmulationActivity
 
 @Parcelize
 @Serializable

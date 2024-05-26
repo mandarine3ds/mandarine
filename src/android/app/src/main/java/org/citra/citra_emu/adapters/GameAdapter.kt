@@ -17,6 +17,7 @@ import android.widget.Toast
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.Bitmap
 import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModelProvider
