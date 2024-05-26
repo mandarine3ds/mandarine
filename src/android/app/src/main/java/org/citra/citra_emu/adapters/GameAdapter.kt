@@ -223,7 +223,7 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                     )
         }
 
-        bottomSheetView.findViewById<MaterialButton>(R.id.game_shorcut).setOnClickListener {
+        bottomSheetView.findViewById<MaterialButton>(R.id.game_shortcut).setOnClickListener {
             val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
 
             viewLifecycleOwner.lifecycleScope.launch {
