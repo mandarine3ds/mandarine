@@ -14,6 +14,9 @@ import android.content.Context
 import android.widget.TextView
 import android.widget.ImageView
 import android.widget.Toast
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.Bitmap
+import android.content.pm.ShortcutInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +26,12 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.core.content.pm.ShortcutInfoCompat
+import androidx.core.graphics.drawable.IconCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -212,6 +221,23 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                         ""
                     )
         }
+
+        bottomSheetView.findViewById<MaterialButton>(R.id.game_shorcut).setOnClickListener {
+            val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    val bitmap = (bottomSheetView.findViewById(R.id.game_icon).drawable as BitmapDrawable).bitmap
+                    val icon = IconCompat.createWithBitmap(bitmap)
+                    val shortcut = ShortcutInfo.Builder(context, game.title)
+                        .setShortLabel(game.title)
+                        .setIcon(icon)
+                        .setIntent(game.launchIntent)
+                        .build()
+                    shortcutManager.requestPinShortcut(shortcut, null)
+                }
+            }
+        }   
 
         bottomSheetView.findViewById<MaterialButton>(R.id.cheats).setOnClickListener {
             val action = CheatsFragmentDirections.actionGlobalCheatsFragment(holder.game.titleId)

@@ -27,6 +27,12 @@ class Game(
     val keyAddedToLibraryTime get() = "${filename}_AddedToLibraryTime"
     val keyLastPlayedTime get() = "${filename}_LastPlayed"
 
+    val launchIntent: Intent
+        get() = Intent(CitraApplication.appContext, EmulationActivity::class.java).apply {
+            action = Intent.ACTION_VIEW
+            data = Uri.parse(path)
+        }
+
     override fun equals(other: Any?): Boolean {
         if (other !is Game) {
             return false
