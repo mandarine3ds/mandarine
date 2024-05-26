@@ -49,7 +49,7 @@ import org.citra.citra_emu.viewmodel.GamesViewModel
 import org.citra.citra_emu.features.settings.ui.SettingsActivity
 import org.citra.citra_emu.features.settings.utils.SettingsFile
 
-class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater) :
+class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater, private val coroutineScope: CoroutineScope) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
     View.OnClickListener, View.OnLongClickListener {
     private var lastClickTime = 0L
@@ -226,10 +226,11 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         bottomSheetView.findViewById<MaterialButton>(R.id.game_shortcut).setOnClickListener {
             val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
 
-            viewLifecycleOwner.lifecycleScope.launch {
+            coroutineScope.launch {
                 withContext(Dispatchers.IO) {
-                    val bitmap = (bottomSheetView.findViewById(R.id.game_icon).drawable as BitmapDrawable).bitmap
-                    val icon = IconCompat.createWithBitmap(bitmap)
+                    val bitmap = (bottomSheetView.findViewById<ImageView>(R.id.game_icon).drawable as BitmapDrawable).bitmap
+                    val icon = Icon.createWithBitmap(bitmap)
+
                     val shortcut = ShortcutInfo.Builder(context, game.title)
                         .setShortLabel(game.title)
                         .setIcon(icon)
