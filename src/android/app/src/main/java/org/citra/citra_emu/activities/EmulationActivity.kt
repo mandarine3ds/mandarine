@@ -60,6 +60,8 @@ class EmulationActivity : AppCompatActivity() {
     private lateinit var screenAdjustmentUtil: ScreenAdjustmentUtil
     private lateinit var hotkeyUtility: HotkeyUtility
 
+    private var isEmulationRunning: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeUtil.setTheme(this)
 
@@ -103,6 +105,9 @@ class EmulationActivity : AppCompatActivity() {
         startForegroundService(foregroundService)
 
         EmulationLifecycleUtil.addShutdownHook(hook = { this.finish() })
+
+        isEmulationRunning = true
+        instance = this
     }
 
     // On some devices, the system bars will not disappear on first boot or after some
@@ -123,12 +128,24 @@ class EmulationActivity : AppCompatActivity() {
         NativeLibrary.reloadCameraDevices()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isEmulationRunning", isEmulationRunning)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        isEmulationRunning = savedInstanceState.getBoolean("isEmulationRunning", false)
+    }
+
     override fun onDestroy() {
         if (BooleanSetting.FORCE_MAX_GPU_CLOCKS.boolean) {
             NativeLibrary.enableAdrenoTurboMode(false) 
         }
         EmulationLifecycleUtil.clear()
         stopForegroundService(this)
+        isEmulationRunning = false
+        instance = null
         super.onDestroy()
     }
 
@@ -476,6 +493,12 @@ class EmulationActivity : AppCompatActivity() {
         }
 
     companion object {
+        private var instance: EmulationActivity? = null
+
+        fun isRunning(): Boolean {
+            return instance?.isEmulationRunning ?: false
+        }
+
         fun stopForegroundService(activity: Activity) {
             val startIntent = Intent(activity, ForegroundService::class.java)
             startIntent.action = ForegroundService.ACTION_STOP

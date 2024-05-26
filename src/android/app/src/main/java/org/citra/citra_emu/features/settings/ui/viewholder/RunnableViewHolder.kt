@@ -10,6 +10,7 @@ import org.citra.citra_emu.databinding.ListItemSettingBinding
 import org.citra.citra_emu.features.settings.model.view.RunnableSetting
 import org.citra.citra_emu.features.settings.model.view.SettingsItem
 import org.citra.citra_emu.features.settings.ui.SettingsAdapter
+import org.citra.citra_emu.activities.EmulationActivity
 
 class RunnableViewHolder(val binding: ListItemSettingBinding, adapter: SettingsAdapter) :
     SettingViewHolder(binding.root, adapter) {
@@ -44,7 +45,7 @@ class RunnableViewHolder(val binding: ListItemSettingBinding, adapter: SettingsA
     }
 
     override fun onClick(clicked: View) {
-        if (!setting.isRuntimeRunnable && NativeLibrary.isRunning()) {
+        if (!setting.isRuntimeRunnable && EmulationActivity.isRunning()) {
             adapter.onClickDisabledSetting()
         } else {
             setting.runnable.invoke()
