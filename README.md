@@ -27,17 +27,35 @@
 
 # Installation
 
-## ✅ Stable builds
+## 🪟 Windows
 
-### 🪟 Windows
+**For Windows you can use the Troppical Installer project which supports Citra-Enhanced**
+- Get it [here](https://nightly.link/kleidis/Troppical/workflows/build/master/troppical-nightly.zip
+)
 
-#### For Windows we made an installer to simplify updating the builds to the latest version
-- Get it [here](https://nightly.link/CitraEnhanced/citra/workflows/build/master/Enhanced-Installer.zip)
+## 📱 Android
 
-### Other platforms
+The recommended way for auto-updates is to use **Obtainium**
+
+- Download and Install `app-release.apk` from [https://github.com/ImranR98/Obtainium/releases](here) 
+- Open Obtainium and click `Add App` then type https://github.com/CitraEnhanced/citra on the `App Source URL`
+- Click on `Add`
+- You should be able to click `install` now and you can easily `update` on the future 
+
+## 🐧 Linux 
+**FLATHUB coming soon (hopefully)**
+
+## 🍎 Mac OS
+
+Download the latest [MacOS release](https://github.com/CitraEnhanced/citra/releases/latest/download/macos-universal.zip)
+
+### Manual Download
+
+### Stable builds
 
 |Platform|Link|
 |--------|--------|
+| 🪟 Windows|[MSVC](https://github.com/CitraEnhanced/citra/releases/latest/download/windows-msvc.zip)|
 | 📱 Android|[APK](https://github.com/CitraEnhanced/citra/releases/latest/download/Android-APK.zip)|
 | 🐧 Linux|[AppImage](https://github.com/CitraEnhanced/citra/releases/latest/download/linux-appimage.zip)|
 | 🍎 Mac OS|[Universal](https://github.com/CitraEnhanced/citra/releases/latest/download/macos-universal.zip)|
@@ -53,6 +71,7 @@
 
 ## Contribution
 
-Pull requests are welcome, and they usually will be accepted as long as it works properly and doesn't break the GPL.
+We are looking for more devs to join the team but we especially need more testers. Please contact us on Discord if you interested in the role
 
-Pls try to keep the proper code formatting for PRs as well, clang-format will help you on that. But in case you don't know how to fix clang-format on a PR, I'll merge and do it myself.
+As for PR's, we usually will accept them if they work well and aren't "nuke the world" Pr's which change too much for no reason
+If you need assistance with clang-format contact us on Discord, we'll be more than happy to help
