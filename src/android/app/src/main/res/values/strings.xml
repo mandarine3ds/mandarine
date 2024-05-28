@@ -338,13 +338,13 @@
     <!-- Preferences Screen -->
     <string name="preferences_settings">Settings</string>
     <string name="preferences_general">General</string>
-    <string name="preferences_general_description">speed limit, sustained perf</string>
+    <string name="preferences_general_description">Speed limit, sustained perf</string>
     <string name="preferences_system">System</string>
     <string name="preferences_system_description">Region, language, country</string>
     <string name="preferences_camera">Camera</string>
     <string name="preferences_camera_description">Camera image source, flip</string>
     <string name="preferences_controls">Gamepad</string>
-    <string name="preferences_controls_description">keybinding</string>
+    <string name="preferences_controls_description">Keybinding</string>
     <string name="preferences_graphics">Graphics</string>
     <string name="preferences_graphics_description">Accuracy level, resolution, graphics API</string>
     <string name="preferences_audio">Audio</string>
