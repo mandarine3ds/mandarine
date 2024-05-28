@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.citra.citra_emu.databinding.FragmentSettingsBinding
 import org.citra.citra_emu.features.settings.model.AbstractSetting
 import org.citra.citra_emu.features.settings.model.view.SettingsItem
-import org.yuzu.yuzu_emu.utils.ViewUtils.updateMargins
+import org.citra.citra_emu.utils.ViewUtils.updateMargins
 
 class SettingsFragment : Fragment(), SettingsFragmentView {
     override var activityView: SettingsActivityView? = null
