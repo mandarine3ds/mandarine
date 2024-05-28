@@ -97,10 +97,18 @@ class SettingsFragment : Fragment(), SettingsFragmentView {
 
     private fun setInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(
-            binding.listSettings
-        ) { view: View, windowInsets: WindowInsetsCompat ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.updatePadding(bottom = insets.bottom)
+            binding.root
+        ) { _: View, windowInsets: WindowInsetsCompat ->
+            val barInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val cutoutInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout())
+
+            val leftInsets = barInsets.left + cutoutInsets.left
+            val rightInsets = barInsets.right + cutoutInsets.right
+            
+            binding.listSettings.updateMargins(left = leftInsets, right = rightInsets)
+            binding.listSettings.updatePadding(bottom = barInsets.bottom)
+
+            binding.appbarSettings.updateMargins(left = leftInsets, right = rightInsets)
             windowInsets
         }
     }
