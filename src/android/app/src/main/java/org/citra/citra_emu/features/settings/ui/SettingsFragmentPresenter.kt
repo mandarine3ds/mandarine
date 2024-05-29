@@ -681,6 +681,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
+                    BooleanSetting.RELAXED_PRECISION_DECORATORS,
+                    R.string.relaxed_precision_decorators,
+                    R.string.relaxed_precision_decorators_desc,
+                    BooleanSetting.RELAXED_PRECISION_DECORATORS.key,
+                    BooleanSetting.RELAXED_PRECISION_DECORATORS.defaultValue,
+                )    
+            )
+            add(
+                SwitchSetting(
                     BooleanSetting.ASYNC_SHADERS,
                     R.string.async_shaders,
                     R.string.async_shaders_description,

@@ -147,6 +147,7 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.upscaling_hack);
     ReadSetting("Renderer", Settings::values.async_shader_compilation);
     ReadSetting("Renderer", Settings::values.spirv_shader_gen);
+    ReadSetting("Renderer", Settings::values.relaxed_precision_decorators);
     ReadSetting("Renderer", Settings::values.use_hw_shader);
     ReadSetting("Renderer", Settings::values.use_shader_jit);
     ReadSetting("Renderer", Settings::values.resolution_factor);
