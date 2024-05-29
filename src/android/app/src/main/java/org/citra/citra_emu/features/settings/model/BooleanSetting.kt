@@ -36,7 +36,8 @@ enum class BooleanSetting(
         private val NOT_RUNTIME_EDITABLE = listOf(
             PLUGIN_LOADER,
             ALLOW_PLUGIN_LOADER,
-            FORCE_MAX_GPU_CLOCKS
+            FORCE_MAX_GPU_CLOCKS,
+            RELAXED_PRECISION_DECORATORS
         )
 
         fun from(key: String): BooleanSetting? =
