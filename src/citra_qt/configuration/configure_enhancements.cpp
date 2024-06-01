@@ -64,6 +64,10 @@ void ConfigureEnhancements::SetConfiguration() {
                                           !Settings::values.texture_filter.UsingGlobal());
         ConfigurationShared::SetPerGameSetting(ui->layout_combobox,
                                                &Settings::values.layout_option);
+        ConfigurationShared::SetPerGameSetting(ui->frame_skip_combobox,
+                                               &Settings::values.frame_skip);
+        ConfigurationShared::SetHighlight(ui->widget_frame_skip,
+                                          !Settings::values.frame_skip.UsingGlobal());
     } else {
         ui->resolution_factor_combobox->setCurrentIndex(
             Settings::values.resolution_factor.GetValue());
@@ -71,6 +75,8 @@ void ConfigureEnhancements::SetConfiguration() {
             static_cast<int>(Settings::values.layout_option.GetValue()));
         ui->texture_filter_combobox->setCurrentIndex(
             static_cast<int>(Settings::values.texture_filter.GetValue()));
+        ui->frame_skip_combobox->setCurrentIndex(
+            static_cast<int>(Settings::values.frame_skip.GetValue()));
     }
 
     ui->render_3d_combobox->setCurrentIndex(
@@ -159,6 +165,7 @@ void ConfigureEnhancements::ApplyConfiguration() {
                                              swap_screen);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.upright_screen,
                                              ui->toggle_upright_screen, upright_screen);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.frame_skip, ui->frame_skip_combobox);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.dump_textures,
                                              ui->toggle_dump_textures, dump_textures);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.custom_textures,
@@ -178,6 +185,7 @@ void ConfigureEnhancements::SetupPerGameUI() {
     if (Settings::IsConfiguringGlobal()) {
         ui->widget_resolution->setEnabled(Settings::values.resolution_factor.UsingGlobal());
         ui->widget_texture_filter->setEnabled(Settings::values.texture_filter.UsingGlobal());
+        ui->widget_frame_skip->setEnabled(Settings::values.frame_skip.UsingGlobal());
         ui->toggle_linear_filter->setEnabled(Settings::values.filter_mode.UsingGlobal());
         ui->toggle_swap_screen->setEnabled(Settings::values.swap_screen.UsingGlobal());
         ui->toggle_upright_screen->setEnabled(Settings::values.upright_screen.UsingGlobal());
@@ -220,4 +228,8 @@ void ConfigureEnhancements::SetupPerGameUI() {
     ConfigurationShared::SetColoredComboBox(
         ui->layout_combobox, ui->widget_layout,
         static_cast<int>(Settings::values.layout_option.GetValue(true)));
+
+    ConfigurationShared::SetColoredComboBox(
+        ui->frame_skip_combobox, ui->widget_frame_skip,
+        static_cast<int>(Settings::values.frame_skip.GetValue(true)));
 }
