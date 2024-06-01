@@ -836,24 +836,6 @@ void HTTP_C::CancelConnection(Kernel::HLERequestContext& ctx) {
     rb.Push(ResultSuccess);
 }
 
-void HTTP_C::GetRequestState(Kernel::HLERequestContext& ctx) {
-    IPC::RequestParser rp(ctx);
-    const u32 context_handle = rp.Pop<u32>();
-
-    const auto* session_data = EnsureSessionInitialized(ctx, rp);
-    if (!session_data) {
-        return;
-    }
-
-    LOG_DEBUG(Service_HTTP, "called, context_handle={}", context_handle);
-
-    Context& http_context = GetContext(context_handle);
-
-    IPC::RequestBuilder rb = rp.MakeBuilder(2, 0);
-    rb.Push(ResultSuccess);
-    rb.PushEnum<RequestState>(http_context.state);
-}
-
 void HTTP_C::AddRequestHeader(Kernel::HLERequestContext& ctx) {
     IPC::RequestParser rp(ctx);
     const u32 context_handle = rp.Pop<u32>();
@@ -2041,7 +2023,7 @@ HTTP_C::HTTP_C() : ServiceFramework("http:C", 32) {
         {0x0002, &HTTP_C::CreateContext, "CreateContext"},
         {0x0003, &HTTP_C::CloseContext, "CloseContext"},
         {0x0004, &HTTP_C::CancelConnection, "CancelConnection"},
-        {0x0005, &HTTP_C::GetRequestState, "GetRequestState"},
+        {0x0005, nullptr, "GetRequestState"},
         {0x0006, &HTTP_C::GetDownloadSizeState, "GetDownloadSizeState"},
         {0x0007, nullptr, "GetRequestError"},
         {0x0008, &HTTP_C::InitializeConnectionSession, "InitializeConnectionSession"},
