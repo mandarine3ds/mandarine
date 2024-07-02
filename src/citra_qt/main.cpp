@@ -1186,9 +1186,13 @@ bool GMainWindow::LoadROM(const QString& filename) {
             QMessageBox::critical(
                 this, tr("Invalid ROM Format"),
                 tr("Your ROM format is not supported.<br/>Please follow the guides to redump your "
-                   "<a href='https://citra-emu.org/wiki/dumping-game-cartridges/'>game "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/"
+                   "dumping-game-cartridges/'>game "
                    "cartridges</a> or "
-                   "<a href='https://citra-emu.org/wiki/dumping-installed-titles/'>installed "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/"
+                   "dumping-installed-titles/'>installed "
                    "titles</a>."));
             break;
 
@@ -1197,9 +1201,13 @@ bool GMainWindow::LoadROM(const QString& filename) {
             QMessageBox::critical(
                 this, tr("ROM Corrupted"),
                 tr("Your ROM is corrupted. <br/>Please follow the guides to redump your "
-                   "<a href='https://citra-emu.org/wiki/dumping-game-cartridges/'>game "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/"
+                   "dumping-game-cartridges/'>game "
                    "cartridges</a> or "
-                   "<a href='https://citra-emu.org/wiki/dumping-installed-titles/'>installed "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/"
+                   "dumping-installed-titles/'>installed "
                    "titles</a>."));
             break;
 
@@ -1207,9 +1215,13 @@ bool GMainWindow::LoadROM(const QString& filename) {
             QMessageBox::critical(
                 this, tr("ROM Encrypted"),
                 tr("Your ROM is encrypted. <br/>Please follow the guides to redump your "
-                   "<a href='https://citra-emu.org/wiki/dumping-game-cartridges/'>game "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/"
+                   "dumping-game-cartridges/'>game "
                    "cartridges</a> or "
-                   "<a href='https://citra-emu.org/wiki/dumping-installed-titles/'>installed "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/"
+                   "dumping-installed-titles/'>installed "
                    "titles</a>."));
             break;
         }
@@ -1217,9 +1229,13 @@ bool GMainWindow::LoadROM(const QString& filename) {
             QMessageBox::critical(
                 this, tr("Invalid ROM Format"),
                 tr("Your ROM format is not supported.<br/>Please follow the guides to redump your "
-                   "<a href='https://citra-emu.org/wiki/dumping-game-cartridges/'>game "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/"
+                   "dumping-game-cartridges/'>game "
                    "cartridges</a> or "
-                   "<a href='https://citra-emu.org/wiki/dumping-installed-titles/'>installed "
+                   "<a "
+                   "href='https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/"
+                   "dumping-installed-titles/'>installed "
                    "titles</a>."));
             break;
 
