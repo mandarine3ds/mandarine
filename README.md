@@ -7,7 +7,6 @@
 
 <p align="center">
   <strong>This fork is just Citra with tweaks/additions which should result in better performance than the original Citra</strong>
-  
   </strong>Feel free to download this build and test it, if you run into any bugs please open an issue on GitHub or contact me on the Discord / Telegram</strong>
 </p>
 
@@ -25,24 +24,45 @@
   </a>
 </p>
 
+# Recommended specs
+
+## 🖥️ Desktop
+
+```
+Operating System: Windows 10 (64-bit), MacOS Ventura, or modern 64-bit Linux
+CPU: x86-64 (64-bit) CPU. Single core performance higher than 1,800 on Passmark
+GPU: OpenGL 4.3 or Vulkan 1.1 support
+Memory: 2GB of RAM. 4GB is recommended
+```
+
+## 📱 Android
+
+```
+Operating System: Android 9.0+
+CPU: Snapdragon 835 SoC or better
+GPU: OpenGL ES 3.2 or Vulkan 1.1 support
+Memory: 2GB of RAM. 4GB is recommended
+```
+
 # Installation
 
 ## 🪟 Windows
 
 **For Windows you can use the Troppical Installer project which supports Citra-Enhanced**
-- Get it [here](https://nightly.link/kleidis/Troppical/workflows/build/master/troppical-nightly.zip
-)
+
+- Get it [here](https://nightly.link/kleidis/Troppical/workflows/build/master/troppical-nightly.zip)
 
 ## 📱 Android
 
 The recommended way for auto-updates is to use **Obtainium**
 
-- Download and Install `app-release.apk` from [https://github.com/ImranR98/Obtainium/releases](here) 
+- Download and Install `app-release.apk` from [https://github.com/ImranR98/Obtainium/releases](here)
 - Open Obtainium and click `Add App` then type https://github.com/CitraEnhanced/citra on the `App Source URL`
 - Click on `Add`
-- You should be able to click `install` now and you can easily `update` on the future 
+- You should be able to click `install` now and you can easily `update` on the future
 
-## 🐧 Linux 
+## 🐧 Linux
+
 **FLATHUB coming soon (hopefully)**
 
 ## 🍎 Mac OS
@@ -71,7 +91,7 @@ Download the latest [MacOS release](https://github.com/CitraEnhanced/citra/relea
 
 ## Contribution
 
-We are looking for more devs to join the team but we especially need more testers. Please contact us on Discord if you interested in the role
+We are looking for more devs to join the team but we especially need more testers. Please contact us on Discord / Telegram if you interested in the role
 
 As for PR's, we usually will accept them if they work well and aren't "nuke the world" Pr's which change too much for no reason
 If you need assistance with clang-format contact us on Discord, we'll be more than happy to help
