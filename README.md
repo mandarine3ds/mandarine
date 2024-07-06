@@ -89,13 +89,13 @@ Download the latest [MacOS release](https://github.com/CitraEnhanced/citra/relea
 | 🐧 Linux|[![Qt Build](https://github.com/CitraEnhanced/citra/actions/workflows/build.yml/badge.svg)](https://github.com/CitraEnhanced/citra/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/CitraEnhanced/citra/workflows/build/master/linux-appimage.zip)|
 | 🍎 Mac OS|[![Qt Build](https://github.com/CitraEnhanced/citra/actions/workflows/build.yml/badge.svg)](https://github.com/CitraEnhanced/citra/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/CitraEnhanced/citra/workflows/build/master/macos-universal.zip)|
 
-## Contribution
+# Contribution
 
 We are looking for more devs to join the team but we especially need more testers. Please contact us on Discord / Telegram if you interested in the role
 
 As for PR's, we usually will accept them if they work well and aren't "nuke the world" Pr's which change too much for no reason
 If you need assistance with clang-format contact us on Discord, we'll be more than happy to help
 
-## Support
+# Support
 
 In case you want to support my work and motivate me more with the project, feel free to check my [paypal](https://paypal.me/TLOZP).
