@@ -95,3 +95,7 @@ We are looking for more devs to join the team but we especially need more tester
 
 As for PR's, we usually will accept them if they work well and aren't "nuke the world" Pr's which change too much for no reason
 If you need assistance with clang-format contact us on Discord, we'll be more than happy to help
+
+## Support
+
+In case you want to support my work and motivate me more with the project, feel free to check my [paypal](https://paypal.me/TLOZP).
