@@ -12,6 +12,11 @@ ConfigureUi::ConfigureUi(QWidget* parent)
     ui->setupUi(this);
     InitializeLanguageComboBox();
 
+    for (const auto& theme : UISettings::themes) {
+        ui->theme_combobox->addItem(QString::fromUtf8(theme.first),
+                                    QString::fromUtf8(theme.second));
+    }
+
     SetConfiguration();
 }
 
@@ -38,6 +43,7 @@ void ConfigureUi::InitializeLanguageComboBox() {
 }
 
 void ConfigureUi::SetConfiguration() {
+    ui->theme_combobox->setCurrentIndex(ui->theme_combobox->findData(UISettings::values.theme));
     ui->language_combobox->setCurrentIndex(
         ui->language_combobox->findData(UISettings::values.language));
     ui->icon_size_combobox->setCurrentIndex(
@@ -52,6 +58,8 @@ void ConfigureUi::SetConfiguration() {
 }
 
 void ConfigureUi::ApplyConfiguration() {
+    UISettings::values.theme =
+        ui->theme_combobox->itemData(ui->theme_combobox->currentIndex()).toString();
     UISettings::values.game_list_icon_size =
         static_cast<UISettings::GameListIconSize>(ui->icon_size_combobox->currentIndex());
     UISettings::values.game_list_row_1 =

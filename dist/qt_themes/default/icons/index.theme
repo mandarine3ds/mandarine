@@ -1,7 +1,6 @@
 [Icon Theme]
-Name=qdarkstyle
-Comment=dark theme
-Inherits=default
+Name=default
+Comment=default theme
 Directories=16x16,48x48,256x256
  
 [16x16]

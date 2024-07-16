@@ -2,16 +2,16 @@
 <ui version="4.0">
  <class>ConfigureUi</class>
  <widget class="QWidget" name="ConfigureUi">
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>290</width>
-    <height>338</height>
+    <height>280</height>
    </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -51,9 +51,12 @@
           <item>
            <widget class="QLabel" name="theme_label">
             <property name="text">
-             <string>Citra-Enahnced uses a custom UX stylesheet . Please report bugs on our github</string>
+             <string>Theme:</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="theme_combobox"/>
           </item>
          </layout>
         </item>
@@ -208,12 +211,6 @@
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
      </property>
     </spacer>
    </item>
