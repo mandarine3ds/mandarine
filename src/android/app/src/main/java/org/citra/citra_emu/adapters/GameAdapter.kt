@@ -161,6 +161,7 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
 
             binding.textGameTitle.text = game.title
             binding.textCompany.text = game.company
+            binding.textFilename.text = game.filename
 
             val backgroundColorId =
                 if (
@@ -184,6 +185,9 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
 
                     binding.textCompany.ellipsize = TextUtils.TruncateAt.MARQUEE
                     binding.textCompany.isSelected = true
+
+                    binding.textFilename.ellipsize = TextUtils.TruncateAt.MARQUEE
+                    binding.textFilename.isSelected = true
                 },
                 3000
             )

@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="?attr/materialCardViewOutlinedStyle"
     android:id="@+id/card_game"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
     android:focusable="true"
-    android:foreground="@drawable/rounded_selectable_item_background"
-    android:orientation="vertical"
-    android:padding="15dp">
+    app:cardCornerRadius="8dp"
+    tools:layout_width="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_contents"
-        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:shapeAppearance="?attr/shapeAppearanceCornerLarge"
-        app:cardCornerRadius="10dp"
-        app:strokeWidth="0dp">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/image_game_screen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true" />
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_game_screen"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/text_game_title"
-                style="?attr/textAppearanceTitleSmall"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.Material3.BodyMedium"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:textAlignment="viewStart"
                 android:singleLine="true"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
@@ -47,14 +54,29 @@
             <TextView
                 android:id="@+id/text_company"
                 style="@style/TextAppearance.Material3.BodySmall"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:textAlignment="viewStart"
                 android:singleLine="true"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
                 android:requiresFadingEdge="horizontal"
                 tools:text="Nintendo" />
 
-      </LinearLayout>
+            <TextView
+                android:id="@+id/text_filename"
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                tools:text="Pilotwings_Resort.cxi" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
