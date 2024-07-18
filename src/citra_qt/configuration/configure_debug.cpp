@@ -74,8 +74,7 @@ ConfigureDebug::ConfigureDebug(bool is_powered_on_, QWidget* parent)
     ui->toggle_renderer_debug->setEnabled(!is_powered_on);
     ui->toggle_dump_command_buffers->setEnabled(!is_powered_on);
 
-    // Hacks
-    ui->toggle_core_downcount_hack->setEnabled(!is_powered_on);
+    ui->toggle_reduce_downcount_slice->setEnabled(!is_powered_on);
 
     // Set a minimum width for the label to prevent the slider from changing size.
     // This scales across DPIs. (This value should be enough for "xxx%")
@@ -105,10 +104,12 @@ void ConfigureDebug::SetConfiguration() {
     ui->toggle_cpu_jit->setChecked(Settings::values.use_cpu_jit.GetValue());
     ui->delay_start_for_lle_modules->setChecked(
         Settings::values.delay_start_for_lle_modules.GetValue());
+    ui->toggle_reduce_downcount_slice->setChecked(
+        Settings::values.reduce_downcount_slice.GetValue());
+    ui->toggle_priority_boost_starved_threads->setChecked(
+        Settings::values.priority_boost_starved_threads.GetValue());
     ui->toggle_renderer_debug->setChecked(Settings::values.renderer_debug.GetValue());
     ui->toggle_dump_command_buffers->setChecked(Settings::values.dump_command_buffers.GetValue());
-    ui->toggle_core_downcount_hack->setChecked(Settings::values.core_downcount_hack.GetValue());
-    ui->toggle_priority_boost->setChecked(Settings::values.priority_boost.GetValue());
 
     if (!Settings::IsConfiguringGlobal()) {
         if (Settings::values.cpu_clock_percentage.UsingGlobal()) {
@@ -120,15 +121,6 @@ void ConfigureDebug::SetConfiguration() {
         }
         ConfigurationShared::SetHighlight(ui->clock_speed_widget,
                                           !Settings::values.cpu_clock_percentage.UsingGlobal());
-
-        // Frameskip
-        ConfigurationShared::SetPerGameSetting(ui->frame_skip_combobox,
-                                               &Settings::values.frame_skip);
-        ConfigurationShared::SetHighlight(ui->widget_frame_skip,
-                                          !Settings::values.frame_skip.UsingGlobal());
-    } else {
-        ui->frame_skip_combobox->setCurrentIndex(
-            static_cast<int>(Settings::values.frame_skip.GetValue()));
     }
 
     ui->slider_clock_speed->setValue(
@@ -150,23 +142,21 @@ void ConfigureDebug::ApplyConfiguration() {
     Common::Log::SetRegexFilter(Settings::values.log_regex_filter.GetValue());
     Settings::values.use_cpu_jit = ui->toggle_cpu_jit->isChecked();
     Settings::values.delay_start_for_lle_modules = ui->delay_start_for_lle_modules->isChecked();
+    Settings::values.reduce_downcount_slice = ui->toggle_reduce_downcount_slice->isChecked();
+    Settings::values.priority_boost_starved_threads =
+        ui->toggle_priority_boost_starved_threads->isChecked();
     Settings::values.renderer_debug = ui->toggle_renderer_debug->isChecked();
     Settings::values.dump_command_buffers = ui->toggle_dump_command_buffers->isChecked();
-    Settings::values.core_downcount_hack = ui->toggle_core_downcount_hack->isChecked();
-    Settings::values.priority_boost = ui->toggle_priority_boost->isChecked();
 
     ConfigurationShared::ApplyPerGameSetting(
         &Settings::values.cpu_clock_percentage, ui->clock_speed_combo,
         [this](s32) { return SliderToSettings(ui->slider_clock_speed->value()); });
-
-    ConfigurationShared::ApplyPerGameSetting(&Settings::values.frame_skip, ui->frame_skip_combobox);
 }
 
 void ConfigureDebug::SetupPerGameUI() {
     // Block the global settings if a game is currently running that overrides them
     if (Settings::IsConfiguringGlobal()) {
         ui->slider_clock_speed->setEnabled(Settings::values.cpu_clock_percentage.UsingGlobal());
-        ui->widget_frame_skip->setEnabled(Settings::values.frame_skip.UsingGlobal());
         return;
     }
 
@@ -174,10 +164,6 @@ void ConfigureDebug::SetupPerGameUI() {
         ui->slider_clock_speed->setEnabled(index == 1);
         ConfigurationShared::SetHighlight(ui->clock_speed_widget, index == 1);
     });
-
-    ConfigurationShared::SetColoredComboBox(
-        ui->frame_skip_combobox, ui->widget_frame_skip,
-        static_cast<int>(Settings::values.frame_skip.GetValue(true)));
 
     ui->groupBox->setVisible(false);
     ui->groupBox_2->setVisible(false);

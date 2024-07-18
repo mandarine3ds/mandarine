@@ -29,7 +29,6 @@ class SubmenuViewHolder(val binding: ListItemSettingBinding, adapter: SettingsAd
                 )
             )
         }
-
         binding.textSettingName.setText(item.nameId)
         if (item.descriptionId != 0) {
             binding.textSettingDescription.setText(item.descriptionId)

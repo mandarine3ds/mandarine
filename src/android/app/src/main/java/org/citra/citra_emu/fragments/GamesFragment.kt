@@ -60,14 +60,13 @@ class GamesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = true)
-        val inflater = LayoutInflater.from(requireContext())
 
         binding.gridGames.apply {
             layoutManager = GridLayoutManager(
                 requireContext(),
                 resources.getInteger(R.integer.game_grid_columns)
             )
-            adapter = GameAdapter(requireActivity() as AppCompatActivity, inflater)
+            adapter = GameAdapter(requireActivity() as AppCompatActivity)
         }
 
         binding.swipeRefresh.apply {

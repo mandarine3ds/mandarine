@@ -58,9 +58,6 @@ private:
 
     void WaitPendingOperations(u64 requested_upper_bound);
 
-    /// Allocate vulkan memory
-    void AllocateMemory(u64 prefered_size);
-
 private:
     const Instance& instance; ///< Vulkan instance.
     Scheduler& scheduler;     ///< Command scheduler.

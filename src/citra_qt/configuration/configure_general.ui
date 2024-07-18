@@ -90,14 +90,103 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QCheckBox" name="toggle_raise_cpu_ticks">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets 16000 CPU ticks. May improve the performance or decrease, depending of the game or if it is a low-end device&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Raise CPU Ticks</string>
-          </property>
+         <widget class="QWidget" name="widget_frame_skip" native="true">
+          <layout class="QHBoxLayout" name="frameskip_layout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="frame_skip_label">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;body&gt;The number of frames to skip. It may cause emulation speed desync issues.&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Frame Skip</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="frame_skip_combobox">
+             <item>
+              <property name="text">
+               <string>Disabled</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>x2</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>x4</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>x8</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
          </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="custom_cpu_ticks_layout">
+          <item>
+           <widget class="QCheckBox" name="toggle_custom_cpu_ticks">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>Enable Custom CPU Ticks</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_custom_cpu_ticks">
+            <property name="text">
+             <string>Ticks:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="custom_cpu_ticks_spinbox">
+            <property name="minimum">
+             <number>77</number>
+            </property>
+            <property name="maximum">
+             <number>65535</number>
+            </property>
+            <property name="value">
+             <number>16000</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QWidget" name="widget_region" native="true">
@@ -336,8 +425,28 @@
   <tabstop>toggle_hide_mouse</tabstop>
   <tabstop>toggle_update_check</tabstop>
   <tabstop>toggle_auto_update</tabstop>
+  <tabstop>frame_skip_combobox</tabstop>
+  <tabstop>toggle_custom_cpu_ticks</tabstop>
+  <tabstop>custom_cpu_ticks_spinbox</tabstop>
   <tabstop>button_reset_defaults</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>toggle_custom_cpu_ticks</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>custom_cpu_ticks_spinbox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

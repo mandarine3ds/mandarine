@@ -10,8 +10,6 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.content.Context
-import android.widget.TextView
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,8 +23,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.button.MaterialButton
 import org.citra.citra_emu.HomeNavigationDirections
 import org.citra.citra_emu.CitraApplication
 import org.citra.citra_emu.R
@@ -36,10 +32,8 @@ import org.citra.citra_emu.features.cheats.ui.CheatsFragmentDirections
 import org.citra.citra_emu.model.Game
 import org.citra.citra_emu.utils.GameIconUtils
 import org.citra.citra_emu.viewmodel.GamesViewModel
-import org.citra.citra_emu.features.settings.ui.SettingsActivity
-import org.citra.citra_emu.features.settings.utils.SettingsFile
 
-class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater) :
+class GameAdapter(private val activity: AppCompatActivity) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
     View.OnClickListener, View.OnLongClickListener {
     private var lastClickTime = 0L
@@ -89,7 +83,7 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
     }
 
     /**
-     * Opens the GameAboutDialog for the game that was clicked on.
+     * Opens the cheats settings for the game that was clicked on.
      *
      * @param view The view representing the game the user wants to play.
      */
@@ -105,7 +99,8 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
         } else {
-            showGameAboutDialog(context, holder.game, holder, view)
+            val action = CheatsFragmentDirections.actionGlobalCheatsFragment(holder.game.titleId)
+            view.findNavController().navigate(action)
         }
         return true
     }
@@ -192,38 +187,6 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                 3000
             )
         }
-    }
-
-    private fun showGameAboutDialog(context: Context, game: Game, holder: GameViewHolder, view: View) {
-        val bottomSheetView = inflater.inflate(R.layout.game_about_dialog, null)
-        
-        val bottomSheetDialog = BottomSheetDialog(context)
-        bottomSheetDialog.setContentView(bottomSheetView)
-
-        bottomSheetView.findViewById<TextView>(R.id.game_title).text = game.title
-        bottomSheetView.findViewById<TextView>(R.id.game_author).text = game.company
-        GameIconUtils.loadGameIcon(activity, game, bottomSheetView.findViewById(R.id.game_icon))
-
-        bottomSheetView.findViewById<MaterialButton>(R.id.game_play).setOnClickListener {
-            val action = HomeNavigationDirections.actionGlobalEmulationActivity(holder.game)
-            view.findNavController().navigate(action)
-        }
-
-        bottomSheetView.findViewById<MaterialButton>(R.id.game_settings).setOnClickListener {
-            SettingsActivity.launch(
-                        context,
-                        SettingsFile.FILE_NAME_CONFIG,
-                        ""
-                    )
-        }
-
-        bottomSheetView.findViewById<MaterialButton>(R.id.cheats).setOnClickListener {
-            val action = CheatsFragmentDirections.actionGlobalCheatsFragment(holder.game.titleId)
-            view.findNavController().navigate(action)
-            bottomSheetDialog.dismiss()
-        }
-        
-        bottomSheetDialog.show()
     }
 
     private fun isValidGame(extension: String): Boolean {

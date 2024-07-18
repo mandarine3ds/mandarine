@@ -20,7 +20,6 @@ import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
-import android.content.res.Configuration
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
@@ -37,7 +36,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import android.content.pm.ActivityInfo
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
@@ -192,9 +190,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             }
 
             override fun onDrawerOpened(drawerView: View) {
-                if (!emulationState.isPaused) {
-                    emulationState.pause()
-                }
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                 binding.surfaceInputOverlay.isClickable = false
                 binding.surfaceInputOverlay.isFocusable = false
@@ -202,9 +197,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             }
 
             override fun onDrawerClosed(drawerView: View) {
-                if (emulationState.isPaused) {
-                    emulationState.unpause()
-                }
                 binding.drawerLayout.setDrawerLockMode(EmulationMenuSettings.drawerLockMode)
                 binding.surfaceInputOverlay.isClickable = true
                 binding.surfaceInputOverlay.isFocusable = true
@@ -239,9 +231,23 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             game.title
         binding.inGameMenu.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_emulation_resume -> {
-                    if (binding.drawerLayout.isOpen) {
-                        binding.drawerLayout.close()
+                R.id.menu_emulation_pause -> {
+                    if (emulationState.isPaused) {
+                        emulationState.unpause()
+                        it.title = resources.getString(R.string.pause_emulation)
+                        it.icon = ResourcesCompat.getDrawable(
+                            resources,
+                            R.drawable.ic_pause,
+                            requireContext().theme
+                        )
+                    } else {
+                        emulationState.pause()
+                        it.title = resources.getString(R.string.resume_emulation)
+                        it.icon = ResourcesCompat.getDrawable(
+                            resources,
+                            R.drawable.ic_play,
+                            requireContext().theme
+                        )
                     }
                     true
                 }
@@ -253,11 +259,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
                 R.id.menu_overlay_options -> {
                     showOverlayMenu()
-                    true
-                }
-
-                R.id.menu_rotate_screen -> {
-                    rotateScreen()
                     true
                 }
 
@@ -306,11 +307,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                     val action = EmulationNavigationDirections
                         .actionGlobalCheatsActivity(NativeLibrary.getRunningTitleId())
                     binding.root.findNavController().navigate(action)
-                    true
-                }
-
-                R.id.menu_tweaks -> {
-                    emulationActivity.displayTweaks()
                     true
                 }
 
@@ -423,20 +419,12 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         setInsets()
     }
 
-    private fun rotateScreen() {
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            (context as? EmulationActivity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-        } else if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            (context as? EmulationActivity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
-        }
-    }
-
     fun isDrawerOpen(): Boolean {
         return binding.drawerLayout.isOpen
     }
 
     private fun togglePause() {
-        if (emulationState.isPaused) {
+        if(emulationState.isPaused) {
             emulationState.unpause()
         } else {
             emulationState.pause()
@@ -445,10 +433,11 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
     override fun onResume() {
         super.onResume()
-        if (emulationState.isPaused) {
-            emulationState.unpause()
-        }
         Choreographer.getInstance().postFrameCallback(this)
+        if (NativeLibrary.isRunning()) {
+            NativeLibrary.unPauseEmulation()
+            return
+        }
 
         if (DirectoryInitialization.areCitraDirectoriesReady()) {
             emulationState.run(emulationActivity.isActivityRecreated)
@@ -458,7 +447,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
     }
 
     override fun onPause() {
-        if (!emulationState.isPaused) {
+        if (NativeLibrary.isRunning()) {
             emulationState.pause()
         }
         Choreographer.getInstance().removeFrameCallback(this)
@@ -503,12 +492,12 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_emulation_save_state -> {
-                    showSaveStateSubmenu()
+                    showStateSubmenu(true)
                     true
                 }
 
                 R.id.menu_emulation_load_state -> {
-                    showLoadStateSubmenu()
+                    showStateSubmenu(false)
                     true
                 }
 
@@ -519,7 +508,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         popupMenu.show()
     }
 
-    private fun showSaveStateSubmenu() {
+    private fun showStateSubmenu(isSaving: Boolean) {
+
         val savestates = NativeLibrary.getSavestateInfo()
 
         val popupMenu = PopupMenu(
@@ -529,19 +519,40 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         popupMenu.menu.apply {
             for (i in 0 until NativeLibrary.SAVESTATE_SLOT_COUNT) {
-                val slot = i + 1
-                val text = getString(R.string.emulation_empty_state_slot, slot)
-                add(text).setEnabled(true).setOnMenuItemClickListener {
-                    displaySavestateWarning()
-                    NativeLibrary.saveState(slot)
+                val slot = i
+                var enableClick = isSaving
+                val text = if (slot == NativeLibrary.QUICKSAVE_SLOT) {
+                    enableClick = false
+                    getString(R.string.emulation_quicksave_slot)
+                } else {
+                    getString(R.string.emulation_empty_state_slot, slot)
+                }
+
+                add(text).setEnabled(enableClick).setOnMenuItemClickListener {
+                    if(isSaving) {
+                        NativeLibrary.saveState(slot)
+                    } else {
+                        NativeLibrary.loadState(slot)
+                        binding.drawerLayout.close()
+                        Toast.makeText(context,
+                            getString(R.string.quickload_loading),
+                            Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
             }
         }
 
         savestates?.forEach {
-            val text = getString(R.string.emulation_occupied_state_slot, it.slot, it.time)
-            popupMenu.menu.getItem(it.slot - 1).setTitle(text)
+            var enableClick = true
+            val text = if(it.slot == NativeLibrary.QUICKSAVE_SLOT) {
+                // do not allow saving in quicksave slot
+                enableClick = !isSaving
+                getString(R.string.emulation_occupied_quicksave_slot, it.time)
+            } else{
+                getString(R.string.emulation_occupied_state_slot, it.slot, it.time)
+            }
+            popupMenu.menu.getItem(it.slot).setTitle(text).setEnabled(enableClick)
         }
 
         popupMenu.show()
@@ -1128,6 +1139,9 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             if (state != State.PAUSED) {
                 state = State.PAUSED
                 Log.debug("[EmulationFragment] Pausing emulation.")
+
+                // Release the surface before pausing, since emulation has to be running for that.
+                NativeLibrary.surfaceDestroyed()
                 NativeLibrary.pauseEmulation()
             } else {
                 Log.warning("[EmulationFragment] Pause called while already paused.")
@@ -1180,6 +1194,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                 Log.debug("[EmulationFragment] Surface destroyed.")
                 when (state) {
                     State.RUNNING -> {
+                        NativeLibrary.surfaceDestroyed()
                         state = State.PAUSED
                     }
 

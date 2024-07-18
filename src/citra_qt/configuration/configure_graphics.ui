@@ -235,48 +235,75 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="tweaksBox">
+    <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Tweaks</string>
+      <string>Advanced</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_8">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QCheckBox" name="toggle_skip_slow_draw">
+       <widget class="QWidget" name="widget_texture_sampling" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="texture_sampling_label">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides the sampling filter used by games. This can be useful in certain cases with poorly behaved games when upscaling. If unsure set this to Game Controlled&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Texture Sampling</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="texture_sampling_combobox">
+           <item>
+            <property name="text">
+             <string>Game Controlled</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Nearest Neighbor</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Linear</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="toggle_disk_shader_cache">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the slow drawing event from PICA core. May improve performance or rarely fix issues, but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Skip Slow Draw</string>
+         <string>Use Disk Shader Cache</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="toggle_skip_texture_copy">
+       <widget class="QCheckBox" name="toggle_vsync_new">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the texture copy event from rasterizer cache. May improve performance or rarely fix issues, but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don't notice a performance difference.</string>
         </property>
         <property name="text">
-         <string>Skip Texture Copy</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_skip_cpu_write">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the CPU write event from rasterizer cache invalidation. May improve performance or rarely fix issues, but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Skip CPU Write</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_upscaling_hack">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash for another games as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Enable Upscaling Hack</string>
+         <string>Enable VSync</string>
         </property>
        </widget>
       </item>
@@ -363,73 +390,36 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Advanced</string>
+      <string>Tweaks</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QWidget" name="widget_texture_sampling" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="texture_sampling_label">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides the sampling filter used by games. This can be useful in certain cases with poorly behaved games when upscaling. If unsure set this to Game Controlled&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Texture Sampling</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="texture_sampling_combobox">
-           <item>
-            <property name="text">
-             <string>Game Controlled</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Nearest Neighbor</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Linear</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_disk_shader_cache">
+       <widget class="QCheckBox" name="toggle_force_hw_vertex_shaders">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores software vertex shaders from PICA core. Enable this may lead a small performance boost, but may cause graphical bugs as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Use Disk Shader Cache</string>
+         <string>Force Hardware Vertex Shaders</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="toggle_vsync_new">
+       <widget class="QCheckBox" name="toggle_disable_surface_texture_copy">
         <property name="toolTip">
-         <string>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don't notice a performance difference.</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores texture copies if src_surface_id is null. Enable this may lead a small performance boost, but may cause graphical bugs as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Enable VSync</string>
+         <string>Disable Surface Texture Copy</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="toggle_disable_flush_cpu_write">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores CPU write if there is a region to invalidate from rasterizer cache. Enable this may lead a small performance boost, but may cause graphical bugs as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Disable Flush CPU Write</string>
         </property>
        </widget>
       </item>

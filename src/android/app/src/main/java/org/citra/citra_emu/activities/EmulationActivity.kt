@@ -31,27 +31,23 @@ import org.citra.citra_emu.R
 import org.citra.citra_emu.camera.StillImageCameraHelper.OnFilePickerResult
 import org.citra.citra_emu.contracts.OpenFileResultContract
 import org.citra.citra_emu.databinding.ActivityEmulationBinding
-import org.citra.citra_emu.dialogs.TweaksDialog
 import org.citra.citra_emu.display.ScreenAdjustmentUtil
 import org.citra.citra_emu.features.hotkeys.HotkeyUtility
-import org.citra.citra_emu.features.settings.model.IntSetting
 import org.citra.citra_emu.features.settings.model.BooleanSetting
 import org.citra.citra_emu.features.settings.model.SettingsViewModel
 import org.citra.citra_emu.features.settings.model.view.InputBindingSetting
 import org.citra.citra_emu.fragments.EmulationFragment
 import org.citra.citra_emu.fragments.MessageDialogFragment
 import org.citra.citra_emu.utils.ControllerMappingHelper
+import org.citra.citra_emu.utils.FileBrowserHelper
 import org.citra.citra_emu.utils.EmulationLifecycleUtil
 import org.citra.citra_emu.utils.EmulationMenuSettings
-import org.citra.citra_emu.utils.FileBrowserHelper
-import org.citra.citra_emu.utils.ForegroundService
 import org.citra.citra_emu.utils.ThemeUtil
 import org.citra.citra_emu.viewmodel.EmulationViewModel
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
-    private var foregroundService: Intent? = null
     var isActivityRecreated = false
     private val emulationViewModel: EmulationViewModel by viewModels()
     private val settingsViewModel: SettingsViewModel by viewModels()
@@ -78,15 +74,9 @@ class EmulationActivity : AppCompatActivity() {
 
         NativeLibrary.enableAdrenoTurboMode(BooleanSetting.ADRENO_GPU_BOOST.boolean)
 
-        // reduce mhz, helps for throttling reduction
-        // at the cost of performance
-        if (IntSetting.SUSTAINED_PERFORMANCE.int == 1) {
-            window.setSustainedPerformanceMode(true)
-        }
-
         binding = ActivityEmulationBinding.inflate(layoutInflater)
         screenAdjustmentUtil = ScreenAdjustmentUtil(windowManager, settingsViewModel.settings)
-        hotkeyUtility = HotkeyUtility(screenAdjustmentUtil)
+        hotkeyUtility = HotkeyUtility(screenAdjustmentUtil, this)
         setContentView(binding.root)
 
         val navHostFragment =
@@ -104,10 +94,6 @@ class EmulationActivity : AppCompatActivity() {
             EmulationMenuSettings.swapScreens,
             windowManager.defaultDisplay.rotation
         )
-
-        // Start a foreground service to prevent the app from getting killed in the background
-        foregroundService = Intent(this, ForegroundService::class.java)
-        startForegroundService(foregroundService)
 
         EmulationLifecycleUtil.addShutdownHook(hook = { this.finish() })
 
@@ -146,7 +132,6 @@ class EmulationActivity : AppCompatActivity() {
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
-        stopForegroundService(this)
         isEmulationRunning = false
         instance = null
         super.onDestroy()
@@ -197,11 +182,6 @@ class EmulationActivity : AppCompatActivity() {
             getString(R.string.emulation_menu_help),
             Toast.LENGTH_LONG
         ).show()
-    }
-
-    fun displayTweaks() {
-        val dialog = TweaksDialog(this)
-        dialog.show()
     }
 
     private fun enableFullscreenImmersive() {
@@ -501,12 +481,6 @@ class EmulationActivity : AppCompatActivity() {
 
         fun isRunning(): Boolean {
             return instance?.isEmulationRunning ?: false
-        }
-
-        fun stopForegroundService(activity: Activity) {
-            val startIntent = Intent(activity, ForegroundService::class.java)
-            startIntent.action = ForegroundService.ACTION_STOP
-            activity.startForegroundService(startIntent)
         }
     }
 }

@@ -5,7 +5,6 @@
 #include "common/alignment.h"
 #include "common/assert.h"
 #include "common/profiling.h"
-#include "common/settings.h"
 #include "video_core/renderer_opengl/gl_driver.h"
 #include "video_core/renderer_opengl/gl_stream_buffer.h"
 
@@ -31,11 +30,8 @@ OGLStreamBuffer::OGLStreamBuffer(Driver& driver, GLenum target, GLsizeiptr size,
         mapped_ptr = static_cast<u8*>(glMapBufferRange(
             gl_target, 0, buffer_size, flags | (coherent ? 0 : GL_MAP_FLUSH_EXPLICIT_BIT)));
     } else {
-        // prefer `glBufferData` than `glMapBufferRange` on mobile device
         glBufferData(gl_target, allocate_size, nullptr, GL_STREAM_DRAW);
     }
-
-    gl_target_invalidate_hack = Settings::values.gl_stream_buffer_hack ? GL_TEXTURE_BUFFER : 0;
 }
 
 OGLStreamBuffer::~OGLStreamBuffer() {
@@ -66,11 +62,10 @@ std::tuple<u8*, GLintptr, bool> OGLStreamBuffer::Map(GLsizeiptr size, GLintptr a
     bool invalidate = false;
     if (buffer_pos + size > buffer_size) {
         buffer_pos = 0;
-        if (gl_target_invalidate_hack == 0 || gl_target == gl_target_invalidate_hack) {
-            invalidate = true;
-            if (persistent) {
-                glUnmapBuffer(gl_target);
-            }
+        invalidate = true;
+
+        if (persistent) {
+            glUnmapBuffer(gl_target);
         }
     }
 

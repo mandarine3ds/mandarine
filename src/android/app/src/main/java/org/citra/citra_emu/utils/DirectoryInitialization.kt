@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicBoolean
  * from the Citra APK to the external file system.
  */
 object DirectoryInitialization {
-
     @Volatile
     private var directoryState: DirectoryInitializationState? = null
     var userPath: String? = null

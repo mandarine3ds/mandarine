@@ -78,8 +78,6 @@ void ConfigureGeneral::SetConfiguration() {
             UISettings::values.mute_when_in_background.GetValue());
         ui->toggle_hide_mouse->setChecked(UISettings::values.hide_mouse.GetValue());
 
-        ui->toggle_raise_cpu_ticks->setChecked(Settings::values.raise_cpu_ticks.GetValue());
-
         ui->toggle_update_check->setChecked(
             UISettings::values.check_for_update_on_start.GetValue());
         ui->toggle_auto_update->setChecked(UISettings::values.update_on_close.GetValue());
@@ -87,6 +85,10 @@ void ConfigureGeneral::SetConfiguration() {
         ui->toggle_gamemode->setChecked(Settings::values.enable_gamemode.GetValue());
 #endif
     }
+
+    ui->toggle_custom_cpu_ticks->setChecked(Settings::values.enable_custom_cpu_ticks.GetValue());
+    ui->custom_cpu_ticks_spinbox->setEnabled(Settings::values.enable_custom_cpu_ticks.GetValue());
+    ui->custom_cpu_ticks_spinbox->setValue(Settings::values.custom_cpu_ticks.GetValue());
 
     if (Settings::values.frame_limit.GetValue() == 0) {
         ui->frame_limit->setValue(ui->frame_limit->maximum());
@@ -121,6 +123,13 @@ void ConfigureGeneral::SetConfiguration() {
         }
         ConfigurationShared::SetHighlight(ui->widget_screenshot,
                                           !UISettings::values.screenshot_path.UsingGlobal());
+
+        // Frameskip
+        ConfigurationShared::SetPerGameSetting(ui->frame_skip_combobox,
+                                               &Settings::values.frame_skip);
+        ConfigurationShared::SetHighlight(ui->widget_frame_skip,
+                                          !Settings::values.frame_skip.UsingGlobal());
+
         ConfigurationShared::SetHighlight(ui->emulation_speed_layout,
                                           !Settings::values.frame_limit.UsingGlobal());
         ConfigurationShared::SetHighlight(ui->widget_region,
@@ -131,6 +140,8 @@ void ConfigureGeneral::SetConfiguration() {
                              : static_cast<int>(Settings::values.region_value.GetValue()) +
                                    ConfigurationShared::USE_GLOBAL_OFFSET + 1);
     } else {
+        ui->frame_skip_combobox->setCurrentIndex(
+            static_cast<int>(Settings::values.frame_skip.GetValue()));
         // The first item is "auto-select" with actual value -1, so plus one here will do the trick
         ui->region_combobox->setCurrentIndex(Settings::values.region_value.GetValue() + 1);
     }
@@ -175,13 +186,16 @@ void ConfigureGeneral::ApplyConfiguration() {
         &UISettings::values.screenshot_path, ui->screenshot_combo,
         [this](s32) { return ui->screenshot_dir_path->text().toStdString(); });
 
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.frame_skip, ui->frame_skip_combobox);
+
+    Settings::values.enable_custom_cpu_ticks = ui->toggle_custom_cpu_ticks->isChecked();
+    Settings::values.custom_cpu_ticks = ui->custom_cpu_ticks_spinbox->value();
+
     if (Settings::IsConfiguringGlobal()) {
         UISettings::values.confirm_before_closing = ui->toggle_check_exit->isChecked();
         UISettings::values.pause_when_in_background = ui->toggle_background_pause->isChecked();
         UISettings::values.mute_when_in_background = ui->toggle_background_mute->isChecked();
         UISettings::values.hide_mouse = ui->toggle_hide_mouse->isChecked();
-
-        Settings::values.raise_cpu_ticks = ui->toggle_raise_cpu_ticks->isChecked();
 
         UISettings::values.check_for_update_on_start = ui->toggle_update_check->isChecked();
         UISettings::values.update_on_close = ui->toggle_auto_update->isChecked();
@@ -197,6 +211,7 @@ void ConfigureGeneral::RetranslateUI() {
 
 void ConfigureGeneral::SetupPerGameUI() {
     if (Settings::IsConfiguringGlobal()) {
+        ui->widget_frame_skip->setEnabled(Settings::values.frame_skip.UsingGlobal());
         ui->region_combobox->setEnabled(Settings::values.region_value.UsingGlobal());
         ui->frame_limit->setEnabled(Settings::values.frame_limit.UsingGlobal());
         return;
@@ -218,6 +233,10 @@ void ConfigureGeneral::SetupPerGameUI() {
     ui->updateBox->setVisible(false);
     ui->button_reset_defaults->setVisible(false);
     ui->toggle_gamemode->setVisible(false);
+
+    ConfigurationShared::SetColoredComboBox(
+        ui->frame_skip_combobox, ui->widget_frame_skip,
+        static_cast<int>(Settings::values.frame_skip.GetValue(true)));
 
     ConfigurationShared::SetColoredComboBox(
         ui->region_combobox, ui->widget_region,

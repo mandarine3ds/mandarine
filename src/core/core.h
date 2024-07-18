@@ -358,11 +358,11 @@ public:
         return false;
     }
 
-    /// Downcount will be limited to a smaller time slice.
-    void SetDowncountHack(bool enabled, u32 num_cores);
-
     /// Applies any changes to settings to this core instance.
     void ApplySettings();
+
+    /// Downcount will be limited to a smaller time slice.
+    void ReduceDowncountSlice(bool enabled, u32 num_cores);
 
     void RegisterAppLoaderEarly(std::unique_ptr<Loader::AppLoader>& loader);
 
@@ -397,7 +397,7 @@ private:
     std::unique_ptr<AudioCore::DspInterface> dsp_core;
 
     /// When true, signals that a reschedule should happen
-    bool reschedule_pending = false;
+    bool reschedule_pending{};
 
     std::unique_ptr<VideoCore::GPU> gpu;
 

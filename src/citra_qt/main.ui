@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Citra-Enhanced</string>
+   <string>Citra</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1081</width>
-     <height>37</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -224,9 +224,9 @@
    </property>
   </action>
   <action name="action_Connect_Artic">
-   <property name="text">
-    <string>Connect to Artic Base...</string>
-   </property>
+    <property name="text">
+      <string>Connect to Artic Base...</string>
+    </property>
   </action>
   <action name="action_Boot_Home_Menu_JPN">
    <property name="text">
@@ -307,7 +307,7 @@
   </action>
   <action name="action_About">
    <property name="text">
-    <string>About Citra Enhanced</string>
+    <string>About Citra</string>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>

@@ -41,7 +41,7 @@ class CheatsAdapter(
     }
 
     inner class CheatViewHolder(private val binding: ListItemCheatBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnLongClickListener, View.OnClickListener,
+        RecyclerView.ViewHolder(binding.root), View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
         private lateinit var viewModel: CheatsViewModel
         private lateinit var cheat: Cheat
@@ -54,18 +54,12 @@ class CheatsAdapter(
             binding.textName.text = this.cheat.getName()
             binding.cheatSwitch.isChecked = this.cheat.getEnabled()
             binding.cheatContainer.setOnClickListener(this)
-            binding.cheatContainer.setOnLongClickListener(this)
             binding.cheatSwitch.setOnCheckedChangeListener(this)
         }
 
         override fun onClick(root: View) {
-            binding.cheatSwitch.isChecked = !binding.cheatSwitch.isChecked
-        }
-
-        override fun onLongClick(root: View): Boolean {
             viewModel.setSelectedCheat(cheat, position)
             viewModel.openDetailsView()
-            return true
         }
 
         override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {

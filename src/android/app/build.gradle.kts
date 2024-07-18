@@ -20,7 +20,7 @@ plugins {
  * next 680 years.
  */
 val autoVersion = (((System.currentTimeMillis() / 1000) - 1451606400) / 10).toInt()
-val abiFilter = listOf("arm64-v8a")
+val abiFilter = listOf("arm64-v8a", "x86_64")
 
 val downloadedJniLibsPath = "${buildDir}/downloadedJniLibs"
 
@@ -86,13 +86,7 @@ android {
         buildConfigField("String", "BRANCH", "\"${getBranch()}\"")
     }
 
-    val encryptedKeystore = System.getenv("ANDROID_KEYSTORE_B64")
-    val keystoreFile: String? = if (encryptedKeystore != null) {
-    System.getenv("ANDROID_KEYSTORE_FILE")
-    } else {
-        null
-    }
-
+    val keystoreFile = System.getenv("ANDROID_KEYSTORE_FILE")
     if (keystoreFile != null) {
         signingConfigs {
             create("release") {
@@ -155,6 +149,10 @@ android {
         create("canary") {
             dimension = "version"
             applicationIdSuffix = ".canary"
+        }
+
+        create("nightly") {
+            dimension = "version"
         }
     }
 

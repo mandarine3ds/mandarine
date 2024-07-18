@@ -488,7 +488,7 @@ void ThreadManager::PriorityBoostStarvedThreads() {
 }
 
 void ThreadManager::Reschedule() {
-    if (Settings::values.priority_boost) {
+    if (Settings::values.priority_boost_starved_threads) {
         PriorityBoostStarvedThreads();
     }
 

@@ -197,30 +197,18 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="renderer_debug_description">Archiva información adicional gráfica relacionada con la depuración. Cuando está activada, el rendimiento de los juegos será reducido considerablemente</string>
     <string name="vsync">Activar Sincronización Vertical</string>
     <string name="vsync_description">Sincroniza los cuadros por segundo del juego con la tasa de refresco de tu dispositivo.</string>
-    <string name="core_downcount_hack">Activar Hack de Recuento Descendente del Núcleo</string>
-    <string name="core_downcount_hack_description">Cuando está activado, el recuento descendente del núcleo se limitará a una porción de tiempo más pequeña, reduciendo el uso de la CPU. Puede disminuir el rendimiento o tal vez ayudar en dispositivos de gama baja o juegos exigentes para la GPU.</string>
-    <string name="priority_boost">Habilitar Aumento de Prioridad</string>
-    <string name="priority_boost_description">Impulsa hilos con baja prioridad durante la reprogramación del núcleo del kernel. Esto podría mejorar el rendimiento</string>
     <string name="linear_filtering">Filtro Linear</string>
     <string name="linear_filtering_description">Activa el filtro linear, que hace que los gráficos del juego se vean más suaves.</string>
     <string name="texture_filter_name">Filtro de Texturas</string>
     <string name="texture_filter_description">Mejora los gráficos visuales de los juegos al aplicar un filtro a las texturas. Los filtros soportados son Anime4K Ultrafast, Bicubic, ScaleForce, y xBRZ freescale.</string>
+    <string name="delay_render_thread">Retrasa el hilo de dibujado del juego</string>
+    <string name="delay_render_thread_description">Retrasa el hilo de dibujado del juego cuando envía datos a la GPU. Ayuda con problemas de rendimiento en los (muy pocos) juegos de fps dinámicos.</string>
     <string name="hw_shaders">Activar Sombreador de Hardware</string>
     <string name="hw_shaders_description">Usa el hardware para emular los sombreadores de 3DS. Cuando se active, el rendimiento mejorará notablemente.</string>
-    <string name="skip_slow_draw">Omitir Dibujos Lentos</string>
-    <string name="skip_slow_draw_description">Omite el evento de dibujo lento del núcleo PICA. Puede mejorar el rendimiento o, raramente, solucionar problemas, pero puede causar errores gráficos.</string>
-    <string name="skip_texture_copy">Omitir Copia de Textura</string>
-    <string name="skip_texture_copy_description">Omite el evento de copia de textura de la caché de rasterizador. Puede mejorar el rendimiento o, raramente, solucionar problemas, pero puede causar errores gráficos.</string>
-    <string name="skip_cpu_write">Omitir escritura de CPU</string>
-    <string name="skip_cpu_write_description">Omite el evento de escritura de la CPU en la invalidación de la caché del rasterizador. Puede mejorar el rendimiento o, raramente, solucionar problemas, pero puede causar errores gráficos.</string>
     <string name="shaders_accurate_mul">Multiplicación Precisa</string>
     <string name="shaders_accurate_mul_description">Usa multiplicaciones más precisas en los sombreados de hardware, que podrían arreglar ciertos bugs gráficos. Cuando se active, el rendimiento se reducirá.</string>
     <string name="asynchronous_gpu">Activar Emulación Asíncrona de la GPU</string>
     <string name="asynchronous_gpu_description">Usa un hilo separado para emular la GPU de manera asíncrona. Cuando se active, el rendimiento mejorará.</string>
-    <string name="raise_cpu_ticks">Incrementar Ticks CPU</string>
-    <string name="raise_cpu_ticks_description">Establece 16000 CPU ticks. Puede mejorar o disminuir el rendimiento, dependiendo del juego o si es un dispositivo de gama baja</string>
-    <string name="sustained_performance">Activar Rendimiento Sostenido</string>
-    <string name="sustained_performance_description">Puede reducir el frenado térmico al reducir ligeramente la velocidad de reloj. Disminuye el rendimiento.</string>
     <string name="frame_limit_enable">Límite de velocidad</string>
     <string name="frame_limit_enable_description">Cuando se active, la velocidad de emulación estará limitada a un porcentaje determinado de la velocidad normal.</string>
     <string name="frame_limit_slider">Limitar porcentaje de velocidad</string>
@@ -291,11 +279,6 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="setting_not_editable_description">Esta opción no puede cambiarse mientras se está ejecutando un juego.</string>
     <string name="auto_select">Auto-elegir</string>
 
-    <!-- Tweaks Dialog -->
-    <string name="tweaks_title">Modificaciones</string>
-    <string name="realtime_audio_tweaks">Audio en tiempo real</string>
-    <string name="priority_boost_tweaks">Aumento de Prioridad</string>
-
     <!-- Add Directory Screen-->
     <string name="select_game_folder">Seleccionar Directorio de Juego</string>
 
@@ -332,7 +315,6 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="emulation_configure_controls">Configurar Controles</string>
     <string name="emulation_edit_layout">Editar Estilo</string>
     <string name="emulation_done">Hecho</string>
-    <string name="emulation_rotate_screen">Rotar Pantalla</string>
     <string name="emulation_toggle_controls">Activar Controles</string>
     <string name="emulation_control_scale">Ajustar Escala</string>
     <string name="emulation_control_opacity">Ajustar Opacidad</string>
@@ -685,7 +667,8 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="artic_base_connect">Conectar con Artic Base</string>
     <string name="artic_base_connect_description">Conectar con una consola real que esté ejecutando un servidor Artic Base</string>
     <string name="artic_base_enter_address">Introduce la dirección del servidor Artic Base</string>
-    <string name="delay_render_thread">Retrasa el hilo de dibujado del juego</string>
-    <string name="delay_render_thread_description">Retrasa el hilo de dibujado del juego cuando envía datos a la GPU. Ayuda con problemas de rendimiento en los (muy pocos) juegos de fps dinámicos.</string>
+    <string name="miscellaneous">Misceláneo</string>
+    <string name="use_artic_base_controller">Usar Artic Controller cuando se está conectado a Artic Base Server</string>
+    <string name="use_artic_base_controller_desc">Usa los controles proporcionados por Artic Base Server cuando esté conectado a él en lugar del dispositivo de entrada configurado.</string>
 
 </resources>

@@ -176,8 +176,10 @@ u64 Timing::Timer::GetTicks() const {
 }
 
 void Timing::Timer::AddTicks(u64 ticks) {
-    downcount -=
-        static_cast<u64>((Settings::values.raise_cpu_ticks ? 16000 : ticks) * cpu_clock_scale);
+    downcount -= static_cast<u64>((Settings::values.enable_custom_cpu_ticks
+                                       ? Settings::values.custom_cpu_ticks.GetValue()
+                                       : ticks) *
+                                  cpu_clock_scale);
 }
 
 u64 Timing::Timer::GetIdleTicks() const {
@@ -217,7 +219,7 @@ void Timing::Timer::Advance() {
     executed_ticks += cycles_executed;
     slice_length = 0;
     downcount = 0;
-    downcount_hack = 0;
+    downcount_slice = 0;
 
     is_timer_sane = true;
 
@@ -244,7 +246,7 @@ void Timing::Timer::SetNextSlice(s64 max_slice_length) {
             std::min<s64>(event_queue.front().time - executed_ticks, max_slice_length));
     }
 
-    downcount = slice_length >> downcount_hack;
+    downcount = slice_length >> downcount_slice;
 }
 
 void Timing::Timer::Idle() {

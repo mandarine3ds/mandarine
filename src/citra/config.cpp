@@ -128,12 +128,13 @@ void Config::ReadValues() {
                                                  InputCommon::CemuhookUDP::DEFAULT_PORT));
 
     // Core
-    ReadSetting("Core", Settings::values.frame_skip);
     ReadSetting("Core", Settings::values.use_cpu_jit);
     ReadSetting("Core", Settings::values.cpu_clock_percentage);
-    ReadSetting("Core", Settings::values.raise_cpu_ticks);
-    ReadSetting("Core", Settings::values.core_downcount_hack);
-    ReadSetting("Core", Settings::values.priority_boost);
+    ReadSetting("Core", Settings::values.frame_skip);
+    ReadSetting("Core", Settings::values.enable_custom_cpu_ticks);
+    ReadSetting("Core", Settings::values.custom_cpu_ticks);
+    ReadSetting("Core", Settings::values.reduce_downcount_slice);
+    ReadSetting("Core", Settings::values.priority_boost_starved_threads);
 
     // Renderer
     ReadSetting("Renderer", Settings::values.graphics_api);
@@ -141,10 +142,6 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.spirv_shader_gen);
     ReadSetting("Renderer", Settings::values.async_shader_compilation);
     ReadSetting("Renderer", Settings::values.async_presentation);
-    ReadSetting("Renderer", Settings::values.skip_slow_draw);
-    ReadSetting("Renderer", Settings::values.skip_texture_copy);
-    ReadSetting("Renderer", Settings::values.skip_cpu_write);
-    ReadSetting("Renderer", Settings::values.upscaling_hack);
     ReadSetting("Renderer", Settings::values.use_gles);
     ReadSetting("Renderer", Settings::values.use_hw_shader);
     ReadSetting("Renderer", Settings::values.shaders_accurate_mul);
@@ -156,6 +153,9 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
     ReadSetting("Renderer", Settings::values.delay_game_render_thread_us);
+    ReadSetting("Renderer", Settings::values.force_hw_vertex_shaders);
+    ReadSetting("Renderer", Settings::values.disable_surface_texture_copy);
+    ReadSetting("Renderer", Settings::values.disable_flush_cpu_write);
 
     ReadSetting("Renderer", Settings::values.mono_render_option);
     ReadSetting("Renderer", Settings::values.render_3d);

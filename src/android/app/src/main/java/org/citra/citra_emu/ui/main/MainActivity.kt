@@ -155,9 +155,6 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
             }
         }
 
-        // Dismiss previous notifications (should not happen unless a crash occurred)
-        EmulationActivity.stopForegroundService(this)
-
         setInsets()
     }
 
@@ -169,7 +166,6 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
     }
 
     override fun onDestroy() {
-        EmulationActivity.stopForegroundService(this)
         super.onDestroy()
     }
 

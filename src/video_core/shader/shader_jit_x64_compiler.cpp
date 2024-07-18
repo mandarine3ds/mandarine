@@ -673,7 +673,6 @@ void JitShader::Compile_END(Instruction instr) {
     mov(dword[STATE + offsetof(ShaderUnit, address_registers[1])], ADDROFFS_REG_1.cvt32());
     mov(dword[STATE + offsetof(ShaderUnit, address_registers[2])], LOOPCOUNT_REG);
 
-    mov(rsp, rbp);
     ABI_PopRegistersAndAdjustStack(*this, ABI_ALL_CALLEE_SAVED, 8, 16);
     ret();
 }
@@ -993,10 +992,6 @@ void JitShader::Compile(const std::array<u32, MAX_PROGRAM_CODE_LENGTH>* program_
     // return checks (see Compile_Return) that happen in shader main routine.
     ABI_PushRegistersAndAdjustStack(*this, ABI_ALL_CALLEE_SAVED, 8, 16);
     mov(qword[rsp + 8], 0xFFFFFFFFFFFFFFFFULL);
-
-    // saves and restores the stack pointer to circumvent issues with a corrupted stack
-    // when END is executed within a CALL
-    mov(rbp, rsp);
 
     mov(UNIFORMS, ABI_PARAM1);
     mov(STATE, ABI_PARAM2);

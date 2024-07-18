@@ -428,6 +428,7 @@ struct Values {
     int current_input_profile_index;          ///< The current input profile index
     std::vector<InputProfile> input_profiles; ///< The list of input profiles
     std::vector<TouchFromButtonMap> touch_from_button_maps;
+    Setting<bool> use_artic_base_controller{false, "use_artic_base_controller"};
 
     SwitchableSetting<bool> enable_gamemode{true, "enable_gamemode"};
 
@@ -531,6 +532,18 @@ struct Values {
     SwitchableSetting<bool> preload_textures{false, "preload_textures"};
     SwitchableSetting<bool> async_custom_loading{true, "async_custom_loading"};
 
+    // Tweaks
+    SwitchableSetting<bool> enable_custom_cpu_ticks{false, "enable_custom_cpu_ticks"};
+    SwitchableSetting<u32, true> custom_cpu_ticks{16000, 77, 65535, "custom_cpu_ticks"};
+    SwitchableSetting<bool> force_hw_vertex_shaders{false, "force_hw_vertex_shaders"};
+    SwitchableSetting<bool> disable_surface_texture_copy{false, "disable_surface_texture_copy"};
+    SwitchableSetting<bool> disable_flush_cpu_write{false, "disable_flush_cpu_write"};
+    SwitchableSetting<bool> priority_boost_starved_threads{true, "priority_boost_starved_threads"};
+    SwitchableSetting<bool> reduce_downcount_slice{false, "reduce_downcount_slice"};
+    // Reimplementation of old (and fixed) citra frameskip
+    // See https://github.com/CitraEnhanced/citra/commit/e279a6955edf644cf832dd329ac72931aea8add7
+    SwitchableSetting<u64> frame_skip{0, "frame_skip"};
+
     // Audio
     bool audio_muted;
     SwitchableSetting<AudioEmulation> audio_emulation{AudioEmulation::HLE, "audio_emulation"};
@@ -553,20 +566,6 @@ struct Values {
     Setting<bool> delay_start_for_lle_modules{true, "delay_start_for_lle_modules"};
     Setting<bool> use_gdbstub{false, "use_gdbstub"};
     Setting<u16> gdbstub_port{24689, "gdbstub_port"};
-
-    // Citra Enhanced Stuff / Tweaks
-    SwitchableSetting<bool> raise_cpu_ticks{false, "raise_cpu_ticks"};
-    SwitchableSetting<bool> skip_slow_draw{false, "skip_slow_draw"};
-    SwitchableSetting<bool> skip_texture_copy{false, "skip_texture_copy"};
-    SwitchableSetting<bool> skip_cpu_write{false, "skip_cpu_write"};
-    SwitchableSetting<bool> core_downcount_hack{false, "core_downcount_hack"};
-    SwitchableSetting<bool> priority_boost{true, "priority_boost"};
-    SwitchableSetting<bool> upscaling_hack{false, "upscaling_hack"};
-    // Reimplementation of old (and a bit broken) citra frameskip
-    // See https://github.com/CitraEnhanced/citra/commit/e279a6955edf644cf832dd329ac72931aea8add7
-    SwitchableSetting<u64> frame_skip{0, "frame_skip"};
-    // OpenGL Hack
-    SwitchableSetting<bool> gl_stream_buffer_hack{true, "gl_stream_buffer_hack"};
 
     // Miscellaneous
     Setting<std::string> log_filter{"*:Info", "log_filter"};

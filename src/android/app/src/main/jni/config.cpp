@@ -128,13 +128,16 @@ void Config::ReadValues() {
         static_cast<u16>(sdl2_config->GetInteger("Controls", "udp_input_port",
                                                  InputCommon::CemuhookUDP::DEFAULT_PORT));
 
+    ReadSetting("Controls", Settings::values.use_artic_base_controller);
+
     // Core
-    ReadSetting("Core", Settings::values.frame_skip);
     ReadSetting("Core", Settings::values.use_cpu_jit);
     ReadSetting("Core", Settings::values.cpu_clock_percentage);
-    ReadSetting("Core", Settings::values.raise_cpu_ticks);
-    ReadSetting("Core", Settings::values.core_downcount_hack);
-    ReadSetting("Core", Settings::values.priority_boost);
+    ReadSetting("Core", Settings::values.frame_skip);
+    ReadSetting("Core", Settings::values.enable_custom_cpu_ticks);
+    ReadSetting("Core", Settings::values.custom_cpu_ticks);
+    ReadSetting("Core", Settings::values.reduce_downcount_slice);
+    ReadSetting("Core", Settings::values.priority_boost_starved_threads);
 
     // Renderer
     Settings::values.use_gles = sdl2_config->GetBoolean("Renderer", "use_gles", true);
@@ -142,10 +145,6 @@ void Config::ReadValues() {
         sdl2_config->GetBoolean("Renderer", "shaders_accurate_mul", false);
     ReadSetting("Renderer", Settings::values.graphics_api);
     ReadSetting("Renderer", Settings::values.async_presentation);
-    ReadSetting("Renderer", Settings::values.skip_slow_draw);
-    ReadSetting("Renderer", Settings::values.skip_texture_copy);
-    ReadSetting("Renderer", Settings::values.skip_cpu_write);
-    ReadSetting("Renderer", Settings::values.upscaling_hack);
     ReadSetting("Renderer", Settings::values.async_shader_compilation);
     ReadSetting("Renderer", Settings::values.spirv_shader_gen);
     ReadSetting("Renderer", Settings::values.use_hw_shader);
@@ -178,6 +177,9 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.bg_green);
     ReadSetting("Renderer", Settings::values.bg_blue);
     ReadSetting("Renderer", Settings::values.delay_game_render_thread_us);
+    ReadSetting("Renderer", Settings::values.force_hw_vertex_shaders);
+    ReadSetting("Renderer", Settings::values.disable_surface_texture_copy);
+    ReadSetting("Renderer", Settings::values.disable_flush_cpu_write);
 
     // Layout
     Settings::values.layout_option = static_cast<Settings::LayoutOption>(sdl2_config->GetInteger(

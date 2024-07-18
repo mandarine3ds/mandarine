@@ -207,8 +207,8 @@ public:
 
         void MoveEvents();
 
-        void SetDowncountHack(u32 hack) {
-            downcount_hack = hack;
+        void ReduceDowncountSlice(u32 value) {
+            downcount_slice = value;
         }
 
     private:
@@ -235,7 +235,7 @@ public:
         s64 downcount = MAX_SLICE_LENGTH;
         s64 executed_ticks = 0;
         u64 idled_cycles = 0;
-        u32 downcount_hack = 0;
+        u32 downcount_slice = 0;
 
         // Stores a scaling for the internal clockspeed. Changing this number results in
         // under/overclocking the guest cpu

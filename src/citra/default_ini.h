@@ -87,14 +87,6 @@ udp_input_port=
 udp_pad_index=
 
 [Core]
-# Sets 16000 CPU ticks.
-# 0 (default): Off, 1: On
-raise_cpu_ticks =
-
-# The applied frameskip amount. Must be a power of two.
-# 0 (default): No frameskip, 1: x2 frameskip, 2: x4 frameskip, 3: x8 frameskip, etc.
-frame_skip =
-
 # Whether to use the Just-In-Time (JIT) compiler for CPU emulation
 # 0: Interpreter (slow), 1 (default): JIT (fast)
 use_cpu_jit =
@@ -105,34 +97,26 @@ use_cpu_jit =
 # Range is any positive integer (but we suspect 25 - 400 is a good idea) Default is 100
 cpu_clock_percentage =
 
+# The applied frameskip amount. Must be a power of two.
+# 0 (default): No frameskip, 1: x2 frameskip, 2: x4 frameskip, 3: x8 frameskip, etc.
+frame_skip =
+
+# Set a custom value of CPU ticks.
+# 0 (default): Off, 1: On
+enable_custom_cpu_ticks =
+
 # Downcount will be limited to a smaller time slice.
 # 0 (default): Off, 1: On
-core_downcount_hack =
+reduce_downcount_slice =
 
 # Boost low priority starved threads during kernel rescheduling.
 # 0: Off, 1 (default): On
-priority_boost =
+priority_boost_starved_threads =
 
 [Renderer]
 # Whether to render using OpenGL or Software
 # 0: Software, 1: OpenGL (default), 2: Vulkan
 graphics_api =
-
-# Skips the slow drawing event from PICA core.
-# 0 (default): Off, 1: On
-skip_slow_draw =
-
-# Skips the texture copy event from rasterizer cache.
-# 0 (default): Off, 1: On
-skip_texture_copy =
-
-# Skips the CPU write event from rasterizer cache invalidation.
-# 0 (default): Off, 1: On
-skip_cpu_write =
-
-# Overrides upscaling for dst_params
-# 0 (default): Off, 1: On
-upscaling_hack =
 
 # Whether to render using GLES or OpenGL
 # 0 (default): OpenGL, 1: GLES
@@ -167,6 +151,22 @@ resolution_factor =
 # Texture filter
 # 0: None, 1: Anime4K, 2: Bicubic, 3: Nearest Neighbor, 4: ScaleForce, 5: xBRZ
 texture_filter =
+
+# Delays the game render thread by the specified amount of microseconds
+# Set to 0 for no delay, only useful in dynamic-fps games to simulate GPU delay.
+delay_game_render_thread_us =
+
+# Ignores software vertex shaders from PICA core
+# 0: Off, 1 (default): On
+force_hw_vertex_shaders =
+
+# Ignores texture copies if src_surface_id is null
+# 0: Off, 1 (default): On
+disable_surface_texture_copy =
+
+# Ignores CPU write if there is a region to invalidate from rasterizer cache
+# 0: Off, 1 (default): On
+disable_flush_cpu_write =
 
 # Limits the speed of the game to run no faster than this value as a percentage of target speed.
 # Will not have an effect if unthrottled is enabled.

@@ -9,7 +9,6 @@ enum class IntSetting(
     override val section: String,
     override val defaultValue: Int
 ) : AbstractIntSetting {
-    SUSTAINED_PERFORMANCE("sustained_performance", Settings.SECTION_CORE, 0),
     FRAME_LIMIT("frame_limit", Settings.SECTION_RENDERER, 100),
     EMULATED_REGION("region_value", Settings.SECTION_SYSTEM, -1),
     INIT_CLOCK("init_clock", Settings.SECTION_SYSTEM, 0),
@@ -29,10 +28,6 @@ enum class IntSetting(
     LLE_APPLETS("lle_applets", Settings.SECTION_SYSTEM, 0),
     CPU_CLOCK_SPEED("cpu_clock_percentage", Settings.SECTION_CORE, 100),
     LINEAR_FILTERING("filter_mode", Settings.SECTION_RENDERER, 1),
-    SKIP_SLOW_DRAW("skip_slow_draw", Settings.SECTION_RENDERER, 0),
-    SKIP_TEXTURE_COPY("skip_texture_copy", Settings.SECTION_RENDERER, 0),
-    SKIP_CPU_WRITE("skip_cpu_write", Settings.SECTION_RENDERER, 0),
-    UPSCALING_HACK("upscaling_hack", Settings.SECTION_RENDERER, 0),
     SHADERS_ACCURATE_MUL("shaders_accurate_mul", Settings.SECTION_RENDERER, 0),
     DISK_SHADER_CACHE("use_disk_shader_cache", Settings.SECTION_RENDERER, 1),
     DUMP_TEXTURES("dump_textures", Settings.SECTION_UTILITY, 0),
@@ -41,17 +36,22 @@ enum class IntSetting(
     PRELOAD_TEXTURES("preload_textures", Settings.SECTION_UTILITY, 0),
     ENABLE_AUDIO_STRETCHING("enable_audio_stretching", Settings.SECTION_AUDIO, 1),
     ENABLE_REALTIME_AUDIO("enable_realtime_audio", Settings.SECTION_AUDIO, 0),
-    FRAME_SKIP("frame_skip", Settings.SECTION_CORE, 0),
     CPU_JIT("use_cpu_jit", Settings.SECTION_CORE, 1),
     HW_SHADER("use_hw_shader", Settings.SECTION_RENDERER, 1),
     VSYNC("use_vsync_new", Settings.SECTION_RENDERER, 1),
-    RAISE_CPU_TICKS("raise_cpu_ticks", Settings.SECTION_CORE, 0),
-    CORE_DOWNCOUNT_HACK("core_downcount_hack", Settings.SECTION_CORE, 0),
-    PRIORITY_BOOST("priority_boost", Settings.SECTION_CORE, 1),
+    REDUCE_DOWNCOUNT_SLICE("reduce_downcount_slice", Settings.SECTION_CORE, 0),
+    PRIORITY_BOOST_STARVED_THREADS("priority_boost_starved_threads", Settings.SECTION_CORE, 1),
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, 0),
     TEXTURE_FILTER("texture_filter", Settings.SECTION_RENDERER, 0),
+    FRAME_SKIP("frame_skip", Settings.SECTION_CORE, 0),
+    ENABLE_CUSTOM_CPU_TICKS("enable_custom_cpu_ticks", Settings.SECTION_CORE, 0),
+    CUSTOM_CPU_TICKS("custom_cpu_ticks", Settings.SECTION_CORE, 16000),
     USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),
-    DELAY_RENDER_THREAD_US("delay_game_render_thread_us", Settings.SECTION_RENDERER, 0);
+    DELAY_RENDER_THREAD_US("delay_game_render_thread_us", Settings.SECTION_RENDERER, 0),
+    FORCE_HW_VERTEX_SHADERS("force_hw_vertex_shaders", Settings.SECTION_RENDERER, 0),
+    DISABLE_SURFACE_TEXTURE_COPY("disable_surface_texture_copy", Settings.SECTION_RENDERER, 0),
+    DISABLE_FLUSH_CPU_WRITE("disable_flush_cpu_write", Settings.SECTION_RENDERER, 0),
+    USE_ARTIC_BASE_CONTROLLER("use_artic_base_controller", Settings.SECTION_CONTROLS, 0);
 
     override var int: Int = defaultValue
 
@@ -70,18 +70,18 @@ enum class IntSetting(
 
     companion object {
         private val NOT_RUNTIME_EDITABLE = listOf(
-            SUSTAINED_PERFORMANCE,
             EMULATED_REGION,
             INIT_CLOCK,
             NEW_3DS,
             LLE_APPLETS,
             GRAPHICS_API,
             VSYNC,
-            CORE_DOWNCOUNT_HACK,
+            REDUCE_DOWNCOUNT_SLICE,
             DEBUG_RENDERER,
             CPU_JIT,
             ASYNC_CUSTOM_LOADING,
-            AUDIO_INPUT_TYPE
+            AUDIO_INPUT_TYPE,
+            USE_ARTIC_BASE_CONTROLLER
         )
 
         fun from(key: String): IntSetting? = IntSetting.values().firstOrNull { it.key == key }

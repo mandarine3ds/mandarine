@@ -81,20 +81,19 @@ void LogSettings() {
     };
 
     LOG_INFO(Config, "Citra Configuration:");
-    log_setting("Core_FrameSkip", values.frame_skip.GetValue());
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
-    log_setting("Core_RaiseCPUTicks", values.raise_cpu_ticks.GetValue());
-    log_setting("Core_DowncountHack", values.core_downcount_hack.GetValue());
-    log_setting("Core_PriorityBoost", values.priority_boost.GetValue());
+    log_setting("Core_FrameSkip", values.frame_skip.GetValue());
+    log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());
+    log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
+    log_setting("Core_ReduceDowncountSlice", values.reduce_downcount_slice.GetValue());
+    log_setting("Core_PriorityBoostStarvedThreads",
+                values.priority_boost_starved_threads.GetValue());
+    log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
     log_setting("Renderer_UseGLES", values.use_gles.GetValue());
     log_setting("Renderer_GraphicsAPI", GetGraphicsAPIName(values.graphics_api.GetValue()));
     log_setting("Renderer_AsyncShaders", values.async_shader_compilation.GetValue());
     log_setting("Renderer_AsyncPresentation", values.async_presentation.GetValue());
-    log_setting("Renderer_SkipSlowDraw", values.skip_slow_draw.GetValue());
-    log_setting("Renderer_SkipTextureCopy", values.skip_texture_copy.GetValue());
-    log_setting("Renderer_SkipCPUWrite", values.skip_cpu_write.GetValue());
-    log_setting("Renderer_UpscalingHack", values.upscaling_hack.GetValue());
     log_setting("Renderer_SpirvShaderGen", values.spirv_shader_gen.GetValue());
     log_setting("Renderer_Debug", values.renderer_debug.GetValue());
     log_setting("Renderer_UseHwShader", values.use_hw_shader.GetValue());
@@ -106,6 +105,10 @@ void LogSettings() {
     log_setting("Renderer_PostProcessingShader", values.pp_shader_name.GetValue());
     log_setting("Renderer_FilterMode", values.filter_mode.GetValue());
     log_setting("Renderer_TextureFilter", GetTextureFilterName(values.texture_filter.GetValue()));
+    log_setting("Renderer_ForceHWVertexShaders", values.force_hw_vertex_shaders.GetValue());
+    log_setting("Renderer_DisableSurfaceTextureCopy",
+                values.disable_surface_texture_copy.GetValue());
+    log_setting("Renderer_DisableFlushCPUWrite", values.disable_flush_cpu_write.GetValue());
     log_setting("Renderer_TextureSampling",
                 GetTextureSamplingName(values.texture_sampling.GetValue()));
     log_setting("Renderer_DelayGameRenderThreasUs", values.delay_game_render_thread_us.GetValue());
@@ -185,13 +188,14 @@ void RestoreGlobalState(bool is_powered_on) {
     values.volume.SetGlobal(true);
 
     // Core
-    values.frame_skip.SetGlobal(true);
     values.cpu_clock_percentage.SetGlobal(true);
-    values.raise_cpu_ticks.SetGlobal(true);
-    values.core_downcount_hack.SetGlobal(true);
-    values.priority_boost.SetGlobal(true);
     values.is_new_3ds.SetGlobal(true);
     values.lle_applets.SetGlobal(true);
+    values.frame_skip.SetGlobal(true);
+    values.enable_custom_cpu_ticks.SetGlobal(true);
+    values.custom_cpu_ticks.SetGlobal(true);
+    values.reduce_downcount_slice.SetGlobal(true);
+    values.priority_boost_starved_threads.SetGlobal(true);
 
     // Renderer
     values.graphics_api.SetGlobal(true);
@@ -199,10 +203,6 @@ void RestoreGlobalState(bool is_powered_on) {
     values.spirv_shader_gen.SetGlobal(true);
     values.async_shader_compilation.SetGlobal(true);
     values.async_presentation.SetGlobal(true);
-    values.skip_slow_draw.SetGlobal(true);
-    values.skip_texture_copy.SetGlobal(true);
-    values.skip_cpu_write.SetGlobal(true);
-    values.upscaling_hack.SetGlobal(true);
     values.use_hw_shader.SetGlobal(true);
     values.use_disk_shader_cache.SetGlobal(true);
     values.shaders_accurate_mul.SetGlobal(true);
@@ -210,6 +210,9 @@ void RestoreGlobalState(bool is_powered_on) {
     values.resolution_factor.SetGlobal(true);
     values.frame_limit.SetGlobal(true);
     values.texture_filter.SetGlobal(true);
+    values.force_hw_vertex_shaders.SetGlobal(true);
+    values.disable_surface_texture_copy.SetGlobal(true);
+    values.disable_flush_cpu_write.SetGlobal(true);
     values.texture_sampling.SetGlobal(true);
     values.delay_game_render_thread_us.SetGlobal(true);
     values.layout_option.SetGlobal(true);

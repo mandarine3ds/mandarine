@@ -144,10 +144,12 @@ void ConfigureGraphics::SetConfiguration() {
     ui->spirv_shader_gen->setChecked(Settings::values.spirv_shader_gen.GetValue());
     ui->toggle_async_shaders->setChecked(Settings::values.async_shader_compilation.GetValue());
     ui->toggle_async_present->setChecked(Settings::values.async_presentation.GetValue());
-    ui->toggle_skip_slow_draw->setChecked(Settings::values.skip_slow_draw.GetValue());
-    ui->toggle_skip_texture_copy->setChecked(Settings::values.skip_texture_copy.GetValue());
-    ui->toggle_skip_cpu_write->setChecked(Settings::values.skip_cpu_write.GetValue());
-    ui->toggle_upscaling_hack->setChecked(Settings::values.upscaling_hack.GetValue());
+    ui->toggle_force_hw_vertex_shaders->setChecked(
+        Settings::values.force_hw_vertex_shaders.GetValue());
+    ui->toggle_disable_surface_texture_copy->setChecked(
+        Settings::values.disable_surface_texture_copy.GetValue());
+    ui->toggle_disable_flush_cpu_write->setChecked(
+        Settings::values.disable_flush_cpu_write.GetValue());
 
     if (Settings::IsConfiguringGlobal()) {
         ui->toggle_shader_jit->setChecked(Settings::values.use_shader_jit.GetValue());
@@ -163,14 +165,6 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_async_shaders, async_shader_compilation);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.async_presentation,
                                              ui->toggle_async_present, async_presentation);
-    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_slow_draw,
-                                             ui->toggle_skip_slow_draw, skip_slow_draw);
-    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_texture_copy,
-                                             ui->toggle_skip_texture_copy, skip_texture_copy);
-    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_cpu_write,
-                                             ui->toggle_skip_cpu_write, skip_cpu_write);
-    ConfigurationShared::ApplyPerGameSetting(&Settings::values.upscaling_hack,
-                                             ui->toggle_upscaling_hack, upscaling_hack);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.spirv_shader_gen,
                                              ui->spirv_shader_gen, spirv_shader_gen);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_hw_shader, ui->toggle_hw_shader,
@@ -183,6 +177,15 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_disk_shader_cache, use_disk_shader_cache);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_vsync_new, ui->toggle_vsync_new,
                                              use_vsync_new);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.force_hw_vertex_shaders,
+                                             ui->toggle_force_hw_vertex_shaders,
+                                             force_hw_vertex_shaders);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.disable_surface_texture_copy,
+                                             ui->toggle_disable_surface_texture_copy,
+                                             disable_surface_texture_copy);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.disable_flush_cpu_write,
+                                             ui->toggle_disable_flush_cpu_write,
+                                             disable_flush_cpu_write);
     ConfigurationShared::ApplyPerGameSetting(
         &Settings::values.delay_game_render_thread_us, ui->delay_render_combo,
         [this](s32) { return ui->delay_render_slider->value(); });
@@ -208,6 +211,12 @@ void ConfigureGraphics::SetupPerGameUI() {
                                          Settings::values.use_vsync_new.UsingGlobal());
         ui->toggle_async_shaders->setEnabled(
             Settings::values.async_shader_compilation.UsingGlobal());
+        ui->toggle_force_hw_vertex_shaders->setEnabled(
+            Settings::values.force_hw_vertex_shaders.UsingGlobal());
+        ui->toggle_disable_surface_texture_copy->setEnabled(
+            Settings::values.disable_surface_texture_copy.UsingGlobal());
+        ui->toggle_disable_flush_cpu_write->setEnabled(
+            Settings::values.disable_flush_cpu_write.UsingGlobal());
         ui->widget_texture_sampling->setEnabled(Settings::values.texture_sampling.UsingGlobal());
         ui->toggle_async_present->setEnabled(Settings::values.async_presentation.UsingGlobal());
         ui->graphics_api_combo->setEnabled(Settings::values.graphics_api.UsingGlobal());
@@ -250,16 +259,17 @@ void ConfigureGraphics::SetupPerGameUI() {
                                             async_shader_compilation);
     ConfigurationShared::SetColoredTristate(
         ui->toggle_async_present, Settings::values.async_presentation, async_presentation);
-    ConfigurationShared::SetColoredTristate(ui->toggle_skip_slow_draw,
-                                            Settings::values.skip_slow_draw, skip_slow_draw);
-    ConfigurationShared::SetColoredTristate(ui->toggle_skip_texture_copy,
-                                            Settings::values.skip_texture_copy, skip_texture_copy);
-    ConfigurationShared::SetColoredTristate(ui->toggle_skip_cpu_write,
-                                            Settings::values.skip_cpu_write, skip_cpu_write);
-    ConfigurationShared::SetColoredTristate(ui->toggle_upscaling_hack,
-                                            Settings::values.upscaling_hack, upscaling_hack);
     ConfigurationShared::SetColoredTristate(ui->spirv_shader_gen, Settings::values.spirv_shader_gen,
                                             spirv_shader_gen);
+    ConfigurationShared::SetColoredTristate(ui->toggle_force_hw_vertex_shaders,
+                                            Settings::values.force_hw_vertex_shaders,
+                                            force_hw_vertex_shaders);
+    ConfigurationShared::SetColoredTristate(ui->toggle_disable_surface_texture_copy,
+                                            Settings::values.disable_surface_texture_copy,
+                                            disable_surface_texture_copy);
+    ConfigurationShared::SetColoredTristate(ui->toggle_disable_flush_cpu_write,
+                                            Settings::values.disable_flush_cpu_write,
+                                            disable_flush_cpu_write);
 }
 
 void ConfigureGraphics::SetPhysicalDeviceComboVisibility(int index) {

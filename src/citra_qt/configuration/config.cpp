@@ -328,6 +328,8 @@ void Config::ReadCameraValues() {
 void Config::ReadControlValues() {
     qt_config->beginGroup(QStringLiteral("Controls"));
 
+    ReadBasicSetting(Settings::values.use_artic_base_controller);
+
     int num_touch_from_button_maps =
         qt_config->beginReadArray(QStringLiteral("touch_from_button_maps"));
 
@@ -454,11 +456,12 @@ void Config::ReadUtilityValues() {
 void Config::ReadCoreValues() {
     qt_config->beginGroup(QStringLiteral("Core"));
 
-    ReadGlobalSetting(Settings::values.frame_skip);
     ReadGlobalSetting(Settings::values.cpu_clock_percentage);
-    ReadGlobalSetting(Settings::values.raise_cpu_ticks);
-    ReadGlobalSetting(Settings::values.core_downcount_hack);
-    ReadGlobalSetting(Settings::values.priority_boost);
+    ReadGlobalSetting(Settings::values.frame_skip);
+    ReadGlobalSetting(Settings::values.enable_custom_cpu_ticks);
+    ReadGlobalSetting(Settings::values.custom_cpu_ticks);
+    ReadGlobalSetting(Settings::values.reduce_downcount_slice);
+    ReadGlobalSetting(Settings::values.priority_boost_starved_threads);
 
     if (global) {
         ReadBasicSetting(Settings::values.use_cpu_jit);
@@ -666,10 +669,6 @@ void Config::ReadRendererValues() {
     ReadGlobalSetting(Settings::values.spirv_shader_gen);
     ReadGlobalSetting(Settings::values.async_shader_compilation);
     ReadGlobalSetting(Settings::values.async_presentation);
-    ReadGlobalSetting(Settings::values.skip_slow_draw);
-    ReadGlobalSetting(Settings::values.skip_texture_copy);
-    ReadGlobalSetting(Settings::values.skip_cpu_write);
-    ReadGlobalSetting(Settings::values.upscaling_hack);
     ReadGlobalSetting(Settings::values.use_hw_shader);
     ReadGlobalSetting(Settings::values.shaders_accurate_mul);
     ReadGlobalSetting(Settings::values.use_disk_shader_cache);
@@ -685,6 +684,10 @@ void Config::ReadRendererValues() {
     ReadGlobalSetting(Settings::values.texture_sampling);
 
     ReadGlobalSetting(Settings::values.delay_game_render_thread_us);
+
+    ReadGlobalSetting(Settings::values.force_hw_vertex_shaders);
+    ReadGlobalSetting(Settings::values.disable_surface_texture_copy);
+    ReadGlobalSetting(Settings::values.disable_flush_cpu_write);
 
     if (global) {
         ReadBasicSetting(Settings::values.use_shader_jit);
@@ -948,6 +951,8 @@ void Config::SaveCameraValues() {
 void Config::SaveControlValues() {
     qt_config->beginGroup(QStringLiteral("Controls"));
 
+    WriteBasicSetting(Settings::values.use_artic_base_controller);
+
     WriteSetting(QStringLiteral("profile"), Settings::values.current_input_profile_index, 0);
     qt_config->beginWriteArray(QStringLiteral("profiles"));
     for (std::size_t p = 0; p < Settings::values.input_profiles.size(); ++p) {
@@ -1018,11 +1023,12 @@ void Config::SaveUtilityValues() {
 void Config::SaveCoreValues() {
     qt_config->beginGroup(QStringLiteral("Core"));
 
-    WriteGlobalSetting(Settings::values.frame_skip);
     WriteGlobalSetting(Settings::values.cpu_clock_percentage);
-    WriteGlobalSetting(Settings::values.raise_cpu_ticks);
-    WriteGlobalSetting(Settings::values.core_downcount_hack);
-    WriteGlobalSetting(Settings::values.priority_boost);
+    WriteGlobalSetting(Settings::values.frame_skip);
+    WriteGlobalSetting(Settings::values.enable_custom_cpu_ticks);
+    WriteGlobalSetting(Settings::values.custom_cpu_ticks);
+    WriteGlobalSetting(Settings::values.reduce_downcount_slice);
+    WriteGlobalSetting(Settings::values.priority_boost_starved_threads);
 
     if (global) {
         WriteBasicSetting(Settings::values.use_cpu_jit);
@@ -1192,10 +1198,6 @@ void Config::SaveRendererValues() {
     WriteGlobalSetting(Settings::values.spirv_shader_gen);
     WriteGlobalSetting(Settings::values.async_shader_compilation);
     WriteGlobalSetting(Settings::values.async_presentation);
-    WriteGlobalSetting(Settings::values.skip_slow_draw);
-    WriteGlobalSetting(Settings::values.skip_texture_copy);
-    WriteGlobalSetting(Settings::values.skip_cpu_write);
-    WriteGlobalSetting(Settings::values.upscaling_hack);
     WriteGlobalSetting(Settings::values.use_hw_shader);
     WriteGlobalSetting(Settings::values.shaders_accurate_mul);
     WriteGlobalSetting(Settings::values.use_disk_shader_cache);
@@ -1211,6 +1213,10 @@ void Config::SaveRendererValues() {
     WriteGlobalSetting(Settings::values.texture_sampling);
 
     WriteGlobalSetting(Settings::values.delay_game_render_thread_us);
+
+    WriteGlobalSetting(Settings::values.force_hw_vertex_shaders);
+    WriteGlobalSetting(Settings::values.disable_surface_texture_copy);
+    WriteGlobalSetting(Settings::values.disable_flush_cpu_write);
 
     if (global) {
         WriteSetting(QStringLiteral("use_shader_jit"), Settings::values.use_shader_jit.GetValue(),

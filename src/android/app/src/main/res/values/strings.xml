@@ -2,9 +2,9 @@
 <resources>
 
     <!-- General application strings -->
-    <string name="app_name" translatable="false">Citra Enhanced</string>
-    <string name="app_disclaimer">This software will run games for the Nintendo 3DS handheld game console. No game titles are included.\n\nBefore you can begin with emulating, please select a folder to store Citra\'s user data in.\n\nWhat\'s this:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android user data and storage</a></string>
-    <string name="app_notification_channel_name" translatable="false">Citra Enhanced</string>
+    <string name="app_name" translatable="false">Citra</string>
+    <string name="app_disclaimer">This software will run games for the Nintendo 3DS handheld game console. No game titles are included.\n\nBefore you can begin with emulating, please select a folder to store Citra\'s user data in.\n\nWhat\'s this:\n<a href='https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android user data and storage</a></string>
+    <string name="app_notification_channel_name" translatable="false">Citra</string>
     <string name="app_notification_channel_id" translatable="false">Citra</string>
     <string name="app_notification_channel_description">Citra 3DS emulator notifications</string>
     <string name="app_notification_running">Citra is Running</string>
@@ -83,16 +83,16 @@
     <string name="permission_denied">Permission denied</string>
     <string name="add_games_warning">Skip selecting games folder?</string>
     <string name="add_games_warning_description">Games won\'t be displayed in the Games list if a folder isn\'t selected.</string>
-    <string name="add_games_warning_help">https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/dumping-game-cartridges/</string>
+    <string name="add_games_warning_help">https://citra-emu.org/wiki/dumping-game-cartridges/</string>
     <string name="warning_help">Help</string>
     <string name="warning_skip">Skip</string>
     <string name="warning_cancel">Cancel</string>
     <string name="select_citra_user_folder">Select User Folder</string>
-    <string name="select_citra_user_folder_description"><![CDATA[Select your <a href="https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
+    <string name="select_citra_user_folder_description"><![CDATA[Select your <a href="https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
     <string name="select">Select</string>
     <string name="cannot_skip">You can\'t skip this step</string>
     <string name="cannot_skip_directory_description">This step is required to allow Citra to work. Please select a directory and then you can continue.</string>
-    <string name="cannot_skip_directory_help">https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
+    <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
 
     <!-- Search Strings -->
     <string name="search_and_filter_games">Search and Filter Games</string>
@@ -146,7 +146,7 @@
     <string name="download">Download</string>
     <string name="start">Start</string>
     <string name="keys_missing">Citra is missing keys to download system files.</string>
-    <string name="how_to_get_keys"><![CDATA[<a href="https://web.archive.org/web/20240304203412/https://citra-emu.org/wiki/aes-keys/">How to get keys?</a>]]></string>
+    <string name="how_to_get_keys"><![CDATA[<a href="https://citra-emu.org/wiki/aes-keys/">How to get keys?</a>]]></string>
     <string name="show_home_apps">Show HOME menu apps in games list</string>
     <string name="run_system_setup">Run System Setup when the HOME Menu is launched</string>
     <string name="system_type_minimal">Minimal</string>
@@ -169,8 +169,6 @@
     <string name="button">Button</string>
 
     <!-- Core settings strings -->
-    <string name="frame_skip_name">Frame Skip</string>
-    <string name="frame_skip_description">The number of frames to skip.\n\nWARNING: Results may vary depending on using the Vulkan or OpenGL renderer. If set too high, the screen may not render at all. Use with caution.</string>
     <string name="cpu_jit">CPU JIT</string>
     <string name="cpu_jit_description">Uses the Just-in-Time (JIT) compiler for CPU emulation. When enabled, game performance will be significantly improved.</string>
     <string name="init_clock">Clock</string>
@@ -224,32 +222,34 @@
     <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
     <string name="vsync">Enable V-Sync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
-    <string name="core_downcount_hack">Enable Core Downcount Hack</string>
-    <string name="core_downcount_hack_description">When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may reduce the performance, or might help for low-end devices or GPU hungry games</string>
-    <string name="priority_boost">Enable Priority Boost</string>
-    <string name="priority_boost_description">Boost low priority starved threads during kernel rescheduling. This might improve the performance</string>
+    <string name="reduce_downcount_slice">Reduce Downcount Slice</string>
+    <string name="reduce_downcount_slice_description">Reduces core timing downcount to a smaller time slice, reducing CPU usage. This may improve the performance for GPU heavy games, but if the game is CPU hungry, it may cause a performance hit.</string>
+    <string name="priority_boost_starved_threads">Priority Boost Starved Threads</string>
+    <string name="priority_boost_starved_threads_description">Boost low priority starved threads during kernel rescheduling. This may improve the performance.</string>
     <string name="linear_filtering">Linear Filtering</string>
     <string name="linear_filtering_description">Enables linear filtering, which causes game visuals to appear smoother.</string>
     <string name="texture_filter_name">Texture Filter</string>
     <string name="texture_filter_description">Enhances the visuals of games by applying a filter to textures. The supported filters are Anime4K Ultrafast, Bicubic, ScaleForce, and xBRZ freescale.</string>
+    <string name="delay_render_thread">Delay game render thread</string>
+    <string name="delay_render_thread_description">Delay the game render thread when it submits data to the GPU. Helps with performance issues in the (very few) dynamic-fps games.</string>
+    <string name="tweaks">Tweaks</string>
+    <string name="force_hw_vertex_shaders">Force Hardware Vertex Shaders</string>
+    <string name="force_hw_vertex_shaders_description">Ignores software vertex shaders from PICA core. Enable this may lead a small performance boost, but may cause graphical bugs as well.</string>
+    <string name="disable_surface_texture_copy">Disable Surface Texture Copy</string>
+    <string name="disable_surface_texture_copy_description">Ignores texture copies if src_surface_id is null. Enable this may lead a small performance boost, but may cause graphical bugs as well.</string>
+    <string name="disable_flush_cpu_write">Disable Flush CPU Write</string>
+    <string name="disable_flush_cpu_write_description">Ignores CPU write if there is a region to invalidate from rasterizer cache. Enable this may lead a small performance boost, but may cause graphical bugs as well.</string>
     <string name="hw_shaders">Enable Hardware Shader</string>
     <string name="hw_shaders_description">Uses hardware to emulate 3DS shaders. When enabled, game performance will be significantly improved.</string>
-    <string name="skip_slow_draw">Skip Slow Draw</string>
-    <string name="skip_slow_draw_description">Skips the slow drawing event from PICA core. Can improve performance or rarely fix issues, but may cause graphical bugs.</string>
-    <string name="skip_texture_copy">Skip Texture Copy</string>
-    <string name="skip_texture_copy_description">Skips the texture copy event from rasterizer cache. Can improve performance or rarely fix issues, but may cause graphical bugs.</string>
-    <string name="skip_cpu_write">Skip CPU Write</string>
-    <string name="skip_cpu_write_description">Skips the CPU write event from rasterizer cache invalidation. May improve performance or rarely fix issues, but may cause graphical bugs.</string>
-    <string name="upscaling_hack">Enable Upscaling Hack</string>
-    <string name="upscaling_hack_description">Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash for another games as well.</string>
     <string name="shaders_accurate_mul">Accurate Multiplication</string>
     <string name="shaders_accurate_mul_description">Uses more accurate multiplication in hardware shaders, which may fix some graphical bugs. When enabled, performance will be reduced.</string>
     <string name="asynchronous_gpu">Enable asynchronous GPU emulation</string>
     <string name="asynchronous_gpu_description">Uses a separate thread to emulate the GPU asynchronously. When enabled, performance will be improved.</string>
-    <string name="raise_cpu_ticks">Raise CPU Ticks</string>
-    <string name="raise_cpu_ticks_description">Sets 16000 CPU ticks. May improve the performance or decrease, depending of the game or if it is a low-end device</string>
-    <string name="sustained_performance">Enable Sustained Performance</string>
-    <string name="sustained_performance_description">May reduce thermal throttling by reducing clock speed slightly. Decreases the performance.</string>
+    <string name="frame_skip_name">Frame Skip</string>
+    <string name="frame_skip_description">The number of frames to skip. It may cause emulation speed desync issues.</string>
+    <string name="enable_custom_cpu_ticks">Enable Custom CPU Ticks</string>
+    <string name="enable_custom_cpu_ticks_description">Set a custom value of CPU ticks. Higher values can increase performance but if they\'re too high, it may cause the game to freeze. A range of 77-21000 is recommended.</string>
+    <string name="custom_cpu_ticks">Ticks</string>
     <string name="frame_limit_enable">Limit Speed</string>
     <string name="frame_limit_enable_description">When enabled, emulation speed will be limited to a specified percentage of normal speed.</string>
     <string name="frame_limit_slider">Limit Speed Percent</string>
@@ -280,10 +280,10 @@
     <string name="cardboard_y_shift">Vertical Shift</string>
     <string name="cardboard_y_shift_description">Specifies the percentage of empty space to shift the screens vertically. Positive values move the two eyes towards the bottom, while negative values move them towards the top.</string>
     <string name="use_shader_jit">Shader JIT</string>
-    <string name="use_disk_shader_cache">Disk Shader Cache</string>
-    <string name="use_disk_shader_cache_description">Reduce stuttering by storing and loading generated shaders to disk. It cannot be used without Enabling Hardware Shader.</string>
     <string name="adreno_gpu_boost">Adreno GPU Boost (Experimental)</string>
     <string name="adreno_gpu_boost_description">Increases graphics throughput on supported devices, improving performance. Use of this setting can increase power usage and temperature. May cause stability issues on certain devices.</string>
+    <string name="use_disk_shader_cache">Disk Shader Cache</string>
+    <string name="use_disk_shader_cache_description">Reduce stuttering by storing and loading generated shaders to disk. It cannot be used without Enabling Hardware Shader.</string>
     <string name="utility">Utility</string>
     <string name="dump_textures">Dump Textures</string>
     <string name="dump_textures_description">Textures are dumped to dump/textures/[Title ID]/.</string>
@@ -315,7 +315,7 @@
     <string name="learn_more">Learn More</string>
     <string name="close">Close</string>
     <string name="reset_to_default">Reset to Default</string>
-    <string name="redump_games"><![CDATA[Please follow the guides to redump your <a href="https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/dumping-game-cartridges/">game cartidges</a> or <a href="https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/dumping-installed-titles/">installed titles</a>.]]></string>
+    <string name="redump_games"><![CDATA[Please follow the guides to redump your <a href="https://citra-emu.org/wiki/dumping-game-cartridges/">game cartidges</a> or <a href="https://citra-emu.org/wiki/dumping-installed-titles/">installed titles</a>.]]></string>
     <string name="option_default">Default</string>
     <string name="none">None</string>
     <string name="auto">Auto</string>
@@ -331,12 +331,6 @@
     <string name="setting_not_editable">You can\'t edit this now</string>
     <string name="setting_not_editable_description">This option can\'t be changed while a game is running.</string>
     <string name="auto_select">Auto-Select</string>
-
-    <!-- Tweaks Dialog -->
-    <string name="tweaks_title">Tweaks</string>
-    <string name="priority_boost_tweaks">Priority Boost</string>
-    <string name="realtime_audio_tweaks">Real-time Audio</string>
-    <string name="upscaling_hack_tweaks">Upscaling Hack</string>
 
     <!-- Add Directory Screen-->
     <string name="select_game_folder">Select Game Folder</string>
@@ -374,7 +368,6 @@
     <string name="emulation_configure_controls">Configure Controls</string>
     <string name="emulation_edit_layout">Edit Layout</string>
     <string name="emulation_done">Done</string>
-    <string name="emulation_rotate_screen">Rotate Screen</string>
     <string name="emulation_toggle_controls">Toggle Controls</string>
     <string name="emulation_control_scale">Adjust Scale</string>
     <string name="emulation_control_opacity">Adjust Opacity</string>
@@ -461,14 +454,6 @@
     <!-- Disk shader cache -->
     <string name="preparing_shaders">Preparing Shaders</string>
     <string name="building_shaders">Building Shaders</string>
-    
-    <!-- Game About Dialog -->
-    <string name="play">Play</string>
-    <string name="save_management">Save management</string>
-    <string name="add_ons">Add-ons</string>
-    <string name="delete_save">Delete save</string>
-    <string name="import_save">Import</string>
-    <string name="export_save">Export</string>
 
     <!-- Cheats -->
     <string name="cheats">Cheats</string>
@@ -755,7 +740,17 @@
     <string name="artic_base_connect_description">Connect to a real console that is running an Artic Base server</string>
     <string name="artic_base_connect">Connect to Artic Base</string>
     <string name="artic_base_enter_address">Enter Artic Base server address</string>
-    <string name="delay_render_thread">Delay game render thread</string>
-    <string name="delay_render_thread_description">Delay the game render thread when it submits data to the GPU. Helps with performance issues in the (very few) dynamic-fps games.</string>
+
+    <!-- Quickload&Save-->
+    <string name="emulation_quicksave_slot">Quicksave</string>
+    <string name="emulation_quicksave">Quicksave</string>
+    <string name="emulation_quickload">Quickload</string>
+    <string name="emulation_occupied_quicksave_slot">Quicksave - %1$tF %1$tR</string>
+    <string name="quicksave_saving">Saving…</string>
+    <string name="quickload_loading">Loading…</string>
+    <string name="quickload_not_found">No Quicksave available.</string>
+    <string name="miscellaneous">Miscellaneous</string>
+    <string name="use_artic_base_controller">Use Artic Controller when connected to Artic Base Server</string>
+    <string name="use_artic_base_controller_desc">Use the controls provided by Artic Base Server when connected to it instead of the configured input device.</string>
 
 </resources>
