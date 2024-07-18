@@ -1,10 +1,10 @@
-name: Blank Issue
-description: A blank issue template. Useful for contacting devs.
+name: New Issue (Developers Only)
+description: A blank issue template for developers only. If you are not a developer, do not use this issue template. Your issue WILL BE CLOSED if you do not use the appropriate issue template.
 body:
   - type: markdown
     attributes:
       value: |
-        **If you have a feature request / bug report, it is better to use the appropriate issue templates instead of a blank issue. This is meant for people who would like to get in contact with the dev without using Discord.**
+        **If you are not a developer, do not use this issue template. Your issue WILL BE CLOSED if you do not use the appropriate issue template.**
   - type: textarea
     attributes:
       label: "Issue"

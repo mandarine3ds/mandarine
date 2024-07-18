@@ -1,4 +1,4 @@
-name: citra-enhanced-format
+name: citra-format
 
 on:
   push:
