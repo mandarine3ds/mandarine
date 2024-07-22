@@ -1083,6 +1083,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.DEBUG_RENDERER.defaultValue
                 )
             )
+            add(
+                SwitchSetting(
+                    BooleanSetting.INSTANT_DEBUG_LOG,
+                    R.string.instant_debug_log,
+                    R.string.instant_debug_log_desc,
+                    BooleanSetting.INSTANT_DEBUG_LOG.key,
+                    BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
+                )
+            )
 
             add(HeaderSetting(R.string.miscellaneous))
             add(

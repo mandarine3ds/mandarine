@@ -127,6 +127,7 @@ void ConfigureDebug::SetConfiguration() {
         SettingsToSlider(Settings::values.cpu_clock_percentage.GetValue()));
     ui->clock_display_label->setText(
         QStringLiteral("%1%").arg(Settings::values.cpu_clock_percentage.GetValue()));
+    ui->instant_debug_log->setChecked(Settings::values.instant_debug_log.GetValue());
 }
 
 void ConfigureDebug::ApplyConfiguration() {
@@ -147,6 +148,7 @@ void ConfigureDebug::ApplyConfiguration() {
         ui->toggle_priority_boost_starved_threads->isChecked();
     Settings::values.renderer_debug = ui->toggle_renderer_debug->isChecked();
     Settings::values.dump_command_buffers = ui->toggle_dump_command_buffers->isChecked();
+    Settings::values.instant_debug_log = ui->instant_debug_log->isChecked();
 
     ConfigurationShared::ApplyPerGameSetting(
         &Settings::values.cpu_clock_percentage, ui->clock_speed_combo,
