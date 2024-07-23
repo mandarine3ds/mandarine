@@ -148,14 +148,14 @@ class GameAdapter(private val activity: AppCompatActivity) :
             } else {
                 View.VISIBLE
             }
-            binding.textCompany.visibility = if (game.company.isEmpty()) {
+            binding.textGameRegion.visibility = if (game.company.isEmpty()) {
                 View.GONE
             } else {
                 View.VISIBLE
             }
 
             binding.textGameTitle.text = game.title
-            binding.textCompany.text = game.company
+            binding.textGameRegion.text = game.regions
             binding.textFilename.text = game.filename
 
             val backgroundColorId =
@@ -178,8 +178,8 @@ class GameAdapter(private val activity: AppCompatActivity) :
                     binding.textGameTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
                     binding.textGameTitle.isSelected = true
 
-                    binding.textCompany.ellipsize = TextUtils.TruncateAt.MARQUEE
-                    binding.textCompany.isSelected = true
+                    binding.textGameRegion.ellipsize = TextUtils.TruncateAt.MARQUEE
+                    binding.textGameRegion.isSelected = true
 
                     binding.textFilename.ellipsize = TextUtils.TruncateAt.MARQUEE
                     binding.textFilename.isSelected = true
