@@ -46,31 +46,6 @@ Memory: 2GB of RAM. 4GB is recommended
 
 # Installation
 
-## 🪟 Windows
-
-**For Windows you can use the Troppical Installer project which supports Citra-Enhanced**
-
-- Get it [here](https://nightly.link/kleidis/Troppical/workflows/build/master/troppical-nightly.zip)
-
-## 📱 Android
-
-The recommended way for auto-updates is to use **Obtainium**
-
-- Download and Install `app-release.apk` from [https://github.com/ImranR98/Obtainium/releases](here)
-- Open Obtainium and click `Add App` then type https://github.com/CitraEnhanced/citra on the `App Source URL`
-- Click on `Add`
-- You should be able to click `install` now and you can easily `update` on the future
-
-## 🐧 Linux
-
-**FLATHUB coming soon (hopefully)**
-
-## 🍎 Mac OS
-
-Download the latest [MacOS release](https://github.com/CitraEnhanced/citra/releases/latest/download/macos-universal.zip)
-
-### Manual Download
-
 ### Stable builds
 
 |Platform|Link|
