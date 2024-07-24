@@ -5,10 +5,10 @@
 #include <QFileDialog>
 #include <QPushButton>
 #include <QTime>
-#include "citra_qt/game_list.h"
-#include "citra_qt/game_list_p.h"
-#include "citra_qt/movie/movie_play_dialog.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/game_list.h"
+#include "mandarin_qt/game_list_p.h"
+#include "mandarin_qt/movie/movie_play_dialog.h"
+#include "mandarin_qt/uisettings.h"
 #include "core/core.h"
 #include "core/core_timing.h"
 #include "core/hle/service/hid/hid.h"

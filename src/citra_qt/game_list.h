@@ -8,7 +8,7 @@
 #include <QString>
 #include <QVector>
 #include <QWidget>
-#include "citra_qt/compatibility_list.h"
+#include "mandarin_qt/compatibility_list.h"
 #include "common/common_types.h"
 #include "uisettings.h"
 

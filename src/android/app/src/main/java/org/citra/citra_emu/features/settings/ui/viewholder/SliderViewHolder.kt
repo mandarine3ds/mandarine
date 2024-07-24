@@ -2,17 +2,17 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.ui.viewholder
+package io.github.mandarin3ds.mandarin.features.settings.ui.viewholder
 
 import android.view.View
-import org.citra.citra_emu.databinding.ListItemSettingBinding
-import org.citra.citra_emu.features.settings.model.AbstractFloatSetting
-import org.citra.citra_emu.features.settings.model.AbstractIntSetting
-import org.citra.citra_emu.features.settings.model.FloatSetting
-import org.citra.citra_emu.features.settings.model.ScaledFloatSetting
-import org.citra.citra_emu.features.settings.model.view.SettingsItem
-import org.citra.citra_emu.features.settings.model.view.SliderSetting
-import org.citra.citra_emu.features.settings.ui.SettingsAdapter
+import io.github.mandarin3ds.mandarin.databinding.ListItemSettingBinding
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractFloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractIntSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.FloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.ScaledFloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.view.SettingsItem
+import io.github.mandarin3ds.mandarin.features.settings.model.view.SliderSetting
+import io.github.mandarin3ds.mandarin.features.settings.ui.SettingsAdapter
 
 class SliderViewHolder(val binding: ListItemSettingBinding, adapter: SettingsAdapter) :
     SettingViewHolder(binding.root, adapter) {

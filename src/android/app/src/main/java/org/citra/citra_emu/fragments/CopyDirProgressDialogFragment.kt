@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.app.Dialog
 import android.net.Uri
@@ -23,14 +23,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.DialogCopyDirBinding
-import org.citra.citra_emu.model.SetupCallback
-import org.citra.citra_emu.utils.CitraDirectoryHelper
-import org.citra.citra_emu.utils.FileUtil
-import org.citra.citra_emu.utils.PermissionsHandler
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.DialogCopyDirBinding
+import io.github.mandarin3ds.mandarin.model.SetupCallback
+import io.github.mandarin3ds.mandarin.utils.CitraDirectoryHelper
+import io.github.mandarin3ds.mandarin.utils.FileUtil
+import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 class CopyDirProgressDialog : DialogFragment() {
     private var _binding: DialogCopyDirBinding? = null
@@ -79,7 +79,7 @@ class CopyDirProgressDialog : DialogFragment() {
                         if (it) {
                             homeViewModel.setUserDir(
                                 requireActivity(),
-                                PermissionsHandler.citraDirectory.path!!
+                                PermissionsHandler.mandarinDirectory.path!!
                             )
                             homeViewModel.copyInProgress = false
                             homeViewModel.setPickingUserDir(false)

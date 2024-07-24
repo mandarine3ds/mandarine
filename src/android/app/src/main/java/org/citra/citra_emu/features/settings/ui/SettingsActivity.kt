@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.ui
+package io.github.mandarin3ds.mandarin.features.settings.ui
 
 import android.content.Context
 import android.content.Intent
@@ -21,23 +21,23 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.preference.PreferenceManager
 import com.google.android.material.color.MaterialColors
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.ActivitySettingsBinding
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.ActivitySettingsBinding
 import java.io.IOException
-import org.citra.citra_emu.features.settings.model.BooleanSetting
-import org.citra.citra_emu.features.settings.model.FloatSetting
-import org.citra.citra_emu.features.settings.model.IntSetting
-import org.citra.citra_emu.features.settings.model.ScaledFloatSetting
-import org.citra.citra_emu.features.settings.model.Settings
-import org.citra.citra_emu.features.settings.model.SettingsViewModel
-import org.citra.citra_emu.features.settings.model.StringSetting
-import org.citra.citra_emu.features.settings.utils.SettingsFile
-import org.citra.citra_emu.utils.SystemSaveGame
-import org.citra.citra_emu.utils.DirectoryInitialization
-import org.citra.citra_emu.utils.InsetsHelper
-import org.citra.citra_emu.utils.ThemeUtil
+import io.github.mandarin3ds.mandarin.features.settings.model.BooleanSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.FloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.IntSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.ScaledFloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.features.settings.model.SettingsViewModel
+import io.github.mandarin3ds.mandarin.features.settings.model.StringSetting
+import io.github.mandarin3ds.mandarin.features.settings.utils.SettingsFile
+import io.github.mandarin3ds.mandarin.utils.SystemSaveGame
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization
+import io.github.mandarin3ds.mandarin.utils.InsetsHelper
+import io.github.mandarin3ds.mandarin.utils.ThemeUtil
 
 class SettingsActivity : AppCompatActivity(), SettingsActivityView {
     private val presenter = SettingsActivityPresenter(this)

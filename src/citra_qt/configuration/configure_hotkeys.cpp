@@ -5,10 +5,10 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QStandardItemModel>
-#include "citra_qt/configuration/config.h"
-#include "citra_qt/configuration/configure_hotkeys.h"
-#include "citra_qt/hotkeys.h"
-#include "citra_qt/util/sequence_dialog/sequence_dialog.h"
+#include "mandarin_qt/configuration/config.h"
+#include "mandarin_qt/configuration/configure_hotkeys.h"
+#include "mandarin_qt/hotkeys.h"
+#include "mandarin_qt/util/sequence_dialog/sequence_dialog.h"
 #include "ui_configure_hotkeys.h"
 
 constexpr int name_column = 0;

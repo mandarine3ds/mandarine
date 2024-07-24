@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.app.Dialog
 import android.os.Bundle
@@ -19,11 +19,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.citra.citra_emu.NativeLibrary.InstallStatus
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.DialogProgressBarBinding
-import org.citra.citra_emu.viewmodel.GamesViewModel
-import org.citra.citra_emu.viewmodel.SystemFilesViewModel
+import io.github.mandarin3ds.mandarin.NativeLibrary.InstallStatus
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.DialogProgressBarBinding
+import io.github.mandarin3ds.mandarin.viewmodel.GamesViewModel
+import io.github.mandarin3ds.mandarin.viewmodel.SystemFilesViewModel
 
 class DownloadSystemFilesDialogFragment : DialogFragment() {
     private var _binding: DialogProgressBarBinding? = null

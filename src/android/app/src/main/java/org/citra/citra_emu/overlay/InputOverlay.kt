@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.overlay
+package io.github.mandarin3ds.mandarin.overlay
 
 import android.app.Activity
 import android.content.Context
@@ -21,10 +21,10 @@ import android.view.View
 import android.view.View.OnTouchListener
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.R
-import org.citra.citra_emu.utils.EmulationMenuSettings
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.utils.EmulationMenuSettings
 import java.lang.NullPointerException
 import kotlin.math.min
 

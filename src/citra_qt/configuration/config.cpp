@@ -6,7 +6,7 @@
 #include <array>
 #include <QKeySequence>
 #include <QSettings>
-#include "citra_qt/configuration/config.h"
+#include "mandarin_qt/configuration/config.h"
 #include "common/file_util.h"
 #include "common/settings.h"
 #include "core/hle/service/service.h"
@@ -848,10 +848,10 @@ void Config::ReadWebServiceValues() {
         ReadSetting(QStringLiteral("web_api_url"), QStringLiteral("https://api.citra-emu.org"))
             .toString()
             .toStdString();
-    NetSettings::values.citra_username =
-        ReadSetting(QStringLiteral("citra_username")).toString().toStdString();
-    NetSettings::values.citra_token =
-        ReadSetting(QStringLiteral("citra_token")).toString().toStdString();
+    NetSettings::values.mandarin_username =
+        ReadSetting(QStringLiteral("mandarin_username")).toString().toStdString();
+    NetSettings::values.mandarin_token =
+        ReadSetting(QStringLiteral("mandarin_token")).toString().toStdString();
 
     qt_config->endGroup();
 }
@@ -1334,10 +1334,10 @@ void Config::SaveWebServiceValues() {
     WriteSetting(QStringLiteral("web_api_url"),
                  QString::fromStdString(NetSettings::values.web_api_url),
                  QStringLiteral("https://api.citra-emu.org"));
-    WriteSetting(QStringLiteral("citra_username"),
-                 QString::fromStdString(NetSettings::values.citra_username));
-    WriteSetting(QStringLiteral("citra_token"),
-                 QString::fromStdString(NetSettings::values.citra_token));
+    WriteSetting(QStringLiteral("mandarin_username"),
+                 QString::fromStdString(NetSettings::values.mandarin_username));
+    WriteSetting(QStringLiteral("mandarin_token"),
+                 QString::fromStdString(NetSettings::values.mandarin_token));
 
     qt_config->endGroup();
 }

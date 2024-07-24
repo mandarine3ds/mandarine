@@ -125,7 +125,7 @@ enum class SystemInfoType {
      */
     NEW_3DS_INFO = 0x10001,
     /**
-     * Gets citra related information. This parameter is not available on real systems,
+     * Gets mandarin related information. This parameter is not available on real systems,
      * but can be used by homebrew applications to get some emulator info.
      */
     MANDARIN_INFORMATION = 0x20000,
@@ -1865,7 +1865,7 @@ Result SVC::GetSystemInfo(s64* out, u32 type, s32 param) {
                            sizeof(s64));
             break;
         default:
-            LOG_ERROR(Kernel_SVC, "unknown GetSystemInfo citra info param={}", param);
+            LOG_ERROR(Kernel_SVC, "unknown GetSystemInfo mandarin info param={}", param);
             *out = 0;
             break;
         }

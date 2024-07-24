@@ -2,17 +2,17 @@
 <context>
     <name>ARMRegisters</name>
     <message>
-        <location filename="../../src/citra_qt/debugger/registers.ui" line="14"/>
+        <location filename="../../src/mandarin_qt/debugger/registers.ui" line="14"/>
         <source>ARM Registers</source>
         <translation>Регистры ARM</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/registers.ui" line="25"/>
+        <location filename="../../src/mandarin_qt/debugger/registers.ui" line="25"/>
         <source>Register</source>
         <translation>Регистр</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/registers.ui" line="30"/>
+        <location filename="../../src/mandarin_qt/debugger/registers.ui" line="30"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
@@ -20,27 +20,27 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="14"/>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="14"/>
         <source>About Citra</source>
         <translation>О приложении Citra</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="30"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/citra.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/citra.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="30"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/mandarin.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/mandarin.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="60"/>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="60"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Citra&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Citra&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="73"/>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="73"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;%1 | %2-%3 (%4)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;%1 | %2-%3 (%4)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="86"/>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="86"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -57,12 +57,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt;&quot;&gt;Это программное обеспечение не должно использоваться для игр, полученных незаконным путём.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="118"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Website&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://community.citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Forum&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/citra-emu&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Source Code&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/citra-emu/citra/graphs/contributors&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Contributors&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/citra-emu/citra/blob/master/license.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;License&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Веб-сайт&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://community.citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Форум&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/citra-emu&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Исходный код&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/citra-emu/citra/graphs/contributors&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Участники&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/citra-emu/citra/blob/master/license.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Лицензия&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="118"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Website&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://community.citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Forum&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/mandarin3ds&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Source Code&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/mandarin3ds/mandarin/graphs/contributors&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Contributors&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/mandarin3ds/mandarin/blob/master/license.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;License&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Веб-сайт&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://community.citra-emu.org/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Форум&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/mandarin3ds&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Исходный код&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/mandarin3ds/mandarin/graphs/contributors&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Участники&lt;/span&gt;&lt;/a&gt; | &lt;a href=&quot;https://github.com/mandarin3ds/mandarin/blob/master/license.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#039be5;&quot;&gt;Лицензия&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/aboutdialog.ui" line="134"/>
+        <location filename="../../src/mandarin_qt/aboutdialog.ui" line="134"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;&amp;quot;3DS&amp;quot; is a trademark of Nintendo. Citra is not affiliated with Nintendo in any way.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;&amp;quot;3DS&amp;quot; является торговой маркой компании Nintendo, которая никак не связана с Citra.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -70,47 +70,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BreakPointModel</name>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="121"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="121"/>
         <source>Pica command loaded</source>
         <translation>Команда Pica загружена</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="123"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="123"/>
         <source>Pica command processed</source>
         <translation>Команда Pica выполнена</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="125"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="125"/>
         <source>Incoming primitive batch</source>
         <translation>Загрузка пакета примитивов</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="127"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="127"/>
         <source>Finished primitive batch</source>
         <translation>Загрузка пакета примитивов завершена</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="129"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="129"/>
         <source>Vertex shader invocation</source>
         <translation>Вызов вершинного шейдера</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="131"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="131"/>
         <source>Incoming display transfer</source>
         <translation>Передача входящего изображения</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="133"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="133"/>
         <source>GSP command processed</source>
         <translation>Команда GSP обработана</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="135"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="135"/>
         <source>Buffers swapped</source>
         <translation>Переключение буферов выполнено</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/debugger/graphics/graphics_breakpoints.cpp" line="139"/>
+        <location filename="../../src/mandarin_qt/debugger/graphics/graphics_breakpoints.cpp" line="139"/>
         <source>Unknown debug context event</source>
         <translation>Неизвестное событие контекста отладки</translation>
     </message>
@@ -118,32 +118,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CalibrationConfigurationDialog</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="23"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="23"/>
         <source>Communicating with the server...</source>
         <translation>Соединение с сервером...</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="24"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="24"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="42"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="42"/>
         <source>Touch the top left corner &lt;br&gt;of your touchpad.</source>
         <translation>Прикоснитесь к верхнему левому углу &lt;br&gt;сенсорной панели.</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="45"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="45"/>
         <source>Now touch the bottom right corner &lt;br&gt;of your touchpad.</source>
         <translation>Теперь прикоснитесь к нижнему правому&lt;br&gt;углу сенсорной панели.</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="48"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="48"/>
         <source>Configuration completed!</source>
         <translation>Настройка выполнена!</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="56"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="56"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -151,93 +151,93 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ChatRoom</name>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.ui" line="14"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.ui" line="14"/>
         <source>Room Window</source>
         <translation>Окно комнаты</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.ui" line="40"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.ui" line="40"/>
         <source>Send Chat Message</source>
         <translation>Отправить сообщение в чат</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.ui" line="47"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.ui" line="47"/>
         <source>Send Message</source>
         <translation>Отправить сообщение</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="166"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="166"/>
         <source>Members</source>
         <translation>Участники</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="298"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="298"/>
         <source>%1 has joined</source>
         <translation>%1 присоединился</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="301"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="301"/>
         <source>%1 has left</source>
         <translation>%1 покинул комнату</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="304"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="304"/>
         <source>%1 has been kicked</source>
         <translation>%1 был выгнан</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="307"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="307"/>
         <source>%1 has been banned</source>
         <translation>%1 был заблокирован</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="310"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="310"/>
         <source>%1 has been unbanned</source>
         <translation>%1 был разблокирован</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="428"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="428"/>
         <source>View Profile</source>
         <translation>Открыть профиль</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="441"/>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="451"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="441"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="451"/>
         <source>Block Player</source>
         <translation>Игнорировать игрока</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="452"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="452"/>
         <source>When you block a player, you will no longer receive chat messages from them.&lt;br&gt;&lt;br&gt;Are you sure you would like to block %1?</source>
         <translation>При игнорировании игрока, пользователь прекращает получать от него сообщения в чате.&lt;br&gt;&lt;br&gt;Игнорировать %1?</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="465"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="465"/>
         <source>Kick</source>
         <translation>Выгнать</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="466"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="466"/>
         <source>Ban</source>
         <translation>Заблокировать</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="470"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="470"/>
         <source>Kick Player</source>
         <translation>Выгнать игрока</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="471"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="471"/>
         <source>Are you sure you would like to &lt;b&gt;kick&lt;/b&gt; %1?</source>
         <translation>&lt;b&gt;Выгнать&lt;/b&gt; %1?</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="479"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="479"/>
         <source>Ban Player</source>
         <translation>Заблокировать игрока</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/chat_room.cpp" line="480"/>
+        <location filename="../../src/mandarin_qt/multiplayer/chat_room.cpp" line="480"/>
         <source>Are you sure you would like to &lt;b&gt;kick and ban&lt;/b&gt; %1?
 
 This would ban both their forum username and their IP address.</source>
@@ -249,22 +249,22 @@ This would ban both their forum username and their IP address.</source>
 <context>
     <name>ClientRoom</name>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.ui" line="14"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.ui" line="14"/>
         <source>Room Window</source>
         <translation>Окно комнаты</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.ui" line="27"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.ui" line="27"/>
         <source>Room Description</source>
         <translation>Описание комнаты</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.ui" line="47"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.ui" line="47"/>
         <source>Moderation...</source>
         <translation>Модерация...</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.ui" line="57"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.ui" line="57"/>
         <source>Leave Room</source>
         <translation>Покинуть комнату</translation>
     </message>
@@ -272,17 +272,17 @@ This would ban both their forum username and their IP address.</source>
 <context>
     <name>ClientRoomWindow</name>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.cpp" line="79"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.cpp" line="79"/>
         <source>Connected</source>
         <translation>Подключён</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.cpp" line="88"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.cpp" line="88"/>
         <source>Disconnected</source>
         <translation>Отключён</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/multiplayer/client_room.cpp" line="101"/>
+        <location filename="../../src/mandarin_qt/multiplayer/client_room.cpp" line="101"/>
         <source>%1 (%2/%3 members) - connected</source>
         <translation>%1 (%2/%3 участников) - подключён</translation>
     </message>
@@ -290,109 +290,109 @@ This would ban both their forum username and their IP address.</source>
 <context>
     <name>CompatDB</name>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="20"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="20"/>
         <source>Report Compatibility</source>
         <translation>Сообщить о совместимости</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="27"/>
-        <location filename="../../src/citra_qt/compatdb.ui" line="63"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="27"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="63"/>
         <source>Report Game Compatibility</source>
         <translation>Сообщить о совместимости игры</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="36"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="36"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Should you choose to submit a test case to the &lt;/span&gt;&lt;a href=&quot;https://citra-emu.org/game/&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;Citra Compatibility List&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;, The following information will be collected and displayed on the site:&lt;/span&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Hardware Information (CPU / GPU / Operating System)&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Which version of Citra you are running&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The connected Citra account&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;При отправке тестового случая в &lt;/span&gt;&lt;a href=&quot;https://citra-emu.org/game/&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;список совместимости Citra&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; на сайте будет собрана и отображена следующая информация:&lt;/span&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Сведения об оборудовании (ЦП / ГП / операционная система)&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия Citra&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Учётная запись Citra&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="72"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="72"/>
         <source>Perfect</source>
         <translation>Отлично</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="79"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="79"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Game functions flawlessly with no audio or graphical glitches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Игра функционирует безотказно, без ошибок звука или графики.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="89"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="89"/>
         <source>Great</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="96"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Game functions with minor graphical or audio glitches and is playable from start to finish. May require some workarounds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Игра работает с незначительными ошибками графики или звука, но играть можно от начала до конца. Иногда может возникать необходимость в поиске обходных вариантов решения проблем.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="106"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="106"/>
         <source>Okay</source>
         <translation>Удовлетворительно</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="113"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="113"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Игра работает с серьёзными ошибками графики или звука, но применение обходных вариантов решения проблем позволяет играть от начала до конца.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="123"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="123"/>
         <source>Bad</source>
         <translation>Плохо</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="130"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Игра работает, но с серьёзными ошибками графики или звука. Прохождение некоторых конкретных
 мест в игре невозможно даже при использовании обходных вариантов решения проблем.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="140"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="140"/>
         <source>Intro/Menu</source>
         <translation>Вступительный видеоролик/меню</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="147"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Играть абсолютно невозможно ввиду наличия серьёзных ошибок графики или звука. Не удаётся пройти дальше начального экрана.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="157"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="157"/>
         <source>Won&apos;t Boot</source>
         <translation>Не запускается</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="170"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="170"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The game crashes when attempting to startup.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Игра вылетает во время запуска.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="182"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="182"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Independent of speed or performance, how well does this game play from start to finish on this version of Citra?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Насколько хорошо работает данная игра от начала до конца на данной версии Citra независимо от скорости работы или производительности?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.ui" line="206"/>
+        <location filename="../../src/mandarin_qt/compatdb.ui" line="206"/>
         <source>Thank you for your submission!</source>
         <translation>Благодарим за предоставленную информацию!</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.cpp" line="59"/>
+        <location filename="../../src/mandarin_qt/compatdb.cpp" line="59"/>
         <source>Submitting</source>
         <translation>Отправить</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.cpp" line="72"/>
+        <location filename="../../src/mandarin_qt/compatdb.cpp" line="72"/>
         <source>Communication error</source>
         <translation>Ошибка соединения</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.cpp" line="73"/>
+        <location filename="../../src/mandarin_qt/compatdb.cpp" line="73"/>
         <source>An error occurred while sending the Testcase</source>
         <translation>Во время отправки тестового случая произошла ошибка</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/compatdb.cpp" line="75"/>
+        <location filename="../../src/mandarin_qt/compatdb.cpp" line="75"/>
         <source>Next</source>
         <translation>Далее</translation>
     </message>
@@ -400,93 +400,93 @@ This would ban both their forum username and their IP address.</source>
 <context>
     <name>ConfigureAudio</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="17"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="17"/>
         <source>Output</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="38"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="38"/>
         <source>Emulation:</source>
         <translation>Эмуляция:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="46"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="46"/>
         <source>HLE (fast)</source>
         <translation>HLE (быстрая)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="51"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="51"/>
         <source>LLE (accurate)</source>
         <translation>LLE (точная)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="56"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="56"/>
         <source>LLE multi-core</source>
         <translation>LLE многоядерная</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="69"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="69"/>
         <source>Output Type</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="79"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="79"/>
         <source>Output Device</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="91"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="91"/>
         <source>This post-processing effect adjusts audio speed to match emulation speed and helps prevent audio stutter. This however increases audio latency.</source>
         <translation>Этот эффект постобработки предотвращает появление прерывистости звука и корректирует скорость воспроизведения так, чтобы она совпадала со скоростью эмуляции. Однако всё это увеличивает звуковую задержку.</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="94"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="94"/>
         <source>Enable audio stretching</source>
         <translation>Включить растяжение звука</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="117"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="117"/>
         <source>Use global volume</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="122"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="122"/>
         <source>Set volume:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="130"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="130"/>
         <source>Volume:</source>
         <translation>Громкость:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="175"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="175"/>
         <source>0 %</source>
         <translation>0 %</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="191"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="191"/>
         <source>Microphone</source>
         <translation>Микрофон</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="197"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="197"/>
         <source>Input Type</source>
         <translation>Тип ввода</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.ui" line="207"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.ui" line="207"/>
         <source>Input Device</source>
         <translation>Устройство ввода</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.cpp" line="24"/>
-        <location filename="../../src/citra_qt/configuration/configure_audio.cpp" line="36"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.cpp" line="24"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.cpp" line="36"/>
         <source>Auto</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_audio.cpp" line="152"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_audio.cpp" line="152"/>
         <source>%1%</source>
         <comment>Volume percentage (e.g. 50%)</comment>
         <translation>%1%</translation>
@@ -495,203 +495,203 @@ This would ban both their forum username and their IP address.</source>
 <context>
     <name>ConfigureCamera</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="14"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="14"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="20"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="20"/>
         <source>Camera</source>
         <translation>Камера</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="28"/>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="38"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="28"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="38"/>
         <source>Select the camera to configure</source>
         <translation>Выбор камеры для настройки</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="31"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="31"/>
         <source>Camera to configure:</source>
         <translation>Настраиваемая камера:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="42"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="42"/>
         <source>Front</source>
         <translation>Передняя</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="47"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="47"/>
         <source>Rear</source>
         <translation>Задняя</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="59"/>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="69"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="59"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="69"/>
         <source>Select the camera mode (single or double)</source>
         <translation>Выберите режим камеры (одиночная или двойная)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="62"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="62"/>
         <source>Camera mode:</source>
         <translation>Режим камеры:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="73"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="73"/>
         <source>Single (2D)</source>
         <translation>Одиночная (2D)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="78"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="78"/>
         <source>Double (3D)</source>
         <translation>Двойная (3D)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="90"/>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="100"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="90"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="100"/>
         <source>Select the position of camera to configure</source>
         <translation>Выберите позицию настраиваемой камеры</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="93"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="93"/>
         <source>Camera position:</source>
         <translation>Позиция камеры:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="104"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="104"/>
         <source>Left</source>
         <translation>Слева</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="109"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="109"/>
         <source>Right</source>
         <translation>Справа</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="122"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="122"/>
         <source>Configuration</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="130"/>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="140"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="130"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="140"/>
         <source>Select where the image of the emulated camera comes from. It may be an image or a real camera.</source>
         <translation>Выберите источник отображения для эмулируемой камеры. Это может быть как картинка, так и настоящая камера.</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="133"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="133"/>
         <source>Camera Image Source:</source>
         <translation>Источник отображения для камеры:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="144"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="144"/>
         <source>Blank (blank)</source>
         <translation>Пусто (пусто)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="149"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="149"/>
         <source>Still Image (image)</source>
         <translation>Статичное изображение (изображение)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="154"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="154"/>
         <source>System Camera (qt)</source>
         <translation>Системная камера (qt)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="169"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="169"/>
         <source>File:</source>
         <translation>Файл:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="179"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="179"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="190"/>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="215"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="190"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="215"/>
         <source>Select the system camera to use</source>
         <translation>Выберите использование системной камеры</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="196"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="196"/>
         <source>Camera:</source>
         <translation>Камера:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="219"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="219"/>
         <source>&lt;Default&gt;</source>
         <translation>&lt;По умолчанию&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="231"/>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="259"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="231"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="259"/>
         <source>Select the image flip to apply</source>
         <translation>Выберите способ поворота изображения</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="237"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="237"/>
         <source>Flip:</source>
         <translation>Поворот изображения:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="263"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="263"/>
         <source>None</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="268"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="268"/>
         <source>Horizontal</source>
         <translation>Отразить по горизонтали</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="273"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="273"/>
         <source>Vertical</source>
         <translation>Отразить по вертикали</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="278"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="278"/>
         <source>Reverse</source>
         <translation>Развернуть на 180⁰</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="288"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="288"/>
         <source>Select an image file every time before the camera is loaded</source>
         <translation>Выбирать изображение перед каждой загрузкой камеры</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="291"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="291"/>
         <source>Prompt before load</source>
         <translation>Выбор изображения перед загрузкой</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="301"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="301"/>
         <source>Preview</source>
         <translation>Предварительный просмотр</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="313"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="313"/>
         <source>Resolution: 512*384</source>
         <translation>Разрешение: 512*384</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.ui" line="323"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.ui" line="323"/>
         <source>Click to preview</source>
         <translation>Щёлкните для просмотра</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.cpp" line="192"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.cpp" line="192"/>
         <source>Resolution: %1*%2</source>
         <translation>Разрешение: %1*%2</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.cpp" line="284"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.cpp" line="284"/>
         <source>Supported image files (%1)</source>
         <translation>Поддерживаемые файлы изображений (%1)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_camera.cpp" line="285"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_camera.cpp" line="285"/>
         <source>Open File</source>
         <translation>Открыть файл</translation>
     </message>
@@ -699,87 +699,87 @@ This would ban both their forum username and their IP address.</source>
 <context>
     <name>ConfigureCheats</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="23"/>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="69"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="23"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="69"/>
         <source>Cheats</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="44"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="44"/>
         <source>Add Cheat</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="57"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="57"/>
         <source>Available Cheats:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="91"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="91"/>
         <source>Name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="96"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="96"/>
         <source>Type</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="126"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="126"/>
         <source>Save</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="136"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="136"/>
         <source>Delete</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="149"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="149"/>
         <source>Name:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="161"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="161"/>
         <source>Notes:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="171"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.ui" line="171"/>
         <source>Code:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="69"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="69"/>
         <source>Would you like to save the current cheat?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="81"/>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="85"/>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="97"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="81"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="85"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="97"/>
         <source>Save Cheat</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="81"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="81"/>
         <source>Please enter a cheat name.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="85"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="85"/>
         <source>Please enter the cheat code.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="98"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="98"/>
         <source>Cheat code line %1 is not valid.
 Would you like to ignore the error and continue?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="225"/>
-        <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="228"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="225"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_cheats.cpp" line="228"/>
         <source>[new cheat]</source>
         <translation type="unfinished"/>
     </message>
@@ -787,127 +787,127 @@ Would you like to ignore the error and continue?</source>
 <context>
     <name>ConfigureDebug</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="14"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="14"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="22"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="22"/>
         <source>GDB</source>
         <translation>GDB</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="30"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="30"/>
         <source>Enable GDB Stub</source>
         <translation>Включить заглушку GDB</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="50"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="50"/>
         <source>Port:</source>
         <translation>Порт:</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="71"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="71"/>
         <source>Logging</source>
         <translation>Ведение журнала</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="79"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="79"/>
         <source>Global Log Filter</source>
         <translation>Глобальный фильтр журнала</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="93"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="93"/>
         <source>Show Log Console (Windows Only)</source>
         <translation>Показать консоль записей (только для Windows)</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="100"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="100"/>
         <source>Open Log Location</source>
         <translation>Открыть расположение записей</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="112"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="112"/>
         <source>CPU</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="137"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="137"/>
         <source>Use global clock speed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="142"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="142"/>
         <source>Set clock speed:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="150"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="150"/>
         <source>CPU Clock Speed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="157"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="157"/>
         <source>&lt;html&gt;&lt;body&gt;Changes the emulated CPU clock frequency.&lt;br&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="198"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables the use of the ARM JIT compiler for emulating the 3DS CPUs. Don&apos;t disable unless for debugging purposes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="201"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="201"/>
         <source>Enable CPU JIT</source>
         <translation>Включить JIT-компиляцию ЦП</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="208"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="208"/>
         <source>Enable debug renderer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="215"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="215"/>
         <source>Dump command buffers</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="225"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="225"/>
         <source>Miscellaneus</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="231"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="231"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Introduces a delay to the first ever launched app thread if LLE modules are enabled, to allow them to initialize.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="234"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="234"/>
         <source>Delay app start for LLE module initialization</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.ui" line="244"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;br/&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br/&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.cpp" line="48"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.cpp" line="48"/>
         <source>Validation layer not available</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.cpp" line="49"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.cpp" line="49"/>
         <source>Unable to enable debug renderer because the layer &lt;strong&gt;VK_LAYER_KHRONOS_validation&lt;/strong&gt; is missing. Please install the Vulkan SDK or the appropriate package of your distribution</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.cpp" line="63"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.cpp" line="63"/>
         <source>Command buffer dumping not available</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_debug.cpp" line="64"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_debug.cpp" line="64"/>
         <source>Unable to enable command buffer dumping because the layer &lt;strong&gt;VK_LAYER_LUNARG_api_dump&lt;/strong&gt; is missing. Please install the Vulkan SDK or the appropriate package of your distribution</source>
         <translation type="unfinished"/>
     </message>
@@ -915,92 +915,92 @@ Would you like to ignore the error and continue?</source>
 <context>
     <name>ConfigureDialog</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure.ui" line="6"/>
+        <location filename="../../src/mandarin_qt/configuration/configure.ui" line="6"/>
         <source>Citra Configuration</source>
         <translation>Настройки Citra</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="46"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="122"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="172"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="46"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="122"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="172"/>
         <source>General</source>
         <translation>Общие</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="47"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="123"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="173"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="47"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="123"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="173"/>
         <source>System</source>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="48"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="174"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="48"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="174"/>
         <source>Input</source>
         <translation>Ввод</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="49"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="175"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="49"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="175"/>
         <source>Hotkeys</source>
         <translation>Комбинации клавиш</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="50"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="124"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="50"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="124"/>
         <source>Graphics</source>
         <translation>Графика</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="51"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="176"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="51"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="176"/>
         <source>Enhancements</source>
         <translation>Усовершенствования</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="52"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="125"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="178"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="52"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="125"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="178"/>
         <source>Audio</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="53"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="179"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="53"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="179"/>
         <source>Camera</source>
         <translation>Камера</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="54"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="180"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="54"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="180"/>
         <source>Debug</source>
         <translation>Отладка</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="55"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="181"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="55"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="181"/>
         <source>Storage</source>
         <translation>Хранение</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="56"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="182"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="56"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="182"/>
         <source>Web</source>
         <translation>Веб</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="57"/>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="183"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="57"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="183"/>
         <source>UI</source>
         <translation>Интерфейс</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="126"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="126"/>
         <source>Controls</source>
         <translation>Управление</translation>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_dialog.cpp" line="177"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_dialog.cpp" line="177"/>
         <source>Advanced</source>
         <translation>Дополнительно</translation>
     </message>
@@ -1008,52 +1008,52 @@ Would you like to ignore the error and continue?</source>
 <context>
     <name>ConfigureEnhancements</name>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="20"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="20"/>
         <source>Form</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="26"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="26"/>
         <source>Renderer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="47"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="47"/>
         <source>Internal Resolution</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="55"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="55"/>
         <source>Auto (Window Size)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="60"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="60"/>
         <source>Native (400x240)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="65"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="65"/>
         <source>2x Native (800x480)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="70"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="70"/>
         <source>3x Native (1200x720)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="75"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="75"/>
         <source>4x Native (1600x960)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="80"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="80"/>
         <source>5x Native (2000x1200)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../src/citra_qt/configuration/configure_enhancements.ui" line="85"/>
+        <location filename="../../src/mandarin_qt/configuration/configure_enhancements.ui" line="85"/>
         <source>6x Native (2400x1440)</source>
         <translation type="unfinished"/>
     </message>
@@ -2091,8 +2091,8 @@ Would you like to ignore the error and continue?</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="102"/>
-        <source>&lt;a href=&apos;https://citra-emu.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Learn More&lt;/span&gt;&lt;/a&gt;</source>
-        <translation>&lt;a href=&apos;https://citra-emu.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Дополнительные сведения&lt;/span&gt;&lt;/a&gt;</translation>
+        <source>&lt;a href=&apos;https://citra-emu.org.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Learn More&lt;/span&gt;&lt;/a&gt;</source>
+        <translation>&lt;a href=&apos;https://citra-emu.org.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Дополнительные сведения&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_motion_touch.cpp" line="209"/>
@@ -3333,7 +3333,7 @@ Would you like to ignore the error and continue?</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_system.cpp" line="272"/>
-        <source>Citra is missing keys to download system files. &lt;br&gt;&lt;a href=&apos;https://citra-emu.org/wiki/aes-keys/&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;How to get keys?&lt;/span&gt;&lt;/a&gt;</source>
+        <source>Citra is missing keys to download system files. &lt;br&gt;&lt;a href=&apos;https://citra-emu.org.org/wiki/aes-keys/&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;How to get keys?&lt;/span&gt;&lt;/a&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3781,8 +3781,8 @@ Please check your FFmpeg installation used for compilation.</source>
     <name>GMainWindow</name>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="144"/>
-        <source>&lt;a href=&apos;https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;Anonymous data is collected&lt;/a&gt; to help improve Citra. &lt;br/&gt;&lt;br/&gt;Would you like to share your usage data with us?</source>
-        <translation>Для оказания помощи в улучшении приложения Citra &lt;a href=&apos;https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;проводится сбор анонимных данных&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;Поделиться данными об использовании?</translation>
+        <source>&lt;a href=&apos;https://citra-emu.org.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;Anonymous data is collected&lt;/a&gt; to help improve Citra. &lt;br/&gt;&lt;br/&gt;Would you like to share your usage data with us?</source>
+        <translation>Для оказания помощи в улучшении приложения Citra &lt;a href=&apos;https://citra-emu.org.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;проводится сбор анонимных данных&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;Поделиться данными об использовании?</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="147"/>
@@ -3867,8 +3867,8 @@ Please check your FFmpeg installation used for compilation.</source>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="1181"/>
         <location filename="../../src/citra_qt/main.cpp" line="1212"/>
-        <source>Your ROM format is not supported.&lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
-        <translation>Данный формат образа ПЗУ не поддерживается.&lt;br/&gt;Следуйте инструкциям для создания нового дампа &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;игровых картриджей&lt;/a&gt; или &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;установленных игр&lt;/a&gt;.</translation>
+        <source>Your ROM format is not supported.&lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
+        <translation>Данный формат образа ПЗУ не поддерживается.&lt;br/&gt;Следуйте инструкциям для создания нового дампа &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-game-cartridges/&apos;&gt;игровых картриджей&lt;/a&gt; или &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-installed-titles/&apos;&gt;установленных игр&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="1191"/>
@@ -3877,8 +3877,8 @@ Please check your FFmpeg installation used for compilation.</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="1192"/>
-        <source>Your ROM is corrupted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
-        <translation>Образ ПЗУ повреждён. &lt;br/&gt;Следуйте инструкциям для создания нового дампа &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;игровых картриджей&lt;/a&gt; или &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;установленных игр&lt;/a&gt;.</translation>
+        <source>Your ROM is corrupted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
+        <translation>Образ ПЗУ повреждён. &lt;br/&gt;Следуйте инструкциям для создания нового дампа &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-game-cartridges/&apos;&gt;игровых картриджей&lt;/a&gt; или &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-installed-titles/&apos;&gt;установленных игр&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="1201"/>
@@ -3887,8 +3887,8 @@ Please check your FFmpeg installation used for compilation.</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="1202"/>
-        <source>Your ROM is encrypted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
-        <translation>Образ ПЗУ зашифрован. &lt;br/&gt;Следуйте инструкциям для создания нового дампа &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;игровых картриджей&lt;/a&gt; или &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;установленных игр&lt;/a&gt;.</translation>
+        <source>Your ROM is encrypted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
+        <translation>Образ ПЗУ зашифрован. &lt;br/&gt;Следуйте инструкциям для создания нового дампа &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-game-cartridges/&apos;&gt;игровых картриджей&lt;/a&gt; или &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-installed-titles/&apos;&gt;установленных игр&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="1220"/>
@@ -4272,8 +4272,8 @@ To view a guide on how to install FFmpeg, press Help.</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="2760"/>
-        <source>%1 is missing. Please &lt;a href=&apos;https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;dump your system archives&lt;/a&gt;.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
-        <translation>%1 отсутствует. &lt;a href=&apos;https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;Создайте дамп системных архивов&lt;/a&gt;.&lt;br/&gt;Дальнейшая работа эмуляции может сопровождаться ошибками и сбоями.</translation>
+        <source>%1 is missing. Please &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;dump your system archives&lt;/a&gt;.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
+        <translation>%1 отсутствует. &lt;a href=&apos;https://citra-emu.org.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;Создайте дамп системных архивов&lt;/a&gt;.&lt;br/&gt;Дальнейшая работа эмуляции может сопровождаться ошибками и сбоями.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="2768"/>
@@ -4302,8 +4302,8 @@ To view a guide on how to install FFmpeg, press Help.</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="2781"/>
-        <source>A fatal error occurred. &lt;a href=&apos;https://community.citra-emu.org/t/how-to-upload-the-log-file/296&apos;&gt;Check the log&lt;/a&gt; for details.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
-        <translation>Произошла неустранимая ошибка. Подробную информацию &lt;a href=&apos;https://community.citra-emu.org/t/how-to-upload-the-log-file/296&apos;&gt;см. в журнале&lt;/a&gt;. &lt;br/&gt;Дальнейшая работы эмуляции может сопровождаться ошибками и сбоями.</translation>
+        <source>A fatal error occurred. &lt;a href=&apos;https://community.citra-emu.org.org/t/how-to-upload-the-log-file/296&apos;&gt;Check the log&lt;/a&gt; for details.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
+        <translation>Произошла неустранимая ошибка. Подробную информацию &lt;a href=&apos;https://community.citra-emu.org.org/t/how-to-upload-the-log-file/296&apos;&gt;см. в журнале&lt;/a&gt;. &lt;br/&gt;Дальнейшая работы эмуляции может сопровождаться ошибками и сбоями.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/main.cpp" line="2785"/>

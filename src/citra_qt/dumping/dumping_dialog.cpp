@@ -4,9 +4,9 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
-#include "citra_qt/dumping/dumping_dialog.h"
-#include "citra_qt/dumping/options_dialog.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/dumping/dumping_dialog.h"
+#include "mandarin_qt/dumping/options_dialog.h"
+#include "mandarin_qt/uisettings.h"
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_dumping_dialog.h"

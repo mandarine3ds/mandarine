@@ -8,8 +8,8 @@
 #include <wincon.h>
 #endif
 
-#include "citra_qt/debugger/console.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/debugger/console.h"
+#include "mandarin_qt/uisettings.h"
 #include "common/logging/backend.h"
 
 namespace Debugger {

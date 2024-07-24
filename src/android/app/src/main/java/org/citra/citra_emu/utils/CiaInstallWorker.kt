@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import android.app.NotificationManager
 import android.content.Context
@@ -12,15 +12,15 @@ import androidx.core.app.NotificationCompat
 import androidx.work.ForegroundInfo
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import org.citra.citra_emu.NativeLibrary.InstallStatus
-import org.citra.citra_emu.R
-import org.citra.citra_emu.utils.FileUtil.getFilename
+import io.github.mandarin3ds.mandarin.NativeLibrary.InstallStatus
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.utils.FileUtil.getFilename
 
 class CiaInstallWorker(
     val context: Context,
     params: WorkerParameters
 ) : Worker(context, params) {
-    private val GROUP_KEY_CIA_INSTALL_STATUS = "org.citra.citra_emu.CIA_INSTALL_STATUS"
+    private val GROUP_KEY_CIA_INSTALL_STATUS = "io.github.mandarin3ds.mandarin.CIA_INSTALL_STATUS"
     private var lastNotifiedTime: Long = 0
     private val SUMMARY_NOTIFICATION_ID = 0xC1A0000
     private val PROGRESS_NOTIFICATION_ID = SUMMARY_NOTIFICATION_ID + 1

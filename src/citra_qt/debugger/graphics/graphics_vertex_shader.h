@@ -7,7 +7,7 @@
 #include <QAbstractTableModel>
 #include <QTreeView>
 #include <nihstro/parser_shbin.h>
-#include "citra_qt/debugger/graphics/graphics_breakpoint_observer.h"
+#include "mandarin_qt/debugger/graphics/graphics_breakpoint_observer.h"
 #include "video_core/pica/output_vertex.h"
 #include "video_core/shader/debug_data.h"
 

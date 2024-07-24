@@ -8,7 +8,7 @@ jobs:
   transifex:
     runs-on: ubuntu-latest
     container: pablomk7/build-environments:linux-fresh
-    if: ${{ github.repository == 'citra-emu/citra' }}
+    if: ${{ github.repository == 'citra-emu.org/citra' }}
     steps:
       - uses: actions/checkout@v4
         with:

@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -11,9 +11,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.citra.citra_emu.R
-import org.citra.citra_emu.ui.main.MainActivity
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.ui.main.MainActivity
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 class SelectUserDirectoryDialogFragment : DialogFragment() {
     private lateinit var mainActivity: MainActivity
@@ -23,7 +23,7 @@ class SelectUserDirectoryDialogFragment : DialogFragment() {
 
         isCancelable = false
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.select_citra_user_folder)
+            .setTitle(R.string.select_mandarin_user_folder)
             .setMessage(R.string.cannot_skip_directory_description)
             .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
                 mainActivity.openCitraDirectory.launch(null)

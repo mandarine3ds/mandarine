@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_disclaimer">Ce logiciel exécutera des jeux pour la console de jeu portable Nintendo 3DS. Aucun titre de jeu n\'est inclus.\n\nAvant de pouvoir commencer l\'émulation, veuillez sélectionner un dossier pour stocker les données utilisateur de Citra.\n\nQu\'est-ce que c\'est :\n<a href='https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Données utilisateur et stockage de Citra sur Android.</a></string>
+    <string name="app_disclaimer">Ce logiciel exécutera des jeux pour la console de jeu portable Nintendo 3DS. Aucun titre de jeu n\'est inclus.\n\nAvant de pouvoir commencer l\'émulation, veuillez sélectionner un dossier pour stocker les données utilisateur de Citra.\n\nQu\'est-ce que c\'est :\n<a href='https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage'>Wiki - Données utilisateur et stockage de Citra sur Android.</a></string>
     <string name="app_notification_channel_description">Notifications de l\'émulateur 3DS Citra</string>
     <string name="app_notification_running">Citra est en fonctionnement</string>
     <string name="app_game_install_description">Ensuite, vous devrez sélectionner un dossier de jeux. Citra affichera tous les fichiers ROM 3DS présents dans le dossier sélectionné dans l\'application.\n\nLes fichiers ROM CIA, les mises à jour et les contenus téléchargeables devront être installés séparément en cliquant sur l\'icône du dossier et en sélectionnant \"Installer un CIA\".</string>
@@ -26,10 +26,10 @@
     <string name="select_games_folder">Sélectionner le dossier des jeux</string>
     <string name="select_games_folder_description">Permet à Citra de remplir la liste des jeux</string>
     <string name="about">À propos</string>
-    <string name="citra_description">Un émulateur 3DS open-source</string>
+    <string name="mandarin_description">Un émulateur 3DS open-source</string>
     <string name="about_description">Numéro de build, crédits et plus encore</string>
     <string name="games_dir_selected">Répertoire de jeux sélectionné</string>
-    <string name="select_citra_user_folder_home_description">Modifie les fichiers que Citra utilise pour charger les jeux</string>
+    <string name="select_mandarin_user_folder_home_description">Modifie les fichiers que Citra utilise pour charger les jeux</string>
     <string name="theme_and_color_description">Modifier l\'apparence de l\'application</string>
     <string name="install_cia_title">Installer un CIA</string>
 
@@ -83,13 +83,13 @@
     <string name="warning_help">Aide</string>
     <string name="warning_skip">Sauter</string>
     <string name="warning_cancel">Annuler</string>
-    <string name="select_citra_user_folder">Sélectionnez le dossier utilisateur
+    <string name="select_mandarin_user_folder">Sélectionnez le dossier utilisateur
  </string>
-    <string name="select_citra_user_folder_description"><![CDATA[Sélectionnez votre <a href=\"https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage\">répertoire de données utilisateur</a> avec le bouton ci-dessous.]]></string>
+    <string name="select_mandarin_user_folder_description"><![CDATA[Sélectionnez votre <a href=\"https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage\">répertoire de données utilisateur</a> avec le bouton ci-dessous.]]></string>
     <string name="select">Sélectionner</string>
     <string name="cannot_skip">Vous ne pouvez pas sauter cette étape</string>
     <string name="cannot_skip_directory_description">Cette étape est nécessaire pour permettre à Citra de fonctionner. Veuillez sélectionner un répertoire, puis vous pourrez continuer.</string>
-    <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
+    <string name="cannot_skip_directory_help">https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage</string>
 
     <!-- Search Strings -->
     <string name="search_and_filter_games">Rechercher et filtrer les jeux</string>

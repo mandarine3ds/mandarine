@@ -4,8 +4,8 @@
 
 #include <QShortcut>
 #include <QtGlobal>
-#include "citra_qt/hotkeys.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/hotkeys.h"
+#include "mandarin_qt/uisettings.h"
 
 HotkeyRegistry::HotkeyRegistry() = default;
 

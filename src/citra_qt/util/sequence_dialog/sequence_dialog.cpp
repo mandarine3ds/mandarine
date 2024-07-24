@@ -5,7 +5,7 @@
 #include <QDialogButtonBox>
 #include <QKeySequenceEdit>
 #include <QVBoxLayout>
-#include "citra_qt/util/sequence_dialog/sequence_dialog.h"
+#include "mandarin_qt/util/sequence_dialog/sequence_dialog.h"
 
 SequenceDialog::SequenceDialog(QWidget* parent) : QDialog(parent) {
     setWindowTitle(tr("Enter a hotkey"));

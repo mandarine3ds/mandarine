@@ -5,7 +5,7 @@
 #include <QImage>
 #include <QImageReader>
 #include <QString>
-#include "citra_qt/qt_image_interface.h"
+#include "mandarin_qt/qt_image_interface.h"
 #include "common/logging/log.h"
 
 QtImageInterface::QtImageInterface() {

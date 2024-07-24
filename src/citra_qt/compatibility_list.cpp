@@ -4,7 +4,7 @@
 
 #include <algorithm>
 #include <fmt/format.h>
-#include "citra_qt/compatibility_list.h"
+#include "mandarin_qt/compatibility_list.h"
 
 CompatibilityList::const_iterator FindMatchingCompatibilityEntry(
     const CompatibilityList& compatibility_list, u64 program_id) {

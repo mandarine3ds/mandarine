@@ -54,8 +54,8 @@ public:
         u32_le exe_size; // Include sizeof(PluginHeader) + .text + .rodata + .data + .bss (0x1000
                          // aligned too)
         u32_le is_default_plugin;
-        u32_le plgldr_event; ///< Used for synchronization, unused in citra
-        u32_le plgldr_reply; ///< Used for synchronization, unused in citra
+        u32_le plgldr_event; ///< Used for synchronization, unused in mandarin
+        u32_le plgldr_reply; ///< Used for synchronization, unused in mandarin
         u32_le reserved[24];
         u32_le config[32];
     };

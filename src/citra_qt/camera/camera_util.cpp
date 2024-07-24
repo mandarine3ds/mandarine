@@ -6,7 +6,7 @@
 #include <array>
 #include <cstring>
 #include <QImage>
-#include "citra_qt/camera/camera_util.h"
+#include "mandarin_qt/camera/camera_util.h"
 
 namespace CameraUtil {
 

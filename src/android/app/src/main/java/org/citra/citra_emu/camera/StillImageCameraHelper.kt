@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.camera
+package io.github.mandarin3ds.mandarin.camera
 
 import android.graphics.Bitmap
 import androidx.activity.result.PickVisualMediaRequest
@@ -12,8 +12,8 @@ import androidx.core.graphics.drawable.toBitmap
 import coil.executeBlocking
 import coil.imageLoader
 import coil.request.ImageRequest
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.NativeLibrary
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.NativeLibrary
 
 // Used in native code.
 object StillImageCameraHelper {

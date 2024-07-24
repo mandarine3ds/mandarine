@@ -135,7 +135,7 @@ async function mergePullRequests(pulls, execa) {
         "config",
         "--global",
         "user.email",
-        "citra\x40citra-emu\x2eorg", // prevent email harvesters from scraping the address
+        "citra\x40citra-emu.org\x2eorg", // prevent email harvesters from scraping the address
     ]);
     let hasFailed = false;
     for (let pull of pulls) {

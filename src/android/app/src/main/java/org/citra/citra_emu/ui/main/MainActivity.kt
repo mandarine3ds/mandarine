@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.ui.main
+package io.github.mandarin3ds.mandarin.ui.main
 
 import android.content.Intent
 import android.net.Uri
@@ -36,24 +36,24 @@ import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.citra.citra_emu.R
-import org.citra.citra_emu.activities.EmulationActivity
-import org.citra.citra_emu.contracts.OpenFileResultContract
-import org.citra.citra_emu.databinding.ActivityMainBinding
-import org.citra.citra_emu.features.settings.model.Settings
-import org.citra.citra_emu.features.settings.model.SettingsViewModel
-import org.citra.citra_emu.features.settings.ui.SettingsActivity
-import org.citra.citra_emu.features.settings.utils.SettingsFile
-import org.citra.citra_emu.fragments.SelectUserDirectoryDialogFragment
-import org.citra.citra_emu.utils.CiaInstallWorker
-import org.citra.citra_emu.utils.CitraDirectoryHelper
-import org.citra.citra_emu.utils.DirectoryInitialization
-import org.citra.citra_emu.utils.FileBrowserHelper
-import org.citra.citra_emu.utils.InsetsHelper
-import org.citra.citra_emu.utils.PermissionsHandler
-import org.citra.citra_emu.utils.ThemeUtil
-import org.citra.citra_emu.viewmodel.GamesViewModel
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.activities.EmulationActivity
+import io.github.mandarin3ds.mandarin.contracts.OpenFileResultContract
+import io.github.mandarin3ds.mandarin.databinding.ActivityMainBinding
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.features.settings.model.SettingsViewModel
+import io.github.mandarin3ds.mandarin.features.settings.ui.SettingsActivity
+import io.github.mandarin3ds.mandarin.features.settings.utils.SettingsFile
+import io.github.mandarin3ds.mandarin.fragments.SelectUserDirectoryDialogFragment
+import io.github.mandarin3ds.mandarin.utils.CiaInstallWorker
+import io.github.mandarin3ds.mandarin.utils.CitraDirectoryHelper
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization
+import io.github.mandarin3ds.mandarin.utils.FileBrowserHelper
+import io.github.mandarin3ds.mandarin.utils.InsetsHelper
+import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
+import io.github.mandarin3ds.mandarin.utils.ThemeUtil
+import io.github.mandarin3ds.mandarin.viewmodel.GamesViewModel
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 class MainActivity : AppCompatActivity(), ThemeProvider {
     private lateinit var binding: ActivityMainBinding

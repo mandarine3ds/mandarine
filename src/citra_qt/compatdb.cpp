@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QtConcurrent/qtconcurrentrun.h>
-#include "citra_qt/compatdb.h"
+#include "mandarin_qt/compatdb.h"
 #include "core/core.h"
 #include "ui_compatdb.h"
 

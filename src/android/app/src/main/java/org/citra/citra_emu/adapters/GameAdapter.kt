@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.adapters
+package io.github.mandarin3ds.mandarin.adapters
 
 import android.net.Uri
 import android.os.SystemClock
@@ -23,15 +23,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.citra.citra_emu.HomeNavigationDirections
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.R
-import org.citra.citra_emu.adapters.GameAdapter.GameViewHolder
-import org.citra.citra_emu.databinding.CardGameBinding
-import org.citra.citra_emu.features.cheats.ui.CheatsFragmentDirections
-import org.citra.citra_emu.model.Game
-import org.citra.citra_emu.utils.GameIconUtils
-import org.citra.citra_emu.viewmodel.GamesViewModel
+import io.github.mandarin3ds.mandarin.HomeNavigationDirections
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.adapters.GameAdapter.GameViewHolder
+import io.github.mandarin3ds.mandarin.databinding.CardGameBinding
+import io.github.mandarin3ds.mandarin.features.cheats.ui.CheatsFragmentDirections
+import io.github.mandarin3ds.mandarin.model.Game
+import io.github.mandarin3ds.mandarin.utils.GameIconUtils
+import io.github.mandarin3ds.mandarin.viewmodel.GamesViewModel
 
 class GameAdapter(private val activity: AppCompatActivity) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),

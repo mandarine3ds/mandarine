@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.preference.PreferenceManager
 import androidx.documentfile.provider.DocumentFile
-import org.citra.citra_emu.CitraApplication
+import io.github.mandarin3ds.mandarin.CitraApplication
 
 object PermissionsHandler {
     const val MANDARIN_DIRECTORY = "MANDARIN_DIRECTORY"
@@ -19,11 +19,11 @@ object PermissionsHandler {
 
     fun hasWriteAccess(context: Context): Boolean {
         try {
-            if (citraDirectory.toString().isEmpty()) {
+            if (mandarinDirectory.toString().isEmpty()) {
                 return false
             }
 
-            val uri = citraDirectory
+            val uri = mandarinDirectory
             val takeFlags =
                 Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
             context.contentResolver.takePersistableUriPermission(uri, takeFlags)
@@ -34,12 +34,12 @@ object PermissionsHandler {
 
             context.contentResolver.releasePersistableUriPermission(uri, takeFlags)
         } catch (e: Exception) {
-            Log.error("[PermissionsHandler]: Cannot check citra data directory permission, error: " + e.message)
+            Log.error("[PermissionsHandler]: Cannot check mandarin data directory permission, error: " + e.message)
         }
         return false
     }
 
-    val citraDirectory: Uri
+    val mandarinDirectory: Uri
         get() {
             val directoryString = preferences.getString(MANDARIN_DIRECTORY, "")
             return Uri.parse(directoryString)

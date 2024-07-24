@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.content.res.Resources
 import android.os.Bundle
@@ -26,18 +26,18 @@ import androidx.preference.PreferenceManager
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.coroutines.launch
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.HomeNavigationDirections
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.R
-import org.citra.citra_emu.activities.EmulationActivity
-import org.citra.citra_emu.databinding.FragmentSystemFilesBinding
-import org.citra.citra_emu.features.settings.model.Settings
-import org.citra.citra_emu.model.Game
-import org.citra.citra_emu.utils.SystemSaveGame
-import org.citra.citra_emu.viewmodel.GamesViewModel
-import org.citra.citra_emu.viewmodel.HomeViewModel
-import org.citra.citra_emu.viewmodel.SystemFilesViewModel
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.HomeNavigationDirections
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.activities.EmulationActivity
+import io.github.mandarin3ds.mandarin.databinding.FragmentSystemFilesBinding
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.model.Game
+import io.github.mandarin3ds.mandarin.utils.SystemSaveGame
+import io.github.mandarin3ds.mandarin.viewmodel.GamesViewModel
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.viewmodel.SystemFilesViewModel
 
 class SystemFilesFragment : Fragment() {
     private var _binding: FragmentSystemFilesBinding? = null

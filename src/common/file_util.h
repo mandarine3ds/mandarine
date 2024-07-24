@@ -266,8 +266,8 @@ public:
     IOFile();
 
     // flags is used for windows specific file open mode flags, which
-    // allows citra to open the logs in shared write mode, so that the file
-    // isn't considered "locked" while citra is open and people can open the log file and view it
+    // allows mandarin to open the logs in shared write mode, so that the file
+    // isn't considered "locked" while mandarin is open and people can open the log file and view it
     IOFile(const std::string& filename, const char openmode[], int flags = 0);
 
     ~IOFile();

@@ -2,39 +2,39 @@
 <resources>
 
     <style name="Theme.Citra.Splash.Main" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/citra_surface</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_citra</item>
+        <item name="windowSplashScreenBackground">@color/mandarin_surface</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_mandarin</item>
         <item name="postSplashScreenTheme">@style/Theme.Citra.Main</item>
     </style>
 
     <style name="Theme.Citra" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Main theme colors -->
-        <item name="colorPrimary">@color/citra_primary</item>
-        <item name="colorOnPrimary">@color/citra_onPrimary</item>
-        <item name="colorPrimaryContainer">@color/citra_primaryContainer</item>
-        <item name="colorOnPrimaryContainer">@color/citra_onPrimaryContainer</item>
-        <item name="colorSecondary">@color/citra_secondary</item>
-        <item name="colorOnSecondary">@color/citra_onSecondary</item>
-        <item name="colorSecondaryContainer">@color/citra_secondaryContainer</item>
-        <item name="colorOnSecondaryContainer">@color/citra_onSecondaryContainer</item>
-        <item name="colorTertiary">@color/citra_tertiary</item>
-        <item name="colorOnTertiary">@color/citra_onTertiary</item>
-        <item name="colorTertiaryContainer">@color/citra_tertiaryContainer</item>
-        <item name="colorOnTertiaryContainer">@color/citra_onTertiaryContainer</item>
-        <item name="colorError">@color/citra_error</item>
-        <item name="colorErrorContainer">@color/citra_errorContainer</item>
-        <item name="colorOnError">@color/citra_onError</item>
-        <item name="colorOnErrorContainer">@color/citra_onErrorContainer</item>
-        <item name="android:colorBackground">@color/citra_background</item>
-        <item name="colorOnBackground">@color/citra_onBackground</item>
-        <item name="colorSurface">@color/citra_surface</item>
-        <item name="colorOnSurface">@color/citra_onSurface</item>
-        <item name="colorSurfaceVariant">@color/citra_surfaceVariant</item>
-        <item name="colorOnSurfaceVariant">@color/citra_onSurfaceVariant</item>
-        <item name="colorOutline">@color/citra_outline</item>
-        <item name="colorOnSurfaceInverse">@color/citra_inverseOnSurface</item>
-        <item name="colorSurfaceInverse">@color/citra_inverseSurface</item>
-        <item name="colorPrimaryInverse">@color/citra_inversePrimary</item>
+        <item name="colorPrimary">@color/mandarin_primary</item>
+        <item name="colorOnPrimary">@color/mandarin_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/mandarin_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/mandarin_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/mandarin_secondary</item>
+        <item name="colorOnSecondary">@color/mandarin_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/mandarin_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/mandarin_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/mandarin_tertiary</item>
+        <item name="colorOnTertiary">@color/mandarin_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/mandarin_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/mandarin_onTertiaryContainer</item>
+        <item name="colorError">@color/mandarin_error</item>
+        <item name="colorErrorContainer">@color/mandarin_errorContainer</item>
+        <item name="colorOnError">@color/mandarin_onError</item>
+        <item name="colorOnErrorContainer">@color/mandarin_onErrorContainer</item>
+        <item name="android:colorBackground">@color/mandarin_background</item>
+        <item name="colorOnBackground">@color/mandarin_onBackground</item>
+        <item name="colorSurface">@color/mandarin_surface</item>
+        <item name="colorOnSurface">@color/mandarin_onSurface</item>
+        <item name="colorSurfaceVariant">@color/mandarin_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/mandarin_onSurfaceVariant</item>
+        <item name="colorOutline">@color/mandarin_outline</item>
+        <item name="colorOnSurfaceInverse">@color/mandarin_inverseOnSurface</item>
+        <item name="colorSurfaceInverse">@color/mandarin_inverseSurface</item>
+        <item name="colorPrimaryInverse">@color/mandarin_inversePrimary</item>
 
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>

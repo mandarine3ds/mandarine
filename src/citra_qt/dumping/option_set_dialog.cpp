@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <QCheckBox>
 #include <QStringList>
-#include "citra_qt/dumping/option_set_dialog.h"
+#include "mandarin_qt/dumping/option_set_dialog.h"
 #include "common/logging/log.h"
 #include "common/string_util.h"
 #include "ui_option_set_dialog.h"

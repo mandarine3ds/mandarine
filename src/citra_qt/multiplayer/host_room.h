@@ -9,7 +9,7 @@
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include <QVariant>
-#include "citra_qt/multiplayer/validation.h"
+#include "mandarin_qt/multiplayer/validation.h"
 
 namespace Ui {
 class HostRoom;

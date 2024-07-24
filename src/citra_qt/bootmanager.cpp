@@ -8,8 +8,8 @@
 #include <QMessageBox>
 #include <QPainter>
 #include <QWindow>
-#include "citra_qt/bootmanager.h"
-#include "citra_qt/main.h"
+#include "mandarin_qt/bootmanager.h"
+#include "mandarin_qt/main.h"
 #include "common/color.h"
 #include "common/microprofile.h"
 #include "common/scm_rev.h"

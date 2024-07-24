@@ -9,8 +9,8 @@
 #include <QResizeEvent>
 #include <QStandardItemModel>
 #include <QTimer>
-#include "citra_qt/configuration/configure_touch_from_button.h"
-#include "citra_qt/configuration/configure_touch_widget.h"
+#include "mandarin_qt/configuration/configure_touch_from_button.h"
+#include "mandarin_qt/configuration/configure_touch_widget.h"
 #include "common/param_package.h"
 #include "core/3ds.h"
 #include "input_common/main.h"

@@ -9,7 +9,7 @@
 #pragma once
 
 #include <QtCore/QProcess>
-#include "citra_qt/updater/updater.h"
+#include "mandarin_qt/updater/updater.h"
 
 enum class XMLParseResult {
     Success,

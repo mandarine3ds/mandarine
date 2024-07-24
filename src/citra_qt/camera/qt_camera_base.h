@@ -9,7 +9,7 @@
 
 namespace Camera {
 
-// Base class for camera interfaces of citra_qt
+// Base class for camera interfaces of mandarin_qt
 class QtCameraInterface : public CameraInterface {
 public:
     QtCameraInterface(const Service::CAM::Flip& flip);
@@ -27,7 +27,7 @@ private:
     bool basic_flip_horizontal, basic_flip_vertical;
 };
 
-// Base class for camera factories of citra_qt
+// Base class for camera factories of mandarin_qt
 class QtCameraFactory : public CameraFactory {
     std::unique_ptr<CameraInterface> CreatePreview(const std::string& config, int width, int height,
                                                    const Service::CAM::Flip& flip) override;

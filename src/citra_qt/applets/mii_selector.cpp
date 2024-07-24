@@ -7,7 +7,7 @@
 #include <QMessageBox>
 #include <QString>
 #include <QVBoxLayout>
-#include "citra_qt/applets/mii_selector.h"
+#include "mandarin_qt/applets/mii_selector.h"
 #include "common/string_util.h"
 
 QtMiiSelectorDialog::QtMiiSelectorDialog(QWidget* parent, QtMiiSelector* mii_selector_)

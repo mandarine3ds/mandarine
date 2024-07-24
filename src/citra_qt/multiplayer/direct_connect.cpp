@@ -8,11 +8,11 @@
 #include <QRegularExpression>
 #include <QString>
 #include <QtConcurrent/QtConcurrentRun>
-#include "citra_qt/main.h"
-#include "citra_qt/multiplayer/direct_connect.h"
-#include "citra_qt/multiplayer/message.h"
-#include "citra_qt/multiplayer/validation.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/main.h"
+#include "mandarin_qt/multiplayer/direct_connect.h"
+#include "mandarin_qt/multiplayer/message.h"
+#include "mandarin_qt/multiplayer/validation.h"
+#include "mandarin_qt/uisettings.h"
 #include "core/hle/service/cfg/cfg.h"
 #include "network/network.h"
 #include "network/network_settings.h"
@@ -32,9 +32,9 @@ DirectConnectWindow::DirectConnectWindow(Core::System& system_, QWidget* parent)
 
     ui->nickname->setValidator(validation.GetNickname());
     ui->nickname->setText(UISettings::values.nickname);
-    if (ui->nickname->text().isEmpty() && !NetSettings::values.citra_username.empty()) {
+    if (ui->nickname->text().isEmpty() && !NetSettings::values.mandarin_username.empty()) {
         // Use Citra Web Service user name as nickname by default
-        ui->nickname->setText(QString::fromStdString(NetSettings::values.citra_username));
+        ui->nickname->setText(QString::fromStdString(NetSettings::values.mandarin_username));
     }
     ui->ip->setValidator(validation.GetIP());
     ui->ip->setText(UISettings::values.ip);

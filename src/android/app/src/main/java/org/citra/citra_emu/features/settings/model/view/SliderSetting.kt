@@ -2,14 +2,14 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.model.view
+package io.github.mandarin3ds.mandarin.features.settings.model.view
 
-import org.citra.citra_emu.features.settings.model.AbstractFloatSetting
-import org.citra.citra_emu.features.settings.model.AbstractIntSetting
-import org.citra.citra_emu.features.settings.model.AbstractSetting
-import org.citra.citra_emu.features.settings.model.FloatSetting
-import org.citra.citra_emu.features.settings.model.ScaledFloatSetting
-import org.citra.citra_emu.utils.Log
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractFloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractIntSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.FloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.ScaledFloatSetting
+import io.github.mandarin3ds.mandarin.utils.Log
 import kotlin.math.roundToInt
 
 class SliderSetting(

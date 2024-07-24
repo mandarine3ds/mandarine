@@ -3,8 +3,8 @@
 // Refer to the license.txt file included.
 
 #include <QTreeWidgetItem>
-#include "citra_qt/dumping/option_set_dialog.h"
-#include "citra_qt/dumping/options_dialog.h"
+#include "mandarin_qt/dumping/option_set_dialog.h"
+#include "mandarin_qt/dumping/options_dialog.h"
 #include "ui_options_dialog.h"
 
 constexpr char UNSET_TEXT[] = QT_TR_NOOP("[not set]");

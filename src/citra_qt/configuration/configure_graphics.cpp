@@ -4,8 +4,8 @@
 
 #include <QColorDialog>
 #include <QStandardItemModel>
-#include "citra_qt/configuration/configuration_shared.h"
-#include "citra_qt/configuration/configure_graphics.h"
+#include "mandarin_qt/configuration/configuration_shared.h"
+#include "mandarin_qt/configuration/configure_graphics.h"
 #include "common/settings.h"
 #include "ui_configure_graphics.h"
 #ifdef ENABLE_VULKAN

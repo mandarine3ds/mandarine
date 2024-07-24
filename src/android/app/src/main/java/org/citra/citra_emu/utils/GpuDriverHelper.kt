@@ -2,15 +2,15 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import android.net.Uri
 import android.os.Build
 import androidx.documentfile.provider.DocumentFile
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.utils.FileUtil.asDocumentFile
-import org.citra.citra_emu.utils.FileUtil.inputStream
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.utils.FileUtil.asDocumentFile
+import io.github.mandarin3ds.mandarin.utils.FileUtil.inputStream
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.IOException

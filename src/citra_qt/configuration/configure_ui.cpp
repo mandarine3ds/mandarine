@@ -3,8 +3,8 @@
 // Refer to the license.txt file included.
 
 #include <QDirIterator>
-#include "citra_qt/configuration/configure_ui.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/configuration/configure_ui.h"
+#include "mandarin_qt/uisettings.h"
 #include "ui_configure_ui.h"
 
 ConfigureUi::ConfigureUi(QWidget* parent)

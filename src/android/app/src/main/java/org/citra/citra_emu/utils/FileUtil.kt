@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import okio.ByteString.Companion.readByteString
 import android.content.Context
@@ -12,8 +12,8 @@ import android.provider.DocumentsContract
 import android.system.Os
 import android.util.Pair
 import androidx.documentfile.provider.DocumentFile
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.model.CheapDocument
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.model.CheapDocument
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileOutputStream

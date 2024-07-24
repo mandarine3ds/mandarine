@@ -3,8 +3,8 @@
 // Refer to the license.txt file included.
 
 #include <QTreeWidgetItem>
-#include "citra_qt/debugger/registers.h"
-#include "citra_qt/util/util.h"
+#include "mandarin_qt/debugger/registers.h"
+#include "mandarin_qt/util/util.h"
 #include "core/arm/arm_interface.h"
 #include "core/core.h"
 #include "ui_registers.h"

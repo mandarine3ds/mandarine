@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -14,10 +14,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.DialogInputBinding
-import org.citra.citra_emu.features.settings.model.view.InputBindingSetting
-import org.citra.citra_emu.utils.Log
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.DialogInputBinding
+import io.github.mandarin3ds.mandarin.features.settings.model.view.InputBindingSetting
+import io.github.mandarin3ds.mandarin.utils.Log
 import kotlin.math.abs
 
 class MotionBottomSheetDialogFragment : BottomSheetDialogFragment() {

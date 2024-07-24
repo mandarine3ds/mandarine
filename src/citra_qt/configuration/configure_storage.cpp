@@ -5,7 +5,7 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QUrl>
-#include "citra_qt/configuration/configure_storage.h"
+#include "mandarin_qt/configuration/configure_storage.h"
 #include "common/file_util.h"
 #include "common/settings.h"
 #include "ui_configure_storage.h"

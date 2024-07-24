@@ -27,43 +27,43 @@
 #include <QtDBus/QtDBus>
 #include "common/linux/gamemode.h"
 #endif
-#include "citra_qt/aboutdialog.h"
-#include "citra_qt/applets/mii_selector.h"
-#include "citra_qt/applets/swkbd.h"
-#include "citra_qt/bootmanager.h"
-#include "citra_qt/camera/qt_multimedia_camera.h"
-#include "citra_qt/camera/still_image_camera.h"
-#include "citra_qt/compatdb.h"
-#include "citra_qt/compatibility_list.h"
-#include "citra_qt/configuration/config.h"
-#include "citra_qt/configuration/configure_dialog.h"
-#include "citra_qt/configuration/configure_per_game.h"
-#include "citra_qt/debugger/console.h"
-#include "citra_qt/debugger/graphics/graphics.h"
-#include "citra_qt/debugger/graphics/graphics_breakpoints.h"
-#include "citra_qt/debugger/graphics/graphics_cmdlists.h"
-#include "citra_qt/debugger/graphics/graphics_surface.h"
-#include "citra_qt/debugger/graphics/graphics_tracing.h"
-#include "citra_qt/debugger/graphics/graphics_vertex_shader.h"
-#include "citra_qt/debugger/ipc/recorder.h"
-#include "citra_qt/debugger/lle_service_modules.h"
-#include "citra_qt/debugger/profiler.h"
-#include "citra_qt/debugger/registers.h"
-#include "citra_qt/debugger/wait_tree.h"
-#include "citra_qt/discord.h"
-#include "citra_qt/dumping/dumping_dialog.h"
-#include "citra_qt/game_list.h"
-#include "citra_qt/hotkeys.h"
-#include "citra_qt/loading_screen.h"
-#include "citra_qt/main.h"
-#include "citra_qt/movie/movie_play_dialog.h"
-#include "citra_qt/movie/movie_record_dialog.h"
-#include "citra_qt/multiplayer/state.h"
-#include "citra_qt/qt_image_interface.h"
-#include "citra_qt/uisettings.h"
-#include "citra_qt/updater/updater.h"
-#include "citra_qt/util/clickable_label.h"
-#include "citra_qt/util/graphics_device_info.h"
+#include "mandarin_qt/aboutdialog.h"
+#include "mandarin_qt/applets/mii_selector.h"
+#include "mandarin_qt/applets/swkbd.h"
+#include "mandarin_qt/bootmanager.h"
+#include "mandarin_qt/camera/qt_multimedia_camera.h"
+#include "mandarin_qt/camera/still_image_camera.h"
+#include "mandarin_qt/compatdb.h"
+#include "mandarin_qt/compatibility_list.h"
+#include "mandarin_qt/configuration/config.h"
+#include "mandarin_qt/configuration/configure_dialog.h"
+#include "mandarin_qt/configuration/configure_per_game.h"
+#include "mandarin_qt/debugger/console.h"
+#include "mandarin_qt/debugger/graphics/graphics.h"
+#include "mandarin_qt/debugger/graphics/graphics_breakpoints.h"
+#include "mandarin_qt/debugger/graphics/graphics_cmdlists.h"
+#include "mandarin_qt/debugger/graphics/graphics_surface.h"
+#include "mandarin_qt/debugger/graphics/graphics_tracing.h"
+#include "mandarin_qt/debugger/graphics/graphics_vertex_shader.h"
+#include "mandarin_qt/debugger/ipc/recorder.h"
+#include "mandarin_qt/debugger/lle_service_modules.h"
+#include "mandarin_qt/debugger/profiler.h"
+#include "mandarin_qt/debugger/registers.h"
+#include "mandarin_qt/debugger/wait_tree.h"
+#include "mandarin_qt/discord.h"
+#include "mandarin_qt/dumping/dumping_dialog.h"
+#include "mandarin_qt/game_list.h"
+#include "mandarin_qt/hotkeys.h"
+#include "mandarin_qt/loading_screen.h"
+#include "mandarin_qt/main.h"
+#include "mandarin_qt/movie/movie_play_dialog.h"
+#include "mandarin_qt/movie/movie_record_dialog.h"
+#include "mandarin_qt/multiplayer/state.h"
+#include "mandarin_qt/qt_image_interface.h"
+#include "mandarin_qt/uisettings.h"
+#include "mandarin_qt/updater/updater.h"
+#include "mandarin_qt/util/clickable_label.h"
+#include "mandarin_qt/util/graphics_device_info.h"
 #include "common/arch.h"
 #include "common/common_paths.h"
 #include "common/detached_tasks.h"
@@ -102,7 +102,7 @@
 #endif
 
 #ifdef USE_DISCORD_PRESENCE
-#include "citra_qt/discord_impl.h"
+#include "mandarin_qt/discord_impl.h"
 #endif
 
 #ifdef QT_STATICPLUGIN
@@ -2015,7 +2015,7 @@ void GMainWindow::OnLoadComplete() {
 }
 
 void GMainWindow::OnMenuReportCompatibility() {
-    if (!NetSettings::values.citra_token.empty() && !NetSettings::values.citra_username.empty()) {
+    if (!NetSettings::values.mandarin_token.empty() && !NetSettings::values.mandarin_username.empty()) {
         CompatDB compatdb{this};
         compatdb.exec();
     } else {

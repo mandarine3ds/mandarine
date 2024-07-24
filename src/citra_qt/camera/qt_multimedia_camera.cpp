@@ -6,8 +6,8 @@
 #include <QImageReader>
 #include <QMediaDevices>
 #include <QThread>
-#include "citra_qt/camera/qt_multimedia_camera.h"
-#include "citra_qt/main.h"
+#include "mandarin_qt/camera/qt_multimedia_camera.h"
+#include "mandarin_qt/main.h"
 
 #if defined(__APPLE__)
 #include "common/apple_authorization.h"

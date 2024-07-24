@@ -13,7 +13,7 @@ add_library(web_service STATIC
 create_target_directory_groups(web_service)
 
 target_compile_definitions(web_service PUBLIC -DENABLE_WEB_SERVICE)
-target_link_libraries(web_service PRIVATE citra_common network json-headers httplib cpp-jwt)
+target_link_libraries(web_service PRIVATE mandarin_common network json-headers httplib cpp-jwt)
 target_link_libraries(web_service PUBLIC ${OPENSSL_LIBS})
 if(WIN32)
     target_link_libraries(web_service PRIVATE crypt32)

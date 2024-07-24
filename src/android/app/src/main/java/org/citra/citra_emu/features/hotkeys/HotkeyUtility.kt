@@ -2,14 +2,14 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.hotkeys
+package io.github.mandarin3ds.mandarin.features.hotkeys
 
 import android.content.Context
 import android.widget.Toast
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.R
-import org.citra.citra_emu.utils.EmulationLifecycleUtil
-import org.citra.citra_emu.display.ScreenAdjustmentUtil
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.utils.EmulationLifecycleUtil
+import io.github.mandarin3ds.mandarin.display.ScreenAdjustmentUtil
 
 class HotkeyUtility(private val screenAdjustmentUtil: ScreenAdjustmentUtil, private val context: Context) {
 

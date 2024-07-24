@@ -5,8 +5,8 @@
 #include <QCheckBox>
 #include <QObject>
 #include <QString>
-#include "citra_qt/configuration/configuration_shared.h"
-#include "citra_qt/configuration/configure_per_game.h"
+#include "mandarin_qt/configuration/configuration_shared.h"
+#include "mandarin_qt/configuration/configure_per_game.h"
 #include "common/settings.h"
 
 void ConfigurationShared::ApplyPerGameSetting(Settings::SwitchableSetting<bool>* setting,

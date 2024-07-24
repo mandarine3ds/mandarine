@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.adapters
+package io.github.mandarin3ds.mandarin.adapters
 
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -19,11 +19,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.CardHomeOptionBinding
-import org.citra.citra_emu.fragments.MessageDialogFragment
-import org.citra.citra_emu.model.HomeSetting
-import org.citra.citra_emu.viewmodel.GamesViewModel
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.CardHomeOptionBinding
+import io.github.mandarin3ds.mandarin.fragments.MessageDialogFragment
+import io.github.mandarin3ds.mandarin.model.HomeSetting
+import io.github.mandarin3ds.mandarin.viewmodel.GamesViewModel
 
 class HomeSettingAdapter(
     private val activity: AppCompatActivity,

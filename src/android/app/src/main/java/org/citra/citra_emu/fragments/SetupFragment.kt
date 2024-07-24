@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.Manifest
 import android.content.Intent
@@ -30,21 +30,21 @@ import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialFadeThrough
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.R
-import org.citra.citra_emu.adapters.SetupAdapter
-import org.citra.citra_emu.databinding.FragmentSetupBinding
-import org.citra.citra_emu.features.settings.model.Settings
-import org.citra.citra_emu.model.SetupCallback
-import org.citra.citra_emu.model.SetupPage
-import org.citra.citra_emu.model.StepState
-import org.citra.citra_emu.ui.main.MainActivity
-import org.citra.citra_emu.utils.CitraDirectoryHelper
-import org.citra.citra_emu.utils.GameHelper
-import org.citra.citra_emu.utils.PermissionsHandler
-import org.citra.citra_emu.utils.ViewUtils
-import org.citra.citra_emu.viewmodel.GamesViewModel
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.adapters.SetupAdapter
+import io.github.mandarin3ds.mandarin.databinding.FragmentSetupBinding
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.model.SetupCallback
+import io.github.mandarin3ds.mandarin.model.SetupPage
+import io.github.mandarin3ds.mandarin.model.StepState
+import io.github.mandarin3ds.mandarin.ui.main.MainActivity
+import io.github.mandarin3ds.mandarin.utils.CitraDirectoryHelper
+import io.github.mandarin3ds.mandarin.utils.GameHelper
+import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
+import io.github.mandarin3ds.mandarin.utils.ViewUtils
+import io.github.mandarin3ds.mandarin.viewmodel.GamesViewModel
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 class SetupFragment : Fragment() {
     private var _binding: FragmentSetupBinding? = null
@@ -107,7 +107,7 @@ class SetupFragment : Fragment() {
         pages.apply {
             add(
                 SetupPage(
-                    R.drawable.ic_citra_full,
+                    R.drawable.ic_mandarin_full,
                     R.string.welcome,
                     R.string.welcome_description,
                     0,
@@ -207,8 +207,8 @@ class SetupFragment : Fragment() {
             add(
                 SetupPage(
                     R.drawable.ic_home,
-                    R.string.select_citra_user_folder,
-                    R.string.select_citra_user_folder_description,
+                    R.string.select_mandarin_user_folder,
+                    R.string.select_mandarin_user_folder_description,
                     0,
                     true,
                     R.string.select,

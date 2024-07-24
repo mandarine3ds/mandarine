@@ -8,11 +8,11 @@
 #include <vector>
 #include <QDir>
 #include <QFileInfo>
-#include "citra_qt/compatibility_list.h"
-#include "citra_qt/game_list.h"
-#include "citra_qt/game_list_p.h"
-#include "citra_qt/game_list_worker.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/compatibility_list.h"
+#include "mandarin_qt/game_list.h"
+#include "mandarin_qt/game_list_p.h"
+#include "mandarin_qt/game_list_worker.h"
+#include "mandarin_qt/uisettings.h"
 #include "common/common_paths.h"
 #include "common/file_util.h"
 #include "core/hle/service/am/am.h"

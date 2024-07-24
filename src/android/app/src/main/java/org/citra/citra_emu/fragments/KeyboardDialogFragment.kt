@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,10 +10,10 @@ import android.os.Bundle
 import android.text.InputFilter
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.citra.citra_emu.R
-import org.citra.citra_emu.applets.SoftwareKeyboard
-import org.citra.citra_emu.databinding.DialogSoftwareKeyboardBinding
-import org.citra.citra_emu.utils.SerializableHelper.serializable
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.applets.SoftwareKeyboard
+import io.github.mandarin3ds.mandarin.databinding.DialogSoftwareKeyboardBinding
+import io.github.mandarin3ds.mandarin.utils.SerializableHelper.serializable
 
 class KeyboardDialogFragment : DialogFragment() {
     private lateinit var config: SoftwareKeyboard.KeyboardConfig

@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu
+package io.github.mandarin3ds.mandarin
 
 import android.Manifest.permission
 import android.app.Dialog
@@ -20,10 +20,10 @@ import androidx.annotation.Keep
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.citra.citra_emu.activities.EmulationActivity
-import org.citra.citra_emu.utils.EmulationMenuSettings
-import org.citra.citra_emu.utils.FileUtil
-import org.citra.citra_emu.utils.Log
+import io.github.mandarin3ds.mandarin.activities.EmulationActivity
+import io.github.mandarin3ds.mandarin.utils.EmulationMenuSettings
+import io.github.mandarin3ds.mandarin.utils.FileUtil
+import io.github.mandarin3ds.mandarin.utils.Log
 import java.lang.ref.WeakReference
 import java.util.Date
 
@@ -44,7 +44,7 @@ object NativeLibrary {
 
     init {
         try {
-            System.loadLibrary("citra-android")
+            System.loadLibrary("mandarin-android")
         } catch (ex: UnsatisfiedLinkError) {
             Log.error("[NativeLibrary] $ex")
         }

@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.adapters
+package io.github.mandarin3ds.mandarin.adapters
 
 import android.net.Uri
 import android.text.TextUtils
@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.CardDriverOptionBinding
-import org.citra.citra_emu.utils.GpuDriverMetadata
-import org.citra.citra_emu.viewmodel.DriverViewModel
-import org.citra.citra_emu.utils.GpuDriverHelper
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.CardDriverOptionBinding
+import io.github.mandarin3ds.mandarin.utils.GpuDriverMetadata
+import io.github.mandarin3ds.mandarin.viewmodel.DriverViewModel
+import io.github.mandarin3ds.mandarin.utils.GpuDriverHelper
 
 class DriverAdapter(private val driverViewModel: DriverViewModel) :
     ListAdapter<Pair<Uri, GpuDriverMetadata>, DriverAdapter.DriverViewHolder>(

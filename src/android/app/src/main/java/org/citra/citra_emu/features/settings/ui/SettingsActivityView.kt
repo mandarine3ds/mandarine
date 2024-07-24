@@ -2,9 +2,9 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.ui
+package io.github.mandarin3ds.mandarin.features.settings.ui
 
-import org.citra.citra_emu.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
 
 /**
  * Abstraction for the Activity that manages SettingsFragments.

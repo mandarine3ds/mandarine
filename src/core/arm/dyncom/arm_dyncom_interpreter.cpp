@@ -748,7 +748,7 @@ get_addr_fp_t GetAddressingOpLoadStoreT(unsigned int inst) {
     // of this instruction, however the 3DS CPU doesn't
     // support this variant (the 3DS CPU is only ARMv6K,
     // while this variant is added in ARMv6T2).
-    // So it's sufficient for citra to not implement this.
+    // So it's sufficient for mandarin to not implement this.
     return nullptr;
 }
 
@@ -1850,7 +1850,7 @@ BXJ_INST : {
     // According to the ARM documentation on BXJ, if setting the J bit in the APSR
     // fails, then BXJ functions identically like a regular BX instruction.
     //
-    // This is sufficient for citra, as the CPU for the 3DS does not implement Jazelle.
+    // This is sufficient for mandarin, as the CPU for the 3DS does not implement Jazelle.
 
     if (inst_base->cond == ConditionCode::AL || CondPassed(cpu, inst_base->cond)) {
         bx_inst* const inst_cream = (bx_inst*)inst_base->component;

@@ -2,15 +2,15 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.display
+package io.github.mandarin3ds.mandarin.display
 
 import android.view.WindowManager
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.features.settings.model.BooleanSetting
-import org.citra.citra_emu.features.settings.model.IntSetting
-import org.citra.citra_emu.features.settings.model.Settings
-import org.citra.citra_emu.features.settings.utils.SettingsFile
-import org.citra.citra_emu.utils.EmulationMenuSettings
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.features.settings.model.BooleanSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.IntSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.features.settings.utils.SettingsFile
+import io.github.mandarin3ds.mandarin.utils.EmulationMenuSettings
 
 class ScreenAdjustmentUtil(private val windowManager: WindowManager,
                            private val settings: Settings) {

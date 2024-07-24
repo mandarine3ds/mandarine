@@ -205,7 +205,7 @@ Drag points to change position, or double-click table cells to edit values.</str
   <customwidget>
    <class>TouchScreenPreview</class>
    <extends>QFrame</extends>
-   <header>citra_qt/configuration/configure_touch_widget.h</header>
+   <header>mandarin_qt/configuration/configure_touch_widget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

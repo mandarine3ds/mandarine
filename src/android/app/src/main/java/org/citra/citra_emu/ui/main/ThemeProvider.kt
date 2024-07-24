@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.ui.main
+package io.github.mandarin3ds.mandarin.ui.main
 
 interface ThemeProvider {
     /**

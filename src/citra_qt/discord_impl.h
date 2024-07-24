@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "citra_qt/discord.h"
+#include "mandarin_qt/discord.h"
 
 namespace Core {
 class System;

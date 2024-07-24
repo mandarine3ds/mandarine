@@ -11,8 +11,8 @@ namespace NetSettings {
 struct Values {
     // WebService
     std::string web_api_url;
-    std::string citra_username;
-    std::string citra_token;
+    std::string mandarin_username;
+    std::string mandarin_token;
 } extern values;
 
 } // namespace NetSettings

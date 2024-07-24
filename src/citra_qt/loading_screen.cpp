@@ -14,7 +14,7 @@
 #include <QStyleOption>
 #include <QTime>
 #include <fmt/format.h>
-#include "citra_qt/loading_screen.h"
+#include "mandarin_qt/loading_screen.h"
 #include "common/logging/log.h"
 #include "core/loader/loader.h"
 #include "core/loader/smdh.h"

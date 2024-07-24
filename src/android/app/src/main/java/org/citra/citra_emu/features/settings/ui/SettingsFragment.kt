@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.ui
+package io.github.mandarin3ds.mandarin.features.settings.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -15,9 +15,9 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
-import org.citra.citra_emu.databinding.FragmentSettingsBinding
-import org.citra.citra_emu.features.settings.model.AbstractSetting
-import org.citra.citra_emu.features.settings.model.view.SettingsItem
+import io.github.mandarin3ds.mandarin.databinding.FragmentSettingsBinding
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.view.SettingsItem
 
 class SettingsFragment : Fragment(), SettingsFragmentView {
     override var activityView: SettingsActivityView? = null

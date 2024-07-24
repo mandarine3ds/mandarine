@@ -12,7 +12,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <nihstro/float24.h>
-#include "citra_qt/debugger/graphics/graphics_tracing.h"
+#include "mandarin_qt/debugger/graphics/graphics_tracing.h"
 #include "common/common_types.h"
 #include "core/core.h"
 #include "core/tracer/recorder.h"
@@ -114,7 +114,7 @@ void GraphicsTracingWidget::StopRecording() {
         return;
 
     QString filename = QFileDialog::getSaveFileName(
-        this, tr("Save CiTrace"), QStringLiteral("citrace.ctf"), tr("CiTrace File (*.ctf)"));
+        this, tr("Save CiTrace"), QStringLiteral("mandarince.ctf"), tr("CiTrace File (*.ctf)"));
 
     if (filename.isEmpty()) {
         // If the user canceled the dialog, keep recording

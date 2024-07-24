@@ -7,7 +7,7 @@ if (POLICY CMP0071)
     cmake_policy(SET CMP0071 NEW)
 endif()
 
-add_executable(citra-qt
+add_executable(mandarin-qt
     aboutdialog.cpp
     aboutdialog.h
     aboutdialog.ui
@@ -27,7 +27,7 @@ add_executable(citra-qt
     camera/qt_camera_base.h
     camera/qt_multimedia_camera.cpp
     camera/qt_multimedia_camera.h
-    citra-qt.rc
+    mandarin-qt.rc
     compatdb.cpp
     compatdb.h
     compatdb.ui
@@ -196,12 +196,12 @@ file(GLOB_RECURSE ICONS ${PROJECT_SOURCE_DIR}/dist/icons/*)
 file(GLOB_RECURSE THEMES ${PROJECT_SOURCE_DIR}/dist/qt_themes/*)
 
 if (ENABLE_QT_UPDATER)
-    target_sources(citra-qt PRIVATE
+    target_sources(mandarin-qt PRIVATE
         updater/updater.cpp
         updater/updater.h
         updater/updater_p.h
     )
-    target_compile_definitions(citra-qt PUBLIC ENABLE_QT_UPDATER)
+    target_compile_definitions(mandarin-qt PUBLIC ENABLE_QT_UPDATER)
 endif()
 
 if (ENABLE_QT_TRANSLATION)
@@ -210,13 +210,13 @@ if (ENABLE_QT_TRANSLATION)
 
     # Update source TS file if enabled
     if (GENERATE_QT_TRANSLATION)
-        get_target_property(QT_SRCS citra-qt SOURCES)
-        get_target_property(QT_INCLUDES citra-qt INCLUDE_DIRECTORIES)
-        qt_add_lupdate(citra-qt TS_FILES ${MANDARIN_QT_LANGUAGES}/en.ts
+        get_target_property(QT_SRCS mandarin-qt SOURCES)
+        get_target_property(QT_INCLUDES mandarin-qt INCLUDE_DIRECTORIES)
+        qt_add_lupdate(mandarin-qt TS_FILES ${MANDARIN_QT_LANGUAGES}/en.ts
             SOURCES ${QT_SRCS} ${UIS}
             INCLUDE_DIRECTORIES ${QT_INCLUDES}
             NO_GLOBAL_TARGET)
-        add_custom_target(translation ALL DEPENDS citra-qt_lupdate)
+        add_custom_target(translation ALL DEPENDS mandarin-qt_lupdate)
     endif()
 
     # Find all TS files except en.ts
@@ -224,7 +224,7 @@ if (ENABLE_QT_TRANSLATION)
     list(REMOVE_ITEM LANGUAGES_TS ${MANDARIN_QT_LANGUAGES}/en.ts)
 
     # Compile TS files to QM files
-    qt_add_lrelease(citra-qt TS_FILES ${LANGUAGES_TS} NO_GLOBAL_TARGET QM_FILES_OUTPUT_VARIABLE LANGUAGES_QM)
+    qt_add_lrelease(mandarin-qt TS_FILES ${LANGUAGES_TS} NO_GLOBAL_TARGET QM_FILES_OUTPUT_VARIABLE LANGUAGES_QM)
 
     # Build a QRC file from the QM file list
     set(LANGUAGES_QRC ${CMAKE_CURRENT_BINARY_DIR}/languages.qrc)
@@ -241,7 +241,7 @@ else()
     set(LANGUAGES)
 endif()
 
-target_sources(citra-qt
+target_sources(mandarin-qt
     PRIVATE
         ${COMPAT_LIST}
         ${ICONS}
@@ -252,28 +252,28 @@ target_sources(citra-qt
 if (APPLE)
     set(DIST_DIR "../../dist/apple")
     set(APPLE_RESOURCES
-        "${DIST_DIR}/citra.icns"
+        "${DIST_DIR}/mandarin.icns"
         "${DIST_DIR}/LaunchScreen.storyboard"
         "${DIST_DIR}/launch_logo.png"
     )
-    target_sources(citra-qt PRIVATE ${APPLE_RESOURCES})
+    target_sources(mandarin-qt PRIVATE ${APPLE_RESOURCES})
 
     # Define app bundle metadata.
     include(GenerateBuildInfo)
-    set_target_properties(citra-qt PROPERTIES
+    set_target_properties(mandarin-qt PROPERTIES
         MACOSX_BUNDLE TRUE
         MACOSX_BUNDLE_INFO_PLIST "${DIST_DIR}/Info.plist.in"
         MACOSX_BUNDLE_BUNDLE_NAME "Citra"
-        MACOSX_BUNDLE_GUI_IDENTIFIER "com.citra-emu.citra"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "com.mandarin3ds.mandarin"
         MACOSX_BUNDLE_BUNDLE_VERSION "${BUILD_VERSION}"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${BUILD_FULLNAME}"
         MACOSX_BUNDLE_LONG_VERSION_STRING "${BUILD_FULLNAME}"
-        MACOSX_BUNDLE_ICON_FILE "citra.icns"
+        MACOSX_BUNDLE_ICON_FILE "mandarin.icns"
         RESOURCE "${APPLE_RESOURCES}"
     )
 
     if (IOS)
-        set_target_properties(citra-qt PROPERTIES
+        set_target_properties(mandarin-qt PROPERTIES
             # Have Xcode copy and sign MoltenVK into app bundle.
             XCODE_EMBED_FRAMEWORKS "${MOLTENVK_LIBRARY}"
             XCODE_EMBED_FRAMEWORKS_CODE_SIGN_ON_COPY YES
@@ -284,42 +284,42 @@ if (APPLE)
     endif()
 elseif(WIN32)
     # compile as a win32 gui application instead of a console application
-    target_link_libraries(citra-qt PRIVATE Qt6::EntryPointImplementation)
+    target_link_libraries(mandarin-qt PRIVATE Qt6::EntryPointImplementation)
     if(MSVC)
-        set_target_properties(citra-qt PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
+        set_target_properties(mandarin-qt PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
     elseif(MINGW)
-        set_target_properties(citra-qt PROPERTIES LINK_FLAGS_RELEASE "-mwindows")
+        set_target_properties(mandarin-qt PROPERTIES LINK_FLAGS_RELEASE "-mwindows")
     endif()
 endif()
 
 if(ENABLE_SDL2)
-    target_link_libraries(citra-qt PRIVATE SDL2::SDL2)
-    target_compile_definitions(citra-qt PRIVATE HAVE_SDL2)
+    target_link_libraries(mandarin-qt PRIVATE SDL2::SDL2)
+    target_compile_definitions(mandarin-qt PRIVATE HAVE_SDL2)
 endif()
 
-create_target_directory_groups(citra-qt)
+create_target_directory_groups(mandarin-qt)
 
-target_link_libraries(citra-qt PRIVATE audio_core citra_common citra_core input_common network video_core)
-target_link_libraries(citra-qt PRIVATE Boost::boost nihstro-headers Qt6::Widgets Qt6::Multimedia Qt6::Concurrent)
-target_link_libraries(citra-qt PRIVATE ${PLATFORM_LIBRARIES} Threads::Threads)
+target_link_libraries(mandarin-qt PRIVATE audio_core mandarin_common mandarin_core input_common network video_core)
+target_link_libraries(mandarin-qt PRIVATE Boost::boost nihstro-headers Qt6::Widgets Qt6::Multimedia Qt6::Concurrent)
+target_link_libraries(mandarin-qt PRIVATE ${PLATFORM_LIBRARIES} Threads::Threads)
 
 if (ENABLE_OPENGL)
-    target_link_libraries(citra-qt PRIVATE glad)
+    target_link_libraries(mandarin-qt PRIVATE glad)
 endif()
 
 if (ENABLE_VULKAN)
-    target_link_libraries(citra-qt PRIVATE vulkan-headers)
+    target_link_libraries(mandarin-qt PRIVATE vulkan-headers)
 endif()
 
 if (NOT WIN32)
-    target_include_directories(citra-qt PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
+    target_include_directories(mandarin-qt PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
 endif()
 
 if (UNIX AND NOT APPLE)
-    target_link_libraries(citra-qt PRIVATE Qt6::DBus gamemode)
+    target_link_libraries(mandarin-qt PRIVATE Qt6::DBus gamemode)
 endif()
 
-target_compile_definitions(citra-qt PRIVATE
+target_compile_definitions(mandarin-qt PRIVATE
     # Use QStringBuilder for string concatenation to reduce
     # the overall number of temporary strings created.
     -DQT_USE_QSTRINGBUILDER
@@ -339,32 +339,32 @@ target_compile_definitions(citra-qt PRIVATE
 )
 
 if (MANDARIN_ENABLE_COMPATIBILITY_REPORTING)
-    target_compile_definitions(citra-qt PRIVATE -DMANDARIN_ENABLE_COMPATIBILITY_REPORTING)
+    target_compile_definitions(mandarin-qt PRIVATE -DMANDARIN_ENABLE_COMPATIBILITY_REPORTING)
 endif()
 
 if (USE_DISCORD_PRESENCE)
-    target_sources(citra-qt PUBLIC
+    target_sources(mandarin-qt PUBLIC
         discord_impl.cpp
         discord_impl.h
     )
-    target_link_libraries(citra-qt PRIVATE discord-rpc)
-    target_compile_definitions(citra-qt PRIVATE -DUSE_DISCORD_PRESENCE)
+    target_link_libraries(mandarin-qt PRIVATE discord-rpc)
+    target_compile_definitions(mandarin-qt PRIVATE -DUSE_DISCORD_PRESENCE)
 endif()
 
 if (ENABLE_WEB_SERVICE)
-    target_link_libraries(citra-qt PRIVATE web_service)
+    target_link_libraries(mandarin-qt PRIVATE web_service)
 endif()
 
 if(UNIX AND NOT APPLE)
-    install(TARGETS citra-qt RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+    install(TARGETS mandarin-qt RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 
 if (MANDARIN_USE_PRECOMPILED_HEADERS)
-    target_precompile_headers(citra-qt PRIVATE precompiled_headers.h)
+    target_precompile_headers(mandarin-qt PRIVATE precompiled_headers.h)
 endif()
 
 # Bundle in-place on MSVC so dependencies can be resolved by builds.
 if (MSVC)
     include(BundleTarget)
-    bundle_target_in_place(citra-qt)
+    bundle_target_in_place(mandarin-qt)
 endif()

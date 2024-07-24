@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-#include "citra_qt/util/graphics_device_info.h"
+#include "mandarin_qt/util/graphics_device_info.h"
 
 #ifdef ENABLE_OPENGL
 #include <QOffscreenSurface>

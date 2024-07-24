@@ -42,7 +42,7 @@ if(ENABLE_LIBUSB)
 endif()
 
 create_target_directory_groups(input_common)
-target_link_libraries(input_common PUBLIC citra_core PRIVATE citra_common ${Boost_LIBRARIES})
+target_link_libraries(input_common PUBLIC mandarin_core PRIVATE mandarin_common ${Boost_LIBRARIES})
 
 if (MANDARIN_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(input_common PRIVATE precompiled_headers.h)

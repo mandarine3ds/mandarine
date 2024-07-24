@@ -9,7 +9,7 @@
 #include <QMessageBox>
 #include <QString>
 #include <QVBoxLayout>
-#include "citra_qt/applets/swkbd.h"
+#include "mandarin_qt/applets/swkbd.h"
 
 QtKeyboardValidator::QtKeyboardValidator(QtKeyboard* keyboard_) : keyboard(keyboard_) {}
 

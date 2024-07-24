@@ -12,8 +12,8 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
-#include "citra_qt/debugger/graphics/graphics_surface.h"
-#include "citra_qt/util/spinbox.h"
+#include "mandarin_qt/debugger/graphics/graphics_surface.h"
+#include "mandarin_qt/util/spinbox.h"
 #include "common/color.h"
 #include "core/core.h"
 #include "core/memory.h"

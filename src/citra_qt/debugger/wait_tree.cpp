@@ -3,8 +3,8 @@
 // Refer to the license.txt file included.
 
 #include <array>
-#include "citra_qt/debugger/wait_tree.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/debugger/wait_tree.h"
+#include "mandarin_qt/uisettings.h"
 #include "common/assert.h"
 #include "core/hle/kernel/event.h"
 #include "core/hle/kernel/mutex.h"

@@ -12,8 +12,8 @@
 #include <QString>
 #include <QTimer>
 #include <QTranslator>
-#include "citra_qt/compatibility_list.h"
-#include "citra_qt/hotkeys.h"
+#include "mandarin_qt/compatibility_list.h"
+#include "mandarin_qt/hotkeys.h"
 #include "core/core.h"
 #include "core/savestate.h"
 

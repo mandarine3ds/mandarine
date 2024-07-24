@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.overlay
+package io.github.mandarin3ds.mandarin.overlay
 
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -10,8 +10,8 @@ import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.view.MotionEvent
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.utils.EmulationMenuSettings
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.utils.EmulationMenuSettings
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin

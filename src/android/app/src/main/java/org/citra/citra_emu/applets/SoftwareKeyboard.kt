@@ -2,17 +2,17 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.applets
+package io.github.mandarin3ds.mandarin.applets
 
 import android.text.InputFilter
 import android.text.Spanned
 import androidx.annotation.Keep
-import org.citra.citra_emu.CitraApplication.Companion.appContext
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.R
-import org.citra.citra_emu.fragments.KeyboardDialogFragment
-import org.citra.citra_emu.fragments.MessageDialogFragment
-import org.citra.citra_emu.utils.Log
+import io.github.mandarin3ds.mandarin.CitraApplication.Companion.appContext
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.fragments.KeyboardDialogFragment
+import io.github.mandarin3ds.mandarin.fragments.MessageDialogFragment
+import io.github.mandarin3ds.mandarin.utils.Log
 import java.io.Serializable
 
 @Keep

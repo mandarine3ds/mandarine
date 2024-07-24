@@ -3,8 +3,8 @@
 // Refer to the license.txt file included.
 
 #include <QColorDialog>
-#include "citra_qt/configuration/configuration_shared.h"
-#include "citra_qt/configuration/configure_enhancements.h"
+#include "mandarin_qt/configuration/configuration_shared.h"
+#include "mandarin_qt/configuration/configure_enhancements.h"
 #include "common/settings.h"
 #include "ui_configure_enhancements.h"
 #ifdef ENABLE_OPENGL

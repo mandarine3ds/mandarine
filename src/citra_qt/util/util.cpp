@@ -5,7 +5,7 @@
 #include <array>
 #include <cmath>
 #include <QPainter>
-#include "citra_qt/util/util.h"
+#include "mandarin_qt/util/util.h"
 
 QFont GetMonospaceFont() {
     QFont font(QStringLiteral("monospace"));

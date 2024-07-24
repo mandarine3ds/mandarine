@@ -13,8 +13,8 @@
 #include <QSpinBox>
 #include <QTreeView>
 #include <QVBoxLayout>
-#include "citra_qt/debugger/graphics/graphics_cmdlists.h"
-#include "citra_qt/util/util.h"
+#include "mandarin_qt/debugger/graphics/graphics_cmdlists.h"
+#include "mandarin_qt/util/util.h"
 #include "common/vector_math.h"
 #include "core/core.h"
 #include "core/memory.h"

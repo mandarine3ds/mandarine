@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_disclaimer">Este software irá executar jogos feitos para o console portátil Nintendo 3DS. Nenhum título de jogo está incluído.\n\nAntes de começar a emular, selecione uma pasta para armazenar os dados do usuário do Citra.\n\nO que é isto:\n<a href='https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Dados e armazenamento do usuário do Citra Android</a></string>
+    <string name="app_disclaimer">Este software irá executar jogos feitos para o console portátil Nintendo 3DS. Nenhum título de jogo está incluído.\n\nAntes de começar a emular, selecione uma pasta para armazenar os dados do usuário do Citra.\n\nO que é isto:\n<a href='https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage'>Wiki - Dados e armazenamento do usuário do Citra Android</a></string>
     <string name="app_notification_channel_description">Notificações do emulador de 3DS Citra</string>
     <string name="app_notification_running">Citra em Funcionamento</string>
     <string name="app_game_install_description">Em seguida, você precisará selecionar uma pasta de jogo. O Citra exibirá todas as ROMs 3DS dentro da pasta selecionada no aplicativo.\n\nROMs, atualizações e DLC no formato CIA precisarão ser instalados separadamente clicando no ícone da pasta e selecionando Instalar CIA.</string>
@@ -26,10 +26,10 @@
     <string name="select_games_folder">Selecione a pasta de jogos</string>
     <string name="select_games_folder_description">Permitir que o Citra preencha a lista de jogos</string>
     <string name="about">Sobre</string>
-    <string name="citra_description">Um emulador de 3DS de código aberto</string>
+    <string name="mandarin_description">Um emulador de 3DS de código aberto</string>
     <string name="about_description">Versão de compilação, créditos e mais</string>
     <string name="games_dir_selected">Diretório de jogos selecionado</string>
-    <string name="select_citra_user_folder_home_description">Altere os arquivos que o Citra usa para carregar jogos</string>
+    <string name="select_mandarin_user_folder_home_description">Altere os arquivos que o Citra usa para carregar jogos</string>
     <string name="theme_and_color_description">Modificar a aparência do aplicativo</string>
     <string name="install_cia_title">Instale a CIA</string>
 
@@ -79,11 +79,11 @@
     <string name="warning_help">Ajuda</string>
     <string name="warning_skip">Pular</string>
     <string name="warning_cancel">Cancelar</string>
-    <string name="select_citra_user_folder">Selecione a pasta do usuário</string>
+    <string name="select_mandarin_user_folder">Selecione a pasta do usuário</string>
     <string name="select">Selecionar</string>
     <string name="cannot_skip">Você não pode pular esta etapa</string>
     <string name="cannot_skip_directory_description">Este passo é necessário para permitir que o Citra funcione. Por favor, selecione um diretório para continuar.</string>
-    <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
+    <string name="cannot_skip_directory_help">https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage</string>
 
     <!-- Search Strings -->
     <string name="search_and_filter_games">Pesquisar e Filtrar Jogos</string>

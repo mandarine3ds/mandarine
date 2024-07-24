@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.cheats.ui
+package io.github.mandarin3ds.mandarin.features.cheats.ui
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -25,12 +25,12 @@ import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.citra.citra_emu.databinding.FragmentCheatsBinding
-import org.citra.citra_emu.features.cheats.model.Cheat
-import org.citra.citra_emu.features.cheats.model.CheatsViewModel
-import org.citra.citra_emu.ui.TwoPaneOnBackPressedCallback
-import org.citra.citra_emu.ui.main.MainActivity
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.databinding.FragmentCheatsBinding
+import io.github.mandarin3ds.mandarin.features.cheats.model.Cheat
+import io.github.mandarin3ds.mandarin.features.cheats.model.CheatsViewModel
+import io.github.mandarin3ds.mandarin.ui.TwoPaneOnBackPressedCallback
+import io.github.mandarin3ds.mandarin.ui.main.MainActivity
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
     private var cheatListLastFocus: View? = null

@@ -6,9 +6,9 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QUrl>
-#include "citra_qt/configuration/configuration_shared.h"
-#include "citra_qt/configuration/configure_general.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/configuration/configuration_shared.h"
+#include "mandarin_qt/configuration/configure_general.h"
+#include "mandarin_qt/uisettings.h"
 #include "common/file_util.h"
 #include "common/settings.h"
 #include "ui_configure_general.h"

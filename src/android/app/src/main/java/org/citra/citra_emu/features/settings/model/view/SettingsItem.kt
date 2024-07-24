@@ -2,10 +2,10 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.model.view
+package io.github.mandarin3ds.mandarin.features.settings.model.view
 
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.features.settings.model.AbstractSetting
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractSetting
 
 /**
  * ViewModel abstraction for an Item in the RecyclerView powering SettingsFragments.

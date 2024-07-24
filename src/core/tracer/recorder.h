@@ -9,7 +9,7 @@
 #include <vector>
 #include <boost/crc.hpp>
 #include "common/common_types.h"
-#include "core/tracer/citrace.h"
+#include "core/tracer/mandarince.h"
 
 namespace CiTrace {
 

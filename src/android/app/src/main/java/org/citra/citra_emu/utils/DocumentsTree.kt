@@ -2,13 +2,13 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import android.net.Uri
 import android.provider.DocumentsContract
 import androidx.documentfile.provider.DocumentFile
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.model.CheapDocument
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.model.CheapDocument
 import java.net.URLDecoder
 import java.util.StringTokenizer
 import java.util.concurrent.ConcurrentHashMap
@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap
  * A cached document tree for Citra user directory.
  * For every filepath which is not startsWith "content://" will need to use this class to traverse.
  * For example:
- * C++ Citra log file directory will be /log/citra_log.txt.
+ * C++ Citra log file directory will be /log/mandarin_log.txt.
  * After DocumentsTree.resolvePath() it will become content URI.
  */
 class DocumentsTree {

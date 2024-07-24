@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.cheats.ui
+package io.github.mandarin3ds.mandarin.features.cheats.ui
 
 import android.os.Bundle
 import android.view.View
@@ -12,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.color.MaterialColors
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.ActivityCheatsBinding
-import org.citra.citra_emu.utils.InsetsHelper
-import org.citra.citra_emu.utils.ThemeUtil
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.ActivityCheatsBinding
+import io.github.mandarin3ds.mandarin.utils.InsetsHelper
+import io.github.mandarin3ds.mandarin.utils.ThemeUtil
 
 class CheatsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheatsBinding

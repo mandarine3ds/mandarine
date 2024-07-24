@@ -9,7 +9,7 @@
 #include <QDialog>
 #include <QList>
 #include <QString>
-#include "citra_qt/configuration/config.h"
+#include "mandarin_qt/configuration/config.h"
 
 namespace Core {
 class System;

@@ -2,11 +2,11 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.applets
+package io.github.mandarin3ds.mandarin.applets
 
 import androidx.annotation.Keep
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.fragments.MiiSelectorDialogFragment
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.fragments.MiiSelectorDialogFragment
 import java.io.Serializable
 
 @Keep

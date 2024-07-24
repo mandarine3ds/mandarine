@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -43,30 +43,30 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.EmulationNavigationDirections
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.R
-import org.citra.citra_emu.activities.EmulationActivity
-import org.citra.citra_emu.databinding.DialogCheckboxBinding
-import org.citra.citra_emu.databinding.DialogSliderBinding
-import org.citra.citra_emu.databinding.FragmentEmulationBinding
-import org.citra.citra_emu.display.ScreenAdjustmentUtil
-import org.citra.citra_emu.display.ScreenLayout
-import org.citra.citra_emu.features.settings.model.SettingsViewModel
-import org.citra.citra_emu.features.settings.ui.SettingsActivity
-import org.citra.citra_emu.features.settings.utils.SettingsFile
-import org.citra.citra_emu.model.Game
-import org.citra.citra_emu.utils.DirectoryInitialization
-import org.citra.citra_emu.utils.DirectoryInitialization.DirectoryInitializationState
-import org.citra.citra_emu.utils.EmulationMenuSettings
-import org.citra.citra_emu.utils.FileUtil
-import org.citra.citra_emu.utils.GameHelper
-import org.citra.citra_emu.utils.GameIconUtils
-import org.citra.citra_emu.utils.EmulationLifecycleUtil
-import org.citra.citra_emu.utils.Log
-import org.citra.citra_emu.utils.ViewUtils
-import org.citra.citra_emu.viewmodel.EmulationViewModel
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.EmulationNavigationDirections
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.activities.EmulationActivity
+import io.github.mandarin3ds.mandarin.databinding.DialogCheckboxBinding
+import io.github.mandarin3ds.mandarin.databinding.DialogSliderBinding
+import io.github.mandarin3ds.mandarin.databinding.FragmentEmulationBinding
+import io.github.mandarin3ds.mandarin.display.ScreenAdjustmentUtil
+import io.github.mandarin3ds.mandarin.display.ScreenLayout
+import io.github.mandarin3ds.mandarin.features.settings.model.SettingsViewModel
+import io.github.mandarin3ds.mandarin.features.settings.ui.SettingsActivity
+import io.github.mandarin3ds.mandarin.features.settings.utils.SettingsFile
+import io.github.mandarin3ds.mandarin.model.Game
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization.DirectoryInitializationState
+import io.github.mandarin3ds.mandarin.utils.EmulationMenuSettings
+import io.github.mandarin3ds.mandarin.utils.FileUtil
+import io.github.mandarin3ds.mandarin.utils.GameHelper
+import io.github.mandarin3ds.mandarin.utils.GameIconUtils
+import io.github.mandarin3ds.mandarin.utils.EmulationLifecycleUtil
+import io.github.mandarin3ds.mandarin.utils.Log
+import io.github.mandarin3ds.mandarin.utils.ViewUtils
+import io.github.mandarin3ds.mandarin.viewmodel.EmulationViewModel
 
 class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.FrameCallback {
     private val preferences: SharedPreferences

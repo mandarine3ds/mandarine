@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "citra_qt/multiplayer/chat_room.h"
+#include "mandarin_qt/multiplayer/chat_room.h"
 
 namespace Ui {
 class ClientRoom;

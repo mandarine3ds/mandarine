@@ -2,27 +2,27 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import org.citra.citra_emu.fragments.CitraDirectoryDialogFragment
-import org.citra.citra_emu.fragments.CopyDirProgressDialog
-import org.citra.citra_emu.model.SetupCallback
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.fragments.CitraDirectoryDialogFragment
+import io.github.mandarin3ds.mandarin.fragments.CopyDirProgressDialog
+import io.github.mandarin3ds.mandarin.model.SetupCallback
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 /**
  * Citra directory initialization ui flow controller.
  */
 class CitraDirectoryHelper(private val fragmentActivity: FragmentActivity) {
     fun showCitraDirectoryDialog(result: Uri, callback: SetupCallback? = null) {
-        val citraDirectoryDialog = CitraDirectoryDialogFragment.newInstance(
+        val mandarinDirectoryDialog = CitraDirectoryDialogFragment.newInstance(
             fragmentActivity,
             result.toString(),
             CitraDirectoryDialogFragment.Listener { moveData: Boolean, path: Uri ->
-                val previous = PermissionsHandler.citraDirectory
+                val previous = PermissionsHandler.mandarinDirectory
                 // Do noting if user select the previous path.
                 if (path == previous) {
                     return@Listener
@@ -47,7 +47,7 @@ class CitraDirectoryHelper(private val fragmentActivity: FragmentActivity) {
                 CopyDirProgressDialog.newInstance(fragmentActivity, previous, path, callback)
                     ?.show(fragmentActivity.supportFragmentManager, CopyDirProgressDialog.TAG)
             })
-        citraDirectoryDialog.show(
+        mandarinDirectoryDialog.show(
             fragmentActivity.supportFragmentManager,
             CitraDirectoryDialogFragment.TAG
         )

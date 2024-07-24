@@ -7,14 +7,14 @@
 #include <QIcon>
 #include <QMessageBox>
 #include <QStandardItemModel>
-#include "citra_qt/multiplayer/client_room.h"
-#include "citra_qt/multiplayer/direct_connect.h"
-#include "citra_qt/multiplayer/host_room.h"
-#include "citra_qt/multiplayer/lobby.h"
-#include "citra_qt/multiplayer/message.h"
-#include "citra_qt/multiplayer/state.h"
-#include "citra_qt/uisettings.h"
-#include "citra_qt/util/clickable_label.h"
+#include "mandarin_qt/multiplayer/client_room.h"
+#include "mandarin_qt/multiplayer/direct_connect.h"
+#include "mandarin_qt/multiplayer/host_room.h"
+#include "mandarin_qt/multiplayer/lobby.h"
+#include "mandarin_qt/multiplayer/message.h"
+#include "mandarin_qt/multiplayer/state.h"
+#include "mandarin_qt/uisettings.h"
+#include "mandarin_qt/util/clickable_label.h"
 #include "common/logging/log.h"
 
 MultiplayerState::MultiplayerState(Core::System& system_, QWidget* parent,

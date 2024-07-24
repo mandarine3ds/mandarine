@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu
+package io.github.mandarin3ds.mandarin
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -10,12 +10,12 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import org.citra.citra_emu.utils.DirectoryInitialization
-import org.citra.citra_emu.utils.DocumentsTree
-import org.citra.citra_emu.utils.GpuDriverHelper
-import org.citra.citra_emu.utils.PermissionsHandler
-import org.citra.citra_emu.utils.Log
-import org.citra.citra_emu.utils.MemoryUtil
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization
+import io.github.mandarin3ds.mandarin.utils.DocumentsTree
+import io.github.mandarin3ds.mandarin.utils.GpuDriverHelper
+import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
+import io.github.mandarin3ds.mandarin.utils.Log
+import io.github.mandarin3ds.mandarin.utils.MemoryUtil
 
 class CitraApplication : Application() {
     private fun createNotificationChannel() {

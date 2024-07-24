@@ -12,9 +12,9 @@
 #include <QMessageBox>
 #include <QSlider>
 #include <QTimer>
-#include "citra_qt/configuration/config.h"
-#include "citra_qt/configuration/configure_input.h"
-#include "citra_qt/configuration/configure_motion_touch.h"
+#include "mandarin_qt/configuration/config.h"
+#include "mandarin_qt/configuration/configure_input.h"
+#include "mandarin_qt/configuration/configure_motion_touch.h"
 #include "common/param_package.h"
 #include "core/core.h"
 #include "ui_configure_input.h"

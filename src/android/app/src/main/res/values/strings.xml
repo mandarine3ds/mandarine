@@ -3,7 +3,7 @@
 
     <!-- General application strings -->
     <string name="app_name" translatable="false">Citra</string>
-    <string name="app_disclaimer">This software will run games for the Nintendo 3DS handheld game console. No game titles are included.\n\nBefore you can begin with emulating, please select a folder to store Citra\'s user data in.\n\nWhat\'s this:\n<a href='https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android user data and storage</a></string>
+    <string name="app_disclaimer">This software will run games for the Nintendo 3DS handheld game console. No game titles are included.\n\nBefore you can begin with emulating, please select a folder to store Citra\'s user data in.\n\nWhat\'s this:\n<a href='https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android user data and storage</a></string>
     <string name="app_notification_channel_name" translatable="false">Citra</string>
     <string name="app_notification_channel_id" translatable="false">Citra</string>
     <string name="app_notification_channel_description">Citra 3DS emulator notifications</string>
@@ -30,10 +30,10 @@
     <string name="select_games_folder">Select Games Folder</string>
     <string name="select_games_folder_description">Allows Citra to populate the games list</string>
     <string name="about">About</string>
-    <string name="citra_description">An open-source 3DS emulator</string>
+    <string name="mandarin_description">An open-source 3DS emulator</string>
     <string name="about_description">Build version, credits, and more</string>
     <string name="games_dir_selected">Games directory selected</string>
-    <string name="select_citra_user_folder_home_description">Changes the files that Citra uses to load games</string>
+    <string name="select_mandarin_user_folder_home_description">Changes the files that Citra uses to load games</string>
     <string name="theme_and_color_description">Modify the look of the app</string>
     <string name="install_cia_title">Install CIA</string>
 
@@ -52,13 +52,13 @@
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="contributors">Contributors</string>
     <string name="contributors_description">Made with \u2764 from the Citra team</string>
-    <string name="contributors_link">https://github.com/citra-emu/citra/graphs/contributors</string>
+    <string name="contributors_link" translatable="false">https://github.com/CitraEnhanced/mandarin/graphs/contributors</string>
     <string name="licenses_description">Projects that make Citra for Android possible</string>
     <string name="build">Build</string>
     <string name="licenses">Licenses</string>
-    <string name="support_link">https://discord.gg/FAXfZV9</string>
-    <string name="website_link">https://citra-emu.org/</string>
-    <string name="github_link">https://github.com/citra-emu</string>
+    <string name="support_link" translatable="false">https://discord.gg/8xjMHWEuf6</string>
+    <string name="website_link" translatable="false">https://github.com/CitraEnhanced</string>
+    <string name="github_link" translatable="false">https://github.com/CitraEnhanced/mandarin</string>
 
     <!-- Setup strings -->
     <string name="welcome">Welcome!</string>
@@ -87,12 +87,12 @@
     <string name="warning_help">Help</string>
     <string name="warning_skip">Skip</string>
     <string name="warning_cancel">Cancel</string>
-    <string name="select_citra_user_folder">Select User Folder</string>
-    <string name="select_citra_user_folder_description"><![CDATA[Select your <a href="https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
+    <string name="select_mandarin_user_folder">Select User Folder</string>
+    <string name="select_mandarin_user_folder_description"><![CDATA[Select your <a href="https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
     <string name="select">Select</string>
     <string name="cannot_skip">You can\'t skip this step</string>
     <string name="cannot_skip_directory_description">This step is required to allow Citra to work. Please select a directory and then you can continue.</string>
-    <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
+    <string name="cannot_skip_directory_help">https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage</string>
 
     <!-- Search Strings -->
     <string name="search_and_filter_games">Search and Filter Games</string>
@@ -430,7 +430,7 @@
         <item quantity="other">Installing %d files. See notification for more details.</item>
     </plurals>
     <string name="cia_install_notification_channel_name" translatable="false">Citra CIA Install</string>
-    <string name="cia_install_notification_channel_id" translatable="false">citra-cia</string>
+    <string name="cia_install_notification_channel_id" translatable="false">mandarin-cia</string>
     <string name="cia_install_notification_channel_description">Citra notifications during CIA Install</string>
     <string name="cia_install_notification_title">Installing CIA</string>
     <string name="cia_install_notification_installing">Installing %s (%d/%d)</string>
@@ -704,6 +704,6 @@
     <string name="use_artic_base_controller">Use Artic Controller when connected to Artic Base Server</string>
     <string name="use_artic_base_controller_desc">Use the controls provided by Artic Base Server when connected to it instead of the configured input device.</string>
     <string name="instant_debug_log">Flush log output on every message</string>
-    <string name="instant_debug_log_desc">Immediately commits the debug log to file. Use this if citra crashes and the log output is being cut.</string>
+    <string name="instant_debug_log_desc">Immediately commits the debug log to file. Use this if mandarin crashes and the log output is being cut.</string>
 
 </resources>

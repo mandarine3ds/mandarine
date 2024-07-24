@@ -2,13 +2,13 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.model
+package io.github.mandarin3ds.mandarin.features.settings.model
 
 import android.text.TextUtils
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.R
-import org.citra.citra_emu.features.settings.ui.SettingsActivityView
-import org.citra.citra_emu.features.settings.utils.SettingsFile
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.features.settings.ui.SettingsActivityView
+import io.github.mandarin3ds.mandarin.features.settings.utils.SettingsFile
 import java.util.TreeMap
 
 class Settings {

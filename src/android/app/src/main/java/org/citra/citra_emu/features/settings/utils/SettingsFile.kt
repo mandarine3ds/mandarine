@@ -2,25 +2,25 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.utils
+package io.github.mandarin3ds.mandarin.features.settings.utils
 
 import android.content.Context
 import android.net.Uri
 import androidx.documentfile.provider.DocumentFile
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.R
-import org.citra.citra_emu.features.settings.model.AbstractSetting
-import org.citra.citra_emu.features.settings.model.BooleanSetting
-import org.citra.citra_emu.features.settings.model.FloatSetting
-import org.citra.citra_emu.features.settings.model.IntSetting
-import org.citra.citra_emu.features.settings.model.ScaledFloatSetting
-import org.citra.citra_emu.features.settings.model.SettingSection
-import org.citra.citra_emu.features.settings.model.Settings.SettingsSectionMap
-import org.citra.citra_emu.features.settings.model.StringSetting
-import org.citra.citra_emu.features.settings.ui.SettingsActivityView
-import org.citra.citra_emu.utils.BiMap
-import org.citra.citra_emu.utils.DirectoryInitialization.userDirectory
-import org.citra.citra_emu.utils.Log
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.features.settings.model.AbstractSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.BooleanSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.FloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.IntSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.ScaledFloatSetting
+import io.github.mandarin3ds.mandarin.features.settings.model.SettingSection
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings.SettingsSectionMap
+import io.github.mandarin3ds.mandarin.features.settings.model.StringSetting
+import io.github.mandarin3ds.mandarin.features.settings.ui.SettingsActivityView
+import io.github.mandarin3ds.mandarin.utils.BiMap
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization.userDirectory
+import io.github.mandarin3ds.mandarin.utils.Log
 import org.ini4j.Wini
 import java.io.BufferedReader
 import java.io.FileNotFoundException

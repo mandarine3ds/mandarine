@@ -2,15 +2,15 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.utils
+package io.github.mandarin3ds.mandarin.utils
 
 import android.content.Context
 import android.net.Uri
 import androidx.preference.PreferenceManager
-import org.citra.citra_emu.BuildConfig
-import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.utils.PermissionsHandler.hasWriteAccess
+import io.github.mandarin3ds.mandarin.BuildConfig
+import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.utils.PermissionsHandler.hasWriteAccess
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -91,7 +91,7 @@ object DirectoryInitialization {
         }
 
     fun setCitraUserDirectory(): Boolean {
-        val dataPath = PermissionsHandler.citraDirectory
+        val dataPath = PermissionsHandler.mandarinDirectory
         if (dataPath.toString().isNotEmpty()) {
             userPath = dataPath.toString()
             android.util.Log.d("[Citra Frontend]", "[DirectoryInitialization] User Dir: $userPath")

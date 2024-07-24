@@ -2,15 +2,15 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.features.settings.ui
+package io.github.mandarin3ds.mandarin.features.settings.ui
 
 import android.os.Bundle
 import android.text.TextUtils
-import org.citra.citra_emu.NativeLibrary
-import org.citra.citra_emu.features.settings.model.Settings
-import org.citra.citra_emu.utils.SystemSaveGame
-import org.citra.citra_emu.utils.DirectoryInitialization
-import org.citra.citra_emu.utils.Log
+import io.github.mandarin3ds.mandarin.NativeLibrary
+import io.github.mandarin3ds.mandarin.features.settings.model.Settings
+import io.github.mandarin3ds.mandarin.utils.SystemSaveGame
+import io.github.mandarin3ds.mandarin.utils.DirectoryInitialization
+import io.github.mandarin3ds.mandarin.utils.Log
 
 class SettingsActivityPresenter(private val activityView: SettingsActivityView) {
     val settings: Settings get() = activityView.settings

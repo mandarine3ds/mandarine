@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.fragments
+package io.github.mandarin3ds.mandarin.fragments
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -14,11 +14,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.citra.citra_emu.R
-import org.citra.citra_emu.databinding.DialogCitraDirectoryBinding
-import org.citra.citra_emu.ui.main.MainActivity
-import org.citra.citra_emu.utils.PermissionsHandler
-import org.citra.citra_emu.viewmodel.HomeViewModel
+import io.github.mandarin3ds.mandarin.R
+import io.github.mandarin3ds.mandarin.databinding.DialogCitraDirectoryBinding
+import io.github.mandarin3ds.mandarin.ui.main.MainActivity
+import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
+import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
 class CitraDirectoryDialogFragment : DialogFragment() {
     private lateinit var binding: DialogCitraDirectoryBinding
@@ -35,7 +35,7 @@ class CitraDirectoryDialogFragment : DialogFragment() {
         val path = Uri.parse(requireArguments().getString(PATH))
 
         binding.checkBox.isChecked = savedInstanceState?.getBoolean(MOVE_DATE_ENABLE) ?: false
-        val oldPath = PermissionsHandler.citraDirectory
+        val oldPath = PermissionsHandler.mandarinDirectory
         if (!PermissionsHandler.hasWriteAccess(requireActivity()) ||
             oldPath.toString() == path.toString()
         ) {
@@ -47,7 +47,7 @@ class CitraDirectoryDialogFragment : DialogFragment() {
         isCancelable = false
         return MaterialAlertDialogBuilder(requireContext())
             .setView(binding.root)
-            .setTitle(R.string.select_citra_user_folder)
+            .setTitle(R.string.select_mandarin_user_folder)
             .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
                 homeViewModel.directoryListener?.onPressPositiveButton(
                     if (binding.checkBox.visibility != View.GONE) {
@@ -72,7 +72,7 @@ class CitraDirectoryDialogFragment : DialogFragment() {
     }
 
     companion object {
-        const val TAG = "citra_directory_dialog_fragment"
+        const val TAG = "mandarin_directory_dialog_fragment"
         private const val MOVE_DATE_ENABLE = "IS_MODE_DATA_ENABLE"
         private const val PATH = "path"
 

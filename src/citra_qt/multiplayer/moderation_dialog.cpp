@@ -4,7 +4,7 @@
 
 #include <QStandardItem>
 #include <QStandardItemModel>
-#include "citra_qt/multiplayer/moderation_dialog.h"
+#include "mandarin_qt/multiplayer/moderation_dialog.h"
 #include "network/network.h"
 #include "network/room_member.h"
 #include "ui_moderation_dialog.h"

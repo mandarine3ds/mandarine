@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_disclaimer">Данное программное обеспечение предназначено для запуска игр от портативной консоли Nintendo 3DS. Приложение не содержит предустановленных игр.\n\nПожалуйста, перед запуском эмуляции укажите папку хранения пользовательских данных Citra.\n\nПодробнее:\n<a href='https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android user data and storage</a></string>
+    <string name="app_disclaimer">Данное программное обеспечение предназначено для запуска игр от портативной консоли Nintendo 3DS. Приложение не содержит предустановленных игр.\n\nПожалуйста, перед запуском эмуляции укажите папку хранения пользовательских данных Citra.\n\nПодробнее:\n<a href='https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android user data and storage</a></string>
     <string name="app_notification_channel_description">Уведомления эмулятора 3DS Citra</string>
     <string name="app_notification_running">Citra выполняется</string>
     <string name="app_game_install_description">Далее укажите папку с играм. Образы игр 3DS из выбранной папки отобразятся в приложении.\n\nДля установки образов CIA, обновлений и DLC нажмите на значок папки и выберите \'Установить CIA\'.</string>
@@ -26,10 +26,10 @@
     <string name="select_games_folder">Выбор папки с играми</string>
     <string name="select_games_folder_description">Позволяет Citra формировать список игр</string>
     <string name="about">О приложении</string>
-    <string name="citra_description">Эмулятор 3DS с открытым исходным кодом</string>
+    <string name="mandarin_description">Эмулятор 3DS с открытым исходным кодом</string>
     <string name="about_description">Версия сборки, разработчики и другое</string>
     <string name="games_dir_selected">Папка с играми выбрана</string>
-    <string name="select_citra_user_folder_home_description">Изменение файлов, используемых Citra для запуска игр</string>
+    <string name="select_mandarin_user_folder_home_description">Изменение файлов, используемых Citra для запуска игр</string>
     <string name="theme_and_color_description">Настройка внешнего вида приложения</string>
     <string name="install_cia_title">Установить CIA</string>
 
@@ -83,12 +83,12 @@
     <string name="warning_help">Помощь</string>
     <string name="warning_skip">Пропустить</string>
     <string name="warning_cancel">Отмена</string>
-    <string name="select_citra_user_folder">Выбор папки пользователя</string>
-    <string name="select_citra_user_folder_description"><![CDATA[С помощью кнопки внизу выберите <a href=\"https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage\">папку пользователя</a>.]]></string>
+    <string name="select_mandarin_user_folder">Выбор папки пользователя</string>
+    <string name="select_mandarin_user_folder_description"><![CDATA[С помощью кнопки внизу выберите <a href=\"https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage\">папку пользователя</a>.]]></string>
     <string name="select">Выбрать</string>
     <string name="cannot_skip">Вы не можете пропустить данное действие</string>
     <string name="cannot_skip_directory_description">Данный шаг требуется для работы Citra. Пожалуйста, укажите папку, чтобы продолжить.</string>
-    <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
+    <string name="cannot_skip_directory_help">https://github.com/mandarin3ds/mandarin/wiki/Citra-Android-user-data-and-storage</string>
 
     <!-- Search Strings -->
     <string name="search_and_filter_games">Поиск и сортировка игр</string>

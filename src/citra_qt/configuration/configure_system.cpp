@@ -8,8 +8,8 @@
 #include <QMessageBox>
 #include <QProgressDialog>
 #include <QtConcurrent/QtConcurrentMap>
-#include "citra_qt/configuration/configuration_shared.h"
-#include "citra_qt/configuration/configure_system.h"
+#include "mandarin_qt/configuration/configuration_shared.h"
+#include "mandarin_qt/configuration/configure_system.h"
 #include "common/file_util.h"
 #include "common/settings.h"
 #include "core/core.h"

@@ -4,8 +4,8 @@
 
 #include <QFileDialog>
 #include <QPushButton>
-#include "citra_qt/movie/movie_record_dialog.h"
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/movie/movie_record_dialog.h"
+#include "mandarin_qt/uisettings.h"
 #include "core/core.h"
 #include "core/movie.h"
 #include "ui_movie_record_dialog.h"

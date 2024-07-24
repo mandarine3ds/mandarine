@@ -6,7 +6,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QScrollArea>
-#include "citra_qt/debugger/lle_service_modules.h"
+#include "mandarin_qt/debugger/lle_service_modules.h"
 #include "common/settings.h"
 
 LLEServiceModulesWidget::LLEServiceModulesWidget(QWidget* parent)

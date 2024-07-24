@@ -8,7 +8,7 @@
 #include <memory>
 #include <string>
 #include <QVariant>
-#include "citra_qt/uisettings.h"
+#include "mandarin_qt/uisettings.h"
 #include "common/settings.h"
 
 class QSettings;

@@ -9,7 +9,7 @@
 #include <QMediaDevices>
 #include <QMessageBox>
 #include <QWidget>
-#include "citra_qt/configuration/configure_camera.h"
+#include "mandarin_qt/configuration/configure_camera.h"
 #include "common/settings.h"
 #include "core/frontend/camera/factory.h"
 #include "core/hle/service/cam/cam.h"

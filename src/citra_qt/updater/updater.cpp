@@ -11,9 +11,9 @@
 #include <QFileInfo>
 #include <QTimer>
 #include <QXmlStreamReader>
-#include "citra_qt/uisettings.h"
-#include "citra_qt/updater/updater.h"
-#include "citra_qt/updater/updater_p.h"
+#include "mandarin_qt/uisettings.h"
+#include "mandarin_qt/updater/updater.h"
+#include "mandarin_qt/updater/updater_p.h"
 #include "common/file_util.h"
 #include "common/logging/log.h"
 

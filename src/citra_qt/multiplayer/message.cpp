@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <QString>
 
-#include "citra_qt/multiplayer/message.h"
+#include "mandarin_qt/multiplayer/message.h"
 
 namespace NetworkMessage {
 const ConnectionError ErrorManager::USERNAME_NOT_VALID(

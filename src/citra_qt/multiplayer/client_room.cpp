@@ -10,11 +10,11 @@
 #include <QMetaType>
 #include <QTime>
 #include <QtConcurrent/QtConcurrentRun>
-#include "citra_qt/game_list_p.h"
-#include "citra_qt/multiplayer/client_room.h"
-#include "citra_qt/multiplayer/message.h"
-#include "citra_qt/multiplayer/moderation_dialog.h"
-#include "citra_qt/multiplayer/state.h"
+#include "mandarin_qt/game_list_p.h"
+#include "mandarin_qt/multiplayer/client_room.h"
+#include "mandarin_qt/multiplayer/message.h"
+#include "mandarin_qt/multiplayer/moderation_dialog.h"
+#include "mandarin_qt/multiplayer/state.h"
 #include "common/logging/log.h"
 #include "network/announce_multiplayer_session.h"
 #include "ui_client_room.h"

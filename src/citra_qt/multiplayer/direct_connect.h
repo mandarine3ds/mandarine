@@ -7,7 +7,7 @@
 #include <memory>
 #include <QDialog>
 #include <QFutureWatcher>
-#include "citra_qt/multiplayer/validation.h"
+#include "mandarin_qt/multiplayer/validation.h"
 
 namespace Ui {
 class DirectConnect;
