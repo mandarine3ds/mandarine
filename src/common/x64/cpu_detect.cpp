@@ -3,7 +3,7 @@
 // Refer to the license.txt file included.
 
 #include "common/arch.h"
-#if CITRA_ARCH(x86_64)
+#if MANDARIN_ARCH(x86_64)
 
 #include <cstring>
 #include "common/common_types.h"
@@ -148,4 +148,4 @@ const CPUCaps& GetCPUCaps() {
 
 } // namespace Common
 
-#endif // CITRA_ARCH(x86_64)
+#endif // MANDARIN_ARCH(x86_64)

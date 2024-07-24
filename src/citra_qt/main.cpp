@@ -75,7 +75,7 @@
 #include "common/memory_detect.h"
 #include "common/scm_rev.h"
 #include "common/scope_exit.h"
-#if CITRA_ARCH(x86_64)
+#if MANDARIN_ARCH(x86_64)
 #include "common/x64/cpu_detect.h"
 #endif
 #include "common/settings.h"
@@ -213,7 +213,7 @@ GMainWindow::GMainWindow(Core::System& system_)
 
     LOG_INFO(Frontend, "Citra Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
              Common::g_scm_desc);
-#if CITRA_ARCH(x86_64)
+#if MANDARIN_ARCH(x86_64)
     const auto& caps = Common::GetCPUCaps();
     std::string cpu_string = caps.cpu_string;
     if (caps.avx || caps.avx2 || caps.avx512) {
@@ -328,7 +328,7 @@ GMainWindow::~GMainWindow() {
 }
 
 void GMainWindow::InitializeWidgets() {
-#ifdef CITRA_ENABLE_COMPATIBILITY_REPORTING
+#ifdef MANDARIN_ENABLE_COMPATIBILITY_REPORTING
     ui->action_Report_Compatibility->setVisible(true);
 #endif
     render_window = new GRenderWindow(this, emu_thread.get(), system, false);

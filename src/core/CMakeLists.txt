@@ -520,6 +520,6 @@ if ("x86_64" IN_LIST ARCHITECTURE OR "arm64" IN_LIST ARCHITECTURE)
     target_link_libraries(citra_core PRIVATE dynarmic)
 endif()
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (MANDARIN_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(citra_core PRIVATE precompiled_headers.h)
 endif()

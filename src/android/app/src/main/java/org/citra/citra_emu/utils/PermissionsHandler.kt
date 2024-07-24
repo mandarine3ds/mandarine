@@ -13,7 +13,7 @@ import androidx.documentfile.provider.DocumentFile
 import org.citra.citra_emu.CitraApplication
 
 object PermissionsHandler {
-    const val CITRA_DIRECTORY = "CITRA_DIRECTORY"
+    const val MANDARIN_DIRECTORY = "MANDARIN_DIRECTORY"
     val preferences: SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
 
@@ -41,10 +41,10 @@ object PermissionsHandler {
 
     val citraDirectory: Uri
         get() {
-            val directoryString = preferences.getString(CITRA_DIRECTORY, "")
+            val directoryString = preferences.getString(MANDARIN_DIRECTORY, "")
             return Uri.parse(directoryString)
         }
 
     fun setCitraDirectory(uriString: String?) =
-        preferences.edit().putString(CITRA_DIRECTORY, uriString).apply()
+        preferences.edit().putString(MANDARIN_DIRECTORY, uriString).apply()
 }

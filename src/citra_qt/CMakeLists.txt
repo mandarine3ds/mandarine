@@ -205,14 +205,14 @@ if (ENABLE_QT_UPDATER)
 endif()
 
 if (ENABLE_QT_TRANSLATION)
-    set(CITRA_QT_LANGUAGES "${PROJECT_SOURCE_DIR}/dist/languages" CACHE PATH "Path to the translation bundle for the Qt frontend")
+    set(MANDARIN_QT_LANGUAGES "${PROJECT_SOURCE_DIR}/dist/languages" CACHE PATH "Path to the translation bundle for the Qt frontend")
     option(GENERATE_QT_TRANSLATION "Generate en.ts as the translation source file" OFF)
 
     # Update source TS file if enabled
     if (GENERATE_QT_TRANSLATION)
         get_target_property(QT_SRCS citra-qt SOURCES)
         get_target_property(QT_INCLUDES citra-qt INCLUDE_DIRECTORIES)
-        qt_add_lupdate(citra-qt TS_FILES ${CITRA_QT_LANGUAGES}/en.ts
+        qt_add_lupdate(citra-qt TS_FILES ${MANDARIN_QT_LANGUAGES}/en.ts
             SOURCES ${QT_SRCS} ${UIS}
             INCLUDE_DIRECTORIES ${QT_INCLUDES}
             NO_GLOBAL_TARGET)
@@ -220,8 +220,8 @@ if (ENABLE_QT_TRANSLATION)
     endif()
 
     # Find all TS files except en.ts
-    file(GLOB_RECURSE LANGUAGES_TS ${CITRA_QT_LANGUAGES}/*.ts)
-    list(REMOVE_ITEM LANGUAGES_TS ${CITRA_QT_LANGUAGES}/en.ts)
+    file(GLOB_RECURSE LANGUAGES_TS ${MANDARIN_QT_LANGUAGES}/*.ts)
+    list(REMOVE_ITEM LANGUAGES_TS ${MANDARIN_QT_LANGUAGES}/en.ts)
 
     # Compile TS files to QM files
     qt_add_lrelease(citra-qt TS_FILES ${LANGUAGES_TS} NO_GLOBAL_TARGET QM_FILES_OUTPUT_VARIABLE LANGUAGES_QM)
@@ -338,8 +338,8 @@ target_compile_definitions(citra-qt PRIVATE
     -DQT_NO_CAST_TO_ASCII
 )
 
-if (CITRA_ENABLE_COMPATIBILITY_REPORTING)
-    target_compile_definitions(citra-qt PRIVATE -DCITRA_ENABLE_COMPATIBILITY_REPORTING)
+if (MANDARIN_ENABLE_COMPATIBILITY_REPORTING)
+    target_compile_definitions(citra-qt PRIVATE -DMANDARIN_ENABLE_COMPATIBILITY_REPORTING)
 endif()
 
 if (USE_DISCORD_PRESENCE)
@@ -359,7 +359,7 @@ if(UNIX AND NOT APPLE)
     install(TARGETS citra-qt RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (MANDARIN_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(citra-qt PRIVATE precompiled_headers.h)
 endif()
 

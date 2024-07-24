@@ -48,7 +48,7 @@ if(UNIX AND NOT APPLE)
     install(TARGETS citra RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (MANDARIN_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(citra PRIVATE precompiled_headers.h)
 endif()
 

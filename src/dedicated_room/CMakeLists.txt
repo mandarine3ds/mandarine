@@ -23,7 +23,7 @@ if(UNIX AND NOT APPLE)
     install(TARGETS citra-room RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (MANDARIN_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(citra-room PRIVATE precompiled_headers.h)
 endif()
 

@@ -80,7 +80,7 @@ enum class KernelState {
     /**
      * Sets the emulation speed percentage. A value of 0 means unthrottled.
      */
-    KERNEL_STATE_CITRA_EMULATION_SPEED = 0x20000 ///
+    KERNEL_STATE_MANDARIN_EMULATION_SPEED = 0x20000 ///
 };
 
 struct PageInfo {
@@ -128,7 +128,7 @@ enum class SystemInfoType {
      * Gets citra related information. This parameter is not available on real systems,
      * but can be used by homebrew applications to get some emulator info.
      */
-    CITRA_INFORMATION = 0x20000,
+    MANDARIN_INFORMATION = 0x20000,
 };
 
 enum class ProcessInfoType {
@@ -271,11 +271,11 @@ enum class SystemInfoMemUsageRegion {
 };
 
 /**
- * Accepted by svcGetSystemInfo param with CITRA_INFORMATION type. Selects which information
+ * Accepted by svcGetSystemInfo param with MANDARIN_INFORMATION type. Selects which information
  * to fetch from Citra. Some string params don't fit in 7 bytes, so they are split.
  */
 enum class SystemInfoCitraInformation {
-    IS_CITRA = 0,          // Always set the output to 1, signaling the app is running on Citra.
+    IS_MANDARIN = 0,          // Always set the output to 1, signaling the app is running on Citra.
     HOST_TICK = 1,         // Tick reference from the host in ns, unaffected by lag or cpu speed.
     EMULATION_SPEED = 2,   // Gets the emulation speed set by the user or by KernelSetState.
     BUILD_NAME = 10,       // (ie: Nightly, Canary).
@@ -484,9 +484,9 @@ Result SVC::ControlMemory(u32* out_addr, u32 addr0, u32 addr1, u32 size, u32 ope
               "size=0x{:X}, permissions=0x{:08X}",
               operation, addr0, addr1, size, permissions);
 
-    R_UNLESS((addr0 & Memory::CITRA_PAGE_MASK) == 0, ResultMisalignedAddress);
-    R_UNLESS((addr1 & Memory::CITRA_PAGE_MASK) == 0, ResultMisalignedAddress);
-    R_UNLESS((size & Memory::CITRA_PAGE_MASK) == 0, ResultMisalignedSize);
+    R_UNLESS((addr0 & Memory::MANDARIN_PAGE_MASK) == 0, ResultMisalignedAddress);
+    R_UNLESS((addr1 & Memory::MANDARIN_PAGE_MASK) == 0, ResultMisalignedAddress);
+    R_UNLESS((size & Memory::MANDARIN_PAGE_MASK) == 0, ResultMisalignedSize);
 
     const u32 region = operation & MEMOP_REGION_MASK;
     operation &= ~MEMOP_REGION_MASK;
@@ -1430,7 +1430,7 @@ Result SVC::KernelSetState(u32 kernel_state, u32 varg1, u32 varg2) {
         break;
 
     // Citra specific states.
-    case KernelState::KERNEL_STATE_CITRA_EMULATION_SPEED: {
+    case KernelState::KERNEL_STATE_MANDARIN_EMULATION_SPEED: {
         u16 new_value = static_cast<u16>(varg1);
         Settings::values.frame_limit.SetValue(new_value);
     } break;
@@ -1646,7 +1646,7 @@ Result SVC::GetHandleInfo(s64* out, Handle handle, u32 type) {
 /// Creates a memory block at the specified address with the specified permissions and size
 Result SVC::CreateMemoryBlock(Handle* out_handle, u32 addr, u32 size, u32 my_permission,
                               u32 other_permission) {
-    R_UNLESS(size % Memory::CITRA_PAGE_SIZE == 0, ResultMisalignedSize);
+    R_UNLESS(size % Memory::MANDARIN_PAGE_SIZE == 0, ResultMisalignedSize);
 
     std::shared_ptr<SharedMemory> shared_memory = nullptr;
 
@@ -1799,9 +1799,9 @@ Result SVC::GetSystemInfo(s64* out, u32 type, s32 param) {
         LOG_ERROR(Kernel_SVC, "unimplemented GetSystemInfo type=65537 param={}", param);
         *out = 0;
         return (system.GetNumCores() == 4) ? ResultSuccess : ResultInvalidEnumValue;
-    case SystemInfoType::CITRA_INFORMATION:
+    case SystemInfoType::MANDARIN_INFORMATION:
         switch ((SystemInfoCitraInformation)param) {
-        case SystemInfoCitraInformation::IS_CITRA:
+        case SystemInfoCitraInformation::IS_MANDARIN:
             *out = 1;
             break;
         case SystemInfoCitraInformation::HOST_TICK:
@@ -1893,7 +1893,7 @@ Result SVC::GetProcessInfo(s64* out, Handle process_handle, u32 type) {
         // TODO(yuriks): Type 0 returns a slightly higher number than type 2, but I'm not sure
         // what's the difference between them.
         *out = process->memory_used;
-        if (*out % Memory::CITRA_PAGE_SIZE != 0) {
+        if (*out % Memory::MANDARIN_PAGE_SIZE != 0) {
             LOG_ERROR(Kernel_SVC, "called, memory size not page-aligned");
             return ResultMisalignedSize;
         }
@@ -2021,7 +2021,7 @@ Result SVC::MapProcessMemoryEx(Handle dst_process_handle, u32 dst_address,
     R_UNLESS(dst_process && src_process, ResultInvalidHandle);
 
     if (size & 0xFFF) {
-        size = (size & ~0xFFF) + Memory::CITRA_PAGE_SIZE;
+        size = (size & ~0xFFF) + Memory::MANDARIN_PAGE_SIZE;
     }
 
     // Only linear memory supported
@@ -2054,7 +2054,7 @@ Result SVC::UnmapProcessMemoryEx(Handle process, u32 dst_address, u32 size) {
     R_UNLESS(dst_process, ResultInvalidHandle);
 
     if (size & 0xFFF) {
-        size = (size & ~0xFFF) + Memory::CITRA_PAGE_SIZE;
+        size = (size & ~0xFFF) + Memory::MANDARIN_PAGE_SIZE;
     }
 
     // Only linear memory supported

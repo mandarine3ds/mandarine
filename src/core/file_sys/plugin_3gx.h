@@ -79,7 +79,7 @@ private:
                               bool no_flash);
 
     struct _3gx_Infos {
-        enum class Compatibility { CONSOLE = 0, CITRA = 1, CONSOLE_CITRA = 2 };
+        enum class Compatibility { CONSOLE = 0, MANDARIN = 1, CONSOLE_MANDARIN = 2 };
         u32_le author_len;
         u32_le author_msg_offset;
         u32_le title_len;

@@ -16,9 +16,9 @@
 #include <core/hle/service/cfg/cfg.h>
 #include "audio_core/dsp_interface.h"
 #include "common/arch.h"
-#if CITRA_ARCH(arm64)
+#if MANDARIN_ARCH(arm64)
 #include "common/aarch64/cpu_detect.h"
-#elif CITRA_ARCH(x86_64)
+#elif MANDARIN_ARCH(x86_64)
 #include "common/x64/cpu_detect.h"
 #endif
 #include "common/common_paths.h"
@@ -58,7 +58,7 @@
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
 
-#if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
+#if defined(ENABLE_VULKAN) && MANDARIN_ARCH(arm64)
 #include <adrenotools/driver.h>
 #endif
 
@@ -259,7 +259,7 @@ static Core::System::ResultStatus RunCitra(const std::string& filepath) {
 void InitializeGpuDriver(const std::string& hook_lib_dir, const std::string& custom_driver_dir,
                          const std::string& custom_driver_name,
                          const std::string& file_redirect_dir) {
-#if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
+#if defined(ENABLE_VULKAN) && MANDARIN_ARCH(arm64)
     void* handle{};
     const char* file_redirect_dir_{};
     int featureFlags{};
@@ -454,7 +454,7 @@ jobject Java_org_citra_citra_1emu_NativeLibrary_downloadTitleFromNus([[maybe_unu
 
 jboolean JNICALL Java_org_citra_citra_1emu_utils_GpuDriverHelper_supportsCustomDriverLoading(
     JNIEnv* env, jobject instance) {
-#ifdef CITRA_ARCH_arm64
+#ifdef MANDARIN_ARCH_arm64
     // If the KGSL device exists custom drivers can be loaded using adrenotools
     return SupportsCustomDriver();
 #else

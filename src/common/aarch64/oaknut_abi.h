@@ -5,7 +5,7 @@
 #pragma once
 
 #include "common/arch.h"
-#if CITRA_ARCH(arm64)
+#if MANDARIN_ARCH(arm64)
 
 #include <bitset>
 #include <initializer_list>
@@ -198,4 +198,4 @@ inline void ABI_PopRegisters(oaknut::CodeGenerator& code, std::bitset<64> regs,
 
 } // namespace Common::A64
 
-#endif // CITRA_ARCH(arm64)
+#endif // MANDARIN_ARCH(arm64)

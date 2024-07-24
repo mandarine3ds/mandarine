@@ -40,7 +40,7 @@ object DirectoryInitialization {
             return null
         }
 
-        if (directoryState != DirectoryInitializationState.CITRA_DIRECTORIES_INITIALIZED) {
+        if (directoryState != DirectoryInitializationState.MANDARIN_DIRECTORIES_INITIALIZED) {
             directoryState = if (hasWriteAccess(context)) {
                 if (setCitraUserDirectory()) {
                     CitraApplication.documentsTree.setRoot(Uri.parse(userPath))
@@ -48,7 +48,7 @@ object DirectoryInitialization {
                     NativeLibrary.logUserDirectory(userPath.toString())
                     NativeLibrary.createConfigFile()
                     GpuDriverHelper.initializeDriverParameters()
-                    DirectoryInitializationState.CITRA_DIRECTORIES_INITIALIZED
+                    DirectoryInitializationState.MANDARIN_DIRECTORIES_INITIALIZED
                 } else {
                     DirectoryInitializationState.CANT_FIND_EXTERNAL_STORAGE
                 }
@@ -71,7 +71,7 @@ object DirectoryInitialization {
 
     @JvmStatic
     fun areCitraDirectoriesReady(): Boolean {
-        return directoryState == DirectoryInitializationState.CITRA_DIRECTORIES_INITIALIZED
+        return directoryState == DirectoryInitializationState.MANDARIN_DIRECTORIES_INITIALIZED
     }
 
     fun resetCitraDirectoryState() {
@@ -156,7 +156,7 @@ object DirectoryInitialization {
     }
 
     enum class DirectoryInitializationState {
-        CITRA_DIRECTORIES_INITIALIZED,
+        MANDARIN_DIRECTORIES_INITIALIZED,
         EXTERNAL_STORAGE_PERMISSION_NEEDED,
         CANT_FIND_EXTERNAL_STORAGE
     }
