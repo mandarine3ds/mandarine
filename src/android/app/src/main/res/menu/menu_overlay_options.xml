@@ -76,6 +76,9 @@
             <item
                 android:id="@+id/menu_emulation_adjust_scale_button_home"
                 android:title="@string/button_home" />
+            <item
+                android:id="@+id/menu_emulation_adjust_scale_button_swap_screens"
+                android:title="@string/button_swap_screens" />
         </menu>
     </item>
 
