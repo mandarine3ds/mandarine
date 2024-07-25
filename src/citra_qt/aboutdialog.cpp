@@ -6,6 +6,7 @@
 #include "aboutdialog.h"
 #include "common/scm_rev.h"
 #include "ui_aboutdialog.h"
+#include "util/mica.h"
 
 AboutDialog::AboutDialog(QWidget* parent)
     : QDialog(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint),
@@ -18,3 +19,12 @@ AboutDialog::AboutDialog(QWidget* parent)
 }
 
 AboutDialog::~AboutDialog() = default;
+
+void AboutDialog::showEvent(QShowEvent* event) {
+    QDialog::showEvent(event); // Call the base class method first
+
+#ifdef _WIN32
+    HWND hwnd = reinterpret_cast<HWND>(this->winId());
+    Utils::EnableDarkMicaForWindow(hwnd);
+#endif
+}

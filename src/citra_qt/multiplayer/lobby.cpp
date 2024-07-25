@@ -17,6 +17,7 @@
 #include "network/network.h"
 #include "network/network_settings.h"
 #include "ui_lobby.h"
+#include "util/mica.h"
 #ifdef ENABLE_WEB_SERVICE
 #include "web_service/web_backend.h"
 #endif
@@ -88,6 +89,15 @@ Lobby::Lobby(Core::System& system_, QWidget* parent, QStandardItemModel* list,
 }
 
 Lobby::~Lobby() = default;
+
+void Lobby::showEvent(QShowEvent* event) {
+    QDialog::showEvent(event); // Call the base class method first
+
+#ifdef _WIN32
+    HWND hwnd = reinterpret_cast<HWND>(this->winId());
+    Utils::EnableDarkMicaForWindow(hwnd);
+#endif
+}
 
 void Lobby::UpdateGameList(QStandardItemModel* list) {
     game_list->clear();

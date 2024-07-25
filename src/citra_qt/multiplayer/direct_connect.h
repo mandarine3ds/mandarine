@@ -20,6 +20,9 @@ class System;
 class DirectConnectWindow : public QDialog {
     Q_OBJECT
 
+protected:
+    void showEvent(QShowEvent* event) override;
+
 public:
     explicit DirectConnectWindow(Core::System& system, QWidget* parent = nullptr);
     ~DirectConnectWindow();

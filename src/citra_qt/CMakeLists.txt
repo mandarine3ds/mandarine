@@ -185,6 +185,8 @@ add_executable(citra-qt
     util/spinbox.h
     util/util.cpp
     util/util.h
+    util/mica.cpp
+    util/mica.h
 )
 
 file(GLOB COMPAT_LIST
@@ -283,6 +285,7 @@ if (APPLE)
 elseif(WIN32)
     # compile as a win32 gui application instead of a console application
     target_link_libraries(citra-qt PRIVATE Qt6::EntryPointImplementation)
+    target_link_libraries(citra-qt PRIVATE dwmapi)
     if(MSVC)
         set_target_properties(citra-qt PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
     elseif(MINGW)

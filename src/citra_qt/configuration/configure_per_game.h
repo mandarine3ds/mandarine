@@ -36,6 +36,9 @@ class ConfigurePerGame;
 class ConfigurePerGame : public QDialog {
     Q_OBJECT
 
+protected:
+    void showEvent(QShowEvent* event) override;
+
 public:
     explicit ConfigurePerGame(QWidget* parent, u64 title_id_, const QString& file_name,
                               QString gl_renderer, std::span<const QString> physical_devices,

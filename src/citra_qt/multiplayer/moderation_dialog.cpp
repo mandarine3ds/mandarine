@@ -8,6 +8,7 @@
 #include "network/network.h"
 #include "network/room_member.h"
 #include "ui_moderation_dialog.h"
+#include "util/mica.h"
 
 namespace Column {
 enum {
@@ -66,6 +67,15 @@ ModerationDialog::~ModerationDialog() {
             room->Unbind(callback_handle_ban_list);
         }
     }
+}
+
+void ModerationDialog::showEvent(QShowEvent* event) {
+    QDialog::showEvent(event); // Call the base class method first
+
+#ifdef _WIN32
+    HWND hwnd = reinterpret_cast<HWND>(this->winId());
+    Utils::EnableDarkMicaForWindow(hwnd);
+#endif
 }
 
 void ModerationDialog::LoadBanList() {

@@ -22,6 +22,7 @@
 #include "network/announce_multiplayer_session.h"
 #include "network/network_settings.h"
 #include "ui_host_room.h"
+#include "util/mica.h"
 #ifdef ENABLE_WEB_SERVICE
 #include "web_service/verify_user_jwt.h"
 #endif
@@ -71,6 +72,15 @@ HostRoomWindow::HostRoomWindow(Core::System& system_, QWidget* parent, QStandard
 }
 
 HostRoomWindow::~HostRoomWindow() = default;
+
+void HostRoomWindow::showEvent(QShowEvent* event) {
+    QDialog::showEvent(event); // Call the base class method first
+
+#ifdef _WIN32
+    HWND hwnd = reinterpret_cast<HWND>(this->winId());
+    Utils::EnableDarkMicaForWindow(hwnd);
+#endif
+}
 
 void HostRoomWindow::UpdateGameList(QStandardItemModel* list) {
     game_list->clear();

@@ -35,6 +35,9 @@ class ConfigureUi;
 class ConfigureDialog : public QDialog {
     Q_OBJECT
 
+protected:
+    void showEvent(QShowEvent* event) override;
+
 public:
     explicit ConfigureDialog(QWidget* parent, HotkeyRegistry& registry, Core::System& system,
                              QString gl_renderer, std::span<const QString> physical_devices,

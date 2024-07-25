@@ -22,6 +22,7 @@
 #include "core/loader/loader.h"
 #include "core/loader/smdh.h"
 #include "ui_configure_per_game.h"
+#include "util/mica.h"
 
 ConfigurePerGame::ConfigurePerGame(QWidget* parent, u64 title_id_, const QString& file_name,
                                    QString gl_renderer, std::span<const QString> physical_devices,
@@ -74,6 +75,15 @@ ConfigurePerGame::ConfigurePerGame(QWidget* parent, u64 title_id_, const QString
 }
 
 ConfigurePerGame::~ConfigurePerGame() = default;
+
+void ConfigurePerGame::showEvent(QShowEvent* event) {
+    QDialog::showEvent(event); // Call the base class method first
+
+#ifdef _WIN32
+    HWND hwnd = reinterpret_cast<HWND>(this->winId());
+    Utils::EnableDarkMicaForWindow(hwnd);
+#endif
+}
 
 void ConfigurePerGame::ResetDefaults() {
     const auto config_file_name = title_id == 0 ? filename : fmt::format("{:016X}", title_id);

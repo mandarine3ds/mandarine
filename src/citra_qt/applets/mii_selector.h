@@ -15,6 +15,9 @@ class QtMiiSelector;
 class QtMiiSelectorDialog final : public QDialog {
     Q_OBJECT
 
+protected:
+    void showEvent(QShowEvent* event) override;
+
 public:
     QtMiiSelectorDialog(QWidget* parent, QtMiiSelector* mii_selector_);
 
