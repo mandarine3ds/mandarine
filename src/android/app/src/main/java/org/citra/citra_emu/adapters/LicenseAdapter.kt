@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-package org.citra.citra_emu.adapters
+package io.github.mandarin3ds.mandarin.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import org.citra.citra_emu.MandarinApplication
-import org.citra.citra_emu.databinding.ListItemSettingBinding
-import org.citra.citra_emu.fragments.LicenseBottomSheetDialogFragment
-import org.citra.citra_emu.model.License
+import io.github.mandarin3ds.mandarin.MandarinApplication
+import io.github.mandarin3ds.mandarin.databinding.ListItemSettingBinding
+import io.github.mandarin3ds.mandarin.fragments.LicenseBottomSheetDialogFragment
+import io.github.mandarin3ds.mandarin.model.License
 
 class LicenseAdapter(private val activity: AppCompatActivity, var licenses: List<License>) :
     RecyclerView.Adapter<LicenseAdapter.LicenseViewHolder>(),

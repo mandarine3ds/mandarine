@@ -92,7 +92,7 @@ static jobject ToJavaCoreError(Core::System::ResultStatus result) {
     const jclass core_error_class = IDCache::GetCoreErrorClass();
     return env->GetStaticObjectField(
         core_error_class, env->GetStaticFieldID(core_error_class, name,
-                                                "Lorg/citra/citra_emu/NativeLibrary$CoreError;"));
+                                                "Lio/github/mandarin3ds/mandarin/NativeLibrary$CoreError;"));
 }
 
 static bool HandleCoreError(Core::System::ResultStatus result, const std::string& details) {
