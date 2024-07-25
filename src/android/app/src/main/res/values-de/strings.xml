@@ -35,6 +35,7 @@
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="contributors">Mitwirkende</string>
     <string name="contributors_description">Gemacht mit \u2764 vom Mandarin-Team</string>
+    <string name="contributors_link">https://github.com/citra-emu/citra/graphs/contributors</string>
     <string name="licenses_description">Projekte, die Mandarin für Android ermöglichen</string>
     <string name="build">Build</string>
     <string name="licenses">Lizenzen</string>
