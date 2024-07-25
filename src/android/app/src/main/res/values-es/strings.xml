@@ -484,6 +484,7 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="static_noise">Ruido Estático</string>
     <string name="real_cubeb">Dispositivo Real (cubeb)</string>
     <string name="real_openal">Dispositivo Real (OpenAL)</string>
+    <string name="real_oboe">Dispositivo Real (Oboe)</string>
 
     <!-- Render 3D modes -->
     <string name="side_by_side">De lado a lado</string>

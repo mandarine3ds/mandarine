@@ -124,6 +124,7 @@
         <item>@string/static_noise</item>
         <item>@string/real_cubeb</item>
         <item>@string/real_openal</item>
+        <item>@string/real_oboe</item>
     </string-array>
 
     <integer-array name="audioInputTypeValues">
@@ -132,6 +133,7 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
     </integer-array>
 
     <string-array name="render3dModes">

@@ -510,6 +510,7 @@
     <string name="static_noise">Static Noise</string>
     <string name="real_cubeb">Real Device (cubeb)</string>
     <string name="real_openal">Real Device (OpenAL)</string>
+    <string name="real_oboe">Real Device (Oboe)</string>
 
     <!-- Render 3D modes -->
     <string name="side_by_side">Side by Side</string>

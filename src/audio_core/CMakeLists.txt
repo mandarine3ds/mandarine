@@ -62,6 +62,14 @@ if(ENABLE_OPENAL)
     add_definitions(-DAL_LIBTYPE_STATIC)
 endif()
 
+if(ANDROID)
+    target_sources(audio_core PRIVATE
+        oboe_sink.cpp
+        oboe_sink.h
+    )
+    target_link_libraries(audio_core PRIVATE oboe)
+endif()
+
 if (CITRA_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(audio_core PRIVATE precompiled_headers.h)
 endif()

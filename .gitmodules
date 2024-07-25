@@ -91,3 +91,6 @@
 [submodule "oaknut"]
 	path = externals/oaknut
 	url = https://github.com/merryhime/oaknut.git
+[submodule "externals/oboe"]
+	path = externals/oboe
+	url = https://github.com/google/oboe.git
