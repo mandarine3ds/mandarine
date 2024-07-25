@@ -156,6 +156,9 @@ void ThreadManager::SwitchContext(Thread* new_thread) {
             kernel.SetCurrentProcessForCPU(current_thread->owner_process.lock(), cpu->GetID());
         }
 
+        // Restores thread to its nominal priority if it has been temporarily changed
+        new_thread->current_priority = new_thread->nominal_priority;
+
         cpu->LoadContext(new_thread->context);
         cpu->SetCP15Register(CP15_THREAD_URO, new_thread->GetTLSAddress());
     } else {
@@ -469,7 +472,26 @@ bool ThreadManager::HaveReadyThreads() {
     return ready_queue.get_first() != nullptr;
 }
 
+void ThreadManager::PriorityBoostStarvedThreads() {
+    const u64 current_ticks = kernel.timing.GetTicks();
+
+    for (auto& thread : thread_list) {
+        const u64 boost_ticks = 1400000;
+
+        u64 delta = current_ticks - thread->last_running_ticks;
+
+        if (thread->status == ThreadStatus::Ready && delta > boost_ticks) {
+            const s32 priority = std::max(ready_queue.get_first()->current_priority, 40u);
+            thread->BoostPriority(priority);
+        }
+    }
+}
+
 void ThreadManager::Reschedule() {
+    if (Settings::values.priority_boost_starved_threads) {
+        PriorityBoostStarvedThreads();
+    }
+
     Thread* cur = GetCurrentThread();
     Thread* next = PopNextReadyThread();
 

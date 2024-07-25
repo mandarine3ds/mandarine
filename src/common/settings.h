@@ -528,6 +528,7 @@ struct Values {
     SwitchableSetting<bool> force_hw_vertex_shaders{false, "force_hw_vertex_shaders"};
     SwitchableSetting<bool> disable_surface_texture_copy{false, "disable_surface_texture_copy"};
     SwitchableSetting<bool> disable_flush_cpu_write{false, "disable_flush_cpu_write"};
+    SwitchableSetting<bool> priority_boost_starved_threads{true, "priority_boost_starved_threads"};
 
     // Audio
     bool audio_muted;

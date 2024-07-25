@@ -142,6 +142,9 @@ private:
      */
     void ThreadWakeupCallback(u64 thread_id, s64 cycles_late);
 
+    /// Boost low priority starved threads
+    void PriorityBoostStarvedThreads();
+
     Kernel::KernelSystem& kernel;
     Core::ARM_Interface* cpu;
 
