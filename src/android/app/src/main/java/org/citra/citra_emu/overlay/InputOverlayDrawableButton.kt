@@ -9,6 +9,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import org.citra.citra_emu.NativeLibrary
 
@@ -53,7 +54,7 @@ class InputOverlayDrawableButton(
      *
      * @return true if value was changed
      */
-    fun updateStatus(event: MotionEvent): Boolean {
+    fun updateStatus(event: MotionEvent, overlay: InputOverlay): Boolean {
         val pointerIndex = event.actionIndex
         val xPosition = event.getX(pointerIndex).toInt()
         val yPosition = event.getY(pointerIndex).toInt()
@@ -69,6 +70,7 @@ class InputOverlayDrawableButton(
             }
             pressedState = true
             trackId = pointerId
+            overlay.hapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             return true
         }
         if (isActionUp) {
@@ -77,6 +79,7 @@ class InputOverlayDrawableButton(
             }
             pressedState = false
             trackId = -1
+            overlay.hapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY_RELEASE)
             return true
         }
         return false

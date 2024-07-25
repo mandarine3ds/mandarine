@@ -76,20 +76,25 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
         overlayJoysticks.forEach { it.draw(canvas) }
     }
 
+    fun hapticFeedback(type:Int) {
+        if (EmulationMenuSettings.hapticFeedback)
+            performHapticFeedback(type)
+    }
+
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         if (isInEditMode) {
             return onTouchWhileEditing(event)
         }
         var shouldUpdateView = false
         for (button in overlayButtons) {
-            if (!button.updateStatus(event)) {
+            if (!button.updateStatus(event, this)) {
                 continue
             }
             NativeLibrary.onGamePadEvent(NativeLibrary.TouchScreenDevice, button.id, button.status)
             shouldUpdateView = true
         }
         for (dpad in overlayDpads) {
-            if (!dpad.updateStatus(event, EmulationMenuSettings.dpadSlide)) {
+            if (!dpad.updateStatus(event, EmulationMenuSettings.dpadSlide, this)) {
                 continue
             }
             NativeLibrary.onGamePadEvent(NativeLibrary.TouchScreenDevice, dpad.upId, dpad.upStatus)
@@ -111,7 +116,7 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
             shouldUpdateView = true
         }
         for (joystick in overlayJoysticks) {
-            if (!joystick.updateStatus(event)) {
+            if (!joystick.updateStatus(event, this)) {
                 continue
             }
             val axisID = joystick.joystickId

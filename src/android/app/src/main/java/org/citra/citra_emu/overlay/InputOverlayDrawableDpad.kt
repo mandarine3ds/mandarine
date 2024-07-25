@@ -9,6 +9,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import org.citra.citra_emu.NativeLibrary
 
@@ -61,7 +62,8 @@ class InputOverlayDrawableDpad(
         trackId = -1
     }
 
-    fun updateStatus(event: MotionEvent, dpadSlide: Boolean): Boolean {
+    fun updateStatus(event: MotionEvent, dpadSlide: Boolean, overlay: InputOverlay): Boolean {
+        var isDown = false
         val pointerIndex = event.actionIndex
         val xPosition = event.getX(pointerIndex).toInt()
         val yPosition = event.getY(pointerIndex).toInt()
@@ -75,6 +77,7 @@ class InputOverlayDrawableDpad(
             if (!bounds.contains(xPosition, yPosition)) {
                 return false
             }
+            isDown = true
             trackId = pointerId
         }
         if (isActionUp) {
@@ -86,6 +89,7 @@ class InputOverlayDrawableDpad(
             downButtonState = false
             leftButtonState = false
             rightButtonState = false
+            overlay.hapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY_RELEASE)
             return true
         }
         if (trackId == -1) {
@@ -116,7 +120,15 @@ class InputOverlayDrawableDpad(
             downButtonState = yAxis > VIRT_AXIS_DEADZONE
             leftButtonState = xAxis < -VIRT_AXIS_DEADZONE
             rightButtonState = xAxis > VIRT_AXIS_DEADZONE
-            return upState != upButtonState || downState != downButtonState || leftState != leftButtonState || rightState != rightButtonState
+
+            val stateChanged = upState != upButtonState || downState != downButtonState || leftState != leftButtonState || rightState != rightButtonState
+
+            if (stateChanged)
+                overlay.hapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+            else if (isDown)
+                overlay.hapticFeedback(HapticFeedbackConstants.CLOCK_TICK)
+
+            return stateChanged
         }
         return false
     }

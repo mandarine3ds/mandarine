@@ -309,6 +309,7 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="emulation_empty_state_slot">Estado %1$d</string>
     <string name="emulation_occupied_state_slot">Estado %1$d - %2$tF %2$tR</string>
     <string name="emulation_show_fps">Mostrar FPS</string>
+    <string name="emulation_haptic_feedback">Respuesta Háptica</string>
     <string name="emulation_overlay_options">Opciones de estilo</string>
     <string name="emulation_configure_controls">Configurar Controles</string>
     <string name="emulation_edit_layout">Editar Estilo</string>
