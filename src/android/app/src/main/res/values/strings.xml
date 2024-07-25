@@ -51,24 +51,24 @@
     <!-- About screen strings -->
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="contributors">Contributors</string>
-    <string name="contributors_description">Made with \u2764 from the Mandarin team</string>
+    <string name="contributors_description">TThanks to original Citra team for their work and the all the people who continued their legacy</string>
     <string name="contributors_link" translatable="false">https://github.com/mandarin3ds/mandarin/graphs/contributors</string>
     <string name="licenses_description">Projects that make Mandarin for Android possible</string>
     <string name="build">Build</string>
     <string name="licenses">Licenses</string>
-    <string name="support_link" translatable="false">https://discord.gg/8xjMHWEuf6</string>
-    <string name="website_link" translatable="false">https://github.com/mandarin3ds</string>
+    <string name="support_link" translatable="false">https://discord.com/invite/8xjMHWEuf6</string>
+    <string name="website_link" translatable="false">https://i.imghippo.com/files/gwXfx1721920922.jpg</string>
     <string name="github_link" translatable="false">https://github.com/mandarin3ds/mandarin</string>
 
     <!-- Setup strings -->
     <string name="welcome">Welcome!</string>
-    <string name="welcome_description">Learn how to setup &lt;b>Mandarin&lt;/b> and jump into emulation.</string>
+    <string name="welcome_description">Setup &lt;b>Mandarin&lt;/b> and jump into emulation, you Android user.</string>
     <string name="get_started">Get started</string>
-    <string name="step_complete">Complete!</string>
+    <string name="step_complete">Complete (Yay)!</string>
     <string name="games">Games</string>
-    <string name="games_description">Select your &lt;b>Games&lt;/b> folder with the button below.</string>
+    <string name="games_description">Select your &lt;b>Games&lt;/b> folder with the button below (duh).</string>
     <string name="done">Done</string>
-    <string name="done_description">You\'re all set.\nEnjoy your games!</string>
+    <string name="done_description">You\'re all set.\nEnjoy your games. Hopefuul that you legally obtained them, you silly goose!</string>
     <string name="text_continue">Continue</string>
     <string name="add_games">Add Games</string>
     <string name="notifications">Notifications</string>
@@ -80,18 +80,18 @@
     <string name="camera_permission_description">Grant the camera permission below to emulate the 3DS camera.</string>
     <string name="microphone_permission">Microphone</string>
     <string name="microphone_permission_description">Grant the microphone permission below to emulate the 3DS microphone.</string>
-    <string name="permission_denied">Permission denied</string>
-    <string name="add_games_warning">Skip selecting games folder?</string>
+    <string name="permission_denied">Permission denied :v</string>
+    <string name="add_games_warning">Skip selecting games folder</string>
     <string name="add_games_warning_description">Games won\'t be displayed in the Games list if a folder isn\'t selected.</string>
     <string name="add_games_warning_help">https://citra-emu.org/wiki/dumping-game-cartridges/</string>
     <string name="warning_help">Help</string>
     <string name="warning_skip">Skip</string>
     <string name="warning_cancel">Cancel</string>
-    <string name="select_mandarin_user_folder">Select User Folder</string>
+    <string name="select_mandarin_user_folder">Select User / configuration Folder</string>
     <string name="select_mandarin_user_folder_description"><![CDATA[Select your <a href="https://github.com/mandarin3ds/mandarin/wiki/Mandarin-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
     <string name="select">Select</string>
     <string name="cannot_skip">You can\'t skip this step</string>
-    <string name="cannot_skip_directory_description">This step is required to allow Mandarin to work. Please select a directory and then you can continue.</string>
+    <string name="cannot_skip_directory_description">This step is required to allow Mandarin to work. Please select a directory and then you can continue.If you dont...</string>
     <string name="cannot_skip_directory_help">https://github.com/mandarin3ds/mandarin/wiki/Mandarin-Android-user-data-and-storage</string>
 
     <!-- Search Strings -->
