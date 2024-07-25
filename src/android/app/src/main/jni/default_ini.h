@@ -365,9 +365,9 @@ instant_debug_log =
 
 [WebService]
 # URL for Web API
-web_api_url = https://api.citra-emu.org.org
+web_api_url = https://api.citra-emu..org
 # Username and token for Mandarin Web Service
-# See https://profile.citra-emu.org.org/ for more info
+# See https://profile.citra-emu..org/ for more info
 mandarin_username =
 mandarin_token =
 )";
