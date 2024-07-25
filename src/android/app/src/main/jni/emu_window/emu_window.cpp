@@ -87,7 +87,11 @@ EmuWindow_Android::~EmuWindow_Android() {
 }
 
 void EmuWindow_Android::MakeCurrent() {
-    core_context->MakeCurrent();
+    try {
+        core_context->MakeCurrent();
+    } catch (const std::exception& e) {
+        LOG_DEBUG(Frontend, "Exception caught in MakeCurrent: {}", e.what());
+    }
 }
 
 void EmuWindow_Android::DoneCurrent() {

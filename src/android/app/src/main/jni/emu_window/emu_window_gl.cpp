@@ -75,11 +75,11 @@ private:
 EmuWindow_Android_OpenGL::EmuWindow_Android_OpenGL(Core::System& system_, ANativeWindow* surface)
     : EmuWindow_Android{surface}, system{system_} {
     if (egl_display = eglGetDisplay(EGL_DEFAULT_DISPLAY); egl_display == EGL_NO_DISPLAY) {
-        LOG_CRITICAL(Frontend, "eglGetDisplay() failed");
+        LOG_CRITICAL(Frontend, "eglGetDisplay() failed 1");
         return;
     }
     if (eglInitialize(egl_display, 0, 0) != EGL_TRUE) {
-        LOG_CRITICAL(Frontend, "eglInitialize() failed");
+        LOG_CRITICAL(Frontend, "eglInitialize() failed 2");
         return;
     }
     if (EGLint egl_num_configs{}; eglChooseConfig(egl_display, egl_attribs.data(), &egl_config, 1,
@@ -99,12 +99,12 @@ EmuWindow_Android_OpenGL::EmuWindow_Android_OpenGL(Core::System& system_, ANativ
 
     if (egl_context = eglCreateContext(egl_display, egl_config, 0, egl_context_attribs.data());
         egl_context == EGL_NO_CONTEXT) {
-        LOG_CRITICAL(Frontend, "eglCreateContext() failed");
+        LOG_CRITICAL(Frontend, "eglCreateContext() failed a");
         return;
     }
     if (eglSurfaceAttrib(egl_display, egl_surface, EGL_SWAP_BEHAVIOR, EGL_BUFFER_DESTROYED) !=
         EGL_TRUE) {
-        LOG_CRITICAL(Frontend, "eglSurfaceAttrib() failed");
+        LOG_CRITICAL(Frontend, "eglSurfaceAttrib() failed b");
         return;
     }
     if (core_context = CreateSharedContext(); !core_context) {
@@ -136,12 +136,21 @@ bool EmuWindow_Android_OpenGL::CreateWindowSurface() {
     eglGetConfigAttrib(egl_display, egl_config, EGL_NATIVE_VISUAL_ID, &format);
     ANativeWindow_setBuffersGeometry(host_window, 0, 0, format);
 
-    if (egl_surface = eglCreateWindowSurface(egl_display, egl_config, host_window, 0);
-        egl_surface == EGL_NO_SURFACE) {
-        return {};
+    // Check if a surface already exists and destroy it
+    if (egl_surface != EGL_NO_SURFACE) {
+        eglDestroySurface(egl_display, egl_surface);
     }
 
-    return egl_surface;
+    egl_surface = eglCreateWindowSurface(egl_display, egl_config, host_window, nullptr);
+
+    if (egl_surface == EGL_NO_SURFACE) {
+        EGLint error = eglGetError(); // Get the error code
+        LOG_CRITICAL(Frontend,
+                     "EmuWindow_Android_OpenGL eglCreateWindowSurface() returned error {}", error);
+        return true;
+    }
+
+    return true;
 }
 
 void EmuWindow_Android_OpenGL::DestroyWindowSurface() {
