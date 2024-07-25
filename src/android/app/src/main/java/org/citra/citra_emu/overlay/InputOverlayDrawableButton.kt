@@ -20,12 +20,14 @@ import org.citra.citra_emu.NativeLibrary
  * @param defaultStateBitmap [Bitmap] to use with the default state Drawable.
  * @param pressedStateBitmap [Bitmap] to use with the pressed state Drawable.
  * @param id                 Identifier for this type of button.
+ * @param opacity            Changes the opacity of InputOverlayDrawableButton.
  */
 class InputOverlayDrawableButton(
     res: Resources,
     defaultStateBitmap: Bitmap,
     pressedStateBitmap: Bitmap,
-    val id: Int
+    val id: Int,
+    val opacity: Int
 ) {
     var trackId: Int
     private var previousTouchX = 0
@@ -111,7 +113,11 @@ class InputOverlayDrawableButton(
         controlPositionY = y
     }
 
-    fun draw(canvas: Canvas) = currentStateBitmapDrawable.draw(canvas)
+    fun draw(canvas: Canvas) {
+        val bitmapDrawable: BitmapDrawable = currentStateBitmapDrawable
+        bitmapDrawable.alpha = opacity
+        bitmapDrawable.draw(canvas)
+    }
 
     private val currentStateBitmapDrawable: BitmapDrawable
         get() = if (pressedState) pressedStateBitmap else defaultStateBitmap
