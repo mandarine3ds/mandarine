@@ -514,7 +514,8 @@ struct Values {
 
     SwitchableSetting<bool> filter_mode{true, "filter_mode"};
     SwitchableSetting<std::string> pp_shader_name{"none (builtin)", "pp_shader_name"};
-    SwitchableSetting<std::string> anaglyph_shader_name{"dubois (builtin)", "anaglyph_shader_name"};
+    SwitchableSetting<std::string> anaglyph_shader_name{"rendepth (builtin)",
+                                                        "anaglyph_shader_name"};
 
     SwitchableSetting<bool> dump_textures{false, "dump_textures"};
     SwitchableSetting<bool> custom_textures{false, "custom_textures"};

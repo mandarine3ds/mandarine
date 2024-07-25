@@ -110,7 +110,7 @@ void ConfigureEnhancements::updateShaders(Settings::StereoRenderOption stereo_op
 
     std::string current_shader;
     if (stereo_option == Settings::StereoRenderOption::Anaglyph) {
-        ui->shader_combobox->addItem(QStringLiteral("dubois (builtin)"));
+        ui->shader_combobox->addItem(QStringLiteral("rendepth (builtin)"));
         current_shader = Settings::values.anaglyph_shader_name.GetValue();
     } else {
         ui->shader_combobox->addItem(QStringLiteral("none (builtin)"));
