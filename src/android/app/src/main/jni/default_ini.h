@@ -182,6 +182,18 @@ filter_mode =
 # Set to 0 for no delay, only useful in dynamic-fps games to simulate GPU delay.
 delay_game_render_thread_us =
 
+# Ignores software vertex shaders from PICA core
+# 0: Off, 1 (default): On
+force_hw_vertex_shaders =
+
+# Ignores texture copies if src_surface_id is null
+# 0: Off, 1 (default): On
+disable_surface_texture_copy =
+
+# Ignores CPU write if there is a region to invalidate from rasterizer cache
+# 0: Off, 1 (default): On
+disable_flush_cpu_write =
+
 [Layout]
 # Layout for the screen inside the render window.
 # 0 (default): Default Top Bottom Screen, 1: Single Screen Only, 2: Large Screen Small Screen, 3: Side by Side

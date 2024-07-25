@@ -761,6 +761,35 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
 
+            add(HeaderSetting(R.string.tweaks))
+            add(
+                SwitchSetting(
+                    IntSetting.FORCE_HW_VERTEX_SHADERS,
+                    R.string.force_hw_vertex_shaders,
+                    R.string.force_hw_vertex_shaders_description,
+                    IntSetting.FORCE_HW_VERTEX_SHADERS.key,
+                    IntSetting.FORCE_HW_VERTEX_SHADERS.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.DISABLE_SURFACE_TEXTURE_COPY,
+                    R.string.disable_surface_texture_copy,
+                    R.string.disable_surface_texture_copy_description,
+                    IntSetting.DISABLE_SURFACE_TEXTURE_COPY.key,
+                    IntSetting.DISABLE_SURFACE_TEXTURE_COPY.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.DISABLE_FLUSH_CPU_WRITE,
+                    R.string.disable_flush_cpu_write,
+                    R.string.disable_flush_cpu_write_description,
+                    IntSetting.DISABLE_FLUSH_CPU_WRITE.key,
+                    IntSetting.DISABLE_FLUSH_CPU_WRITE.defaultValue
+                )
+            )
+
             add(HeaderSetting(R.string.stereoscopy))
             add(
                 SingleChoiceSetting(

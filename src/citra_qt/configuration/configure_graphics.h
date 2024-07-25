@@ -42,6 +42,9 @@ private:
     ConfigurationShared::CheckState async_shader_compilation;
     ConfigurationShared::CheckState async_presentation;
     ConfigurationShared::CheckState spirv_shader_gen;
+    ConfigurationShared::CheckState force_hw_vertex_shaders;
+    ConfigurationShared::CheckState disable_surface_texture_copy;
+    ConfigurationShared::CheckState disable_flush_cpu_write;
     std::unique_ptr<Ui::ConfigureGraphics> ui;
     QColor bg_color;
 };

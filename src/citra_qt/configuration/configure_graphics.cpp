@@ -144,6 +144,12 @@ void ConfigureGraphics::SetConfiguration() {
     ui->spirv_shader_gen->setChecked(Settings::values.spirv_shader_gen.GetValue());
     ui->toggle_async_shaders->setChecked(Settings::values.async_shader_compilation.GetValue());
     ui->toggle_async_present->setChecked(Settings::values.async_presentation.GetValue());
+    ui->toggle_force_hw_vertex_shaders->setChecked(
+        Settings::values.force_hw_vertex_shaders.GetValue());
+    ui->toggle_disable_surface_texture_copy->setChecked(
+        Settings::values.disable_surface_texture_copy.GetValue());
+    ui->toggle_disable_flush_cpu_write->setChecked(
+        Settings::values.disable_flush_cpu_write.GetValue());
 
     if (Settings::IsConfiguringGlobal()) {
         ui->toggle_shader_jit->setChecked(Settings::values.use_shader_jit.GetValue());
@@ -171,6 +177,15 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_disk_shader_cache, use_disk_shader_cache);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_vsync_new, ui->toggle_vsync_new,
                                              use_vsync_new);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.force_hw_vertex_shaders,
+                                             ui->toggle_force_hw_vertex_shaders,
+                                             force_hw_vertex_shaders);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.disable_surface_texture_copy,
+                                             ui->toggle_disable_surface_texture_copy,
+                                             disable_surface_texture_copy);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.disable_flush_cpu_write,
+                                             ui->toggle_disable_flush_cpu_write,
+                                             disable_flush_cpu_write);
     ConfigurationShared::ApplyPerGameSetting(
         &Settings::values.delay_game_render_thread_us, ui->delay_render_combo,
         [this](s32) { return ui->delay_render_slider->value(); });
@@ -196,6 +211,12 @@ void ConfigureGraphics::SetupPerGameUI() {
                                          Settings::values.use_vsync_new.UsingGlobal());
         ui->toggle_async_shaders->setEnabled(
             Settings::values.async_shader_compilation.UsingGlobal());
+        ui->toggle_force_hw_vertex_shaders->setEnabled(
+            Settings::values.force_hw_vertex_shaders.UsingGlobal());
+        ui->toggle_disable_surface_texture_copy->setEnabled(
+            Settings::values.disable_surface_texture_copy.UsingGlobal());
+        ui->toggle_disable_flush_cpu_write->setEnabled(
+            Settings::values.disable_flush_cpu_write.UsingGlobal());
         ui->widget_texture_sampling->setEnabled(Settings::values.texture_sampling.UsingGlobal());
         ui->toggle_async_present->setEnabled(Settings::values.async_presentation.UsingGlobal());
         ui->graphics_api_combo->setEnabled(Settings::values.graphics_api.UsingGlobal());
@@ -240,6 +261,15 @@ void ConfigureGraphics::SetupPerGameUI() {
         ui->toggle_async_present, Settings::values.async_presentation, async_presentation);
     ConfigurationShared::SetColoredTristate(ui->spirv_shader_gen, Settings::values.spirv_shader_gen,
                                             spirv_shader_gen);
+    ConfigurationShared::SetColoredTristate(ui->toggle_force_hw_vertex_shaders,
+                                            Settings::values.force_hw_vertex_shaders,
+                                            force_hw_vertex_shaders);
+    ConfigurationShared::SetColoredTristate(ui->toggle_disable_surface_texture_copy,
+                                            Settings::values.disable_surface_texture_copy,
+                                            disable_surface_texture_copy);
+    ConfigurationShared::SetColoredTristate(ui->toggle_disable_flush_cpu_write,
+                                            Settings::values.disable_flush_cpu_write,
+                                            disable_flush_cpu_write);
 }
 
 void ConfigureGraphics::SetPhysicalDeviceComboVisibility(int index) {
