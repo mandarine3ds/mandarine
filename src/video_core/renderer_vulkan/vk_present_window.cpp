@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/settings.h"
 #include "common/thread.h"
 #include "core/frontend/emu_window.h"
@@ -14,8 +14,6 @@
 #include "vk_platform.h"
 
 #include <vk_mem_alloc.h>
-
-MICROPROFILE_DEFINE(Vulkan_WaitPresent, "Vulkan", "Wait For Present", MP_RGB(128, 128, 128));
 
 namespace Vulkan {
 
@@ -237,7 +235,7 @@ void PresentWindow::RecreateFrame(Frame* frame, u32 width, u32 height) {
 }
 
 Frame* PresentWindow::GetRenderFrame() {
-    MICROPROFILE_SCOPE(Vulkan_WaitPresent);
+    CITRA_PROFILE("Vulkan", "Wait For Present");
 
     // Wait for free presentation frames
     std::unique_lock lock{free_mutex};

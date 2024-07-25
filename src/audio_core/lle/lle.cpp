@@ -9,6 +9,7 @@
 #include "audio_core/lle/lle.h"
 #include "common/assert.h"
 #include "common/bit_field.h"
+#include "common/profiling.h"
 #include "common/swap.h"
 #include "common/thread.h"
 #include "core/core.h"
@@ -151,6 +152,7 @@ struct DspLle::Impl final {
 
     void TeakraThread() {
         while (true) {
+            CITRA_PROFILE("Audio", "Teakra");
             teakra.Run(TeakraSlice);
             teakra_slice_barrier.Sync();
             if (stop_signal) {
@@ -174,6 +176,7 @@ struct DspLle::Impl final {
         if (multithread) {
             teakra_slice_barrier.Sync();
         } else {
+            CITRA_PROFILE("Audio", "Teakra");
             teakra.Run(TeakraSlice);
         }
     }

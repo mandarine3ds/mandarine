@@ -5,7 +5,7 @@
 #include <boost/container/static_vector.hpp>
 
 #include "common/hash.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "video_core/renderer_vulkan/pica_to_vk.h"
 #include "video_core/renderer_vulkan/vk_graphics_pipeline.h"
 #include "video_core/renderer_vulkan/vk_instance.h"
@@ -13,8 +13,6 @@
 #include "video_core/renderer_vulkan/vk_shader_util.h"
 
 namespace Vulkan {
-
-MICROPROFILE_DEFINE(Vulkan_Pipeline, "Vulkan", "Pipeline Building", MP_RGB(0, 192, 32));
 
 vk::ShaderStageFlagBits MakeShaderStage(std::size_t index) {
     switch (index) {
@@ -99,7 +97,7 @@ bool GraphicsPipeline::TryBuild(bool wait_built) {
 }
 
 bool GraphicsPipeline::Build(bool fail_on_compile_required) {
-    MICROPROFILE_SCOPE(Vulkan_Pipeline);
+    CITRA_PROFILE("Vulkan", "Pipeline Building");
     const vk::Device device = instance.GetDevice();
 
     std::array<vk::VertexInputBindingDescription, MAX_VERTEX_BINDINGS> bindings;

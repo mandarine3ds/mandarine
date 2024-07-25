@@ -6,7 +6,7 @@
 #include <dynarmic/interface/A32/a32.h>
 #include <dynarmic/interface/optimization_flags.h>
 #include "common/assert.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "core/arm/dynarmic/arm_dynarmic.h"
 #include "core/arm/dynarmic/arm_dynarmic_cp15.h"
 #include "core/arm/dynarmic/arm_exclusive_monitor.h"
@@ -130,11 +130,9 @@ ARM_Dynarmic::ARM_Dynarmic(Core::System& system_, Memory::MemorySystem& memory_,
 
 ARM_Dynarmic::~ARM_Dynarmic() = default;
 
-MICROPROFILE_DEFINE(ARM_Jit, "ARM JIT", "ARM JIT", MP_RGB(255, 64, 64));
-
 void ARM_Dynarmic::Run() {
     ASSERT(memory.GetCurrentPageTable() == current_page_table);
-    MICROPROFILE_SCOPE(ARM_Jit);
+    CITRA_PROFILE("Dynarmic", "ARM JIT");
 
     jit->Run();
 }

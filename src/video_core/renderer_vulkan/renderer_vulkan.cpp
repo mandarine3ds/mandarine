@@ -5,7 +5,7 @@
 #include "common/assert.h"
 #include "common/logging/log.h"
 #include "common/memory_detect.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/settings.h"
 #include "core/core.h"
 #include "core/frontend/emu_window.h"
@@ -21,8 +21,6 @@
 #include "video_core/host_shaders/vulkan_present_vert.h"
 
 #include <vk_mem_alloc.h>
-
-MICROPROFILE_DEFINE(Vulkan_RenderFrame, "Vulkan", "Render Frame", MP_RGB(128, 128, 64));
 
 namespace Vulkan {
 

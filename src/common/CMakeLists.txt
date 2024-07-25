@@ -104,9 +104,6 @@ add_library(citra_common STATIC
     memory_detect.h
     memory_ref.h
     memory_ref.cpp
-    microprofile.cpp
-    microprofile.h
-    microprofileui.h
     param_package.cpp
     param_package.h
     polyfill_thread.h
@@ -148,6 +145,7 @@ add_library(citra_common STATIC
     x64/xbyak_util.h
     zstd_compression.cpp
     zstd_compression.h
+    profiling.h
 )
 
 if (UNIX AND NOT APPLE)
@@ -182,8 +180,13 @@ endif()
 
 create_target_directory_groups(citra_common)
 
-target_link_libraries(citra_common PUBLIC fmt library-headers microprofile Boost::boost Boost::serialization Boost::iostreams)
+target_link_libraries(citra_common PUBLIC fmt library-headers Boost::boost Boost::serialization Boost::iostreams)
 target_link_libraries(citra_common PRIVATE zstd)
+
+if (ENABLE_PROFILING)
+    target_link_libraries(citra_common PUBLIC tracy)
+    target_compile_definitions(citra_common PUBLIC -DENABLE_PROFILING)
+endif()
 
 if ("x86_64" IN_LIST ARCHITECTURE)
     target_link_libraries(citra_common PRIVATE xbyak)

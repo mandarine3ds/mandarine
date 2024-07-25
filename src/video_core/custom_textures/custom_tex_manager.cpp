@@ -6,7 +6,7 @@
 #include "common/file_util.h"
 #include "common/literals.h"
 #include "common/memory_detect.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/settings.h"
 #include "common/string_util.h"
 #include "common/texture.h"
@@ -21,9 +21,6 @@
 namespace VideoCore {
 
 namespace {
-
-MICROPROFILE_DEFINE(CustomTexManager_TickFrame, "CustomTexManager", "TickFrame",
-                    MP_RGB(54, 16, 32));
 
 constexpr std::size_t MAX_UPLOADS_PER_TICK = 8;
 
@@ -61,7 +58,7 @@ CustomTexManager::CustomTexManager(Core::System& system_)
 CustomTexManager::~CustomTexManager() = default;
 
 void CustomTexManager::TickFrame() {
-    MICROPROFILE_SCOPE(CustomTexManager_TickFrame);
+    CITRA_PROFILE("CustomTexManager", "Tick Frame");
     if (!textures_loaded) {
         return;
     }

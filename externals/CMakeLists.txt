@@ -140,10 +140,6 @@ else()
     add_subdirectory(inih)
 endif()
 
-# MicroProfile
-add_library(microprofile INTERFACE)
-target_include_directories(microprofile SYSTEM INTERFACE ./microprofile)
-
 # Nihstro
 add_library(nihstro-headers INTERFACE)
 target_include_directories(nihstro-headers SYSTEM INTERFACE ./nihstro/include)
@@ -431,5 +427,13 @@ if (ENABLE_VULKAN)
     # adrenotools
     if (ANDROID AND "arm64" IN_LIST ARCHITECTURE)
         add_subdirectory(libadrenotools)
+    endif()
+endif()
+
+# Tracy
+if (ENABLE_PROFILING)
+    add_subdirectory(tracy)
+    if(WIN32)
+        target_link_libraries(tracy PRIVATE dbghelp)
     endif()
 endif()

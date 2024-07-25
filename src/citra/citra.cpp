@@ -7,10 +7,6 @@
 #include <regex>
 #include <string>
 #include <thread>
-
-// This needs to be included before getopt.h because the latter #defines symbols used by it
-#include "common/microprofile.h"
-
 #include "citra/config.h"
 #include "citra/emu_window/emu_window_sdl2.h"
 #ifdef ENABLE_OPENGL
@@ -323,9 +319,6 @@ int main(int argc, char** argv) {
 #ifdef _WIN32
     LocalFree(argv_w);
 #endif
-
-    MicroProfileOnThreadCreate("EmuThread");
-    SCOPE_EXIT({ MicroProfileShutdown(); });
 
     if (filepath.empty()) {
         LOG_CRITICAL(Frontend, "Failed to load ROM: No ROM specified");

@@ -7,7 +7,7 @@
 #include "common/common_paths.h"
 #include "common/file_util.h"
 #include "common/logging/log.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/scope_exit.h"
 #include "common/settings.h"
 #include "video_core/renderer_vulkan/pica_to_vk.h"
@@ -23,8 +23,6 @@
 
 using namespace Pica::Shader::Generator;
 using Pica::Shader::FSConfig;
-
-MICROPROFILE_DEFINE(Vulkan_Bind, "Vulkan", "Pipeline Bind", MP_RGB(192, 32, 32));
 
 namespace Vulkan {
 
@@ -193,7 +191,7 @@ void PipelineCache::SaveDiskCache() {
 }
 
 bool PipelineCache::BindPipeline(const PipelineInfo& info, bool wait_built) {
-    MICROPROFILE_SCOPE(Vulkan_Bind);
+    CITRA_PROFILE("Vulkan", "Pipeline Bind");
 
     u64 shader_hash = 0;
     for (u32 i = 0; i < MAX_SHADER_STAGES; i++) {

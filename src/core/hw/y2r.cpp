@@ -9,7 +9,7 @@
 #include "common/assert.h"
 #include "common/color.h"
 #include "common/common_types.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/vector_math.h"
 #include "core/core.h"
 #include "core/hle/service/cam/y2r_u.h"
@@ -209,8 +209,6 @@ static void WriteTileToOutput(u32* output, const ImageTile& tile, int height, in
     }
 }
 
-MICROPROFILE_DEFINE(Y2R_PerformConversion, "Y2R", "PerformConversion", MP_RGB(185, 66, 245));
-
 /**
  * Performs a Y2R colorspace conversion.
  *
@@ -262,7 +260,7 @@ MICROPROFILE_DEFINE(Y2R_PerformConversion, "Y2R", "PerformConversion", MP_RGB(18
  * so they are believed to be invalid configurations anyway.
  */
 void PerformConversion(Memory::MemorySystem& memory, ConversionConfiguration cvt) {
-    MICROPROFILE_SCOPE(Y2R_PerformConversion);
+    CITRA_PROFILE("Y2R", "Perform Conversion");
 
     ASSERT(cvt.input_line_width % 8 == 0);
     ASSERT(cvt.block_alignment != BlockAlignment::Block8x8 || cvt.input_lines % 8 == 0);

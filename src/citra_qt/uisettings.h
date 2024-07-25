@@ -67,9 +67,6 @@ struct Values {
 
     QByteArray gamelist_header_state;
 
-    QByteArray microprofile_geometry;
-    Settings::Setting<bool> microprofile_visible{false, "microProfileDialogVisible"};
-
     Settings::Setting<bool> single_window_mode{true, "singleWindowMode"};
     Settings::Setting<bool> fullscreen{false, "fullscreen"};
     Settings::Setting<bool> display_titlebar{true, "displayTitleBars"};

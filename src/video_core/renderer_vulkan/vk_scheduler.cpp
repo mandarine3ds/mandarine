@@ -4,13 +4,11 @@
 
 #include <mutex>
 #include <utility>
-#include "common/microprofile.h"
+#include "common/profiling.h"
+#include "common/settings.h"
 #include "common/thread.h"
 #include "video_core/renderer_vulkan/vk_instance.h"
 #include "video_core/renderer_vulkan/vk_scheduler.h"
-
-MICROPROFILE_DEFINE(Vulkan_WaitForWorker, "Vulkan", "Wait for worker", MP_RGB(255, 192, 192));
-MICROPROFILE_DEFINE(Vulkan_Submit, "Vulkan", "Submit Exectution", MP_RGB(255, 192, 255));
 
 namespace Vulkan {
 
@@ -69,7 +67,7 @@ void Scheduler::WaitWorker() {
         return;
     }
 
-    MICROPROFILE_SCOPE(Vulkan_WaitForWorker);
+    CITRA_PROFILE("Vulkan", "Vulkan WaitWorker");
     DispatchWork();
 
     // Ensure the queue is drained.
@@ -176,7 +174,7 @@ void Scheduler::SubmitExecution(vk::Semaphore signal_semaphore, vk::Semaphore wa
     on_submit();
 
     Record([signal_semaphore, wait_semaphore, signal_value, this](vk::CommandBuffer cmdbuf) {
-        MICROPROFILE_SCOPE(Vulkan_Submit);
+        CITRA_PROFILE("Vulkan", "Vulkan Submit");
         std::scoped_lock lock{submit_mutex};
         master_semaphore->SubmitWork(cmdbuf, wait_semaphore, signal_semaphore, signal_value);
     });

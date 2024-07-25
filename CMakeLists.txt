@@ -83,6 +83,7 @@ CMAKE_DEPENDENT_OPTION(ENABLE_SOFTWARE_RENDERER "Enables the software renderer" 
 CMAKE_DEPENDENT_OPTION(ENABLE_OPENGL "Enables the OpenGL renderer" ON "NOT APPLE" OFF)
 option(ENABLE_VULKAN "Enables the Vulkan renderer" ON)
 
+option(ENABLE_PROFILING "Enables integration with the Tracy profiler" ON)
 option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
 
 # Compile options

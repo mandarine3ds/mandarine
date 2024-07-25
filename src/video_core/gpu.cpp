@@ -3,7 +3,7 @@
 // Refer to the license.txt file included.
 
 #include "common/archives.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "core/core.h"
 #include "core/core_timing.h"
 #include "core/hle/service/gsp/gsp_gpu.h"
@@ -21,9 +21,6 @@ namespace VideoCore {
 
 constexpr VAddr VADDR_LCD = 0x1ED02000;
 constexpr VAddr VADDR_GPU = 0x1EF00000;
-
-MICROPROFILE_DEFINE(GPU_DisplayTransfer, "GPU", "DisplayTransfer", MP_RGB(100, 100, 255));
-MICROPROFILE_DEFINE(GPU_CmdlistProcessing, "GPU", "Cmdlist Processing", MP_RGB(100, 255, 100));
 
 struct GPU::Impl {
     Core::Timing& timing;
@@ -230,7 +227,6 @@ void GPU::SetBufferSwap(u32 screen_id, const Service::GSP::FrameBufferInfo& info
     }
 
     if (screen_id == 0) {
-        MicroProfileFlip();
         impl->system.perf_stats->EndGameFrame();
     }
 }
@@ -339,7 +335,7 @@ void GPU::SubmitCmdList(u32 index) {
         return;
     }
 
-    MICROPROFILE_SCOPE(GPU_CmdlistProcessing);
+    CITRA_PROFILE("GPU", "Command List Processing");
 
     // Forward command list processing to the PICA core.
     const PAddr addr = config.GetPhysicalAddress(index);
@@ -383,8 +379,6 @@ void GPU::MemoryTransfer() {
         return;
     }
 
-    MICROPROFILE_SCOPE(GPU_DisplayTransfer);
-
     // Notify debugger about the display transfer.
     if (impl->debug_context) {
         impl->debug_context->OnEvent(Pica::DebugContext::Event::IncomingDisplayTransfer, nullptr);
@@ -392,10 +386,12 @@ void GPU::MemoryTransfer() {
 
     // Perform memory transfer
     if (config.is_texture_copy) {
+        CITRA_PROFILE("GPU", "Texture Copy");
         if (!impl->rasterizer->AccelerateTextureCopy(config)) {
             impl->sw_blitter->TextureCopy(config);
         }
     } else {
+        CITRA_PROFILE("GPU", "Display Transfer");
         if (!impl->rasterizer->AccelerateDisplayTransfer(config)) {
             impl->sw_blitter->DisplayTransfer(config);
         }

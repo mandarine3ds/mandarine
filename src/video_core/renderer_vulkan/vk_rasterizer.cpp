@@ -6,7 +6,7 @@
 #include "common/literals.h"
 #include "common/logging/log.h"
 #include "common/math_util.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/settings.h"
 #include "core/memory.h"
 #include "video_core/pica/pica_core.h"
@@ -19,10 +19,6 @@
 namespace Vulkan {
 
 namespace {
-
-MICROPROFILE_DEFINE(Vulkan_VS, "Vulkan", "Vertex Shader Setup", MP_RGB(192, 128, 128));
-MICROPROFILE_DEFINE(Vulkan_GS, "Vulkan", "Geometry Shader Setup", MP_RGB(128, 192, 128));
-MICROPROFILE_DEFINE(Vulkan_Drawing, "Vulkan", "Drawing", MP_RGB(128, 128, 192));
 
 using TriangleTopology = Pica::PipelineRegs::TriangleTopology;
 using VideoCore::SurfaceType;
@@ -331,13 +327,13 @@ void RasterizerVulkan::SetupFixedAttribs() {
 }
 
 bool RasterizerVulkan::SetupVertexShader() {
-    MICROPROFILE_SCOPE(Vulkan_VS);
+    CITRA_PROFILE("Vulkan", "Vertex Shader Setup");
     return pipeline_cache.UseProgrammableVertexShader(regs, pica.vs_setup,
                                                       pipeline_info.vertex_layout);
 }
 
 bool RasterizerVulkan::SetupGeometryShader() {
-    MICROPROFILE_SCOPE(Vulkan_GS);
+    CITRA_PROFILE("Vulkan", "Geometry Shader Setup");
 
     if (regs.pipeline.use_gs != Pica::PipelineRegs::UseGS::No) {
         LOG_ERROR(Render_Vulkan, "Accelerate draw doesn't support geometry shader");
@@ -465,7 +461,7 @@ void RasterizerVulkan::DrawTriangles() {
 }
 
 bool RasterizerVulkan::Draw(bool accelerate, bool is_indexed) {
-    MICROPROFILE_SCOPE(Vulkan_Drawing);
+    CITRA_PROFILE("Vulkan", "Drawing");
 
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();

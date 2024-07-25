@@ -8,7 +8,7 @@
 #include <fmt/format.h>
 #include "common/archives.h"
 #include "common/logging/log.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/scm_rev.h"
 #include "common/settings.h"
 #include "core/arm/arm_interface.h"
@@ -2319,10 +2319,8 @@ const SVC::FunctionDef* SVC::GetSVCInfo(u32 func_num) {
     return &SVC_Table[func_num];
 }
 
-MICROPROFILE_DEFINE(Kernel_SVC, "Kernel", "SVC", MP_RGB(70, 200, 70));
-
 void SVC::CallSVC(u32 immediate) {
-    MICROPROFILE_SCOPE(Kernel_SVC);
+    CITRA_PROFILE("Kernel", "SVC");
 
     // Lock the kernel mutex when we enter the kernel HLE.
     std::scoped_lock lock{kernel.GetHLELock()};

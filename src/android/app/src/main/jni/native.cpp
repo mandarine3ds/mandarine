@@ -26,7 +26,6 @@
 #include "common/file_util.h"
 #include "common/logging/backend.h"
 #include "common/logging/log.h"
-#include "common/microprofile.h"
 #include "common/scm_rev.h"
 #include "common/scope_exit.h"
 #include "common/settings.h"
@@ -121,7 +120,6 @@ static void TryShutdown() {
     Core::System::GetInstance().Shutdown();
     window.reset();
     InputManager::Shutdown();
-    MicroProfileShutdown();
 }
 
 static bool CheckMicPermission() {
@@ -134,8 +132,6 @@ static Core::System::ResultStatus RunCitra(const std::string& filepath) {
     std::scoped_lock lock(running_mutex);
 
     LOG_INFO(Frontend, "Citra starting...");
-
-    MicroProfileOnThreadCreate("EmuThread");
 
     if (filepath.empty()) {
         LOG_CRITICAL(Frontend, "Failed to load ROM: No ROM specified");

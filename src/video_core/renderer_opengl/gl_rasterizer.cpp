@@ -7,7 +7,7 @@
 #include "common/literals.h"
 #include "common/logging/log.h"
 #include "common/math_util.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "video_core/pica/pica_core.h"
 #include "video_core/renderer_opengl/gl_rasterizer.h"
 #include "video_core/renderer_opengl/pica_to_gl.h"
@@ -18,12 +18,6 @@
 namespace OpenGL {
 
 namespace {
-
-MICROPROFILE_DEFINE(OpenGL_VAO, "OpenGL", "Vertex Array Setup", MP_RGB(255, 128, 0));
-MICROPROFILE_DEFINE(OpenGL_VS, "OpenGL", "Vertex Shader Setup", MP_RGB(192, 128, 128));
-MICROPROFILE_DEFINE(OpenGL_GS, "OpenGL", "Geometry Shader Setup", MP_RGB(128, 192, 128));
-MICROPROFILE_DEFINE(OpenGL_Drawing, "OpenGL", "Drawing", MP_RGB(128, 128, 192));
-MICROPROFILE_DEFINE(OpenGL_Display, "OpenGL", "Display", MP_RGB(128, 128, 192));
 
 using VideoCore::SurfaceType;
 using namespace Common::Literals;
@@ -194,7 +188,7 @@ void RasterizerOpenGL::SyncFixedState() {
 
 void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
                                         GLuint vs_input_index_min, GLuint vs_input_index_max) {
-    MICROPROFILE_SCOPE(OpenGL_VAO);
+    CITRA_PROFILE("OpenGL", "Vertex Array Setup");
     const auto& vertex_attributes = regs.pipeline.vertex_attributes;
     PAddr base_address = vertex_attributes.GetPhysicalBaseAddress();
 
@@ -270,12 +264,12 @@ void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
 }
 
 bool RasterizerOpenGL::SetupVertexShader() {
-    MICROPROFILE_SCOPE(OpenGL_VS);
+    CITRA_PROFILE("OpenGL", "Vertex Shader Setup");
     return shader_manager.UseProgrammableVertexShader(regs, pica.vs_setup);
 }
 
 bool RasterizerOpenGL::SetupGeometryShader() {
-    MICROPROFILE_SCOPE(OpenGL_GS);
+    CITRA_PROFILE("OpenGL", "Geometry Shader Setup");
 
     if (regs.pipeline.use_gs != Pica::PipelineRegs::UseGS::No) {
         LOG_ERROR(Render_OpenGL, "Accelerate draw doesn't support geometry shader");
@@ -369,7 +363,7 @@ void RasterizerOpenGL::DrawTriangles() {
 }
 
 bool RasterizerOpenGL::Draw(bool accelerate, bool is_indexed) {
-    MICROPROFILE_SCOPE(OpenGL_Drawing);
+    CITRA_PROFILE("OpenGL", "Drawing");
 
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();
@@ -730,7 +724,7 @@ bool RasterizerOpenGL::AccelerateDisplay(const Pica::FramebufferConfig& config,
     if (framebuffer_addr == 0) {
         return false;
     }
-    MICROPROFILE_SCOPE(OpenGL_Display);
+    CITRA_PROFILE("OpenGL", "Display");
 
     VideoCore::SurfaceParams src_params;
     src_params.addr = framebuffer_addr;

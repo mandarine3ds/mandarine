@@ -9,7 +9,7 @@
 #include <boost/range/iterator_range.hpp>
 #include "common/alignment.h"
 #include "common/logging/log.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/scope_exit.h"
 #include "common/settings.h"
 #include "core/memory.h"
@@ -22,11 +22,6 @@
 #include "video_core/texture/texture_decode.h"
 
 namespace VideoCore {
-
-MICROPROFILE_DECLARE(RasterizerCache_CopySurface);
-MICROPROFILE_DECLARE(RasterizerCache_UploadSurface);
-MICROPROFILE_DECLARE(RasterizerCache_DownloadSurface);
-MICROPROFILE_DECLARE(RasterizerCache_Invalidation);
 
 constexpr auto RangeFromInterval(const auto& map, const auto& interval) {
     return boost::make_iterator_range(map.equal_range(interval));
@@ -409,7 +404,7 @@ typename T::Sampler& RasterizerCache<T>::GetSampler(
 template <class T>
 void RasterizerCache<T>::CopySurface(Surface& src_surface, Surface& dst_surface,
                                      SurfaceInterval copy_interval) {
-    MICROPROFILE_SCOPE(RasterizerCache_CopySurface);
+    CITRA_PROFILE("RasterizerCache", "Copy Surface");
     const PAddr copy_addr = copy_interval.lower();
     const SurfaceParams subrect_params = dst_surface.FromInterval(copy_interval);
     ASSERT(subrect_params.GetInterval() == copy_interval);
@@ -1004,7 +999,7 @@ void RasterizerCache<T>::ValidateSurface(SurfaceId surface_id, PAddr addr, u32 s
 
 template <class T>
 void RasterizerCache<T>::UploadSurface(Surface& surface, SurfaceInterval interval) {
-    MICROPROFILE_SCOPE(RasterizerCache_UploadSurface);
+    CITRA_PROFILE("RasterizerCache", "Upload Surface");
 
     const SurfaceParams load_info = surface.FromInterval(interval);
     ASSERT(load_info.addr >= surface.addr && load_info.end <= surface.end);
@@ -1054,7 +1049,7 @@ u64 RasterizerCache<T>::ComputeHash(const SurfaceParams& load_info, std::span<u8
 
 template <class T>
 bool RasterizerCache<T>::UploadCustomSurface(SurfaceId surface_id, SurfaceInterval interval) {
-    MICROPROFILE_SCOPE(RasterizerCache_UploadSurface);
+    CITRA_PROFILE("RasterizerCache", "Upload Custom Surface");
 
     Surface& surface = slot_surfaces[surface_id];
     const SurfaceParams load_info = surface.FromInterval(interval);
@@ -1102,7 +1097,7 @@ bool RasterizerCache<T>::UploadCustomSurface(SurfaceId surface_id, SurfaceInterv
 
 template <class T>
 void RasterizerCache<T>::DownloadSurface(Surface& surface, SurfaceInterval interval) {
-    MICROPROFILE_SCOPE(RasterizerCache_DownloadSurface);
+    CITRA_PROFILE("RasterizerCache", "Download Surface");
 
     const SurfaceParams flush_info = surface.FromInterval(interval);
     const u32 flush_start = boost::icl::first(interval);
@@ -1295,6 +1290,8 @@ void RasterizerCache<T>::InvalidateRegion(PAddr addr, u32 size, SurfaceId region
         ASSERT(region_owner.width == region_owner.stride);
         region_owner.MarkValid(invalid_interval);
     }
+
+    CITRA_PROFILE("RasterizerCache", "Invalidate Region");
 
     boost::container::small_vector<SurfaceId, 4> remove_surfaces;
     ForEachSurfaceInRegion(addr, size, [&](SurfaceId surface_id, Surface& surface) {

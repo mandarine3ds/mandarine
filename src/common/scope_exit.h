@@ -9,19 +9,16 @@
 
 namespace detail {
 template <typename Func>
-struct ScopeExitHelper {
-    explicit ScopeExitHelper(Func&& func) : func(std::move(func)) {}
-    ~ScopeExitHelper() {
-        func();
+struct ScopeHelper {
+    explicit ScopeHelper(auto&& enter_func, Func&& exit_func) : exit_func(std::move(exit_func)) {
+        enter_func();
+    }
+    ~ScopeHelper() {
+        exit_func();
     }
 
-    Func func;
+    Func exit_func;
 };
-
-template <typename Func>
-ScopeExitHelper<Func> ScopeExit(Func&& func) {
-    return ScopeExitHelper<Func>(std::forward<Func>(func));
-}
 } // namespace detail
 
 /**
@@ -41,4 +38,5 @@ ScopeExitHelper<Func> ScopeExit(Func&& func) {
  * }
  * \endcode
  */
-#define SCOPE_EXIT(body) auto CONCAT2(scope_exit_helper_, __LINE__) = detail::ScopeExit([&]() body)
+#define SCOPE_EXIT(body)                                                                           \
+    auto CONCAT2(scope_exit_helper_, __LINE__) = detail::ScopeHelper([]() {}, [&]() body)

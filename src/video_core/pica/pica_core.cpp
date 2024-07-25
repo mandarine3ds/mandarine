@@ -4,7 +4,7 @@
 
 #include "common/arch.h"
 #include "common/archives.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/scope_exit.h"
 #include "common/settings.h"
 #include "core/core.h"
@@ -16,8 +16,6 @@
 #include "video_core/shader/shader.h"
 
 namespace Pica {
-
-MICROPROFILE_DEFINE(GPU_Drawing, "GPU", "Drawing", MP_RGB(50, 50, 240));
 
 using namespace DebugUtils;
 
@@ -450,6 +448,8 @@ void PicaCore::SubmitImmediate(u32 value) {
 }
 
 void PicaCore::DrawImmediate() {
+    CITRA_PROFILE("PicaCore", "Draw Immediate");
+
     // Compile the vertex shader.
     shader_engine->SetupBatch(vs_setup, regs.internal.vs.main_offset);
 
@@ -486,7 +486,7 @@ void PicaCore::DrawImmediate() {
 }
 
 void PicaCore::DrawArrays(bool is_indexed) {
-    MICROPROFILE_SCOPE(GPU_Drawing);
+    CITRA_PROFILE("PicaCore", "Draw Arrays");
 
     // Track vertex in the debug recorder.
     if (debug_context) {

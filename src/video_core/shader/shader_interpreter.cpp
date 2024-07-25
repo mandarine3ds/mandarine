@@ -11,7 +11,7 @@
 #include "common/assert.h"
 #include "common/common_types.h"
 #include "common/logging/log.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/vector_math.h"
 #include "video_core/pica/shader_setup.h"
 #include "video_core/pica/shader_unit.h"
@@ -728,11 +728,8 @@ void InterpreterEngine::SetupBatch(ShaderSetup& setup, unsigned int entry_point)
     setup.entry_point = entry_point;
 }
 
-MICROPROFILE_DEFINE(GPU_Shader, "GPU", "Shader", MP_RGB(50, 50, 240));
-
 void InterpreterEngine::Run(const ShaderSetup& setup, ShaderUnit& state) const {
-
-    MICROPROFILE_SCOPE(GPU_Shader);
+    CITRA_PROFILE("Shader", "Shader Interpreter");
 
     DebugData<false> dummy_debug_data;
     RunInterpreter(setup, state, dummy_debug_data, setup.entry_point);

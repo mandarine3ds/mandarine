@@ -7,7 +7,7 @@
 
 #include "common/assert.h"
 #include "common/hash.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "video_core/shader/shader.h"
 #include "video_core/shader/shader_jit.h"
 #if CITRA_ARCH(arm64)
@@ -41,12 +41,10 @@ void JitEngine::SetupBatch(ShaderSetup& setup, u32 entry_point) {
     }
 }
 
-MICROPROFILE_DECLARE(GPU_Shader);
-
 void JitEngine::Run(const ShaderSetup& setup, ShaderUnit& state) const {
     ASSERT(setup.cached_shader != nullptr);
 
-    MICROPROFILE_SCOPE(GPU_Shader);
+    CITRA_PROFILE("Shader", "Shader JIT");
 
     const JitShader* shader = static_cast<const JitShader*>(setup.cached_shader);
     shader->Run(setup, state, setup.entry_point);

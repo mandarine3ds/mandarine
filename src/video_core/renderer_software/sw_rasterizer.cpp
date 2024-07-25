@@ -4,7 +4,7 @@
 
 #include <boost/container/static_vector.hpp>
 #include "common/logging/log.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/quaternion.h"
 #include "common/vector_math.h"
 #include "core/memory.h"
@@ -67,8 +67,6 @@ struct Vertex : Pica::OutputVertex {
 };
 
 namespace {
-
-MICROPROFILE_DEFINE(GPU_Rasterization, "GPU", "Rasterization", MP_RGB(50, 50, 240));
 
 struct ClippingEdge {
 public:
@@ -229,7 +227,7 @@ void RasterizerSoftware::MakeScreenCoords(Vertex& vtx) {
 
 void RasterizerSoftware::ProcessTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2,
                                          bool reversed) {
-    MICROPROFILE_SCOPE(GPU_Rasterization);
+    CITRA_PROFILE("Software", "Rasterization");
 
     // Vertex positions in rasterizer coordinates
     static auto screen_to_rasterizer_coords = [](const Common::Vec3<f24>& vec) {

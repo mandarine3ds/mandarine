@@ -6,7 +6,7 @@
 #include <boost/container/static_vector.hpp>
 
 #include "common/literals.h"
-#include "common/microprofile.h"
+#include "common/profiling.h"
 #include "common/scope_exit.h"
 #include "video_core/custom_textures/material.h"
 #include "video_core/rasterizer_cache/texture_codec.h"
@@ -25,8 +25,6 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wclass-memaccess"
 #endif
-
-MICROPROFILE_DEFINE(Vulkan_ImageAlloc, "Vulkan", "Texture Allocation", MP_RGB(192, 52, 235));
 
 namespace Vulkan {
 
