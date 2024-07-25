@@ -74,8 +74,8 @@ void InitJNI(JNIEnv* env) {
 
     s_mii_selector_execute =
         env->GetStaticMethodID(s_mii_selector_class, "Execute",
-                               "(Lio/github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorConfig;)Lorg/"
-                               "citra/citra_emu/applets/MiiSelector$MiiSelectorData;");
+                               "(Lio/github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorConfig;)Lio/"
+                               "github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorData;");
 }
 
 void CleanupJNI(JNIEnv* env) {
