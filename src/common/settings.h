@@ -525,6 +525,9 @@ struct Values {
     // Tweaks
     SwitchableSetting<bool> enable_custom_cpu_ticks{false, "enable_custom_cpu_ticks"};
     SwitchableSetting<u32, true> custom_cpu_ticks{16000, 77, 65535, "custom_cpu_ticks"};
+    SwitchableSetting<bool> force_hw_vertex_shaders{false, "force_hw_vertex_shaders"};
+    SwitchableSetting<bool> disable_surface_texture_copy{false, "disable_surface_texture_copy"};
+    SwitchableSetting<bool> disable_flush_cpu_write{false, "disable_flush_cpu_write"};
 
     // Audio
     bool audio_muted;
