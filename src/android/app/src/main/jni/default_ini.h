@@ -290,7 +290,7 @@ region_value =
 # 6: Simplified Chinese, 7: Korean, 8: Dutch, 9: Portuguese, 10: Russian, 11: Traditional Chinese
 language =
 
-# The clock to use when citra starts
+# The clock to use when mandarin starts
 # 0: System clock (default), 1: fixed time
 init_clock =
 
@@ -299,7 +299,7 @@ init_clock =
 # Note: 3DS can only handle times later then Jan 1 2000
 init_time =
 
-# The system ticks count to use when citra starts
+# The system ticks count to use when mandarin starts
 # 0: Random (default), 1: Fixed
 init_ticks_type =
 
@@ -358,7 +358,7 @@ use_gdbstub=false
 gdbstub_port=24689
 
 # Flush log output on every message
-# Immediately commits the debug log to file. Use this if citra crashes and the log output is being cut.
+# Immediately commits the debug log to file. Use this if mandarin crashes and the log output is being cut.
 instant_debug_log =
 
 # To LLE a service module add "LLE\<module name>=true"
@@ -368,7 +368,7 @@ instant_debug_log =
 web_api_url = https://api.citra-emu.org.org
 # Username and token for Mandarin Web Service
 # See https://profile.citra-emu.org.org/ for more info
-citra_username =
-citra_token =
+mandarin_username =
+mandarin_token =
 )";
 }
