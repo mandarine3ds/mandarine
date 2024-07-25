@@ -74,7 +74,7 @@ touch_device=
 
 # Most desktop operating systems do not expose a way to poll the motion state of the controllers
 # so as a way around it, cemuhook created a udp client/server protocol to broadcast the data directly
-# from a controller device to the client program. Citra has a client that can connect and read
+# from a controller device to the client program. Mandarin has a client that can connect and read
 # from any cemuhook compatible motion program.
 
 # IPv4 address of the udp input server (Default "127.0.0.1")
@@ -290,7 +290,7 @@ sdmc_directory =
 nand_directory =
 
 [System]
-# The system model that Citra will try to emulate
+# The system model that Mandarin will try to emulate
 # 0: Old 3DS, 1: New 3DS (default)
 is_new_3ds =
 
@@ -298,7 +298,7 @@ is_new_3ds =
 # 0 (default): No, 1: Yes
 lle_applets =
 
-# The system region that Citra will use during emulation
+# The system region that Mandarin will use during emulation
 # -1: Auto-select (default), 0: Japan, 1: USA, 2: Europe, 3: Australia, 4: China, 5: Korea, 6: Taiwan
 region_value =
 
@@ -363,7 +363,7 @@ renderer_debug =
 [WebService]
 # URL for Web API
 web_api_url = https://api.citra-emu.org
-# Username and token for Citra Web Service
+# Username and token for Mandarin Web Service
 # See https://profile.citra-emu.org/ for more info
 mandarin_username =
 mandarin_token =

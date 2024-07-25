@@ -7,7 +7,7 @@ package io.github.mandarin3ds.mandarin.utils
 import android.net.Uri
 import android.os.Build
 import androidx.documentfile.provider.DocumentFile
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.utils.FileUtil.asDocumentFile
 import io.github.mandarin3ds.mandarin.utils.FileUtil.inputStream
@@ -30,7 +30,7 @@ object GpuDriverHelper {
         get() {
             // Bypass directory initialization checks
             val root = DocumentFile.fromTreeUri(
-                CitraApplication.appContext,
+                MandarinApplication.appContext,
                 Uri.parse(DirectoryInitialization.userPath)
             )!!
             var driverDirectory = root.findFile("gpu_drivers")
@@ -47,7 +47,7 @@ object GpuDriverHelper {
                 DirectoryInitialization.internalUserPath + "/gpu/vk_file_redirect/"
 
             // Initialize the driver installation directory.
-            driverInstallationPath = CitraApplication.appContext
+            driverInstallationPath = MandarinApplication.appContext
                 .filesDir.canonicalPath + "/gpu_driver/"
         } catch (e: IOException) {
             throw RuntimeException(e)
@@ -57,7 +57,7 @@ object GpuDriverHelper {
         initializeDirectories()
 
         // Initialize hook libraries directory.
-        hookLibPath = CitraApplication.appContext.applicationInfo.nativeLibraryDir + "/"
+        hookLibPath = MandarinApplication.appContext.applicationInfo.nativeLibraryDir + "/"
 
         // Initialize GPU driver.
         NativeLibrary.initializeGpuDriver(

@@ -11,7 +11,7 @@ import android.view.InputDevice.MotionRange
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.preference.PreferenceManager
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.features.hotkeys.Hotkey
@@ -22,7 +22,7 @@ class InputBindingSetting(
     val abstractSetting: AbstractSetting,
     titleId: Int
 ) : SettingsItem(abstractSetting, titleId, 0) {
-    private val context: Context get() = CitraApplication.appContext
+    private val context: Context get() = MandarinApplication.appContext
     private val preferences: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(context)
 
@@ -108,7 +108,7 @@ class InputBindingSetting(
     }
 
     /**
-     * Returns the Citra button code for the settings key.
+     * Returns the Mandarin button code for the settings key.
      */
     private val buttonCode: Int
         get() =
@@ -263,7 +263,7 @@ class InputBindingSetting(
         private const val INPUT_MAPPING_PREFIX = "InputMapping"
 
         /**
-         * Returns the settings key for the specified Citra button code.
+         * Returns the settings key for the specified Mandarin button code.
          */
         private fun getButtonKey(buttonCode: Int): String =
             when (buttonCode) {

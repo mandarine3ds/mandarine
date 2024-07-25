@@ -17,7 +17,7 @@ import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
 import io.github.mandarin3ds.mandarin.utils.Log
 import io.github.mandarin3ds.mandarin.utils.MemoryUtil
 
-class CitraApplication : Application() {
+class MandarinApplication : Application() {
     private fun createNotificationChannel() {
         with(getSystemService(NotificationManager::class.java)) {
             // General notification
@@ -71,7 +71,7 @@ class CitraApplication : Application() {
     }
 
     companion object {
-        private var application: CitraApplication? = null
+        private var application: MandarinApplication? = null
 
         val appContext: Context get() = application!!.applicationContext
 

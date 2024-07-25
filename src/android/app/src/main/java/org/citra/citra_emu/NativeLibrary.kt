@@ -29,7 +29,7 @@ import java.util.Date
 
 /**
  * Class which contains methods that interact
- * with the native side of the Citra code.
+ * with the native side of the Mandarin code.
  */
 object NativeLibrary {
     /**
@@ -257,7 +257,7 @@ object NativeLibrary {
     @get:Keep
     @get:JvmStatic
     val isPortraitMode: Boolean
-        get() = CitraApplication.appContext.resources.configuration.orientation ==
+        get() = MandarinApplication.appContext.resources.configuration.orientation ==
                 Configuration.ORIENTATION_PORTRAIT
 
     @Keep
@@ -389,9 +389,9 @@ object NativeLibrary {
                 .setMessage(
                     Html.fromHtml(
                         if (result == ErrorArticDisconnected)
-                            CitraApplication.appContext.resources.getString(R.string.artic_server_comm_error)
+                            MandarinApplication.appContext.resources.getString(R.string.artic_server_comm_error)
                         else
-                            CitraApplication.appContext.resources.getString(R.string.redump_games),
+                            MandarinApplication.appContext.resources.getString(R.string.redump_games),
                     Html.FROM_HTML_MODE_LEGACY
                     )
                 )
@@ -552,7 +552,7 @@ object NativeLibrary {
     external fun loadState(slot: Int)
 
     /**
-     * Logs the Citra version, Android version and, CPU.
+     * Logs the Mandarin version, Android version and, CPU.
      */
     external fun logDeviceInfo()
 
@@ -560,7 +560,7 @@ object NativeLibrary {
     @JvmStatic
     fun createFile(directory: String, filename: String): Boolean =
         if (FileUtil.isNativePath(directory)) {
-            CitraApplication.documentsTree.createFile(directory, filename)
+            MandarinApplication.documentsTree.createFile(directory, filename)
         } else {
             FileUtil.createFile(directory, filename) != null
         }
@@ -569,7 +569,7 @@ object NativeLibrary {
     @JvmStatic
     fun createDir(directory: String, directoryName: String): Boolean =
         if (FileUtil.isNativePath(directory)) {
-            CitraApplication.documentsTree.createDir(directory, directoryName)
+            MandarinApplication.documentsTree.createDir(directory, directoryName)
         } else {
             FileUtil.createDir(directory, directoryName) != null
         }
@@ -578,7 +578,7 @@ object NativeLibrary {
     @JvmStatic
     fun openContentUri(path: String, openMode: String): Int =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.openContentUri(path, openMode)
+            MandarinApplication.documentsTree.openContentUri(path, openMode)
         } else {
             FileUtil.openContentUri(path, openMode)
         }
@@ -587,7 +587,7 @@ object NativeLibrary {
     @JvmStatic
     fun getFilesName(path: String): Array<String?> =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.getFilesName(path)
+            MandarinApplication.documentsTree.getFilesName(path)
         } else {
             FileUtil.getFilesName(path)
         }
@@ -596,7 +596,7 @@ object NativeLibrary {
     @JvmStatic
     fun getSize(path: String): Long =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.getFileSize(path)
+            MandarinApplication.documentsTree.getFileSize(path)
         } else {
             FileUtil.getFileSize(path)
         }
@@ -605,7 +605,7 @@ object NativeLibrary {
     @JvmStatic
     fun fileExists(path: String): Boolean =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.exists(path)
+            MandarinApplication.documentsTree.exists(path)
         } else {
             FileUtil.exists(path)
         }
@@ -614,7 +614,7 @@ object NativeLibrary {
     @JvmStatic
     fun isDirectory(path: String): Boolean =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.isDirectory(path)
+            MandarinApplication.documentsTree.isDirectory(path)
         } else {
             FileUtil.isDirectory(path)
         }
@@ -629,7 +629,7 @@ object NativeLibrary {
         if (FileUtil.isNativePath(sourcePath) &&
             FileUtil.isNativePath(destinationParentPath)
         ) {
-            CitraApplication.documentsTree
+            MandarinApplication.documentsTree
                 .copyFile(sourcePath, destinationParentPath, destinationFilename)
         } else {
             FileUtil.copyFile(
@@ -643,7 +643,7 @@ object NativeLibrary {
     @JvmStatic
     fun renameFile(path: String, destinationFilename: String): Boolean =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.renameFile(path, destinationFilename)
+            MandarinApplication.documentsTree.renameFile(path, destinationFilename)
         } else {
             FileUtil.renameFile(path, destinationFilename)
         }
@@ -652,7 +652,7 @@ object NativeLibrary {
     @JvmStatic
     fun deleteDocument(path: String): Boolean =
         if (FileUtil.isNativePath(path)) {
-            CitraApplication.documentsTree.deleteDocument(path)
+            MandarinApplication.documentsTree.deleteDocument(path)
         } else {
             FileUtil.deleteDocument(path)
         }

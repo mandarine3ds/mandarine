@@ -91,7 +91,7 @@ option(ENABLE_LTO "Enable link time optimization" ${DEFAULT_ENABLE_LTO})
 option(MANDARIN_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
 option(MANDARIN_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
 
-include(CitraHandleSystemLibs)
+include(MandarinHandleSystemLibs)
 
 if (MANDARIN_USE_PRECOMPILED_HEADERS)
     message(STATUS "Using Precompiled Headers.")

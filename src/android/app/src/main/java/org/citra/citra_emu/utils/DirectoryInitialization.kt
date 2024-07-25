@@ -8,7 +8,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.preference.PreferenceManager
 import io.github.mandarin3ds.mandarin.BuildConfig
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.utils.PermissionsHandler.hasWriteAccess
 import java.io.File
@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * A service that spawns its own thread in order to copy several binary and shader files
- * from the Citra APK to the external file system.
+ * from the Mandarin APK to the external file system.
  */
 object DirectoryInitialization {
     private const val SYS_DIR_VERSION = "sysDirectoryVersion"
@@ -29,21 +29,21 @@ object DirectoryInitialization {
     private var directoryState: DirectoryInitializationState? = null
     var userPath: String? = null
     val internalUserPath
-        get() = CitraApplication.appContext.getExternalFilesDir(null)!!.canonicalPath
-    private val isCitraDirectoryInitializationRunning = AtomicBoolean(false)
+        get() = MandarinApplication.appContext.getExternalFilesDir(null)!!.canonicalPath
+    private val isMandarinDirectoryInitializationRunning = AtomicBoolean(false)
 
-    val context: Context get() = CitraApplication.appContext
+    val context: Context get() = MandarinApplication.appContext
 
     @JvmStatic
     fun start(): DirectoryInitializationState? {
-        if (!isCitraDirectoryInitializationRunning.compareAndSet(false, true)) {
+        if (!isMandarinDirectoryInitializationRunning.compareAndSet(false, true)) {
             return null
         }
 
         if (directoryState != DirectoryInitializationState.MANDARIN_DIRECTORIES_INITIALIZED) {
             directoryState = if (hasWriteAccess(context)) {
-                if (setCitraUserDirectory()) {
-                    CitraApplication.documentsTree.setRoot(Uri.parse(userPath))
+                if (setMandarinUserDirectory()) {
+                    MandarinApplication.documentsTree.setRoot(Uri.parse(userPath))
                     NativeLibrary.createLogFile()
                     NativeLibrary.logUserDirectory(userPath.toString())
                     NativeLibrary.createConfigFile()
@@ -56,7 +56,7 @@ object DirectoryInitialization {
                 DirectoryInitializationState.EXTERNAL_STORAGE_PERMISSION_NEEDED
             }
         }
-        isCitraDirectoryInitializationRunning.set(false)
+        isMandarinDirectoryInitializationRunning.set(false)
         return directoryState
     }
 
@@ -70,13 +70,13 @@ object DirectoryInitialization {
     }
 
     @JvmStatic
-    fun areCitraDirectoriesReady(): Boolean {
+    fun areMandarinDirectoriesReady(): Boolean {
         return directoryState == DirectoryInitializationState.MANDARIN_DIRECTORIES_INITIALIZED
     }
 
-    fun resetCitraDirectoryState() {
+    fun resetMandarinDirectoryState() {
         directoryState = null
-        isCitraDirectoryInitializationRunning.compareAndSet(true, false)
+        isMandarinDirectoryInitializationRunning.compareAndSet(true, false)
     }
 
     val userDirectory: String?
@@ -84,17 +84,17 @@ object DirectoryInitialization {
             checkNotNull(directoryState) {
                 "DirectoryInitialization has to run at least once!"
             }
-            check(!isCitraDirectoryInitializationRunning.get()) {
+            check(!isMandarinDirectoryInitializationRunning.get()) {
                 "DirectoryInitialization has to finish running first!"
             }
             return userPath
         }
 
-    fun setCitraUserDirectory(): Boolean {
+    fun setMandarinUserDirectory(): Boolean {
         val dataPath = PermissionsHandler.mandarinDirectory
         if (dataPath.toString().isNotEmpty()) {
             userPath = dataPath.toString()
-            android.util.Log.d("[Citra Frontend]", "[DirectoryInitialization] User Dir: $userPath")
+            android.util.Log.d("[Mandarin Frontend]", "[DirectoryInitialization] User Dir: $userPath")
             return true
         }
         return false

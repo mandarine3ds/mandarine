@@ -53,7 +53,7 @@ static CPUCaps Detect() {
     CPUCaps caps = {};
 
     // Assumes the CPU supports the CPUID instruction. Those that don't would likely not support
-    // Citra at all anyway
+    // Mandarin at all anyway
 
     int cpu_id[4];
     std::memset(caps.brand_string, 0, sizeof(caps.brand_string));

@@ -9,7 +9,7 @@ import android.net.Uri
 import androidx.preference.PreferenceManager
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.model.CheapDocument
 import io.github.mandarin3ds.mandarin.model.Game
@@ -24,7 +24,7 @@ object GameHelper {
 
     fun getGames(): List<Game> {
         val games = mutableListOf<Game>()
-        val context = CitraApplication.appContext
+        val context = MandarinApplication.appContext
         preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val gamesDir = preferences.getString(KEY_GAME_PATH, "")
         val gamesUri = Uri.parse(gamesDir)
@@ -87,7 +87,7 @@ object GameHelper {
             gameInfo?.getIsVisibleSystemTitle() ?: false,
             gameInfo?.getIcon(),
             if (FileUtil.isNativePath(filePath)) {
-                CitraApplication.documentsTree.getFilename(filePath)
+                MandarinApplication.documentsTree.getFilename(filePath)
             } else {
                 FileUtil.getFilename(Uri.parse(filePath))
             }

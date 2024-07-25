@@ -21,7 +21,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.preference.PreferenceManager
 import com.google.android.material.color.MaterialColors
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.databinding.ActivitySettingsBinding
@@ -193,7 +193,7 @@ class SettingsActivity : AppCompatActivity(), SettingsActivityView {
         val controllerKeys = Settings.buttonKeys + Settings.circlePadKeys + Settings.cStickKeys +
                 Settings.dPadKeys + Settings.triggerKeys
         val editor =
-            PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext).edit()
+            PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext).edit()
         controllerKeys.forEach { editor.remove(it) }
         editor.apply()
 
@@ -212,11 +212,11 @@ class SettingsActivity : AppCompatActivity(), SettingsActivityView {
 
         // Set the root of the document tree before we create a new config file or the native code
         // will fail when creating the file.
-        if (DirectoryInitialization.setCitraUserDirectory()) {
-            CitraApplication.documentsTree.setRoot(Uri.parse(DirectoryInitialization.userPath))
+        if (DirectoryInitialization.setMandarinUserDirectory()) {
+            MandarinApplication.documentsTree.setRoot(Uri.parse(DirectoryInitialization.userPath))
             NativeLibrary.createConfigFile()
         } else {
-            throw IllegalStateException("Citra directory unavailable when accessing config file!")
+            throw IllegalStateException("Mandarin directory unavailable when accessing config file!")
         }
 
         // Set default values for system config file

@@ -21,7 +21,7 @@ import android.view.View
 import android.view.View.OnTouchListener
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.utils.EmulationMenuSettings
@@ -778,7 +778,7 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
 
     companion object {
         private val preferences
-            get() = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+            get() = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
 
         /**
          * Resizes a [Bitmap] by a given scale factor
@@ -848,7 +848,7 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
          *
          *
          * This has a few benefits over the conventional way of storing the values
-         * (ie. within the Citra ini file).
+         * (ie. within the Mandarin ini file).
          *
          *  * No native calls
          *  * Keeps Android-only values inside the Android environment

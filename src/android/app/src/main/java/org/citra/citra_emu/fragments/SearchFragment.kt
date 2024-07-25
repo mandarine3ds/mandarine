@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import info.debatty.java.stringsimilarity.Jaccard
 import info.debatty.java.stringsimilarity.JaroWinkler
 import kotlinx.coroutines.launch
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.adapters.GameAdapter
 import io.github.mandarin3ds.mandarin.databinding.FragmentSearchBinding
@@ -65,7 +65,7 @@ class SearchFragment : Fragment() {
         homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = true)
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        preferences = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
 
         if (savedInstanceState != null) {
             binding.searchText.setText(savedInstanceState.getString(SEARCH_TEXT))

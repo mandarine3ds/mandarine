@@ -6,7 +6,7 @@ package io.github.mandarin3ds.mandarin.features.settings.ui.viewholder
 
 import android.view.View
 import androidx.preference.PreferenceManager
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.databinding.ListItemSettingBinding
 import io.github.mandarin3ds.mandarin.features.settings.model.view.InputBindingSetting
 import io.github.mandarin3ds.mandarin.features.settings.model.view.SettingsItem
@@ -17,7 +17,7 @@ class InputBindingSettingViewHolder(val binding: ListItemSettingBinding, adapter
     private lateinit var setting: InputBindingSetting
 
     override fun bind(item: SettingsItem) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
         setting = item as InputBindingSetting
         binding.textSettingName.setText(item.nameId)
         val uiString = preferences.getString(setting.abstractSetting.key, "")!!

@@ -25,7 +25,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.camera.StillImageCameraHelper.OnFilePickerResult
@@ -45,7 +45,7 @@ import io.github.mandarin3ds.mandarin.viewmodel.EmulationViewModel
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
-        get() = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        get() = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
     var isActivityRecreated = false
 
     private val settingsViewModel: SettingsViewModel by viewModels()
@@ -77,7 +77,7 @@ class EmulationActivity : AppCompatActivity() {
         // Set these options now so that the SurfaceView the game renders into is the right size.
         enableFullscreenImmersive()
 
-        // Override Citra core INI with the one set by our in game menu
+        // Override Mandarin core INI with the one set by our in game menu
         NativeLibrary.swapScreens(
             EmulationMenuSettings.swapScreens,
             windowManager.defaultDisplay.rotation

@@ -15,13 +15,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.mandarin3ds.mandarin.R
-import io.github.mandarin3ds.mandarin.databinding.DialogCitraDirectoryBinding
+import io.github.mandarin3ds.mandarin.databinding.DialogMandarinDirectoryBinding
 import io.github.mandarin3ds.mandarin.ui.main.MainActivity
 import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
 import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
 
-class CitraDirectoryDialogFragment : DialogFragment() {
-    private lateinit var binding: DialogCitraDirectoryBinding
+class MandarinDirectoryDialogFragment : DialogFragment() {
+    private lateinit var binding: DialogMandarinDirectoryBinding
 
     private val homeViewModel: HomeViewModel by activityViewModels()
 
@@ -30,7 +30,7 @@ class CitraDirectoryDialogFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = DialogCitraDirectoryBinding.inflate(layoutInflater)
+        binding = DialogMandarinDirectoryBinding.inflate(layoutInflater)
 
         val path = Uri.parse(requireArguments().getString(PATH))
 
@@ -60,7 +60,7 @@ class CitraDirectoryDialogFragment : DialogFragment() {
             }
             .setNegativeButton(android.R.string.cancel) { _: DialogInterface?, _: Int ->
                 if (!PermissionsHandler.hasWriteAccess(requireContext())) {
-                    (requireActivity() as MainActivity).openCitraDirectory.launch(null)
+                    (requireActivity() as MainActivity).openMandarinDirectory.launch(null)
                 }
             }
             .show()
@@ -80,8 +80,8 @@ class CitraDirectoryDialogFragment : DialogFragment() {
             activity: FragmentActivity,
             path: String,
             listener: Listener
-        ): CitraDirectoryDialogFragment {
-            val dialog = CitraDirectoryDialogFragment()
+        ): MandarinDirectoryDialogFragment {
+            val dialog = MandarinDirectoryDialogFragment()
             ViewModelProvider(activity)[HomeViewModel::class.java].directoryListener = listener
             val args = Bundle()
             args.putString(PATH, path)

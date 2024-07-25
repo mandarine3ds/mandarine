@@ -6,13 +6,13 @@ package io.github.mandarin3ds.mandarin.utils
 import android.app.ActivityManager
 import android.content.Context
 import android.os.Build
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import java.util.Locale
 import kotlin.math.ceil
 
 object MemoryUtil {
-    private val context get() = CitraApplication.appContext
+    private val context get() = MandarinApplication.appContext
 
     private val Float.hundredths: String
         get() = String.format(Locale.ROOT, "%.2f", this)

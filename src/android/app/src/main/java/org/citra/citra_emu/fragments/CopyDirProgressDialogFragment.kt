@@ -23,11 +23,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.databinding.DialogCopyDirBinding
 import io.github.mandarin3ds.mandarin.model.SetupCallback
-import io.github.mandarin3ds.mandarin.utils.CitraDirectoryHelper
+import io.github.mandarin3ds.mandarin.utils.MandarinDirectoryHelper
 import io.github.mandarin3ds.mandarin.utils.FileUtil
 import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
 import io.github.mandarin3ds.mandarin.viewmodel.HomeViewModel
@@ -125,14 +125,14 @@ class CopyDirProgressDialog : DialogFragment() {
                         object : FileUtil.CopyDirListener {
                             override fun onSearchProgress(directoryName: String) {
                                 viewModel.onUpdateSearchProgress(
-                                    CitraApplication.appContext.resources,
+                                    MandarinApplication.appContext.resources,
                                     directoryName
                                 )
                             }
 
                             override fun onCopyProgress(filename: String, progress: Int, max: Int) {
                                 viewModel.onUpdateCopyProgress(
-                                    CitraApplication.appContext.resources,
+                                    MandarinApplication.appContext.resources,
                                     filename,
                                     progress,
                                     max
@@ -140,7 +140,7 @@ class CopyDirProgressDialog : DialogFragment() {
                             }
 
                             override fun onComplete() {
-                                CitraDirectoryHelper.initializeCitraDirectory(path)
+                                MandarinDirectoryHelper.initializeMandarinDirectory(path)
                                 callback?.onStepCompleted()
                                 viewModel.setCopyComplete(true)
                             }

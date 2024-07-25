@@ -21,8 +21,8 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../../src/mandarin_qt/aboutdialog.ui" line="14"/>
-        <source>About Citra</source>
-        <translation>Citraについて</translation>
+        <source>About Mandarin</source>
+        <translation>Mandarinについて</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/aboutdialog.ui" line="30"/>
@@ -31,8 +31,8 @@
     </message>
     <message>
         <location filename="../../src/mandarin_qt/aboutdialog.ui" line="60"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Citra&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Citra&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Mandarin&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;Mandarin&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/aboutdialog.ui" line="73"/>
@@ -45,14 +45,14 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt;Citra is a free and open source 3DS emulator licensed under GPLv2.0 or any later version.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt;Mandarin is a free and open source 3DS emulator licensed under GPLv2.0 or any later version.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt;&quot;&gt;This software should not be used to play games you have not legally obtained.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt;&quot;&gt;CitraはGPLv2.0またはそれ以降のバージョンでライセンスされたフリーのオープンソース3DSエミュレータです。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt;&quot;&gt;MandarinはGPLv2.0またはそれ以降のバージョンでライセンスされたフリーのオープンソース3DSエミュレータです。&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt;&quot;&gt;このソフトウェアは、法的に取得していないゲームをプレイする為に使用すべきではありません.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -63,8 +63,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/mandarin_qt/aboutdialog.ui" line="134"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;&amp;quot;3DS&amp;quot; is a trademark of Nintendo. Citra is not affiliated with Nintendo in any way.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;「3DS」は任天堂の商標です。Citraは任天堂と提携していません。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;&amp;quot;3DS&amp;quot; is a trademark of Nintendo. Mandarin is not affiliated with Nintendo in any way.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;「3DS」は任天堂の商標です。Mandarinは任天堂と提携していません。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -302,8 +302,8 @@ This would ban both their forum username and their IP address.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/compatdb.ui" line="36"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Should you choose to submit a test case to the &lt;/span&gt;&lt;a href=&quot;https://citra-emu.org/game/&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;Citra Compatibility List&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;, The following information will be collected and displayed on the site:&lt;/span&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Hardware Information (CPU / GPU / Operating System)&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Which version of Citra you are running&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The connected Citra account&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;テストケースを報告すると、&lt;/span&gt;&lt;a href=&quot;https://citra-emu.org/game/&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;Citra互換性リスト&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;に以下の情報が登録されます。&lt;/span&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ハードウェア情報（CPU/GPU/OS）&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;実行しているCitraのバージョン&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;接続されたCitraアカウント&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Should you choose to submit a test case to the &lt;/span&gt;&lt;a href=&quot;https://citra-emu.org/game/&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;Mandarin Compatibility List&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;, The following information will be collected and displayed on the site:&lt;/span&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Hardware Information (CPU / GPU / Operating System)&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Which version of Mandarin you are running&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The connected Mandarin account&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;テストケースを報告すると、&lt;/span&gt;&lt;a href=&quot;https://citra-emu.org/game/&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;Mandarin互換性リスト&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;に以下の情報が登録されます。&lt;/span&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ハードウェア情報（CPU/GPU/OS）&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;実行しているMandarinのバージョン&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;接続されたMandarinアカウント&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/compatdb.ui" line="72"/>
@@ -367,7 +367,7 @@ This would ban both their forum username and their IP address.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/compatdb.ui" line="182"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Independent of speed or performance, how well does this game play from start to finish on this version of Citra?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Independent of speed or performance, how well does this game play from start to finish on this version of Mandarin?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;エミュレーション速度以外の部分で、このゲームはどの程度動作しますか？&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -915,7 +915,7 @@ Would you like to ignore the error and continue?</source>
     <name>ConfigureDialog</name>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure.ui" line="6"/>
-        <source>Citra Configuration</source>
+        <source>Mandarin Configuration</source>
         <translation>設定</translation>
     </message>
     <message>
@@ -1328,12 +1328,12 @@ Would you like to ignore the error and continue?</source>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_general.ui" line="72"/>
         <source>Check for updates on start</source>
-        <translation>Citra起動時に確認</translation>
+        <translation>Mandarin起動時に確認</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_general.ui" line="79"/>
         <source>Silently auto update after closing</source>
-        <translation>Citra終了後に自動更新する</translation>
+        <translation>Mandarin終了後に自動更新する</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_general.ui" line="89"/>
@@ -1411,13 +1411,13 @@ Would you like to ignore the error and continue?</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_general.cpp" line="149"/>
-        <source>Citra</source>
-        <translation>Citra</translation>
+        <source>Mandarin</source>
+        <translation>Mandarin</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_general.cpp" line="150"/>
-        <source>Are you sure you want to &lt;b&gt;reset your settings&lt;/b&gt; and close Citra?</source>
-        <translation>すべての設定を&lt;b&gt;リセット&lt;/b&gt;してCitraを終了してもよろしいですか？</translation>
+        <source>Are you sure you want to &lt;b&gt;reset your settings&lt;/b&gt; and close Mandarin?</source>
+        <translation>すべての設定を&lt;b&gt;リセット&lt;/b&gt;してMandarinを終了してもよろしいですか？</translation>
     </message>
 </context>
 <context>
@@ -2140,8 +2140,8 @@ Would you like to ignore the error and continue?</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="343"/>
-        <source>Citra</source>
-        <translation>Citra</translation>
+        <source>Mandarin</source>
+        <translation>Mandarin</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_motion_touch.cpp" line="344"/>
@@ -2238,8 +2238,8 @@ Would you like to ignore the error and continue?</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_per_game.cpp" line="81"/>
-        <source>Citra</source>
-        <translation>Citra</translation>
+        <source>Mandarin</source>
+        <translation>Mandarin</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_per_game.cpp" line="81"/>
@@ -3332,7 +3332,7 @@ Would you like to ignore the error and continue?</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_system.cpp" line="272"/>
-        <source>Citra is missing keys to download system files. &lt;br&gt;&lt;a href=&apos;https://citra-emu.org/wiki/aes-keys/&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;How to get keys?&lt;/span&gt;&lt;/a&gt;</source>
+        <source>Mandarin is missing keys to download system files. &lt;br&gt;&lt;a href=&apos;https://citra-emu.org/wiki/aes-keys/&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;How to get keys?&lt;/span&gt;&lt;/a&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3367,8 +3367,8 @@ Would you like to ignore the error and continue?</source>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_system.cpp" line="614"/>
         <location filename="../../src/mandarin_qt/configuration/configure_system.cpp" line="616"/>
-        <source>Citra</source>
-        <translation>Citra</translation>
+        <source>Mandarin</source>
+        <translation>Mandarin</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/configuration/configure_system.cpp" line="614"/>
@@ -3734,7 +3734,7 @@ Drag points to change position, or double-click table cells to edit values.</sou
     <message>
         <location filename="../../src/mandarin_qt/dumping/dumping_dialog.cpp" line="25"/>
         <location filename="../../src/mandarin_qt/dumping/dumping_dialog.cpp" line="85"/>
-        <source>Citra</source>
+        <source>Mandarin</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3781,8 +3781,8 @@ Please check your FFmpeg installation used for compilation.</source>
     <name>GMainWindow</name>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="144"/>
-        <source>&lt;a href=&apos;https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;Anonymous data is collected&lt;/a&gt; to help improve Citra. &lt;br/&gt;&lt;br/&gt;Would you like to share your usage data with us?</source>
-        <translation>&lt;a href=&apos;https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;匿名のデータ&lt;/a&gt;がCitraの改善のために収集されます&lt;br/&gt;&lt;br/&gt;利用状況データの提供に同意しますか？</translation>
+        <source>&lt;a href=&apos;https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;Anonymous data is collected&lt;/a&gt; to help improve Mandarin. &lt;br/&gt;&lt;br/&gt;Would you like to share your usage data with us?</source>
+        <translation>&lt;a href=&apos;https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/&apos;&gt;匿名のデータ&lt;/a&gt;がMandarinの改善のために収集されます&lt;br/&gt;&lt;br/&gt;利用状況データの提供に同意しますか？</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="147"/>
@@ -3854,8 +3854,8 @@ Please check your FFmpeg installation used for compilation.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1108"/>
-        <source>Citra is running a game</source>
-        <extracomment>TRANSLATORS: This string is shown to the user to explain why Citra needs to prevent the computer from sleeping</extracomment>
+        <source>Mandarin is running a game</source>
+        <extracomment>TRANSLATORS: This string is shown to the user to explain why Mandarin needs to prevent the computer from sleeping</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3897,7 +3897,7 @@ Please check your FFmpeg installation used for compilation.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1221"/>
-        <source>GBA Virtual Console ROMs are not supported by Citra.</source>
+        <source>GBA Virtual Console ROMs are not supported by Mandarin.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3963,8 +3963,8 @@ Please check your FFmpeg installation used for compilation.</source>
         <location filename="../../src/mandarin_qt/main.cpp" line="2531"/>
         <location filename="../../src/mandarin_qt/main.cpp" line="2832"/>
         <location filename="../../src/mandarin_qt/main.cpp" line="2925"/>
-        <source>Citra</source>
-        <translation>Citra</translation>
+        <source>Mandarin</source>
+        <translation>Mandarin</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1681"/>
@@ -4061,8 +4061,8 @@ Refer to the log for details.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1830"/>
-        <source>%1 must be decrypted before being used with Citra. A real 3DS is required.</source>
-        <translation>%1 はCitraで使用する前に復号化する必要があります。3DS実機が必要です</translation>
+        <source>%1 must be decrypted before being used with Mandarin. A real 3DS is required.</source>
+        <translation>%1 はMandarinで使用する前に復号化する必要があります。3DS実機が必要です</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1835"/>
@@ -4101,13 +4101,13 @@ Refer to the log for details.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1987"/>
-        <source>Missing Citra Account</source>
-        <translation>Citraアカウントがありません</translation>
+        <source>Missing Mandarin Account</source>
+        <translation>Mandarinアカウントがありません</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="1988"/>
-        <source>You must link your Citra account to submit test cases.&lt;br/&gt;Go to Emulation &amp;gt; Configure... &amp;gt; Web to do so.</source>
-        <translation>テストケースを送信するには、Citraアカウントとの連携が必要です。&lt;br/&gt;エミュレーション→設定→Webからアカウントの連携をしてください</translation>
+        <source>You must link your Mandarin account to submit test cases.&lt;br/&gt;Go to Emulation &amp;gt; Configure... &amp;gt; Web to do so.</source>
+        <translation>テストケースを送信するには、Mandarinアカウントとの連携が必要です。&lt;br/&gt;エミュレーション→設定→Webからアカウントの連携をしてください</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.cpp" line="2159"/>
@@ -4194,7 +4194,7 @@ Use at your own risk!</source>
         <location filename="../../src/mandarin_qt/main.cpp" line="2429"/>
         <source>FFmpeg could not be loaded. Make sure you have a compatible version installed.
 
-To install FFmpeg to Citra, press Open and select your FFmpeg directory.
+To install FFmpeg to Mandarin, press Open and select your FFmpeg directory.
 
 To view a guide on how to install FFmpeg, press Help.</source>
         <translation type="unfinished"/>
@@ -4580,7 +4580,7 @@ To view a guide on how to install FFmpeg, press Help.</source>
         <location filename="../../src/mandarin_qt/game_list.cpp" line="710"/>
         <location filename="../../src/mandarin_qt/game_list.cpp" line="720"/>
         <location filename="../../src/mandarin_qt/game_list.cpp" line="732"/>
-        <source>Citra</source>
+        <source>Mandarin</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -5247,10 +5247,10 @@ Screen.</source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/multiplayer/host_room.cpp" line="165"/>
-        <source>Failed to announce the room to the public lobby. In order to host a room publicly, you must have a valid Citra account configured in Emulation -&gt; Configure -&gt; Web. If you do not want to publish a room in the public lobby, then select Unlisted instead.
+        <source>Failed to announce the room to the public lobby. In order to host a room publicly, you must have a valid Mandarin account configured in Emulation -&gt; Configure -&gt; Web. If you do not want to publish a room in the public lobby, then select Unlisted instead.
 Debug Message: </source>
         <translation>このルームをルーム一覧に登録できませんでした。
-登録を行いたい場合は、エミュレーション→設定→Webで Citra アカウントを登録してください。
+登録を行いたい場合は、エミュレーション→設定→Webで Mandarin アカウントを登録してください。
 ルーム一覧に登録する必要がなければ、Unlistedを選択してください
 以下デバッグ用：</translation>
     </message>
@@ -5502,8 +5502,8 @@ Debug Message: </source>
     <name>MainWindow</name>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="14"/>
-        <source>Citra</source>
-        <translation>Citra</translation>
+        <source>Mandarin</source>
+        <translation>Mandarin</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="53"/>
@@ -5657,8 +5657,8 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="304"/>
-        <source>About Citra</source>
-        <translation>Citraについて</translation>
+        <source>About Mandarin</source>
+        <translation>Mandarinについて</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="315"/>
@@ -5777,13 +5777,13 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="478"/>
-        <source>Modify Citra Install</source>
-        <translation>Citraのインストール形態を変更</translation>
+        <source>Modify Mandarin Install</source>
+        <translation>Mandarinのインストール形態を変更</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="481"/>
-        <source>Opens the maintenance tool to modify your Citra installation</source>
-        <translation>Citraのインストール形態を変更するためのメンテナンスツールを開きます</translation>
+        <source>Opens the maintenance tool to modify your Mandarin installation</source>
+        <translation>Mandarinのインストール形態を変更するためのメンテナンスツールを開きます</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="489"/>
@@ -5852,8 +5852,8 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="590"/>
-        <source>Open Citra Folder</source>
-        <translation>Citra本体のあるフォルダを開く</translation>
+        <source>Open Mandarin Folder</source>
+        <translation>Mandarin本体のあるフォルダを開く</translation>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/main.ui" line="598"/>
@@ -5973,7 +5973,7 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/movie/movie_play_dialog.cpp" line="54"/>
-        <source>Citra TAS Movie (*.ctm)</source>
+        <source>Mandarin TAS Movie (*.ctm)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -6050,7 +6050,7 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/movie/movie_record_dialog.cpp" line="50"/>
-        <source>Citra TAS Movie (*.ctm)</source>
+        <source>Mandarin TAS Movie (*.ctm)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -6172,7 +6172,7 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/multiplayer/message.cpp" line="33"/>
-        <source>Creating a room failed. Please retry. Restarting Citra might be necessary.</source>
+        <source>Creating a room failed. Please retry. Restarting Mandarin might be necessary.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -6182,7 +6182,7 @@ Debug Message: </source>
     </message>
     <message>
         <location filename="../../src/mandarin_qt/multiplayer/message.cpp" line="38"/>
-        <source>Version mismatch! Please update to the latest version of Citra. If the problem persists, contact the room host and ask them to update the server.</source>
+        <source>Version mismatch! Please update to the latest version of Mandarin. If the problem persists, contact the room host and ask them to update the server.</source>
         <translation type="unfinished"/>
     </message>
     <message>

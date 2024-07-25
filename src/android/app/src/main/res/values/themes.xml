@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Citra.Splash.Main" parent="Theme.SplashScreen">
+    <style name="Theme.Mandarin.Splash.Main" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/mandarin_surface</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_mandarin</item>
-        <item name="postSplashScreenTheme">@style/Theme.Citra.Main</item>
+        <item name="postSplashScreenTheme">@style/Theme.Mandarin.Main</item>
     </style>
 
-    <style name="Theme.Citra" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Mandarin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Main theme colors -->
         <item name="colorPrimary">@color/mandarin_primary</item>
         <item name="colorOnPrimary">@color/mandarin_onPrimary</item>
@@ -39,12 +39,12 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
 
-        <item name="sliderStyle">@style/CitraSlider</item>
+        <item name="sliderStyle">@style/MandarinSlider</item>
 
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 
     <!-- Trick for API >= 29 specific changes -->
-    <style name="Theme.Citra.Main" parent="Theme.Citra" />
+    <style name="Theme.Mandarin.Main" parent="Theme.Mandarin" />
 
 </resources>

@@ -33,7 +33,7 @@ DirectConnectWindow::DirectConnectWindow(Core::System& system_, QWidget* parent)
     ui->nickname->setValidator(validation.GetNickname());
     ui->nickname->setText(UISettings::values.nickname);
     if (ui->nickname->text().isEmpty() && !NetSettings::values.mandarin_username.empty()) {
-        // Use Citra Web Service user name as nickname by default
+        // Use Mandarin Web Service user name as nickname by default
         ui->nickname->setText(QString::fromStdString(NetSettings::values.mandarin_username));
     }
     ui->ip->setValidator(validation.GetIP());

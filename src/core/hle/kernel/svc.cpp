@@ -76,7 +76,7 @@ enum class KernelState {
      */
     KERNEL_STATE_REBOOT = 7,
 
-    // Special Citra only states.
+    // Special Mandarin only states.
     /**
      * Sets the emulation speed percentage. A value of 0 means unthrottled.
      */
@@ -272,15 +272,15 @@ enum class SystemInfoMemUsageRegion {
 
 /**
  * Accepted by svcGetSystemInfo param with MANDARIN_INFORMATION type. Selects which information
- * to fetch from Citra. Some string params don't fit in 7 bytes, so they are split.
+ * to fetch from Mandarin. Some string params don't fit in 7 bytes, so they are split.
  */
-enum class SystemInfoCitraInformation {
-    IS_MANDARIN = 0,          // Always set the output to 1, signaling the app is running on Citra.
+enum class SystemInfoMandarinInformation {
+    IS_MANDARIN = 0,          // Always set the output to 1, signaling the app is running on Mandarin.
     HOST_TICK = 1,         // Tick reference from the host in ns, unaffected by lag or cpu speed.
     EMULATION_SPEED = 2,   // Gets the emulation speed set by the user or by KernelSetState.
     BUILD_NAME = 10,       // (ie: Nightly, Canary).
     BUILD_VERSION = 11,    // Build version.
-    BUILD_PLATFORM = 12,   // Build platform, see SystemInfoCitraPlatform.
+    BUILD_PLATFORM = 12,   // Build platform, see SystemInfoMandarinPlatform.
     BUILD_DATE_PART1 = 20, // Build date first 7 characters.
     BUILD_DATE_PART2 = 21, // Build date next 7 characters.
     BUILD_DATE_PART3 = 22, // Build date next 7 characters.
@@ -294,7 +294,7 @@ enum class SystemInfoCitraInformation {
 /**
  * Current officially supported platforms.
  */
-enum class SystemInfoCitraPlatform {
+enum class SystemInfoMandarinPlatform {
     PLATFORM_UNKNOWN = 0,
     PLATFORM_WINDOWS = 1,
     PLATFORM_LINUX = 2,
@@ -1429,7 +1429,7 @@ Result SVC::KernelSetState(u32 kernel_state, u32 varg1, u32 varg2) {
         system.RequestShutdown();
         break;
 
-    // Citra specific states.
+    // Mandarin specific states.
     case KernelState::KERNEL_STATE_MANDARIN_EMULATION_SPEED: {
         u16 new_value = static_cast<u16>(varg1);
         Settings::values.frame_limit.SetValue(new_value);
@@ -1800,67 +1800,67 @@ Result SVC::GetSystemInfo(s64* out, u32 type, s32 param) {
         *out = 0;
         return (system.GetNumCores() == 4) ? ResultSuccess : ResultInvalidEnumValue;
     case SystemInfoType::MANDARIN_INFORMATION:
-        switch ((SystemInfoCitraInformation)param) {
-        case SystemInfoCitraInformation::IS_MANDARIN:
+        switch ((SystemInfoMandarinInformation)param) {
+        case SystemInfoMandarinInformation::IS_MANDARIN:
             *out = 1;
             break;
-        case SystemInfoCitraInformation::HOST_TICK:
+        case SystemInfoMandarinInformation::HOST_TICK:
             *out = static_cast<s64>(std::chrono::duration_cast<std::chrono::nanoseconds>(
                                         std::chrono::steady_clock::now().time_since_epoch())
                                         .count());
             break;
-        case SystemInfoCitraInformation::EMULATION_SPEED:
+        case SystemInfoMandarinInformation::EMULATION_SPEED:
             *out = static_cast<s64>(Settings::values.frame_limit.GetValue());
             break;
-        case SystemInfoCitraInformation::BUILD_NAME:
+        case SystemInfoMandarinInformation::BUILD_NAME:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_name, 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_VERSION:
+        case SystemInfoMandarinInformation::BUILD_VERSION:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_version, 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_PLATFORM: {
+        case SystemInfoMandarinInformation::BUILD_PLATFORM: {
 #if defined(_WIN32)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_WINDOWS);
+            *out = static_cast<s64>(SystemInfoMandarinPlatform::PLATFORM_WINDOWS);
 #elif defined(ANDROID)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_ANDROID);
+            *out = static_cast<s64>(SystemInfoMandarinPlatform::PLATFORM_ANDROID);
 #elif defined(__linux__)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_LINUX);
+            *out = static_cast<s64>(SystemInfoMandarinPlatform::PLATFORM_LINUX);
 #elif defined(__APPLE__)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_APPLE);
+            *out = static_cast<s64>(SystemInfoMandarinPlatform::PLATFORM_APPLE);
 #else
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_UNKNOWN);
+            *out = static_cast<s64>(SystemInfoMandarinPlatform::PLATFORM_UNKNOWN);
 #endif
             break;
         }
-        case SystemInfoCitraInformation::BUILD_DATE_PART1:
+        case SystemInfoMandarinInformation::BUILD_DATE_PART1:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_DATE_PART2:
+        case SystemInfoMandarinInformation::BUILD_DATE_PART2:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 1, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_DATE_PART3:
+        case SystemInfoMandarinInformation::BUILD_DATE_PART3:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 2, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_DATE_PART4:
+        case SystemInfoMandarinInformation::BUILD_DATE_PART4:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 3, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_BRANCH_PART1:
+        case SystemInfoMandarinInformation::BUILD_GIT_BRANCH_PART1:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_branch,
                            (sizeof(s64) - 1) * 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_BRANCH_PART2:
+        case SystemInfoMandarinInformation::BUILD_GIT_BRANCH_PART2:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_branch,
                            (sizeof(s64) - 1) * 1, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_DESCRIPTION_PART1:
+        case SystemInfoMandarinInformation::BUILD_GIT_DESCRIPTION_PART1:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_desc, (sizeof(s64) - 1) * 0,
                            sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_DESCRIPTION_PART2:
+        case SystemInfoMandarinInformation::BUILD_GIT_DESCRIPTION_PART2:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_desc, (sizeof(s64) - 1) * 1,
                            sizeof(s64));
             break;

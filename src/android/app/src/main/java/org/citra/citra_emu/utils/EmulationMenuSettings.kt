@@ -6,12 +6,12 @@ package io.github.mandarin3ds.mandarin.utils
 
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.preference.PreferenceManager
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.display.ScreenLayout
 
 object EmulationMenuSettings {
     private val preferences =
-        PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
 
     var joystickRelCenter: Boolean
         get() = preferences.getBoolean("EmulationMenuSettings_JoystickRelCenter", true)

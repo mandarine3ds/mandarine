@@ -30,7 +30,7 @@ import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialFadeThrough
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.adapters.SetupAdapter
 import io.github.mandarin3ds.mandarin.databinding.FragmentSetupBinding
@@ -39,7 +39,7 @@ import io.github.mandarin3ds.mandarin.model.SetupCallback
 import io.github.mandarin3ds.mandarin.model.SetupPage
 import io.github.mandarin3ds.mandarin.model.StepState
 import io.github.mandarin3ds.mandarin.ui.main.MainActivity
-import io.github.mandarin3ds.mandarin.utils.CitraDirectoryHelper
+import io.github.mandarin3ds.mandarin.utils.MandarinDirectoryHelper
 import io.github.mandarin3ds.mandarin.utils.GameHelper
 import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
 import io.github.mandarin3ds.mandarin.utils.ViewUtils
@@ -60,7 +60,7 @@ class SetupFragment : Fragment() {
     private lateinit var pages: MutableList<SetupPage>
 
     private val preferences: SharedPreferences
-        get() = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        get() = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
 
     companion object {
         const val KEY_NEXT_VISIBILITY = "NextButtonVisibility"
@@ -214,7 +214,7 @@ class SetupFragment : Fragment() {
                     R.string.select,
                     {
                         userDirCallback = it
-                        openCitraDirectory.launch(null)
+                        openMandarinDirectory.launch(null)
                     },
                     true,
                     true,
@@ -396,14 +396,14 @@ class SetupFragment : Fragment() {
 
     private lateinit var userDirCallback: SetupCallback
 
-    private val openCitraDirectory = registerForActivityResult<Uri, Uri>(
+    private val openMandarinDirectory = registerForActivityResult<Uri, Uri>(
         ActivityResultContracts.OpenDocumentTree()
     ) { result: Uri? ->
         if (result == null) {
             return@registerForActivityResult
         }
 
-        CitraDirectoryHelper(requireActivity()).showCitraDirectoryDialog(result, userDirCallback)
+        MandarinDirectoryHelper(requireActivity()).showMandarinDirectoryDialog(result, userDirCallback)
     }
 
     private lateinit var gamesDirCallback: SetupCallback

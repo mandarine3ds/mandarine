@@ -10,12 +10,12 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.preference.PreferenceManager
 import androidx.documentfile.provider.DocumentFile
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 
 object PermissionsHandler {
     const val MANDARIN_DIRECTORY = "MANDARIN_DIRECTORY"
     val preferences: SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
 
     fun hasWriteAccess(context: Context): Boolean {
         try {
@@ -45,6 +45,6 @@ object PermissionsHandler {
             return Uri.parse(directoryString)
         }
 
-    fun setCitraDirectory(uriString: String?) =
+    fun setMandarinDirectory(uriString: String?) =
         preferences.edit().putString(MANDARIN_DIRECTORY, uriString).apply()
 }

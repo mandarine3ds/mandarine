@@ -263,7 +263,7 @@ if (APPLE)
     set_target_properties(mandarin-qt PROPERTIES
         MACOSX_BUNDLE TRUE
         MACOSX_BUNDLE_INFO_PLIST "${DIST_DIR}/Info.plist.in"
-        MACOSX_BUNDLE_BUNDLE_NAME "Citra"
+        MACOSX_BUNDLE_BUNDLE_NAME "Mandarin"
         MACOSX_BUNDLE_GUI_IDENTIFIER "com.mandarin3ds.mandarin"
         MACOSX_BUNDLE_BUNDLE_VERSION "${BUILD_VERSION}"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${BUILD_FULLNAME}"

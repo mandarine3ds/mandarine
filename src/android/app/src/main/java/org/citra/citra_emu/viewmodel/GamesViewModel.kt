@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.model.Game
 import io.github.mandarin3ds.mandarin.utils.GameHelper
 
@@ -42,7 +42,7 @@ class GamesViewModel : ViewModel() {
 
     init {
         // Retrieve list of cached games
-        val storedGames = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        val storedGames = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
             .getStringSet(GameHelper.KEY_GAMES, emptySet())
         if (storedGames!!.isNotEmpty()) {
             val deserializedGames = mutableSetOf<Game>()
@@ -55,7 +55,7 @@ class GamesViewModel : ViewModel() {
                 }
 
                 val gameExists =
-                    DocumentFile.fromSingleUri(CitraApplication.appContext, Uri.parse(game.path))
+                    DocumentFile.fromSingleUri(MandarinApplication.appContext, Uri.parse(game.path))
                         ?.exists()
                 if (gameExists == true) {
                     deserializedGames.add(game)

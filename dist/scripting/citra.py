@@ -13,7 +13,7 @@ class RequestType(enum.IntEnum):
 
 MANDARIN_PORT = 45987
 
-class Citra:
+class Mandarin:
     def __init__(self, address="127.0.0.1", port=MANDARIN_PORT):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.address = address
@@ -92,4 +92,4 @@ class Citra:
 
 if "__main__" == __name__:
     import doctest
-    doctest.testmod(extraglobs={'c': Citra()})
+    doctest.testmod(extraglobs={'c': Mandarin()})

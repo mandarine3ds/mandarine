@@ -5,7 +5,7 @@
 package io.github.mandarin3ds.mandarin.features.settings.model
 
 import android.text.TextUtils
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.features.settings.ui.SettingsActivityView
 import io.github.mandarin3ds.mandarin.features.settings.utils.SettingsFile
@@ -42,14 +42,14 @@ class Settings {
 
     fun loadSettings(view: SettingsActivityView? = null) {
         sections = SettingsSectionMap()
-        loadCitraSettings(view)
+        loadMandarinSettings(view)
         if (!TextUtils.isEmpty(gameId)) {
             loadCustomGameSettings(gameId!!, view)
         }
         isLoaded = true
     }
 
-    private fun loadCitraSettings(view: SettingsActivityView?) {
+    private fun loadMandarinSettings(view: SettingsActivityView?) {
         for ((fileName) in configFileSectionsMap) {
             sections.putAll(SettingsFile.readFile(fileName, view))
         }
@@ -79,7 +79,7 @@ class Settings {
     fun saveSettings(view: SettingsActivityView) {
         if (TextUtils.isEmpty(gameId)) {
             view.showToastMessage(
-                CitraApplication.appContext.getString(R.string.ini_saved),
+                MandarinApplication.appContext.getString(R.string.ini_saved),
                 false
             )
             for ((fileName, sectionNames) in configFileSectionsMap.entries) {

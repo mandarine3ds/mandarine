@@ -12,7 +12,7 @@ import android.hardware.camera2.CameraManager
 import android.os.Build
 import android.text.TextUtils
 import androidx.preference.PreferenceManager
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.features.settings.model.AbstractBooleanSetting
 import io.github.mandarin3ds.mandarin.features.settings.model.AbstractIntSetting
@@ -60,7 +60,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
 
     fun onViewCreated(settingsAdapter: SettingsAdapter) {
         this.settingsAdapter = settingsAdapter
-        preferences = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        preferences = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
         loadSettingsList()
     }
 
@@ -845,7 +845,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
 
             // Disabled until custom texture implementation gets rewrite, current one overloads RAM
-            // and crashes Citra.
+            // and crashes Mandarin.
             // add(
             //     SwitchSetting(
             //         BooleanSetting.PRELOAD_TEXTURES,

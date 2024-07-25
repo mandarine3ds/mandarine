@@ -12,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
-import io.github.mandarin3ds.mandarin.fragments.CitraDirectoryDialogFragment
+import io.github.mandarin3ds.mandarin.fragments.MandarinDirectoryDialogFragment
 import io.github.mandarin3ds.mandarin.utils.GameHelper
 import io.github.mandarin3ds.mandarin.utils.PermissionsHandler
 
@@ -31,7 +31,7 @@ class HomeViewModel : ViewModel() {
     val userDir get() = _userDir.asStateFlow()
     private val _userDir = MutableStateFlow(
         Uri.parse(
-            PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+            PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
                 .getString(PermissionsHandler.MANDARIN_DIRECTORY, "")
         ).path ?: ""
     )
@@ -39,12 +39,12 @@ class HomeViewModel : ViewModel() {
     val gamesDir get() = _gamesDir.asStateFlow()
     private val _gamesDir = MutableStateFlow(
         Uri.parse(
-            PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+            PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
                 .getString(GameHelper.KEY_GAME_PATH, "")
         ).path ?: ""
     )
 
-    var directoryListener: CitraDirectoryDialogFragment.Listener? = null
+    var directoryListener: MandarinDirectoryDialogFragment.Listener? = null
 
     val dirProgress get() = _dirProgress.asStateFlow()
     private val _dirProgress = MutableStateFlow(0)

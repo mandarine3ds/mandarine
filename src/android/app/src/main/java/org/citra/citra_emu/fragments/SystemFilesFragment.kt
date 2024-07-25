@@ -26,7 +26,7 @@ import androidx.preference.PreferenceManager
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.coroutines.launch
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.HomeNavigationDirections
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.R
@@ -92,7 +92,7 @@ class SystemFilesFragment : Fragment() {
         homeViewModel.setNavigationVisibility(visible = false, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = false)
 
-        val preferences = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
         if (!preferences.getBoolean(WARNING_SHOWN, false)) {
             MessageDialogFragment.newInstance(
                 R.string.home_menu_warning,
@@ -155,7 +155,7 @@ class SystemFilesFragment : Fragment() {
     }
 
     private fun reloadUi() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(MandarinApplication.appContext)
 
         binding.switchRunSystemSetup.isChecked = SystemSaveGame.getIsSystemSetupNeeded()
         binding.switchRunSystemSetup.setOnCheckedChangeListener { _, isChecked ->

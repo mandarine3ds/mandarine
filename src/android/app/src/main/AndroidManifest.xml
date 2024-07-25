@@ -33,7 +33,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name="org.citra.citra_emu.CitraApplication"
+        android:name="org.citra.citra_emu.MandarinApplication"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
         android:allowBackup="false"
@@ -47,7 +47,7 @@
 
         <activity
             android:name="org.citra.citra_emu.ui.main.MainActivity"
-            android:theme="@style/Theme.Citra.Splash.Main"
+            android:theme="@style/Theme.Mandarin.Splash.Main"
             android:exported="true">
 
             <!-- This intentfilter marks this Activity as the one that gets launched from Home screen. -->
@@ -61,13 +61,13 @@
         <activity
             android:name="org.citra.citra_emu.features.settings.ui.SettingsActivity"
             android:configChanges="orientation|screenSize|uiMode"
-            android:theme="@style/Theme.Citra.Main"
+            android:theme="@style/Theme.Mandarin.Main"
             android:label="@string/preferences_settings"/>
 
         <activity
             android:name="org.citra.citra_emu.activities.EmulationActivity"
             android:exported="true"
-            android:theme="@style/Theme.Citra.Main"
+            android:theme="@style/Theme.Mandarin.Main"
             android:launchMode="singleTop">
 
             <intent-filter>
@@ -87,7 +87,7 @@
         <activity
             android:name="org.citra.citra_emu.features.cheats.ui.CheatsActivity"
             android:exported="false"
-            android:theme="@style/Theme.Citra.Main"
+            android:theme="@style/Theme.Mandarin.Main"
             android:label="@string/cheats"/>
     </application>
 

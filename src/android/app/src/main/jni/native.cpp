@@ -129,11 +129,11 @@ static bool CheckMicPermission() {
                                                                IDCache::GetRequestMicPermission());
 }
 
-static Core::System::ResultStatus RunCitra(const std::string& filepath) {
-    // Citra core only supports a single running instance
+static Core::System::ResultStatus RunMandarin(const std::string& filepath) {
+    // Mandarin core only supports a single running instance
     std::scoped_lock lock(running_mutex);
 
-    LOG_INFO(Frontend, "Citra starting...");
+    LOG_INFO(Frontend, "Mandarin starting...");
 
     MicroProfileOnThreadCreate("EmuThread");
 
@@ -514,7 +514,7 @@ jboolean Java_org_citra_citra_1emu_NativeLibrary_onGamePadMoveEvent(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, [[maybe_unused]] jstring j_device,
     jint axis, jfloat x, jfloat y) {
     // Clamp joystick movement to supported minimum and maximum
-    // Citra uses an inverted y axis sent by the frontend
+    // Mandarin uses an inverted y axis sent by the frontend
     x = std::clamp(x, -1.f, 1.f);
     y = std::clamp(-y, -1.f, 1.f);
 
@@ -641,7 +641,7 @@ void Java_org_citra_citra_1emu_NativeLibrary_run__Ljava_lang_String_2(JNIEnv* en
         running_cv.notify_all();
     }
 
-    const Core::System::ResultStatus result{RunCitra(path)};
+    const Core::System::ResultStatus result{RunMandarin(path)};
     if (result != Core::System::ResultStatus::Success) {
         env->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
                                   IDCache::GetExitEmulationActivity(), static_cast<int>(result));
@@ -739,7 +739,7 @@ void Java_org_citra_citra_1emu_NativeLibrary_loadState([[maybe_unused]] JNIEnv* 
 
 void Java_org_citra_citra_1emu_NativeLibrary_logDeviceInfo([[maybe_unused]] JNIEnv* env,
                                                            [[maybe_unused]] jobject obj) {
-    LOG_INFO(Frontend, "Citra Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
+    LOG_INFO(Frontend, "Mandarin Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
              Common::g_scm_desc);
     LOG_INFO(Frontend, "Host CPU: {}", Common::GetCPUCaps().cpu_string);
     // There is no decent way to get the OS version, so we log the API level instead.

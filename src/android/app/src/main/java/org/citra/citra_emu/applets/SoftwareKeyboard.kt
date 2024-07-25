@@ -7,7 +7,7 @@ package io.github.mandarin3ds.mandarin.applets
 import android.text.InputFilter
 import android.text.Spanned
 import androidx.annotation.Keep
-import io.github.mandarin3ds.mandarin.CitraApplication.Companion.appContext
+import io.github.mandarin3ds.mandarin.MandarinApplication.Companion.appContext
 import io.github.mandarin3ds.mandarin.NativeLibrary
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.fragments.KeyboardDialogFragment

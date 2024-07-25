@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import io.github.mandarin3ds.mandarin.CitraApplication
+import io.github.mandarin3ds.mandarin.MandarinApplication
 import io.github.mandarin3ds.mandarin.R
 import io.github.mandarin3ds.mandarin.utils.FileUtil.asDocumentFile
 import io.github.mandarin3ds.mandarin.utils.GpuDriverMetadata
@@ -38,7 +38,7 @@ class DriverViewModel : ViewModel() {
     private val _selectedDriverMetadata =
         MutableStateFlow(
             GpuDriverHelper.customDriverData.name
-                ?: CitraApplication.appContext.getString(R.string.system_gpu_driver)
+                ?: MandarinApplication.appContext.getString(R.string.system_gpu_driver)
         )
     val selectedDriverMetadata: StateFlow<String> get() = _selectedDriverMetadata
 
@@ -86,7 +86,7 @@ class DriverViewModel : ViewModel() {
             setSelectedDriverIndex(_driverList.value.size)
             _driverList.value.add(driverData)
             _selectedDriverMetadata.value = driverData.second.name
-                ?: CitraApplication.appContext.getString(R.string.system_gpu_driver)
+                ?: MandarinApplication.appContext.getString(R.string.system_gpu_driver)
         } else {
             setSelectedDriverIndex(driverIndex)
         }
@@ -145,6 +145,6 @@ class DriverViewModel : ViewModel() {
     private fun setDriverReady() {
         _isDriverReady.value = true
         _selectedDriverMetadata.value = GpuDriverHelper.customDriverData.name
-            ?: CitraApplication.appContext.getString(R.string.system_gpu_driver)
+            ?: MandarinApplication.appContext.getString(R.string.system_gpu_driver)
     }
 }

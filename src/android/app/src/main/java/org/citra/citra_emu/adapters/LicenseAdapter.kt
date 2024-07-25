@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import org.citra.citra_emu.CitraApplication
+import org.citra.citra_emu.MandarinApplication
 import org.citra.citra_emu.databinding.ListItemSettingBinding
 import org.citra.citra_emu.fragments.LicenseBottomSheetDialogFragment
 import org.citra.citra_emu.model.License
@@ -47,7 +47,7 @@ class LicenseAdapter(private val activity: AppCompatActivity, var licenses: List
         fun bind(license: License) {
             this.license = license
 
-            val context = CitraApplication.appContext
+            val context = MandarinApplication.appContext
             binding.textSettingName.text = context.getString(license.titleId)
             binding.textSettingDescription.text = context.getString(license.descriptionId)
         }
