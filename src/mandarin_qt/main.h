@@ -256,7 +256,7 @@ private slots:
     void OnStopVideoDumping();
     void OnCoreError(Core::System::ResultStatus, std::string);
     /// Called whenever a user selects Help->About Mandarin
-    void OnMenuAboutCitra();
+    void OnMenuAboutMandarin();
 
 #if ENABLE_QT_UPDATER
     void OnUpdateFound(bool found, bool error);
