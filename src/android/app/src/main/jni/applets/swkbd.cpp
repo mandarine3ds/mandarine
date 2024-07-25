@@ -124,7 +124,7 @@ jobject ToJavaValidationError(Frontend::ValidationError error) {
                               "Lio/github/mandarin3ds/mandarin/applets/SoftwareKeyboard$ValidationError;"));
 }
 
-jobject Java_org_citra_citra_1emu_applets_SoftwareKeyboard_ValidateFilters(JNIEnv* env,
+jobject Java_io_github_mandarin3ds_mandarin_applets_SoftwareKeyboard_ValidateFilters(JNIEnv* env,
                                                                            jclass clazz,
                                                                            jstring text) {
 
@@ -133,7 +133,7 @@ jobject Java_org_citra_citra_1emu_applets_SoftwareKeyboard_ValidateFilters(JNIEn
     return ToJavaValidationError(ret);
 }
 
-jobject Java_org_citra_citra_1emu_applets_SoftwareKeyboard_ValidateInput(JNIEnv* env, jclass clazz,
+jobject Java_io_github_mandarin3ds_mandarin_applets_SoftwareKeyboard_ValidateInput(JNIEnv* env, jclass clazz,
                                                                          jstring text) {
 
     const auto ret =
