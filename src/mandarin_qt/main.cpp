@@ -948,7 +948,7 @@ void GMainWindow::ConnectMenuEvents() {
     connect_menu(ui->action_FAQ, []() {
         QDesktopServices::openUrl(QUrl(QStringLiteral("https://citra-emu.org/wiki/faq/")));
     });
-    connect_menu(ui->action_About, &GMainWindow::OnMenuAboutCitra);
+    connect_menu(ui->action_About, &GMainWindow::OnMenuAboutMandarin);
 
 #if ENABLE_QT_UPDATER
     connect_menu(ui->action_Check_For_Updates, &GMainWindow::OnCheckForUpdates);
@@ -3161,7 +3161,7 @@ void GMainWindow::UpdateWindowTitle() {
     } else {
         setWindowTitle(QStringLiteral("Mandarin %1 | %2").arg(full_name, game_title));
         render_window->setWindowTitle(
-            QStringLiteral("Citra %1 | %2 | %3").arg(full_name, game_title, tr("Primary Window")));
+            QStringLiteral("Mandarin %1 | %2 | %3").arg(full_name, game_title, tr("Primary Window")));
         secondary_window->setWindowTitle(QStringLiteral("Mandarin %1 | %2 | %3")
                                              .arg(full_name, game_title, tr("Secondary Window")));
     }

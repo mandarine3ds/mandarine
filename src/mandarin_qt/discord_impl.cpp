@@ -42,7 +42,7 @@ void DiscordImpl::Update() {
 
     DiscordRichPresence presence{};
     presence.largeImageKey = "mandarin";
-    presence.largeImageText = "Citra is an emulator for the Nintendo 3DS";
+    presence.largeImageText = "Mandarin is an emulator for the Nintendo 3DS";
     if (is_powered_on) {
         presence.state = title.c_str();
         presence.details = "Currently in game";
