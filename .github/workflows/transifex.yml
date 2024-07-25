@@ -1,4 +1,4 @@
-name: citra-transifex
+name: mandarin-transifex
 
 on:
   push:
