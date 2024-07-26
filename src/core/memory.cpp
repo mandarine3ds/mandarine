@@ -166,7 +166,7 @@ public:
 
         while (remaining_size > 0) {
             const std::size_t copy_amount = std::min(CITRA_PAGE_SIZE - page_offset, remaining_size);
-            const VAddr current_vaddr =
+            const auto current_vaddr =
                 static_cast<VAddr>((page_index << CITRA_PAGE_BITS) + page_offset);
 
             switch (page_table.attributes[page_index]) {
@@ -215,7 +215,7 @@ public:
 
         while (remaining_size > 0) {
             const std::size_t copy_amount = std::min(CITRA_PAGE_SIZE - page_offset, remaining_size);
-            const VAddr current_vaddr =
+            const auto current_vaddr =
                 static_cast<VAddr>((page_index << CITRA_PAGE_BITS) + page_offset);
 
             switch (page_table.attributes[page_index]) {
@@ -716,7 +716,8 @@ std::vector<VAddr> MemorySystem::PhysicalToVirtualAddressForRasterizer(PAddr add
 }
 
 void MemorySystem::RasterizerMarkRegionCached(PAddr start, u32 size, bool cached) {
-    if (start == 0) {
+    if (start < VRAM_PADDR) {
+        LOG_ERROR(HW_Memory, "Using invalid physical address for rasterizer: {:08X}", start);
         return;
     }
 
@@ -843,7 +844,7 @@ void MemorySystem::ZeroBlock(const Kernel::Process& process, const VAddr dest_ad
 
     while (remaining_size > 0) {
         const std::size_t copy_amount = std::min(CITRA_PAGE_SIZE - page_offset, remaining_size);
-        const VAddr current_vaddr =
+        const auto current_vaddr =
             static_cast<VAddr>((page_index << CITRA_PAGE_BITS) + page_offset);
 
         switch (page_table.attributes[page_index]) {
@@ -892,7 +893,7 @@ void MemorySystem::CopyBlock(const Kernel::Process& dest_process,
 
     while (remaining_size > 0) {
         const std::size_t copy_amount = std::min(CITRA_PAGE_SIZE - page_offset, remaining_size);
-        const VAddr current_vaddr =
+        const auto current_vaddr =
             static_cast<VAddr>((page_index << CITRA_PAGE_BITS) + page_offset);
 
         switch (page_table.attributes[page_index]) {
