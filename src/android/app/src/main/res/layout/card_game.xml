@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/text_game_title"
+                android:id="@+id/game_title"
                 style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,10 +49,10 @@
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
                 android:requiresFadingEdge="horizontal"
-                tools:text="The Legend of Zelda\nOcarina of Time 3D" />
+                tools:text="Detective Pikachu" />
 
             <TextView
-                android:id="@+id/text_game_region"
+                android:id="@+id/game_region"
                 style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,10 +61,10 @@
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
                 android:requiresFadingEdge="horizontal"
-                tools:text="Europe" />
+                tools:text="Region free" />
 
             <TextView
-                android:id="@+id/text_filename"
+                android:id="@+id/filename"
                 style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
                 android:requiresFadingEdge="horizontal"
-                tools:text="Pilotwings_Resort.cxi" />
+                tools:text="Detective Pikachu (All) (C1) Decrypted.3ds" />
 
         </LinearLayout>
 
