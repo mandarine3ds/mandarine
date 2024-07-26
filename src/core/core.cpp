@@ -442,6 +442,10 @@ PerfStats::Results System::GetLastPerfStats() {
     return perf_stats ? perf_stats->GetLastStats() : PerfStats::Results{};
 }
 
+double System::GetStableFrameTimeScale() {
+    return perf_stats->GetStableFrameTimeScale();
+}
+
 void System::Reschedule() {
     if (!reschedule_pending) {
         return;

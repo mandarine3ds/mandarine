@@ -184,6 +184,8 @@ public:
 
     [[nodiscard]] PerfStats::Results GetLastPerfStats();
 
+    double GetStableFrameTimeScale();
+
     /**
      * Gets a reference to the emulated CPU.
      * @returns A reference to the emulated CPU.
