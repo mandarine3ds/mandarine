@@ -157,6 +157,7 @@
     <!-- System settings strings -->
     <string name="username">Nombre de usuario/a</string>
     <string name="new_3ds">Modo New 3DS</string>
+    <string name="new_3ds_description">El New 3DS tiene una memoria y un procesador diferentes, y algunos juegos solo pueden iniciarse en el New 3DS.</string>
     <string name="clock">Reloj</string>
     <string name="init_time">Tiempo de compensación</string>
     <string name="init_time_description">Si el reloj está en \"Reloj emulado\", ésto cambia la fecha y hora de inicio.</string>

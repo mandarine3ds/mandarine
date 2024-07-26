@@ -97,6 +97,14 @@ use_cpu_jit =
 # Range is any positive integer (but we suspect 25 - 400 is a good idea) Default is 100
 cpu_clock_percentage =
 
+# The applied frameskip amount. Must be a power of two.
+# 0 (default): No frameskip, 1: x2 frameskip, 2: x4 frameskip, 3: x8 frameskip, etc.
+frame_skip =
+
+# Set a custom value of CPU ticks.
+# 0 (default): Off, 1: On
+enable_custom_cpu_ticks =
+
 # Boost low priority starved threads during kernel rescheduling.
 # 0: Off, 1 (default): On
 priority_boost_starved_threads =

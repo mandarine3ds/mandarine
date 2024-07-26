@@ -42,6 +42,7 @@ enum class IntSetting(
     PRIORITY_BOOST_STARVED_THREADS("priority_boost_starved_threads", Settings.SECTION_CORE, 1),
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, 0),
     TEXTURE_FILTER("texture_filter", Settings.SECTION_RENDERER, 0),
+    FRAME_SKIP("frame_skip", Settings.SECTION_CORE, 0),
     ENABLE_CUSTOM_CPU_TICKS("enable_custom_cpu_ticks", Settings.SECTION_CORE, 0),
     CUSTOM_CPU_TICKS("custom_cpu_ticks", Settings.SECTION_CORE, 16000),
     USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),

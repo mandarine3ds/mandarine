@@ -51,6 +51,9 @@
            <layout class="QGridLayout" name="gridLayout">
             <item row="1" column="0">
              <widget class="QCheckBox" name="toggle_new_3ds">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The New 3DS has different memory and processor, and some games can only start on the New 3DS.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Enable New 3DS mode</string>
               </property>

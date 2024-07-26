@@ -457,6 +457,7 @@ void Config::ReadCoreValues() {
     qt_config->beginGroup(QStringLiteral("Core"));
 
     ReadGlobalSetting(Settings::values.cpu_clock_percentage);
+    ReadGlobalSetting(Settings::values.frame_skip);
     ReadGlobalSetting(Settings::values.enable_custom_cpu_ticks);
     ReadGlobalSetting(Settings::values.custom_cpu_ticks);
     ReadGlobalSetting(Settings::values.priority_boost_starved_threads);
@@ -1006,6 +1007,7 @@ void Config::SaveCoreValues() {
     qt_config->beginGroup(QStringLiteral("Core"));
 
     WriteGlobalSetting(Settings::values.cpu_clock_percentage);
+    WriteGlobalSetting(Settings::values.frame_skip);
     WriteGlobalSetting(Settings::values.enable_custom_cpu_ticks);
     WriteGlobalSetting(Settings::values.custom_cpu_ticks);
     WriteGlobalSetting(Settings::values.priority_boost_starved_threads);
