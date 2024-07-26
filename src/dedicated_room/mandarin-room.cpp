@@ -42,23 +42,24 @@
 #endif
 
 static void PrintHelp(const char* argv0) {
-    std::cout << "Usage: " << argv0
-              << " [options] <filename>\n"
-                 "--room-name         The name of the room\n"
-                 "--room-description  The room description\n"
-                 "--port              The port used for the room\n"
-                 "--max_members       The maximum number of players for this room\n"
-                 "--password          The password for the room\n"
-                 "--preferred-game    The preferred game for this room\n"
-                 "--preferred-game-id The preferred game-id for this room\n"
-                 "--username          The username used for announce\n"
-                 "--token             The token used for announce\n"
-                 "--web-api-url       Mandarin Web API url\n"
-                 "--ban-list-file     The file for storing the room ban list\n"
-                 "--log-file          The file for storing the room log\n"
-                 "--enable-mandarin-mods Allow Mandarin Community Moderators to moderate on your room\n"
-                 "-h, --help          Display this help and exit\n"
-                 "-v, --version       Output version information and exit\n";
+    std::cout
+        << "Usage: " << argv0
+        << " [options] <filename>\n"
+           "--room-name         The name of the room\n"
+           "--room-description  The room description\n"
+           "--port              The port used for the room\n"
+           "--max_members       The maximum number of players for this room\n"
+           "--password          The password for the room\n"
+           "--preferred-game    The preferred game for this room\n"
+           "--preferred-game-id The preferred game-id for this room\n"
+           "--username          The username used for announce\n"
+           "--token             The token used for announce\n"
+           "--web-api-url       Mandarin Web API url\n"
+           "--ban-list-file     The file for storing the room ban list\n"
+           "--log-file          The file for storing the room log\n"
+           "--enable-mandarin-mods Allow Mandarin Community Moderators to moderate on your room\n"
+           "-h, --help          Display this help and exit\n"
+           "-v, --version       Output version information and exit\n";
 }
 
 static void PrintVersion() {
@@ -318,8 +319,8 @@ int main(int argc, char** argv) {
         verify_backend =
             std::make_unique<WebService::VerifyUserJWT>(NetSettings::values.web_api_url);
 #else
-        std::cout
-            << "Mandarin Web Services is not available with this build: validation is disabled.\n\n";
+        std::cout << "Mandarin Web Services is not available with this build: validation is "
+                     "disabled.\n\n";
         verify_backend = std::make_unique<Network::VerifyUser::NullBackend>();
 #endif
     } else {

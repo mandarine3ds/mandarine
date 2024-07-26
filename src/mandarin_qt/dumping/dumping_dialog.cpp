@@ -4,11 +4,11 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
+#include "common/settings.h"
+#include "core/core.h"
 #include "mandarin_qt/dumping/dumping_dialog.h"
 #include "mandarin_qt/dumping/options_dialog.h"
 #include "mandarin_qt/uisettings.h"
-#include "common/settings.h"
-#include "core/core.h"
 #include "ui_dumping_dialog.h"
 
 DumpingDialog::DumpingDialog(QWidget* parent, Core::System& system_)

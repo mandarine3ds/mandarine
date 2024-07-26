@@ -160,13 +160,14 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
         return JNI_ERR;
 
     // Initialize misc classes
-    s_savestate_info_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("io/github/mandarin3ds/mandarin/NativeLibrary$SaveStateInfo")));
-    s_core_error_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("io/github/mandarin3ds/mandarin/NativeLibrary$CoreError")));
+    s_savestate_info_class = reinterpret_cast<jclass>(env->NewGlobalRef(
+        env->FindClass("io/github/mandarin3ds/mandarin/NativeLibrary$SaveStateInfo")));
+    s_core_error_class = reinterpret_cast<jclass>(env->NewGlobalRef(
+        env->FindClass("io/github/mandarin3ds/mandarin/NativeLibrary$CoreError")));
 
     // Initialize NativeLibrary
-    const jclass native_library_class = env->FindClass("io/github/mandarin3ds/mandarin/NativeLibrary");
+    const jclass native_library_class =
+        env->FindClass("io/github/mandarin3ds/mandarin/NativeLibrary");
     s_native_library_class = reinterpret_cast<jclass>(env->NewGlobalRef(native_library_class));
     s_on_core_error = env->GetStaticMethodID(
         s_native_library_class, "onCoreError",
@@ -183,7 +184,8 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     env->DeleteLocalRef(native_library_class);
 
     // Initialize Cheat
-    const jclass cheat_class = env->FindClass("io/github/mandarin3ds/mandarin/features/cheats/model/Cheat");
+    const jclass cheat_class =
+        env->FindClass("io/github/mandarin3ds/mandarin/features/cheats/model/Cheat");
     s_cheat_class = reinterpret_cast<jclass>(env->NewGlobalRef(cheat_class));
     s_cheat_pointer = env->GetFieldID(cheat_class, "mPointer", "J");
     s_cheat_constructor = env->GetMethodID(cheat_class, "<init>", "(J)V");
@@ -195,10 +197,10 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     env->DeleteLocalRef(game_info_class);
 
     // Initialize Disk Shader Cache Progress Dialog
-    s_disk_cache_progress_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("io/github/mandarin3ds/mandarin/utils/DiskShaderCacheProgress")));
-    jclass load_callback_stage_class =
-        env->FindClass("io/github/mandarin3ds/mandarin/utils/DiskShaderCacheProgress$LoadCallbackStage");
+    s_disk_cache_progress_class = reinterpret_cast<jclass>(env->NewGlobalRef(
+        env->FindClass("io/github/mandarin3ds/mandarin/utils/DiskShaderCacheProgress")));
+    jclass load_callback_stage_class = env->FindClass(
+        "io/github/mandarin3ds/mandarin/utils/DiskShaderCacheProgress$LoadCallbackStage");
     s_disk_cache_load_progress = env->GetStaticMethodID(
         s_disk_cache_progress_class, "loadProgress",
         "(Lio/github/mandarin3ds/mandarin/utils/DiskShaderCacheProgress$LoadCallbackStage;II)V");

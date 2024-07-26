@@ -6,14 +6,14 @@
 #include <QString>
 #include <QTreeWidgetItem>
 #include <fmt/format.h>
-#include "mandarin_qt/debugger/ipc/record_dialog.h"
-#include "mandarin_qt/debugger/ipc/recorder.h"
 #include "common/assert.h"
 #include "common/string_util.h"
 #include "core/core.h"
 #include "core/hle/kernel/ipc_debugger/recorder.h"
 #include "core/hle/kernel/kernel.h"
 #include "core/hle/service/sm/sm.h"
+#include "mandarin_qt/debugger/ipc/record_dialog.h"
+#include "mandarin_qt/debugger/ipc/recorder.h"
 #include "ui_recorder.h"
 
 IPCRecorderWidget::IPCRecorderWidget(Core::System& system_, QWidget* parent)

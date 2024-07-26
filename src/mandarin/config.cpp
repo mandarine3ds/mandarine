@@ -8,8 +8,6 @@
 #include <type_traits>
 #include <INIReader.h>
 #include <SDL.h>
-#include "mandarin/config.h"
-#include "mandarin/default_ini.h"
 #include "common/file_util.h"
 #include "common/logging/backend.h"
 #include "common/logging/log.h"
@@ -17,6 +15,8 @@
 #include "core/hle/service/service.h"
 #include "input_common/main.h"
 #include "input_common/udp/client.h"
+#include "mandarin/config.h"
+#include "mandarin/default_ini.h"
 #include "network/network_settings.h"
 
 Config::Config() {
@@ -333,7 +333,8 @@ void Config::ReadValues() {
     // Web Service
     NetSettings::values.web_api_url =
         sdl2_config->GetString("WebService", "web_api_url", "https://api.citra-emu.org");
-    NetSettings::values.mandarin_username = sdl2_config->GetString("WebService", "mandarin_username", "");
+    NetSettings::values.mandarin_username =
+        sdl2_config->GetString("WebService", "mandarin_username", "");
     NetSettings::values.mandarin_token = sdl2_config->GetString("WebService", "mandarin_token", "");
 
     // Video Dumping

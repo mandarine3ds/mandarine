@@ -5,9 +5,9 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QUrl>
-#include "mandarin_qt/configuration/configure_storage.h"
 #include "common/file_util.h"
 #include "common/settings.h"
+#include "mandarin_qt/configuration/configure_storage.h"
 #include "ui_configure_storage.h"
 
 ConfigureStorage::ConfigureStorage(bool is_powered_on_, QWidget* parent)

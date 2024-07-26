@@ -8,10 +8,10 @@
 #include <SDL.h>
 #include <SDL_syswm.h>
 #include <fmt/format.h>
-#include "mandarin/emu_window/emu_window_sdl2_vk.h"
 #include "common/logging/log.h"
 #include "common/scm_rev.h"
 #include "core/frontend/emu_window.h"
+#include "mandarin/emu_window/emu_window_sdl2_vk.h"
 
 class DummyContext : public Frontend::GraphicsContext {};
 

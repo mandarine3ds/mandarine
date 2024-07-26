@@ -110,8 +110,8 @@ void Thread::Stop() {
 
     // Mark the TLS slot in the thread's page as free.
     u32 tls_page = (tls_address - Memory::TLS_AREA_VADDR) / Memory::MANDARIN_PAGE_SIZE;
-    u32 tls_slot =
-        ((tls_address - Memory::TLS_AREA_VADDR) % Memory::MANDARIN_PAGE_SIZE) / Memory::TLS_ENTRY_SIZE;
+    u32 tls_slot = ((tls_address - Memory::TLS_AREA_VADDR) % Memory::MANDARIN_PAGE_SIZE) /
+                   Memory::TLS_ENTRY_SIZE;
     if (auto process = owner_process.lock()) {
         process->tls_slots[tls_page].reset(tls_slot);
         process->resource_limit->Release(ResourceLimitType::Thread, 1);

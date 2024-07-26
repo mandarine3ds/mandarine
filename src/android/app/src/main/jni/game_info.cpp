@@ -60,8 +60,8 @@ static Loader::SMDH* GetPointer(JNIEnv* env, jobject obj) {
     return reinterpret_cast<Loader::SMDH*>(env->GetLongField(obj, IDCache::GetGameInfoPointer()));
 }
 
-JNIEXPORT jlong JNICALL Java_io_github_mandarin3ds_mandarin_model_GameInfo_initialize(JNIEnv* env, jclass,
-                                                                            jstring j_path) {
+JNIEXPORT jlong JNICALL
+Java_io_github_mandarin3ds_mandarin_model_GameInfo_initialize(JNIEnv* env, jclass, jstring j_path) {
     std::vector<u8> smdh_data = GetSMDHData(GetJString(env, j_path));
 
     Loader::SMDH* smdh = nullptr;
@@ -72,7 +72,8 @@ JNIEXPORT jlong JNICALL Java_io_github_mandarin3ds_mandarin_model_GameInfo_initi
     return reinterpret_cast<jlong>(smdh);
 }
 
-JNIEXPORT void JNICALL Java_io_github_mandarin3ds_mandarin_model_GameInfo_finalize(JNIEnv* env, jobject obj) {
+JNIEXPORT void JNICALL Java_io_github_mandarin3ds_mandarin_model_GameInfo_finalize(JNIEnv* env,
+                                                                                   jobject obj) {
     delete GetPointer(env, obj);
 }
 
@@ -149,7 +150,7 @@ jintArray Java_io_github_mandarin3ds_mandarin_model_GameInfo_getIcon(JNIEnv* env
 }
 
 jboolean Java_io_github_mandarin3ds_mandarin_model_GameInfo_getIsVisibleSystemTitle(JNIEnv* env,
-                                                                          jobject obj) {
+                                                                                    jobject obj) {
     Loader::SMDH* smdh = GetPointer(env, obj);
     if (smdh == nullptr) {
         return false;

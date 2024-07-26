@@ -387,7 +387,8 @@ ResultStatus Apploader_Artic::ReadCode(std::vector<u8>& buffer) {
     if (!client_connected)
         return ResultStatus::ErrorArtic;
 
-    size_t code_size = program_exheader.codeset_info.text.num_max_pages * Memory::MANDARIN_PAGE_SIZE;
+    size_t code_size =
+        program_exheader.codeset_info.text.num_max_pages * Memory::MANDARIN_PAGE_SIZE;
     code_size += program_exheader.codeset_info.ro.num_max_pages * Memory::MANDARIN_PAGE_SIZE;
     code_size += program_exheader.codeset_info.data.num_max_pages * Memory::MANDARIN_PAGE_SIZE;
 

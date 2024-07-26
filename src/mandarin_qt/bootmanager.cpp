@@ -8,8 +8,6 @@
 #include <QMessageBox>
 #include <QPainter>
 #include <QWindow>
-#include "mandarin_qt/bootmanager.h"
-#include "mandarin_qt/main.h"
 #include "common/color.h"
 #include "common/microprofile.h"
 #include "common/scm_rev.h"
@@ -21,6 +19,8 @@
 #include "input_common/keyboard.h"
 #include "input_common/main.h"
 #include "input_common/motion_emu.h"
+#include "mandarin_qt/bootmanager.h"
+#include "mandarin_qt/main.h"
 #include "video_core/custom_textures/custom_tex_manager.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"

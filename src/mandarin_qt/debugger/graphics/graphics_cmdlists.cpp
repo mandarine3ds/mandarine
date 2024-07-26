@@ -13,11 +13,11 @@
 #include <QSpinBox>
 #include <QTreeView>
 #include <QVBoxLayout>
-#include "mandarin_qt/debugger/graphics/graphics_cmdlists.h"
-#include "mandarin_qt/util/util.h"
 #include "common/vector_math.h"
 #include "core/core.h"
 #include "core/memory.h"
+#include "mandarin_qt/debugger/graphics/graphics_cmdlists.h"
+#include "mandarin_qt/util/util.h"
 #include "video_core/debug_utils/debug_utils.h"
 #include "video_core/gpu.h"
 #include "video_core/pica/pica_core.h"

@@ -8,8 +8,6 @@
 #include <QMessageBox>
 #include <QProgressDialog>
 #include <QtConcurrent/QtConcurrentMap>
-#include "mandarin_qt/configuration/configuration_shared.h"
-#include "mandarin_qt/configuration/configure_system.h"
 #include "common/file_util.h"
 #include "common/settings.h"
 #include "core/core.h"
@@ -18,6 +16,8 @@
 #include "core/hle/service/ptm/ptm.h"
 #include "core/hw/aes/key.h"
 #include "core/system_titles.h"
+#include "mandarin_qt/configuration/configuration_shared.h"
+#include "mandarin_qt/configuration/configure_system.h"
 #include "ui_configure_system.h"
 
 static const std::array<int, 12> days_in_month = {{

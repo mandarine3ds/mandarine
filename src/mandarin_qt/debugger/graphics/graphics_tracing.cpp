@@ -12,10 +12,10 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <nihstro/float24.h>
-#include "mandarin_qt/debugger/graphics/graphics_tracing.h"
 #include "common/common_types.h"
 #include "core/core.h"
 #include "core/tracer/recorder.h"
+#include "mandarin_qt/debugger/graphics/graphics_tracing.h"
 #include "video_core/gpu.h"
 #include "video_core/pica/pica_core.h"
 

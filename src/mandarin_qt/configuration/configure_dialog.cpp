@@ -4,6 +4,8 @@
 
 #include <map>
 #include <QListWidgetItem>
+#include "common/settings.h"
+#include "core/core.h"
 #include "mandarin_qt/configuration/configure_audio.h"
 #include "mandarin_qt/configuration/configure_camera.h"
 #include "mandarin_qt/configuration/configure_debug.h"
@@ -18,8 +20,6 @@
 #include "mandarin_qt/configuration/configure_ui.h"
 #include "mandarin_qt/configuration/configure_web.h"
 #include "mandarin_qt/hotkeys.h"
-#include "common/settings.h"
-#include "core/core.h"
 #include "ui_configure.h"
 
 ConfigureDialog::ConfigureDialog(QWidget* parent, HotkeyRegistry& registry_, Core::System& system_,

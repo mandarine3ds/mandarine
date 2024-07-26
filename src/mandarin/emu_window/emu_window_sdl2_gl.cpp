@@ -8,10 +8,10 @@
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
 #include <glad/glad.h>
-#include "mandarin/emu_window/emu_window_sdl2_gl.h"
 #include "common/scm_rev.h"
 #include "common/settings.h"
 #include "core/core.h"
+#include "mandarin/emu_window/emu_window_sdl2_gl.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
 

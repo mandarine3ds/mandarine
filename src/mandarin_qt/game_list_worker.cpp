@@ -8,16 +8,16 @@
 #include <vector>
 #include <QDir>
 #include <QFileInfo>
-#include "mandarin_qt/compatibility_list.h"
-#include "mandarin_qt/game_list.h"
-#include "mandarin_qt/game_list_p.h"
-#include "mandarin_qt/game_list_worker.h"
-#include "mandarin_qt/uisettings.h"
 #include "common/common_paths.h"
 #include "common/file_util.h"
 #include "core/hle/service/am/am.h"
 #include "core/hle/service/fs/archive.h"
 #include "core/loader/loader.h"
+#include "mandarin_qt/compatibility_list.h"
+#include "mandarin_qt/game_list.h"
+#include "mandarin_qt/game_list_p.h"
+#include "mandarin_qt/game_list_worker.h"
+#include "mandarin_qt/uisettings.h"
 
 namespace {
 bool HasSupportedFileExtension(const std::string& file_name) {

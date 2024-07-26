@@ -3,9 +3,9 @@
 // Refer to the license.txt file included.
 
 #include <QListView>
+#include "core/core.h"
 #include "mandarin_qt/debugger/graphics/graphics.h"
 #include "mandarin_qt/util/util.h"
-#include "core/core.h"
 #include "video_core/gpu.h"
 
 GPUCommandStreamItemModel::GPUCommandStreamItemModel(QObject* parent)

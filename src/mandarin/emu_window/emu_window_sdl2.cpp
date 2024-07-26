@@ -7,13 +7,13 @@
 #include <string>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
-#include "mandarin/emu_window/emu_window_sdl2.h"
 #include "common/logging/log.h"
 #include "common/scm_rev.h"
 #include "core/core.h"
 #include "input_common/keyboard.h"
 #include "input_common/main.h"
 #include "input_common/motion_emu.h"
+#include "mandarin/emu_window/emu_window_sdl2.h"
 #include "network/network.h"
 
 void EmuWindow_SDL2::OnMouseMotion(s32 x, s32 y) {

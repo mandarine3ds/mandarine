@@ -14,9 +14,9 @@
 #include <QSignalMapper>
 #include <QSpinBox>
 #include <QTreeView>
+#include "core/core.h"
 #include "mandarin_qt/debugger/graphics/graphics_vertex_shader.h"
 #include "mandarin_qt/util/util.h"
-#include "core/core.h"
 #include "video_core/gpu.h"
 #include "video_core/pica/pica_core.h"
 #include "video_core/shader/shader_interpreter.h"

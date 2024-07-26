@@ -6,8 +6,8 @@
 #include <QImageReader>
 #include <QMessageBox>
 #include <QThread>
-#include "mandarin_qt/camera/still_image_camera.h"
 #include "common/logging/log.h"
+#include "mandarin_qt/camera/still_image_camera.h"
 
 namespace Camera {
 

@@ -165,7 +165,8 @@ public:
         std::size_t page_offset = src_addr & MANDARIN_PAGE_MASK;
 
         while (remaining_size > 0) {
-            const std::size_t copy_amount = std::min(MANDARIN_PAGE_SIZE - page_offset, remaining_size);
+            const std::size_t copy_amount =
+                std::min(MANDARIN_PAGE_SIZE - page_offset, remaining_size);
             const VAddr current_vaddr =
                 static_cast<VAddr>((page_index << MANDARIN_PAGE_BITS) + page_offset);
 
@@ -214,7 +215,8 @@ public:
         std::size_t page_offset = dest_addr & MANDARIN_PAGE_MASK;
 
         while (remaining_size > 0) {
-            const std::size_t copy_amount = std::min(MANDARIN_PAGE_SIZE - page_offset, remaining_size);
+            const std::size_t copy_amount =
+                std::min(MANDARIN_PAGE_SIZE - page_offset, remaining_size);
             const VAddr current_vaddr =
                 static_cast<VAddr>((page_index << MANDARIN_PAGE_BITS) + page_offset);
 
@@ -422,7 +424,8 @@ void MemorySystem::MapPages(PageTable& page_table, u32 base, u32 size, MemoryRef
 void MemorySystem::MapMemoryRegion(PageTable& page_table, VAddr base, u32 size, MemoryRef target) {
     ASSERT_MSG((size & MANDARIN_PAGE_MASK) == 0, "non-page aligned size: {:08X}", size);
     ASSERT_MSG((base & MANDARIN_PAGE_MASK) == 0, "non-page aligned base: {:08X}", base);
-    MapPages(page_table, base / MANDARIN_PAGE_SIZE, size / MANDARIN_PAGE_SIZE, target, PageType::Memory);
+    MapPages(page_table, base / MANDARIN_PAGE_SIZE, size / MANDARIN_PAGE_SIZE, target,
+             PageType::Memory);
 }
 
 void MemorySystem::UnmapRegion(PageTable& page_table, VAddr base, u32 size) {

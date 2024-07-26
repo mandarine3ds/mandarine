@@ -8,11 +8,11 @@
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
 #include <SDL_rect.h>
-#include "mandarin/emu_window/emu_window_sdl2_sw.h"
 #include "common/scm_rev.h"
 #include "common/settings.h"
 #include "core/core.h"
 #include "core/frontend/emu_window.h"
+#include "mandarin/emu_window/emu_window_sdl2_sw.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_software/renderer_software.h"
 

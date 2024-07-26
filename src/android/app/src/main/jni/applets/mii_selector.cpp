@@ -72,10 +72,10 @@ void InitJNI(JNIEnv* env) {
     s_mii_selector_data_class = reinterpret_cast<jclass>(env->NewGlobalRef(
         env->FindClass("io/github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorData")));
 
-    s_mii_selector_execute =
-        env->GetStaticMethodID(s_mii_selector_class, "Execute",
-                               "(Lio/github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorConfig;)Lio/"
-                               "github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorData;");
+    s_mii_selector_execute = env->GetStaticMethodID(
+        s_mii_selector_class, "Execute",
+        "(Lio/github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorConfig;)Lio/"
+        "github/mandarin3ds/mandarin/applets/MiiSelector$MiiSelectorData;");
 }
 
 void CleanupJNI(JNIEnv* env) {

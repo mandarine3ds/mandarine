@@ -1961,8 +1961,8 @@ void Module::Interface::BeginImportProgramTemporarily(Kernel::HLERequestContext&
 
     // Note: This function should register the title in the temp_i.db database, but we can get away
     // with not doing that because we traverse the file system to detect installed titles.
-    // Create our CIAFile handle for the app to write to, and while the app writes Mandarin will store
-    // contents out to sdmc/nand
+    // Create our CIAFile handle for the app to write to, and while the app writes Mandarin will
+    // store contents out to sdmc/nand
     const FileSys::Path cia_path = {};
     auto file = std::make_shared<Service::FS::File>(
         am->system.Kernel(), std::make_unique<CIAFile>(am->system, FS::MediaType::NAND), cia_path);

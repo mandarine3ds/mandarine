@@ -3,8 +3,6 @@
 // Refer to the license.txt file included.
 
 #include <array>
-#include "mandarin_qt/debugger/wait_tree.h"
-#include "mandarin_qt/uisettings.h"
 #include "common/assert.h"
 #include "core/hle/kernel/event.h"
 #include "core/hle/kernel/mutex.h"
@@ -13,6 +11,8 @@
 #include "core/hle/kernel/thread.h"
 #include "core/hle/kernel/timer.h"
 #include "core/hle/kernel/wait_object.h"
+#include "mandarin_qt/debugger/wait_tree.h"
+#include "mandarin_qt/uisettings.h"
 
 namespace {
 

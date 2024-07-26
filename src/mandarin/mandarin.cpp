@@ -399,8 +399,8 @@ int main(int argc, char** argv) {
 
     const auto scope = emu_window->Acquire();
 
-    LOG_INFO(Frontend, "Mandarin Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
-             Common::g_scm_desc);
+    LOG_INFO(Frontend, "Mandarin Version: {} | {}-{}", Common::g_build_fullname,
+             Common::g_scm_branch, Common::g_scm_desc);
     Settings::LogSettings();
 
     const Core::System::ResultStatus load_result{

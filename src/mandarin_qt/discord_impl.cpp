@@ -5,11 +5,11 @@
 #include <chrono>
 #include <string>
 #include <discord_rpc.h>
-#include "mandarin_qt/discord_impl.h"
-#include "mandarin_qt/uisettings.h"
 #include "common/common_types.h"
 #include "core/core.h"
 #include "core/loader/loader.h"
+#include "mandarin_qt/discord_impl.h"
+#include "mandarin_qt/uisettings.h"
 
 namespace DiscordRPC {
 

@@ -29,8 +29,8 @@ jobject CheatToJava(JNIEnv* env, std::shared_ptr<Cheats::CheatBase> cheat) {
 
 extern "C" {
 
-JNIEXPORT void JNICALL Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_finalize(JNIEnv* env,
-                                                                                      jobject obj) {
+JNIEXPORT void JNICALL
+Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_finalize(JNIEnv* env, jobject obj) {
     delete CheatFromJava(env, obj);
 }
 
@@ -50,17 +50,22 @@ Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_getCode(JNIEnv* 
 }
 
 JNIEXPORT jboolean JNICALL
-Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_getEnabled(JNIEnv* env, jobject obj) {
+Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_getEnabled(JNIEnv* env,
+                                                                           jobject obj) {
     return static_cast<jboolean>((*CheatFromJava(env, obj))->IsEnabled());
 }
 
-JNIEXPORT void JNICALL Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_setEnabledImpl(
-    JNIEnv* env, jobject obj, jboolean j_enabled) {
+JNIEXPORT void JNICALL
+Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_setEnabledImpl(JNIEnv* env,
+                                                                               jobject obj,
+                                                                               jboolean j_enabled) {
     (*CheatFromJava(env, obj))->SetEnabled(static_cast<bool>(j_enabled));
 }
 
-JNIEXPORT jint JNICALL Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_isValidGatewayCode(
-    JNIEnv* env, jclass, jstring j_code) {
+JNIEXPORT jint JNICALL
+Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_isValidGatewayCode(JNIEnv* env,
+                                                                                   jclass,
+                                                                                   jstring j_code) {
     const std::string code = GetJString(env, j_code);
     const auto code_lines = Common::SplitString(code, '\n');
 
@@ -74,7 +79,8 @@ JNIEXPORT jint JNICALL Java_io_github_mandarin3ds_mandarin_features_cheats_model
     return 0;
 }
 
-JNIEXPORT jobject JNICALL Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_createGatewayCode(
+JNIEXPORT jobject JNICALL
+Java_io_github_mandarin3ds_mandarin_features_cheats_model_Cheat_createGatewayCode(
     JNIEnv* env, jclass, jstring j_name, jstring j_notes, jstring j_code) {
     return CheatToJava(env, std::make_shared<Cheats::GatewayCheat>(GetJString(env, j_name),
                                                                    GetJString(env, j_code),

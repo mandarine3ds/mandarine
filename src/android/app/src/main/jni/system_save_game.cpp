@@ -13,12 +13,12 @@ std::shared_ptr<Service::CFG::Module> cfg;
 extern "C" {
 
 void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_save([[maybe_unused]] JNIEnv* env,
-                                                         [[maybe_unused]] jobject obj) {
+                                                                   [[maybe_unused]] jobject obj) {
     cfg->UpdateConfigNANDSavegame();
 }
 
 void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_load([[maybe_unused]] JNIEnv* env,
-                                                         [[maybe_unused]] jobject obj) {
+                                                                   [[maybe_unused]] jobject obj) {
     cfg = Service::CFG::GetModule(Core::System::GetInstance());
 }
 
@@ -32,14 +32,13 @@ void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setSystemSetupNeed
     cfg->SetSystemSetupNeeded(needed);
 }
 
-jstring Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getUsername([[maybe_unused]] JNIEnv* env,
-                                                                   [[maybe_unused]] jobject obj) {
+jstring Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getUsername(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     return ToJString(env, Common::UTF16ToUTF8(cfg->GetUsername()));
 }
 
-void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setUsername([[maybe_unused]] JNIEnv* env,
-                                                                [[maybe_unused]] jobject obj,
-                                                                jstring username) {
+void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setUsername(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jstring username) {
     cfg->SetUsername(Common::UTF8ToUTF16(GetJString(env, username)));
 }
 
@@ -53,9 +52,8 @@ jshortArray Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getBirthday
     return jbirthdayArray;
 }
 
-void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setBirthday([[maybe_unused]] JNIEnv* env,
-                                                                [[maybe_unused]] jobject obj,
-                                                                jshort jmonth, jshort jday) {
+void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setBirthday(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jshort jmonth, jshort jday) {
     cfg->SetBirthday(static_cast<u8>(jmonth), static_cast<u8>(jday));
 }
 
@@ -64,9 +62,8 @@ jint Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getSystemLanguage(
     return cfg->GetSystemLanguage();
 }
 
-void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setSystemLanguage([[maybe_unused]] JNIEnv* env,
-                                                                      [[maybe_unused]] jobject obj,
-                                                                      jint jsystemLanguage) {
+void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setSystemLanguage(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint jsystemLanguage) {
     cfg->SetSystemLanguage(static_cast<Service::CFG::SystemLanguage>(jsystemLanguage));
 }
 
@@ -75,36 +72,33 @@ jint Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getSoundOutputMode
     return cfg->GetSoundOutputMode();
 }
 
-void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setSoundOutputMode([[maybe_unused]] JNIEnv* env,
-                                                                       [[maybe_unused]] jobject obj,
-                                                                       jint jmode) {
+void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setSoundOutputMode(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint jmode) {
     cfg->SetSoundOutputMode(static_cast<Service::CFG::SoundOutputMode>(jmode));
 }
 
-jshort Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getCountryCode([[maybe_unused]] JNIEnv* env,
-                                                                     [[maybe_unused]] jobject obj) {
+jshort Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getCountryCode(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     return cfg->GetCountryCode();
 }
 
-void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setCountryCode([[maybe_unused]] JNIEnv* env,
-                                                                   [[maybe_unused]] jobject obj,
-                                                                   jshort jmode) {
+void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setCountryCode(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jshort jmode) {
     cfg->SetCountryCode(static_cast<u8>(jmode));
 }
 
-jint Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getPlayCoins([[maybe_unused]] JNIEnv* env,
-                                                                 [[maybe_unused]] jobject obj) {
+jint Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getPlayCoins(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     return Service::PTM::Module::GetPlayCoins();
 }
 
-void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setPlayCoins([[maybe_unused]] JNIEnv* env,
-                                                                 [[maybe_unused]] jobject obj,
-                                                                 jint jcoins) {
+void Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_setPlayCoins(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint jcoins) {
     Service::PTM::Module::SetPlayCoins(static_cast<u16>(jcoins));
 }
 
-jlong Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getConsoleId([[maybe_unused]] JNIEnv* env,
-                                                                  [[maybe_unused]] jobject obj) {
+jlong Java_io_github_mandarin3ds_mandarin_utils_SystemSaveGame_getConsoleId(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     return cfg->GetConsoleUniqueId();
 }
 

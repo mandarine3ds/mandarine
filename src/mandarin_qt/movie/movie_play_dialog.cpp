@@ -5,14 +5,14 @@
 #include <QFileDialog>
 #include <QPushButton>
 #include <QTime>
-#include "mandarin_qt/game_list.h"
-#include "mandarin_qt/game_list_p.h"
-#include "mandarin_qt/movie/movie_play_dialog.h"
-#include "mandarin_qt/uisettings.h"
 #include "core/core.h"
 #include "core/core_timing.h"
 #include "core/hle/service/hid/hid.h"
 #include "core/movie.h"
+#include "mandarin_qt/game_list.h"
+#include "mandarin_qt/game_list_p.h"
+#include "mandarin_qt/movie/movie_play_dialog.h"
+#include "mandarin_qt/uisettings.h"
 #include "ui_movie_play_dialog.h"
 
 MoviePlayDialog::MoviePlayDialog(QWidget* parent, GameList* game_list_, const Core::System& system_)

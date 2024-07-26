@@ -12,11 +12,11 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
-#include "mandarin_qt/debugger/graphics/graphics_surface.h"
-#include "mandarin_qt/util/spinbox.h"
 #include "common/color.h"
 #include "core/core.h"
 #include "core/memory.h"
+#include "mandarin_qt/debugger/graphics/graphics_surface.h"
+#include "mandarin_qt/util/spinbox.h"
 #include "video_core/gpu.h"
 #include "video_core/pica/pica_core.h"
 #include "video_core/texture/texture_decode.h"

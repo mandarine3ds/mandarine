@@ -5,8 +5,8 @@
 #include <QImage>
 #include <QImageReader>
 #include <QString>
-#include "mandarin_qt/qt_image_interface.h"
 #include "common/logging/log.h"
+#include "mandarin_qt/qt_image_interface.h"
 
 QtImageInterface::QtImageInterface() {
     QImageReader::setAllocationLimit(0);

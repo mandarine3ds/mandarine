@@ -31,8 +31,8 @@
 #include <cstdlib>
 #include <QLineEdit>
 #include <QRegularExpression>
-#include "mandarin_qt/util/spinbox.h"
 #include "common/assert.h"
+#include "mandarin_qt/util/spinbox.h"
 
 CSpinBox::CSpinBox(QWidget* parent)
     : QAbstractSpinBox(parent), min_value(-100), max_value(100), value(0), base(10), num_digits(0) {

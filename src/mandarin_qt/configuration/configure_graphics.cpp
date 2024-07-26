@@ -4,9 +4,9 @@
 
 #include <QColorDialog>
 #include <QStandardItemModel>
+#include "common/settings.h"
 #include "mandarin_qt/configuration/configuration_shared.h"
 #include "mandarin_qt/configuration/configure_graphics.h"
-#include "common/settings.h"
 #include "ui_configure_graphics.h"
 #ifdef ENABLE_VULKAN
 #include "video_core/renderer_vulkan/vk_instance.h"

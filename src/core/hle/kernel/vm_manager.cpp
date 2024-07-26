@@ -290,7 +290,8 @@ ResultVal<VMManager::VMAIter> VMManager::CarveVMA(VAddr base, u32 size) {
 
 ResultVal<VMManager::VMAIter> VMManager::CarveVMARange(VAddr target, u32 size) {
     ASSERT_MSG((size & Memory::MANDARIN_PAGE_MASK) == 0, "non-page aligned size: {:#10X}", size);
-    ASSERT_MSG((target & Memory::MANDARIN_PAGE_MASK) == 0, "non-page aligned base: {:#010X}", target);
+    ASSERT_MSG((target & Memory::MANDARIN_PAGE_MASK) == 0, "non-page aligned base: {:#010X}",
+               target);
 
     const VAddr target_end = target + size;
     ASSERT(target_end >= target);

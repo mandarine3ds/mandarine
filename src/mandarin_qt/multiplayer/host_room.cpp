@@ -11,14 +11,14 @@
 #include <QMetaType>
 #include <QTime>
 #include <QtConcurrent/QtConcurrentRun>
+#include "common/logging/log.h"
+#include "core/hle/service/cfg/cfg.h"
 #include "mandarin_qt/game_list_p.h"
 #include "mandarin_qt/multiplayer/host_room.h"
 #include "mandarin_qt/multiplayer/message.h"
 #include "mandarin_qt/multiplayer/state.h"
 #include "mandarin_qt/multiplayer/validation.h"
 #include "mandarin_qt/uisettings.h"
-#include "common/logging/log.h"
-#include "core/hle/service/cfg/cfg.h"
 #include "network/announce_multiplayer_session.h"
 #include "network/network_settings.h"
 #include "ui_host_room.h"
@@ -141,11 +141,11 @@ void HostRoomWindow::Host() {
             ban_list = UISettings::values.ban_list;
         }
         if (auto room = Network::GetRoom().lock()) {
-            bool created = room->Create(ui->room_name->text().toStdString(),
-                                        ui->room_description->toPlainText().toStdString(), "", port,
-                                        password, ui->max_player->value(),
-                                        NetSettings::values.mandarin_username, game_name.toStdString(),
-                                        game_id, CreateVerifyBackend(is_public), ban_list);
+            bool created = room->Create(
+                ui->room_name->text().toStdString(),
+                ui->room_description->toPlainText().toStdString(), "", port, password,
+                ui->max_player->value(), NetSettings::values.mandarin_username,
+                game_name.toStdString(), game_id, CreateVerifyBackend(is_public), ban_list);
             if (!created) {
                 NetworkMessage::ErrorManager::ShowError(
                     NetworkMessage::ErrorManager::COULD_NOT_CREATE_ROOM);

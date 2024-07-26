@@ -27,6 +27,17 @@
 #include <QtDBus/QtDBus>
 #include "common/linux/gamemode.h"
 #endif
+#include "common/arch.h"
+#include "common/common_paths.h"
+#include "common/detached_tasks.h"
+#include "common/dynamic_library/dynamic_library.h"
+#include "common/file_util.h"
+#include "common/literals.h"
+#include "common/logging/backend.h"
+#include "common/logging/log.h"
+#include "common/memory_detect.h"
+#include "common/scm_rev.h"
+#include "common/scope_exit.h"
 #include "mandarin_qt/aboutdialog.h"
 #include "mandarin_qt/applets/mii_selector.h"
 #include "mandarin_qt/applets/swkbd.h"
@@ -64,17 +75,6 @@
 #include "mandarin_qt/updater/updater.h"
 #include "mandarin_qt/util/clickable_label.h"
 #include "mandarin_qt/util/graphics_device_info.h"
-#include "common/arch.h"
-#include "common/common_paths.h"
-#include "common/detached_tasks.h"
-#include "common/dynamic_library/dynamic_library.h"
-#include "common/file_util.h"
-#include "common/literals.h"
-#include "common/logging/backend.h"
-#include "common/logging/log.h"
-#include "common/memory_detect.h"
-#include "common/scm_rev.h"
-#include "common/scope_exit.h"
 #if MANDARIN_ARCH(x86_64)
 #include "common/x64/cpu_detect.h"
 #endif
@@ -211,8 +211,8 @@ GMainWindow::GMainWindow(Core::System& system_)
     ConnectMenuEvents();
     ConnectWidgetEvents();
 
-    LOG_INFO(Frontend, "Mandarin Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
-             Common::g_scm_desc);
+    LOG_INFO(Frontend, "Mandarin Version: {} | {}-{}", Common::g_build_fullname,
+             Common::g_scm_branch, Common::g_scm_desc);
 #if MANDARIN_ARCH(x86_64)
     const auto& caps = Common::GetCPUCaps();
     std::string cpu_string = caps.cpu_string;
@@ -1925,7 +1925,8 @@ void GMainWindow::UninstallTitles(
     future_watcher.waitForFinished();
 
     if (failed) {
-        QMessageBox::critical(this, tr("Mandarin"), tr("Failed to uninstall '%1'.").arg(failed_name));
+        QMessageBox::critical(this, tr("Mandarin"),
+                              tr("Failed to uninstall '%1'.").arg(failed_name));
     } else if (!future_watcher.isCanceled()) {
         QMessageBox::information(this, tr("Mandarin"),
                                  tr("Successfully uninstalled '%1'.").arg(first_name));
@@ -2015,7 +2016,8 @@ void GMainWindow::OnLoadComplete() {
 }
 
 void GMainWindow::OnMenuReportCompatibility() {
-    if (!NetSettings::values.mandarin_token.empty() && !NetSettings::values.mandarin_username.empty()) {
+    if (!NetSettings::values.mandarin_token.empty() &&
+        !NetSettings::values.mandarin_username.empty()) {
         CompatDB compatdb{this};
         compatdb.exec();
     } else {
@@ -2545,7 +2547,8 @@ void GMainWindow::OnOpenFFmpeg() {
     FileUtil::ForeachDirectoryEntry(nullptr, bin_dir, process_file);
 
     if (success.load()) {
-        QMessageBox::information(this, tr("Mandarin"), tr("FFmpeg has been sucessfully installed."));
+        QMessageBox::information(this, tr("Mandarin"),
+                                 tr("FFmpeg has been sucessfully installed."));
     } else {
         QMessageBox::critical(this, tr("Mandarin"),
                               tr("Installation of FFmpeg failed. Check the log file for details."));
@@ -3160,8 +3163,8 @@ void GMainWindow::UpdateWindowTitle() {
         setWindowTitle(QStringLiteral("Mandarin %1").arg(full_name));
     } else {
         setWindowTitle(QStringLiteral("Mandarin %1 | %2").arg(full_name, game_title));
-        render_window->setWindowTitle(
-            QStringLiteral("Mandarin %1 | %2 | %3").arg(full_name, game_title, tr("Primary Window")));
+        render_window->setWindowTitle(QStringLiteral("Mandarin %1 | %2 | %3")
+                                          .arg(full_name, game_title, tr("Primary Window")));
         secondary_window->setWindowTitle(QStringLiteral("Mandarin %1 | %2 | %3")
                                              .arg(full_name, game_title, tr("Secondary Window")));
     }

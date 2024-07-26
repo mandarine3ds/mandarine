@@ -24,18 +24,18 @@
 #include <QToolButton>
 #include <QTreeView>
 #include <fmt/format.h>
-#include "mandarin_qt/compatibility_list.h"
-#include "mandarin_qt/game_list.h"
-#include "mandarin_qt/game_list_p.h"
-#include "mandarin_qt/game_list_worker.h"
-#include "mandarin_qt/main.h"
-#include "mandarin_qt/uisettings.h"
 #include "common/logging/log.h"
 #include "common/settings.h"
 #include "core/file_sys/archive_extsavedata.h"
 #include "core/file_sys/archive_source_sd_savedata.h"
 #include "core/hle/service/am/am.h"
 #include "core/hle/service/fs/archive.h"
+#include "mandarin_qt/compatibility_list.h"
+#include "mandarin_qt/game_list.h"
+#include "mandarin_qt/game_list_p.h"
+#include "mandarin_qt/game_list_worker.h"
+#include "mandarin_qt/main.h"
+#include "mandarin_qt/uisettings.h"
 #include "qcursor.h"
 
 GameListSearchField::KeyReleaseEater::KeyReleaseEater(GameList* gamelist, QObject* parent)
@@ -729,7 +729,8 @@ void GameList::AddGamePopup(QMenu& context_menu, const QString& path, const QStr
     });
     connect(uninstall_dlc, &QAction::triggered, this, [this, name, dlc_program_id] {
         QMessageBox::StandardButton answer = QMessageBox::question(
-            this, tr("Mandarin"), tr("Are you sure you want to uninstall all DLC for '%1'?").arg(name),
+            this, tr("Mandarin"),
+            tr("Are you sure you want to uninstall all DLC for '%1'?").arg(name),
             QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
         if (answer == QMessageBox::Yes) {
             std::vector<std::tuple<Service::FS::MediaType, u64, QString>> titles;

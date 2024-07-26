@@ -8,10 +8,10 @@
 #include <QPainter>
 #include <QString>
 #include <QTimer>
-#include "mandarin_qt/debugger/profiler.h"
-#include "mandarin_qt/util/util.h"
 #include "common/common_types.h"
 #include "common/microprofile.h"
+#include "mandarin_qt/debugger/profiler.h"
+#include "mandarin_qt/util/util.h"
 
 // Include the implementation of the UI in this file. This isn't in microprofile.cpp because the
 // non-Qt frontends don't need it (and don't implement the UI drawing hooks either).

@@ -3,9 +3,9 @@
 // Refer to the license.txt file included.
 
 #include <QColorDialog>
+#include "common/settings.h"
 #include "mandarin_qt/configuration/configuration_shared.h"
 #include "mandarin_qt/configuration/configure_enhancements.h"
-#include "common/settings.h"
 #include "ui_configure_enhancements.h"
 #ifdef ENABLE_OPENGL
 #include "video_core/renderer_opengl/post_processing_opengl.h"

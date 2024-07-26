@@ -4,10 +4,10 @@
 
 #include <QFileDialog>
 #include <QPushButton>
-#include "mandarin_qt/movie/movie_record_dialog.h"
-#include "mandarin_qt/uisettings.h"
 #include "core/core.h"
 #include "core/movie.h"
+#include "mandarin_qt/movie/movie_record_dialog.h"
+#include "mandarin_qt/uisettings.h"
 #include "ui_movie_record_dialog.h"
 
 MovieRecordDialog::MovieRecordDialog(QWidget* parent, const Core::System& system_)

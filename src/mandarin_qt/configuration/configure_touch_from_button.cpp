@@ -9,11 +9,11 @@
 #include <QResizeEvent>
 #include <QStandardItemModel>
 #include <QTimer>
-#include "mandarin_qt/configuration/configure_touch_from_button.h"
-#include "mandarin_qt/configuration/configure_touch_widget.h"
 #include "common/param_package.h"
 #include "core/3ds.h"
 #include "input_common/main.h"
+#include "mandarin_qt/configuration/configure_touch_from_button.h"
+#include "mandarin_qt/configuration/configure_touch_widget.h"
 #include "ui_configure_touch_from_button.h"
 
 static QString GetKeyName(int key_code) {

@@ -6,12 +6,12 @@
 #include <array>
 #include <QKeySequence>
 #include <QSettings>
-#include "mandarin_qt/configuration/config.h"
 #include "common/file_util.h"
 #include "common/settings.h"
 #include "core/hle/service/service.h"
 #include "input_common/main.h"
 #include "input_common/udp/client.h"
+#include "mandarin_qt/configuration/config.h"
 #include "network/network.h"
 #include "network/network_settings.h"
 

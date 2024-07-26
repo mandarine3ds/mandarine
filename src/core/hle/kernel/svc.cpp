@@ -275,7 +275,7 @@ enum class SystemInfoMemUsageRegion {
  * to fetch from Mandarin. Some string params don't fit in 7 bytes, so they are split.
  */
 enum class SystemInfoMandarinInformation {
-    IS_MANDARIN = 0,          // Always set the output to 1, signaling the app is running on Mandarin.
+    IS_MANDARIN = 0,       // Always set the output to 1, signaling the app is running on Mandarin.
     HOST_TICK = 1,         // Tick reference from the host in ns, unaffected by lag or cpu speed.
     EMULATION_SPEED = 2,   // Gets the emulation speed set by the user or by KernelSetState.
     BUILD_NAME = 10,       // (ie: Nightly, Canary).

@@ -12,11 +12,11 @@
 #include <QMessageBox>
 #include <QSlider>
 #include <QTimer>
+#include "common/param_package.h"
+#include "core/core.h"
 #include "mandarin_qt/configuration/config.h"
 #include "mandarin_qt/configuration/configure_input.h"
 #include "mandarin_qt/configuration/configure_motion_touch.h"
-#include "common/param_package.h"
-#include "core/core.h"
 #include "ui_configure_input.h"
 
 const std::array<std::string, ConfigureInput::ANALOG_SUB_BUTTONS_NUM>
