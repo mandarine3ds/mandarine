@@ -1216,7 +1216,8 @@ void RasterizerCache<T>::ClearAll(bool flush) {
         const auto interval = pair.first & flush_interval;
 
         const PAddr interval_start_addr = boost::icl::first(interval) << Memory::MANDARIN_PAGE_BITS;
-        const PAddr interval_end_addr = boost::icl::last_next(interval) << Memory::MANDARIN_PAGE_BITS;
+        const PAddr interval_end_addr = boost::icl::last_next(interval)
+                                        << Memory::MANDARIN_PAGE_BITS;
         const u32 interval_size = interval_end_addr - interval_start_addr;
 
         memory.RasterizerMarkRegionCached(interval_start_addr, interval_size, false);
@@ -1408,8 +1409,8 @@ void RasterizerCache<T>::UnregisterAll() {
 
 template <class T>
 void RasterizerCache<T>::UpdatePagesCachedCount(PAddr addr, u32 size, int delta) {
-    const u32 num_pages =
-        ((addr + size - 1) >> Memory::MANDARIN_PAGE_BITS) - (addr >> Memory::MANDARIN_PAGE_BITS) + 1;
+    const u32 num_pages = ((addr + size - 1) >> Memory::MANDARIN_PAGE_BITS) -
+                          (addr >> Memory::MANDARIN_PAGE_BITS) + 1;
     const u32 page_start = addr >> Memory::MANDARIN_PAGE_BITS;
     const u32 page_end = page_start + num_pages;
 
@@ -1425,7 +1426,8 @@ void RasterizerCache<T>::UpdatePagesCachedCount(PAddr addr, u32 size, int delta)
         const int count = pair.second;
 
         const PAddr interval_start_addr = boost::icl::first(interval) << Memory::MANDARIN_PAGE_BITS;
-        const PAddr interval_end_addr = boost::icl::last_next(interval) << Memory::MANDARIN_PAGE_BITS;
+        const PAddr interval_end_addr = boost::icl::last_next(interval)
+                                        << Memory::MANDARIN_PAGE_BITS;
         const u32 interval_size = interval_end_addr - interval_start_addr;
 
         if (delta > 0 && count == delta) {

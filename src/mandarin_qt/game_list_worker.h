@@ -12,8 +12,8 @@
 #include <QRunnable>
 #include <QString>
 #include <QVector>
-#include "mandarin_qt/compatibility_list.h"
 #include "common/common_types.h"
+#include "mandarin_qt/compatibility_list.h"
 
 namespace Service::FS {
 enum class MediaType : u32;

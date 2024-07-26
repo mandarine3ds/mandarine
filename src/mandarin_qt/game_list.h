@@ -8,8 +8,8 @@
 #include <QString>
 #include <QVector>
 #include <QWidget>
-#include "mandarin_qt/compatibility_list.h"
 #include "common/common_types.h"
+#include "mandarin_qt/compatibility_list.h"
 #include "uisettings.h"
 
 namespace Service::FS {

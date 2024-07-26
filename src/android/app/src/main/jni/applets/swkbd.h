@@ -27,9 +27,13 @@ void CleanupJNI(JNIEnv* env);
 
 // Native function calls
 extern "C" {
-JNIEXPORT jobject JNICALL Java_io_github_mandarin3ds_mandarin_applets_SoftwareKeyboard_ValidateFilters(
-    JNIEnv* env, jclass clazz, jstring text);
+JNIEXPORT jobject JNICALL
+Java_io_github_mandarin3ds_mandarin_applets_SoftwareKeyboard_ValidateFilters(JNIEnv* env,
+                                                                             jclass clazz,
+                                                                             jstring text);
 
-JNIEXPORT jobject JNICALL Java_io_github_mandarin3ds_mandarin_applets_SoftwareKeyboard_ValidateInput(
-    JNIEnv* env, jclass clazz, jstring text);
+JNIEXPORT jobject JNICALL
+Java_io_github_mandarin3ds_mandarin_applets_SoftwareKeyboard_ValidateInput(JNIEnv* env,
+                                                                           jclass clazz,
+                                                                           jstring text);
 }
