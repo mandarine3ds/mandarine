@@ -85,6 +85,8 @@ void LogSettings() {
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
     log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());
     log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
+    log_setting("Core_PriorityBoostStarvedThreads",
+                values.priority_boost_starved_threads.GetValue());
     log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
     log_setting("Renderer_UseGLES", values.use_gles.GetValue());
     log_setting("Renderer_GraphicsAPI", GetGraphicsAPIName(values.graphics_api.GetValue()));
@@ -190,6 +192,7 @@ void RestoreGlobalState(bool is_powered_on) {
     values.lle_applets.SetGlobal(true);
     values.enable_custom_cpu_ticks.SetGlobal(true);
     values.custom_cpu_ticks.SetGlobal(true);
+    values.priority_boost_starved_threads.SetGlobal(true);
 
     // Renderer
     values.graphics_api.SetGlobal(true);

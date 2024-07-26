@@ -135,6 +135,7 @@ void Config::ReadValues() {
     ReadSetting("Core", Settings::values.cpu_clock_percentage);
     ReadSetting("Core", Settings::values.enable_custom_cpu_ticks);
     ReadSetting("Core", Settings::values.custom_cpu_ticks);
+    ReadSetting("Core", Settings::values.priority_boost_starved_threads);
 
     // Renderer
     Settings::values.use_gles = sdl2_config->GetBoolean("Renderer", "use_gles", true);

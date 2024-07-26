@@ -1058,6 +1058,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
+                    IntSetting.PRIORITY_BOOST_STARVED_THREADS,
+                    R.string.priority_boost_starved_threads,
+                    R.string.priority_boost_starved_threads_description,
+                    IntSetting.PRIORITY_BOOST_STARVED_THREADS.key,
+                    IntSetting.PRIORITY_BOOST_STARVED_THREADS.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
                     IntSetting.DEBUG_RENDERER,
                     R.string.renderer_debug,
                     R.string.renderer_debug_description,

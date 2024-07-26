@@ -100,6 +100,10 @@ use_cpu_jit =
 # Range is any positive integer (but we suspect 25 - 400 is a good idea) Default is 100
 cpu_clock_percentage =
 
+# Boost low priority starved threads during kernel rescheduling.
+# 0: Off, 1 (default): On
+priority_boost_starved_threads =
+
 [Renderer]
 # Whether to render using OpenGL
 # 1: OpenGL ES (default), 2: Vulkan

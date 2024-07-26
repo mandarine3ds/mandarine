@@ -243,12 +243,31 @@
      </layout>
     </widget>
    </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Kernel</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="toggle_priority_boost_starved_threads">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. This may improve the performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Priority Boost Starved Threads</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
     <item>
-      <widget class="QGroupBox" name="groupBox_5">
+      <widget class="QGroupBox" name="groupBox_6">
         <property name="title">
           <string>Miscellaneus</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_2">
+        <layout class="QGridLayout" name="gridLayout_4">
           <item row="1" column="0">
             <widget class="QCheckBox" name="delay_start_for_lle_modules">
               <property name="toolTip">
