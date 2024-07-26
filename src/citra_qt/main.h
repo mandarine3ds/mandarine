@@ -21,6 +21,9 @@
 #include <QDBusObjectPath>
 #endif
 
+// Needs to be included at the end due to https://bugreports.qt.io/browse/QTBUG-73263
+#include <filesystem>
+
 class AboutDialog;
 class Config;
 class ClickableLabel;
@@ -28,6 +31,7 @@ class EmuThread;
 class GameList;
 enum class GameListOpenTarget;
 class GameListPlaceholder;
+enum class GameListShortcutTarget;
 class GImageInfo;
 class GPUCommandListWidget;
 class GPUCommandStreamWidget;
@@ -61,6 +65,10 @@ namespace DiscordRPC {
 class DiscordInterface;
 }
 
+namespace PlayTime {
+class PlayTimeManager;
+}
+
 namespace Core {
 class Movie;
 }
@@ -91,6 +99,7 @@ public:
     ~GMainWindow();
 
     GameList* game_list;
+    std::unique_ptr<PlayTime::PlayTimeManager> play_time_manager;
     std::unique_ptr<DiscordRPC::DiscordInterface> discord_rpc;
 
     bool DropAction(QDropEvent* event);
@@ -193,6 +202,22 @@ private:
     bool ConfirmChangeGame();
     void closeEvent(QCloseEvent* event) override;
 
+    enum {
+        CREATE_SHORTCUT_MSGBOX_FULLSCREEN_PROMPT,
+        CREATE_SHORTCUT_MSGBOX_SUCCESS,
+        CREATE_SHORTCUT_MSGBOX_ERROR,
+        CREATE_SHORTCUT_MSGBOX_APPIMAGE_VOLATILE_WARNING,
+    };
+
+    bool CreateShortcutMessagesGUI(QWidget* parent, int message, const QString& game_title);
+    bool MakeShortcutIcoPath(const u64 program_id, const std::string_view game_file_name,
+                             std::filesystem::path& out_icon_path);
+    bool CreateShortcutLink(const std::filesystem::path& shortcut_path, const std::string& comment,
+                            const std::filesystem::path& icon_path,
+                            const std::filesystem::path& command, const std::string& arguments,
+                            const std::string& categories, const std::string& keywords,
+                            const std::string& name);
+
 private slots:
     void OnStartGame();
     void OnRestartGame();
@@ -205,8 +230,11 @@ private slots:
     /// Called whenever a user selects a game in the game list widget.
     void OnGameListLoadFile(QString game_path);
     void OnGameListOpenFolder(u64 program_id, GameListOpenTarget target);
+    void OnGameListRemovePlayTimeData(u64 program_id);
     void OnGameListNavigateToGamedbEntry(u64 program_id,
                                          const CompatibilityList& compatibility_list);
+    void OnGameListCreateShortcut(u64 program_id, const std::string& game_path,
+                                  GameListShortcutTarget target);
     void OnGameListDumpRomFS(QString game_path, u64 program_id);
     void OnGameListOpenDirectory(const QString& directory);
     void OnGameListAddDirectory();
@@ -278,6 +306,7 @@ private:
     void UpdateWindowTitle();
     void UpdateUISettings();
     void RetranslateStatusBar();
+    void RemovePlayTimeData(u64 program_id);
     void InstallCIA(QStringList filepaths);
     void HideMouseCursor();
     void ShowMouseCursor();
@@ -324,6 +353,8 @@ private:
     QString game_title;
     // The path to the game currently running
     QString game_path;
+    // The title id of the game currently running
+    u64 game_title_id;
 
     bool auto_paused = false;
     bool auto_muted = false;
