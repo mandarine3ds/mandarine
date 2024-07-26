@@ -142,34 +142,51 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="toggle_custom_cpu_ticks">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Enable Custom CPU Ticks</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Ticks:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="custom_cpu_ticks_spinbox">
-          <property name="minimum">
-            <number>77</number>
-           </property>
-          <property name="maximum">
-           <number>65535</number>
-          </property>
-          <property name="value">
-           <number>16000</number>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="custom_cpu_ticks_layout">
+          <item>
+           <widget class="QCheckBox" name="toggle_custom_cpu_ticks">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>Enable Custom CPU Ticks</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_custom_cpu_ticks">
+            <property name="text">
+             <string>Ticks:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="custom_cpu_ticks_spinbox">
+            <property name="minimum">
+             <number>77</number>
+            </property>
+            <property name="maximum">
+             <number>65535</number>
+            </property>
+            <property name="value">
+             <number>16000</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QWidget" name="widget_region" native="true">
