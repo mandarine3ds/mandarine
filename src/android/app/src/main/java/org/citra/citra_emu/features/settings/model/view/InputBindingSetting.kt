@@ -314,7 +314,6 @@ class InputBindingSetting(
         fun getInputAxisOrientationKey(axis: Int): String =
             "${getInputAxisKey(axis)}_GuestOrientation"
 
-
         /**
          * This function translates a keyEvent into an "keyid"
          * This key id is either the keyCode from the event, or

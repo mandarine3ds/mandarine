@@ -1247,8 +1247,11 @@ bool GMainWindow::LoadROM(const QString& filename) {
     }
 
     std::string title;
+    std::string title_long;
     system.GetAppLoader().ReadTitle(title);
+    system.GetAppLoader().ReadTitleLong(title_long);
     game_title = QString::fromStdString(title);
+    game_title_long = QString::fromStdString(title_long);
     UpdateWindowTitle();
 
     u64 title_id;
@@ -1498,6 +1501,7 @@ void GMainWindow::ShutdownGame() {
 #endif
 
     game_title.clear();
+    game_title_long.clear();
     UpdateWindowTitle();
 
     game_path.clear();
@@ -3455,14 +3459,15 @@ void GMainWindow::OnMoviePlaybackCompleted() {
 void GMainWindow::UpdateWindowTitle() {
     const QString full_name = QString::fromUtf8(Common::g_build_fullname);
 
-    if (game_title.isEmpty()) {
+    if (game_title_long.isEmpty()) {
         setWindowTitle(QStringLiteral("Citra %1").arg(full_name));
     } else {
-        setWindowTitle(QStringLiteral("Citra %1 | %2").arg(full_name, game_title));
-        render_window->setWindowTitle(
-            QStringLiteral("Citra %1 | %2 | %3").arg(full_name, game_title, tr("Primary Window")));
-        secondary_window->setWindowTitle(QStringLiteral("Citra %1 | %2 | %3")
-                                             .arg(full_name, game_title, tr("Secondary Window")));
+        setWindowTitle(QStringLiteral("Citra %1 | %2").arg(full_name, game_title_long));
+        render_window->setWindowTitle(QStringLiteral("Citra %1 | %2 | %3")
+                                          .arg(full_name, game_title_long, tr("Primary Window")));
+        secondary_window->setWindowTitle(
+            QStringLiteral("Citra %1 | %2 | %3")
+                .arg(full_name, game_title_long, tr("Secondary Window")));
     }
 }
 

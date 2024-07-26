@@ -37,16 +37,17 @@ void DiscordImpl::Update() {
     std::string title;
     const bool is_powered_on = system.IsPoweredOn();
     if (is_powered_on) {
-        system.GetAppLoader().ReadTitle(title);
+        system.GetAppLoader().ReadTitleLong(title);
     }
 
     DiscordRichPresence presence{};
     presence.largeImageKey = "citra";
-    presence.largeImageText = "Citra is an emulator for the Nintendo 3DS";
     if (is_powered_on) {
+        presence.largeImageText = title.c_str();
         presence.state = title.c_str();
         presence.details = "Currently in game";
     } else {
+        presence.largeImageText = "Not in game";
         presence.details = "Not in game";
     }
     presence.startTimestamp = start_time;
