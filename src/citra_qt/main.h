@@ -231,8 +231,6 @@ private slots:
     void OnGameListLoadFile(QString game_path);
     void OnGameListOpenFolder(u64 program_id, GameListOpenTarget target);
     void OnGameListRemovePlayTimeData(u64 program_id);
-    void OnGameListNavigateToGamedbEntry(u64 program_id,
-                                         const CompatibilityList& compatibility_list);
     void OnGameListCreateShortcut(u64 program_id, const std::string& game_path,
                                   GameListShortcutTarget target);
     void OnGameListDumpRomFS(QString game_path, u64 program_id);
@@ -406,6 +404,12 @@ private:
     u64 oldest_slot_time;
     u32 newest_slot;
     u64 newest_slot_time;
+
+    // Secondary window actions
+    QAction* action_secondary_fullscreen;
+    QAction* action_secondary_toggle_screen;
+    QAction* action_secondary_swap_screen;
+    QAction* action_secondary_rotate_screen;
 
     QTranslator translator;
 
