@@ -117,7 +117,7 @@ void Timing::UnscheduleEvent(const TimingEventType* event_type, std::uintptr_t u
             std::make_heap(timer->event_queue.begin(), timer->event_queue.end(), std::greater<>());
         }
     }
-    // TODO:remove events from ts_queue
+    // TODO: remove events from ts_queue
 }
 
 void Timing::RemoveEvent(const TimingEventType* event_type) {
@@ -134,7 +134,7 @@ void Timing::RemoveEvent(const TimingEventType* event_type) {
             std::make_heap(timer->event_queue.begin(), timer->event_queue.end(), std::greater<>());
         }
     }
-    // TODO:remove events from ts_queue
+    // TODO: remove events from ts_queue
 }
 
 void Timing::SetCurrentTimer(std::size_t core_id) {

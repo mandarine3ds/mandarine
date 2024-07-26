@@ -26,7 +26,7 @@ std::string GetSystemSaveDataPath(std::string_view mount_point, const Path& path
     u32 save_high;
     std::memcpy(&save_low, &vec_data[4], sizeof(u32));
     std::memcpy(&save_high, &vec_data[0], sizeof(u32));
-    return fmt::format("{}{:08X}/{:08X}/", mount_point, save_low, save_high);
+    return fmt::format("{}{:08x}/{:08x}/", mount_point, save_low, save_high);
 }
 
 std::string GetSystemSaveDataContainerPath(std::string_view mount_point) {

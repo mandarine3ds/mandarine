@@ -54,18 +54,15 @@ uniform sampler2D color_texture;
 uniform sampler2D color_texture_r;
 
 // Interfacing functions
-float4 Sample()
-{
+float4 Sample() {
     return texture(color_texture, frag_tex_coord);
 }
 
-float4 SampleLocation(float2 location)
-{
+float4 SampleLocation(float2 location) {
     return texture(color_texture, location);
 }
 
-float4 SampleLayer(int layer)
-{
+float4 SampleLayer(int layer) {
     if(layer == 0)
         return texture(color_texture, frag_tex_coord);
     else
@@ -74,53 +71,43 @@ float4 SampleLayer(int layer)
 
 #define SampleOffset(offset) textureOffset(color_texture, frag_tex_coord, offset)
 
-float2 GetResolution()
-{
+float2 GetResolution() {
     return i_resolution.xy;
 }
 
-float2 GetInvResolution()
-{
+float2 GetInvResolution() {
     return i_resolution.zw;
 }
 
-float2 GetIResolution()
-{
+float2 GetIResolution() {
     return i_resolution.xy;
 }
 
-float2 GetIInvResolution()
-{
+float2 GetIInvResolution() {
     return i_resolution.zw;
 }
 
-float2 GetWindowResolution()
-{
+float2 GetWindowResolution() {
   return o_resolution.xy;
 }
 
-float2 GetInvWindowResolution()
-{
+float2 GetInvWindowResolution() {
   return o_resolution.zw;
 }
 
-float2 GetOResolution()
-{
+float2 GetOResolution() {
     return o_resolution.xy;
 }
 
-float2 GetOInvResolution()
-{
+float2 GetOInvResolution() {
     return o_resolution.zw;
 }
 
-float2 GetCoordinates()
-{
+float2 GetCoordinates() {
     return frag_tex_coord;
 }
 
-void SetOutput(float4 color_in)
-{
+void SetOutput(float4 color_in) {
     color = color_in;
 }
 
