@@ -526,16 +526,24 @@ void Config::ReadLayoutValues() {
 
     if (global) {
         ReadBasicSetting(Settings::values.mono_render_option);
+
         ReadBasicSetting(Settings::values.custom_layout);
-        ReadBasicSetting(Settings::values.custom_top_left);
-        ReadBasicSetting(Settings::values.custom_top_top);
-        ReadBasicSetting(Settings::values.custom_top_right);
-        ReadBasicSetting(Settings::values.custom_top_bottom);
-        ReadBasicSetting(Settings::values.custom_bottom_left);
-        ReadBasicSetting(Settings::values.custom_bottom_top);
-        ReadBasicSetting(Settings::values.custom_bottom_right);
-        ReadBasicSetting(Settings::values.custom_bottom_bottom);
+        ReadBasicSetting(Settings::values.custom_top_x);
+        ReadBasicSetting(Settings::values.custom_top_y);
+        ReadBasicSetting(Settings::values.custom_top_width);
+        ReadBasicSetting(Settings::values.custom_top_height);
+        ReadBasicSetting(Settings::values.custom_bottom_x);
+        ReadBasicSetting(Settings::values.custom_bottom_y);
+        ReadBasicSetting(Settings::values.custom_bottom_width);
+        ReadBasicSetting(Settings::values.custom_bottom_height);
         ReadBasicSetting(Settings::values.custom_second_layer_opacity);
+
+        ReadBasicSetting(Settings::values.screen_top_stretch);
+        ReadBasicSetting(Settings::values.screen_top_leftright_padding);
+        ReadBasicSetting(Settings::values.screen_top_topbottom_padding);
+        ReadBasicSetting(Settings::values.screen_bottom_stretch);
+        ReadBasicSetting(Settings::values.screen_bottom_leftright_padding);
+        ReadBasicSetting(Settings::values.screen_bottom_topbottom_padding);
     }
 
     qt_config->endGroup();
@@ -1080,16 +1088,24 @@ void Config::SaveLayoutValues() {
 
     if (global) {
         WriteBasicSetting(Settings::values.mono_render_option);
+
         WriteBasicSetting(Settings::values.custom_layout);
-        WriteBasicSetting(Settings::values.custom_top_left);
-        WriteBasicSetting(Settings::values.custom_top_top);
-        WriteBasicSetting(Settings::values.custom_top_right);
-        WriteBasicSetting(Settings::values.custom_top_bottom);
-        WriteBasicSetting(Settings::values.custom_bottom_left);
-        WriteBasicSetting(Settings::values.custom_bottom_top);
-        WriteBasicSetting(Settings::values.custom_bottom_right);
-        WriteBasicSetting(Settings::values.custom_bottom_bottom);
+        WriteBasicSetting(Settings::values.custom_top_x);
+        WriteBasicSetting(Settings::values.custom_top_y);
+        WriteBasicSetting(Settings::values.custom_top_width);
+        WriteBasicSetting(Settings::values.custom_top_height);
+        WriteBasicSetting(Settings::values.custom_bottom_x);
+        WriteBasicSetting(Settings::values.custom_bottom_y);
+        WriteBasicSetting(Settings::values.custom_bottom_width);
+        WriteBasicSetting(Settings::values.custom_bottom_height);
         WriteBasicSetting(Settings::values.custom_second_layer_opacity);
+
+        WriteBasicSetting(Settings::values.screen_top_stretch);
+        WriteBasicSetting(Settings::values.screen_top_leftright_padding);
+        WriteBasicSetting(Settings::values.screen_top_topbottom_padding);
+        WriteBasicSetting(Settings::values.screen_bottom_stretch);
+        WriteBasicSetting(Settings::values.screen_bottom_leftright_padding);
+        WriteBasicSetting(Settings::values.screen_bottom_topbottom_padding);
     }
 
     qt_config->endGroup();

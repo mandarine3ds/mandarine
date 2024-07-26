@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>440</width>
-    <height>748</height>
+    <height>950</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,16 +19,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QGroupBox" name="rendererBox">
      <property name="title">
       <string>Renderer</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_6">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <widget class="QWidget" name="widget_resolution" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout_1">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -119,7 +119,7 @@
       </item>
       <item>
        <widget class="QWidget" name="widget_shader" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -186,17 +186,17 @@
            </item>
            <item>
             <property name="text">
+             <string>Nearest Neighbor</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>ScaleForce</string>
             </property>
            </item>
            <item>
             <property name="text">
              <string>xBRZ</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>MMPX</string>
             </property>
            </item>
           </widget>
@@ -214,7 +214,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
@@ -254,7 +254,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QLabel" name="label_3">
           <property name="text">
@@ -281,7 +281,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QLabel" name="label_6">
           <property name="text">
@@ -309,167 +309,12 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="layout_group">
-     <property name="title">
-      <string>Layout</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QWidget" name="widget_layout" native="true">
-        <layout class="QHBoxLayout" name="screen_layout_group">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="layout_label">
-           <property name="text">
-            <string>Screen Layout:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="layout_combobox">
-           <item>
-            <property name="text">
-             <string>Default</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Single Screen</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Large Screen</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Side by Side</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Separate Windows</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Hybrid Screen</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_swap_screen">
-        <property name="text">
-         <string>Swap Screens</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_upright_screen">
-        <property name="text">
-         <string>Rotate Screens Upright</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget" native="true">
-        <layout class="QHBoxLayout" name="proportion_layout">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_31">
-           <property name="text">
-            <string>Large Screen Proportion:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="large_screen_proportion">
-           <property name="minimum">
-            <double>1.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>16.000000000000000</double>
-           </property>
-           <property name="value">
-            <double>4.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="bg_color_group" native="true">
-        <layout class="QHBoxLayout" name="bg_color_group_2">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="bg_label">
-           <property name="text">
-            <string>Background Color:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="bg_button">
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>16777215</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="QGroupBox" name="utilityBox">
      <property name="title">
       <string>Utility</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_8">
-      <item>
+     <layout class="QGridLayout" name="gridLayout_1">
+      <item row="1" column="0">
        <widget class="QCheckBox" name="toggle_custom_textures">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace textures with PNG files.&lt;/p&gt;&lt;p&gt;Textures are loaded from load/textures/[Title ID]/.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -479,7 +324,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="0">
        <widget class="QCheckBox" name="toggle_dump_textures">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dump textures to PNG files.&lt;/p&gt;&lt;p&gt;Textures are dumped to dump/textures/[Title ID]/.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -489,7 +334,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1">
        <widget class="QCheckBox" name="toggle_preload_textures">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load all custom textures into memory on boot, instead of loading them when the game requires them.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -499,7 +344,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="1">
        <widget class="QCheckBox" name="toggle_async_custom_loading">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load custom textures asynchronously with background threads to reduce loading stutter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -520,7 +365,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>165</height>
+       <height>270</height>
       </size>
      </property>
     </spacer>
@@ -535,11 +380,6 @@
   <tabstop>render_3d_combobox</tabstop>
   <tabstop>factor_3d</tabstop>
   <tabstop>mono_rendering_eye</tabstop>
-  <tabstop>layout_combobox</tabstop>
-  <tabstop>toggle_swap_screen</tabstop>
-  <tabstop>toggle_upright_screen</tabstop>
-  <tabstop>large_screen_proportion</tabstop>
-  <tabstop>bg_button</tabstop>
   <tabstop>toggle_custom_textures</tabstop>
   <tabstop>toggle_dump_textures</tabstop>
   <tabstop>toggle_preload_textures</tabstop>
