@@ -183,6 +183,27 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
         sl.apply {
             add(
                 SwitchSetting(
+                    IntSetting.ENABLE_CUSTOM_CPU_TICKS,
+                    R.string.enable_custom_cpu_ticks,
+                    R.string.enable_custom_cpu_ticks_description,
+                    IntSetting.ENABLE_CUSTOM_CPU_TICKS.key,
+                    IntSetting.ENABLE_CUSTOM_CPU_TICKS.defaultValue
+                )
+            )
+            add(
+                SliderSetting(
+                    IntSetting.CUSTOM_CPU_TICKS,
+                    R.string.custom_cpu_ticks,
+                    0,
+                    77,
+                    65535,
+                    "",
+                    IntSetting.CUSTOM_CPU_TICKS.key,
+                    IntSetting.CUSTOM_CPU_TICKS.defaultValue.toFloat()
+                )
+            )
+            add(
+                SwitchSetting(
                     IntSetting.USE_FRAME_LIMIT,
                     R.string.frame_limit_enable,
                     R.string.frame_limit_enable_description,

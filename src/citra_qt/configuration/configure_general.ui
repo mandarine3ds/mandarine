@@ -90,6 +90,49 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
+         <widget class="QCheckBox" name="toggle_custom_cpu_ticks">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Enable Custom CPU Ticks</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Ticks:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="custom_cpu_ticks_spinbox">
+          <property name="minimum">
+            <number>77</number>
+           </property>
+          <property name="maximum">
+           <number>65535</number>
+          </property>
+          <property name="value">
+           <number>16000</number>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QWidget" name="widget_region" native="true">
           <layout class="QHBoxLayout" name="region_layout">
            <property name="leftMargin">
@@ -326,8 +369,27 @@
   <tabstop>toggle_hide_mouse</tabstop>
   <tabstop>toggle_update_check</tabstop>
   <tabstop>toggle_auto_update</tabstop>
+  <tabstop>toggle_custom_cpu_ticks</tabstop>
+  <tabstop>custom_cpu_ticks_spinbox</tabstop>
   <tabstop>button_reset_defaults</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>toggle_custom_cpu_ticks</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>custom_cpu_ticks_spinbox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

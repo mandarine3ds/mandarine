@@ -40,6 +40,8 @@ enum class IntSetting(
     VSYNC("use_vsync_new", Settings.SECTION_RENDERER, 1),
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, 0),
     TEXTURE_FILTER("texture_filter", Settings.SECTION_RENDERER, 0),
+    ENABLE_CUSTOM_CPU_TICKS("enable_custom_cpu_ticks", Settings.SECTION_CORE, 0),
+    CUSTOM_CPU_TICKS("custom_cpu_ticks", Settings.SECTION_CORE, 16000),
     USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),
     DELAY_RENDER_THREAD_US("delay_game_render_thread_us", Settings.SECTION_RENDERER, 0),
     FORCE_HW_VERTEX_SHADERS("force_hw_vertex_shaders", Settings.SECTION_RENDERER, 0),

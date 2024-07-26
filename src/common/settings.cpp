@@ -83,6 +83,8 @@ void LogSettings() {
     LOG_INFO(Config, "Citra Configuration:");
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
+    log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());
+    log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
     log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
     log_setting("Renderer_UseGLES", values.use_gles.GetValue());
     log_setting("Renderer_GraphicsAPI", GetGraphicsAPIName(values.graphics_api.GetValue()));
@@ -99,6 +101,10 @@ void LogSettings() {
     log_setting("Renderer_PostProcessingShader", values.pp_shader_name.GetValue());
     log_setting("Renderer_FilterMode", values.filter_mode.GetValue());
     log_setting("Renderer_TextureFilter", GetTextureFilterName(values.texture_filter.GetValue()));
+    log_setting("Renderer_ForceHWVertexShaders", values.force_hw_vertex_shaders.GetValue());
+    log_setting("Renderer_DisableSurfaceTextureCopy",
+                values.disable_surface_texture_copy.GetValue());
+    log_setting("Renderer_DisableFlushCPUWrite", values.disable_flush_cpu_write.GetValue());
     log_setting("Renderer_TextureSampling",
                 GetTextureSamplingName(values.texture_sampling.GetValue()));
     log_setting("Renderer_DelayGameRenderThreasUs", values.delay_game_render_thread_us.GetValue());
@@ -180,6 +186,8 @@ void RestoreGlobalState(bool is_powered_on) {
     values.cpu_clock_percentage.SetGlobal(true);
     values.is_new_3ds.SetGlobal(true);
     values.lle_applets.SetGlobal(true);
+    values.enable_custom_cpu_ticks.SetGlobal(true);
+    values.custom_cpu_ticks.SetGlobal(true);
 
     // Renderer
     values.graphics_api.SetGlobal(true);
@@ -194,6 +202,9 @@ void RestoreGlobalState(bool is_powered_on) {
     values.resolution_factor.SetGlobal(true);
     values.frame_limit.SetGlobal(true);
     values.texture_filter.SetGlobal(true);
+    values.force_hw_vertex_shaders.SetGlobal(true);
+    values.disable_surface_texture_copy.SetGlobal(true);
+    values.disable_flush_cpu_write.SetGlobal(true);
     values.texture_sampling.SetGlobal(true);
     values.delay_game_render_thread_us.SetGlobal(true);
     values.layout_option.SetGlobal(true);
