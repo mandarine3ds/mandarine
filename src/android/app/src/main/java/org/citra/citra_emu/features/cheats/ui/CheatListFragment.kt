@@ -21,7 +21,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.citra.citra_emu.R
 import org.citra.citra_emu.databinding.FragmentCheatListBinding

@@ -6,16 +6,9 @@ package org.citra.citra_emu.utils
 
 import android.content.Context
 import android.net.Uri
-import androidx.preference.PreferenceManager
-import org.citra.citra_emu.BuildConfig
 import org.citra.citra_emu.CitraApplication
 import org.citra.citra_emu.NativeLibrary
 import org.citra.citra_emu.utils.PermissionsHandler.hasWriteAccess
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -23,8 +16,6 @@ import java.util.concurrent.atomic.AtomicBoolean
  * from the Citra APK to the external file system.
  */
 object DirectoryInitialization {
-    private const val SYS_DIR_VERSION = "sysDirectoryVersion"
-
     @Volatile
     private var directoryState: DirectoryInitializationState? = null
     var userPath: String? = null
@@ -60,15 +51,6 @@ object DirectoryInitialization {
         return directoryState
     }
 
-    private fun deleteDirectoryRecursively(file: File) {
-        if (file.isDirectory) {
-            for (child in file.listFiles()!!) {
-                deleteDirectoryRecursively(child)
-            }
-        }
-        file.delete()
-    }
-
     @JvmStatic
     fun areCitraDirectoriesReady(): Boolean {
         return directoryState == DirectoryInitializationState.CITRA_DIRECTORIES_INITIALIZED
@@ -98,61 +80,6 @@ object DirectoryInitialization {
             return true
         }
         return false
-    }
-
-    private fun copyAsset(asset: String, output: File, overwrite: Boolean, context: Context) {
-        Log.debug("[DirectoryInitialization] Copying File $asset to $output")
-        try {
-            if (!output.exists() || overwrite) {
-                val inputStream = context.assets.open(asset)
-                val outputStream = FileOutputStream(output)
-                copyFile(inputStream, outputStream)
-                inputStream.close()
-                outputStream.close()
-            }
-        } catch (e: IOException) {
-            Log.error("[DirectoryInitialization] Failed to copy asset file: $asset" + e.message)
-        }
-    }
-
-    private fun copyAssetFolder(
-        assetFolder: String,
-        outputFolder: File,
-        overwrite: Boolean,
-        context: Context
-    ) {
-        Log.debug("[DirectoryInitialization] Copying Folder $assetFolder to $outputFolder")
-        try {
-            var createdFolder = false
-            for (file in context.assets.list(assetFolder)!!) {
-                if (!createdFolder) {
-                    outputFolder.mkdir()
-                    createdFolder = true
-                }
-                copyAssetFolder(
-                    assetFolder + File.separator + file, File(outputFolder, file),
-                    overwrite, context
-                )
-                copyAsset(
-                    assetFolder + File.separator + file, File(outputFolder, file), overwrite,
-                    context
-                )
-            }
-        } catch (e: IOException) {
-            Log.error(
-                "[DirectoryInitialization] Failed to copy asset folder: $assetFolder" +
-                        e.message
-            )
-        }
-    }
-
-    @Throws(IOException::class)
-    private fun copyFile(inputStream: InputStream, outputStream: OutputStream) {
-        val buffer = ByteArray(1024)
-        var read: Int
-        while (inputStream.read(buffer).also { read = it } != -1) {
-            outputStream.write(buffer, 0, read)
-        }
     }
 
     enum class DirectoryInitializationState {

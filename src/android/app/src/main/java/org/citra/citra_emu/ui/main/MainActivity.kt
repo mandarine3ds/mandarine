@@ -34,7 +34,6 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.citra.citra_emu.R
 import org.citra.citra_emu.activities.EmulationActivity

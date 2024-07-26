@@ -17,7 +17,6 @@ import coil.key.Keyer
 import coil.memory.MemoryCache
 import coil.request.ImageRequest
 import coil.request.Options
-import coil.transform.RoundedCornersTransformation
 import org.citra.citra_emu.R
 import org.citra.citra_emu.model.Game
 import java.nio.IntBuffer
@@ -34,7 +33,7 @@ class GameIconFetcher(
         )
     }
 
-    private fun getGameIcon(vector: IntArray?): Bitmap? {
+    private fun getGameIcon(vector: IntArray?): Bitmap {
         val bitmap = Bitmap.createBitmap(48, 48, Bitmap.Config.RGB_565)
         bitmap.copyPixelsFromBuffer(IntBuffer.wrap(vector))
         return bitmap

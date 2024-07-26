@@ -23,7 +23,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.citra.citra_emu.databinding.FragmentCheatsBinding
 import org.citra.citra_emu.features.cheats.model.Cheat
@@ -157,7 +156,7 @@ class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
     }
 
     private fun onSelectedCheatChanged(selectedCheat: Cheat?) {
-        val cheatSelected = selectedCheat != null || cheatsViewModel.isEditing.value!!
+        val cheatSelected = selectedCheat != null || cheatsViewModel.isEditing.value
         if (!cheatSelected && binding.slidingPaneLayout.isOpen) {
             binding.slidingPaneLayout.close()
         }
