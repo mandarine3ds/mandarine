@@ -86,6 +86,7 @@ void LogSettings() {
     log_setting("Core_FrameSkip", values.frame_skip.GetValue());
     log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());
     log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
+    log_setting("Core_ReduceDowncountSlice", values.reduce_downcount_slice.GetValue());
     log_setting("Core_PriorityBoostStarvedThreads",
                 values.priority_boost_starved_threads.GetValue());
     log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
@@ -194,6 +195,7 @@ void RestoreGlobalState(bool is_powered_on) {
     values.frame_skip.SetGlobal(true);
     values.enable_custom_cpu_ticks.SetGlobal(true);
     values.custom_cpu_ticks.SetGlobal(true);
+    values.reduce_downcount_slice.SetGlobal(true);
     values.priority_boost_starved_threads.SetGlobal(true);
 
     // Renderer

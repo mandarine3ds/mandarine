@@ -105,6 +105,10 @@ frame_skip =
 # 0 (default): Off, 1: On
 enable_custom_cpu_ticks =
 
+# Downcount will be limited to a smaller time slice.
+# 0 (default): Off, 1: On
+reduce_downcount_slice =
+
 # Boost low priority starved threads during kernel rescheduling.
 # 0: Off, 1 (default): On
 priority_boost_starved_threads =

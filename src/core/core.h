@@ -361,6 +361,9 @@ public:
     /// Applies any changes to settings to this core instance.
     void ApplySettings();
 
+    /// Downcount will be limited to a smaller time slice.
+    void ReduceDowncountSlice(bool enabled, u32 num_cores);
+
     void RegisterAppLoaderEarly(std::unique_ptr<Loader::AppLoader>& loader);
 
 private:

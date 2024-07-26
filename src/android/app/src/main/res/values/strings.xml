@@ -216,6 +216,8 @@
     <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
     <string name="vsync">Enable V-Sync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
+    <string name="reduce_downcount_slice">Reduce Downcount Slice</string>
+    <string name="reduce_downcount_slice_description">Reduces core timing downcount to a smaller time slice, reducing CPU usage. This may improve the performance for GPU heavy games, but if the game is CPU hungry, it may cause a performance hit.</string>
     <string name="priority_boost_starved_threads">Priority Boost Starved Threads</string>
     <string name="priority_boost_starved_threads_description">Boost low priority starved threads during kernel rescheduling. This may improve the performance.</string>
     <string name="linear_filtering">Linear Filtering</string>

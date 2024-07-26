@@ -246,10 +246,20 @@
    <item>
     <widget class="QGroupBox" name="groupBox_5">
      <property name="title">
-      <string>Kernel</string>
+      <string>Core</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="0">
+       <widget class="QCheckBox" name="toggle_reduce_downcount_slice">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduces core timing downcount to a smaller time slice, reducing CPU usage. This may improve the performance for GPU heavy games, but if the game is CPU hungry, it may cause a performance hit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Reduce Downcount Slice</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
        <widget class="QCheckBox" name="toggle_priority_boost_starved_threads">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. This may improve the performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

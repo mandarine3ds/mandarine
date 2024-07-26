@@ -1069,15 +1069,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
-                    IntSetting.PRIORITY_BOOST_STARVED_THREADS,
-                    R.string.priority_boost_starved_threads,
-                    R.string.priority_boost_starved_threads_description,
-                    IntSetting.PRIORITY_BOOST_STARVED_THREADS.key,
-                    IntSetting.PRIORITY_BOOST_STARVED_THREADS.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
                     IntSetting.DEBUG_RENDERER,
                     R.string.renderer_debug,
                     R.string.renderer_debug_description,
@@ -1092,6 +1083,26 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.instant_debug_log_desc,
                     BooleanSetting.INSTANT_DEBUG_LOG.key,
                     BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
+                )
+            )
+
+            add(HeaderSetting(R.string.miscellaneous))
+            add(
+                SwitchSetting(
+                    IntSetting.REDUCE_DOWNCOUNT_SLICE,
+                    R.string.reduce_downcount_slice,
+                    R.string.reduce_downcount_slice_description,
+                    IntSetting.REDUCE_DOWNCOUNT_SLICE.key,
+                    IntSetting.REDUCE_DOWNCOUNT_SLICE.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.PRIORITY_BOOST_STARVED_THREADS,
+                    R.string.priority_boost_starved_threads,
+                    R.string.priority_boost_starved_threads_description,
+                    IntSetting.PRIORITY_BOOST_STARVED_THREADS.key,
+                    IntSetting.PRIORITY_BOOST_STARVED_THREADS.defaultValue
                 )
             )
         }

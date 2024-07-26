@@ -74,6 +74,8 @@ ConfigureDebug::ConfigureDebug(bool is_powered_on_, QWidget* parent)
     ui->toggle_renderer_debug->setEnabled(!is_powered_on);
     ui->toggle_dump_command_buffers->setEnabled(!is_powered_on);
 
+    ui->toggle_reduce_downcount_slice->setEnabled(!is_powered_on);
+
     // Set a minimum width for the label to prevent the slider from changing size.
     // This scales across DPIs. (This value should be enough for "xxx%")
     ui->clock_display_label->setMinimumWidth(40);
@@ -102,6 +104,8 @@ void ConfigureDebug::SetConfiguration() {
     ui->toggle_cpu_jit->setChecked(Settings::values.use_cpu_jit.GetValue());
     ui->delay_start_for_lle_modules->setChecked(
         Settings::values.delay_start_for_lle_modules.GetValue());
+    ui->toggle_reduce_downcount_slice->setChecked(
+        Settings::values.reduce_downcount_slice.GetValue());
     ui->toggle_priority_boost_starved_threads->setChecked(
         Settings::values.priority_boost_starved_threads.GetValue());
     ui->toggle_renderer_debug->setChecked(Settings::values.renderer_debug.GetValue());
@@ -139,6 +143,7 @@ void ConfigureDebug::ApplyConfiguration() {
     Common::Log::SetRegexFilter(Settings::values.log_regex_filter.GetValue());
     Settings::values.use_cpu_jit = ui->toggle_cpu_jit->isChecked();
     Settings::values.delay_start_for_lle_modules = ui->delay_start_for_lle_modules->isChecked();
+    Settings::values.reduce_downcount_slice = ui->toggle_reduce_downcount_slice->isChecked();
     Settings::values.priority_boost_starved_threads =
         ui->toggle_priority_boost_starved_threads->isChecked();
     Settings::values.renderer_debug = ui->toggle_renderer_debug->isChecked();

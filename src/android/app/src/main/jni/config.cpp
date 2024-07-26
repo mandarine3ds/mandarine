@@ -136,6 +136,7 @@ void Config::ReadValues() {
     ReadSetting("Core", Settings::values.frame_skip);
     ReadSetting("Core", Settings::values.enable_custom_cpu_ticks);
     ReadSetting("Core", Settings::values.custom_cpu_ticks);
+    ReadSetting("Core", Settings::values.reduce_downcount_slice);
     ReadSetting("Core", Settings::values.priority_boost_starved_threads);
 
     // Renderer

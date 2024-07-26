@@ -108,6 +108,10 @@ frame_skip =
 # 0 (default): Off, 1: On
 enable_custom_cpu_ticks =
 
+# Downcount will be limited to a smaller time slice.
+# 0 (default): Off, 1: On
+reduce_downcount_slice =
+
 # Boost low priority starved threads during kernel rescheduling.
 # 0: Off, 1 (default): On
 priority_boost_starved_threads =
@@ -141,6 +145,10 @@ use_shader_jit =
 # so only turn this off if you notice a speed difference.
 # 0: Off, 1 (default): On
 use_vsync_new =
+
+# Increases graphics throughput on supported devices, improving performance.
+# 0 (default): Off, 1: On
+adreno_gpu_boost =
 
 # Reduce stuttering by storing and loading generated shaders to disk
 # 0: Off, 1 (default. On)

@@ -460,6 +460,7 @@ void Config::ReadCoreValues() {
     ReadGlobalSetting(Settings::values.frame_skip);
     ReadGlobalSetting(Settings::values.enable_custom_cpu_ticks);
     ReadGlobalSetting(Settings::values.custom_cpu_ticks);
+    ReadGlobalSetting(Settings::values.reduce_downcount_slice);
     ReadGlobalSetting(Settings::values.priority_boost_starved_threads);
 
     if (global) {
@@ -1010,6 +1011,7 @@ void Config::SaveCoreValues() {
     WriteGlobalSetting(Settings::values.frame_skip);
     WriteGlobalSetting(Settings::values.enable_custom_cpu_ticks);
     WriteGlobalSetting(Settings::values.custom_cpu_ticks);
+    WriteGlobalSetting(Settings::values.reduce_downcount_slice);
     WriteGlobalSetting(Settings::values.priority_boost_starved_threads);
 
     if (global) {
