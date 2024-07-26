@@ -6,6 +6,7 @@ package org.citra.citra_emu.features.settings.model.view
 
 import org.citra.citra_emu.NativeLibrary
 import org.citra.citra_emu.features.settings.model.AbstractSetting
+import org.citra.citra_emu.activities.EmulationActivity
 
 /**
  * ViewModel abstraction for an Item in the RecyclerView powering SettingsFragments.
@@ -23,7 +24,7 @@ abstract class SettingsItem(
 
     val isEditable: Boolean
         get() {
-            if (!NativeLibrary.isRunning()) return true
+            if (!EmulationActivity.isRunning()) return true
             return setting?.isRuntimeEditable ?: false
         }
 

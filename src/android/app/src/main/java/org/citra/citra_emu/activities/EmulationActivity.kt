@@ -56,6 +56,8 @@ class EmulationActivity : AppCompatActivity() {
     private lateinit var screenAdjustmentUtil: ScreenAdjustmentUtil
     private lateinit var hotkeyUtility: HotkeyUtility
 
+    private var isEmulationRunning: Boolean = false
+
     private val emulationFragment: EmulationFragment
         get() {
             val navHostFragment =
@@ -94,6 +96,9 @@ class EmulationActivity : AppCompatActivity() {
         )
 
         EmulationLifecycleUtil.addShutdownHook(hook = { this.finish() })
+
+        isEmulationRunning = true
+        instance = this
     }
 
     // On some devices, the system bars will not disappear on first boot or after some
@@ -114,9 +119,21 @@ class EmulationActivity : AppCompatActivity() {
         NativeLibrary.reloadCameraDevices()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isEmulationRunning", isEmulationRunning)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        isEmulationRunning = savedInstanceState.getBoolean("isEmulationRunning", false)
+    }
+
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
+        isEmulationRunning = false
+        instance = null
         super.onDestroy()
     }
 
@@ -458,4 +475,12 @@ class EmulationActivity : AppCompatActivity() {
 
             OnFilePickerResult(result.toString())
         }
+
+    companion object {
+        private var instance: EmulationActivity? = null
+
+        fun isRunning(): Boolean {
+            return instance?.isEmulationRunning ?: false
+        }
+    }
 }
