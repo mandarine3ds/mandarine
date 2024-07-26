@@ -118,7 +118,7 @@ private:
     std::array<u64, MAX_SHADER_STAGES> shader_hashes;
     std::array<Shader*, MAX_SHADER_STAGES> current_shaders;
     std::unordered_map<Pica::Shader::Generator::PicaVSConfig, Shader*> programmable_vertex_map;
-    std::unordered_map<std::string, Shader> programmable_vertex_cache;
+    std::unordered_map<u64, Shader> programmable_vertex_cache;
     std::unordered_map<Pica::Shader::Generator::PicaFixedGSConfig, Shader> fixed_geometry_shaders;
     std::unordered_map<Pica::Shader::FSConfig, Shader> fragment_shaders;
     Shader trivial_vertex_shader;

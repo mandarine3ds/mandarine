@@ -7,26 +7,14 @@
 #include <array>
 #include <sirit/sirit.h>
 
+#include "common/common_types.h"
+#include "spv_shader_gen.h"
 #include "video_core/pica/regs_framebuffer.h"
 #include "video_core/pica/regs_texturing.h"
-
-namespace Pica::Shader {
-struct FSConfig;
-struct Profile;
-} // namespace Pica::Shader
 
 namespace Pica::Shader::Generator::SPIRV {
 
 using Sirit::Id;
-
-struct VectorIds {
-    /// Returns the type id of the vector with the provided size
-    [[nodiscard]] constexpr Id Get(u32 size) const {
-        return ids[size - 2];
-    }
-
-    std::array<Id, 3> ids;
-};
 
 class FragmentModule : public Sirit::Module {
     static constexpr u32 NUM_TEV_STAGES = 6;

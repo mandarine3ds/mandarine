@@ -152,6 +152,7 @@ struct PipelineInfo {
 struct Shader : public Common::AsyncHandle {
     explicit Shader(const Instance& instance);
     explicit Shader(const Instance& instance, vk::ShaderStageFlagBits stage, std::string code);
+    explicit Shader(const Instance& instance, std::span<const u32> code);
     ~Shader();
 
     [[nodiscard]] vk::ShaderModule Handle() const noexcept {
@@ -160,7 +161,7 @@ struct Shader : public Common::AsyncHandle {
 
     vk::ShaderModule module;
     vk::Device device;
-    std::string program;
+    std::vector<u32> program;
 };
 
 class GraphicsPipeline : public Common::AsyncHandle {

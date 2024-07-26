@@ -159,8 +159,14 @@ bool InitializeCompiler() {
 }
 } // Anonymous namespace
 
-vk::ShaderModule Compile(std::string_view code, vk::ShaderStageFlagBits stage, vk::Device device,
-                         std::string_view premable) {
+/**
+ * @brief Compiles GLSL into SPIRV
+ * @param code The string containing GLSL code.
+ * @param stage The pipeline stage the shader will be used in.
+ * @param device The vulkan device handle.
+ */
+std::vector<u32> CompileGLSLtoSPIRV(std::string_view code, vk::ShaderStageFlagBits stage,
+                                    vk::Device device, std::string_view premable) {
     if (!InitializeCompiler()) {
         return {};
     }
@@ -216,7 +222,12 @@ vk::ShaderModule Compile(std::string_view code, vk::ShaderStageFlagBits stage, v
         LOG_INFO(Render_Vulkan, "SPIR-V conversion messages: {}", spv_messages);
     }
 
-    return CompileSPV(out_code, device);
+    return out_code;
+}
+
+vk::ShaderModule Compile(std::string_view code, vk::ShaderStageFlagBits stage, vk::Device device,
+                         std::string_view premable) {
+    return CompileSPV(CompileGLSLtoSPIRV(code, stage, device, premable), device);
 }
 
 vk::ShaderModule CompileSPV(std::span<const u32> code, vk::Device device) {

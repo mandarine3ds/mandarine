@@ -11,10 +11,21 @@
 namespace Vulkan {
 
 /**
+ * @brief Compiles GLSL into SPIRV
+ * @param code The string containing GLSL code.
+ * @param stage The pipeline stage the shader will be used in.
+ * @param device The vulkan device handle.
+ * @param premable Code that occurs before the main code block
+ */
+std::vector<u32> CompileGLSLtoSPIRV(std::string_view code, vk::ShaderStageFlagBits stage,
+                                    vk::Device device, std::string_view premable = "");
+
+/**
  * @brief Creates a vulkan shader module from GLSL by converting it to SPIR-V using glslang.
  * @param code The string containing GLSL code.
  * @param stage The pipeline stage the shader will be used in.
  * @param device The vulkan device handle.
+ * @param premable Code that occurs before the main code block
  */
 vk::ShaderModule Compile(std::string_view code, vk::ShaderStageFlagBits stage, vk::Device device,
                          std::string_view premable = "");

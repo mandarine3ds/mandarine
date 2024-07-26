@@ -56,6 +56,11 @@ Shader::Shader(const Instance& instance, vk::ShaderStageFlagBits stage, std::str
     MarkDone();
 }
 
+Shader::Shader(const Instance& instance, std::span<const u32> code) : Shader{instance} {
+    module = CompileSPV(code, instance.GetDevice());
+    MarkDone();
+}
+
 Shader::~Shader() {
     if (device && module) {
         device.destroyShaderModule(module);

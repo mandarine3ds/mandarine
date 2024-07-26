@@ -6,6 +6,7 @@
 
 #include <cstddef>
 #include <cstring>
+#include <span>
 #include "common/cityhash.h"
 #include "common/common_types.h"
 
@@ -19,6 +20,15 @@ namespace Common {
  */
 static inline u64 ComputeHash64(const void* data, std::size_t len) noexcept {
     return CityHash64(static_cast<const char*>(data), len);
+}
+
+/**
+ * Computes a 64-bit hash over the specified block of data
+ * @param data Block of data to compute hash over
+ * @returns 64-bit hash value that was computed over the data block
+ */
+static inline u64 ComputeHash64(std::span<const std::byte> data) noexcept {
+    return ComputeHash64(data.data(), data.size());
 }
 
 /**
