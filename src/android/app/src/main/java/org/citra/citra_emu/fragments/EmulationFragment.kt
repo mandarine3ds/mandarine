@@ -67,6 +67,7 @@ import org.citra.citra_emu.utils.EmulationLifecycleUtil
 import org.citra.citra_emu.utils.Log
 import org.citra.citra_emu.utils.ViewUtils
 import org.citra.citra_emu.viewmodel.EmulationViewModel
+import java.io.File
 
 class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.FrameCallback {
     private val preferences: SharedPreferences
@@ -1017,14 +1018,12 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             val SPEED = 3
             perfStatsUpdater = Runnable {
                 val perfStats = NativeLibrary.getPerfStats()
+                val ramUsage = File("/proc/self/statm").readLines()[0].split(' ')[1].toLong() * 4096 / 1000000
+                val ramUsageText = "RAM USAGE: " + ramUsage + " MB"
                 if (perfStats[FPS] > 0) {
-                    binding.showFpsText.text = String.format(
-                        "FPS: %d Speed: %d%%",
-                        (perfStats[FPS] + 0.5).toInt(),
-                        (perfStats[SPEED] * 100.0 + 0.5).toInt()
-                    )
+                    binding.showFpsText.text = String.format("FPS: %d Speed: %d%%\n%s", (perfStats[FPS] + 0.5).toInt(), (perfStats[SPEED] * 100.0 + 0.5).toInt(), ramUsageText)
                 }
-                perfStatsUpdateHandler.postDelayed(perfStatsUpdater!!, 3000)
+                perfStatsUpdateHandler.postDelayed(perfStatsUpdater!!, 800)
             }
             perfStatsUpdateHandler.post(perfStatsUpdater!!)
             binding.showFpsText.visibility = View.VISIBLE
