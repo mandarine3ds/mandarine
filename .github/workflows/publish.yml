@@ -33,7 +33,7 @@ jobs:
       - name: Download/Unzip Android APK Artifact
         run: |
           curl -L -o Android-APK.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/Android-APK.zip
-          unzip Android-APK.zip -d ./AndroidAPK
+          unzip Android-APK.zip -d ./android-universal
 
       - name: Download/Unzips Mac OS Artifact
         run: |
@@ -66,7 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./AndroidAPK/app-canary-release.apk
+          asset_path: ./android-universal/app-canary-release.apk
           asset_name: app-canary-release.apk
           asset_content_type: application/vnd.android.package-archive
 
