@@ -11,7 +11,6 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/downloads/mandarine3ds/mandarine/total" alt="GitHub all releases"/>
   <a href="https://github.com/mandarine3ds/mandarine/releases/latest">
     <img src="https://img.shields.io/badge/Download-Latest_Release-2ea44f?logo=github&logoColor=white" alt="Download - Latest Release"/>
   </a>
