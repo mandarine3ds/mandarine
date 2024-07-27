@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="mandarine_primary">#B7C4FF</color>
+    <color name="mandarine_onPrimary">#002681</color>
+    <color name="mandarine_primaryContainer">#0039B5</color>
+    <color name="mandarine_onPrimaryContainer">#DCE1FF</color>
+    <color name="mandarine_secondary">#C2C5DD</color>
+    <color name="mandarine_onSecondary">#2B3042</color>
+    <color name="mandarine_secondaryContainer">#424659</color>
+    <color name="mandarine_onSecondaryContainer">#DEE1F9</color>
+    <color name="mandarine_tertiary">#E4BADA</color>
+    <color name="mandarine_onTertiary">#43273F</color>
+    <color name="mandarine_tertiaryContainer">#5C3D56</color>
+    <color name="mandarine_onTertiaryContainer">#FFD7F5</color>
+    <color name="mandarine_error">#FFB4AB</color>
+    <color name="mandarine_errorContainer">#93000A</color>
+    <color name="mandarine_onError">#690005</color>
+    <color name="mandarine_onErrorContainer">#FFDAD6</color>
+    <color name="mandarine_background">#1B1B1F</color>
+    <color name="mandarine_onBackground">#E4E1E6</color>
+    <color name="mandarine_surface">#1B1B1F</color>
+    <color name="mandarine_onSurface">#E4E1E6</color>
+    <color name="mandarine_surfaceVariant">#45464F</color>
+    <color name="mandarine_onSurfaceVariant">#C6C5D0</color>
+    <color name="mandarine_outline">#90909A</color>
+    <color name="mandarine_inverseOnSurface">#1B1B1F</color>
+    <color name="mandarine_inverseSurface">#E4E1E6</color>
+    <color name="mandarine_inversePrimary">#154FE2</color>
+    <color name="mandarine_shadow">#000000</color>
+    <color name="mandarine_surfaceTint">#B7C4FF</color>
+    <color name="mandarine_outlineVariant">#45464F</color>
+    <color name="mandarine_scrim">#000000</color>
+
+</resources>

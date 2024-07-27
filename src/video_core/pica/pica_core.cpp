@@ -448,7 +448,7 @@ void PicaCore::SubmitImmediate(u32 value) {
 }
 
 void PicaCore::DrawImmediate() {
-    CITRA_PROFILE("PicaCore", "Draw Immediate");
+    MANDARINE_PROFILE("PicaCore", "Draw Immediate");
 
     // Compile the vertex shader.
     shader_engine->SetupBatch(vs_setup, regs.internal.vs.main_offset);
@@ -486,7 +486,7 @@ void PicaCore::DrawImmediate() {
 }
 
 void PicaCore::DrawArrays(bool is_indexed) {
-    CITRA_PROFILE("PicaCore", "Draw Arrays");
+    MANDARINE_PROFILE("PicaCore", "Draw Arrays");
 
     // Track vertex in the debug recorder.
     if (debug_context) {

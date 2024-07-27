@@ -235,7 +235,7 @@ void PresentWindow::RecreateFrame(Frame* frame, u32 width, u32 height) {
 }
 
 Frame* PresentWindow::GetRenderFrame() {
-    CITRA_PROFILE("Vulkan", "Wait For Present");
+    MANDARINE_PROFILE("Vulkan", "Wait For Present");
 
     // Wait for free presentation frames
     std::unique_lock lock{free_mutex};

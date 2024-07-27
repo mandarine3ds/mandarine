@@ -80,7 +80,7 @@ void LogSettings() {
         LOG_INFO(Config, "{}: {}", name, value);
     };
 
-    LOG_INFO(Config, "Citra Configuration:");
+    LOG_INFO(Config, "Mandarine Configuration:");
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
     log_setting("Core_FrameSkip", values.frame_skip.GetValue());

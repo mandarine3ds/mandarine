@@ -155,7 +155,8 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
 
-    // Work around to map Android setting for enabling the frame limiter to the format Citra expects
+    // Work around to map Android setting for enabling the frame limiter to the format Mandarine
+    // expects
     if (sdl2_config->GetBoolean("Renderer", "use_frame_limit", true)) {
         ReadSetting("Renderer", Settings::values.frame_limit);
     } else {
@@ -281,8 +282,10 @@ void Config::ReadValues() {
     // Web Service
     NetSettings::values.web_api_url =
         sdl2_config->GetString("WebService", "web_api_url", "https://api.citra-emu.org");
-    NetSettings::values.citra_username = sdl2_config->GetString("WebService", "citra_username", "");
-    NetSettings::values.citra_token = sdl2_config->GetString("WebService", "citra_token", "");
+    NetSettings::values.mandarine_username =
+        sdl2_config->GetString("WebService", "mandarine_username", "");
+    NetSettings::values.mandarine_token =
+        sdl2_config->GetString("WebService", "mandarine_token", "");
 }
 
 void Config::Reload() {

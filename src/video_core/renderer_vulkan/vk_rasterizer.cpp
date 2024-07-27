@@ -327,13 +327,13 @@ void RasterizerVulkan::SetupFixedAttribs() {
 }
 
 bool RasterizerVulkan::SetupVertexShader() {
-    CITRA_PROFILE("Vulkan", "Vertex Shader Setup");
+    MANDARINE_PROFILE("Vulkan", "Vertex Shader Setup");
     return pipeline_cache.UseProgrammableVertexShader(regs, pica.vs_setup,
                                                       pipeline_info.vertex_layout);
 }
 
 bool RasterizerVulkan::SetupGeometryShader() {
-    CITRA_PROFILE("Vulkan", "Geometry Shader Setup");
+    MANDARINE_PROFILE("Vulkan", "Geometry Shader Setup");
 
     if (regs.pipeline.use_gs != Pica::PipelineRegs::UseGS::No) {
         LOG_ERROR(Render_Vulkan, "Accelerate draw doesn't support geometry shader");
@@ -461,7 +461,7 @@ void RasterizerVulkan::DrawTriangles() {
 }
 
 bool RasterizerVulkan::Draw(bool accelerate, bool is_indexed) {
-    CITRA_PROFILE("Vulkan", "Drawing");
+    MANDARINE_PROFILE("Vulkan", "Drawing");
 
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();

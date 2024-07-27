@@ -130,12 +130,12 @@ async function fetchPullRequests(pulls, repoUrl, execa) {
 async function mergePullRequests(pulls, execa) {
     let mergeResults = {};
     console.log("::group::Merge pull requests");
-    await execa("git", ["config", "--global", "user.name", "citrabot"]);
+    await execa("git", ["config", "--global", "user.name", "mandarinebot"]);
     await execa("git", [
         "config",
         "--global",
         "user.email",
-        "citra\x40citra-emu\x2eorg", // prevent email harvesters from scraping the address
+        "mandarine\x40mandarine3ds\x2eorg", // prevent email harvesters from scraping the address
     ]);
     let hasFailed = false;
     for (let pull of pulls) {
@@ -200,7 +200,7 @@ async function mergebot(github, context, execa) {
     }
     console.info("The following pull requests will be merged:");
     console.table(displayList);
-    await fetchPullRequests(pulls, "https://github.com/PabloMK7/citra", execa);
+    await fetchPullRequests(pulls, "https://github.com/mandarine3ds/mandarine", execa);
     const mergeResults = await mergePullRequests(pulls, execa);
     await generateReadme(pulls, context, mergeResults, execa);
     await tagAndPush(github, context.repo.owner, `${context.repo.repo}-canary`, execa, true);

@@ -418,7 +418,7 @@ struct TouchFromButtonMap {
     std::vector<std::string> buttons;
 };
 
-/// A special region value indicating that citra will automatically select a region
+/// A special region value indicating that mandarine will automatically select a region
 /// value to fit the region lockout info of the game
 static constexpr s32 REGION_VALUE_AUTO_SELECT = -1;
 
@@ -541,7 +541,7 @@ struct Values {
     SwitchableSetting<bool> priority_boost_starved_threads{true, "priority_boost_starved_threads"};
     SwitchableSetting<bool> reduce_downcount_slice{false, "reduce_downcount_slice"};
     // Reimplementation of old (and fixed) citra frameskip
-    // See https://github.com/CitraEnhanced/citra/commit/e279a6955edf644cf832dd329ac72931aea8add7
+    // See https://github.com/mandarine3ds/mandarine/commit/e279a6955edf644cf832dd329ac72931aea8add7
     SwitchableSetting<u64> frame_skip{0, "frame_skip"};
 
     // Audio

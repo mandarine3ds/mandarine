@@ -17,7 +17,7 @@ namespace VideoCore {
 RendererBase::RendererBase(Core::System& system_, Frontend::EmuWindow& window,
                            Frontend::EmuWindow* secondary_window_)
     : system{system_}, render_window{window}, secondary_window{secondary_window_} {
-    CITRA_FRAME_BEGIN(EmuThreadFrame);
+    MANDARINE_FRAME_BEGIN(EmuThreadFrame);
 }
 
 RendererBase::~RendererBase() = default;
@@ -50,11 +50,11 @@ void RendererBase::EndFrame() {
 
     system.perf_stats->EndSystemFrame();
     render_window.PollEvents();
-    CITRA_FRAME_END(EmuThreadFrame);
+    MANDARINE_FRAME_END(EmuThreadFrame);
 
     system.frame_limiter.DoFrameLimiting(system.CoreTiming().GetGlobalTimeUs());
     system.perf_stats->BeginSystemFrame();
-    CITRA_FRAME_BEGIN(EmuThreadFrame);
+    MANDARINE_FRAME_BEGIN(EmuThreadFrame);
 }
 
 bool RendererBase::IsScreenshotPending() const {

@@ -102,7 +102,7 @@ bool GraphicsPipeline::TryBuild(bool wait_built) {
 }
 
 bool GraphicsPipeline::Build(bool fail_on_compile_required) {
-    CITRA_PROFILE("Vulkan", "Pipeline Building");
+    MANDARINE_PROFILE("Vulkan", "Pipeline Building");
     const vk::Device device = instance.GetDevice();
 
     std::array<vk::VertexInputBindingDescription, MAX_VERTEX_BINDINGS> bindings;

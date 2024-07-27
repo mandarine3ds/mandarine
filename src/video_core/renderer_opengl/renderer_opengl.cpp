@@ -179,7 +179,7 @@ void RendererOpenGL::RenderToMailbox(const Layout::FramebufferLayout& layout,
 
     Frontend::Frame* frame;
     {
-        CITRA_PROFILE("OpenGL", "Wait For Present");
+        MANDARINE_PROFILE("OpenGL", "Wait For Present");
 
         frame = mailbox->GetRenderFrame();
 
@@ -206,7 +206,7 @@ void RendererOpenGL::RenderToMailbox(const Layout::FramebufferLayout& layout,
     }
 
     {
-        CITRA_PROFILE("OpenGL", "Render Frame");
+        MANDARINE_PROFILE("OpenGL", "Render Frame");
         // Recreate the frame if the size of the window has changed
         if (layout.width != frame->width || layout.height != frame->height) {
             LOG_DEBUG(Render_OpenGL, "Reloading render frame");
@@ -270,7 +270,7 @@ void RendererOpenGL::LoadFBToScreenInfo(const Pica::FramebufferConfig& framebuff
         // Update existing texture
         // TODO: Test what happens on hardware when you change the framebuffer dimensions so that
         //       they differ from the LCD resolution.
-        // TODO: Applications could theoretically crash Citra here by specifying too large
+        // TODO: Applications could theoretically crash Mandarine here by specifying too large
         //       framebuffer sizes. We should make sure that this cannot happen.
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, framebuffer.width, framebuffer.height,
                         screen_info.texture.gl_format, screen_info.texture.gl_type,

@@ -16,9 +16,9 @@
 #include <core/hle/service/cfg/cfg.h>
 #include "audio_core/dsp_interface.h"
 #include "common/arch.h"
-#if CITRA_ARCH(arm64)
+#if MANDARINE_ARCH(arm64)
 #include "common/aarch64/cpu_detect.h"
-#elif CITRA_ARCH(x86_64)
+#elif MANDARINE_ARCH(x86_64)
 #include "common/x64/cpu_detect.h"
 #endif
 #include "common/common_paths.h"
@@ -56,7 +56,7 @@
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
 
-#if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
+#if defined(ENABLE_VULKAN) && MANDARINE_ARCH(arm64)
 #include <adrenotools/driver.h>
 #endif
 
@@ -89,8 +89,9 @@ static jobject ToJavaCoreError(Core::System::ResultStatus result) {
     JNIEnv* env = IDCache::GetEnvForThread();
     const jclass core_error_class = IDCache::GetCoreErrorClass();
     return env->GetStaticObjectField(
-        core_error_class, env->GetStaticFieldID(core_error_class, name,
-                                                "Lorg/citra/citra_emu/NativeLibrary$CoreError;"));
+        core_error_class,
+        env->GetStaticFieldID(core_error_class, name,
+                              "Lio/github/mandarine3ds/mandarine/NativeLibrary$CoreError;"));
 }
 
 static bool HandleCoreError(Core::System::ResultStatus result, const std::string& details) {
@@ -126,11 +127,11 @@ static bool CheckMicPermission() {
                                                                IDCache::GetRequestMicPermission());
 }
 
-static Core::System::ResultStatus RunCitra(const std::string& filepath) {
-    // Citra core only supports a single running instance
+static Core::System::ResultStatus RunMandarine(const std::string& filepath) {
+    // Mandarine core only supports a single running instance
     std::scoped_lock lock(running_mutex);
 
-    LOG_INFO(Frontend, "Citra starting...");
+    LOG_INFO(Frontend, "Mandarine starting...");
 
     if (filepath.empty()) {
         LOG_CRITICAL(Frontend, "Failed to load ROM: No ROM specified");
@@ -248,7 +249,7 @@ static Core::System::ResultStatus RunCitra(const std::string& filepath) {
 }
 
 void EnableAdrenoTurboMode(bool enable) {
-#if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
+#if defined(ENABLE_VULKAN) && MANDARINE_ARCH(arm64)
     adrenotools_set_turbo(enable);
 #endif
 }
@@ -256,7 +257,7 @@ void EnableAdrenoTurboMode(bool enable) {
 void InitializeGpuDriver(const std::string& hook_lib_dir, const std::string& custom_driver_dir,
                          const std::string& custom_driver_name,
                          const std::string& file_redirect_dir) {
-#if defined(ENABLE_VULKAN) && CITRA_ARCH(arm64)
+#if defined(ENABLE_VULKAN) && MANDARINE_ARCH(arm64)
     void* handle{};
     const char* file_redirect_dir_{};
     int featureFlags{};
@@ -286,9 +287,8 @@ void InitializeGpuDriver(const std::string& hook_lib_dir, const std::string& cus
 
 extern "C" {
 
-void Java_org_citra_citra_1emu_NativeLibrary_surfaceChanged(JNIEnv* env,
-                                                            [[maybe_unused]] jobject obj,
-                                                            jobject surf) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_surfaceChanged(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jobject surf) {
     s_surf = ANativeWindow_fromSurface(env, surf);
 
     bool notify = false;
@@ -304,8 +304,8 @@ void Java_org_citra_citra_1emu_NativeLibrary_surfaceChanged(JNIEnv* env,
     LOG_INFO(Frontend, "Surface changed");
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_surfaceDestroyed([[maybe_unused]] JNIEnv* env,
-                                                              [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_surfaceDestroyed(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     ANativeWindow_release(s_surf);
     s_surf = nullptr;
     if (window) {
@@ -313,8 +313,8 @@ void Java_org_citra_citra_1emu_NativeLibrary_surfaceDestroyed([[maybe_unused]] J
     }
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_doFrame([[maybe_unused]] JNIEnv* env,
-                                                     [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_doFrame([[maybe_unused]] JNIEnv* env,
+                                                                 [[maybe_unused]] jobject obj) {
     if (stop_run || pause_emulation) {
         return;
     }
@@ -323,22 +323,20 @@ void Java_org_citra_citra_1emu_NativeLibrary_doFrame([[maybe_unused]] JNIEnv* en
     }
 }
 
-void JNICALL Java_org_citra_citra_1emu_NativeLibrary_initializeGpuDriver(
+void JNICALL Java_io_github_mandarine3ds_mandarine_NativeLibrary_initializeGpuDriver(
     JNIEnv* env, jobject obj, jstring hook_lib_dir, jstring custom_driver_dir,
     jstring custom_driver_name, jstring file_redirect_dir) {
     InitializeGpuDriver(GetJString(env, hook_lib_dir), GetJString(env, custom_driver_dir),
                         GetJString(env, custom_driver_name), GetJString(env, file_redirect_dir));
 }
 
-void JNICALL Java_org_citra_citra_1emu_NativeLibrary_enableAdrenoTurboMode(JNIEnv* env, jobject obj,
-                                                                           jboolean enable) {
+void JNICALL Java_io_github_mandarine3ds_mandarine_NativeLibrary_enableAdrenoTurboMode(
+    JNIEnv* env, jobject obj, jboolean enable) {
     EnableAdrenoTurboMode(enable);
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_notifyOrientationChange([[maybe_unused]] JNIEnv* env,
-                                                                     [[maybe_unused]] jobject obj,
-                                                                     jint layout_option,
-                                                                     jint rotation) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_notifyOrientationChange(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint layout_option, jint rotation) {
     Settings::values.layout_option = static_cast<Settings::LayoutOption>(layout_option);
     auto& system = Core::System::GetInstance();
     if (system.IsPoweredOn()) {
@@ -348,9 +346,10 @@ void Java_org_citra_citra_1emu_NativeLibrary_notifyOrientationChange([[maybe_unu
     Camera::NDK::g_rotation = rotation;
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_swapScreens([[maybe_unused]] JNIEnv* env,
-                                                         [[maybe_unused]] jobject obj,
-                                                         jboolean swap_screens, jint rotation) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_swapScreens([[maybe_unused]] JNIEnv* env,
+                                                                     [[maybe_unused]] jobject obj,
+                                                                     jboolean swap_screens,
+                                                                     jint rotation) {
     Settings::values.swap_screen = swap_screens;
     auto& system = Core::System::GetInstance();
     if (system.IsPoweredOn()) {
@@ -360,16 +359,15 @@ void Java_org_citra_citra_1emu_NativeLibrary_swapScreens([[maybe_unused]] JNIEnv
     Camera::NDK::g_rotation = rotation;
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_areKeysAvailable([[maybe_unused]] JNIEnv* env,
-                                                                  [[maybe_unused]] jobject obj) {
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_areKeysAvailable(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     HW::AES::InitKeys();
     return HW::AES::IsKeyXAvailable(HW::AES::KeySlotID::NCCHSecure1) &&
            HW::AES::IsKeyXAvailable(HW::AES::KeySlotID::NCCHSecure2);
 }
 
-jstring Java_org_citra_citra_1emu_NativeLibrary_getHomeMenuPath(JNIEnv* env,
-                                                                [[maybe_unused]] jobject obj,
-                                                                jint region) {
+jstring Java_io_github_mandarine3ds_mandarine_NativeLibrary_getHomeMenuPath(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jint region) {
     const std::string path = Core::GetHomeMenuNcchPath(region);
     if (FileUtil::Exists(path)) {
         return ToJString(env, path);
@@ -377,13 +375,12 @@ jstring Java_org_citra_citra_1emu_NativeLibrary_getHomeMenuPath(JNIEnv* env,
     return ToJString(env, "");
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_setUserDirectory(JNIEnv* env,
-                                                              [[maybe_unused]] jobject obj,
-                                                              jstring j_directory) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_setUserDirectory(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring j_directory) {
     FileUtil::SetCurrentDir(GetJString(env, j_directory));
 }
 
-jobjectArray Java_org_citra_citra_1emu_NativeLibrary_getInstalledGamePaths(
+jobjectArray Java_io_github_mandarine3ds_mandarine_NativeLibrary_getInstalledGamePaths(
     JNIEnv* env, [[maybe_unused]] jclass clazz) {
     std::vector<std::string> games;
     const FileUtil::DirectoryEntryCallable ScanDir =
@@ -421,10 +418,8 @@ jobjectArray Java_org_citra_citra_1emu_NativeLibrary_getInstalledGamePaths(
     return jgames;
 }
 
-jlongArray Java_org_citra_citra_1emu_NativeLibrary_getSystemTitleIds(JNIEnv* env,
-                                                                     [[maybe_unused]] jobject obj,
-                                                                     jint system_type,
-                                                                     jint region) {
+jlongArray Java_io_github_mandarine3ds_mandarine_NativeLibrary_getSystemTitleIds(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jint system_type, jint region) {
     const auto mode = static_cast<Core::SystemTitleSet>(system_type);
     const std::vector<u64> titles = Core::GetSystemTitleIds(mode, region);
     jlongArray jTitles = env->NewLongArray(titles.size());
@@ -433,9 +428,8 @@ jlongArray Java_org_citra_citra_1emu_NativeLibrary_getSystemTitleIds(JNIEnv* env
     return jTitles;
 }
 
-jobject Java_org_citra_citra_1emu_NativeLibrary_downloadTitleFromNus([[maybe_unused]] JNIEnv* env,
-                                                                     [[maybe_unused]] jobject obj,
-                                                                     jlong title) {
+jobject Java_io_github_mandarine3ds_mandarine_NativeLibrary_downloadTitleFromNus(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jlong title) {
     const auto title_id = static_cast<u64>(title);
     Service::AM::InstallStatus status = Service::AM::InstallFromNus(title_id);
     if (status != Service::AM::InstallStatus::Success) {
@@ -454,9 +448,10 @@ jobject Java_org_citra_citra_1emu_NativeLibrary_downloadTitleFromNus([[maybe_unu
     return android_get_device_api_level() >= 28 && CheckKgslPresent();
 }
 
-jboolean JNICALL Java_org_citra_citra_1emu_utils_GpuDriverHelper_supportsCustomDriverLoading(
+jboolean JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_GpuDriverHelper_supportsCustomDriverLoading(
     JNIEnv* env, jobject instance) {
-#ifdef CITRA_ARCH_arm64
+#ifdef MANDARINE_ARCH_arm64
     // If the KGSL device exists custom drivers can be loaded using adrenotools
     return SupportsCustomDriver();
 #else
@@ -465,43 +460,42 @@ jboolean JNICALL Java_org_citra_citra_1emu_utils_GpuDriverHelper_supportsCustomD
 }
 
 // TODO(xperia64): ensure these cannot be called in an invalid state (e.g. after StopEmulation)
-void Java_org_citra_citra_1emu_NativeLibrary_unPauseEmulation([[maybe_unused]] JNIEnv* env,
-                                                              [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_unPauseEmulation(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     pause_emulation = false;
     running_cv.notify_all();
     InputManager::NDKMotionHandler()->EnableSensors();
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_pauseEmulation([[maybe_unused]] JNIEnv* env,
-                                                            [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_pauseEmulation(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     pause_emulation = true;
     InputManager::NDKMotionHandler()->DisableSensors();
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_stopEmulation([[maybe_unused]] JNIEnv* env,
-                                                           [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_stopEmulation(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     stop_run = true;
     pause_emulation = false;
     window->StopPresenting();
     running_cv.notify_all();
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_isRunning([[maybe_unused]] JNIEnv* env,
-                                                           [[maybe_unused]] jobject obj) {
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_isRunning(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     return static_cast<jboolean>(!stop_run);
 }
 
-jlong Java_org_citra_citra_1emu_NativeLibrary_getRunningTitleId([[maybe_unused]] JNIEnv* env,
-                                                                [[maybe_unused]] jobject obj) {
+jlong Java_io_github_mandarine3ds_mandarine_NativeLibrary_getRunningTitleId(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     u64 title_id{};
     Core::System::GetInstance().GetAppLoader().ReadProgramId(title_id);
     return static_cast<jlong>(title_id);
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_onGamePadEvent([[maybe_unused]] JNIEnv* env,
-                                                                [[maybe_unused]] jobject obj,
-                                                                [[maybe_unused]] jstring j_device,
-                                                                jint j_button, jint action) {
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_onGamePadEvent(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, [[maybe_unused]] jstring j_device,
+    jint j_button, jint action) {
     bool consumed{};
     if (action) {
         consumed = InputManager::ButtonHandler()->PressKey(j_button);
@@ -512,11 +506,11 @@ jboolean Java_org_citra_citra_1emu_NativeLibrary_onGamePadEvent([[maybe_unused]]
     return static_cast<jboolean>(consumed);
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_onGamePadMoveEvent(
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_onGamePadMoveEvent(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, [[maybe_unused]] jstring j_device,
     jint axis, jfloat x, jfloat y) {
     // Clamp joystick movement to supported minimum and maximum
-    // Citra uses an inverted y axis sent by the frontend
+    // Mandarine uses an inverted y axis sent by the frontend
     x = std::clamp(x, -1.f, 1.f);
     y = std::clamp(-y, -1.f, 1.f);
 
@@ -531,29 +525,29 @@ jboolean Java_org_citra_citra_1emu_NativeLibrary_onGamePadMoveEvent(
     return static_cast<jboolean>(InputManager::AnalogHandler()->MoveJoystick(axis, x, y));
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_onGamePadAxisEvent(
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_onGamePadAxisEvent(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, [[maybe_unused]] jstring j_device,
     jint axis_id, jfloat axis_val) {
     return static_cast<jboolean>(
         InputManager::ButtonHandler()->AnalogButtonEvent(axis_id, axis_val));
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_onTouchEvent([[maybe_unused]] JNIEnv* env,
-                                                              [[maybe_unused]] jobject obj,
-                                                              jfloat x, jfloat y,
-                                                              jboolean pressed) {
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_onTouchEvent(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jfloat x, jfloat y,
+    jboolean pressed) {
     return static_cast<jboolean>(
         window->OnTouchEvent(static_cast<int>(x + 0.5), static_cast<int>(y + 0.5), pressed));
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_onTouchMoved([[maybe_unused]] JNIEnv* env,
-                                                          [[maybe_unused]] jobject obj, jfloat x,
-                                                          jfloat y) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_onTouchMoved([[maybe_unused]] JNIEnv* env,
+                                                                      [[maybe_unused]] jobject obj,
+                                                                      jfloat x, jfloat y) {
     window->OnTouchMoved((int)x, (int)y);
 }
 
-jlong Java_org_citra_citra_1emu_NativeLibrary_getTitleId(JNIEnv* env, [[maybe_unused]] jobject obj,
-                                                         jstring j_filename) {
+jlong Java_io_github_mandarine3ds_mandarine_NativeLibrary_getTitleId(JNIEnv* env,
+                                                                     [[maybe_unused]] jobject obj,
+                                                                     jstring j_filename) {
     std::string filepath = GetJString(env, j_filename);
     const auto loader = Loader::GetLoader(filepath);
 
@@ -564,9 +558,8 @@ jlong Java_org_citra_citra_1emu_NativeLibrary_getTitleId(JNIEnv* env, [[maybe_un
     return static_cast<jlong>(title_id);
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_getIsSystemTitle(JNIEnv* env,
-                                                                  [[maybe_unused]] jobject obj,
-                                                                  jstring path) {
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_getIsSystemTitle(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring path) {
     const std::string filepath = GetJString(env, path);
     const auto loader = Loader::GetLoader(filepath);
 
@@ -580,35 +573,34 @@ jboolean Java_org_citra_citra_1emu_NativeLibrary_getIsSystemTitle(JNIEnv* env,
     return ((program_id >> 32) & 0xFFFFFFFF) == 0x00040010;
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_createConfigFile([[maybe_unused]] JNIEnv* env,
-                                                              [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_createConfigFile(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     Config{};
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_createLogFile([[maybe_unused]] JNIEnv* env,
-                                                           [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_createLogFile(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     Common::Log::Initialize();
     Common::Log::Start();
     LOG_INFO(Frontend, "Logging backend initialised");
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_logUserDirectory(JNIEnv* env,
-                                                              [[maybe_unused]] jobject obj,
-                                                              jstring j_path) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_logUserDirectory(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring j_path) {
     std::string_view path = env->GetStringUTFChars(j_path, 0);
     LOG_INFO(Frontend, "User directory path: {}", path);
     env->ReleaseStringUTFChars(j_path, path.data());
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_reloadSettings([[maybe_unused]] JNIEnv* env,
-                                                            [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_reloadSettings(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     Config{};
     Core::System& system{Core::System::GetInstance()};
     system.ApplySettings();
 }
 
-jdoubleArray Java_org_citra_citra_1emu_NativeLibrary_getPerfStats(JNIEnv* env,
-                                                                  [[maybe_unused]] jobject obj) {
+jdoubleArray Java_io_github_mandarine3ds_mandarine_NativeLibrary_getPerfStats(
+    JNIEnv* env, [[maybe_unused]] jobject obj) {
     auto& core = Core::System::GetInstance();
     jdoubleArray j_stats = env->NewDoubleArray(4);
 
@@ -625,9 +617,8 @@ jdoubleArray Java_org_citra_citra_1emu_NativeLibrary_getPerfStats(JNIEnv* env,
     return j_stats;
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_run__Ljava_lang_String_2(JNIEnv* env,
-                                                                      [[maybe_unused]] jobject obj,
-                                                                      jstring j_path) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_run__Ljava_lang_String_2(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring j_path) {
     const std::string path = GetJString(env, j_path);
 
     if (!stop_run) {
@@ -635,23 +626,22 @@ void Java_org_citra_citra_1emu_NativeLibrary_run__Ljava_lang_String_2(JNIEnv* en
         running_cv.notify_all();
     }
 
-    const Core::System::ResultStatus result{RunCitra(path)};
+    const Core::System::ResultStatus result{RunMandarine(path)};
     if (result != Core::System::ResultStatus::Success) {
         env->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
                                   IDCache::GetExitEmulationActivity(), static_cast<int>(result));
     }
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_reloadCameraDevices([[maybe_unused]] JNIEnv* env,
-                                                                 [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_reloadCameraDevices(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     if (g_ndk_factory) {
         g_ndk_factory->ReloadCameraDevices();
     }
 }
 
-jboolean Java_org_citra_citra_1emu_NativeLibrary_loadAmiibo(JNIEnv* env,
-                                                            [[maybe_unused]] jobject obj,
-                                                            jstring j_file) {
+jboolean Java_io_github_mandarine3ds_mandarine_NativeLibrary_loadAmiibo(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring j_file) {
     std::string filepath = GetJString(env, j_file);
     Core::System& system{Core::System::GetInstance()};
     Service::SM::ServiceManager& sm = system.ServiceManager();
@@ -663,8 +653,8 @@ jboolean Java_org_citra_citra_1emu_NativeLibrary_loadAmiibo(JNIEnv* env,
     return static_cast<jboolean>(nfc->LoadAmiibo(filepath));
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_removeAmiibo([[maybe_unused]] JNIEnv* env,
-                                                          [[maybe_unused]] jobject obj) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_removeAmiibo(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     Core::System& system{Core::System::GetInstance()};
     Service::SM::ServiceManager& sm = system.ServiceManager();
     auto nfc = sm.GetService<Service::NFC::Module::Interface>("nfc:u");
@@ -675,7 +665,7 @@ void Java_org_citra_citra_1emu_NativeLibrary_removeAmiibo([[maybe_unused]] JNIEn
     nfc->RemoveAmiibo();
 }
 
-JNIEXPORT jobject JNICALL Java_org_citra_citra_1emu_utils_CiaInstallWorker_installCIA(
+JNIEXPORT jobject JNICALL Java_io_github_mandarine3ds_mandarine_utils_CiaInstallWorker_installCIA(
     JNIEnv* env, jobject jobj, jstring jpath) {
     std::string path = GetJString(env, jpath);
     Service::AM::InstallStatus res = Service::AM::InstallCIA(
@@ -687,7 +677,7 @@ JNIEXPORT jobject JNICALL Java_org_citra_citra_1emu_utils_CiaInstallWorker_insta
     return IDCache::GetJavaCiaInstallStatus(res);
 }
 
-jobjectArray Java_org_citra_citra_1emu_NativeLibrary_getSavestateInfo(
+jobjectArray Java_io_github_mandarine3ds_mandarine_NativeLibrary_getSavestateInfo(
     JNIEnv* env, [[maybe_unused]] jobject obj) {
     const jclass date_class = env->FindClass("java/util/Date");
     const auto date_constructor = env->GetMethodID(date_class, "<init>", "(J)V");
@@ -721,20 +711,22 @@ jobjectArray Java_org_citra_citra_1emu_NativeLibrary_getSavestateInfo(
     return array;
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_saveState([[maybe_unused]] JNIEnv* env,
-                                                       [[maybe_unused]] jobject obj, jint slot) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_saveState([[maybe_unused]] JNIEnv* env,
+                                                                   [[maybe_unused]] jobject obj,
+                                                                   jint slot) {
     Core::System::GetInstance().SendSignal(Core::System::Signal::Save, slot);
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_loadState([[maybe_unused]] JNIEnv* env,
-                                                       [[maybe_unused]] jobject obj, jint slot) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_loadState([[maybe_unused]] JNIEnv* env,
+                                                                   [[maybe_unused]] jobject obj,
+                                                                   jint slot) {
     Core::System::GetInstance().SendSignal(Core::System::Signal::Load, slot);
 }
 
-void Java_org_citra_citra_1emu_NativeLibrary_logDeviceInfo([[maybe_unused]] JNIEnv* env,
-                                                           [[maybe_unused]] jobject obj) {
-    LOG_INFO(Frontend, "Citra Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
-             Common::g_scm_desc);
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_logDeviceInfo(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
+    LOG_INFO(Frontend, "Mandarine Version: {} | {}-{}", Common::g_build_fullname,
+             Common::g_scm_branch, Common::g_scm_desc);
     LOG_INFO(Frontend, "Host CPU: {}", Common::GetCPUCaps().cpu_string);
     // There is no decent way to get the OS version, so we log the API level instead.
     LOG_INFO(Frontend, "Host OS: Android API level {}", android_get_device_api_level());

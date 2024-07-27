@@ -191,7 +191,7 @@ void PipelineCache::SaveDiskCache() {
 }
 
 bool PipelineCache::BindPipeline(const PipelineInfo& info, bool wait_built) {
-    CITRA_PROFILE("Vulkan", "Pipeline Bind");
+    MANDARINE_PROFILE("Vulkan", "Pipeline Bind");
 
     u64 shader_hash = 0;
     for (u32 i = 0; i < MAX_SHADER_STAGES; i++) {

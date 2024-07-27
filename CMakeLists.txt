@@ -17,7 +17,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/externals/cmake-modul
 include(DownloadExternals)
 include(CMakeDependentOption)
 
-project(citra LANGUAGES C CXX ASM)
+project(mandarine LANGUAGES C CXX ASM)
 
 # Some submodules like to pick their own default build type if not specified.
 # Make sure we default to Release build type always, unless the generator has custom types.
@@ -91,12 +91,12 @@ option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
 # Compile options
 CMAKE_DEPENDENT_OPTION(COMPILE_WITH_DWARF "Add DWARF debugging information" ${IS_DEBUG_BUILD} "MINGW" OFF)
 option(ENABLE_LTO "Enable link time optimization" ${DEFAULT_ENABLE_LTO})
-option(CITRA_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
-option(CITRA_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
+option(MANDARINE_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
+option(MANDARINE_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
 
-include(CitraHandleSystemLibs)
+include(MandarineHandleSystemLibs)
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (MANDARINE_USE_PRECOMPILED_HEADERS)
     message(STATUS "Using Precompiled Headers.")
     set(CMAKE_PCH_INSTANTIATE_TEMPLATES ON)
 
@@ -159,7 +159,7 @@ configure_file(${PROJECT_SOURCE_DIR}/dist/compatibility_list/compatibility_list.
                ${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.qrc
                COPYONLY)
 if (ENABLE_COMPATIBILITY_LIST_DOWNLOAD AND NOT EXISTS ${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.json)
-    message(STATUS "Downloading compatibility list for citra...")
+    message(STATUS "Downloading compatibility list for mandarine...")
     file(DOWNLOAD
         https://api.citra-emu.org/gamedb/
         "${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.json" SHOW_PROGRESS)
@@ -437,11 +437,11 @@ add_subdirectory(src)
 add_subdirectory(dist/installer)
 
 
-# Set citra-qt project or citra project as default StartUp Project in Visual Studio depending on whether QT is enabled or not
+# Set mandarine-qt project or mandarine project as default StartUp Project in Visual Studio depending on whether QT is enabled or not
 if(ENABLE_QT)
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT citra-qt)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT mandarine-qt)
 else()
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT citra)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT mandarine)
 endif()
 
 # Create target for outputting distributable bundles.
@@ -449,13 +449,13 @@ endif()
 if (NOT ANDROID AND NOT IOS)
     include(BundleTarget)
     if (ENABLE_SDL2_FRONTEND)
-        bundle_target(citra)
+        bundle_target(mandarine)
     endif()
     if (ENABLE_QT)
-        bundle_target(citra-qt)
+        bundle_target(mandarine-qt)
     endif()
     if (ENABLE_DEDICATED_ROOM)
-        bundle_target(citra-room)
+        bundle_target(mandarine-room)
     endif()
 endif()
 
@@ -467,22 +467,22 @@ endif()
 # http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
 # http://standards.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-latest.html
 if(ENABLE_QT AND UNIX AND NOT APPLE)
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/citra-qt.desktop"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine-qt.desktop"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/citra.svg"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine.svg"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/citra.xml"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine.xml"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mime/packages")
 endif()
 
 if(UNIX)
     if(ENABLE_SDL2)
-        install(FILES "${PROJECT_SOURCE_DIR}/dist/citra.6"
+        install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine.6"
                 DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man6")
     endif()
 
     if (ENABLE_QT)
-        install(FILES "${PROJECT_SOURCE_DIR}/dist/citra-qt.6"
+        install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine-qt.6"
                 DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man6")
     endif()
 endif()

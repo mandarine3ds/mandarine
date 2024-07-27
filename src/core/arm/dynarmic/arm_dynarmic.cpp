@@ -143,7 +143,7 @@ ARM_Dynarmic::~ARM_Dynarmic() = default;
 
 void ARM_Dynarmic::Run() {
     ASSERT(memory.GetCurrentPageTable() == current_page_table);
-    CITRA_PROFILE("Dynarmic", "ARM JIT");
+    MANDARINE_PROFILE("Dynarmic", "ARM JIT");
 
     jit->Run();
 }

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConfigureDialog</class>
+ <widget class="QDialog" name="ConfigureDialog">
+  <property name="windowTitle">
+   <string>Mandarine Configuration</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QListWidget" name="selectorList">
+       <property name="minimumWidth">
+        <number>150</number>
+       </property>
+       <property name="maximumWidth">
+        <number>150</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ConfigureGeneral</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_general.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureSystem</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_system.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureAudio</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_audio.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureCamera</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_camera.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureDebug</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_debug.h</header>
+   <container>1</container>
+  </customwidget>
+    <customwidget>
+   <class>ConfigureStorage</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_storage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureInput</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_input.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureHotkeys</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_hotkeys.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureGraphics</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_graphics.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureEnhancements</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_enhancements.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureLayout</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_layout.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureWeb</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_web.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfigureUi</class>
+   <extends>QWidget</extends>
+   <header>configuration/configure_ui.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ConfigureDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ConfigureDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

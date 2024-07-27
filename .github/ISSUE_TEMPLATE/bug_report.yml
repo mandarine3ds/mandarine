@@ -3,7 +3,7 @@ description: File a bug report
 body:
   - type: markdown
     attributes:
-      value: Tech support does not belong here. You should only file an issue here if you think you have experienced an actual bug with Citra.
+      value: Tech support does not belong here. You should only file an issue here if you think you have experienced an actual bug with Mandarine.
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this?

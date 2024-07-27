@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mandarine Room
+Comment=Multiplayer room host for Mandarine
+Icon=mandarine
+TryExec=mandarine-room
+Exec=mandarine-room %f
+Categories=Game;Emulator;
+Keywords=3DS;Nintendo

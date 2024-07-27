@@ -152,7 +152,7 @@ struct DspLle::Impl final {
 
     void TeakraThread() {
         while (true) {
-            CITRA_PROFILE("Audio", "Teakra");
+            MANDARINE_PROFILE("Audio", "Teakra");
             teakra.Run(TeakraSlice);
             teakra_slice_barrier.Sync();
             if (stop_signal) {
@@ -176,7 +176,7 @@ struct DspLle::Impl final {
         if (multithread) {
             teakra_slice_barrier.Sync();
         } else {
-            CITRA_PROFILE("Audio", "Teakra");
+            MANDARINE_PROFILE("Audio", "Teakra");
             teakra.Run(TeakraSlice);
         }
     }

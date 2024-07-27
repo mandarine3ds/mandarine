@@ -24,15 +24,15 @@
 #endif
 
 #ifdef _MSC_VER
-#define CITRA_NO_INLINE __declspec(noinline)
+#define MANDARINE_NO_INLINE __declspec(noinline)
 #else
-#define CITRA_NO_INLINE __attribute__((noinline))
+#define MANDARINE_NO_INLINE __attribute__((noinline))
 #endif
 
 #ifdef _MSC_VER
-#define CITRA_NO_RETURN __declspec(noreturn)
+#define MANDARINE_NO_RETURN __declspec(noreturn)
 #else
-#define CITRA_NO_RETURN __attribute__((noreturn))
+#define MANDARINE_NO_RETURN __attribute__((noreturn))
 #endif
 
 #ifdef _MSC_VER

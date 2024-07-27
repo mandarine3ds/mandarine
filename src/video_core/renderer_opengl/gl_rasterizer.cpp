@@ -188,7 +188,7 @@ void RasterizerOpenGL::SyncFixedState() {
 
 void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
                                         GLuint vs_input_index_min, GLuint vs_input_index_max) {
-    CITRA_PROFILE("OpenGL", "Vertex Array Setup");
+    MANDARINE_PROFILE("OpenGL", "Vertex Array Setup");
     const auto& vertex_attributes = regs.pipeline.vertex_attributes;
     PAddr base_address = vertex_attributes.GetPhysicalBaseAddress();
 
@@ -264,12 +264,12 @@ void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
 }
 
 bool RasterizerOpenGL::SetupVertexShader() {
-    CITRA_PROFILE("OpenGL", "Vertex Shader Setup");
+    MANDARINE_PROFILE("OpenGL", "Vertex Shader Setup");
     return shader_manager.UseProgrammableVertexShader(regs, pica.vs_setup);
 }
 
 bool RasterizerOpenGL::SetupGeometryShader() {
-    CITRA_PROFILE("OpenGL", "Geometry Shader Setup");
+    MANDARINE_PROFILE("OpenGL", "Geometry Shader Setup");
 
     if (regs.pipeline.use_gs != Pica::PipelineRegs::UseGS::No) {
         LOG_ERROR(Render_OpenGL, "Accelerate draw doesn't support geometry shader");
@@ -363,7 +363,7 @@ void RasterizerOpenGL::DrawTriangles() {
 }
 
 bool RasterizerOpenGL::Draw(bool accelerate, bool is_indexed) {
-    CITRA_PROFILE("OpenGL", "Drawing");
+    MANDARINE_PROFILE("OpenGL", "Drawing");
 
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();
@@ -724,7 +724,7 @@ bool RasterizerOpenGL::AccelerateDisplay(const Pica::FramebufferConfig& config,
     if (framebuffer_addr == 0) {
         return false;
     }
-    CITRA_PROFILE("OpenGL", "Display");
+    MANDARINE_PROFILE("OpenGL", "Display");
 
     VideoCore::SurfaceParams src_params;
     src_params.addr = framebuffer_addr;

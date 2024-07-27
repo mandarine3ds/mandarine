@@ -2,7 +2,7 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
-#define CITRA_IGNORE_EXIT(x)
+#define MANDARINE_IGNORE_EXIT(x)
 
 #include <algorithm>
 #include <cstdio>
@@ -232,7 +232,7 @@ static unsigned int DPO(RotateRightByRegister)(ARMul_State* cpu, unsigned int sh
 
 #define DEBUG_MSG                                                                                  \
     LOG_DEBUG(Core_ARM11, "inst is {:x}", inst);                                                   \
-    CITRA_IGNORE_EXIT(0)
+    MANDARINE_IGNORE_EXIT(0)
 
 #define LnSWoUB(s) glue(LnSWoUB, s)
 #define MLnS(s) glue(MLnS, s)
@@ -748,7 +748,7 @@ get_addr_fp_t GetAddressingOpLoadStoreT(unsigned int inst) {
     // of this instruction, however the 3DS CPU doesn't
     // support this variant (the 3DS CPU is only ARMv6K,
     // while this variant is added in ARMv6T2).
-    // So it's sufficient for citra to not implement this.
+    // So it's sufficient for mandarine to not implement this.
     return nullptr;
 }
 
@@ -830,7 +830,7 @@ static unsigned int InterpreterTranslateInstruction(const ARMul_State* cpu, cons
                   inst);
         LOG_ERROR(Core_ARM11, "cpsr={:#X}, cpu->TFlag={}, r15={:#010X}", cpu->Cpsr, cpu->TFlag,
                   cpu->Reg[15]);
-        CITRA_IGNORE_EXIT(-1);
+        MANDARINE_IGNORE_EXIT(-1);
     }
     inst_base = arm_instruction_trans[idx](inst, idx);
 
@@ -838,7 +838,7 @@ static unsigned int InterpreterTranslateInstruction(const ARMul_State* cpu, cons
 }
 
 static int InterpreterTranslateBlock(ARMul_State* cpu, std::size_t& bb_start, u32 addr) {
-    CITRA_PROFILE("DynCom", "Decode");
+    MANDARINE_PROFILE("DynCom", "Decode");
 
     // Decode instruction, get index
     // Allocate memory and init InsCream
@@ -867,7 +867,7 @@ static int InterpreterTranslateBlock(ARMul_State* cpu, std::size_t& bb_start, u3
 }
 
 static int InterpreterTranslateSingle(ARMul_State* cpu, std::size_t& bb_start, u32 addr) {
-    CITRA_PROFILE("DynCom", "Decode");
+    MANDARINE_PROFILE("DynCom", "Decode");
 
     ARM_INST_PTR inst_base = nullptr;
     bb_start = trans_cache_buf_top;
@@ -912,7 +912,7 @@ static int clz(unsigned int x) {
 }
 
 unsigned InterpreterMainLoop(ARMul_State* cpu) {
-    CITRA_PROFILE("DynCom", "Execute");
+    MANDARINE_PROFILE("DynCom", "Execute");
 
     /// Nearest upcoming GDB code execution breakpoint, relative to the last dispatch's address.
     GDBStub::BreakpointAddress breakpoint_data;
@@ -1846,7 +1846,7 @@ BXJ_INST : {
     // According to the ARM documentation on BXJ, if setting the J bit in the APSR
     // fails, then BXJ functions identically like a regular BX instruction.
     //
-    // This is sufficient for citra, as the CPU for the 3DS does not implement Jazelle.
+    // This is sufficient for mandarine, as the CPU for the 3DS does not implement Jazelle.
 
     if (inst_base->cond == ConditionCode::AL || CondPassed(cpu, inst_base->cond)) {
         bx_inst* const inst_cream = (bx_inst*)inst_base->component;

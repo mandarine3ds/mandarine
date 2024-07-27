@@ -67,7 +67,7 @@ void Scheduler::WaitWorker() {
         return;
     }
 
-    CITRA_PROFILE("Vulkan", "Vulkan WaitWorker");
+    MANDARINE_PROFILE("Vulkan", "Vulkan WaitWorker");
     DispatchWork();
 
     // Ensure the queue is drained.
@@ -174,7 +174,7 @@ void Scheduler::SubmitExecution(vk::Semaphore signal_semaphore, vk::Semaphore wa
     on_submit();
 
     Record([signal_semaphore, wait_semaphore, signal_value, this](vk::CommandBuffer cmdbuf) {
-        CITRA_PROFILE("Vulkan", "Vulkan Submit");
+        MANDARINE_PROFILE("Vulkan", "Vulkan Submit");
         std::scoped_lock lock{submit_mutex};
         master_semaphore->SubmitWork(cmdbuf, wait_semaphore, signal_semaphore, signal_value);
     });

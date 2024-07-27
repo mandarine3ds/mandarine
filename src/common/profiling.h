@@ -8,23 +8,23 @@
 #include <tracy/Tracy.hpp>
 #include "common/scope_exit.h"
 
-#define CITRA_PROFILE(scope, text)                                                                 \
+#define MANDARINE_PROFILE(scope, text)                                                             \
     ZoneScopedN(text);                                                                             \
     ZoneText(scope, std::string::traits_type::length(scope));
 
-#define CITRA_SCOPED_FRAME(text)                                                                   \
+#define MANDARINE_SCOPED_FRAME(text)                                                               \
     constexpr const char* CONCAT2(FrameTitle, __LINE__) = text;                                    \
     detail::ScopeHelper([&]() { FrameMarkStart(CONCAT2(FrameTitle, __LINE__)); },                  \
                         [&]() { FrameMarkEnd(CONCAT2(FrameTitle, __LINE__)); })
 
-#define CITRA_FRAME_BEGIN(text) FrameMarkStart(text)
+#define MANDARINE_FRAME_BEGIN(text) FrameMarkStart(text)
 
-#define CITRA_FRAME_END(text) FrameMarkEnd(text)
+#define MANDARINE_FRAME_END(text) FrameMarkEnd(text)
 #else
 
-#define CITRA_PROFILE(scope, text)
-#define CITRA_SCOPED_FRAME(text)
-#define CITRA_FRAME_BEGIN(text)
-#define CITRA_FRAME_END(text)
+#define MANDARINE_PROFILE(scope, text)
+#define MANDARINE_SCOPED_FRAME(text)
+#define MANDARINE_FRAME_BEGIN(text)
+#define MANDARINE_FRAME_END(text)
 
 #endif

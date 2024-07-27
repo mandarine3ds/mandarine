@@ -8,7 +8,7 @@ if [ "$TARGET" = "appimage" ]; then
     export EXTRA_PLATFORM_PLUGINS="libqwayland-egl.so;libqwayland-generic.so"
 else
     # For the linux-fresh verification target, verify compilation without PCH as well.
-    export EXTRA_CMAKE_FLAGS=(-DCITRA_USE_PRECOMPILED_HEADERS=OFF)
+    export EXTRA_CMAKE_FLAGS=(-DMANDARINE_USE_PRECOMPILED_HEADERS=OFF)
 fi
 
 mkdir build && cd build
@@ -18,7 +18,7 @@ cmake .. -G Ninja \
     -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
     "${EXTRA_CMAKE_FLAGS[@]}" \
     -DENABLE_QT_TRANSLATION=ON \
-    -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
+    -DMANDARINE_ENABLE_COMPATIBILITY_REPORTING=ON \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DUSE_DISCORD_PRESENCE=ON
 ninja

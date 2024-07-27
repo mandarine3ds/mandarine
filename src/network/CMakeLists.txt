@@ -27,8 +27,8 @@ if (ENABLE_WEB_SERVICE)
     target_link_libraries(network PRIVATE web_service)
 endif()
 
-target_link_libraries(network PRIVATE citra_common enet Boost::serialization httplib)
+target_link_libraries(network PRIVATE mandarine_common enet Boost::serialization httplib)
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (MANDARINE_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(network PRIVATE precompiled_headers.h)
 endif()

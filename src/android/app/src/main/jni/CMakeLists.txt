@@ -1,4 +1,4 @@
-add_library(citra-android SHARED
+add_library(mandarine-android SHARED
     android_common/android_common.cpp
     android_common/android_common.h
     applets/mii_selector.cpp
@@ -29,24 +29,24 @@ add_library(citra-android SHARED
     native_log.cpp
 )
 
-target_link_libraries(citra-android PRIVATE audio_core citra_common citra_core input_common network)
-target_link_libraries(citra-android PRIVATE android camera2ndk inih jnigraphics log mediandk yuv)
+target_link_libraries(mandarine-android PRIVATE audio_core mandarine_common mandarine_core input_common network)
+target_link_libraries(mandarine-android PRIVATE android camera2ndk inih jnigraphics log mediandk yuv)
 
 if (ENABLE_OPENGL)
-    target_sources(citra-android PRIVATE
+    target_sources(mandarine-android PRIVATE
         emu_window/emu_window_gl.cpp
         emu_window/emu_window_gl.h
     )
-    target_link_libraries(citra-android PRIVATE EGL glad)
+    target_link_libraries(mandarine-android PRIVATE EGL glad)
 endif()
 if (ENABLE_VULKAN)
-    target_sources(citra-android PRIVATE
+    target_sources(mandarine-android PRIVATE
         emu_window/emu_window_vk.cpp
         emu_window/emu_window_vk.h
     )
     if ("arm64" IN_LIST ARCHITECTURE)
-        target_link_libraries(citra-android PRIVATE adrenotools)
+        target_link_libraries(mandarine-android PRIVATE adrenotools)
     endif()
 endif()
 
-set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_EXECUTABLES} citra-android)
+set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_EXECUTABLES} mandarine-android)

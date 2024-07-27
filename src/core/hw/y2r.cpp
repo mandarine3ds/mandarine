@@ -260,7 +260,7 @@ static void WriteTileToOutput(u32* output, const ImageTile& tile, int height, in
  * so they are believed to be invalid configurations anyway.
  */
 void PerformConversion(Memory::MemorySystem& memory, ConversionConfiguration cvt) {
-    CITRA_PROFILE("Y2R", "Perform Conversion");
+    MANDARINE_PROFILE("Y2R", "Perform Conversion");
 
     ASSERT(cvt.input_line_width % 8 == 0);
     ASSERT(cvt.block_alignment != BlockAlignment::Block8x8 || cvt.input_lines % 8 == 0);

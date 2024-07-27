@@ -1,4 +1,4 @@
-name: citra-build
+name: mandarine-build
 
 on:
   push:

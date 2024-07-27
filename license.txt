@@ -353,7 +353,7 @@ plus_folder.png                    | CC BY-ND 3.0  | https://icons8.com
 bad_folder.png                     | CC BY-ND 3.0  | https://icons8.com
 chip.png                           | CC BY-ND 3.0  | https://icons8.com
 folder.png                         | CC BY-ND 3.0  | https://icons8.com
-plus.png (Default, Dark)           | CC0 1.0       | Designed by BreadFish64 from the Citra team
+plus.png (Default, Dark)           | CC0 1.0       | Designed by BreadFish64 from the Mandarine team
 plus.png (Colorful, Colorful Dark) | CC BY-ND 3.0  | https://icons8.com
 sd_card.png                        | CC BY-ND 3.0  | https://icons8.com
 star.png                           | CC BY-ND 3.0  | https://icons8.com

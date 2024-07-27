@@ -11,7 +11,7 @@ BASE_ARTIFACT_ARCH="${BASE_ARTIFACT##*-}"
 mv $BASE_ARTIFACT $BUNDLE_DIR
 
 # Executable binary paths that need to be combined.
-BIN_PATHS=(citra citra-room citra-qt.app/Contents/MacOS/citra-qt)
+BIN_PATHS=(mandarine mandarine-room mandarine-qt.app/Contents/MacOS/mandarine-qt)
 
 # Dylib paths that need to be combined.
 IFS=$'\n'
@@ -37,7 +37,7 @@ for OTHER_ARTIFACT in "${ARTIFACTS_LIST[@]:1}"; do
 done
 
 # Re-sign executables and bundles after combining.
-APP_PATHS=(citra citra-room citra-qt.app)
+APP_PATHS=(mandarine mandarine-room mandarine-qt.app)
 for APP_PATH in "${APP_PATHS[@]}"; do
     codesign --deep -fs - $BUNDLE_DIR/$APP_PATH
 done

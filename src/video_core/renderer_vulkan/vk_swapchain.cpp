@@ -79,7 +79,7 @@ bool Swapchain::AcquireNextImage() {
         return false;
     }
 
-    CITRA_PROFILE("Vulkan", "Swapchain Acquire");
+    MANDARINE_PROFILE("Vulkan", "Swapchain Acquire");
     const vk::Device device = instance.GetDevice();
     const vk::Result result =
         device.acquireNextImageKHR(swapchain, std::numeric_limits<u64>::max(),
@@ -111,7 +111,7 @@ void Swapchain::Present() {
         .pImageIndices = &image_index,
     };
 
-    CITRA_PROFILE("Vulkan", "Swapchain Present");
+    MANDARINE_PROFILE("Vulkan", "Swapchain Present");
     try {
         [[maybe_unused]] vk::Result result = instance.GetPresentQueue().presentKHR(present_info);
     } catch (vk::OutOfDateKHRError&) {

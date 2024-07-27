@@ -42,7 +42,7 @@
                 android:layout_height="104dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_citra_full" />
+                android:src="@drawable/ic_mandarine_full" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="6dp"
                     android:textAlignment="viewStart"
-                    android:text="@string/citra_description" />
+                    android:text="@string/mandarine_description" />
 
             </LinearLayout>
 

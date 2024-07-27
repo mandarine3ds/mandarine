@@ -89,14 +89,14 @@ if (MSVC)
         /wd4324 # 'struct_name': structure was padded due to __declspec(align())
     )
 
-    if (CITRA_WARNINGS_AS_ERRORS)
+    if (MANDARINE_WARNINGS_AS_ERRORS)
         add_compile_options(/WX)
     endif()
 
     # Since MSVC's debugging information is not very deterministic, so we have to disable it
     # when using ccache or other caching tools
     if (CMAKE_C_COMPILER_LAUNCHER STREQUAL "ccache" OR CMAKE_CXX_COMPILER_LAUNCHER STREQUAL "ccache"
-            OR CITRA_USE_PRECOMPILED_HEADERS)
+            OR MANDARINE_USE_PRECOMPILED_HEADERS)
         # Precompiled headers are deleted if not using /Z7. See https://github.com/nanoant/CMakePCHCompiler/issues/21
         add_compile_options(/Z7)
     else()
@@ -124,7 +124,7 @@ else()
         add_compile_options(-Wp,-D_FORTIFY_SOURCE=2)
     endif()
 
-    if (CITRA_WARNINGS_AS_ERRORS)
+    if (MANDARINE_WARNINGS_AS_ERRORS)
         add_compile_options(-Werror)
     endif()
 
@@ -185,11 +185,11 @@ if (ENABLE_TESTS)
 endif()
 
 if (ENABLE_SDL2 AND ENABLE_SDL2_FRONTEND)
-    add_subdirectory(citra)
+    add_subdirectory(mandarine)
 endif()
 
 if (ENABLE_QT)
-    add_subdirectory(citra_qt)
+    add_subdirectory(mandarine_qt)
 endif()
 
 if (ENABLE_DEDICATED_ROOM)
@@ -198,7 +198,7 @@ endif()
 
 if (ANDROID)
     add_subdirectory(android/app/src/main/jni)
-    target_include_directories(citra-android PRIVATE android/app/src/main)
+    target_include_directories(mandarine-android PRIVATE android/app/src/main)
 endif()
 
 if (ENABLE_WEB_SERVICE)

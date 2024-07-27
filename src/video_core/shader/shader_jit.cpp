@@ -3,17 +3,17 @@
 // Refer to the license.txt file included.
 
 #include "common/arch.h"
-#if CITRA_ARCH(x86_64) || CITRA_ARCH(arm64)
+#if MANDARINE_ARCH(x86_64) || MANDARINE_ARCH(arm64)
 
 #include "common/assert.h"
 #include "common/hash.h"
 #include "common/profiling.h"
 #include "video_core/shader/shader.h"
 #include "video_core/shader/shader_jit.h"
-#if CITRA_ARCH(arm64)
+#if MANDARINE_ARCH(arm64)
 #include "video_core/shader/shader_jit_a64_compiler.h"
 #endif
-#if CITRA_ARCH(x86_64)
+#if MANDARINE_ARCH(x86_64)
 #include "video_core/shader/shader_jit_x64_compiler.h"
 #endif
 
@@ -44,7 +44,7 @@ void JitEngine::SetupBatch(ShaderSetup& setup, u32 entry_point) {
 void JitEngine::Run(const ShaderSetup& setup, ShaderUnit& state) const {
     ASSERT(setup.cached_shader != nullptr);
 
-    CITRA_PROFILE("Shader", "Shader JIT");
+    MANDARINE_PROFILE("Shader", "Shader JIT");
 
     const JitShader* shader = static_cast<const JitShader*>(setup.cached_shader);
     shader->Run(setup, state, setup.entry_point);
@@ -52,4 +52,4 @@ void JitEngine::Run(const ShaderSetup& setup, ShaderUnit& state) const {
 
 } // namespace Pica::Shader
 
-#endif // CITRA_ARCH(x86_64) || CITRA_ARCH(arm64)
+#endif // MANDARINE_ARCH(x86_64) || MANDARINE_ARCH(arm64)

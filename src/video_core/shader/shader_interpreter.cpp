@@ -729,7 +729,7 @@ void InterpreterEngine::SetupBatch(ShaderSetup& setup, unsigned int entry_point)
 }
 
 void InterpreterEngine::Run(const ShaderSetup& setup, ShaderUnit& state) const {
-    CITRA_PROFILE("Shader", "Shader Interpreter");
+    MANDARINE_PROFILE("Shader", "Shader Interpreter");
 
     DebugData<false> dummy_debug_data;
     RunInterpreter(setup, state, dummy_debug_data, setup.entry_point);

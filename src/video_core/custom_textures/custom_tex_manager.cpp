@@ -58,7 +58,7 @@ CustomTexManager::CustomTexManager(Core::System& system_)
 CustomTexManager::~CustomTexManager() = default;
 
 void CustomTexManager::TickFrame() {
-    CITRA_PROFILE("CustomTexManager", "Tick Frame");
+    MANDARINE_PROFILE("CustomTexManager", "Tick Frame");
     if (!textures_loaded) {
         return;
     }
@@ -187,7 +187,7 @@ void CustomTexManager::PrepareDumping(u64 title_id) {
     }
 
     nlohmann::ordered_json json;
-    json["author"] = "citra";
+    json["author"] = "mandarine";
     json["version"] = "1.0.0";
     json["description"] = "A graphics pack";
 
