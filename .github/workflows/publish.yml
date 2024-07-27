@@ -1,0 +1,121 @@
+name: mandarine-release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download/Unzip Windows MSVC Artifact
+        run: |
+          curl -L -o windows-msvc.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/windows-msvc.zip
+          unzip windows-msvc.zip -d ./windows-msvc
+          mv ./windows-msvc/mandarine-windows-msvc-*.zip ./windows-msvc.zip
+
+
+      - name: Download/Unzip Windows MSYS2 Artifact
+        run: |
+          curl -L -o windows-msys2.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/windows-msys2.zip
+          unzip windows-msys2.zip -d ./windows-msys2
+          mv ./windows-msys2/mandarine-windows-msys2-*.zip ./windows-msys2.zip
+
+      - name: Download/Unzip Linux AppImage Artifact
+        run: |
+          curl -L -o linux-appimage.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/linux-appimage.zip
+          unzip linux-appimage.zip -d ./linux-appimage
+          mv ./linux-appimage/mandarine-linux-appimage-*.7z ./linux-appimage.7z
+
+      - name: Download/Unzip Android APK Artifact
+        run: |
+          curl -L -o Android-APK.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/Android-APK.zip
+          unzip Android-APK.zip -d ./AndroidAPK
+
+      - name: Download/Unzips Mac OS Artifact
+        run: |
+          curl -L -o macos-universal.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/macos-universal.zip
+          unzip macos-universal.zip -d ./macos-universal
+          mv ./macos-universal/mandarine-macos-universal-*.7z ./macos-universal.7z
+
+      - name: Download/Unzip Source Artifact
+        run: |
+          curl -L -o source.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/source.zip
+          unzip source.zip -d ./source
+          mv ./source/mandarine-unified-source-*.tar.xz ./mandarine-unified-source.tar.xz
+          
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Mandarine ${{ github.run_number }}
+          body: |
+            Placeholder.
+          draft: true
+          prerelease: false
+
+      - name: upload Android artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./AndroidAPK/app-canary-release.apk
+          asset_name: app-canary-release.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: upload linux-appimage artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./linux-appimage.7z
+          asset_name: linux-appimage.7z
+          asset_content_type: application/x-7z-compressed
+
+      - name: upload windows-msvc artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./windows-msvc.zip
+          asset_name: windows-msvc.zip
+          asset_content_type: application/zip
+
+      - name: upload windows-msys2 artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./windows-msys2.zip
+          asset_name: windows-msys2.zip
+          asset_content_type: application/zip
+
+      - name: upload mac-os artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./macos-universal.7z
+          asset_name: macos-universal.7z
+          asset_content_type: application/x-7z-compressed
+
+      - name: upload source artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./mandarine-unified-source.tar.xz
+          asset_name: mandarine-unified-source.tar.xz
+          asset_content_type: application/xz
