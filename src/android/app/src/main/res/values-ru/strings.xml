@@ -48,13 +48,9 @@
     <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="contributors">Участники</string>
     <string name="contributors_description">Создано с \u2764 от команды Mandarine</string>
-    <string name="contributors_link">https://github.com/mandarine3ds/mandarine/graphs/contributors</string>
     <string name="licenses_description">Проекты, которые сделали возможным Mandarine для Android</string>
     <string name="build">Сборка</string>
     <string name="licenses">Лицензии</string>
-    <string name="support_link">https://discord.gg/FAXfZV9</string>
-    <string name="website_link">https://citra-emu.org/</string>
-    <string name="github_link">https://github.com/mandarine3ds</string>
 
     <!-- Setup strings -->
     <string name="welcome">Добро пожаловать!</string>

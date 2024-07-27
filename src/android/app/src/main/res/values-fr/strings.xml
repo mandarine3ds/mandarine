@@ -48,13 +48,9 @@
     <string name="copied_to_clipboard">Copié dans le presse-papiers</string>
     <string name="contributors">Contributeurs</string>
     <string name="contributors_description">Fait avec \u2764 de l\'équipe yuzu</string>
-    <string name="contributors_link">https://github.com/mandarine3ds/mandarine/graphs/contributors</string>
     <string name="licenses_description">Projets qui rendent Mandarine pour Android possible</string>
     <string name="build">Build</string>
     <string name="licenses">Licences</string>
-    <string name="support_link">https://discord.gg/FAXfZV9</string>
-    <string name="website_link">https://citra-emu.org/</string>
-    <string name="github_link">https://github.com/mandarine3ds</string>
 
     <!-- Setup strings -->
     <string name="welcome">Bienvenue !</string>

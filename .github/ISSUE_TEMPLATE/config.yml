@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Mandarine Discord
-    url: https://citra-emu.org/discord/
+    url: https://discord.gg/8xjMHWEuf6
     about: If you are experiencing an issue with Mandarine, and you need tech support, or if you have a general question, try asking in the official Mandarine Discord linked here. Piracy is not allowed.
-  - name: Community forums
-    url: https://community.citra-emu.org
+  - name: GitHub Issues
+    url: https://github.com/mandarine3ds/mandarine/issues
     about: This is an alternative place for tech support, however helpers there are not as active.
