@@ -66,10 +66,7 @@ Memory: 2GB of RAM. 4GB is recommended
 
 # Contribution
 
-We are looking for more devs to join the team but we especially need more testers. Please contact us on Discord / Telegram if you interested in the role
-
-As for PR's, we usually will accept them if they work well and aren't "nuke the world" Pr's which change too much for no reason
-If you need assistance with clang-format contact us on Discord, we'll be more than happy to help
+Due to a recent attemp of repository hijack (caused by a ex-helper of mandarine, that sadly removed all 1.X releases from legacy Citra Enhanced project), I won't add developers for a long time, but Pull Requests are still welcome, and feel free to send one. As long as it's properly authored and working as expected, I'll probably merge.
 
 # Support
 
