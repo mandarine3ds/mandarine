@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/mandarine3ds/mandarine/blob/2fb4b5e4f3f3c7bcb06c1eac97181f845fe72b57/branding/Citra-Enhanced-256.png" alt="citra" width="188"/>
+  <img src="https://github.com/mandarine3ds/mandarine/blob/master/dist/mandarine.svg" alt="mandarine" width="188"/>
 </p>
 <p align="center" style="font-size:144px;">
   <strong>Mandarine</strong>
