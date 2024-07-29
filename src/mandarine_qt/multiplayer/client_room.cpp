@@ -18,7 +18,6 @@
 #include "mandarine_qt/multiplayer/state.h"
 #include "network/announce_multiplayer_session.h"
 #include "ui_client_room.h"
-#include "util/mica.h"
 
 ClientRoomWindow::ClientRoomWindow(QWidget* parent)
     : QDialog(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint),
@@ -55,15 +54,6 @@ ClientRoomWindow::ClientRoomWindow(QWidget* parent)
 }
 
 ClientRoomWindow::~ClientRoomWindow() = default;
-
-void ClientRoomWindow::showEvent(QShowEvent* event) {
-    QDialog::showEvent(event); // Call the base class method first
-
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
-}
 
 void ClientRoomWindow::SetModPerms(bool is_mod) {
     ui->chat->SetModPerms(is_mod);

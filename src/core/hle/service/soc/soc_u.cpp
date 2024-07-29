@@ -21,9 +21,6 @@
 #include "core/hle/service/soc/soc_u.h"
 #include "network/socket_manager.h"
 
-// Suppress deprecated msvc warnings for now
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
-
 #ifdef _WIN32
 #include <winsock2.h>
 #include <ws2tcpip.h>

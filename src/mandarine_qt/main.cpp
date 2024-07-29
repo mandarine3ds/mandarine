@@ -20,13 +20,8 @@
 #include <unistd.h> // for chdir
 #endif
 #ifdef _WIN32
-#define _WIN32_WINNT 0x0A00
-#include <dwmapi.h>
 #include <shlobj.h>
 #include <windows.h>
-#ifdef _MSC_VER
-#pragma comment(lib, "dwmapi.lib")
-#endif
 #endif
 #ifdef __unix__
 #include <QVariant>
@@ -82,7 +77,6 @@
 #include "mandarine_qt/updater/updater.h"
 #include "mandarine_qt/util/clickable_label.h"
 #include "mandarine_qt/util/graphics_device_info.h"
-#include "mandarine_qt/util/mica.h"
 #include "mandarine_qt/util/util.h"
 #if MANDARINE_ARCH(x86_64)
 #include "common/x64/cpu_detect.h"
@@ -162,17 +156,11 @@ static QString PrettyProductName() {
     return QSysInfo::prettyProductName();
 }
 
-enum APP_MODE { Default, AllowDark, ForceDark, ForceLight, Max };
-
 GMainWindow::GMainWindow(Core::System& system_)
     : ui{std::make_unique<Ui::MainWindow>()}, system{system_}, movie{system.Movie()}, emu_thread{
                                                                                           nullptr} {
     Common::Log::Initialize();
     Common::Log::Start();
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
 
     Debugger::ToggleConsole();
 
@@ -560,11 +548,6 @@ void GMainWindow::InitializeDebugWidgets() {
     debug_menu->addAction(ipcRecorderWidget->toggleViewAction());
     connect(this, &GMainWindow::EmulationStarting, ipcRecorderWidget,
             &IPCRecorderWidget::OnEmulationStarting);
-
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
 }
 
 void GMainWindow::InitializeRecentFileMenuActions() {
@@ -2567,10 +2550,6 @@ void GMainWindow::OnConfigure() {
     const auto old_input_profiles = Settings::values.input_profiles;
     const auto old_touch_from_button_maps = Settings::values.touch_from_button_maps;
     const bool old_discord_presence = UISettings::values.enable_discord_presence.GetValue();
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
 #ifdef __unix__
     const bool old_gamemode = Settings::values.enable_gamemode.GetValue();
 #endif
@@ -3487,11 +3466,6 @@ void GMainWindow::OpenPerGameConfiguration(u64 title_id, const QString& file_nam
     Settings::SetConfiguringGlobal(false);
     ConfigurePerGame dialog(this, title_id, file_name, gl_renderer, physical_devices, system);
     const auto result = dialog.exec();
-
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
 
     if (result != QDialog::Accepted) {
         Settings::RestoreGlobalState(system.IsPoweredOn());

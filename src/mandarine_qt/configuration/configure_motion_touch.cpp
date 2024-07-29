@@ -14,7 +14,6 @@
 #include "mandarine_qt/configuration/configure_motion_touch.h"
 #include "mandarine_qt/configuration/configure_touch_from_button.h"
 #include "ui_configure_motion_touch.h"
-#include "util/mica.h"
 
 CalibrationConfigurationDialog::CalibrationConfigurationDialog(QWidget* parent,
                                                                const std::string& host, u16 port,
@@ -127,15 +126,6 @@ ConfigureMotionTouch::ConfigureMotionTouch(QWidget* parent)
 }
 
 ConfigureMotionTouch::~ConfigureMotionTouch() = default;
-
-void ConfigureMotionTouch::showEvent(QShowEvent* event) {
-    QDialog::showEvent(event); // Call the base class method first
-
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
-}
 
 void ConfigureMotionTouch::SetConfiguration() {
     const Common::ParamPackage motion_param(Settings::values.current_input_profile.motion_device);

@@ -17,7 +17,6 @@
 #include "network/network.h"
 #include "network/network_settings.h"
 #include "ui_direct_connect.h"
-#include "util/mica.h"
 
 enum class ConnectionType : u8 { TraversalServer, IP };
 
@@ -48,15 +47,6 @@ DirectConnectWindow::DirectConnectWindow(Core::System& system_, QWidget* parent)
 }
 
 DirectConnectWindow::~DirectConnectWindow() = default;
-
-void DirectConnectWindow::showEvent(QShowEvent* event) {
-    QDialog::showEvent(event); // Call the base class method first
-
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
-}
 
 void DirectConnectWindow::RetranslateUi() {
     ui->retranslateUi(this);

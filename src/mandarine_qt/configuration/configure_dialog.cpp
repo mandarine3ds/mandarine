@@ -22,7 +22,6 @@
 #include "mandarine_qt/configuration/configure_web.h"
 #include "mandarine_qt/hotkeys.h"
 #include "ui_configure.h"
-#include "util/mica.h"
 
 ConfigureDialog::ConfigureDialog(QWidget* parent, HotkeyRegistry& registry_, Core::System& system_,
                                  QString gl_renderer, std::span<const QString> physical_devices,
@@ -80,15 +79,6 @@ ConfigureDialog::ConfigureDialog(QWidget* parent, HotkeyRegistry& registry_, Cor
     // Synchronise lists upon initialisation
     input_tab->EmitInputKeysChanged();
     hotkeys_tab->EmitHotkeysChanged();
-}
-
-void ConfigureDialog::showEvent(QShowEvent* event) {
-    QDialog::showEvent(event); // Call the base class method first
-
-#ifdef _WIN32
-    HWND hwnd = reinterpret_cast<HWND>(this->winId());
-    Utils::EnableDarkMicaForWindow(hwnd);
-#endif
 }
 
 ConfigureDialog::~ConfigureDialog() = default;

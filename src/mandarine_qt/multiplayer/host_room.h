@@ -35,9 +35,6 @@ class Backend;
 class HostRoomWindow : public QDialog {
     Q_OBJECT
 
-protected:
-    void showEvent(QShowEvent* event) override;
-
 public:
     explicit HostRoomWindow(Core::System& system, QWidget* parent, QStandardItemModel* list,
                             std::shared_ptr<Network::AnnounceMultiplayerSession> session);
