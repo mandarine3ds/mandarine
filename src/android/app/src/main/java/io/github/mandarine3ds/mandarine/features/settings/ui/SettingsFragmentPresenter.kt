@@ -183,9 +183,18 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
         settingsActivity.setToolbarTitle(settingsActivity.getString(R.string.preferences_general))
         sl.apply {
             add(
+                SwitchSetting(
+                    BooleanSetting.EXPAND_TO_CUTOUT_AREA,
+                    R.string.expand_to_cutout_area,
+                    R.string.expand_to_cutout_area_description,
+                    BooleanSetting.EXPAND_TO_CUTOUT_AREA.key,
+                    BooleanSetting.EXPAND_TO_CUTOUT_AREA.defaultValue
+                )
+            )
+            add(
                 SingleChoiceSetting(
                     IntSetting.FRAME_SKIP,
-                    R.string.frame_skip_name,
+                    R.string.frame_skip,
                     R.string.frame_skip_description,
                     R.array.frameSkipNames,
                     R.array.frameSkipValues,
