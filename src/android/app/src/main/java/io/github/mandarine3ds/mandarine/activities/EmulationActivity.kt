@@ -40,6 +40,7 @@ import io.github.mandarine3ds.mandarine.fragments.EmulationFragment
 import io.github.mandarine3ds.mandarine.fragments.MessageDialogFragment
 import io.github.mandarine3ds.mandarine.utils.ControllerMappingHelper
 import io.github.mandarine3ds.mandarine.utils.FileBrowserHelper
+import io.github.mandarine3ds.mandarine.utils.ForegroundService
 import io.github.mandarine3ds.mandarine.utils.EmulationLifecycleUtil
 import io.github.mandarine3ds.mandarine.utils.EmulationMenuSettings
 import io.github.mandarine3ds.mandarine.utils.ThemeUtil
@@ -48,6 +49,7 @@ import io.github.mandarine3ds.mandarine.viewmodel.EmulationViewModel
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
+    private var foregroundService: Intent? = null
     var isActivityRecreated = false
     private val emulationViewModel: EmulationViewModel by viewModels()
     private val settingsViewModel: SettingsViewModel by viewModels()
@@ -95,6 +97,10 @@ class EmulationActivity : AppCompatActivity() {
             windowManager.defaultDisplay.rotation
         )
 
+        // Start a foreground service to prevent the app from getting killed in the background
+        foregroundService = Intent(this, ForegroundService::class.java)
+        startForegroundService(foregroundService)
+
         EmulationLifecycleUtil.addShutdownHook(hook = { this.finish() })
 
         isEmulationRunning = true
@@ -132,6 +138,7 @@ class EmulationActivity : AppCompatActivity() {
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
+        stopForegroundService(this)
         isEmulationRunning = false
         instance = null
         super.onDestroy()
@@ -486,6 +493,12 @@ class EmulationActivity : AppCompatActivity() {
 
     companion object {
         private var instance: EmulationActivity? = null
+
+        fun stopForegroundService(activity: Activity) {
+            val startIntent = Intent(activity, ForegroundService::class.java)
+            startIntent.action = ForegroundService.ACTION_STOP
+            activity.startForegroundService(startIntent)
+        }
 
         fun isRunning(): Boolean {
             return instance?.isEmulationRunning ?: false
