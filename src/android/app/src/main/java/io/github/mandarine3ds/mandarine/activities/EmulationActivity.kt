@@ -195,7 +195,7 @@ class EmulationActivity : AppCompatActivity() {
         val attributes = window.attributes
 
         attributes.layoutInDisplayCutoutMode =
-            if (BooleanSetting.EXPAND_TO_CUTOUT_AREA.boolean) {
+            if (BooleanSetting.EXPAND_TO_CUTOUT_AREA.boolean && !NativeLibrary.isPortraitMode) {
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
             } else {
                 // TODO: Remove this once we properly account for display insets in the input overlay
