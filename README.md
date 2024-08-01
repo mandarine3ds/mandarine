@@ -59,7 +59,7 @@ Memory: 2GB of RAM. 4GB is recommended
 |Platform|Status|Download|
 |--------|------------|--------|
 | 🪟 Windows|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Windows MSVC](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/windows-msvc.zip)|
-| 📱 Android|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Android-APK](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/Android-APK.zip)|
+| 📱 Android|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Android-APK](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/android-universal.zip)|
 | 🐧 Linux|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/linux-appimage.zip)|
 | 🍎 Mac OS|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/macos-universal.zip)|
 
