@@ -49,9 +49,12 @@ public:
         oboe::AudioStreamBuilder builder;
         auto result = builder.setSharingMode(oboe::SharingMode::Exclusive)
                           ->setPerformanceMode(oboe::PerformanceMode::LowLatency)
+                          ->setAudioApi(oboe::AudioApi::OpenSLES)
                           ->setUsage(oboe::Usage::Game)
                           ->setFormat(oboe::AudioFormat::I16)
+                          ->setFormatConversionAllowed(true)
                           ->setSampleRate(mSampleRate)
+                          ->setSampleRateConversionQuality(oboe::SampleRateConversionQuality::High)
                           ->setChannelCount(2)
                           ->setCallback(this)
                           ->openStream(mStream);
