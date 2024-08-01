@@ -1,3 +1,7 @@
+// Copyright 2024 Mandarine Project
+// Licensed under GPLv2 or any later version
+// Refer to the license.txt file included.
+
 #include "oboe_sink.h"
 
 #include <memory>
@@ -13,18 +17,18 @@ public:
     Impl() = default;
     ~Impl() override {
         // Destructor now ensures that the stream is properly stopped and closed
-        if (mStream && mStream->getState() != oboe::StreamState::Closed) {
-            mStream->stop();
-            mStream->close();
-            mStream.reset();
+        if (m_stream && m_stream->getState() != oboe::StreamState::Closed) {
+            m_stream->stop();
+            m_stream->close();
+            m_stream.reset();
         }
     }
 
-    oboe::DataCallbackResult onAudioReady(oboe::AudioStream* oboeStream, void* audioData,
-                                          int32_t numFrames) override {
-        s16* outputBuffer = static_cast<s16*>(audioData);
-        if (mCallback) {
-            mCallback(outputBuffer, static_cast<std::size_t>(numFrames));
+    oboe::DataCallbackResult onAudioReady(oboe::AudioStream* /* oboeStream */, void* audio_data,
+                                          int32_t num_frames) override {
+        s16* output_buffer = static_cast<s16*>(audio_data);
+        if (m_callback) {
+            m_callback(output_buffer, static_cast<std::size_t>(num_frames));
         }
         return oboe::DataCallbackResult::Continue;
     }
@@ -39,12 +43,12 @@ public:
     }
 
     bool start() {
-        if (mStream && mStream->getState() != oboe::StreamState::Closed) {
-            mStream->stop();
-            mStream->close();
+        if (m_stream && m_stream->getState() != oboe::StreamState::Closed) {
+            m_stream->stop();
+            m_stream->close();
         }
-        if (mStream) {
-            mStream.reset();
+        if (m_stream) {
+            m_stream.reset();
         }
         oboe::AudioStreamBuilder builder;
         auto result = builder.setSharingMode(oboe::SharingMode::Exclusive)
@@ -53,18 +57,18 @@ public:
                           ->setUsage(oboe::Usage::Game)
                           ->setFormat(oboe::AudioFormat::I16)
                           ->setFormatConversionAllowed(true)
-                          ->setSampleRate(mSampleRate)
+                          ->setSampleRate(m_sample_rate)
                           ->setSampleRateConversionQuality(oboe::SampleRateConversionQuality::High)
                           ->setChannelCount(2)
                           ->setCallback(this)
-                          ->openStream(mStream);
+                          ->openStream(m_stream);
         if (result != oboe::Result::OK) {
             LOG_CRITICAL(Audio_Sink, "Error creating playback stream: {}",
                          oboe::convertToText(result));
             return false;
         }
-        mSampleRate = mStream->getSampleRate();
-        result = mStream->start();
+        m_sample_rate = m_stream->getSampleRate();
+        result = m_stream->start();
         if (result != oboe::Result::OK) {
             LOG_CRITICAL(Audio_Sink, "Error starting playback stream: {}",
                          oboe::convertToText(result));
@@ -74,33 +78,33 @@ public:
     }
 
     void stop() {
-        if (mStream && mStream->getState() != oboe::StreamState::Closed) {
-            auto stopResult = mStream->stop();
-            auto closeResult = mStream->close();
-            if (stopResult != oboe::Result::OK) {
+        if (m_stream && m_stream->getState() != oboe::StreamState::Closed) {
+            auto stop_result = m_stream->stop();
+            auto close_result = m_stream->close();
+            if (stop_result != oboe::Result::OK) {
                 LOG_CRITICAL(Audio_Sink, "Error stopping playback stream: {}",
-                             oboe::convertToText(stopResult));
+                             oboe::convertToText(stop_result));
             }
-            if (closeResult != oboe::Result::OK) {
+            if (close_result != oboe::Result::OK) {
                 LOG_CRITICAL(Audio_Sink, "Error closing playback stream: {}",
-                             oboe::convertToText(closeResult));
+                             oboe::convertToText(close_result));
             }
-            mStream.reset();
+            m_stream.reset();
         }
     }
 
     int32_t GetSampleRate() const {
-        return mSampleRate;
+        return m_sample_rate;
     }
 
     void SetCallback(std::function<void(s16*, std::size_t)> cb) {
-        mCallback = cb;
+        m_callback = cb;
     }
 
 private:
-    std::shared_ptr<oboe::AudioStream> mStream;
-    std::function<void(s16*, std::size_t)> mCallback;
-    int32_t mSampleRate = native_sample_rate;
+    std::shared_ptr<oboe::AudioStream> m_stream;
+    std::function<void(s16*, std::size_t)> m_callback;
+    int32_t m_sample_rate = native_sample_rate;
 };
 
 OboeSink::OboeSink(std::string_view device_id) : impl(std::make_unique<Impl>()) {}
