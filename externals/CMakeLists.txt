@@ -393,6 +393,7 @@ if (ENABLE_VULKAN)
         set(ENABLE_CTEST OFF CACHE BOOL "")
         set(ENABLE_HLSL OFF CACHE BOOL "")
         set(BUILD_EXTERNAL OFF CACHE BOOL "")
+        set(ALLOW_EXTERNAL_SPIRV_TOOLS ON)
         add_subdirectory(glslang)
     endif()
 
