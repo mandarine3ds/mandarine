@@ -28,12 +28,12 @@ jobs:
         run: |
           curl -L -o linux-appimage.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/linux-appimage.zip
           unzip linux-appimage.zip -d ./linux-appimage
-          mv ./linux-appimage/mandarine-linux-appimage-*.7z ./linux-appimage.7z
+          mv ./linux-appimage/mandarine-linux-appimage-*.tar.gz ./linux-appimage.tar.gz
 
       - name: Download/Unzip Android APK Artifact
         run: |
-          curl -L -o Android-APK.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/Android-APK.zip
-          unzip Android-APK.zip -d ./android-universal
+          curl -L -o android-universal.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/android-universal.zip
+          unzip android-universal.zip -d ./android-universal
 
       - name: Download/Unzips Mac OS Artifact
         run: |
@@ -76,9 +76,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./linux-appimage.7z
-          asset_name: linux-appimage.7z
-          asset_content_type: application/x-7z-compressed
+          asset_path: ./linux-appimage.tar.gz
+          asset_name: linux-appimage.tar.gz
+          asset_content_type: application/gzip
 
       - name: upload windows-msvc artifact
         uses: actions/upload-release-asset@v1
