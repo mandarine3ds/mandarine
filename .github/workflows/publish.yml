@@ -39,7 +39,7 @@ jobs:
         run: |
           curl -L -o macos-universal.zip https://nightly.link/mandarine3ds/mandarine/workflows/build/master/macos-universal.zip
           unzip macos-universal.zip -d ./macos-universal
-          mv ./macos-universal/mandarine-macos-universal-*.7z ./macos-universal.7z
+          mv ./macos-universal/mandarine-macos-universal-*.tar.gz ./macos-universal.tar.gz
 
       - name: Download/Unzip Source Artifact
         run: |
@@ -106,9 +106,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MANDARINE_BUILD }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./macos-universal.7z
-          asset_name: macos-universal.7z
-          asset_content_type: application/x-7z-compressed
+          asset_path: ./macos-universal.tar.gz
+          asset_name: macos-universal.tar.gz
+          asset_content_type: application/gzip
 
       - name: upload source artifact
         uses: actions/upload-release-asset@v1
