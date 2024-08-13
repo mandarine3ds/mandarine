@@ -220,6 +220,7 @@ disable_flush_cpu_write =
 layout_option =
 
 # Toggle custom layout (using the settings below) on or off.
+# Only applies to landscape on Android
 # 0 (default): Off, 1: On
 custom_layout =
 
@@ -233,6 +234,22 @@ custom_bottom_x =
 custom_bottom_y =
 custom_bottom_width =
 custom_bottom_height =
+
+# Custom Layout Options for Android Portrait Mode
+# Toggle custom layout (using the settings below) on or off.
+# 0 (default): Off, 1: On
+custom_portrait_layout =
+
+# Screen placement when using Custom layout option
+# 0x, 0y is the top left corner of the render window.
+custom_portrait_top_x =
+custom_portrait_top_y =
+custom_portrait_top_width =
+custom_portrait_top_height =
+custom_portrait_bottom_x =
+custom_portrait_bottom_y =
+custom_portrait_bottom_width =
+custom_portrait_bottom_height =
 
 # Swaps the prominent screen with the other screen.
 # For example, if Single Screen is chosen, setting this to 1 will display the bottom screen instead of the top screen.

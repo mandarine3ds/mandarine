@@ -193,6 +193,16 @@ void Config::ReadValues() {
     ReadSetting("Layout", Settings::values.screen_bottom_leftright_padding);
     ReadSetting("Layout", Settings::values.screen_bottom_topbottom_padding);
 
+    ReadSetting("Layout", Settings::values.custom_portrait_layout);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_x);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_y);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_width);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_height);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_x);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_y);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_width);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_height);
+
     // Utility
     ReadSetting("Utility", Settings::values.dump_textures);
     ReadSetting("Utility", Settings::values.custom_textures);
