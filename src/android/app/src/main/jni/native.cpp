@@ -335,9 +335,8 @@ void JNICALL Java_io_github_mandarine3ds_mandarine_NativeLibrary_enableAdrenoTur
     EnableAdrenoTurboMode(enable);
 }
 
-void Java_io_github_mandarine3ds_mandarine_NativeLibrary_updateFramebuffer([[maybe_unused]] JNIEnv* env,
-                                                                           [[maybe_unused]] jobject obj,
-                                                                           jboolean is_portrait_mode) {
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_updateFramebuffer(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jboolean is_portrait_mode) {
     auto& system = Core::System::GetInstance();
     if (system.IsPoweredOn()) {
         system.GPU().Renderer().UpdateCurrentFramebufferLayout(is_portrait_mode);
