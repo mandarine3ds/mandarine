@@ -6,7 +6,7 @@ package io.github.mandarine3ds.mandarine.display
 
 enum class ScreenLayout(val int: Int) {
     // These must match what is defined in src/common/settings.h
-    TOP_BOTTOM(0),
+    ORIGINAL(0),
     SINGLE_SCREEN(1),
     LARGE_SCREEN(2),
     SIDE_SCREEN(3),
@@ -17,6 +17,18 @@ enum class ScreenLayout(val int: Int) {
     companion object {
         fun from(int: Int): ScreenLayout {
             return entries.firstOrNull { it.int == int } ?: MOBILE_LANDSCAPE
+        }
+    }
+}
+
+enum class PortraitScreenLayout(val int: Int) {
+    // These must match what is defined in src/common/settings.h
+    TOP_FULL_WIDTH(0),
+    CUSTOM_PORTRAIT_LAYOUT(1);
+
+    companion object {
+        fun from(int: Int): PortraitScreenLayout {
+            return entries.firstOrNull { it.int == int } ?: TOP_FULL_WIDTH;
         }
     }
 }

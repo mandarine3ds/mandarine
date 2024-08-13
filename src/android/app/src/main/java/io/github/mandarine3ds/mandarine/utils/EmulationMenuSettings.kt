@@ -7,8 +7,6 @@ package io.github.mandarine3ds.mandarine.utils
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.preference.PreferenceManager
 import io.github.mandarine3ds.mandarine.MandarineApplication
-import io.github.mandarine3ds.mandarine.display.PortraitScreenLayout
-import io.github.mandarine3ds.mandarine.display.ScreenLayout
 
 object EmulationMenuSettings {
     private val preferences =
@@ -26,26 +24,6 @@ object EmulationMenuSettings {
         set(value) {
             preferences.edit()
                 .putBoolean("EmulationMenuSettings_DpadSlideEnable", value)
-                .apply()
-        }
-    var landscapeScreenLayout: Int
-        get() = preferences.getInt(
-            "EmulationMenuSettings_LandscapeScreenLayout",
-            ScreenLayout.LARGE_SCREEN.int
-        )
-        set(value) {
-            preferences.edit()
-                .putInt("EmulationMenuSettings_LandscapeScreenLayout", value)
-                .apply()
-        }
-    var portraitScreenLayout: Int
-        get() = preferences.getInt(
-            "EmulationMenuSettings_PortraitScreenLayout",
-            PortraitScreenLayout.TOP_FULL_WIDTH.int
-        )
-        set(value) {
-            preferences.edit()
-                .putInt("EmulationMenuSettings_PortraitScreenLayout", value)
                 .apply()
         }
     var showFps: Boolean

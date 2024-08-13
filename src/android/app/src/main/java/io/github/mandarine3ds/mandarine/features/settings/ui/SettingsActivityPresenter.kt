@@ -7,6 +7,7 @@ package io.github.mandarine3ds.mandarine.features.settings.ui
 import android.os.Bundle
 import android.text.TextUtils
 import io.github.mandarine3ds.mandarine.NativeLibrary
+import io.github.mandarine3ds.mandarine.features.settings.model.IntSetting
 import io.github.mandarine3ds.mandarine.features.settings.model.Settings
 import io.github.mandarine3ds.mandarine.utils.SystemSaveGame
 import io.github.mandarine3ds.mandarine.utils.DirectoryInitialization
@@ -56,6 +57,9 @@ class SettingsActivityPresenter(private val activityView: SettingsActivityView) 
             Log.debug("[SettingsActivity] Settings activity stopping. Saving settings to INI...")
             settings.saveSettings(activityView)
             SystemSaveGame.save()
+            // Added to ensure that layout changes take effect as soon as settings window closes
+            NativeLibrary.reloadSettings()
+            NativeLibrary.updateFramebuffer(NativeLibrary.isPortraitMode)
         }
         NativeLibrary.reloadSettings()
     }
