@@ -27,16 +27,16 @@
         android:id="@+id/text_input"
         app:suffixText="%">
 
-        <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:inputType="number"
         android:layout_height="wrap_content"
         tools:text="75"
-            android:id="@+id/text_value"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/spacing_medlarge"
-            android:layout_marginBottom="@dimen/spacing_medlarge" />
+        android:id="@+id/text_value"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/spacing_medlarge"
+        android:layout_marginBottom="@dimen/spacing_medlarge" />
 
     </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>
