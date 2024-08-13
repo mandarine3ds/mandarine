@@ -336,8 +336,21 @@ void JNICALL Java_io_github_mandarine3ds_mandarine_NativeLibrary_enableAdrenoTur
 }
 
 void Java_io_github_mandarine3ds_mandarine_NativeLibrary_notifyOrientationChange(
-    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint layout_option, jint rotation) {
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint layout_option, jint rotation,
+    jboolean portrait) {
     Settings::values.layout_option = static_cast<Settings::LayoutOption>(layout_option);
+    auto& system = Core::System::GetInstance();
+    if (system.IsPoweredOn()) {
+        system.GPU().Renderer().UpdateCurrentFramebufferLayout(portrait);
+    }
+    InputManager::screen_rotation = rotation;
+    Camera::NDK::g_rotation = rotation;
+}
+
+void Java_io_github_mandarine3ds_mandarine_NativeLibrary_notifyPortraitLayoutChange(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, jint layout_option, jint rotation) {
+    Settings::values.portrait_layout_option =
+        static_cast<Settings::PortraitLayoutOption>(layout_option);
     auto& system = Core::System::GetInstance();
     if (system.IsPoweredOn()) {
         system.GPU().Renderer().UpdateCurrentFramebufferLayout(!(rotation % 2));
