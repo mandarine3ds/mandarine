@@ -693,8 +693,8 @@ void RendererOpenGL::DrawScreens(const Layout::FramebufferLayout& layout, bool f
     ResetSecondLayerOpacity(layout.is_portrait);
 }
 
-void RendererOpenGL::ApplySecondLayerOpacity(bool isPortrait) {
-    if (!isPortrait &&
+void RendererOpenGL::ApplySecondLayerOpacity(bool is_portrait) {
+    if (!is_portrait &&
         (Settings::values.layout_option.GetValue() == Settings::LayoutOption::CustomLayout) &&
         Settings::values.custom_second_layer_opacity.GetValue() < 100) {
         state.blend.src_rgb_func = GL_CONSTANT_ALPHA;
@@ -705,8 +705,8 @@ void RendererOpenGL::ApplySecondLayerOpacity(bool isPortrait) {
     }
 }
 
-void RendererOpenGL::ResetSecondLayerOpacity(bool isPortrait) {
-    if (!isPortrait &&
+void RendererOpenGL::ResetSecondLayerOpacity(bool is_portrait) {
+    if (!is_portrait &&
         (Settings::values.layout_option.GetValue() == Settings::LayoutOption::CustomLayout) &&
         Settings::values.custom_second_layer_opacity.GetValue() < 100) {
         state.blend.src_rgb_func = GL_ONE;
