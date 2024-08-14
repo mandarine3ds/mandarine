@@ -65,7 +65,7 @@ Memory: 2GB of RAM. 4GB is recommended
 
 # Contribution
 
-Due to a recent attemp of repository hijack (caused by a ex-helper of mandarine, that sadly removed all 1.X releases from legacy Citra Enhanced project), I won't add developers for a long time, but Pull Requests are still welcome, and feel free to send one. As long as it's properly authored and working as expected, I'll probably merge.
+Feel free to open a Pull Request. Even if you are new on coding, you will be respected on your work even if it doesn't get merged for some reason. I know how hard is coding, and I'll usually never decline your code just because the way it is coded or similar (not as other known projects). I'll try help you as long as my skills are enough for, and as long as your code doesn't cause any bug and works as expected, it will probably get merged.
 
 # Support
 
