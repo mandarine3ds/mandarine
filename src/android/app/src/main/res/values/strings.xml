@@ -516,7 +516,7 @@
 
     <!-- Material You theme -->
     <string name="material_you">Material You</string>
-    <string name="material_you_description">Use system colors across the app (Will override (static) theme color option)</string>
+    <string name="material_you_description">Use system colors across the app. Overrides static theme color option.</string>
 
     <!-- Static theme color -->
     <string name="static_theme_color">Change Theme Color</string>
