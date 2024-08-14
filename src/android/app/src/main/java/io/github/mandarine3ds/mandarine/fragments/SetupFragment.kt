@@ -401,12 +401,6 @@ class SetupFragment : Fragment() {
     private lateinit var microphoneCallback: SetupCallback
     private lateinit var cameraCallback: SetupCallback
 
-    private fun showThemeSettingsDialog() {
-        showStaticThemeSelectionDialog {
-            showMaterialYouAndBlackThemeDialog()
-        }
-    }
-
     private fun showStaticThemeSelectionDialog(onComplete: () -> Unit) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val themeColors = resources.getStringArray(R.array.staticThemeNames)
@@ -426,7 +420,6 @@ class SetupFragment : Fragment() {
 
     private fun showMaterialYouAndBlackThemeDialog() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        // Container for the switches and descriptions
         val switchContainer = LinearLayout(requireContext()).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(64, 16, 64, 32)
@@ -440,7 +433,7 @@ class SetupFragment : Fragment() {
             text = getString(R.string.material_you_description)
         }
 
-        // Only add the Material You switch and description if Android 12 and < is detected
+        // Only show Material You toggle if Android 12 or newer is detected.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             switchContainer.addView(materialYouSwitch)
             switchContainer.addView(materialYouDescription)
@@ -460,7 +453,8 @@ class SetupFragment : Fragment() {
             .setTitle(R.string.set_up_theme_settings)
             .setView(switchContainer)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                ThemeUtil.unregisterThemeChangeListener()  // Unregister listener before making changes
+                // Unregister listener before making changes
+                ThemeUtil.unregisterThemeChangeListener()
 
                 preferences.edit().apply {
                     putBoolean(Settings.PREF_BLACK_BACKGROUNDS, blackThemeSwitch.isChecked)
@@ -472,11 +466,17 @@ class SetupFragment : Fragment() {
 
                 val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
                 preferences.edit().putBoolean("ThemeSetupCompleted", true).apply()
-                ThemeUtil.registerThemeChangeListener(requireActivity() as AppCompatActivity)  // Register listener again after changes
-                requireActivity().recreate()  // Explicitly recreate activity if needed
+                ThemeUtil.registerThemeChangeListener(requireActivity() as AppCompatActivity)
+                requireActivity().recreate()
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
+    }
+
+    private fun showThemeSettingsDialog() {
+        showStaticThemeSelectionDialog {
+            showMaterialYouAndBlackThemeDialog()
+        }
     }
 
     private val permissionLauncher =
