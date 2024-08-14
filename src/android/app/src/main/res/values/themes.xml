@@ -7,8 +7,8 @@
         <item name="postSplashScreenTheme">@style/Theme.Mandarine.Main</item>
     </style>
 
+    <!-- Common theme colors -->
     <style name="Theme.Mandarine" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Common theme colors -->
         <item name="colorError">@color/mandarine_error</item>
         <item name="colorErrorContainer">@color/mandarine_errorContainer</item>
         <item name="colorOnError">@color/mandarine_onError</item>
@@ -19,8 +19,8 @@
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 
+    <!-- Blue theme colors -->
     <style name="Theme.Mandarine.Blue" parent="Theme.Mandarine">
-        <!-- Blue theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_blue</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_blue</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_blue</item>
@@ -45,8 +45,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_blue</item>
     </style>
 
+    <!-- Red theme colors -->
     <style name="Theme.Mandarine.Red" parent="Theme.Mandarine">
-        <!-- Red theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_red</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_red</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_red</item>
@@ -71,8 +71,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_red</item>
     </style>
 
+    <!-- Green theme colors -->
     <style name="Theme.Mandarine.Green" parent="Theme.Mandarine">
-        <!-- Green theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_green</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_green</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_green</item>
@@ -97,8 +97,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_green</item>
     </style>
 
+    <!-- Orange theme colors -->
     <style name="Theme.Mandarine.Orange" parent="Theme.Mandarine">
-        <!-- Orange theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_orange</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_orange</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_orange</item>
@@ -123,8 +123,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_orange</item>
     </style>
 
+    <!-- Yellow theme colors -->
     <style name="Theme.Mandarine.Yellow" parent="Theme.Mandarine">
-        <!-- Yellow theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_yellow</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_yellow</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_yellow</item>
@@ -149,8 +149,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_yellow</item>
     </style>
 
+    <!-- Violet theme colors -->
     <style name="Theme.Mandarine.Violet" parent="Theme.Mandarine">
-        <!-- Violet theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_violet</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_violet</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_violet</item>
@@ -175,8 +175,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_violet</item>
     </style>
 
+    <!-- Cyan theme colors -->
     <style name="Theme.Mandarine.Cyan" parent="Theme.Mandarine">
-        <!-- Cyan theme colors -->
         <item name="colorPrimary">@color/mandarine_primary_cyan</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_cyan</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_cyan</item>
@@ -201,8 +201,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_cyan</item>
     </style>
 
-    <style name="Theme.Mandarine.LimeGreen" parent="Theme.Mandarine">
     <!-- Lime Green Theme Colors -->
+    <style name="Theme.Mandarine.LimeGreen" parent="Theme.Mandarine">
         <item name="colorPrimary">@color/mandarine_primary_lime_green</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_lime_green</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_lime_green</item>
@@ -227,8 +227,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_lime_green</item>
     </style>
 
-    <style name="Theme.Mandarine.Gray" parent="Theme.Mandarine">
     <!-- Gray Theme Colors -->
+    <style name="Theme.Mandarine.Gray" parent="Theme.Mandarine">
         <item name="colorPrimary">@color/mandarine_primary_gray</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_gray</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_gray</item>
@@ -253,8 +253,8 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_gray</item>
     </style>
 
-    <style name="Theme.Mandarine.Pink" parent="Theme.Mandarine">
     <!-- Pink Theme Colors -->
+    <style name="Theme.Mandarine.Pink" parent="Theme.Mandarine">
         <item name="colorPrimary">@color/mandarine_primary_pink</item>
         <item name="colorOnPrimary">@color/mandarine_onPrimary_pink</item>
         <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_pink</item>
