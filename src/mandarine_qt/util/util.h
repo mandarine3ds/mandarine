@@ -36,3 +36,8 @@ QPixmap GetQPixmapFromSMDH(const std::vector<u8>& smdh_data);
  * @return bool If the operation succeeded
  */
 [[nodiscard]] bool SaveIconToFile(const std::filesystem::path& icon_path, const QImage& image);
+
+/**
+ * @return The user’s applications directory
+ */
+[[nodiscard]] const std::string GetApplicationsDirectory();

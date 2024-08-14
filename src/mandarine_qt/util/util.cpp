@@ -5,6 +5,9 @@
 #include <array>
 #include <cmath>
 #include <QPainter>
+#include <QStandardPaths>
+#include "common/common_paths.h"
+#include "common/file_util.h"
 #include "common/logging/log.h"
 #include "core/loader/smdh.h"
 #include "mandarine_qt/util/util.h"
@@ -158,5 +161,17 @@ bool SaveIconToFile(const std::filesystem::path& icon_path, const QImage& image)
     return true;
 #else
     return false;
+#endif
+}
+
+const std::string GetApplicationsDirectory() {
+// This alternate method is required for Flatpak compatibility as
+// QStandardPaths::ApplicationsLocation returns a path inside the Flatpak data directory instead of
+// $HOME/.local/share
+#if defined(__linux__) || defined(__FreeBSD__)
+    return FileUtil::GetHomeDirectory() + DIR_SEP + ".local" + DIR_SEP + "share" + DIR_SEP +
+           "applications";
+#else
+    return QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation).toStdString();
 #endif
 }

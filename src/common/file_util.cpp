@@ -707,8 +707,8 @@ std::string AppDataRoamingDirectory() {
 /**
  * @return The user’s home directory on POSIX systems
  */
-static const std::string& GetHomeDirectory() {
-    static std::string home_path;
+const std::string GetHomeDirectory() {
+    std::string home_path;
     if (home_path.empty()) {
         const char* envvar = getenv("HOME");
         if (envvar) {

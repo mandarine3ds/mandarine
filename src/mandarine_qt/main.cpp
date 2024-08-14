@@ -1739,9 +1739,9 @@ void GMainWindow::OnGameListRemovePlayTimeData(u64 program_id) {
 bool GMainWindow::CreateShortcutLink(const std::filesystem::path& shortcut_path,
                                      const std::string& comment,
                                      const std::filesystem::path& icon_path,
-                                     const std::filesystem::path& command,
-                                     const std::string& arguments, const std::string& categories,
-                                     const std::string& keywords, const std::string& name) try {
+                                     const std::string& command, const std::string& arguments,
+                                     const std::string& categories, const std::string& keywords,
+                                     const std::string& name, const bool& skip_tryexec) try {
 #if defined(__linux__) || defined(__FreeBSD__) // Linux and FreeBSD
     std::filesystem::path shortcut_path_full = shortcut_path / (name + ".desktop");
     std::ofstream shortcut_stream(shortcut_path_full, std::ios::binary | std::ios::trunc);
@@ -1760,8 +1760,10 @@ bool GMainWindow::CreateShortcutLink(const std::filesystem::path& shortcut_path,
     if (std::filesystem::is_regular_file(icon_path)) {
         fmt::print(shortcut_stream, "Icon={}\n", icon_path.string());
     }
-    fmt::print(shortcut_stream, "TryExec={}\n", command.string());
-    fmt::print(shortcut_stream, "Exec={} {}\n", command.string(), arguments);
+    if (!skip_tryexec) {
+        fmt::print(shortcut_stream, "TryExec={}\n", command);
+    }
+    fmt::print(shortcut_stream, "Exec={} {}\n", command, arguments);
     if (!categories.empty()) {
         fmt::print(shortcut_stream, "Categories={}\n", categories);
     }
@@ -1792,7 +1794,7 @@ bool GMainWindow::CreateShortcutLink(const std::filesystem::path& shortcut_path,
         LOG_ERROR(Frontend, "Failed to create IShellLinkW instance");
         return false;
     }
-    hres = ps1->SetPath(command.c_str());
+    hres = ps1->SetPath(Common::UTF8ToUTF16W(command).data());
     if (FAILED(hres)) {
         LOG_ERROR(Frontend, "Failed to set path");
         return false;
@@ -1877,10 +1879,10 @@ bool GMainWindow::MakeShortcutIcoPath(const u64 program_id, const std::string_vi
     out_icon_path = FileUtil::GetUserPath(FileUtil::UserPath::IconsDir);
     ico_extension = "ico";
 #elif defined(__linux__) || defined(__FreeBSD__)
-    out_icon_path = FileUtil::GetUserDirectory("XDG_DATA_HOME") + "/icons/hicolor/256x256";
+    out_icon_path = FileUtil::GetUserDirectory("XDG_DATA_HOME") + "/icons/hicolor/256x256/";
 #endif
     // Create icons directory if it doesn't exist
-    if (!FileUtil::CreateDir(out_icon_path.string())) {
+    if (!FileUtil::CreateFullPath(out_icon_path.string())) {
         QMessageBox::critical(
             this, tr("Create Icon"),
             tr("Cannot create icon file. Path \"%1\" does not exist and cannot be created.")
@@ -1899,13 +1901,21 @@ bool GMainWindow::MakeShortcutIcoPath(const u64 program_id, const std::string_vi
 
 void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& game_path,
                                            GameListShortcutTarget target) {
-    // Get path to mandarine executable
-    const QStringList args = QApplication::arguments();
-    std::filesystem::path mandarine_command = args[0].toStdString();
-    // If relative path, make it an absolute path
-    if (mandarine_command.c_str()[0] == '.') {
-        mandarine_command =
-            FileUtil::GetCurrentDir().value_or("") + DIR_SEP + mandarine_command.string();
+    std::string mandarine_command{};
+    bool skip_tryexec = false;
+    const char* env_flatpak_id = getenv("FLATPAK_ID");
+    if (env_flatpak_id) {
+        mandarine_command = fmt::format("flatpak run {}", env_flatpak_id);
+        skip_tryexec = true;
+    } else {
+        // Get path to Mandarine3DS executable
+        const QStringList args = QApplication::arguments();
+        mandarine_command = args[0].toStdString();
+        // If relative path, make it an absolute path
+        if (mandarine_command.c_str()[0] == '.') {
+            mandarine_command =
+                FileUtil::GetCurrentDir().value_or("") + DIR_SEP + mandarine_command;
+        }
     }
 
     // Shortcut path
@@ -1914,8 +1924,7 @@ void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& ga
         shortcut_path =
             QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).toStdString();
     } else if (target == GameListShortcutTarget::Applications) {
-        shortcut_path =
-            QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation).toStdString();
+        shortcut_path = GetApplicationsDirectory();
     }
 
     // Icon path and title
@@ -1961,7 +1970,7 @@ void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& ga
     // Warn once if we are making a shortcut to a volatile AppImage
     const std::string appimage_ending =
         std::string(Common::g_scm_rev).substr(0, 9).append(".AppImage");
-    if (mandarine_command.string().ends_with(appimage_ending) &&
+    if (mandarine_command.ends_with(appimage_ending) &&
         !UISettings::values.shortcut_already_warned) {
         if (CreateShortcutMessagesGUI(this, CREATE_SHORTCUT_MSGBOX_APPIMAGE_VOLATILE_WARNING,
                                       qt_game_title)) {
@@ -1980,7 +1989,7 @@ void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& ga
     const std::string keywords = "3ds;Nintendo;";
 
     if (CreateShortcutLink(shortcut_path, comment, out_icon_path, mandarine_command, arguments,
-                           categories, keywords, game_title)) {
+                           categories, keywords, game_title, skip_tryexec)) {
         CreateShortcutMessagesGUI(this, CREATE_SHORTCUT_MSGBOX_SUCCESS, qt_game_title);
         return;
     }

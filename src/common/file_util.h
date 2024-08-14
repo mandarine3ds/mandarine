@@ -207,6 +207,7 @@ void UpdateUserPath(UserPath path, const std::string& filename);
 [[nodiscard]] const std::string& GetExeDirectory();
 [[nodiscard]] std::string AppDataRoamingDirectory();
 #else
+[[nodiscard]] const std::string GetHomeDirectory();
 [[nodiscard]] const std::string GetUserDirectory(const std::string& envvar);
 #endif
 
