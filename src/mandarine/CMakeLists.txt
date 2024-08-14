@@ -44,7 +44,7 @@ if (ENABLE_OPENGL)
     target_link_libraries(mandarine PRIVATE glad)
 endif()
 
-if(UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE)
     install(TARGETS mandarine RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 

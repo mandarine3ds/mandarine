@@ -274,17 +274,17 @@ if (APPLE)
         MACOSX_BUNDLE_ICON_FILE "mandarine.icns"
         RESOURCE "${APPLE_RESOURCES}"
     )
-elseif(WIN32)
+elseif (WIN32)
     # compile as a win32 gui application instead of a console application
     target_link_libraries(mandarine-qt PRIVATE Qt6::EntryPointImplementation)
-    if(MSVC)
+    if (MSVC)
         set_target_properties(mandarine-qt PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
-    elseif(MINGW)
+    elseif (MINGW)
         set_target_properties(mandarine-qt PROPERTIES LINK_FLAGS_RELEASE "-mwindows")
     endif()
 endif()
 
-if(ENABLE_SDL2)
+if (ENABLE_SDL2)
     target_link_libraries(mandarine-qt PRIVATE SDL2::SDL2)
     target_compile_definitions(mandarine-qt PRIVATE HAVE_SDL2)
 endif()
@@ -347,7 +347,7 @@ if (ENABLE_WEB_SERVICE)
     target_link_libraries(mandarine-qt PRIVATE web_service)
 endif()
 
-if(UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE)
     install(TARGETS mandarine-qt RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 

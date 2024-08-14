@@ -146,7 +146,7 @@ else()
         endif()
     endif()
 
-    if(CMAKE_SYSTEM_NAME STREQUAL "Linux" OR MINGW)
+    if (CMAKE_SYSTEM_NAME STREQUAL "Linux" OR MINGW)
         # Set file offset size to 64 bits.
         #
         # On modern Unixes, this is typically already the case. The lone exception is
@@ -163,13 +163,13 @@ else()
     endif()
 endif()
 
-if(ENABLE_SOFTWARE_RENDERER)
+if (ENABLE_SOFTWARE_RENDERER)
     add_compile_definitions(ENABLE_SOFTWARE_RENDERER)
 endif()
-if(ENABLE_OPENGL)
+if (ENABLE_OPENGL)
     add_compile_definitions(ENABLE_OPENGL)
 endif()
-if(ENABLE_VULKAN)
+if (ENABLE_VULKAN)
     add_compile_definitions(ENABLE_VULKAN)
 endif()
 

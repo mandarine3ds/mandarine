@@ -541,7 +541,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                 }
 
                 add(text).setEnabled(enableClick).setOnMenuItemClickListener {
-                    if(isSaving) {
+                    if (isSaving) {
                         NativeLibrary.saveState(slot)
                     } else {
                         NativeLibrary.loadState(slot)
@@ -557,7 +557,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         savestates?.forEach {
             var enableClick = true
-            val text = if(it.slot == NativeLibrary.QUICKSAVE_SLOT) {
+            val text = if (it.slot == NativeLibrary.QUICKSAVE_SLOT) {
                 // do not allow saving in quicksave slot
                 enableClick = !isSaving
                 getString(R.string.emulation_occupied_quicksave_slot, it.time)

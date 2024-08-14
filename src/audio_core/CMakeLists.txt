@@ -46,23 +46,23 @@ create_target_directory_groups(audio_core)
 target_link_libraries(audio_core PUBLIC mandarine_common mandarine_core)
 target_link_libraries(audio_core PRIVATE faad2 SoundTouch teakra)
 
-if(ENABLE_SDL2)
+if (ENABLE_SDL2)
     target_link_libraries(audio_core PRIVATE SDL2::SDL2)
     target_compile_definitions(audio_core PRIVATE HAVE_SDL2)
 endif()
 
-if(ENABLE_CUBEB)
+if (ENABLE_CUBEB)
     target_link_libraries(audio_core PRIVATE cubeb)
     target_compile_definitions(audio_core PUBLIC HAVE_CUBEB)
 endif()
 
-if(ENABLE_OPENAL)
+if (ENABLE_OPENAL)
     target_link_libraries(audio_core PRIVATE OpenAL)
     target_compile_definitions(audio_core PUBLIC HAVE_OPENAL)
     add_definitions(-DAL_LIBTYPE_STATIC)
 endif()
 
-if(ANDROID)
+if (ANDROID)
     target_sources(audio_core PRIVATE
         oboe_sink.cpp
         oboe_sink.h

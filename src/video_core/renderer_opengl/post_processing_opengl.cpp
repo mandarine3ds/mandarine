@@ -63,7 +63,7 @@ float4 SampleLocation(float2 location) {
 }
 
 float4 SampleLayer(int layer) {
-    if(layer == 0)
+    if (layer == 0)
         return texture(color_texture, frag_tex_coord);
     else
         return texture(color_texture_r, frag_tex_coord);

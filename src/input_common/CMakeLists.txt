@@ -20,7 +20,7 @@ add_library(input_common STATIC
     udp/udp.h
 )
 
-if(ENABLE_SDL2)
+if (ENABLE_SDL2)
     target_sources(input_common PRIVATE
         sdl/sdl_impl.cpp
         sdl/sdl_impl.h
@@ -29,7 +29,7 @@ if(ENABLE_SDL2)
     target_compile_definitions(input_common PRIVATE HAVE_SDL2)
 endif()
 
-if(ENABLE_LIBUSB)
+if (ENABLE_LIBUSB)
     target_sources(input_common PRIVATE
         gcadapter/gc_adapter.cpp
         gcadapter/gc_adapter.h

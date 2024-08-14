@@ -16,7 +16,7 @@ class HotkeyUtility(private val screenAdjustmentUtil: ScreenAdjustmentUtil, priv
     val hotkeyButtons = Hotkey.entries.map { it.button }
 
     fun handleHotkey(bindedButton: Int): Boolean {
-        if(hotkeyButtons.contains(bindedButton)) {
+        if (hotkeyButtons.contains(bindedButton)) {
             when (bindedButton) {
                 Hotkey.SWAP_SCREEN.button -> screenAdjustmentUtil.swapScreen()
                 Hotkey.CYCLE_LAYOUT.button -> screenAdjustmentUtil.cycleLayouts()
@@ -30,7 +30,7 @@ class HotkeyUtility(private val screenAdjustmentUtil: ScreenAdjustmentUtil, priv
                 }
                 Hotkey.QUICKLOAD.button -> {
                     val wasLoaded = NativeLibrary.loadStateIfAvailable(NativeLibrary.QUICKSAVE_SLOT)
-                    val stringRes = if(wasLoaded) {
+                    val stringRes = if (wasLoaded) {
                         R.string.quickload_loading
                     } else {
                         R.string.quickload_not_found

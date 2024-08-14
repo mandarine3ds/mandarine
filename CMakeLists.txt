@@ -21,7 +21,7 @@ project(mandarine LANGUAGES C CXX ASM)
 
 # Some submodules like to pick their own default build type if not specified.
 # Make sure we default to Release build type always, unless the generator has custom types.
-if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build." FORCE)
 endif()
 
@@ -91,12 +91,12 @@ if (MANDARINE_USE_PRECOMPILED_HEADERS)
     set(CMAKE_PCH_INSTANTIATE_TEMPLATES ON)
 
     # This ensures that pre-compiled headers won't invalidate build caches for every fresh checkout.
-    if(NOT MSVC AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    if (NOT MSVC AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         list(APPEND CMAKE_CXX_COMPILE_OPTIONS_CREATE_PCH -Xclang -fno-pch-timestamp)
     endif()
 endif()
 
-if(NOT EXISTS ${PROJECT_SOURCE_DIR}/.git/hooks/pre-commit)
+if (NOT EXISTS ${PROJECT_SOURCE_DIR}/.git/hooks/pre-commit)
     message(STATUS "Copying pre-commit hook")
     file(COPY hooks/pre-commit
         DESTINATION ${PROJECT_SOURCE_DIR}/.git/hooks)
@@ -325,7 +325,7 @@ if (CLANG_FORMAT)
     set(SRCS ${PROJECT_SOURCE_DIR}/src)
     set(CCOMMENT "Running clang format against all the .h and .cpp files in src/")
     if (WIN32)
-        if(MINGW)
+        if (MINGW)
             add_custom_target(clang-format
                 COMMAND find `cygpath -u ${SRCS}` -iname *.h -o -iname *.cpp -o -iname *.mm | xargs `cygpath -u ${CLANG_FORMAT}` -i
                 COMMENT ${CCOMMENT})
@@ -426,7 +426,7 @@ add_subdirectory(dist/installer)
 
 
 # Set mandarine-qt project or mandarine project as default StartUp Project in Visual Studio depending on whether QT is enabled or not
-if(ENABLE_QT)
+if (ENABLE_QT)
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT mandarine-qt)
 else()
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT mandarine)
@@ -454,7 +454,7 @@ endif()
 # http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
 # http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
 # http://standards.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-latest.html
-if(ENABLE_QT AND UNIX AND NOT APPLE)
+if (ENABLE_QT AND UNIX AND NOT APPLE)
     install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine-qt.desktop"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
     install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine.svg"
@@ -463,8 +463,8 @@ if(ENABLE_QT AND UNIX AND NOT APPLE)
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mime/packages")
 endif()
 
-if(UNIX)
-    if(ENABLE_SDL2)
+if (UNIX)
+    if (ENABLE_SDL2)
         install(FILES "${PROJECT_SOURCE_DIR}/dist/mandarine.6"
                 DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man6")
     endif()
