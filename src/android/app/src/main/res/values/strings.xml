@@ -94,7 +94,7 @@
     <string name="cannot_skip_directory_description">This step is required to allow Mandarine to work. Please select a directory and then you can continue.</string>
     <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
     <string name="set_up_theme_settings">Theme Settings</string>
-    <string name="setup_theme_settings_description">Configure your theme preferences for Lime3DS.</string>
+    <string name="setup_theme_settings_description">Configure your theme preferences for Mandarine.</string>
     <string name="setup_set_theme">Set Theme</string>
 
     <!-- Search Strings -->
