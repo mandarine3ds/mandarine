@@ -29,8 +29,8 @@ bool HasSupportedFileExtension(const std::string& file_name) {
 GameListWorker::GameListWorker(QVector<UISettings::GameDir>& game_dirs,
                                const CompatibilityList& compatibility_list,
                                const PlayTime::PlayTimeManager& play_time_manager_)
-    : game_dirs(game_dirs),
-      compatibility_list(compatibility_list), play_time_manager{play_time_manager_} {}
+    : game_dirs(game_dirs), compatibility_list(compatibility_list),
+      play_time_manager{play_time_manager_} {}
 
 GameListWorker::~GameListWorker() = default;
 

@@ -157,8 +157,8 @@ static QString PrettyProductName() {
 }
 
 GMainWindow::GMainWindow(Core::System& system_)
-    : ui{std::make_unique<Ui::MainWindow>()}, system{system_}, movie{system.Movie()}, emu_thread{
-                                                                                          nullptr} {
+    : ui{std::make_unique<Ui::MainWindow>()}, system{system_}, movie{system.Movie()},
+      emu_thread{nullptr} {
     Common::Log::Initialize();
     Common::Log::Start();
 

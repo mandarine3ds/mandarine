@@ -10,13 +10,13 @@ jobs:
   clang-format:
     runs-on: ubuntu-latest
     container:
-      image: pablomk7/build-environments:linux-fresh
+      image: opensauce04/lime3ds-build:latest
       options: -u 1001
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Build
+      - name: Clang format
         env:
           COMMIT_RANGE: ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
         run: ./.ci/clang-format.sh
