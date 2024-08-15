@@ -28,7 +28,7 @@ enum class PortraitScreenLayout(val int: Int) {
 
     companion object {
         fun from(int: Int): PortraitScreenLayout {
-            return entries.firstOrNull { it.int == int } ?: TOP_FULL_WIDTH;
+            return entries.firstOrNull { it.int == int } ?: TOP_FULL_WIDTH
         }
     }
 }

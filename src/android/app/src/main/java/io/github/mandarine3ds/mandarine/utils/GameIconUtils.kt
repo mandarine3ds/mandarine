@@ -28,7 +28,7 @@ class GameIconFetcher(
 ) : Fetcher {
     override suspend fun fetch(): FetchResult {
         return DrawableResult(
-            drawable = getGameIcon(game.icon)!!.toDrawable(options.context.resources),
+            drawable = getGameIcon(game.icon).toDrawable(options.context.resources),
             isSampled = false,
             dataSource = DataSource.DISK
         )

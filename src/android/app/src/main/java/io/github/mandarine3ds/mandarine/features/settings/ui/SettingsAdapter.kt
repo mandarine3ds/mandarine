@@ -274,12 +274,12 @@ class SettingsAdapter(
             value = sliderProgress.toFloat()
             textSliderValue!!.addTextChangedListener( object : TextWatcher {
                     override fun afterTextChanged(s: Editable) {
-                        val textValue = s.toString().toIntOrNull();
+                        val textValue = s.toString().toIntOrNull()
                         if (textValue == null || textValue < valueFrom || textValue > valueTo) {
                             textInputLayout!!.error = "Inappropriate value"
                         } else {
                             textInputLayout!!.error = null
-                            value = textValue.toFloat();
+                            value = textValue.toFloat()
                         }
                     }
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
