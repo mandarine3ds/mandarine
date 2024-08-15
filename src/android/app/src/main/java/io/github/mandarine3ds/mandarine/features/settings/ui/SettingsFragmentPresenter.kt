@@ -366,7 +366,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 override val section = null
                 override val isRuntimeEditable = false
                 override val valueAsString = int.toString()
-                override val defaultValue = 42
+                override val defaultValue = 300
             }
             add(
                 SliderSetting(
@@ -436,7 +436,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 override val section = null
                 override val isRuntimeEditable = false
                 override val valueAsString get() = short.toString()
-                override val defaultValue: Short = 25
+                override val defaultValue: Short = 4
             }
             val birthdayMonth = SystemSaveGame.getBirthday()[0]
             val daysInMonth = BirthdayMonth.getMonthFromCode(birthdayMonth)?.days ?: 31
