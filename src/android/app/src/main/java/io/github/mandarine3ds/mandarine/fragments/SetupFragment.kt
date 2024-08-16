@@ -14,13 +14,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.Switch
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -465,12 +462,6 @@ class SetupFragment : Fragment() {
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
-    }
-
-    private fun showThemeSettingsDialog() {
-        showStaticThemeSelectionDialog {
-            showMaterialYouAndBlackThemeDialog()
-        }
     }
 
     private val permissionLauncher =
