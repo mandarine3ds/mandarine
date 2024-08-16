@@ -127,7 +127,7 @@ object ThemeUtil {
 
     fun themeChangeListener(activity: AppCompatActivity) {
         listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-            val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS, Settings.PREF_THEME_MODE)
+            val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS)
             if (key in relevantKeys && !isDuringSetup) {
                 activity.recreate()
             }
