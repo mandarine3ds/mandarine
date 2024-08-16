@@ -125,9 +125,9 @@ object ThemeUtil {
     // Without this the dual popup on the setup was getting cut off becuase the activity was being recreated
     private var listener: SharedPreferences.OnSharedPreferenceChangeListener? = null
 
-    fun ThemeChangeListener(activity: AppCompatActivity) {
+    fun themeChangeListener(activity: AppCompatActivity) {
         listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-            val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS)
+            val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS, Settings.PREF_THEME_MODE)
             if (key in relevantKeys && !isDuringSetup) {
                 activity.recreate()
             }
