@@ -31,13 +31,13 @@ object ThemeUtil {
     private fun getSelectedStaticThemeColor(): Int {
         val themeIndex = preferences.getInt(Settings.PREF_STATIC_THEME_COLOR, 0)
         val themes = arrayOf(
-            R.style.Theme_Mandarine_Blue,
+            R.style.Theme_Mandarine_Orange,
             R.style.Theme_Mandarine_Cyan,
             R.style.Theme_Mandarine_Red,
             R.style.Theme_Mandarine_Green,
             R.style.Theme_Mandarine_LimeGreen,
             R.style.Theme_Mandarine_Yellow,
-            R.style.Theme_Mandarine_Orange,
+            R.style.Theme_Mandarine_Blue,
             R.style.Theme_Mandarine_Violet,
             R.style.Theme_Mandarine_Pink,
             R.style.Theme_Mandarine_Gray

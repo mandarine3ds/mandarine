@@ -198,13 +198,13 @@
     </integer-array>
 
       <string-array name="staticThemeNames">
-        <item>Blue (Default)</item>
+        <item>Orange (Default)</item>
         <item>Cyan</item>
         <item>Red</item>
         <item>Green</item>
         <item>Lime Green</item>
         <item>Yellow</item>
-        <item>Orange</item>
+        <item>Blue</item>
         <item>Violet</item>
         <item>Pink</item>
         <item>Gray</item>
