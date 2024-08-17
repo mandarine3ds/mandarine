@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.preference.PreferenceManager
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
@@ -25,12 +28,28 @@ object ThemeUtil {
     private val preferences: SharedPreferences get() =
         PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
 
+    private fun getSelectedStaticThemeColor(): Int {
+        val themeIndex = preferences.getInt(Settings.PREF_STATIC_THEME_COLOR, 0)
+        val themes = arrayOf(
+            R.style.Theme_Mandarine_Orange,
+            R.style.Theme_Mandarine_Cyan,
+            R.style.Theme_Mandarine_Red,
+            R.style.Theme_Mandarine_Green,
+            R.style.Theme_Mandarine_Yellow,
+            R.style.Theme_Mandarine_Blue,
+            R.style.Theme_Mandarine_Violet,
+            R.style.Theme_Mandarine_Pink,
+            R.style.Theme_Mandarine_Gray
+        )
+        return themes[themeIndex]
+    }
+
     fun setTheme(activity: AppCompatActivity) {
         setThemeMode(activity)
         if (preferences.getBoolean(Settings.PREF_MATERIAL_YOU, false)) {
             activity.setTheme(R.style.Theme_Mandarine_Main_MaterialYou)
         } else {
-            activity.setTheme(R.style.Theme_Mandarine_Main)
+            activity.setTheme(getSelectedStaticThemeColor())
         }
 
         // Using a specific night mode check because this could apply incorrectly when using the
@@ -95,5 +114,23 @@ object ThemeUtil {
             Color.green(color),
             Color.blue(color)
         )
+    }
+
+
+
+    var isDuringSetup = false //Track setup status in order to enable / disbale listener
+
+    // Listener that detects if the theme is being changed from the initial setup or from normal settings
+    // Without this the dual popup on the setup was getting cut off becuase the activity was being recreated
+    private var listener: SharedPreferences.OnSharedPreferenceChangeListener? = null
+
+    fun themeChangeListener(activity: AppCompatActivity) {
+        listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS)
+            if (key in relevantKeys && !isDuringSetup) {
+                activity.recreate()
+            }
+        }
+        preferences.registerOnSharedPreferenceChangeListener(listener)
     }
 }

@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
             settingsViewModel.settings.loadSettings()
         }
 
+        ThemeUtil.themeChangeListener(this)
         ThemeUtil.setTheme(this)
         super.onCreate(savedInstanceState)
 
