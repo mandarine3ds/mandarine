@@ -7,7 +7,6 @@
 #include "core/core.h"
 #include "core/frontend/emu_window.h"
 #include "core/tracer/recorder.h"
-#include "video_core/debug_utils/debug_utils.h"
 #include "video_core/renderer_base.h"
 
 namespace VideoCore {

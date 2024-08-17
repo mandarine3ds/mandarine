@@ -433,7 +433,9 @@ void GSP_GPU::TriggerCmdReqQueue(Kernel::HLERequestContext& ctx) {
         command_buffer->number_commands.Assign(command_buffer->number_commands - 1);
         command_buffer->index.Assign((command_buffer->index + 1) % 0xF);
 
-        gpu.Debugger().GXCommandProcessed(command);
+        if (Settings::values.renderer_debug) {
+            gpu.Debugger().GXCommandProcessed(command);
+        }
 
         // Decode and execute command
         gpu.Execute(command);
