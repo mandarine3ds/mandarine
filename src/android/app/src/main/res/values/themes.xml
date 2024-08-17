@@ -201,32 +201,6 @@
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_cyan</item>
     </style>
 
-    <!-- Lime Green Theme Colors -->
-    <style name="Theme.Mandarine.LimeGreen" parent="Theme.Mandarine">
-        <item name="colorPrimary">@color/mandarine_primary_lime_green</item>
-        <item name="colorOnPrimary">@color/mandarine_onPrimary_lime_green</item>
-        <item name="colorPrimaryContainer">@color/mandarine_primaryContainer_lime_green</item>
-        <item name="colorOnPrimaryContainer">@color/mandarine_onPrimaryContainer_lime_green</item>
-        <item name="colorSecondary">@color/mandarine_secondary_lime_green</item>
-        <item name="colorOnSecondary">@color/mandarine_onSecondary_lime_green</item>
-        <item name="colorSecondaryContainer">@color/mandarine_secondaryContainer_lime_green</item>
-        <item name="colorOnSecondaryContainer">@color/mandarine_onSecondaryContainer_lime_green</item>
-        <item name="colorTertiary">@color/mandarine_tertiary_lime_green</item>
-        <item name="colorOnTertiary">@color/mandarine_onTertiary_lime_green</item>
-        <item name="colorTertiaryContainer">@color/mandarine_tertiaryContainer_lime_green</item>
-        <item name="colorOnTertiaryContainer">@color/mandarine_onTertiaryContainer_lime_green</item>
-        <item name="android:colorBackground">@color/mandarine_background_lime_green</item>
-        <item name="colorOnBackground">@color/mandarine_onBackground_lime_green</item>
-        <item name="colorSurface">@color/mandarine_surface_lime_green</item>
-        <item name="colorOnSurface">@color/mandarine_onSurface_lime_green</item>
-        <item name="colorSurfaceVariant">@color/mandarine_surfaceVariant_lime_green</item>
-        <item name="colorOnSurfaceVariant">@color/mandarine_onSurfaceVariant_lime_green</item>
-        <item name="colorOutline">@color/mandarine_outline_lime_green</item>
-        <item name="colorOnSurfaceInverse">@color/mandarine_inverseOnSurface_lime_green</item>
-        <item name="colorSurfaceInverse">@color/mandarine_inverseSurface_lime_green</item>
-        <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_lime_green</item>
-    </style>
-
     <!-- Gray Theme Colors -->
     <style name="Theme.Mandarine.Gray" parent="Theme.Mandarine">
         <item name="colorPrimary">@color/mandarine_primary_gray</item>
@@ -278,4 +252,5 @@
         <item name="colorSurfaceInverse">@color/mandarine_inverseSurface_pink</item>
         <item name="colorPrimaryInverse">@color/mandarine_inversePrimary_pink</item>
     </style>
+
 </resources>

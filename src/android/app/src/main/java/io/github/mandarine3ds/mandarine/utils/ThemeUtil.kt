@@ -35,7 +35,6 @@ object ThemeUtil {
             R.style.Theme_Mandarine_Cyan,
             R.style.Theme_Mandarine_Red,
             R.style.Theme_Mandarine_Green,
-            R.style.Theme_Mandarine_LimeGreen,
             R.style.Theme_Mandarine_Yellow,
             R.style.Theme_Mandarine_Blue,
             R.style.Theme_Mandarine_Violet,
