@@ -676,6 +676,9 @@ void System::Shutdown(bool is_deserializing) {
     exclusive_monitor.reset();
     timing.reset();
 
+    running_core = nullptr;
+    reschedule_pending = false;
+
     if (video_dumper && video_dumper->IsDumping()) {
         video_dumper->StopDumping();
     }
