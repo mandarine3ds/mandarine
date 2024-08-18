@@ -427,7 +427,7 @@ Result Process::LinearFree(VAddr target, u32 size) {
 
 ResultVal<VAddr> Process::AllocateThreadLocalStorage() {
     std::size_t tls_page;
-    std::size_t tls_slot;
+    std::size_t tls_slot = 0;
     bool needs_allocation = true;
 
     // Iterate over all the allocated pages, and try to find one where not all slots are used.
