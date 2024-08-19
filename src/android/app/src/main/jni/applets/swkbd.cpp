@@ -84,12 +84,12 @@ void InitJNI(JNIEnv* env) {
         "io/github/mandarine3ds/mandarine/applets/SoftwareKeyboard$ValidationError")));
 
     s_swkbd_execute =
-        env->GetStaticMethodID(s_software_keyboard_class, "Execute",
+        env->GetStaticMethodID(s_software_keyboard_class, "execute",
                                "(Lio/github/mandarine3ds/mandarine/applets/"
                                "SoftwareKeyboard$KeyboardConfig;)Lio/github/mandarine3ds/mandarine/"
                                "applets/SoftwareKeyboard$KeyboardData;");
     s_swkbd_show_error =
-        env->GetStaticMethodID(s_software_keyboard_class, "ShowError", "(Ljava/lang/String;)V");
+        env->GetStaticMethodID(s_software_keyboard_class, "showError", "(Ljava/lang/String;)V");
 }
 
 void CleanupJNI(JNIEnv* env) {
@@ -126,7 +126,7 @@ jobject ToJavaValidationError(Frontend::ValidationError error) {
             "Lio/github/mandarine3ds/mandarine/applets/SoftwareKeyboard$ValidationError;"));
 }
 
-jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_ValidateFilters(
+jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateFilters(
     JNIEnv* env, jclass clazz, jstring text) {
 
     const auto ret =
@@ -134,7 +134,7 @@ jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_ValidateF
     return ToJavaValidationError(ret);
 }
 
-jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_ValidateInput(JNIEnv* env,
+jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateInput(JNIEnv* env,
                                                                                      jclass clazz,
                                                                                      jstring text) {
 

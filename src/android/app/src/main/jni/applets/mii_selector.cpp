@@ -73,7 +73,7 @@ void InitJNI(JNIEnv* env) {
         env->FindClass("io/github/mandarine3ds/mandarine/applets/MiiSelector$MiiSelectorData")));
 
     s_mii_selector_execute = env->GetStaticMethodID(
-        s_mii_selector_class, "Execute",
+        s_mii_selector_class, "execute",
         "(Lio/github/mandarine3ds/mandarine/applets/MiiSelector$MiiSelectorConfig;)Lio/"
         "github/mandarine3ds/mandarine/applets/MiiSelector$MiiSelectorData;");
 }
