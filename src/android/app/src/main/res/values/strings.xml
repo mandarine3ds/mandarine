@@ -252,9 +252,9 @@
     <string name="expand_to_cutout_area_description">Expands the display area to include the cutout (or notch) area while gaming on landscape layout.</string>
     <string name="frame_skip">Frame Skip</string>
     <string name="frame_skip_description">The number of frames to skip. It may cause emulation speed desync issues.</string>
-    <string name="enable_custom_cpu_ticks">Enable Custom CPU Ticks</string>
-    <string name="enable_custom_cpu_ticks_description">Set a custom value of CPU ticks. Higher values can increase performance but if they\'re too high, it may cause the game to freeze. A range of 77–21000 is recommended.</string>
-    <string name="custom_cpu_ticks">Ticks</string>
+    <string name="custom_cpu_ticks">Custom CPU Ticks</string>
+    <string name="custom_cpu_ticks_description">Set a custom value of CPU ticks. Higher values can increase performance but if they\'re too high, it may cause the game to freeze. A range of 77–21000 is recommended.</string>
+    <string name="cpu_ticks">Ticks</string>
     <string name="frame_limit_enable">Limit Speed</string>
     <string name="frame_limit_enable_description">When enabled, emulation speed will be limited to a specified percentage of normal speed.</string>
     <string name="frame_limit_slider">Limit Speed Percent</string>

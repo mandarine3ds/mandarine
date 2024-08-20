@@ -84,8 +84,8 @@ void LogSettings() {
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
     log_setting("Core_FrameSkip", values.frame_skip.GetValue());
-    log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());
     log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
+    log_setting("Core_CPUTicks", values.cpu_ticks.GetValue());
     log_setting("Core_ReduceDowncountSlice", values.reduce_downcount_slice.GetValue());
     log_setting("Core_PriorityBoostStarvedThreads",
                 values.priority_boost_starved_threads.GetValue());
@@ -194,8 +194,8 @@ void RestoreGlobalState(bool is_powered_on) {
     values.is_new_3ds.SetGlobal(true);
     values.lle_applets.SetGlobal(true);
     values.frame_skip.SetGlobal(true);
-    values.enable_custom_cpu_ticks.SetGlobal(true);
     values.custom_cpu_ticks.SetGlobal(true);
+    values.cpu_ticks.SetGlobal(true);
     values.reduce_downcount_slice.SetGlobal(true);
     values.priority_boost_starved_threads.SetGlobal(true);
 

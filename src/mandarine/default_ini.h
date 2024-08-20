@@ -103,7 +103,8 @@ frame_skip =
 
 # Set a custom value of CPU ticks.
 # 0 (default): Off, 1: On
-enable_custom_cpu_ticks =
+custom_cpu_ticks =
+cpu_ticks =
 
 # Downcount will be limited to a smaller time slice.
 # 0 (default): Off, 1: On

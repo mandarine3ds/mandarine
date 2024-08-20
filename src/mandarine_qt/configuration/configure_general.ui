@@ -149,7 +149,7 @@
              <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>Enable Custom CPU Ticks</string>
+             <string>Custom CPU Ticks</string>
             </property>
            </widget>
           </item>
@@ -167,14 +167,14 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_custom_cpu_ticks">
+           <widget class="QLabel" name="label_cpu_ticks">
             <property name="text">
              <string>Ticks:</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="custom_cpu_ticks_spinbox">
+           <widget class="QSpinBox" name="cpu_ticks_spinbox">
             <property name="minimum">
              <number>77</number>
             </property>
@@ -427,7 +427,7 @@
   <tabstop>toggle_auto_update</tabstop>
   <tabstop>frame_skip_combobox</tabstop>
   <tabstop>toggle_custom_cpu_ticks</tabstop>
-  <tabstop>custom_cpu_ticks_spinbox</tabstop>
+  <tabstop>cpu_ticks_spinbox</tabstop>
   <tabstop>button_reset_defaults</tabstop>
  </tabstops>
  <resources/>
@@ -435,7 +435,7 @@
   <connection>
    <sender>toggle_custom_cpu_ticks</sender>
    <signal>toggled(bool)</signal>
-   <receiver>custom_cpu_ticks_spinbox</receiver>
+   <receiver>cpu_ticks_spinbox</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">

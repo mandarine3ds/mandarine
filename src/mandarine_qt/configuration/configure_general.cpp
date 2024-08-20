@@ -86,9 +86,9 @@ void ConfigureGeneral::SetConfiguration() {
 #endif
     }
 
-    ui->toggle_custom_cpu_ticks->setChecked(Settings::values.enable_custom_cpu_ticks.GetValue());
-    ui->custom_cpu_ticks_spinbox->setEnabled(Settings::values.enable_custom_cpu_ticks.GetValue());
-    ui->custom_cpu_ticks_spinbox->setValue(Settings::values.custom_cpu_ticks.GetValue());
+    ui->toggle_custom_cpu_ticks->setChecked(Settings::values.custom_cpu_ticks.GetValue());
+    ui->cpu_ticks_spinbox->setEnabled(Settings::values.custom_cpu_ticks.GetValue());
+    ui->cpu_ticks_spinbox->setValue(Settings::values.cpu_ticks.GetValue());
 
     if (Settings::values.frame_limit.GetValue() == 0) {
         ui->frame_limit->setValue(ui->frame_limit->maximum());
@@ -188,8 +188,8 @@ void ConfigureGeneral::ApplyConfiguration() {
 
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.frame_skip, ui->frame_skip_combobox);
 
-    Settings::values.enable_custom_cpu_ticks = ui->toggle_custom_cpu_ticks->isChecked();
-    Settings::values.custom_cpu_ticks = ui->custom_cpu_ticks_spinbox->value();
+    Settings::values.custom_cpu_ticks = ui->toggle_custom_cpu_ticks->isChecked();
+    Settings::values.cpu_ticks = ui->cpu_ticks_spinbox->value();
 
     if (Settings::IsConfiguringGlobal()) {
         UISettings::values.confirm_before_closing = ui->toggle_check_exit->isChecked();
