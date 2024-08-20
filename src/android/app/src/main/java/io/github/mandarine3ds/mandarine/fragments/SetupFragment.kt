@@ -14,8 +14,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +28,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialFadeThrough
 import io.github.mandarine3ds.mandarine.MandarineApplication
@@ -42,21 +39,17 @@ import io.github.mandarine3ds.mandarine.model.SetupCallback
 import io.github.mandarine3ds.mandarine.model.SetupPage
 import io.github.mandarine3ds.mandarine.model.StepState
 import io.github.mandarine3ds.mandarine.ui.main.MainActivity
-import io.github.mandarine3ds.mandarine.utils.MandarineDirectoryHelper
 import io.github.mandarine3ds.mandarine.utils.GameHelper
+import io.github.mandarine3ds.mandarine.utils.MandarineDirectoryHelper
 import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.utils.ViewUtils
-import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
-import io.github.mandarine3ds.mandarine.utils.ThemeUtil
-import com.google.android.material.materialswitch.MaterialSwitch
 
 class SetupFragment : Fragment() {
     private var _binding: FragmentSetupBinding? = null
     private val binding get() = _binding!!
 
     private val homeViewModel: HomeViewModel by activityViewModels()
-    private val gamesViewModel: GamesViewModel by activityViewModels()
 
     private lateinit var mainActivity: MainActivity
 
@@ -265,30 +258,6 @@ class SetupFragment : Fragment() {
             )
             add(
                 SetupPage(
-                    R.drawable.ic_palette,
-                    R.string.set_up_theme_settings,
-                    R.string.setup_theme_settings_description,
-                    0,
-                    true,
-                    R.string.setup_set_theme,
-                    {
-                        ThemeUtil.isDuringSetup = true
-                        showStaticThemeSelectionDialog()
-                    },
-                    false,
-                    false,
-                    {
-                        val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-                        if (preferences.getBoolean("ThemeSetupCompleted", false)) {
-                            StepState.STEP_COMPLETE
-                        } else {
-                            StepState.STEP_INCOMPLETE
-                        }
-                    }
-                )
-            )
-            add(
-                SetupPage(
                     R.drawable.ic_check,
                     R.string.done,
                     R.string.done_description,
@@ -399,71 +368,6 @@ class SetupFragment : Fragment() {
     private lateinit var microphoneCallback: SetupCallback
     private lateinit var cameraCallback: SetupCallback
 
-    private fun showStaticThemeSelectionDialog() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val themeColors = resources.getStringArray(R.array.staticThemeNames)
-        val currentThemeColor = preferences.getInt(Settings.PREF_STATIC_THEME_COLOR, 0)
-
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.set_up_theme_settings)
-            .setSingleChoiceItems(themeColors, currentThemeColor) { _, which ->
-                preferences.edit().putInt(Settings.PREF_STATIC_THEME_COLOR, which).apply()
-            }
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                showMaterialYouAndBlackThemeDialog()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
-    }
-
-    private fun showMaterialYouAndBlackThemeDialog() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val switchContainer = LinearLayout(requireContext()).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(64, 16, 64, 32)
-        }
-
-        val blackThemeSwitch = MaterialSwitch(requireContext()).apply {
-            text = getString(R.string.use_black_backgrounds)
-            isChecked = preferences.getBoolean(Settings.PREF_BLACK_BACKGROUNDS, false)
-        }
-        val blackThemeDescription = TextView(requireContext()).apply {
-            text = getString(R.string.use_black_backgrounds_description)
-        }
-        switchContainer.addView(blackThemeSwitch)
-        switchContainer.addView(blackThemeDescription)
-
-        val materialYouSwitch = MaterialSwitch(requireContext()).apply {
-            text = getString(R.string.material_you)
-            isChecked = preferences.getBoolean(Settings.PREF_MATERIAL_YOU, false)
-        }
-        val materialYouDescription = TextView(requireContext()).apply {
-            text = getString(R.string.material_you_description)
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            switchContainer.addView(materialYouSwitch)
-            switchContainer.addView(materialYouDescription)
-        }
-
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.set_up_theme_settings)
-            .setView(switchContainer)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                preferences.edit().apply {
-                    putBoolean(Settings.PREF_BLACK_BACKGROUNDS, blackThemeSwitch.isChecked)
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        putBoolean(Settings.PREF_MATERIAL_YOU, materialYouSwitch.isChecked)
-                    }
-                    apply()
-                }
-                preferences.edit().putBoolean("ThemeSetupCompleted", true).apply()
-                requireActivity().recreate()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
-    }
-
     private val permissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
@@ -528,7 +432,6 @@ class SetupFragment : Fragment() {
         preferences.edit()
             .putBoolean(Settings.PREF_FIRST_APP_LAUNCH, false)
             .apply()
-        ThemeUtil.isDuringSetup = false
         mainActivity.finishSetup(binding.root.findNavController())
     }
 

@@ -116,18 +116,13 @@ object ThemeUtil {
         )
     }
 
-
-
-    var isDuringSetup = false //Track setup status in order to enable / disbale listener
-
-    // Listener that detects if the theme is being changed from the initial setup or from normal settings
-    // Without this the dual popup on the setup was getting cut off becuase the activity was being recreated
+    // Listener that detects if the theme keys are being changed from the setting menu and recreates the activity
     private var listener: SharedPreferences.OnSharedPreferenceChangeListener? = null
 
     fun themeChangeListener(activity: AppCompatActivity) {
         listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
             val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS)
-            if (key in relevantKeys && !isDuringSetup) {
+            if (key in relevantKeys) {
                 activity.recreate()
             }
         }
