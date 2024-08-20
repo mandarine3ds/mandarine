@@ -46,7 +46,6 @@
 #include "mandarine_qt/bootmanager.h"
 #include "mandarine_qt/camera/qt_multimedia_camera.h"
 #include "mandarine_qt/camera/still_image_camera.h"
-#include "mandarine_qt/compatdb.h"
 #include "mandarine_qt/compatibility_list.h"
 #include "mandarine_qt/configuration/config.h"
 #include "mandarine_qt/configuration/configure_dialog.h"
@@ -96,7 +95,6 @@
 #include "core/savestate.h"
 #include "core/system_titles.h"
 #include "input_common/main.h"
-#include "network/network_settings.h"
 #include "ui_main.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
@@ -338,9 +336,6 @@ GMainWindow::~GMainWindow() {
 }
 
 void GMainWindow::InitializeWidgets() {
-#ifdef MANDARINE_ENABLE_COMPATIBILITY_REPORTING
-    ui->action_Report_Compatibility->setVisible(true);
-#endif
     render_window = new GRenderWindow(this, emu_thread.get(), system, false);
     secondary_window = new GRenderWindow(this, emu_thread.get(), system, true);
     render_window->hide();
@@ -884,7 +879,10 @@ void GMainWindow::ConnectMenuEvents() {
     connect_menu(ui->action_Pause, &GMainWindow::OnPauseContinueGame);
     connect_menu(ui->action_Stop, &GMainWindow::OnStopGame);
     connect_menu(ui->action_Restart, [this] { BootGame(QString(game_path)); });
-    connect_menu(ui->action_Report_Compatibility, &GMainWindow::OnMenuReportCompatibility);
+    connect_menu(ui->action_Report_Issues, []() {
+        QDesktopServices::openUrl(
+            QUrl(QStringLiteral("https://github.com/mandarine3ds/mandarine/issues")));
+    });
     connect_menu(ui->action_Configure, &GMainWindow::OnConfigure);
     connect_menu(ui->action_Configure_Current_Game, &GMainWindow::OnConfigurePerGame);
 
@@ -954,14 +952,9 @@ void GMainWindow::UpdateMenuState() {
         !emu_thread || !emu_thread->IsRunning() || system.frame_limiter.IsFrameAdvancing();
 
     const std::array running_actions{
-        ui->action_Stop,
-        ui->action_Restart,
-        ui->action_Configure_Current_Game,
-        ui->action_Report_Compatibility,
-        ui->action_Load_Amiibo,
-        ui->action_Remove_Amiibo,
-        ui->action_Pause,
-        ui->action_Advance_Frame,
+        ui->action_Stop,          ui->action_Restart,       ui->action_Configure_Current_Game,
+        ui->action_Report_Issues, ui->action_Load_Amiibo,   ui->action_Remove_Amiibo,
+        ui->action_Pause,         ui->action_Advance_Frame,
     };
 
     for (QAction* action : running_actions) {
@@ -2331,18 +2324,6 @@ void GMainWindow::OnStopGame() {
 void GMainWindow::OnLoadComplete() {
     loading_screen->OnLoadComplete();
     UpdateSecondaryWindowVisibility();
-}
-
-void GMainWindow::OnMenuReportCompatibility() {
-    if (!NetSettings::values.mandarine_token.empty() &&
-        !NetSettings::values.mandarine_username.empty()) {
-        CompatDB compatdb{this};
-        compatdb.exec();
-    } else {
-        QMessageBox::critical(this, tr("Missing Mandarine Account"),
-                              tr("You must link your Mandarine account to submit test cases."
-                                 "<br/>Go to Emulation &gt; Configure... &gt; Web to do so."));
-    }
 }
 
 void GMainWindow::ToggleFullscreen() {

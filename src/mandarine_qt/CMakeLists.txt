@@ -28,9 +28,6 @@ add_executable(mandarine-qt
     camera/qt_multimedia_camera.cpp
     camera/qt_multimedia_camera.h
     mandarine-qt.rc
-    compatdb.cpp
-    compatdb.h
-    compatdb.ui
     configuration/config.cpp
     configuration/config.h
     configuration/configure.ui
@@ -329,10 +326,6 @@ target_compile_definitions(mandarine-qt PRIVATE
     -DQT_NO_CAST_FROM_ASCII
     -DQT_NO_CAST_TO_ASCII
 )
-
-if (MANDARINE_ENABLE_COMPATIBILITY_REPORTING)
-    target_compile_definitions(mandarine-qt PRIVATE -DMANDARINE_ENABLE_COMPATIBILITY_REPORTING)
-endif()
 
 if (USE_DISCORD_PRESENCE)
     target_sources(mandarine-qt PUBLIC

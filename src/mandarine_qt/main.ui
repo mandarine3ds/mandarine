@@ -195,7 +195,7 @@
     <addaction name="action_Check_For_Updates"/>
     <addaction name="action_Open_Maintenance_Tool"/>
     <addaction name="separator"/>
-    <addaction name="action_Report_Compatibility"/>
+    <addaction name="action_Report_Issues"/>
     <addaction name="separator"/>
     <addaction name="action_Open_Log_Folder"/>
     <addaction name="action_FAQ"/>
@@ -559,15 +559,9 @@
     <string>Check for Updates</string>
    </property>
   </action>
-  <action name="action_Report_Compatibility">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
+  <action name="action_Report_Issues">
    <property name="text">
-    <string>Report Compatibility</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
+    <string>Report Issues</string>
    </property>
   </action>
   <action name="action_Restart">
