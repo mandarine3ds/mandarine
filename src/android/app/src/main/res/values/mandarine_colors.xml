@@ -200,13 +200,10 @@
     <color name="mandarine_surfaceTint_gray">#9E9E9E</color>
 
     <!-- Common Colors Across All Themes -->
-    <color name="mandarine_outlineVariant">#C6C5D0</color>
     <color name="mandarine_error">#BA1A1A</color>
     <color name="mandarine_errorContainer">#FFDAD6</color>
     <color name="mandarine_onError">#FFFFFF</color>
     <color name="mandarine_onErrorContainer">#410002</color>
-    <color name="mandarine_shadow">#000000</color>
-    <color name="mandarine_scrim">#000000</color>
 
     <!-- Values used in dark mode but here are just white / black values-->
     <color name="mandarine_onPrimary_blue">#FFFFFF</color>

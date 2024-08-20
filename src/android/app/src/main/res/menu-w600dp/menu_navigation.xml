@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/homeSettingsFragment"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/selector_settings"
         android:title="@string/home_options" />
 
     <item
@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/gamesFragment"
-        android:icon="@drawable/selector_controller"
+        android:icon="@drawable/selector_cartridge"
         android:title="@string/home_games" />
 
 </menu>

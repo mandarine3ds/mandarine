@@ -26,25 +26,24 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialSharedAxis
-import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.HomeNavigationDirections
+import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.adapters.HomeSettingAdapter
 import io.github.mandarine3ds.mandarine.databinding.DialogSoftwareKeyboardBinding
 import io.github.mandarine3ds.mandarine.databinding.FragmentHomeSettingsBinding
 import io.github.mandarine3ds.mandarine.features.settings.model.Settings
-import io.github.mandarine3ds.mandarine.features.settings.model.StringSetting
 import io.github.mandarine3ds.mandarine.features.settings.ui.SettingsActivity
 import io.github.mandarine3ds.mandarine.features.settings.utils.SettingsFile
 import io.github.mandarine3ds.mandarine.model.Game
 import io.github.mandarine3ds.mandarine.model.HomeSetting
 import io.github.mandarine3ds.mandarine.ui.main.MainActivity
 import io.github.mandarine3ds.mandarine.utils.GameHelper
-import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
-import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 import io.github.mandarine3ds.mandarine.utils.GpuDriverHelper
 import io.github.mandarine3ds.mandarine.utils.Log
+import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.viewmodel.DriverViewModel
+import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 
 class HomeSettingsFragment : Fragment() {
     private var _binding: FragmentHomeSettingsBinding? = null
@@ -89,21 +88,21 @@ class HomeSettingsFragment : Fragment() {
                 {
                     val inflater = LayoutInflater.from(context)
                     val inputBinding = DialogSoftwareKeyboardBinding.inflate(inflater)
-                    var textInputValue: String = preferences.getString("last_artic_base_addr", "")!!
+                    var textInputValue: String = preferences.getString("lastArticBaseAddr", "")!!
 
                     inputBinding.editTextInput.setText(textInputValue)
                     inputBinding.editTextInput.doOnTextChanged { text, _, _, _ ->
                         textInputValue = text.toString()
                     }
 
-                    val dialog = context?.let {
+                    context?.let {
                         MaterialAlertDialogBuilder(it)
                             .setView(inputBinding.root)
                             .setTitle(getString(R.string.artic_base_enter_address))
                             .setPositiveButton(android.R.string.ok) { _, _ ->
                                 if (textInputValue.isNotEmpty()) {
                                     preferences.edit()
-                                        .putString("last_artic_base_addr", textInputValue)
+                                        .putString("lastArticBaseAddr", textInputValue)
                                         .apply()
                                     val menu = Game(
                                         title = getString(R.string.artic_base),
