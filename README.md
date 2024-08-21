@@ -65,8 +65,4 @@ Memory: 2GB of RAM. 4GB is recommended
 
 # Contribution
 
-Feel free to open a Pull Request. Even if you are new on coding, you will be respected on your work even if it doesn't get merged for some reason. I know how hard is coding, and I'll usually never decline your code just because the way it is coded or similar (not as other known projects). I'll try help you as long as my skills are enough for, and as long as your code doesn't cause any bug and works as expected, it will probably get merged.
-
-# Support
-
-In case you want to support my work and motivate me more with the project, feel free to check my [paypal](https://paypal.me/TLOZP).
+Feel free to open a PR and help out the project. Don't walk around with that stick tho unless you really like that 
