@@ -306,10 +306,12 @@ void Java_io_github_mandarine3ds_mandarine_NativeLibrary_surfaceChanged(
 
 void Java_io_github_mandarine3ds_mandarine_NativeLibrary_surfaceDestroyed(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
-    ANativeWindow_release(s_surf);
-    s_surf = nullptr;
-    if (window) {
-        window->OnSurfaceChanged(s_surf);
+    if (s_surf != nullptr) { 
+       ANativeWindow_release(s_surf);
+        s_surf = nullptr;
+        if (window) {
+            window->OnSurfaceChanged(s_surf);
+        }
     }
 }
 
