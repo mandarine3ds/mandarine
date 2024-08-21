@@ -4,14 +4,13 @@
 
 package io.github.mandarine3ds.mandarine.adapters
 
+import android.content.Context
 import android.net.Uri
 import android.os.SystemClock
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.content.Context
-import android.widget.TextView
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,22 +22,20 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.color.MaterialColors
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.mandarine3ds.mandarine.HomeNavigationDirections
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.adapters.GameAdapter.GameViewHolder
 import io.github.mandarine3ds.mandarine.databinding.CardGameBinding
+import io.github.mandarine3ds.mandarine.databinding.DialogAboutGameBinding
 import io.github.mandarine3ds.mandarine.features.cheats.ui.CheatsFragmentDirections
 import io.github.mandarine3ds.mandarine.model.Game
 import io.github.mandarine3ds.mandarine.utils.GameIconUtils
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
-import io.github.mandarine3ds.mandarine.features.settings.ui.SettingsActivity
-import io.github.mandarine3ds.mandarine.features.settings.utils.SettingsFile
 
 class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
@@ -196,22 +193,23 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
     }
 
     private fun showAboutGameDialog(context: Context, game: Game, holder: GameViewHolder, view: View) {
-        val bottomSheetView = inflater.inflate(R.layout.dialog_about_game, null)
+        val binding = DialogAboutGameBinding.inflate(activity.layoutInflater)
 
         val bottomSheetDialog = BottomSheetDialog(context)
-        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.setContentView(binding.root)
 
-        bottomSheetView.findViewById<TextView>(R.id.about_game_title).text = game.title
-        bottomSheetView.findViewById<TextView>(R.id.about_game_company).text = game.company
-        bottomSheetView.findViewById<TextView>(R.id.about_game_id).text = String.format("ID: %016X", game.titleId)
-        GameIconUtils.loadGameIcon(activity, game, bottomSheetView.findViewById(R.id.game_icon))
+        binding.aboutGameTitle.text = game.title
+        binding.aboutGameCompany.text = game.company
+        binding.aboutGameId.text = String.format("ID: %016X", game.titleId)
+        GameIconUtils.loadGameIcon(activity, game, binding.gameIcon)
 
-        bottomSheetView.findViewById<MaterialButton>(R.id.about_game_play).setOnClickListener {
+        binding.aboutGamePlay.setOnClickListener {
             val action = HomeNavigationDirections.actionGlobalEmulationActivity(holder.game)
             view.findNavController().navigate(action)
+            bottomSheetDialog.dismiss()
         }
 
-        bottomSheetView.findViewById<MaterialButton>(R.id.cheats).setOnClickListener {
+        binding.cheats.setOnClickListener {
             val action = CheatsFragmentDirections.actionGlobalCheatsFragment(holder.game.titleId)
             view.findNavController().navigate(action)
             bottomSheetDialog.dismiss()
