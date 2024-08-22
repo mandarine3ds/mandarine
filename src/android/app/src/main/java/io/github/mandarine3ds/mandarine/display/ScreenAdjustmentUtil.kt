@@ -27,7 +27,7 @@ class ScreenAdjustmentUtil(private val windowManager: WindowManager,
 
     fun cycleLayouts() {
         // TODO: figure out how to pull these from R.array
-        val landscapeValues = intArrayOf(6, 1, 3, 4, 0, 5)
+        val landscapeValues = intArrayOf(2, 1, 3, 4, 0, 5)
         val portraitValues = intArrayOf(0, 1)
         if (NativeLibrary.isPortraitMode) {
             val currentLayout = IntSetting.PORTRAIT_SCREEN_LAYOUT.int
