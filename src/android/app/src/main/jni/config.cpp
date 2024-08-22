@@ -154,6 +154,10 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.use_vsync_new);
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
+    ReadSetting("Renderer", Settings::values.delay_game_render_thread_us);
+    ReadSetting("Renderer", Settings::values.force_hw_vertex_shaders);
+    ReadSetting("Renderer", Settings::values.disable_surface_texture_copy);
+    ReadSetting("Renderer", Settings::values.disable_flush_cpu_write);
 
     // Work around to map Android setting for enabling the frame limiter to the format Mandarine
     // expects
@@ -177,10 +181,6 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.bg_red);
     ReadSetting("Renderer", Settings::values.bg_green);
     ReadSetting("Renderer", Settings::values.bg_blue);
-    ReadSetting("Renderer", Settings::values.delay_game_render_thread_us);
-    ReadSetting("Renderer", Settings::values.force_hw_vertex_shaders);
-    ReadSetting("Renderer", Settings::values.disable_surface_texture_copy);
-    ReadSetting("Renderer", Settings::values.disable_flush_cpu_write);
 
     // Layout
     // Somewhat inelegant solution to ensure layout value is between 0 and 5 on read
