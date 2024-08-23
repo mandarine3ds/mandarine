@@ -80,9 +80,8 @@ u32 GetMemoryType(const vk::PhysicalDeviceMemoryProperties& properties, BufferTy
     }
 
     // If we reach here, we couldn't find any suitable memory type
-    LOG_CRITICAL(Render_Vulkan, "Failed to find a suitable memory type for buffer type {}",
-                 BufferTypeName(type));
-    return 0; // Return 0 as a fallback, though this will likely cause issues
+    UNREACHABLE_MSG("Failed to find a suitable memory type for buffer type {}",
+                    BufferTypeName(type));
 }
 
 constexpr u64 WATCHES_INITIAL_RESERVE = 0x4000;
