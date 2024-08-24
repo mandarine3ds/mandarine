@@ -249,7 +249,7 @@ void Process::Run(s32 main_thread_priority, u32 stack_size) {
         kernel.HandleSpecialMapping(vm_manager, mapping);
     }
 
-    auto plgldr = Service::PLGLDR::GetService(Core::System::GetInstance());
+    auto plgldr = Service::PLGLDR::GetService(kernel);
     if (plgldr) {
         plgldr->OnProcessRun(*this, kernel);
     }
@@ -261,7 +261,7 @@ void Process::Run(s32 main_thread_priority, u32 stack_size) {
 }
 
 void Process::Exit() {
-    auto plgldr = Service::PLGLDR::GetService(Core::System::GetInstance());
+    auto plgldr = Service::PLGLDR::GetService(kernel);
     if (plgldr) {
         plgldr->OnProcessExit(*this, kernel);
     }
@@ -627,7 +627,7 @@ void Process::FreeAllMemory() {
 }
 
 Kernel::Process::Process(KernelSystem& kernel)
-    : Object(kernel), handle_table(kernel), vm_manager(kernel.memory, *this), kernel(kernel) {
+    : Object(kernel), handle_table(kernel), vm_manager(kernel, *this), kernel(kernel) {
     kernel.memory.RegisterPageTable(vm_manager.page_table);
 }
 Kernel::Process::~Process() {

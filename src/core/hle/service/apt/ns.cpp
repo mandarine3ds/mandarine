@@ -19,7 +19,7 @@ std::shared_ptr<Kernel::Process> LaunchTitle(Core::System& system, FS::MediaType
         return nullptr;
     }
 
-    auto plg_ldr = Service::PLGLDR::GetService(system);
+    auto plg_ldr = Service::PLGLDR::GetService(system.Kernel());
     if (plg_ldr) {
         const auto& plg_context = plg_ldr->GetPluginLoaderContext();
         if (plg_context.is_enabled && plg_context.use_user_load_parameters &&

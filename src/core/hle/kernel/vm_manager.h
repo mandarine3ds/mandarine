@@ -15,6 +15,8 @@
 
 namespace Kernel {
 
+class KernelSystem;
+
 enum class VMAType : u8 {
     /// VMA represents an unmapped region of the address space.
     Free,
@@ -111,7 +113,7 @@ public:
     std::map<VAddr, VirtualMemoryArea> vma_map;
     using VMAHandle = decltype(vma_map)::const_iterator;
 
-    explicit VMManager(Memory::MemorySystem& memory, Kernel::Process& proc);
+    explicit VMManager(Kernel::KernelSystem& kernel, Kernel::Process& proc);
     ~VMManager();
 
     /// Clears the address space map, re-initializing with a single free area.
@@ -221,7 +223,7 @@ private:
     /// Updates the pages corresponding to this VMA so they match the VMA's attributes.
     void UpdatePageTableForVMA(const VirtualMemoryArea& vma);
 
-    Memory::MemorySystem& memory;
+    Kernel::KernelSystem& kernel;
     Kernel::Process& process;
 
     // When locked, ChangeMemoryState calls will be ignored, other modification calls will hit an

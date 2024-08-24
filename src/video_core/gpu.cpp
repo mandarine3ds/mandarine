@@ -86,7 +86,7 @@ PAddr GPU::VirtualToPhysicalAddress(VAddr addr) {
         return addr - Memory::NEW_LINEAR_HEAP_VADDR + Memory::FCRAM_PADDR;
     }
     if (addr >= Memory::PLUGIN_3GX_FB_VADDR && addr <= Memory::PLUGIN_3GX_FB_VADDR_END) {
-        auto plg_ldr = Service::PLGLDR::GetService(impl->system);
+        auto plg_ldr = Service::PLGLDR::GetService(impl->system.Kernel());
         if (plg_ldr) {
             return addr - Memory::PLUGIN_3GX_FB_VADDR + plg_ldr->GetPluginFBAddr();
         }

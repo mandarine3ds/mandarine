@@ -2083,7 +2083,7 @@ Result SVC::ControlProcess(Handle process_handle, u32 process_OP, u32 varg2, u32
         return ResultSuccess;
     }
     case ControlProcessOP::PROCESSOP_GET_ON_MEMORY_CHANGE_EVENT: {
-        auto plgldr = Service::PLGLDR::GetService(system);
+        auto plgldr = Service::PLGLDR::GetService(kernel);
         R_UNLESS(plgldr, ResultNotFound);
 
         ResultVal<Handle> out = plgldr->GetMemoryChangedHandle(kernel);
