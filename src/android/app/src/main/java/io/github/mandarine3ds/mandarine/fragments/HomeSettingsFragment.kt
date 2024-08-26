@@ -85,7 +85,7 @@ class HomeSettingsFragment : Fragment() {
             HomeSetting(
                 R.string.artic_base_connect,
                 R.string.artic_base_connect_description,
-                R.drawable.ic_network,
+                R.drawable.ic_artic_base,
                 {
                     val inflater = LayoutInflater.from(context)
                     val inputBinding = DialogSoftwareKeyboardBinding.inflate(inflater)
@@ -137,6 +137,12 @@ class HomeSettingsFragment : Fragment() {
                 { mainActivity.ciaFileInstaller.launch(true) }
             ),
             HomeSetting(
+                R.string.multiplayer,
+                R.string.multiplayer_description,
+                R.drawable.ic_network,
+                { mainActivity.displayMultiplayerDialog() }
+            ),
+            HomeSetting(
                 R.string.share_log,
                 R.string.share_log_description,
                 R.drawable.ic_share,
@@ -145,7 +151,7 @@ class HomeSettingsFragment : Fragment() {
             HomeSetting(
                 R.string.gpu_driver_manager,
                 R.string.install_gpu_driver_description,
-                R.drawable.ic_install_driver,
+                R.drawable.ic_build,
                 {
                     binding.root.findNavController()
                         .navigate(R.id.action_homeSettingsFragment_to_driverManagerFragment)

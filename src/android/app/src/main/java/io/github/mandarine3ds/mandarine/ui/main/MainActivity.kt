@@ -34,25 +34,28 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
-import kotlinx.coroutines.launch
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.activities.EmulationActivity
 import io.github.mandarine3ds.mandarine.contracts.OpenFileResultContract
 import io.github.mandarine3ds.mandarine.databinding.ActivityMainBinding
+import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 import io.github.mandarine3ds.mandarine.features.settings.model.Settings
 import io.github.mandarine3ds.mandarine.features.settings.model.SettingsViewModel
 import io.github.mandarine3ds.mandarine.features.settings.ui.SettingsActivity
 import io.github.mandarine3ds.mandarine.features.settings.utils.SettingsFile
 import io.github.mandarine3ds.mandarine.fragments.SelectUserDirectoryDialogFragment
 import io.github.mandarine3ds.mandarine.utils.CiaInstallWorker
-import io.github.mandarine3ds.mandarine.utils.MandarineDirectoryHelper
 import io.github.mandarine3ds.mandarine.utils.DirectoryInitialization
 import io.github.mandarine3ds.mandarine.utils.FileBrowserHelper
 import io.github.mandarine3ds.mandarine.utils.InsetsHelper
+import io.github.mandarine3ds.mandarine.utils.MandarineDirectoryHelper
 import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.utils.ThemeUtil
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
+import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
+
 
 class MainActivity : AppCompatActivity(), ThemeProvider {
     private lateinit var binding: ActivityMainBinding
@@ -62,6 +65,13 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
     private val settingsViewModel: SettingsViewModel by viewModels()
 
     override var themeId: Int = 0
+
+    companion object {
+        var instance: WeakReference<MainActivity?> = WeakReference(null)
+        fun get(): MainActivity? {
+            return instance.get()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -81,6 +91,8 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        instance = WeakReference(this)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
@@ -171,7 +183,20 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
 
     override fun onDestroy() {
         EmulationActivity.stopForegroundService(this)
+        instance = WeakReference(null)
         super.onDestroy()
+    }
+
+    fun displayMultiplayerDialog() {
+        val dialog = NetPlayDialog(this)
+        dialog.show()
+    }
+
+    fun addNetPlayMessage(msg: String) {
+        if (msg.isEmpty()) {
+            return
+        }
+        Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 
     override fun setTheme(resId: Int) {

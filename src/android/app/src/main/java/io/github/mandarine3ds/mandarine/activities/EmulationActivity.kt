@@ -31,6 +31,7 @@ import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.camera.StillImageCameraHelper.OnFilePickerResult
 import io.github.mandarine3ds.mandarine.contracts.OpenFileResultContract
 import io.github.mandarine3ds.mandarine.databinding.ActivityEmulationBinding
+import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 import io.github.mandarine3ds.mandarine.display.ScreenAdjustmentUtil
 import io.github.mandarine3ds.mandarine.features.hotkeys.HotkeyUtility
 import io.github.mandarine3ds.mandarine.features.settings.model.BooleanSetting
@@ -39,10 +40,10 @@ import io.github.mandarine3ds.mandarine.features.settings.model.view.InputBindin
 import io.github.mandarine3ds.mandarine.fragments.EmulationFragment
 import io.github.mandarine3ds.mandarine.fragments.MessageDialogFragment
 import io.github.mandarine3ds.mandarine.utils.ControllerMappingHelper
-import io.github.mandarine3ds.mandarine.utils.FileBrowserHelper
-import io.github.mandarine3ds.mandarine.utils.ForegroundService
 import io.github.mandarine3ds.mandarine.utils.EmulationLifecycleUtil
 import io.github.mandarine3ds.mandarine.utils.EmulationMenuSettings
+import io.github.mandarine3ds.mandarine.utils.FileBrowserHelper
+import io.github.mandarine3ds.mandarine.utils.ForegroundService
 import io.github.mandarine3ds.mandarine.utils.ThemeUtil
 import io.github.mandarine3ds.mandarine.viewmodel.EmulationViewModel
 
@@ -141,6 +142,13 @@ class EmulationActivity : AppCompatActivity() {
         isEmulationRunning = savedInstanceState.getBoolean("isEmulationRunning", false)
     }
 
+    fun addNetPlayMessage(msg: String) {
+        if (msg.isEmpty()) {
+            return
+        }
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
@@ -195,6 +203,11 @@ class EmulationActivity : AppCompatActivity() {
             getString(R.string.emulation_menu_help),
             Toast.LENGTH_LONG
         ).show()
+    }
+
+    fun displayMultiplayerDialog() {
+        val dialog = NetPlayDialog(this)
+        dialog.show()
     }
 
     private fun enableFullscreenImmersive() {
