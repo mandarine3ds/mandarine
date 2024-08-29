@@ -42,7 +42,7 @@ object NetPlayManager {
 
             if (ipAddress.length < 7 || username.length < 5) {
                 Toast.makeText(activity, R.string.multiplayer_input_invalid, Toast.LENGTH_LONG).show()
-            } else if (netPlayCreateRoom(ipAddress, port, username) == 0) {
+            } else if (netPlayCreateRoom(ipAddress, port, username) != 0) {
                 setUsername(activity, username)
                 setRoomPort(activity, portStr)
                 Toast.makeText(activity, R.string.multiplayer_create_room_success, Toast.LENGTH_LONG).show()
@@ -78,7 +78,7 @@ object NetPlayManager {
 
             if (ipAddress.length < 7 || username.length < 5) {
                 Toast.makeText(activity, R.string.multiplayer_input_invalid, Toast.LENGTH_LONG).show()
-            } else if (netPlayJoinRoom(ipAddress, port, username) == 0) {
+            } else if (netPlayJoinRoom(ipAddress, port, username) != 0) {
                 setRoomAddress(activity, ipAddress)
                 setUsername(activity, username)
                 setRoomPort(activity, portStr)
