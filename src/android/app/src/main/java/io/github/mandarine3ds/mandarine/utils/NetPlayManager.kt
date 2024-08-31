@@ -56,7 +56,7 @@ object NetPlayManager {
                 netPlayJoinRoom(ipAddress, port, username)
             }
 
-            handleRoomActionResult(activity, resultCode, ipAddress, username, portStr, dialog)
+            handleRoomActionResult(activity, resultCode, ipAddress, username, portStr, dialog, isCreateRoom)
         }
     }
 
@@ -80,13 +80,19 @@ object NetPlayManager {
         ipAddress: String,
         username: String,
         portStr: String,
-        dialog: androidx.appcompat.app.AlertDialog
+        dialog: androidx.appcompat.app.AlertDialog,
+        isCreateRoom: Boolean
     ) {
         if (resultCode == NetPlayStatus.NO_ERROR) {
             setRoomAddress(activity, ipAddress)
             setUsername(activity, username)
             setRoomPort(activity, portStr)
-            Toast.makeText(activity, R.string.multiplayer_create_room_success, Toast.LENGTH_LONG).show()
+            val successMessage = if (isCreateRoom) {
+                R.string.multiplayer_create_room_success
+            } else {
+                R.string.multiplayer_join_room_success
+            }
+            Toast.makeText(activity, successMessage, Toast.LENGTH_LONG).show()
             dialog.dismiss()
         } else {
             val errorMessage = formatNetPlayStatus(activity, resultCode, "")
