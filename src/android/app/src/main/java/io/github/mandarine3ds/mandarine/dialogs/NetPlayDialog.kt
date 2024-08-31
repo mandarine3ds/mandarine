@@ -148,7 +148,7 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             if (infos.isNotEmpty()) {
                 val roomTitle = context.getString(R.string.multiplayer_room_title, infos[0])
                 netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_TEXT, roomTitle, NetPlayItems.TYPE_TEXT, 0))
-                if (NetPlayManager.netPlayIsHostedRoom()) {
+                if (false && NetPlayManager.netPlayIsHostedRoom()) {
                     for (i in 1 until infos.size) {
                         netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_MEMBER, infos[i], NetPlayItems.TYPE_BUTTON, 0))
                     }

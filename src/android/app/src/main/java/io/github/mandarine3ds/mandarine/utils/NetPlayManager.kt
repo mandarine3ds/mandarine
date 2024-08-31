@@ -196,7 +196,7 @@ object NetPlayManager {
     private fun getIpAddressByWifi(activity: Activity): String {
         val wifiManager = activity.getSystemService(WifiManager::class.java)
         val wifiInfo = wifiManager.connectionInfo
-        var ipAddress = wifiInfo?.ipAddress ?: wifiManager.dhcpInfo?.ipAddress ?: 0
+        val ipAddress = wifiInfo?.ipAddress ?: wifiManager.dhcpInfo?.ipAddress ?: 0
 
         return if (ipAddress == 0) {
             "192.168.0.1"
