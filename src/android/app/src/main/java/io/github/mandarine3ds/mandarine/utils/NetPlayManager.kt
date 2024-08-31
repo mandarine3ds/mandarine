@@ -50,7 +50,8 @@ object NetPlayManager {
                     Toast.makeText(activity, R.string.multiplayer_create_room_success, Toast.LENGTH_LONG).show()
                     dialog.dismiss()
                 } else {
-                    Toast.makeText(activity, R.string.multiplayer_create_room_failed, Toast.LENGTH_LONG).show()
+                    val errorMessage = formatNetPlayStatus(activity, resultCode, "")
+                    Toast.makeText(activity, errorMessage, Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -90,7 +91,8 @@ object NetPlayManager {
                     Toast.makeText(activity, R.string.multiplayer_join_room_success, Toast.LENGTH_LONG).show()
                     dialog.dismiss()
                 } else {
-                    Toast.makeText(activity, R.string.multiplayer_join_room_failed, Toast.LENGTH_LONG).show()
+                    val errorMessage = formatNetPlayStatus(activity, resultCode, "")
+                    Toast.makeText(activity, errorMessage, Toast.LENGTH_LONG).show()
                 }
             }
         }
