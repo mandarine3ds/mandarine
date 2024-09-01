@@ -52,8 +52,8 @@ void VirtualMemoryArea::serialize(Archive& ar, const unsigned int) {
 }
 SERIALIZE_IMPL(VirtualMemoryArea)
 
-VMManager::VMManager(Memory::MemorySystem& memory, Kernel::Process& proc)
-    : page_table(std::make_shared<Memory::PageTable>()), memory(memory), process(proc) {
+VMManager::VMManager(Kernel::KernelSystem& kernel, Kernel::Process& proc)
+    : page_table(std::make_shared<Memory::PageTable>()), kernel(kernel), process(proc) {
     Reset();
 }
 
@@ -365,16 +365,16 @@ VMManager::VMAIter VMManager::MergeAdjacent(VMAIter iter) {
 void VMManager::UpdatePageTableForVMA(const VirtualMemoryArea& vma) {
     switch (vma.type) {
     case VMAType::Free:
-        memory.UnmapRegion(*page_table, vma.base, vma.size);
+        kernel.memory.UnmapRegion(*page_table, vma.base, vma.size);
         break;
     case VMAType::BackingMemory:
-        memory.MapMemoryRegion(*page_table, vma.base, vma.size, vma.backing_memory);
+        kernel.memory.MapMemoryRegion(*page_table, vma.base, vma.size, vma.backing_memory);
         break;
     }
 
-    auto plgldr = Service::PLGLDR::GetService(Core::System::GetInstance());
+    auto plgldr = Service::PLGLDR::GetService(kernel);
     if (plgldr)
-        plgldr->OnMemoryChanged(process, Core::System::GetInstance().Kernel());
+        plgldr->OnMemoryChanged(process, kernel);
 }
 
 ResultVal<std::vector<std::pair<MemoryRef, u32>>> VMManager::GetBackingBlocksForRange(VAddr address,

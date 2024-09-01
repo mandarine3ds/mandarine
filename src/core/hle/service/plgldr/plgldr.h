@@ -29,6 +29,10 @@ namespace Core {
 class System;
 }
 
+namespace Kernel {
+class KernelSystem;
+}
+
 namespace Service::PLGLDR {
 
 class PLG_LDR final : public ServiceFramework<PLG_LDR> {
@@ -134,7 +138,7 @@ private:
     friend class boost::serialization::access;
 };
 
-std::shared_ptr<PLG_LDR> GetService(Core::System& system);
+std::shared_ptr<PLG_LDR> GetService(Kernel::KernelSystem& kernel);
 
 void InstallInterfaces(Core::System& system);
 

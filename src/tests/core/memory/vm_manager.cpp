@@ -22,7 +22,7 @@ TEST_CASE("Memory Basics", "[kernel][memory]") {
     Kernel::Process process(kernel);
     SECTION("mapping memory") {
         // Because of the PageTable, Kernel::VMManager is too big to be created on the stack.
-        auto manager = std::make_unique<Kernel::VMManager>(memory, process);
+        auto manager = std::make_unique<Kernel::VMManager>(kernel, process);
         auto result =
             manager->MapBackingMemory(Memory::HEAP_VADDR, block, static_cast<u32>(block.GetSize()),
                                       Kernel::MemoryState::Private);
@@ -38,7 +38,7 @@ TEST_CASE("Memory Basics", "[kernel][memory]") {
 
     SECTION("unmapping memory") {
         // Because of the PageTable, Kernel::VMManager is too big to be created on the stack.
-        auto manager = std::make_unique<Kernel::VMManager>(memory, process);
+        auto manager = std::make_unique<Kernel::VMManager>(kernel, process);
         auto result =
             manager->MapBackingMemory(Memory::HEAP_VADDR, block, static_cast<u32>(block.GetSize()),
                                       Kernel::MemoryState::Private);
@@ -55,7 +55,7 @@ TEST_CASE("Memory Basics", "[kernel][memory]") {
 
     SECTION("changing memory permissions") {
         // Because of the PageTable, Kernel::VMManager is too big to be created on the stack.
-        auto manager = std::make_unique<Kernel::VMManager>(memory, process);
+        auto manager = std::make_unique<Kernel::VMManager>(kernel, process);
         auto result =
             manager->MapBackingMemory(Memory::HEAP_VADDR, block, static_cast<u32>(block.GetSize()),
                                       Kernel::MemoryState::Private);
@@ -75,7 +75,7 @@ TEST_CASE("Memory Basics", "[kernel][memory]") {
 
     SECTION("changing memory state") {
         // Because of the PageTable, Kernel::VMManager is too big to be created on the stack.
-        auto manager = std::make_unique<Kernel::VMManager>(memory, process);
+        auto manager = std::make_unique<Kernel::VMManager>(kernel, process);
         auto result =
             manager->MapBackingMemory(Memory::HEAP_VADDR, block, static_cast<u32>(block.GetSize()),
                                       Kernel::MemoryState::Private);
