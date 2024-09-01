@@ -697,6 +697,14 @@ void RendererVulkan::DrawTopScreen(const Layout::FramebufferLayout& layout,
                          top_screen_top, top_screen_width / 2, top_screen_height, orientation);
         break;
     }
+    case Settings::StereoRenderOption::ReverseSideBySide: {
+        DrawSingleScreen(1, top_screen_left / 2, top_screen_top, top_screen_width / 2,
+                         top_screen_height, orientation);
+        draw_info.layer = 1;
+        DrawSingleScreen(0, static_cast<float>((top_screen_left / 2) + (layout.width / 2)),
+                         top_screen_top, top_screen_width / 2, top_screen_height, orientation);
+        break;
+    }
     case Settings::StereoRenderOption::CardboardVR: {
         DrawSingleScreen(0, top_screen_left, top_screen_top, top_screen_width, top_screen_height,
                          orientation);
@@ -736,7 +744,8 @@ void RendererVulkan::DrawBottomScreen(const Layout::FramebufferLayout& layout,
                          bottom_screen_height, orientation);
         break;
     }
-    case Settings::StereoRenderOption::SideBySide: {
+    case Settings::StereoRenderOption::SideBySide: // Bottom screen is identical on both sides
+    case Settings::StereoRenderOption::ReverseSideBySide: {
         DrawSingleScreen(2, bottom_screen_left / 2, bottom_screen_top, bottom_screen_width / 2,
                          bottom_screen_height, orientation);
         draw_info.layer = 1;

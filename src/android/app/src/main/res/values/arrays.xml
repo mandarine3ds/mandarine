@@ -168,6 +168,7 @@
     <string-array name="render3dModes">
         <item>@string/off</item>
         <item>@string/side_by_side</item>
+        <item>@string/reverse_side_by_side</item>
         <item>@string/anaglyph</item>
         <item>@string/interlaced</item>
         <item>@string/reverse_interlaced</item>
@@ -181,6 +182,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </integer-array>
 
     <string-array name="graphicsApiNames">
