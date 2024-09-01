@@ -27,6 +27,8 @@ add_library(mandarine-android SHARED
     ndk_motion.h
     system_save_game.cpp
     native_log.cpp
+    util.cpp
+    util.h
 )
 
 target_link_libraries(mandarine-android PRIVATE audio_core mandarine_common mandarine_core input_common network)

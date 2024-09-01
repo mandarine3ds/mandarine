@@ -52,6 +52,7 @@
 #include "jni/id_cache.h"
 #include "jni/input_manager.h"
 #include "jni/ndk_motion.h"
+#include "jni/util.h"
 #include "video_core/debug_utils/debug_utils.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
@@ -350,7 +351,7 @@ void Java_io_github_mandarine3ds_mandarine_NativeLibrary_swapScreens([[maybe_unu
     Settings::values.swap_screen = swap_screens;
     auto& system = Core::System::GetInstance();
     if (system.IsPoweredOn()) {
-        system.GPU().Renderer().UpdateCurrentFramebufferLayout(!(rotation % 2));
+        system.GPU().Renderer().UpdateCurrentFramebufferLayout(IsPortraitMode());
     }
     InputManager::screen_rotation = rotation;
     Camera::NDK::g_rotation = rotation;
