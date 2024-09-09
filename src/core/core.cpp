@@ -262,7 +262,7 @@ static void LoadOverrides(u64 title_id) {
     }
 
     // Fully tested games that runs better and without issues with this tweak.
-    const std::array<u64, 8> force_hw_vertex_shaders_ids = {
+    const std::array<u64, 8> force_hw_vs_ids = {
         0x0004000000068B00, // Tales of the Abyss / Pac Man Party 3D
         0x0004000000061300, // Tales of the Abyss / Pac Man Party 3D
         0x000400000004A700, // Tales of the Abyss / Pac Man Party 3D
@@ -272,7 +272,7 @@ static void LoadOverrides(u64 title_id) {
         0x000400000016AD00, // Dragon Quest Monsters Joker 3
         0x00040000001ACB00  // Dragon Quest Monsters Joker 3 Professional
     };
-    for (auto id : force_hw_vertex_shaders_ids) {
+    for (auto id : force_hw_vs_ids) {
         if (title_id == id) {
             Settings::values.force_hw_vertex_shaders = true;
             break;
