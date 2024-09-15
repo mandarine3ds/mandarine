@@ -58,11 +58,7 @@ Memory: 2GB of RAM. 4GB is recommended
 # Which build should I use?
 
 - MSVC is generally good for most users
-- MSYS2 is good for users who may not want to install Microsoft Visual C++ runtime / Hate the open source MSYS2 arrrrrgh
-
-## Which exe to launch?
-
-- Do not launch mandarime-room.exe but mandarine.exe for the best citrea with different logo experience
+- MSYS2 is good for users who may not want to install Microsoft Visual C++ runtime / Hate the open source MSYS2
 
 ## ⚠️ Dev Builds (Pre-release software, may be buggy)
 
@@ -73,6 +69,10 @@ Memory: 2GB of RAM. 4GB is recommended
 | 🐧 Linux|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/linux-appimage.zip)|
 | 🍎 Mac OS|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/macos-universal.zip)|
 
+# Contribution
+
+Feel free to open a Pull Request. Even if you are new on coding, you will be respected on your work even if it doesn't get merged for some reason. I know how hard is coding, and I'll usually never decline your code just because the way it is coded or similar (not as other known projects). I'll try help you as long as my skills are enough for, and as long as your code doesn't cause any bug and works as expected, it will probably get merged.
+
 # Support
 
-In case you want to support my work and motivate me more to cherry-pick more commits form Lime3DS, feel free to check my [paypal](https://paypal.me/TLOZP).
+In case you want to support my work and motivate me more with the project, feel free to check my [paypal](https://paypal.me/TLOZP).
