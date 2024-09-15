@@ -5,6 +5,7 @@
 package io.github.mandarine3ds.mandarine.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -158,7 +159,7 @@ class HomeSettingsFragment : Fragment() {
                 R.string.select_mandarine_user_folder,
                 R.string.select_mandarine_user_folder_home_description,
                 R.drawable.ic_home,
-                { mainActivity.openMandarineDirectory.launch(null) },
+                { mainActivity.openMandarineDirectory.launch(Uri.parse(null)) },
                 details = homeViewModel.userDir
             ),
             HomeSetting(

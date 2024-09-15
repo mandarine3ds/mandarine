@@ -60,7 +60,7 @@ class MandarineDirectoryDialogFragment : DialogFragment() {
             }
             .setNegativeButton(android.R.string.cancel) { _: DialogInterface?, _: Int ->
                 if (!PermissionsHandler.hasWriteAccess(requireContext())) {
-                    (requireActivity() as MainActivity).openMandarineDirectory.launch(null)
+                    (requireActivity() as MainActivity).openMandarineDirectory.launch(Uri.parse(null))
                 }
             }
             .show()

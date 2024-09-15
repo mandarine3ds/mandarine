@@ -303,9 +303,7 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
             windowInsets
         }
 
-    val openMandarineDirectory = registerForActivityResult<Uri, Uri>(
-        ActivityResultContracts.OpenDocumentTree()
-    ) { result: Uri? ->
+    val openMandarineDirectory = registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { result: Uri? ->
         if (result == null) {
             return@registerForActivityResult
         }

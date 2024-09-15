@@ -6,6 +6,7 @@ package io.github.mandarine3ds.mandarine.fragments
 
 import android.app.Dialog
 import android.content.DialogInterface
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
@@ -26,7 +27,7 @@ class SelectUserDirectoryDialogFragment : DialogFragment() {
             .setTitle(R.string.select_mandarine_user_folder)
             .setMessage(R.string.cannot_skip_directory_description)
             .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                mainActivity.openMandarineDirectory.launch(null)
+                mainActivity.openMandarineDirectory.launch(Uri.parse(null))
             }
             .show()
     }
