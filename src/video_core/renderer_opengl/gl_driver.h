@@ -27,18 +27,13 @@ enum class Vendor {
 enum class DriverBug {
     // AMD drivers sometimes freezes when one shader stage is changed but not the others.
     ShaderStageChangeFreeze = 1 << 0,
-    // On AMD drivers there is a strange crash in indexed drawing. The crash happens when the buffer
-    // read position is near the end and is an out-of-bound access to the vertex buffer. This is
-    // probably a bug in the driver and is related to the usage of vec3<byte> attributes in the
-    // vertex array. Doubling the allocation size for the vertex buffer seems to avoid the crash.
-    VertexArrayOutOfBound = 1 << 1,
     // On AMD and Intel drivers on Windows glTextureView produces incorrect results
-    BrokenTextureView = 1 << 2,
+    BrokenTextureView = 1 << 1,
     // On Haswell and Broadwell Intel drivers glClearTexSubImage produces a black screen
-    BrokenClearTexture = 1 << 3,
+    BrokenClearTexture = 1 << 2,
     // On some Mali GPUs, the texture buffer size is small and has reduced performance
     // if the buffer is close to the maximum texture size
-    SlowTextureBufferWithBigSize = 1 << 4,
+    SlowTextureBufferWithBigSize = 1 << 3,
 };
 
 /**

@@ -189,7 +189,7 @@ void Driver::FindBugs() {
 
     // TODO: Check if these have been fixed in the newer driver
     if (vendor == Vendor::AMD) {
-        bugs |= DriverBug::ShaderStageChangeFreeze | DriverBug::VertexArrayOutOfBound;
+        bugs |= DriverBug::ShaderStageChangeFreeze;
     }
 
     if (vendor == Vendor::AMD || (vendor == Vendor::Intel && !is_linux)) {
