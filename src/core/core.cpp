@@ -499,7 +499,7 @@ System::ResultStatus System::Init(Frontend::EmuWindow& emu_window,
     kernel->SetCPUs(cpu_cores);
     kernel->SetRunningCPU(cpu_cores[0].get());
 
-    ReduceDowncountSlice(Settings::values.reduce_downcount_slice, num_cores);
+    ReduceDowncountSlice(Settings::values.reduce_downcount_slice.GetValue(), num_cores);
 
     const auto audio_emulation = Settings::values.audio_emulation.GetValue();
     if (audio_emulation == Settings::AudioEmulation::HLE) {
