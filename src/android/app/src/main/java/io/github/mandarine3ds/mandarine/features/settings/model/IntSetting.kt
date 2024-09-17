@@ -94,7 +94,6 @@ enum class IntSetting(
             LLE_APPLETS,
             GRAPHICS_API,
             VSYNC,
-            REDUCE_DOWNCOUNT_SLICE,
             DEBUG_RENDERER,
             CPU_JIT,
             ASYNC_CUSTOM_LOADING,

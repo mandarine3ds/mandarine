@@ -218,7 +218,6 @@ void Timing::Timer::Advance() {
     executed_ticks += cycles_executed;
     slice_length = 0;
     downcount = 0;
-    downcount_slice = 0;
 
     is_timer_sane = true;
 
