@@ -10,7 +10,7 @@
 
 namespace OpenGL {
 
-OGLStreamBuffer::OGLStreamBuffer(Driver& driver, GLenum target, GLsizeiptr size)
+OGLStreamBuffer::OGLStreamBuffer(GLenum target, GLsizeiptr size)
     : gl_target(target), buffer_size(size) {
     gl_buffer.Create();
     glBindBuffer(gl_target, gl_buffer.handle);

@@ -13,7 +13,7 @@ class Driver;
 
 class OGLStreamBuffer : private NonCopyable {
 public:
-    explicit OGLStreamBuffer(Driver& driver, GLenum target, GLsizeiptr size);
+    explicit OGLStreamBuffer(GLenum target, GLsizeiptr size);
     ~OGLStreamBuffer();
 
     GLuint GetHandle() const;
