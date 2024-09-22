@@ -85,7 +85,9 @@ void LogSettings() {
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
     log_setting("Core_FrameSkip", values.frame_skip.GetValue());
     log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
-    log_setting("Core_CPUTicks", values.cpu_ticks.GetValue());
+    if (values.custom_cpu_ticks) {
+        log_setting("Core_CPUTicks", values.cpu_ticks.GetValue());
+    }
     log_setting("Core_ReduceDowncountSlice", values.reduce_downcount_slice.GetValue());
     log_setting("Core_PriorityBoostStarvedThreads",
                 values.priority_boost_starved_threads.GetValue());
@@ -134,7 +136,7 @@ void LogSettings() {
     log_setting("Audio_InputType", values.input_type.GetValue());
     log_setting("Audio_InputDevice", values.input_device.GetValue());
     log_setting("Audio_EnableAudioStretching", values.enable_audio_stretching.GetValue());
-    log_setting("Audio_EnableRealtime", values.enable_realtime_audio.GetValue());
+    log_setting("Audio_EnableRealtimeAudio", values.enable_realtime_audio.GetValue());
     using namespace Service::CAM;
     log_setting("Camera_OuterRightName", values.camera_name[OuterRightCamera]);
     log_setting("Camera_OuterRightConfig", values.camera_config[OuterRightCamera]);
