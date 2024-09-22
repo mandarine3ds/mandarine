@@ -103,7 +103,6 @@ void main() {
     vec4 tc = textureLodOffset(input_texture, tex_coord, 0.0, ivec2(0, 1));
     vec4 tr = textureLodOffset(input_texture, tex_coord, 0.0, ivec2(1, 1));
 
-
     tex_size = vec2(textureSize(input_texture, 0));
     inv_tex_size = 1.0 / tex_size;
     center_matrix = mat4x3(cc.rgb, cc.rgb, cc.rgb, cc.rgb);

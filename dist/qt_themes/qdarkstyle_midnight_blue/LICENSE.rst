@@ -25,7 +25,6 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 Creative Commons Attribution International 4.0 - Images
 -------------------------------------------------------
 
@@ -79,7 +78,6 @@ exhaustive, and do not form part of our licenses.
    Although not required by our licenses, you are encouraged to respect
    those requests where reasonable. `More considerations for the
    public <http://wiki.creativecommons.org/Considerations_for_licensors_and_licensees#Considerations_for_licensees>`__.
-
 
 Creative Commons Attribution 4.0 International Public License
 -------------------------------------------------------------

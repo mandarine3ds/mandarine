@@ -8,7 +8,6 @@ object EmulationLifecycleUtil {
     private var shutdownHooks: MutableList<Runnable> = ArrayList()
     private var pauseResumeHooks: MutableList<Runnable> = ArrayList()
 
-
     fun closeGame() {
         shutdownHooks.forEach(Runnable::run)
     }

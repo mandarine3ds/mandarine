@@ -85,7 +85,6 @@ else()
     add_subdirectory(fmt EXCLUDE_FROM_ALL)
 endif()
 
-
 # Xbyak
 if ("x86_64" IN_LIST ARCHITECTURE)
     if(USE_SYSTEM_XBYAK)

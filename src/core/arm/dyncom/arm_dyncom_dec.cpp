@@ -232,7 +232,6 @@ const InstructionSetEncodingItem arm_instruction[] = {
     { "bbl", 1, 0,         { 25, 27, 0x00000005 }},
 };
 
-
 const InstructionSetEncodingItem arm_exclusion_code[] = {
     { "vmla", 0, ARMVFP2,      { 0 }},
     { "vmls", 0, ARMVFP2,      { 0 }},

@@ -198,7 +198,6 @@ if (NOT DEFINED ARCHITECTURE)
 endif()
 message(STATUS "Target architecture: ${ARCHITECTURE}")
 
-
 # Configure C++ standard
 # ===========================
 
@@ -215,7 +214,6 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN NO)
 
 # set up output paths for executable binaries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin/$<CONFIG>)
-
 
 # System imported libraries
 # ======================

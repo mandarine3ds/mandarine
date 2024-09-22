@@ -338,7 +338,6 @@ consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
 
-
 The icons used in this project have the following licenses:
 
 Icon Name                          | License       | Origin/Author

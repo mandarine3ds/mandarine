@@ -384,7 +384,6 @@ QMenuBar::item:pressed {
   padding-bottom: 0px;
 }
 
-
 /* QMenu ------------------------------------------------------------------
 
 https://doc.qt.io/qt-5/stylesheet-examples.html#customizing-qmenu
@@ -500,7 +499,6 @@ QAbstractScrollArea {
   /* fix #159 */
   color: #F0F0F0;
 }
-
 
 QAbstractScrollArea:disabled {
   color: #787878;

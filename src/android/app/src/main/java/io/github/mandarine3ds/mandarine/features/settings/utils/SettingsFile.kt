@@ -28,7 +28,6 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.util.TreeMap
 
-
 /**
  * Contains static methods for interacting with .ini files in which settings are stored.
  */
