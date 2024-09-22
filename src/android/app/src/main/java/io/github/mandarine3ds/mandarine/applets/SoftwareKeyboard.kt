@@ -56,7 +56,7 @@ object SoftwareKeyboard {
     @JvmStatic
     fun execute(config: KeyboardConfig): KeyboardData {
         if (config.buttonConfig == ButtonConfig.NONE) {
-            Log.error("Unexpected button config None")
+            Log.error("Unexpected button config NONE")
             return KeyboardData(0, "")
         }
         NativeLibrary.sEmulationActivity.get()!!.runOnUiThread { executeImpl(config) }

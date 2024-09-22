@@ -36,6 +36,7 @@ enum class BooleanSetting(
 
     companion object {
         private val NOT_RUNTIME_EDITABLE = listOf(
+            ASYNC_SHADERS,
             ADRENO_GPU_BOOST,
             PLUGIN_LOADER,
             ALLOW_PLUGIN_LOADER
