@@ -439,14 +439,14 @@ jobject Java_io_github_mandarine3ds_mandarine_NativeLibrary_downloadTitleFromNus
 }
 
 [[maybe_unused]] bool SupportsCustomDriver() {
-    return android_get_device_api_level() >= 30;
+    return android_get_device_api_level() >= 28;
 }
 
 jboolean JNICALL
 Java_io_github_mandarine3ds_mandarine_utils_GpuDriverHelper_supportsCustomDriverLoading(
     JNIEnv* env, jobject instance) {
 #ifdef MANDARINE_ARCH_arm64
-    // If SDK is higher than 30, allow custom drivers
+    // If SDK is higher than 28, allow custom drivers
     return SupportsCustomDriver();
 #else
     return false;
