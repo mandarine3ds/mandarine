@@ -438,21 +438,15 @@ jobject Java_io_github_mandarine3ds_mandarine_NativeLibrary_downloadTitleFromNus
     return IDCache::GetJavaCiaInstallStatus(Service::AM::InstallStatus::Success);
 }
 
-[[maybe_unused]] static bool CheckKgslPresent() {
-    constexpr auto KgslPath{"/dev/kgsl-3d0"};
-
-    return access(KgslPath, F_OK) == 0;
-}
-
 [[maybe_unused]] bool SupportsCustomDriver() {
-    return android_get_device_api_level() >= 28 && CheckKgslPresent();
+    return android_get_device_api_level() >= 30;
 }
 
 jboolean JNICALL
 Java_io_github_mandarine3ds_mandarine_utils_GpuDriverHelper_supportsCustomDriverLoading(
     JNIEnv* env, jobject instance) {
 #ifdef MANDARINE_ARCH_arm64
-    // If the KGSL device exists custom drivers can be loaded using adrenotools
+    // If SDK is higher than 30, allow custom drivers
     return SupportsCustomDriver();
 #else
     return false;
