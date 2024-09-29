@@ -214,6 +214,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
         sl.apply {
             add(
                 SwitchSetting(
+                    BooleanSetting.SUSTAINED_PERFORMANCE,
+                    R.string.sustained_performance,
+                    R.string.sustained_performance_description,
+                    BooleanSetting.SUSTAINED_PERFORMANCE.key,
+                    BooleanSetting.SUSTAINED_PERFORMANCE.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
                     BooleanSetting.EXPAND_TO_CUTOUT_AREA,
                     R.string.expand_to_cutout_area,
                     R.string.expand_to_cutout_area_description,

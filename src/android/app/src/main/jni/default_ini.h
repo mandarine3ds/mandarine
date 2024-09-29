@@ -260,6 +260,10 @@ custom_portrait_bottom_height =
 # 0 (default): Top Screen is prominent, 1: Bottom Screen is prominent
 swap_screen =
 
+# May reduce thermal throttling by reducing clock speed slightly.
+# 0 (default): Off, 1: On
+sustained_performance =
+
 # Expands the display area to include the cutout (or notch) area while gaming on landscape layout.
 # 0 (default): Off, 1: On
 expand_to_cutout_area =

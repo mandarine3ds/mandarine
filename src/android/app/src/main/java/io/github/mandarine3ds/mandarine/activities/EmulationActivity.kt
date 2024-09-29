@@ -204,6 +204,8 @@ class EmulationActivity : AppCompatActivity() {
 
         window.attributes = attributes
 
+        window.setSustainedPerformanceMode(BooleanSetting.SUSTAINED_PERFORMANCE.boolean)
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         WindowInsetsControllerCompat(window, window.decorView).let { controller ->

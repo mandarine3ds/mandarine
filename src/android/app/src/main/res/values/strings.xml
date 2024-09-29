@@ -249,6 +249,8 @@
     <string name="shaders_accurate_mul_description">Uses more accurate multiplication in hardware shaders, which may fix some graphical bugs. When enabled, performance will be reduced.</string>
     <string name="asynchronous_gpu">Enable asynchronous GPU emulation</string>
     <string name="asynchronous_gpu_description">Uses a separate thread to emulate the GPU asynchronously. When enabled, performance will be improved.</string>
+    <string name="sustained_performance">Enable Sustained Performance</string>
+    <string name="sustained_performance_description">May reduce thermal throttling by reducing clock speed slightly, at the cost of some performance.</string>
     <string name="expand_to_cutout_area">Expand to Cutout Area</string>
     <string name="expand_to_cutout_area_description">Expands the display area to include the cutout (or notch) area while gaming on landscape layout.</string>
     <string name="frame_skip">Frame Skip</string>
