@@ -101,7 +101,13 @@ class EmulationActivity : AppCompatActivity() {
         foregroundService = Intent(this, ForegroundService::class.java)
         startForegroundService(foregroundService)
 
-        EmulationLifecycleUtil.addShutdownHook(hook = { this.finish() })
+        EmulationLifecycleUtil.addShutdownHook(hook = {
+            if (intent.getBooleanExtra("launchedFromShortcut", false)) {
+                finishAffinity()
+            } else {
+                this.finish()
+            }
+        })
 
         isEmulationRunning = true
         instance = this

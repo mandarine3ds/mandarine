@@ -5,9 +5,13 @@
 package io.github.mandarine3ds.mandarine.model
 
 import android.os.Parcelable
+import android.content.Intent
+import android.net.Uri
 import java.util.HashSet
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
+import io.github.mandarine3ds.mandarine.MandarineApplication
+import io.github.mandarine3ds.mandarine.activities.EmulationActivity
 
 @Parcelize
 @Serializable
@@ -26,6 +30,16 @@ class Game(
 ) : Parcelable {
     val keyAddedToLibraryTime get() = "${filename}_AddedToLibraryTime"
     val keyLastPlayedTime get() = "${filename}_LastPlayed"
+
+    val launchIntent: Intent
+        get() = Intent(MandarineApplication.appContext, EmulationActivity::class.java).apply {
+            action = Intent.ACTION_VIEW
+            data = if (isInstalled) {
+                MandarineApplication.documentsTree.getUri(path)
+            } else {
+                Uri.parse(path)
+            }
+        }
 
     override fun equals(other: Any?): Boolean {
         if (other !is Game) {

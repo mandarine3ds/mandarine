@@ -13,6 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.Bitmap
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +26,10 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import android.graphics.drawable.Icon
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.color.MaterialColors
@@ -207,6 +215,24 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             val action = HomeNavigationDirections.actionGlobalEmulationActivity(holder.game)
             view.findNavController().navigate(action)
             bottomSheetDialog.dismiss()
+        }
+
+        binding.gameShortcut.setOnClickListener {
+            val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val bitmap = (binding.gameIcon.drawable as BitmapDrawable).bitmap
+                val icon = Icon.createWithBitmap(bitmap)
+
+                val shortcut = ShortcutInfo.Builder(context, game.title)
+                    .setShortLabel(game.title)
+                    .setIcon(icon)
+                    .setIntent(game.launchIntent.apply {
+                        putExtra("launchedFromShortcut", true)
+                    })
+                    .build()
+                shortcutManager.requestPinShortcut(shortcut, null)
+            }
         }
 
         binding.cheats.setOnClickListener {
