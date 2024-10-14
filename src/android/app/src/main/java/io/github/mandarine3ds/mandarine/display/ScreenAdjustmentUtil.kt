@@ -11,9 +11,16 @@ import io.github.mandarine3ds.mandarine.features.settings.model.IntSetting
 import io.github.mandarine3ds.mandarine.features.settings.model.Settings
 import io.github.mandarine3ds.mandarine.features.settings.utils.SettingsFile
 import io.github.mandarine3ds.mandarine.utils.EmulationMenuSettings
+import android.content.Context
+import android.content.pm.ActivityInfo
+import android.app.Activity
+import io.github.mandarine3ds.mandarine.R
 
-class ScreenAdjustmentUtil(private val windowManager: WindowManager,
-                           private val settings: Settings) {
+class ScreenAdjustmentUtil(
+    private val context: Context,
+    private val windowManager: WindowManager,
+    private val settings: Settings,
+) {
     fun swapScreen() {
         val isEnabled = !EmulationMenuSettings.swapScreens
         EmulationMenuSettings.swapScreens = isEnabled
@@ -26,9 +33,9 @@ class ScreenAdjustmentUtil(private val windowManager: WindowManager,
     }
 
     fun cycleLayouts() {
-        // TODO: figure out how to pull these from R.array
-        val landscapeValues = intArrayOf(2, 1, 3, 4, 0, 5)
-        val portraitValues = intArrayOf(0, 1)
+        val landscapeValues = context.resources.getIntArray(R.array.landscapeValues)
+        val portraitValues = context.resources.getIntArray(R.array.portraitValues)
+
         if (NativeLibrary.isPortraitMode) {
             val currentLayout = IntSetting.PORTRAIT_SCREEN_LAYOUT.int
             val pos = portraitValues.indexOf(currentLayout)
@@ -54,5 +61,12 @@ class ScreenAdjustmentUtil(private val windowManager: WindowManager,
         settings.saveSetting(IntSetting.SCREEN_LAYOUT, SettingsFile.FILE_NAME_CONFIG)
         NativeLibrary.reloadSettings()
         NativeLibrary.updateFramebuffer(NativeLibrary.isPortraitMode)
+    }
+
+    fun changeActivityOrientation(orientationOption: Int) {
+        val activity = context as? Activity ?: return
+        IntSetting.ORIENTATION_OPTION.int = orientationOption
+        settings.saveSetting(IntSetting.ORIENTATION_OPTION, SettingsFile.FILE_NAME_CONFIG)
+        activity.requestedOrientation = orientationOption
     }
 }
