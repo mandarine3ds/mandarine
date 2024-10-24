@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    app:strokeWidth="1dp"
+    app:strokeWidth="0dp"
     app:cardCornerRadius="24dp">
 
     <LinearLayout

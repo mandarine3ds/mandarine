@@ -16,10 +16,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
+import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 
 object NetPlayManager {
-    private external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String): Int
-    private external fun netPlayJoinRoom(ipAddress: String, port: Int, username: String): Int
+    external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String): Int
+    external fun netPlayJoinRoom(ipAddress: String, port: Int, username: String): Int
     external fun netPlayRoomInfo(): Array<String>
     external fun netPlayIsJoined(): Boolean
     external fun netPlayIsHostedRoom(): Boolean
@@ -28,118 +29,43 @@ object NetPlayManager {
     external fun netPlayLeaveRoom()
     external fun netPlayGetConsoleId(): String
 
-    private fun showNetPlayDialog(
-        activity: Activity,
-        isCreateRoom: Boolean,
-        onConfirm: (String, Int, String) -> Int
-    ) {
-        val binding = DialogMultiplayerRoomBinding.inflate(activity.layoutInflater)
-        val dialog = MaterialAlertDialogBuilder(activity)
-            .setCancelable(true)
-            .setView(binding.root)
-            .show()
-
-        binding.textTitle.setText(
-            if (isCreateRoom) R.string.multiplayer_create_room
-            else R.string.multiplayer_join_room
-        )
-
-        binding.ipAddress.setText(
-            if (isCreateRoom) getIpAddressByWifi(activity)
-            else getRoomAddress(activity)
-        )
-        binding.ipPort.setText(getRoomPort(activity))
-        binding.username.setText(getUsername(activity))
-
-        binding.btnConfirm.setOnClickListener {
-            binding.btnConfirm.isEnabled = false
-
-            val ipAddress = binding.ipAddress.text.toString()
-            val username = binding.username.text.toString()
-            val portStr = binding.ipPort.text.toString()
-            val port = try {
-                portStr.toInt()
-            } catch (e: Exception) {
-                Toast.makeText(activity, R.string.multiplayer_port_invalid, Toast.LENGTH_LONG).show()
-                binding.btnConfirm.isEnabled = true
-                return@setOnClickListener
-            }
-
-            if (ipAddress.length < 7 || username.length < 5) {
-                Toast.makeText(activity, R.string.multiplayer_input_invalid, Toast.LENGTH_LONG).show()
-                binding.btnConfirm.isEnabled = true
-            } else {
-                val result = onConfirm(ipAddress, port, username)
-                if (result == 0) {
-                    if (isCreateRoom) {
-                        setUsername(activity, username)
-                        setRoomPort(activity, portStr)
-                    } else {
-                        setRoomAddress(activity, ipAddress)
-                        setUsername(activity, username)
-                        setRoomPort(activity, portStr)
-                    }
-                    Handler(Looper.getMainLooper()).post {
-                        Toast.makeText(
-                            MandarineApplication.appContext,
-                            if (isCreateRoom) R.string.multiplayer_create_room_success
-                            else R.string.multiplayer_join_room_success,
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    dialog.dismiss()
-                } else {
-                    Handler(Looper.getMainLooper()).post {
-                        Toast.makeText(
-                            MandarineApplication.appContext,
-                            R.string.multiplayer_could_not_connect,
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    binding.btnConfirm.isEnabled = true
-                }
-            }
-        }
-    }
-
     fun showCreateRoomDialog(activity: Activity) {
-        showNetPlayDialog(activity, true) { ip, port, username ->
-            netPlayCreateRoom(ip, port, username)
-        }
+        val dialog = NetPlayDialog(activity)
+        dialog.showNetPlayInputDialog(true)
     }
 
     fun showJoinRoomDialog(activity: Activity) {
-        showNetPlayDialog(activity, false) { ip, port, username ->
-            netPlayJoinRoom(ip, port, username)
-        }
+        val dialog = NetPlayDialog(activity)
+        dialog.showNetPlayInputDialog(false)
     }
-    private fun getUsername(activity: Activity): String {        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
+
+    fun getUsername(activity: Activity): String {        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val name = "Mandarine${(Math.random() * 100).toInt()}"
         return prefs.getString("NetPlayUsername", name) ?: name
     }
 
-    private fun setUsername(activity: Activity, name: String) {
+    fun setUsername(activity: Activity, name: String) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         prefs.edit().putString("NetPlayUsername", name).apply()
     }
 
-    private fun getRoomAddress(activity: Activity): String {
+    fun getRoomAddress(activity: Activity): String {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val address = getIpAddressByWifi(activity)
         return prefs.getString("NetPlayRoomAddress", address) ?: address
     }
 
-    private fun setRoomAddress(activity: Activity, address: String) {
+    fun setRoomAddress(activity: Activity, address: String) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         prefs.edit().putString("NetPlayRoomAddress", address).apply()
     }
 
-    private fun getRoomPort(activity: Activity): String {
+    fun getRoomPort(activity: Activity): String {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         return prefs.getString("NetPlayRoomPort", "24872") ?: "24872"
     }
 
-    private fun setRoomPort(activity: Activity, port: String) {
+    fun setRoomPort(activity: Activity, port: String) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         prefs.edit().putString("NetPlayRoomPort", port).apply()
     }
@@ -185,7 +111,7 @@ object NetPlayManager {
         }
     }
 
-    private fun getIpAddressByWifi(activity: Activity): String {
+    fun getIpAddressByWifi(activity: Activity): String {
         var ipAddress = 0
         val wifiManager = activity.getSystemService(WifiManager::class.java)
         val wifiInfo = wifiManager.connectionInfo

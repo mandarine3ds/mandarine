@@ -4,9 +4,7 @@
 
 package io.github.mandarine3ds.mandarine.dialogs
 
-import android.app.Activity
 import android.content.Context
-import android.content.ContextWrapper
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerBinding
+import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
 import io.github.mandarine3ds.mandarine.databinding.ItemButtonNetplayBinding
 import io.github.mandarine3ds.mandarine.databinding.ItemTextNetplayBinding
 import io.github.mandarine3ds.mandarine.utils.NetPlayManager
 import io.github.mandarine3ds.mandarine.utils.CompatUtils
+import android.widget.Toast
+import io.github.mandarine3ds.mandarine.MandarineApplication
+import android.os.Handler
+import android.os.Looper
 
 class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
     private lateinit var adapter: NetPlayAdapter
@@ -72,15 +75,13 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             // Views are already initialized in property declaration
         }
         override fun onClick(clicked: View) {
-            val activity = CompatUtils.findActivity(context)
-
             when (netPlayItem.option) {
                 NetPlayItems.MULTIPLAYER_CREATE_ROOM -> {
-                    NetPlayManager.showCreateRoomDialog(activity)
+                    showNetPlayInputDialog(true)
                     dismiss()
                 }
                 NetPlayItems.MULTIPLAYER_JOIN_ROOM -> {
-                    NetPlayManager.showJoinRoomDialog(activity)
+                    showNetPlayInputDialog(false)
                     dismiss()
                 }
                 NetPlayItems.MULTIPLAYER_EXIT_ROOM -> {
@@ -175,5 +176,77 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
         override fun getItemCount(): Int {
             return netPlayItems.size
         }
+    }
+
+    fun showNetPlayInputDialog(isCreateRoom: Boolean) {
+        val activity = CompatUtils.findActivity(context)
+        val dialog = BaseSheetDialog(activity)
+        val binding = DialogMultiplayerRoomBinding.inflate(LayoutInflater.from(activity))
+        dialog.setContentView(binding.root)
+
+        binding.textTitle.text = activity.getString(
+            if (isCreateRoom) R.string.multiplayer_create_room
+            else R.string.multiplayer_join_room
+        )
+
+        binding.ipAddress.setText(if (isCreateRoom) NetPlayManager.getIpAddressByWifi(activity) else NetPlayManager.getRoomAddress(activity))
+        binding.ipPort.setText(NetPlayManager.getRoomPort(activity))
+        binding.username.setText(NetPlayManager.getUsername(activity))
+
+        binding.btnConfirm.setOnClickListener {
+            binding.btnConfirm.isEnabled = false
+            binding.btnConfirm.text = activity.getString(R.string.disabled_button_text)
+
+            val ipAddress = binding.ipAddress.text.toString()
+            val username = binding.username.text.toString()
+            val portStr = binding.ipPort.text.toString()
+            val port = try {
+                portStr.toInt()
+            } catch (e: Exception) {
+                Toast.makeText(activity, R.string.multiplayer_port_invalid, Toast.LENGTH_LONG).show()
+                binding.btnConfirm.isEnabled = true
+                binding.btnConfirm.text = activity.getString(R.string.original_button_text)
+                return@setOnClickListener
+            }
+
+            if (ipAddress.length < 7 || username.length < 5) {
+                Toast.makeText(activity, R.string.multiplayer_input_invalid, Toast.LENGTH_LONG).show()
+                binding.btnConfirm.isEnabled = true
+                binding.btnConfirm.text = activity.getString(R.string.original_button_text)
+            } else {
+                Handler(Looper.getMainLooper()).post {
+                    val operation: (String, Int, String) -> Int = if (isCreateRoom) {
+                        { ip, port, username -> NetPlayManager.netPlayCreateRoom(ip, port, username) }
+                    } else {
+                        { ip, port, username -> NetPlayManager.netPlayJoinRoom(ip, port, username) }
+                    }
+
+                    val result = operation(ipAddress, port, username)
+                    if (result == 0) {
+                        if (isCreateRoom) {
+                            NetPlayManager.setUsername(activity, username)
+                            NetPlayManager.setRoomPort(activity, portStr)
+                        } else {
+                            NetPlayManager.setRoomAddress(activity, ipAddress)
+                            NetPlayManager.setUsername(activity, username)
+                            NetPlayManager.setRoomPort(activity, portStr)
+                        }
+                        Toast.makeText(
+                            MandarineApplication.appContext,
+                            if (isCreateRoom) R.string.multiplayer_create_room_success
+                            else R.string.multiplayer_join_room_success,
+                            Toast.LENGTH_LONG
+                        ).show()
+                        dialog.dismiss()
+                    } else {
+                        Toast.makeText(activity, R.string.multiplayer_could_not_connect, Toast.LENGTH_LONG).show()
+                        binding.btnConfirm.isEnabled = true
+                        binding.btnConfirm.text = activity.getString(R.string.original_button_text)
+                    }
+                }
+            }
+        }
+
+        dialog.show()
     }
 }
