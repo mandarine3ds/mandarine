@@ -177,6 +177,9 @@ NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std:
 
     std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
     member->Join(username, console, ipaddress.c_str(), port);
+    if (!member->IsConnected()) {
+        return NetPlayStatus::COULD_NOT_CONNECT;
+    }
     return NetPlayStatus::NO_ERROR;
 }
 
