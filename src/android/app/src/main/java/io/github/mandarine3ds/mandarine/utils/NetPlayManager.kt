@@ -18,6 +18,16 @@ import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
 
 object NetPlayManager {
+    private external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String): Int
+    private external fun netPlayJoinRoom(ipAddress: String, port: Int, username: String): Int
+    external fun netPlayRoomInfo(): Array<String>
+    external fun netPlayIsJoined(): Boolean
+    external fun netPlayIsHostedRoom(): Boolean
+    external fun netPlaySendMessage(msg: String)
+    external fun netPlayKickUser(username: String)
+    external fun netPlayLeaveRoom()
+    external fun netPlayGetConsoleId(): String
+
     private fun showNetPlayDialog(
         activity: Activity,
         isCreateRoom: Boolean,
@@ -133,24 +143,6 @@ object NetPlayManager {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         prefs.edit().putString("NetPlayRoomPort", port).apply()
     }
-
-    private external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String): Int
-
-    private external fun netPlayJoinRoom(ipAddress: String, port: Int, username: String): Int
-
-    external fun netPlayRoomInfo(): Array<String>
-
-    external fun netPlayIsJoined(): Boolean
-
-    external fun netPlayIsHostedRoom(): Boolean
-
-    external fun netPlaySendMessage(msg: String)
-
-    external fun netPlayKickUser(username: String)
-
-    external fun netPlayLeaveRoom()
-
-    external fun netPlayGetConsoleId(): String
 
     fun addNetPlayMessage(type: Int, msg: String) {
         val context = MandarineApplication.appContext
