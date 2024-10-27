@@ -38,26 +38,22 @@ bool NetworkInit() {
     if (auto member = Network::GetRoomMember().lock()) {
         // register the network structs to use in slots and signals
         member->BindOnStateChanged([](const Network::RoomMember::State& state) {
-            NetPlayStatus status;
-            std::string msg;
-            switch (state) {
-            case Network::RoomMember::State::Uninitialized:
-                status = NetPlayStatus::ROOM_UNINITIALIZED;
-                break;
-            case Network::RoomMember::State::Idle:
-                status = NetPlayStatus::ROOM_IDLE;
-                break;
-            case Network::RoomMember::State::Joining:
-                status = NetPlayStatus::ROOM_JOINING;
-                break;
-            case Network::RoomMember::State::Joined:
-                status = NetPlayStatus::ROOM_JOINED;
-                break;
-            case Network::RoomMember::State::Moderator:
-                status = NetPlayStatus::ROOM_MODERATOR;
-                break;
+            if (state == Network::RoomMember::State::Joined ||
+                state == Network::RoomMember::State::Moderator) {
+                NetPlayStatus status;
+                std::string msg;
+                switch (state) {
+                case Network::RoomMember::State::Joined:
+                    status = NetPlayStatus::ROOM_JOINED;
+                    break;
+                case Network::RoomMember::State::Moderator:
+                    status = NetPlayStatus::ROOM_MODERATOR;
+                    break;
+                default:
+                    return;
+                }
+                AddNetPlayMessage(static_cast<int>(status), msg);
             }
-            AddNetPlayMessage(static_cast<int>(status), msg);
         });
         member->BindOnError([](const Network::RoomMember::Error& error) {
             NetPlayStatus status;
