@@ -86,10 +86,6 @@ object NetPlayManager {
                 setRoomPort(activity, portStr)
                 Toast.makeText(activity, R.string.multiplayer_join_room_success, Toast.LENGTH_LONG).show()
                 dialog.dismiss()
-            } else {
-                val resultCode = netPlayCreateRoom(ipAddress, port, username)
-                val errorMessage = formatNetPlayStatus(activity, resultCode, "")
-                Toast.makeText(activity, errorMessage, Toast.LENGTH_LONG).show()
             }
         }
     }
