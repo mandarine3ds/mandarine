@@ -4,21 +4,21 @@
 
 package io.github.mandarine3ds.mandarine.dialogs
 
+import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.github.mandarine3ds.mandarine.NativeLibrary
 import io.github.mandarine3ds.mandarine.R
-import io.github.mandarine3ds.mandarine.activities.EmulationActivity
 import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerBinding
 import io.github.mandarine3ds.mandarine.databinding.ItemButtonNetplayBinding
 import io.github.mandarine3ds.mandarine.databinding.ItemTextNetplayBinding
-import io.github.mandarine3ds.mandarine.ui.main.MainActivity
 import io.github.mandarine3ds.mandarine.utils.NetPlayManager
+import io.github.mandarine3ds.mandarine.utils.CompatUtils
 
 class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
     private lateinit var adapter: NetPlayAdapter
@@ -71,29 +71,16 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
         override fun findViews(root: View) {
             // Views are already initialized in property declaration
         }
-
-        // this code is kinda hacky, should be improved on the future
         override fun onClick(clicked: View) {
-            val emulationActivity = NativeLibrary.sEmulationActivity.get()
-            val mainActivity = MainActivity.get()
+            val activity = CompatUtils.findActivity(context)
 
             when (netPlayItem.option) {
                 NetPlayItems.MULTIPLAYER_CREATE_ROOM -> {
-                    if (mainActivity != null && !EmulationActivity.isRunning()) {
-                        NetPlayManager.showCreateRoomDialog(mainActivity)
-                    }
-                    if (emulationActivity != null) {
-                        NetPlayManager.showCreateRoomDialog(emulationActivity)
-                    }
+                    NetPlayManager.showCreateRoomDialog(activity)
                     dismiss()
                 }
                 NetPlayItems.MULTIPLAYER_JOIN_ROOM -> {
-                    if (mainActivity != null && !EmulationActivity.isRunning()) {
-                        NetPlayManager.showJoinRoomDialog(mainActivity)
-                    }
-                    if (emulationActivity != null) {
-                        NetPlayManager.showJoinRoomDialog(emulationActivity)
-                    }
+                    NetPlayManager.showJoinRoomDialog(activity)
                     dismiss()
                 }
                 NetPlayItems.MULTIPLAYER_EXIT_ROOM -> {

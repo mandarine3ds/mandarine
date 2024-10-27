@@ -7,14 +7,15 @@ package io.github.mandarine3ds.mandarine.utils
 import android.app.Activity
 import android.content.Context
 import android.net.wifi.WifiManager
+import android.os.Handler
+import android.os.Looper
 import android.text.format.Formatter
 import android.widget.Toast
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import io.github.mandarine3ds.mandarine.NativeLibrary
+import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
-import io.github.mandarine3ds.mandarine.ui.main.MainActivity
 
 object NetPlayManager {
     fun showCreateRoomDialog(activity: Activity) {
@@ -84,14 +85,20 @@ object NetPlayManager {
                 setRoomAddress(activity, ipAddress)
                 setUsername(activity, username)
                 setRoomPort(activity, portStr)
-                Toast.makeText(activity, R.string.multiplayer_join_room_success, Toast.LENGTH_LONG).show()
+                Handler(Looper.getMainLooper()).post {
+                    Toast.makeText(MandarineApplication.appContext, R.string.multiplayer_join_room_success, Toast.LENGTH_LONG).show()
+                }
                 dialog.dismiss()
-            }
-        }
-    }
+            } else {
+                Handler(Looper.getMainLooper()).post {
+                    Toast.makeText(MandarineApplication.appContext, R.string.multiplayer_could_not_connect, Toast.LENGTH_LONG).show()
+                }
+                binding.btnConfirm.isEnabled = true
+              }
+          }
+      }
 
-    private fun getUsername(activity: Activity): String {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
+    private fun getUsername(activity: Activity): String {        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val name = "Mandarine${(Math.random() * 100).toInt()}"
         return prefs.getString("NetPlayUsername", name) ?: name
     }
@@ -140,18 +147,11 @@ object NetPlayManager {
 
     external fun netPlayGetConsoleId(): String
 
-    // this code is kinda hacky, should be improved on the future
     fun addNetPlayMessage(type: Int, msg: String) {
-        val emulationActivity = NativeLibrary.sEmulationActivity.get()
-        val mainActivity = MainActivity.get()
-
-        when {
-            emulationActivity != null -> {
-                emulationActivity.runOnUiThread { emulationActivity.addNetPlayMessage(formatNetPlayStatus(emulationActivity, type, msg)) }
-            }
-            mainActivity != null -> {
-                mainActivity.runOnUiThread { mainActivity.addNetPlayMessage(formatNetPlayStatus(mainActivity, type, msg)) }
-            }
+        val context = MandarineApplication.appContext
+        val message = formatNetPlayStatus(context, type, msg)
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }
 
