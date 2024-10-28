@@ -78,6 +78,10 @@ object NetPlayManager {
         }
     }
 
+    fun shutdownNetwork() {
+        netPlayLeaveRoom()
+    }
+
     private fun formatNetPlayStatus(context: Context, type: Int, msg: String): String {
         return when (type) {
             NetPlayStatus.NETWORK_ERROR -> context.getString(R.string.multiplayer_network_error)

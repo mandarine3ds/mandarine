@@ -51,6 +51,7 @@ import io.github.mandarine3ds.mandarine.utils.InsetsHelper
 import io.github.mandarine3ds.mandarine.utils.MandarineDirectoryHelper
 import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.utils.ThemeUtil
+import io.github.mandarine3ds.mandarine.utils.NetPlayManager
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 import kotlinx.coroutines.launch
@@ -65,13 +66,6 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
     private val settingsViewModel: SettingsViewModel by viewModels()
 
     override var themeId: Int = 0
-
-    companion object {
-        var instance: WeakReference<MainActivity?> = WeakReference(null)
-        fun get(): MainActivity? {
-            return instance.get()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -91,8 +85,6 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        instance = WeakReference(this)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
@@ -183,7 +175,7 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
 
     override fun onDestroy() {
         EmulationActivity.stopForegroundService(this)
-        instance = WeakReference(null)
+        NetPlayManager.shutdownNetwork()
         super.onDestroy()
     }
 
