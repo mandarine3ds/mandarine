@@ -11,16 +11,23 @@ namespace Network {
 
 static std::shared_ptr<RoomMember> g_room_member; ///< RoomMember (Client) for network games
 static std::shared_ptr<Room> g_room;              ///< Room (Server) for network games
+static bool initialized = false;                  ///< Network initialization state
+static bool in_room = false;                      ///< Track if we're currently in a room
 // TODO(B3N30): Put these globals into a networking class
 
 bool Init() {
+    if (initialized) {
+        return true;
+    }
+
     if (enet_initialize() != 0) {
-        LOG_ERROR(Network, "Error initalizing ENet");
         return false;
     }
-    g_room = std::make_shared<Room>();
+
     g_room_member = std::make_shared<RoomMember>();
-    LOG_DEBUG(Network, "initialized OK");
+    g_room = std::make_shared<Room>();
+
+    initialized = true;
     return true;
 }
 
@@ -33,18 +40,19 @@ std::weak_ptr<RoomMember> GetRoomMember() {
 }
 
 void Shutdown() {
-    if (g_room_member) {
-        if (g_room_member->IsConnected())
-            g_room_member->Leave();
-        g_room_member.reset();
+    if (!initialized || in_room) {
+        return;
     }
-    if (g_room) {
-        if (g_room->GetState() == Room::State::Open)
-            g_room->Destroy();
-        g_room.reset();
-    }
+
+    g_room_member.reset();
+    g_room.reset();
+    initialized = false;
     enet_deinitialize();
-    LOG_DEBUG(Network, "shutdown OK");
+    LOG_INFO(Network, "Network shutdown complete");
+}
+
+void SetInRoom(bool status) {
+    in_room = status;
 }
 
 } // namespace Network

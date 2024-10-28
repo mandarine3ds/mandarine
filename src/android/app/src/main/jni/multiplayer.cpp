@@ -158,6 +158,9 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
 
     std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
     member->Join(username, console, "127.0.0.1", port);
+    if (member->GetState() == Network::RoomMember::State::Joined) {
+        Network::SetInRoom(true);
+    }
     return NetPlayStatus::NO_ERROR;
 }
 
@@ -173,6 +176,9 @@ NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std:
 
     std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
     member->Join(username, console, ipaddress.c_str(), port);
+    if (member->GetState() == Network::RoomMember::State::Joined) {
+        Network::SetInRoom(true);
+    }
     if (!member->IsConnected()) {
         return NetPlayStatus::COULD_NOT_CONNECT;
     }
@@ -244,6 +250,7 @@ void NetPlayLeaveRoom() {
         // if you are in a room, leave it
         if (auto member = Network::GetRoomMember().lock()) {
             member->Leave();
+            Network::SetInRoom(false);
         }
 
         // if you are hosting a room, also stop hosting

@@ -58,6 +58,7 @@
 #include "video_core/renderer_base.h"
 
 #include "multiplayer.h"
+#include "network/network.h"
 
 #if defined(ENABLE_VULKAN) && MANDARINE_ARCH(arm64)
 #include <adrenotools/driver.h>
@@ -131,10 +132,18 @@ static bool CheckMicPermission() {
 }
 
 static Core::System::ResultStatus RunMandarine(const std::string& filepath) {
-    // Mandarine core only supports a single running instance
     std::scoped_lock lock(running_mutex);
 
     LOG_INFO(Frontend, "Mandarine starting...");
+
+    // Only initialize network if we're not already in a room
+    if (!NetPlayIsJoined()) {
+        Network::Shutdown();
+        if (!Network::Init()) {
+            LOG_CRITICAL(Frontend, "Network initialization failed");
+            return Core::System::ResultStatus::ErrorSystemFiles;
+        }
+    }
 
     if (filepath.empty()) {
         LOG_CRITICAL(Frontend, "Failed to load ROM: No ROM specified");
