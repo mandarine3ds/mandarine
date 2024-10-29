@@ -137,16 +137,20 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             val infos = NetPlayManager.netPlayRoomInfo()
 
             if (infos.isNotEmpty()) {
-                val roomTitle = context.getString(R.string.multiplayer_room_title, infos[0])
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_TEXT, roomTitle, NetPlayItems.TYPE_TEXT, 0))
-                if (NetPlayManager.netPlayIsHostedRoom()) {
-                    for (i in 1 until infos.size) {
-                        netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_MEMBER, infos[i], NetPlayItems.TYPE_BUTTON, 0))
-                    }
-                } else {
-                    for (i in 1 until infos.size) {
-                        netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_MEMBER, infos[i], NetPlayItems.TYPE_TEXT, 0))
-                    }
+                val roomInfo = infos[0].split("|")
+                val roomName = roomInfo[0]
+                val maxPlayers = roomInfo[1].toInt()
+
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_TEXT, roomName, NetPlayItems.TYPE_TEXT))
+
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_COUNT,
+                    "${infos.size - 1}/$maxPlayers", NetPlayItems.TYPE_TEXT))
+
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_SEPARATOR, "", NetPlayItems.TYPE_SEPARATOR))
+
+                for (i in 1 until infos.size) {
+                    netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_MEMBER,
+                        infos[i], NetPlayItems.TYPE_BUTTON))
                 }
                 netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_EXIT_ROOM, context.getString(R.string.multiplayer_exit_room), NetPlayItems.TYPE_TEXT))
             } else {
@@ -198,6 +202,12 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
 
         binding.roomName.visibility = if (isCreateRoom) View.VISIBLE else View.GONE
 
+        binding.maxPlayersContainer.visibility = if (isCreateRoom) View.VISIBLE else View.GONE
+
+        binding.maxPlayers.addOnChangeListener { _, value, _ ->
+            binding.maxPlayersLabel.text = context.getString(R.string.multiplayer_max_players_value, value.toInt())
+        }
+
         binding.btnConfirm.setOnClickListener {
             binding.btnConfirm.isEnabled = false
             binding.btnConfirm.text = activity.getString(R.string.disabled_button_text)
@@ -215,6 +225,7 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                 return@setOnClickListener
             }
             val roomName = binding.roomName.text.toString()
+            val maxPlayers = binding.maxPlayers.value.toInt()
             if (isCreateRoom && (roomName.length < 3 || roomName.length > 20)) {
                 Toast.makeText(activity, R.string.multiplayer_room_name_invalid, Toast.LENGTH_LONG).show()
                 binding.btnConfirm.isEnabled = true
@@ -228,17 +239,17 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                 binding.btnConfirm.text = activity.getString(R.string.original_button_text)
             } else {
                 Handler(Looper.getMainLooper()).post {
-                    val operation: (String, Int, String, String, String) -> Int = if (isCreateRoom) {
-                        { ip, port, username, pass, name ->
-                            NetPlayManager.netPlayCreateRoom(ip, port, username, pass, name)
+                    val operation: (String, Int, String, String, String, Int) -> Int = if (isCreateRoom) {
+                        { ip, port, username, pass, name, max ->
+                            NetPlayManager.netPlayCreateRoom(ip, port, username, pass, name, max)
                         }
                     } else {
-                        { ip, port, username, pass, _ ->
+                        { ip, port, username, pass, _, _ ->
                             NetPlayManager.netPlayJoinRoom(ip, port, username, pass)
                         }
                     }
 
-                    val result = operation(ipAddress, port, username, password, roomName)
+                    val result = operation(ipAddress, port, username, password, roomName, maxPlayers)
                     if (result == 0) {
                         if (isCreateRoom) {
                             NetPlayManager.setUsername(activity, username)

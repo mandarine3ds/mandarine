@@ -141,8 +141,7 @@ bool NetworkInit() {
 
 NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
                               const std::string& username, const std::string& password,
-                              const std::string& room_name) {
-
+                              const std::string& room_name, int max_players) {
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
@@ -162,7 +161,7 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
     }
 
     if (!room->Create(room_name, "", ipaddress, port, password,
-                     31, username, "", 0, nullptr, {}, true)) {
+                     std::min(max_players, 16), username, "", 0, nullptr, {}, true)) {
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
@@ -248,7 +247,9 @@ std::vector<std::string> NetPlayRoomInfo() {
         if (!members.empty()) {
             // name
             info_list.push_back(room->GetRoomInformation().name);
-            // all
+            // player count
+            info_list.push_back("Players: " + std::to_string(members.size()));
+            // all members
             for (const auto& member : members) {
                 info_list.push_back(member.nickname);
             }

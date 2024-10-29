@@ -837,5 +837,8 @@
     <string name="disabled_button_text">Joining...</string>
     <string name="multiplayer_room_name">Room Name</string>
     <string name="multiplayer_room_name_invalid">Room name must be between 3 and 20 characters</string>
+    <string name="multiplayer_max_players">Max Players (16)</string>
+    <string name="multiplayer_max_players_value">Max Players: %d</string>
+
 
 </resources>

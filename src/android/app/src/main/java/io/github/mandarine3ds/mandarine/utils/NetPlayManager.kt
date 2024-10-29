@@ -19,7 +19,7 @@ import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
 import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 
 object NetPlayManager {
-    external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String, password: String, roomName: String): Int
+    external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String, password: String, roomName: String, maxPlayers: Int): Int
     external fun netPlayJoinRoom(ipAddress: String, port: Int, username: String, password: String): Int
     external fun netPlayRoomInfo(): Array<String>
     external fun netPlayIsJoined(): Boolean
