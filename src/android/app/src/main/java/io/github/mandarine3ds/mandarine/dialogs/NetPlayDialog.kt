@@ -196,6 +196,8 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
         binding.ipPort.setText(NetPlayManager.getRoomPort(activity))
         binding.username.setText(NetPlayManager.getUsername(activity))
 
+        binding.roomName.visibility = if (isCreateRoom) View.VISIBLE else View.GONE
+
         binding.btnConfirm.setOnClickListener {
             binding.btnConfirm.isEnabled = false
             binding.btnConfirm.text = activity.getString(R.string.disabled_button_text)
@@ -212,6 +214,13 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                 binding.btnConfirm.text = activity.getString(R.string.original_button_text)
                 return@setOnClickListener
             }
+            val roomName = binding.roomName.text.toString()
+            if (isCreateRoom && (roomName.length < 3 || roomName.length > 20)) {
+                Toast.makeText(activity, R.string.multiplayer_room_name_invalid, Toast.LENGTH_LONG).show()
+                binding.btnConfirm.isEnabled = true
+                binding.btnConfirm.text = activity.getString(R.string.original_button_text)
+                return@setOnClickListener
+            }
 
             if (ipAddress.length < 7 || username.length < 5) {
                 Toast.makeText(activity, R.string.multiplayer_input_invalid, Toast.LENGTH_LONG).show()
@@ -219,13 +228,17 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                 binding.btnConfirm.text = activity.getString(R.string.original_button_text)
             } else {
                 Handler(Looper.getMainLooper()).post {
-                    val operation: (String, Int, String, String) -> Int = if (isCreateRoom) {
-                        { ip, port, username, pass -> NetPlayManager.netPlayCreateRoom(ip, port, username, pass) }
+                    val operation: (String, Int, String, String, String) -> Int = if (isCreateRoom) {
+                        { ip, port, username, pass, name ->
+                            NetPlayManager.netPlayCreateRoom(ip, port, username, pass, name)
+                        }
                     } else {
-                        { ip, port, username, pass -> NetPlayManager.netPlayJoinRoom(ip, port, username, pass) }
+                        { ip, port, username, pass, _ ->
+                            NetPlayManager.netPlayJoinRoom(ip, port, username, pass)
+                        }
                     }
 
-                    val result = operation(ipAddress, port, username, password)
+                    val result = operation(ipAddress, port, username, password, roomName)
                     if (result == 0) {
                         if (isCreateRoom) {
                             NetPlayManager.setUsername(activity, username)

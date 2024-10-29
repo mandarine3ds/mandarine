@@ -140,7 +140,9 @@ bool NetworkInit() {
 }
 
 NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
-                                const std::string& username, const std::string& password) {
+                              const std::string& username, const std::string& password,
+                              const std::string& room_name) {
+
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
@@ -155,16 +157,34 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
         return NetPlayStatus::NETWORK_ERROR;
     }
 
-    if (!room->Create(ipaddress, "", "", port, password, 31, username)) {
+    if (room_name.length() < 3 || room_name.length() > 20) {
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
-    std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
-    member->Join(username, console, "127.0.0.1", port, 0, Network::NoPreferredMac, password);
-    if (member->GetState() == Network::RoomMember::State::Joined) {
-        Network::SetInRoom(true);
+    if (!room->Create(room_name, "", ipaddress, port, password,
+                     31, username, "", 0, nullptr, {}, true)) {
+        return NetPlayStatus::CREATE_ROOM_ERROR;
     }
-    return NetPlayStatus::NO_ERROR;
+
+    // Failsafe timer to avoid joining before creation
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
+    member->Join(username, console, ipaddress.c_str(), port, 0, Network::NoPreferredMac, password);
+
+    // Failsafe timer to avoid joining before creation
+    for (int i = 0; i < 5; i++) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        if (member->GetState() == Network::RoomMember::State::Joined ||
+            member->GetState() == Network::RoomMember::State::Moderator) {
+            Network::SetInRoom(true);
+            return NetPlayStatus::NO_ERROR;
+        }
+    }
+
+    // If join failed while room is created, clean up the room
+    room->Destroy();
+    return NetPlayStatus::CREATE_ROOM_ERROR;
 }
 
 NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port,

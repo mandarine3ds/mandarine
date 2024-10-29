@@ -678,10 +678,11 @@ void Java_io_github_mandarine3ds_mandarine_NativeLibrary_removeAmiibo(
 
 JNIEXPORT jint JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayCreateRoom(
     JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port,
-    jstring username, jstring password) {
+    jstring username, jstring password, jstring room_name) {
     return static_cast<jint>(
         NetPlayCreateRoom(GetJString(env, ipaddress), port,
-                         GetJString(env, username), GetJString(env, password)));
+                         GetJString(env, username), GetJString(env, password),
+                         GetJString(env, room_name)));
 }
 
 JNIEXPORT jint JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayJoinRoom(
