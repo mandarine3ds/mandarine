@@ -34,6 +34,11 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             binding.listMultiplayer.layoutManager = LinearLayoutManager(context)
             binding.listMultiplayer.adapter = adapter
             adapter.loadMultiplayerMenu()
+
+            binding.btnLeave.setOnClickListener {
+                NetPlayManager.netPlayLeaveRoom()
+                dismiss()
+            }
         } else {
             val binding = DialogMultiplayerInitialBinding.inflate(layoutInflater)
             setContentView(binding.root)
@@ -62,10 +67,13 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             const val MULTIPLAYER_JOIN_ROOM = 2
             const val MULTIPLAYER_ROOM_MEMBER = 3
             const val MULTIPLAYER_EXIT_ROOM = 4
+            const val MULTIPLAYER_SEPARATOR = 5
+            const val MULTIPLAYER_ROOM_COUNT = 6
 
             // view type
             const val TYPE_BUTTON = 0
             const val TYPE_TEXT = 1
+            const val TYPE_SEPARATOR = 2
         }
     }
 
@@ -100,7 +108,18 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
 
         override fun bind(item: NetPlayItems) {
             netPlayItem = item
-            binding.itemTextNetplayName.text = netPlayItem.name
+            binding.itemTextNetplayName.text = item.name
+            binding.itemIcon.apply {
+                val iconRes = when (item.option) {
+                    NetPlayItems.MULTIPLAYER_ROOM_TEXT -> R.drawable.ic_system
+                    NetPlayItems.MULTIPLAYER_ROOM_COUNT -> R.drawable.ic_joined
+                    else -> 0
+                }
+                visibility = if (iconRes != 0) {
+                    setImageResource(iconRes)
+                    View.VISIBLE
+                } else View.GONE
+            }
         }
     }
 
@@ -152,13 +171,13 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                     netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_MEMBER,
                         infos[i], NetPlayItems.TYPE_BUTTON))
                 }
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_EXIT_ROOM, context.getString(R.string.multiplayer_exit_room), NetPlayItems.TYPE_TEXT))
-            } else {
-                val consoleTitle = context.getString(R.string.multiplayer_console_id, NetPlayManager.netPlayGetConsoleId())
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_TEXT, consoleTitle, NetPlayItems.TYPE_TEXT))
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_CREATE_ROOM, context.getString(R.string.multiplayer_create_room), NetPlayItems.TYPE_TEXT))
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_JOIN_ROOM, context.getString(R.string.multiplayer_join_room), NetPlayItems.TYPE_TEXT))
             }
+        }
+
+        fun refresh() {
+            netPlayItems.clear()
+            loadMultiplayerMenu()
+            notifyDataSetChanged()
         }
 
         override fun getItemViewType(position: Int): Int {
@@ -167,11 +186,17 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NetPlayViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val textBinding = ItemTextNetplayBinding.inflate(inflater, parent, false)
-            val buttonBinding = ItemButtonNetplayBinding.inflate(inflater, parent, false)
             return when (viewType) {
-                NetPlayItems.TYPE_TEXT -> TextNetPlayViewHolder(textBinding)
-                NetPlayItems.TYPE_BUTTON -> ButtonNetPlayViewHolder(buttonBinding)
+                NetPlayItems.TYPE_TEXT -> TextNetPlayViewHolder(
+                    ItemTextNetplayBinding.inflate(inflater, parent, false))
+                NetPlayItems.TYPE_BUTTON -> ButtonNetPlayViewHolder(
+                    ItemButtonNetplayBinding.inflate(inflater, parent, false))
+                NetPlayItems.TYPE_SEPARATOR -> object : NetPlayViewHolder(
+                    inflater.inflate(R.layout.item_separator_netplay, parent, false)
+                ) {
+                    override fun bind(item: NetPlayItems) {}
+                    override fun onClick(clicked: View) {}
+                }
                 else -> throw IllegalStateException("Unsupported view type")
             }
         }
@@ -203,6 +228,8 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
         binding.roomName.visibility = if (isCreateRoom) View.VISIBLE else View.GONE
 
         binding.maxPlayersContainer.visibility = if (isCreateRoom) View.VISIBLE else View.GONE
+
+        binding.maxPlayersLabel.text = context.getString(R.string.multiplayer_max_players_value, binding.maxPlayers.value.toInt())
 
         binding.maxPlayers.addOnChangeListener { _, value, _ ->
             binding.maxPlayersLabel.text = context.getString(R.string.multiplayer_max_players_value, value.toInt())

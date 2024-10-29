@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/text_title"
-        android:text="@string/multiplayer"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="?attr/colorPrimary"
-        android:background="?attr/colorSurface"
-        android:layout_alignParentTop="true"
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/drag_handle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_multiplayer"
-        android:background="?attr/colorSurface"
-        android:layout_below="@id/text_title"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/text_title"
+            android:text="@string/multiplayer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_multiplayer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_chat"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:enabled="false"
+            android:text="@string/multiplayer_chat"
+            app:icon="@drawable/ic_chat"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_leave"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/multiplayer_exit_room"
+            app:icon="@drawable/ic_exit"
+            app:cornerRadius="16dp" />
+
+    </LinearLayout>
+</LinearLayout>

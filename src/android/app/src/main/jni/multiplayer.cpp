@@ -245,10 +245,9 @@ std::vector<std::string> NetPlayRoomInfo() {
     if (auto room = Network::GetRoomMember().lock()) {
         auto members = room->GetMemberInformation();
         if (!members.empty()) {
-            // name
-            info_list.push_back(room->GetRoomInformation().name);
-            // player count
-            info_list.push_back("Players: " + std::to_string(members.size()));
+            // name and max players
+            auto room_info = room->GetRoomInformation();
+            info_list.push_back(room_info.name + "|" + std::to_string(room_info.member_slots));
             // all members
             for (const auto& member : members) {
                 info_list.push_back(member.nickname);

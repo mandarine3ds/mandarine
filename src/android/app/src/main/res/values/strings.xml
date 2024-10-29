@@ -839,6 +839,7 @@
     <string name="multiplayer_room_name_invalid">Room name must be between 3 and 20 characters</string>
     <string name="multiplayer_max_players">Max Players (16)</string>
     <string name="multiplayer_max_players_value">Max Players: %d</string>
+    <string name="multiplayer_chat">Chat</string>
 
 
 </resources>
