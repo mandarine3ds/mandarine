@@ -79,7 +79,9 @@ object NetPlayManager {
     }
 
     fun shutdownNetwork() {
-        netPlayLeaveRoom()
+        if (netPlayIsJoined()) {
+            netPlayLeaveRoom()
+        }
     }
 
     private fun formatNetPlayStatus(context: Context, type: Int, msg: String): String {

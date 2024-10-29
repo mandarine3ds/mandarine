@@ -6,42 +6,54 @@ package io.github.mandarine3ds.mandarine.dialogs
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.github.mandarine3ds.mandarine.R
-import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerBinding
-import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
-import io.github.mandarine3ds.mandarine.databinding.ItemButtonNetplayBinding
-import io.github.mandarine3ds.mandarine.databinding.ItemTextNetplayBinding
-import io.github.mandarine3ds.mandarine.utils.NetPlayManager
-import io.github.mandarine3ds.mandarine.utils.CompatUtils
-import android.widget.Toast
 import io.github.mandarine3ds.mandarine.MandarineApplication
-import android.os.Handler
-import android.os.Looper
+import io.github.mandarine3ds.mandarine.R
+import io.github.mandarine3ds.mandarine.databinding.*
+import io.github.mandarine3ds.mandarine.utils.CompatUtils
+import io.github.mandarine3ds.mandarine.utils.NetPlayManager
 
 class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
     private lateinit var adapter: NetPlayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DialogMultiplayerBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        binding.listMultiplayer.layoutManager = LinearLayoutManager(context)
-        adapter = NetPlayAdapter()
-        binding.listMultiplayer.adapter = adapter
-        adapter.loadMultiplayerMenu()
+        if (NetPlayManager.netPlayIsJoined()) {
+            val binding = DialogMultiplayerBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+
+            adapter = NetPlayAdapter()
+            binding.listMultiplayer.layoutManager = LinearLayoutManager(context)
+            binding.listMultiplayer.adapter = adapter
+            adapter.loadMultiplayerMenu()
+        } else {
+            val binding = DialogMultiplayerInitialBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+
+            binding.btnCreate.setOnClickListener {
+                showNetPlayInputDialog(true)
+                dismiss()
+            }
+
+            binding.btnJoin.setOnClickListener {
+                showNetPlayInputDialog(false)
+                dismiss()
+            }
+        }
     }
 
     data class NetPlayItems(
         val option: Int,
         val name: String,
-        val type: Int,
-        var value: Int
+        val type: Int
     ) {
         companion object {
             // multiplayer
@@ -60,20 +72,15 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
     abstract class NetPlayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         init {
             itemView.setOnClickListener(this)
-            findViews(itemView)
         }
 
-        protected abstract fun findViews(root: View)
         abstract fun bind(item: NetPlayItems)
         abstract override fun onClick(clicked: View)
     }
 
-    inner class TextNetPlayViewHolder(val binding: ItemTextNetplayBinding, itemView: View) : NetPlayViewHolder(itemView) {
+    inner class TextNetPlayViewHolder(val binding: ItemTextNetplayBinding) : NetPlayViewHolder(binding.root) {
         private lateinit var netPlayItem: NetPlayItems
 
-        override fun findViews(root: View) {
-            // Views are already initialized in property declaration
-        }
         override fun onClick(clicked: View) {
             when (netPlayItem.option) {
                 NetPlayItems.MULTIPLAYER_CREATE_ROOM -> {
@@ -97,16 +104,12 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
         }
     }
 
-    inner class ButtonNetPlayViewHolder(val binding: ItemButtonNetplayBinding, itemView: View) : NetPlayViewHolder(itemView) {
+    inner class ButtonNetPlayViewHolder(val binding: ItemButtonNetplayBinding) : NetPlayViewHolder(binding.root) {
         private lateinit var netPlayItems: NetPlayItems
 
         init {
             itemView.setOnClickListener(null)
             binding.itemButtonNetplay.setText(R.string.multiplayer_kick_member)
-        }
-
-        override fun findViews(root: View) {
-            // Views are already initialized in property declaration
         }
 
         override fun bind(item: NetPlayItems) {
@@ -145,12 +148,12 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                         netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_MEMBER, infos[i], NetPlayItems.TYPE_TEXT, 0))
                     }
                 }
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_EXIT_ROOM, context.getString(R.string.multiplayer_exit_room), NetPlayItems.TYPE_TEXT, 0))
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_EXIT_ROOM, context.getString(R.string.multiplayer_exit_room), NetPlayItems.TYPE_TEXT))
             } else {
                 val consoleTitle = context.getString(R.string.multiplayer_console_id, NetPlayManager.netPlayGetConsoleId())
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_TEXT, consoleTitle, NetPlayItems.TYPE_TEXT, 0))
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_CREATE_ROOM, context.getString(R.string.multiplayer_create_room), NetPlayItems.TYPE_TEXT, 0))
-                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_JOIN_ROOM, context.getString(R.string.multiplayer_join_room), NetPlayItems.TYPE_TEXT, 0))
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_ROOM_TEXT, consoleTitle, NetPlayItems.TYPE_TEXT))
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_CREATE_ROOM, context.getString(R.string.multiplayer_create_room), NetPlayItems.TYPE_TEXT))
+                netPlayItems.add(NetPlayItems(NetPlayItems.MULTIPLAYER_JOIN_ROOM, context.getString(R.string.multiplayer_join_room), NetPlayItems.TYPE_TEXT))
             }
         }
 
@@ -163,8 +166,8 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             val textBinding = ItemTextNetplayBinding.inflate(inflater, parent, false)
             val buttonBinding = ItemButtonNetplayBinding.inflate(inflater, parent, false)
             return when (viewType) {
-                NetPlayItems.TYPE_TEXT -> TextNetPlayViewHolder(textBinding, textBinding.root)
-                NetPlayItems.TYPE_BUTTON -> ButtonNetPlayViewHolder(buttonBinding, buttonBinding.root)
+                NetPlayItems.TYPE_TEXT -> TextNetPlayViewHolder(textBinding)
+                NetPlayItems.TYPE_BUTTON -> ButtonNetPlayViewHolder(buttonBinding)
                 else -> throw IllegalStateException("Unsupported view type")
             }
         }
