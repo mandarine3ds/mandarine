@@ -203,6 +203,7 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             val ipAddress = binding.ipAddress.text.toString()
             val username = binding.username.text.toString()
             val portStr = binding.ipPort.text.toString()
+            val password = binding.password.text.toString()
             val port = try {
                 portStr.toInt()
             } catch (e: Exception) {
@@ -218,13 +219,13 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
                 binding.btnConfirm.text = activity.getString(R.string.original_button_text)
             } else {
                 Handler(Looper.getMainLooper()).post {
-                    val operation: (String, Int, String) -> Int = if (isCreateRoom) {
-                        { ip, port, username -> NetPlayManager.netPlayCreateRoom(ip, port, username) }
+                    val operation: (String, Int, String, String) -> Int = if (isCreateRoom) {
+                        { ip, port, username, pass -> NetPlayManager.netPlayCreateRoom(ip, port, username, pass) }
                     } else {
-                        { ip, port, username -> NetPlayManager.netPlayJoinRoom(ip, port, username) }
+                        { ip, port, username, pass -> NetPlayManager.netPlayJoinRoom(ip, port, username, pass) }
                     }
 
-                    val result = operation(ipAddress, port, username)
+                    val result = operation(ipAddress, port, username, password)
                     if (result == 0) {
                         if (isCreateRoom) {
                             NetPlayManager.setUsername(activity, username)

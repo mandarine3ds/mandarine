@@ -11,6 +11,9 @@
 #include "core/hle/service/cfg/cfg.h"
 #include "network/network.h"
 
+#include <thread>
+#include <chrono>
+
 void AddNetPlayMessage(jint type, jstring msg) {
     IDCache::GetEnvForThread()->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
                                                      IDCache::GetAddNetPlayMessage(), type, msg);
@@ -137,7 +140,7 @@ bool NetworkInit() {
 }
 
 NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
-                                const std::string& username) {
+                                const std::string& username, const std::string& password) {
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
@@ -152,19 +155,20 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
         return NetPlayStatus::NETWORK_ERROR;
     }
 
-    if (!room->Create(ipaddress, "", "", port, "", 31, username)) {
+    if (!room->Create(ipaddress, "", "", port, password, 31, username)) {
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
     std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
-    member->Join(username, console, "127.0.0.1", port);
+    member->Join(username, console, "127.0.0.1", port, 0, Network::NoPreferredMac, password);
     if (member->GetState() == Network::RoomMember::State::Joined) {
         Network::SetInRoom(true);
     }
     return NetPlayStatus::NO_ERROR;
 }
 
-NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std::string& username) {
+NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port,
+                            const std::string& username, const std::string& password) {
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
@@ -175,14 +179,22 @@ NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std:
     }
 
     std::string console = Service::CFG::GetConsoleIdHash(Core::System::GetInstance());
-    member->Join(username, console, ipaddress.c_str(), port);
-    if (member->GetState() == Network::RoomMember::State::Joined) {
+    member->Join(username, console, ipaddress.c_str(), port, 0, Network::NoPreferredMac, password);
+
+    // Wait a bit for the connection and join process to complete
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+    if (member->GetState() == Network::RoomMember::State::Joined ||
+        member->GetState() == Network::RoomMember::State::Moderator) {
         Network::SetInRoom(true);
+        return NetPlayStatus::NO_ERROR;
     }
+
     if (!member->IsConnected()) {
         return NetPlayStatus::COULD_NOT_CONNECT;
     }
-    return NetPlayStatus::NO_ERROR;
+
+    return NetPlayStatus::WRONG_PASSWORD;
 }
 
 void NetPlaySendMessage(const std::string& msg) {
@@ -231,11 +243,8 @@ bool NetPlayIsJoined() {
         return false;
     }
 
-    if (member->GetState() == Network::RoomMember::State::Joining || member->IsConnected()) {
-        return true;
-    }
-
-    return false;
+    return (member->GetState() == Network::RoomMember::State::Joined ||
+            member->GetState() == Network::RoomMember::State::Moderator);
 }
 
 bool NetPlayIsHostedRoom() {

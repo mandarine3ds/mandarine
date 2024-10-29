@@ -832,6 +832,7 @@
     <string name="multiplayer_address_unbanned">address unbanned</string>
     <string name="multiplayer_kick_member">Kick Out</string>
     <string name="multiplayer_chat_input_hint">Send messages……</string>
+    <string name="multiplayer_password">Password</string>
     <string name="original_button_text">Join</string>
     <string name="disabled_button_text">Joining...</string>
 

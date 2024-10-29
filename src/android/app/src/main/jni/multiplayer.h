@@ -46,8 +46,8 @@ enum class NetPlayStatus : s32 {
 
 bool NetworkInit();
 NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
-                                const std::string& username);
-NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std::string& username);
+                                const std::string& username, const std::string& password);
+NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std::string& username, const std::string& password);
 std::vector<std::string> NetPlayRoomInfo();
 bool NetPlayIsJoined();
 bool NetPlayIsHostedRoom();
