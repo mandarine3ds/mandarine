@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="6dp"
-    android:focusable="true"
-    android:clickable="true"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp">
 
     <TextView
-        android:text="Setting"
         android:id="@+id/item_button_netplay_name"
-        android:paddingStart="6dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/item_button_netplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAppearance="?attr/textAppearanceBodyLarge" />
 
-    <com.google.android.material.button.MaterialButton
-        android:text="Setting"
+    <ImageButton
+        android:id="@+id/item_button_more"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/multiplayer_more_options"
+        android:src="@drawable/ic_more_vert"
+        android:padding="12dp" />
+
+    <Button
         android:id="@+id/item_button_netplay"
-        style="@style/Widget.Material3.Button.Icon"
-        android:stateListAnimator="@null"
-        android:minWidth="85dp"
-        android:minHeight="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp" />
 
-</RelativeLayout>
+</LinearLayout>

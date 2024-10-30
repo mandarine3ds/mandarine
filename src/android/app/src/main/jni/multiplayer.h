@@ -53,6 +53,7 @@ NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port,
 std::vector<std::string> NetPlayRoomInfo();
 bool NetPlayIsJoined();
 bool NetPlayIsHostedRoom();
+bool NetPlayIsModerator();
 void NetPlaySendMessage(const std::string& msg);
 void NetPlayKickUser(const std::string& username);
 void NetPlayLeaveRoom();

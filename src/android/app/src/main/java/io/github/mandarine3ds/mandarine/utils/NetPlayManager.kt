@@ -28,6 +28,7 @@ object NetPlayManager {
     external fun netPlayKickUser(username: String)
     external fun netPlayLeaveRoom()
     external fun netPlayGetConsoleId(): String
+    external fun netPlayIsModerator(): Boolean
 
     fun showCreateRoomDialog(activity: Activity) {
         val dialog = NetPlayDialog(activity)

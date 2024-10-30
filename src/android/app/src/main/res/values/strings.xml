@@ -840,6 +840,6 @@
     <string name="multiplayer_max_players">Max Players (16)</string>
     <string name="multiplayer_max_players_value">Max Players: %d</string>
     <string name="multiplayer_chat">Chat</string>
-
+    <string name="multiplayer_more_options">More Options</string>
 
 </resources>

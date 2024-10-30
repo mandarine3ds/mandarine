@@ -298,3 +298,11 @@ std::string NetPlayGetConsoleId() {
 void NetworkShutdown() {
     Network::Shutdown();
 }
+
+bool NetPlayIsModerator() {
+    auto member = Network::GetRoomMember().lock();
+    if (!member) {
+        return false;
+    }
+    return member->GetState() == Network::RoomMember::State::Moderator;
+}

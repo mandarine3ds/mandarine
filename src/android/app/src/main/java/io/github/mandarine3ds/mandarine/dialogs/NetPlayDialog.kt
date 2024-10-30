@@ -11,6 +11,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -128,7 +129,32 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
 
         init {
             itemView.setOnClickListener(null)
-            binding.itemButtonNetplay.setText(R.string.multiplayer_kick_member)
+            binding.itemButtonNetplay.apply {
+                setText(R.string.multiplayer_kick_member)
+                visibility = if (NetPlayManager.netPlayIsModerator()) View.VISIBLE else View.GONE
+            }
+
+            binding.itemButtonMore.apply {
+                visibility = View.VISIBLE
+                setOnClickListener { showPopupMenu(it) }
+            }
+        }
+
+        private fun showPopupMenu(view: View) {
+            PopupMenu(view.context, view).apply {
+                inflate(R.menu.menu_netplay_member)
+                menu.findItem(R.id.action_kick).isEnabled = NetPlayManager.netPlayIsModerator()
+                setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.action_kick -> {
+                            NetPlayManager.netPlayKickUser(netPlayItems.name)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+                show()
+            }
         }
 
         override fun bind(item: NetPlayItems) {
@@ -138,13 +164,8 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
         }
 
         override fun onClick(clicked: View) {
-            if (netPlayItems.option == NetPlayItems.MULTIPLAYER_ROOM_MEMBER) {
-                var text = netPlayItems.name
-                val pos = text.indexOf('[')
-                if (pos > 0) {
-                    text = text.substring(0, pos - 1)
-                }
-                NetPlayManager.netPlayKickUser(text)
+            if (netPlayItems.option == NetPlayItems.MULTIPLAYER_ROOM_MEMBER && NetPlayManager.netPlayIsModerator()) {
+                NetPlayManager.netPlayKickUser(netPlayItems.name)
             }
         }
     }

@@ -800,4 +800,10 @@ void Java_io_github_mandarine3ds_mandarine_NativeLibrary_logDeviceInfo(
     LOG_INFO(Frontend, "Host OS: Android API level {}", android_get_device_api_level());
 }
 
+JNIEXPORT jboolean JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayIsModerator(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return NetPlayIsModerator();
+}
+
 } // extern "C"
