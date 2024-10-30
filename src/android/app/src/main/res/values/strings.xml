@@ -841,5 +841,8 @@
     <string name="multiplayer_max_players_value">Max Players: %d</string>
     <string name="multiplayer_chat">Chat</string>
     <string name="multiplayer_more_options">More Options</string>
+    <string name="multiplayer_copy_ip">Copy IP Address</string>
+    <string name="multiplayer_ip_copied">IP Address copied to clipboard</string>
+    <string name="multiplayer_server_address">Server Address</string>
 
 </resources>

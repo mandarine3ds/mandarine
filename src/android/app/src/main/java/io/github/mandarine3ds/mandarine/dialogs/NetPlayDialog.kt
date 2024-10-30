@@ -20,6 +20,8 @@ import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.databinding.*
 import io.github.mandarine3ds.mandarine.utils.CompatUtils
 import io.github.mandarine3ds.mandarine.utils.NetPlayManager
+import android.content.ClipData
+import android.content.ClipboardManager
 
 class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
     private lateinit var adapter: NetPlayAdapter
@@ -242,7 +244,22 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             else R.string.multiplayer_join_room
         )
 
-        binding.ipAddress.setText(if (isCreateRoom) NetPlayManager.getIpAddressByWifi(activity) else NetPlayManager.getRoomAddress(activity))
+        binding.ipInfoContainer.visibility = if (isCreateRoom) View.VISIBLE else View.GONE
+        binding.serverAddressContainer.visibility = if (isCreateRoom) View.GONE else View.VISIBLE
+
+        if (isCreateRoom) {
+            binding.ipAddressLabel.text = NetPlayManager.getIpAddressByWifi(activity)
+        } else {
+            binding.serverAddress.setText(NetPlayManager.getRoomAddress(activity))
+        }
+
+        binding.copyIpButton.setOnClickListener {
+            val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("IP Address", binding.ipAddressLabel.text)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(activity, R.string.multiplayer_ip_copied, Toast.LENGTH_SHORT).show()
+        }
+
         binding.ipPort.setText(NetPlayManager.getRoomPort(activity))
         binding.username.setText(NetPlayManager.getUsername(activity))
 
@@ -260,7 +277,8 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             binding.btnConfirm.isEnabled = false
             binding.btnConfirm.text = activity.getString(R.string.disabled_button_text)
 
-            val ipAddress = binding.ipAddress.text.toString()
+            val ipAddress = if (isCreateRoom) binding.ipAddressLabel.text.toString()
+                else binding.serverAddress.text.toString()
             val username = binding.username.text.toString()
             val portStr = binding.ipPort.text.toString()
             val password = binding.password.text.toString()

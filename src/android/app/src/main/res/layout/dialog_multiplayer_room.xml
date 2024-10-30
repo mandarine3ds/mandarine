@@ -1,34 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="?attr/colorSurface"
-    android:clipToPadding="false"
-    android:clipChildren="false"
-    android:elevation="4dp"
-    android:layout_margin="16dp"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/textTitle"
+        android:id="@+id/text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:gravity="center"
-        android:paddingBottom="8dp"
-        android:textColor="?attr/colorOnSurface" />
+        android:layout_marginBottom="16dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
+        android:id="@+id/ip_info_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/multiplayer_ip_address"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/ip_address_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/multiplayer_ip_address" />
+
+        <ImageButton
+            android:id="@+id/copy_ip_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_copy"
+            android:contentDescription="@string/multiplayer_copy_ip"
+            android:padding="12dp" />
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/server_address_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/multiplayer_server_address"
         android:padding="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ip_address"
+            android:id="@+id/server_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
