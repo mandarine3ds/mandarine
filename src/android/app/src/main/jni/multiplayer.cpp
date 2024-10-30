@@ -11,8 +11,8 @@
 #include "core/hle/service/cfg/cfg.h"
 #include "network/network.h"
 
-#include <thread>
 #include <chrono>
+#include <thread>
 
 void AddNetPlayMessage(jint type, jstring msg) {
     IDCache::GetEnvForThread()->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
@@ -139,9 +139,9 @@ bool NetworkInit() {
     return true;
 }
 
-NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
-                              const std::string& username, const std::string& password,
-                              const std::string& room_name, int max_players) {
+NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port, const std::string& username,
+                                const std::string& password, const std::string& room_name,
+                                int max_players) {
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
@@ -160,8 +160,8 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
-    if (!room->Create(room_name, "", ipaddress, port, password,
-                     std::min(max_players, 16), username, "", 0, nullptr, {}, true)) {
+    if (!room->Create(room_name, "", ipaddress, port, password, std::min(max_players, 16), username,
+                      "", 0, nullptr, {}, true)) {
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
@@ -186,8 +186,8 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
     return NetPlayStatus::CREATE_ROOM_ERROR;
 }
 
-NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port,
-                            const std::string& username, const std::string& password) {
+NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std::string& username,
+                              const std::string& password) {
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
