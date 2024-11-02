@@ -12,10 +12,9 @@ import android.os.Looper
 import android.text.format.Formatter
 import android.widget.Toast
 import androidx.preference.PreferenceManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
-import io.github.mandarine3ds.mandarine.databinding.DialogMultiplayerRoomBinding
+import io.github.mandarine3ds.mandarine.dialogs.ChatMessage
 import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 
 object NetPlayManager {
@@ -30,6 +29,16 @@ object NetPlayManager {
     external fun netPlayGetConsoleId(): String
     external fun netPlayIsModerator(): Boolean
 
+    private var messageListener: ((Int, String) -> Unit)? = null
+
+    fun setOnMessageReceivedListener(listener: (Int, String) -> Unit) {
+        messageListener = listener
+    }
+
+    fun receiveMessage(type: Int, message: String) {
+        messageListener?.invoke(type, message)
+    }
+
     fun showCreateRoomDialog(activity: Activity) {
         val dialog = NetPlayDialog(activity)
         dialog.showNetPlayInputDialog(true)
@@ -40,7 +49,7 @@ object NetPlayManager {
         dialog.showNetPlayInputDialog(false)
     }
 
-    fun getUsername(activity: Activity): String {        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
+    fun getUsername(activity: Context): String {        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val name = "Mandarine${(Math.random() * 100).toInt()}"
         return prefs.getString("NetPlayUsername", name) ?: name
     }
@@ -71,16 +80,66 @@ object NetPlayManager {
         prefs.edit().putString("NetPlayRoomPort", port).apply()
     }
 
+    private val chatMessages = mutableListOf<ChatMessage>()
+    private var isChatOpen = false
+
+    fun addChatMessage(message: ChatMessage) {
+        chatMessages.add(message)
+    }
+
+    fun getChatMessages(): List<ChatMessage> = chatMessages
+
+    fun clearChat() {
+        chatMessages.clear()
+    }
+
+    fun setChatOpen(isOpen: Boolean) {
+        isChatOpen = isOpen
+    }
+
+    fun isChatOpen(): Boolean = isChatOpen
+
     fun addNetPlayMessage(type: Int, msg: String) {
         val context = MandarineApplication.appContext
         val message = formatNetPlayStatus(context, type, msg)
-        Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+
+        when (type) {
+            NetPlayStatus.CHAT_MESSAGE -> {
+                val parts = msg.split(":", limit = 2)
+                if (parts.size == 2) {
+                    val nickname = parts[0].trim()
+                    val chatMessage = parts[1].trim()
+                    addChatMessage(ChatMessage(
+                        nickname = nickname,
+                        username = "",
+                        message = chatMessage
+                    ))
+                }
+            }
+            NetPlayStatus.MEMBER_JOIN,
+            NetPlayStatus.MEMBER_LEAVE,
+            NetPlayStatus.MEMBER_KICKED,
+            NetPlayStatus.MEMBER_BANNED -> {
+                addChatMessage(ChatMessage(
+                    nickname = "System",
+                    username = "",
+                    message = message
+                ))
+            }
         }
+
+        if (!isChatOpen) {
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        messageListener?.invoke(type, msg)
     }
 
     fun shutdownNetwork() {
         if (netPlayIsJoined()) {
+            clearChat()
             netPlayLeaveRoom()
         }
     }

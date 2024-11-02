@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="8dp"
-            android:enabled="false"
+            android:enabled="true"
             android:text="@string/multiplayer_chat"
             app:icon="@drawable/ic_chat"
             app:cornerRadius="16dp" />

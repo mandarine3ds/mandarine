@@ -39,8 +39,14 @@ class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
             adapter.loadMultiplayerMenu()
 
             binding.btnLeave.setOnClickListener {
+                NetPlayManager.clearChat()
                 NetPlayManager.netPlayLeaveRoom()
                 dismiss()
+            }
+
+            binding.btnChat.setOnClickListener {
+                val chatDialog = ChatDialog(context)
+                chatDialog.show()
             }
         } else {
             val binding = DialogMultiplayerInitialBinding.inflate(layoutInflater)
