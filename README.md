@@ -69,7 +69,6 @@ Memory: 2GB of RAM. 4GB is recommended
 | 🐧 Linux|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/linux-appimage.zip)|
 | 🍎 Mac OS|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/macos-universal.zip)|
 
-
 # Contributions 
 
 if you know what you're doing, feel free to open a PR, we will review it in due time and it most likely will get approved and merged.
