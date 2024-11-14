@@ -94,3 +94,6 @@
 [submodule "externals/oboe"]
 	path = externals/oboe
 	url = https://github.com/google/oboe.git
+[submodule "externals/SPIRV-Tools"]
+	path = externals/SPIRV-Tools
+	url = https://github.com/KhronosGroup/SPIRV-Tools.git

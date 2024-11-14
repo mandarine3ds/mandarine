@@ -2,7 +2,9 @@
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
+#include "common/settings.h"
 #include "video_core/pica/regs_rasterizer.h"
+#include "video_core/renderer_vulkan/vk_shader_util.h"
 #include "video_core/shader/generator/shader_gen.h"
 #include "video_core/shader/generator/spv_shader_gen.h"
 
@@ -267,7 +269,15 @@ std::vector<u32> GenerateTrivialVertexShader(bool use_clip_planes) {
             }
         }
     });
-    return module.Assemble();
+
+    // Run through SPIR-V Optimizer
+    if (!Settings::values.optimize_spirv_output.GetValue()) {
+        return module.Assemble();
+    } else {
+        std::vector<u32> result;
+        result = Vulkan::OptimizeSPIRV(module.Assemble());
+        return result;
+    }
 }
 
 } // namespace Pica::Shader::Generator::SPIRV

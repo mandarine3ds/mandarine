@@ -3,12 +3,30 @@
 // Refer to the license.txt file included.
 
 #include <memory>
+#include <utility>
+#include <vector>
 #include <SPIRV/GlslangToSpv.h>
 #include <glslang/Include/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
+
+// The optimizer included in SPIRV-Tools only works on Desktop OSes
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+#define OPTIMIZE_SPIRV
+#elif defined(__APPLE__)
+#include <TargetConditionals.h>
+#if TARGET_OS_OSX
+#define OPTIMIZE_SPIRV
+#endif
+#endif
+
+#ifdef OPTIMIZE_SPIRV
+#include <spirv-tools/optimizer.hpp>
+#endif
+
 #include "common/assert.h"
 #include "common/literals.h"
 #include "common/logging/log.h"
+#include "common/settings.h"
 #include "video_core/renderer_vulkan/vk_shader_util.h"
 
 namespace Vulkan {
@@ -160,6 +178,35 @@ bool InitializeCompiler() {
 } // Anonymous namespace
 
 /**
+ * NOTE: The libraries included in SPIRV-Tools only work on Windows, Linux and MacOS.
+ * @brief Optimizes SPIR-V code (but only on Desktop)
+ * @param code The string containing SPIR-V code
+ */
+std::vector<u32> OptimizeSPIRV(std::vector<u32> code) {
+
+    std::vector<u32> result = code;
+
+#ifdef OPTIMIZE_SPIRV
+    std::vector<u32> spirv = code;
+    spvtools::Optimizer spv_opt(SPV_ENV_VULKAN_1_3);
+    spv_opt.SetMessageConsumer([](spv_message_level_t, const char*, const spv_position_t&,
+                                  const char* m) { LOG_ERROR(HW_GPU, "spirv-opt: {}", m); });
+    spv_opt.RegisterPerformancePasses();
+
+    spvtools::OptimizerOptions opt_options;
+    opt_options.set_run_validator(false);
+
+    if (!spv_opt.Run(spirv.data(), spirv.size(), &result, opt_options)) {
+        LOG_ERROR(HW_GPU,
+                  "Failed to optimize SPIRV shader output, continuing without optimization");
+        result = std::move(spirv);
+    }
+#endif
+
+    return result;
+}
+
+/**
  * @brief Compiles GLSL into SPIRV
  * @param code The string containing GLSL code.
  * @param stage The pipeline stage the shader will be used in.
@@ -222,7 +269,14 @@ std::vector<u32> CompileGLSLtoSPIRV(std::string_view code, vk::ShaderStageFlagBi
         LOG_INFO(Render_Vulkan, "SPIR-V conversion messages: {}", spv_messages);
     }
 
-    return out_code;
+    // Final pass through SPIRV-Optimizer
+    if (!Settings::values.optimize_spirv_output.GetValue()) {
+        return out_code;
+    } else {
+        std::vector<u32> result;
+        result = OptimizeSPIRV(out_code);
+        return result;
+    }
 }
 
 vk::ShaderModule Compile(std::string_view code, vk::ShaderStageFlagBits stage, vk::Device device,

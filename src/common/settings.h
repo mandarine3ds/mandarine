@@ -471,6 +471,21 @@ struct Values {
     Setting<bool> renderer_debug{false, "renderer_debug"};
     Setting<bool> dump_command_buffers{false, "dump_command_buffers"};
     SwitchableSetting<bool> spirv_shader_gen{true, "spirv_shader_gen"};
+
+// SPIR-V Optimization only works on Desktop OSes for now
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#if TARGET_OS_IPHONE
+    SwitchableSetting<bool> optimize_spirv_output{false, "optimize_spirv_output"};
+#elif TARGET_OS_MAC
+    SwitchableSetting<bool> optimize_spirv_output{true, "optimize_spirv_output"};
+#endif
+#elif __ANDROID__
+    SwitchableSetting<bool> optimize_spirv_output{false, "optimize_spirv_output"};
+#else
+    SwitchableSetting<bool> optimize_spirv_output{true, "optimize_spirv_output"};
+#endif
+
     SwitchableSetting<bool> async_shader_compilation{false, "async_shader_compilation"};
     SwitchableSetting<bool> async_presentation{true, "async_presentation"};
     SwitchableSetting<bool> use_hw_shader{true, "use_hw_shader"};

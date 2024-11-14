@@ -3,6 +3,8 @@
 // Refer to the license.txt file included.
 
 #include <boost/container/small_vector.hpp>
+#include "common/settings.h"
+#include "video_core/renderer_vulkan/vk_shader_util.h"
 #include "video_core/shader/generator/pica_fs_config.h"
 #include "video_core/shader/generator/spv_fs_shader_gen.h"
 
@@ -1605,7 +1607,15 @@ void FragmentModule::DefineInterface() {
 std::vector<u32> GenerateFragmentShader(const FSConfig& config, const Profile& profile) {
     FragmentModule module{config, profile};
     module.Generate();
-    return module.Assemble();
+
+    // Run through SPIRV-Optimizer
+    if (!Settings::values.optimize_spirv_output.GetValue()) {
+        return module.Assemble();
+    } else {
+        std::vector<u32> result;
+        result = Vulkan::OptimizeSPIRV(module.Assemble());
+        return result;
+    }
 }
 
 } // namespace Pica::Shader::Generator::SPIRV

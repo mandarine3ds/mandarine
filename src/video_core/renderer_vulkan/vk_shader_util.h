@@ -11,6 +11,12 @@
 namespace Vulkan {
 
 /**
+ * @brief Optimizes SPIR-V code
+ * @param code The string containing SPIR-V code
+ */
+std::vector<u32> OptimizeSPIRV(std::vector<u32> code);
+
+/**
  * @brief Compiles GLSL into SPIRV
  * @param code The string containing GLSL code.
  * @param stage The pipeline stage the shader will be used in.

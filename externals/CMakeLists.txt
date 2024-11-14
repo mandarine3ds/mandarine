@@ -427,6 +427,10 @@ if (ENABLE_VULKAN)
         target_include_directories(vulkan-headers SYSTEM INTERFACE ./vulkan-headers/include)
     endif()
 
+    # SPIRV-Tools
+    add_library(SPIRV-Tools INTERFACE)
+    target_include_directories(SPIRV-Tools SYSTEM INTERFACE ./SPIRV-Tools/include)
+
     # adrenotools
     if (ANDROID AND "arm64" IN_LIST ARCHITECTURE)
         add_subdirectory(libadrenotools)
