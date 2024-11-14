@@ -137,7 +137,8 @@ public:
 
 private:
     tracy::FastVector<ImageEntry> m_images;
-    bool m_updated;
+    bool m_updated = false;
+    bool m_haveMainImageName = false;
 
     static int Callback( struct dl_phdr_info* info, size_t size, void* data )
     {
@@ -155,26 +156,13 @@ private:
         image->m_startAddress = startAddress;
         image->m_endAddress = endAddress;
 
-        const char* imageName = nullptr;
-        // the base executable name isn't provided when iterating with dl_iterate_phdr, get it with dladdr()
+        // the base executable name isn't provided when iterating with dl_iterate_phdr,
+        // we will have to patch the executable image name outside this callback
         if( info->dlpi_name && info->dlpi_name[0] != '\0' )
         {
-            imageName = info->dlpi_name;
-        }
-        else
-        {
-            Dl_info dlInfo;
-            if( dladdr( (void *)info->dlpi_addr, &dlInfo ) )
-            {
-                imageName = dlInfo.dli_fname;
-            }
-        }
-
-        if( imageName )
-        {
-            size_t sz = strlen( imageName ) + 1;
+            size_t sz = strlen( info->dlpi_name ) + 1;
             image->m_name = (char*)tracy_malloc( sz );
-            memcpy( image->m_name, imageName, sz );
+            memcpy( image->m_name,  info->dlpi_name, sz );
         }
         else
         {
@@ -200,7 +188,40 @@ private:
         {
             std::sort( m_images.begin(), m_images.end(),
                 []( const ImageEntry& lhs, const ImageEntry& rhs ) { return lhs.m_startAddress > rhs.m_startAddress; } );
+
+            // patch the main executable image name here, as calling dl_* functions inside the dl_iterate_phdr callback might cause deadlocks
+            UpdateMainImageName();
         }
+    }
+
+    void UpdateMainImageName()
+    {
+        if( m_haveMainImageName )
+        {
+            return;
+        }
+
+        for( ImageEntry& entry : m_images )
+        {
+            if( entry.m_name == nullptr )
+            {
+                Dl_info dlInfo;
+                if( dladdr( (void *)entry.m_startAddress, &dlInfo ) )
+                {
+                    if( dlInfo.dli_fname )
+                    {
+                        size_t sz = strlen( dlInfo.dli_fname ) + 1;
+                        entry.m_name = (char*)tracy_malloc( sz );
+                        memcpy( entry.m_name, dlInfo.dli_fname, sz );
+                    }
+                }
+
+                // we only expect one entry to be null for the main executable entry
+                break;
+            }
+        }
+
+        m_haveMainImageName = true;
     }
 
     const ImageEntry* GetImageForAddressImpl( void* address ) const
@@ -223,6 +244,7 @@ private:
         }
 
         m_images.clear();
+        m_haveMainImageName = false;
     }
 };
 #endif //#ifdef TRACY_USE_IMAGE_CACHE
@@ -762,6 +784,7 @@ static FastVector<DebugInfo>* s_di_known;
 struct KernelSymbol
 {
     uint64_t addr;
+    uint32_t size;
     const char* name;
     const char* mod;
 };
@@ -773,10 +796,11 @@ static void InitKernelSymbols()
 {
     FILE* f = fopen( "/proc/kallsyms", "rb" );
     if( !f ) return;
-    tracy::FastVector<KernelSymbol> tmpSym( 1024 );
+    tracy::FastVector<KernelSymbol> tmpSym( 512 * 1024 );
     size_t linelen = 16 * 1024;     // linelen must be big enough to prevent reallocs in getline()
     auto linebuf = (char*)tracy_malloc( linelen );
     ssize_t sz;
+    size_t validCnt = 0;
     while( ( sz = getline( &linebuf, &linelen, f ) ) != -1 )
     {
         auto ptr = linebuf;
@@ -809,7 +833,7 @@ static void InitKernelSymbols()
         }
         if( addr == 0 ) continue;
         ptr++;
-        if( *ptr != 'T' && *ptr != 't' ) continue;
+        const bool valid = *ptr == 'T' || *ptr == 't';
         ptr += 2;
         const auto namestart = ptr;
         while( *ptr != '\t' && *ptr != '\n' ) ptr++;
@@ -824,20 +848,28 @@ static void InitKernelSymbols()
             modend = ptr;
         }
 
-        auto strname = (char*)tracy_malloc_fast( nameend - namestart + 1 );
-        memcpy( strname, namestart, nameend - namestart );
-        strname[nameend-namestart] = '\0';
-
+        char* strname = nullptr;
         char* strmod = nullptr;
-        if( modstart )
+
+        if( valid )
         {
-            strmod = (char*)tracy_malloc_fast( modend - modstart + 1 );
-            memcpy( strmod, modstart, modend - modstart );
-            strmod[modend-modstart] = '\0';
+            validCnt++;
+
+            strname = (char*)tracy_malloc_fast( nameend - namestart + 1 );
+            memcpy( strname, namestart, nameend - namestart );
+            strname[nameend-namestart] = '\0';
+
+            if( modstart )
+            {
+                strmod = (char*)tracy_malloc_fast( modend - modstart + 1 );
+                memcpy( strmod, modstart, modend - modstart );
+                strmod[modend-modstart] = '\0';
+            }
         }
 
         auto sym = tmpSym.push_next();
         sym->addr = addr;
+        sym->size = 0;
         sym->name = strname;
         sym->mod = strmod;
     }
@@ -845,11 +877,22 @@ static void InitKernelSymbols()
     fclose( f );
     if( tmpSym.empty() ) return;
 
-    std::sort( tmpSym.begin(), tmpSym.end(), []( const KernelSymbol& lhs, const KernelSymbol& rhs ) { return lhs.addr > rhs.addr; } );
-    s_kernelSymCnt = tmpSym.size();
-    s_kernelSym = (KernelSymbol*)tracy_malloc_fast( sizeof( KernelSymbol ) * s_kernelSymCnt );
-    memcpy( s_kernelSym, tmpSym.data(), sizeof( KernelSymbol ) * s_kernelSymCnt );
-    TracyDebug( "Loaded %zu kernel symbols\n", s_kernelSymCnt );
+    std::sort( tmpSym.begin(), tmpSym.end(), []( const KernelSymbol& lhs, const KernelSymbol& rhs ) { return lhs.addr < rhs.addr; } );
+    for( size_t i=0; i<tmpSym.size()-1; i++ )
+    {
+        if( tmpSym[i].name ) tmpSym[i].size = tmpSym[i+1].addr - tmpSym[i].addr;
+    }
+
+    s_kernelSymCnt = validCnt;
+    s_kernelSym = (KernelSymbol*)tracy_malloc_fast( sizeof( KernelSymbol ) * validCnt );
+    auto dst = s_kernelSym;
+    for( auto& v : tmpSym )
+    {
+        if( v.name ) *dst++ = v;
+    }
+    assert( dst == s_kernelSym + validCnt );
+
+    TracyDebug( "Loaded %zu kernel symbols (%zu code sections)\n", tmpSym.size(), validCnt );
 }
 #endif
 
@@ -858,8 +901,7 @@ char* NormalizePath( const char* path )
     if( path[0] != '/' ) return nullptr;
 
     const char* ptr = path;
-    const char* end = path;
-    while( *end ) end++;
+    const char* end = path + strlen( path );
 
     char* res = (char*)tracy_malloc( end - ptr + 1 );
     size_t rsz = 0;
@@ -1250,13 +1292,13 @@ CallstackEntryData DecodeCallstackPtr( uint64_t ptr )
 #ifdef __linux
     else if( s_kernelSym )
     {
-        auto it = std::lower_bound( s_kernelSym, s_kernelSym + s_kernelSymCnt, ptr, []( const KernelSymbol& lhs, const uint64_t& rhs ) { return lhs.addr > rhs; } );
+        auto it = std::lower_bound( s_kernelSym, s_kernelSym + s_kernelSymCnt, ptr, []( const KernelSymbol& lhs, const uint64_t& rhs ) { return lhs.addr + lhs.size < rhs; } );
         if( it != s_kernelSym + s_kernelSymCnt )
         {
             cb_data[0].name = CopyStringFast( it->name );
             cb_data[0].file = CopyStringFast( "<kernel>" );
             cb_data[0].line = 0;
-            cb_data[0].symLen = 0;
+            cb_data[0].symLen = it->size;
             cb_data[0].symAddr = it->addr;
             return { cb_data, 1, it->mod ? it->mod : "<kernel>" };
         }
