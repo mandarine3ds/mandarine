@@ -1,3 +1,7 @@
+# Note
+
+Mandarine won't be updated anymore till azahar (another WIP citra emulator fork) gets released. Mandarine will be rebased and reworked on.
+
 <h1 align="center">
   <img src="https://github.com/mandarine3ds/mandarine/blob/master/dist/mandarine.svg" alt="mandarine" width="188"/>
 </p>
