@@ -476,6 +476,14 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             // If the overlay is enabled, we need to update the position if changed
             val position = IntSetting.PERF_OVERLAY_POSITION.int
             updateStatsPosition(position)
+            binding.inGameMenu.menu.findItem(R.id.menu_emulation_pause)?.let { menuItem ->
+                menuItem.title = resources.getString(R.string.pause_emulation)
+                menuItem.icon = ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_pause,
+                    requireContext().theme
+                )
+            }
             return
         }
 
