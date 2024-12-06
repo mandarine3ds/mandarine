@@ -16,7 +16,7 @@ interface SearchLocationHelper {
          */
         fun getSearchLocations(context: Context): List<Uri> {
             val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
-            val locations = preferences.getString(GameHelper.KEY_GAME_PATH, "")
+            val locations = preferences.getString(GameHelper.KEY_GAME_PATH, "").split("|")
             val urisList = mutableListOf<Uri>()
 
             locations.forEach {
