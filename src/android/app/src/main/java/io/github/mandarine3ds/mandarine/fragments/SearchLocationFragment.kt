@@ -17,16 +17,16 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.mandarine3ds.mandarine.R
-import io.github.mandarine3ds.mandarine.adapters.GenericListItem
+import io.github.mandarine3ds.mandarine.adapters.CustomListItem
 import io.github.mandarine3ds.mandarine.adapters.SearchLocationViewItem
-import io.github.mandarine3ds.mandarine.adapters.SelectableGenericAdapter
+import io.github.mandarine3ds.mandarine.adapters.SelectableAdapter
 import io.github.mandarine3ds.mandarine.adapters.SpacingItemDecoration
 import io.github.mandarine3ds.mandarine.databinding.FragmentSearchLocationBinding
 import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import io.github.mandarine3ds.mandarine.utils.SearchLocationResult
-import io.github.mandarine3ds.mandarine.utils.WindowInsetsHelper
 import io.github.mandarine3ds.mandarine.utils.serializable
 
 /**
@@ -37,7 +37,7 @@ class SearchLocationFragment : Fragment() {
     private var _binding: FragmentSearchLocationBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = SelectableGenericAdapter(0)
+    private val adapter = SelectableAdapter(0)
 
     private val documentPicker =
         registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
@@ -90,7 +90,7 @@ class SearchLocationFragment : Fragment() {
     }
 
     private fun populateAdapter() {
-        val items: MutableList<GenericListItem<out ViewBinding>> = ArrayList()
+        val items: MutableList<CustomListItem<out ViewBinding>> = ArrayList()
 
         SearchLocationHelper.getSearchLocations(requireContext()).onEach { uri ->
             items.add(SearchLocationViewItem(uri).apply {
