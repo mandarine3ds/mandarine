@@ -61,10 +61,6 @@ class SearchLocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        WindowInsetsHelper.applyToActivity(binding.root, binding.locationsList)
-        WindowInsetsHelper.addMargin(binding.addLocationButton, bottom = true)
-
         binding.titlebar.toolbar.title = getString(R.string.search_location)
         binding.titlebar.toolbar.subtitle = "" // nothing set for now
 
@@ -78,24 +74,6 @@ class SearchLocationFragment : Fragment() {
 
         binding.addLocationButton.setOnClickListener {
             documentPicker.launch(null)
-        }
-
-        binding.coordinatorLayout.viewTreeObserver.addOnTouchModeChangeListener { isTouchMode ->
-            val layoutUpdate = {
-                val params = binding.locationsList.layoutParams as CoordinatorLayout.LayoutParams
-                if (!isTouchMode) {
-                    binding.titlebar.appBarLayout.setExpanded(true)
-                    params.height = binding.coordinatorLayout.height - binding.titlebar.toolbar.height
-                } else {
-                    params.height = CoordinatorLayout.LayoutParams.MATCH_PARENT
-                }
-                binding.locationsList.layoutParams = params
-                binding.locationsList.requestLayout()
-            }
-
-            binding.coordinatorLayout.viewTreeObserver.addOnGlobalLayoutListener {
-                layoutUpdate()
-            }
         }
 
         populateAdapter()
@@ -126,6 +104,31 @@ class SearchLocationFragment : Fragment() {
 
         adapter.setItems(items)
     }
+
+    private fun setInsets() =
+        ViewCompat.setOnApplyWindowInsetsListener(
+            binding.root
+        ) { _: View, windowInsets: WindowInsetsCompat ->
+            val barInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val cutoutInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout())
+
+            val leftInsets = barInsets.left + cutoutInsets.left
+            val rightInsets = barInsets.right + cutoutInsets.right
+
+            val mlpAppBar = binding.toolbar.layoutParams as MarginLayoutParams
+            mlpAppBar.leftMargin = leftInsets
+            mlpAppBar.rightMargin = rightInsets
+            binding.toolbar.layoutParams = mlpAppBar
+
+            val mlpScrollAbout = binding.locationsList.layoutParams as MarginLayoutParams
+            mlpScrollAbout.leftMargin = leftInsets
+            mlpScrollAbout.rightMargin = rightInsets
+            binding.locationsList.layoutParams = mlpScrollAbout
+
+            binding.root.updatePadding(bottom = barInsets.bottom)
+
+            windowInsets
+        }
 
     private fun resolveActionResultString(result: SearchLocationResult) = when (result) {
         SearchLocationResult.Success -> getString(R.string.search_location_add_success)
