@@ -39,10 +39,12 @@ import io.github.mandarine3ds.mandarine.model.SetupCallback
 import io.github.mandarine3ds.mandarine.model.SetupPage
 import io.github.mandarine3ds.mandarine.model.StepState
 import io.github.mandarine3ds.mandarine.ui.main.MainActivity
-import io.github.mandarine3ds.mandarine.utils.GameHelper
 import io.github.mandarine3ds.mandarine.utils.MandarineDirectoryHelper
+import io.github.mandarine3ds.mandarine.utils.GameHelper
+import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.utils.ViewUtils
+import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 
 class SetupFragment : Fragment() {
@@ -417,11 +419,9 @@ class SetupFragment : Fragment() {
                 Intent.FLAG_GRANT_READ_URI_PERMISSION
             )
 
-            // When a new directory is picked, we currently will reset the existing games
-            // database. This effectively means that only one game directory is supported.
-            preferences.edit()
-                .putString(GameHelper.KEY_GAME_PATH, result.toString())
-                .apply()
+            // When a new directory is picked, we will add the new games
+            // dir. This effectively means that multiple game directory is supported.
+            SearchLocationHelper.addLocation(requireContext(), result)
 
             homeViewModel.setGamesDir(requireActivity(), result.path!!)
 
