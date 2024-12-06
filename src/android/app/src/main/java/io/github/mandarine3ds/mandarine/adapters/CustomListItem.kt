@@ -1,3 +1,4 @@
+
 package io.github.mandarine3ds.mandarine.adapters
 
 import android.view.LayoutInflater

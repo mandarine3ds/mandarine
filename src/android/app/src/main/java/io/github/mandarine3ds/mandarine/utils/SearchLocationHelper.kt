@@ -4,8 +4,8 @@ package io.github.mandarine3ds.mandarine.utils
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import io.github.borked3ds.android.MandarineApplication
-import io.github.borked3ds.android.utils.GameHelper
+import io.github.mandarine3ds.mandarine.MandarineApplication
+import io.github.mandarine3ds.mandarine.utils.GameHelper
 
 interface SearchLocationHelper {
     companion object {
