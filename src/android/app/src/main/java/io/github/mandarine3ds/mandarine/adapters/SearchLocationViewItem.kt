@@ -14,14 +14,14 @@ object SearchLocationBindingFactory : ViewBindingFactory {
 open class SearchLocationViewItem(
     var uri : Uri?,
     var onDelete : ((position : Int) -> Unit)? = null
-) : SelectableGenericListItem<SearchLocationItemBinding>() {
-    private var holder : GenericViewHolder<SearchLocationItemBinding>? = null
+) : SelectableCustomListItem<SearchLocationItemBinding>() {
+    private var holder : CustomViewHolder<SearchLocationItemBinding>? = null
     private val adapterPosition get() = holder?.adapterPosition ?: RecyclerView.NO_POSITION
 
     override fun getViewBindingFactory() = SearchLocationBindingFactory
 
     @SuppressLint("SetTextI18n")
-    override fun bind(holder : GenericViewHolder<SearchLocationItemBinding>, position : Int) {
+    override fun bind(holder : CustomViewHolder<SearchLocationItemBinding>, position : Int) {
         this.holder = holder
         val binding = holder.binding
 
@@ -43,5 +43,5 @@ open class SearchLocationViewItem(
         }
     }
 
-    override fun areItemsTheSame(other : GenericListItem<SearchLocationItemBinding>) : Boolean = key() == other.key()
+    override fun areItemsTheSame(other : CustomListItem<SearchLocationItemBinding>) : Boolean = key() == other.key()
 }
