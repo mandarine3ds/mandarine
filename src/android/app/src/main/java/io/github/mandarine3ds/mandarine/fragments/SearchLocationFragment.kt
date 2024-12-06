@@ -61,8 +61,7 @@ class SearchLocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.titlebar.toolbar.title = getString(R.string.search_location)
-        binding.titlebar.toolbar.subtitle = "" // nothing set for now
+        binding.toolbar.setTitle(getString(R.string.search_location))
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.locationsList.layoutManager = layoutManager
