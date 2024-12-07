@@ -87,7 +87,7 @@ open class MultiTypeAdapter : RecyclerView.Adapter<CustomViewHolder<ViewBinding>
 
         private fun getSortedMatches(): List<ItemScore> {
             return completeItemList.mapNotNull { item ->
-                val itemKey = item.key().lowercase(Locale.getDefault())
+                val itemKey = item.getFilterKey().lowercase(Locale.getDefault())
                 val similarity = (jaroWinkler.similarity(searchQuery, itemKey) + cosine.similarity(searchQuery, itemKey)) / 2
                 if (similarity > 0) ItemScore(similarity, item) else null
             }.sortedByDescending { it.score }
