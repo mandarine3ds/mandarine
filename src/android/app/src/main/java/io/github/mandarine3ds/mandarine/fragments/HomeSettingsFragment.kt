@@ -75,7 +75,7 @@ class HomeSettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mainActivity = requireActivity() as MainActivity
-        val locations = SearchLocationHelper.getSearchLocations(context)
+        val locations = SearchLocationHelper.getSearchLocations(requireContext())
 
         val optionsList = listOf(
             HomeSetting(
