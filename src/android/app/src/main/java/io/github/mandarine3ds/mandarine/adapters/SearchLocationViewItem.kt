@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.mandarine3ds.mandarine.databinding.SearchLocationItemBinding
 
-object SearchLocationBindingFactory : ViewBindingFactory {
-    override fun createBinding(parent : ViewGroup) = SearchLocationItemBinding.inflate(parent.inflater(), parent, false)
+object SearchLocationBindingFactory : BindingFactory {
+    override fun createBinding(parent : ViewGroup) = SearchLocationItemBinding.inflate(parent.getInflater(), parent, false)
 }
 
 open class SearchLocationViewItem(
@@ -18,7 +18,7 @@ open class SearchLocationViewItem(
     private var holder : CustomViewHolder<SearchLocationItemBinding>? = null
     private val adapterPosition get() = holder?.adapterPosition ?: RecyclerView.NO_POSITION
 
-    override fun getViewBindingFactory() = SearchLocationBindingFactory
+    override fun getBindingFactory() = SearchLocationBindingFactory
 
     @SuppressLint("SetTextI18n")
     override fun bind(holder : CustomViewHolder<SearchLocationItemBinding>, position : Int) {
@@ -43,5 +43,5 @@ open class SearchLocationViewItem(
         }
     }
 
-    override fun areItemsTheSame(other : CustomListItem<SearchLocationItemBinding>) : Boolean = key() == other.key()
+    override fun areItemsTheSame(other : CustomListItem<SearchLocationItemBinding>) : Boolean = getFilterKey() == other.getFilterKey()
 }
