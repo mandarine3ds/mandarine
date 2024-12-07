@@ -81,7 +81,7 @@ class SearchLocationFragment : Fragment() {
         binding.locationsList.adapter = adapter
 
         binding.locationsList.addItemDecoration(
-            SpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.grid_padding))
+            SpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.spacing_med))
         )
 
         binding.addLocationButton.setOnClickListener {
