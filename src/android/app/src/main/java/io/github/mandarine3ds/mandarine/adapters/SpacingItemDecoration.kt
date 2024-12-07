@@ -1,5 +1,5 @@
 
-package io.github.mandarine3ds.mandarine
+package io.github.mandarine3ds.mandarine.adapters
 
 import android.graphics.Rect
 import android.view.View
