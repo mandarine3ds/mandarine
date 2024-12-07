@@ -35,6 +35,7 @@
     <string name="search_location_add_success">Search location added successfully</string>
     <string name="search_location_delete_success">Search location deleted successfully</string>
     <string name="search_location_duplicated">Search location already added</string>
+    <string name="undo">Undo</string>
     <string name="about">About</string>
     <string name="about_description">Build version, credits, and more</string>
     <string name="games_dir_selected">Games directory selected</string>
