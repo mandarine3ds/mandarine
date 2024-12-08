@@ -6,10 +6,11 @@ package io.github.mandarine3ds.mandarine.model
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import io.github.borked3ds.android.utils.HomeSettingStringUtils
 
 data class HomeSetting(
-    val titleId: Int,
-    val descriptionId: Int,
+    val titleId: HomeSettingStringUtils,
+    val descriptionId: HomeSettingStringUtils,
     val iconId: Int,
     val onClick: () -> Unit,
     val isEnabled: () -> Boolean = { true },
