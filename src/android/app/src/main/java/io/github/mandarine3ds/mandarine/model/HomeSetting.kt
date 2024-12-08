@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import io.github.borked3ds.android.utils.HomeSettingStringUtils
 
 data class HomeSetting(
-    val titleId: HomeSettingStringUtils,
-    val descriptionId: HomeSettingStringUtils,
+    val title: HomeSettingStringUtils,
+    val description: HomeSettingStringUtils,
     val iconId: Int,
     val onClick: () -> Unit,
     val isEnabled: () -> Boolean = { true },
