@@ -28,6 +28,7 @@ import io.github.mandarine3ds.mandarine.adapters.SpacingItemDecoration
 import io.github.mandarine3ds.mandarine.databinding.FragmentSearchLocationBinding
 import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import io.github.mandarine3ds.mandarine.utils.SearchLocationResult
+import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 
 /**
  * This fragment is used to manage the selected search locations to use.
@@ -72,6 +73,9 @@ class SearchLocationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbar.setTitle(getString(R.string.search_location))
+        
+        homeViewModel.setNavigationVisibility(visible = false, animated = true)
+        homeViewModel.setStatusBarShadeVisibility(visible = false)
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.locationsList.layoutManager = layoutManager
