@@ -43,5 +43,5 @@ open class SearchLocationViewItem(
         }
     }
 
-    override fun areItemsTheSame(other : CustomListItem<SearchLocationItemBinding>) : Boolean = getFilterKey() == other.getFilterKey()
+    override fun isSameItem(other : CustomListItem<SearchLocationItemBinding>) : Boolean = getFilterKey() == other.getFilterKey()
 }
