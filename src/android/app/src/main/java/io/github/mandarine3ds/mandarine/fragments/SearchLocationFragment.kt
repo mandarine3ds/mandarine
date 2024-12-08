@@ -38,6 +38,7 @@ class SearchLocationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter = SelectableAdapter(0)
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     private val documentPicker =
         registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
