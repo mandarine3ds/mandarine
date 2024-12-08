@@ -46,6 +46,7 @@ import io.github.mandarine3ds.mandarine.utils.Log
 import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.viewmodel.DriverViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
+import io.github.mandarine3ds.mandarine.utils.HomeSettingStringUtils
 
 class HomeSettingsFragment : Fragment() {
     private var _binding: FragmentHomeSettingsBinding? = null
@@ -79,15 +80,21 @@ class HomeSettingsFragment : Fragment() {
 
         val optionsList = listOf(
             HomeSetting(
-                R.string.grid_menu_core_settings,
-                R.string.settings_description,
+                HomeSettingStringUtils.ResId(R.string.grid_menu_core_settings),
+                HomeSettingStringUtils.ResId(R.string.settings_description),
                 R.drawable.ic_settings,
                 { SettingsActivity.launch(requireContext(), SettingsFile.FILE_NAME_CONFIG, "") }
             ),
             HomeSetting(
+<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
                 R.string.artic_base_connect,
                 R.string.artic_base_connect_description,
                 R.drawable.ic_network,
+=======
+                HomeSettingStringUtils.ResId(R.string.artic_base_connect),
+                HomeSettingStringUtils.ResId(R.string.artic_base_connect_description),
+                R.drawable.ic_artic_base,
+>>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
                 {
                     val inflater = LayoutInflater.from(context)
                     val inputBinding = DialogSoftwareKeyboardBinding.inflate(inflater)
@@ -123,8 +130,8 @@ class HomeSettingsFragment : Fragment() {
                 }
             ),
             HomeSetting(
-                R.string.system_files,
-                R.string.system_files_description,
+                HomeSettingStringUtils.ResId(R.string.system_files),
+                HomeSettingStringUtils.ResId(R.string.system_files_description),
                 R.drawable.ic_system_update,
                 {
                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
@@ -133,21 +140,38 @@ class HomeSettingsFragment : Fragment() {
                 }
             ),
             HomeSetting(
-                R.string.install_game_content,
-                R.string.install_game_content_description,
+                HomeSettingStringUtils.ResId(R.string.install_game_content),
+                HomeSettingStringUtils.ResId(R.string.install_game_content_description),
                 R.drawable.ic_install,
                 { mainActivity.ciaFileInstaller.launch(true) }
             ),
             HomeSetting(
+<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
                 R.string.share_log,
                 R.string.share_log_description,
+=======
+                HomeSettingStringUtils.ResId(R.string.multiplayer),
+                HomeSettingStringUtils.ResId(R.string.multiplayer_description),
+                R.drawable.ic_network,
+                { mainActivity.displayMultiplayerDialog() }
+            ),
+            HomeSetting(
+                HomeSettingStringUtils.ResId(R.string.share_log),
+                HomeSettingStringUtils.ResId(R.string.share_log_description),
+>>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
                 R.drawable.ic_share,
                 { shareLog() }
             ),
             HomeSetting(
+<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
                 R.string.gpu_driver_manager,
                 R.string.install_gpu_driver_description,
                 R.drawable.ic_install_driver,
+=======
+                HomeSettingStringUtils.ResId(R.string.gpu_driver_manager),
+                HomeSettingStringUtils.ResId(R.string.install_gpu_driver_description),
+                R.drawable.ic_build,
+>>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
                 {
                     binding.root.findNavController()
                         .navigate(R.id.action_homeSettingsFragment_to_driverManagerFragment)
@@ -158,19 +182,24 @@ class HomeSettingsFragment : Fragment() {
                 driverViewModel.selectedDriverMetadata
             ),
             HomeSetting(
+<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
                 R.string.select_mandarine_user_folder,
                 R.string.select_mandarine_user_folder_home_description,
+=======
+                HomeSettingStringUtils.ResId(R.string.select_borked3ds_user_folder),
+                HomeSettingStringUtils.ResId(R.string.select_borked3ds_user_folder_home_description),
+>>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
                 R.drawable.ic_home,
                 { mainActivity.openMandarineDirectory.launch(null) },
                 details = homeViewModel.userDir
             ),
             HomeSetting(
-                R.string.search_location,
-                String.format(
+                HomeSettingStringUtils.ResId(R.string.search_location),
+                HomeSettingStringUtils.Text(String.format(
                     requireContext().getString(R.string.search_locations_count),
                     if(locations.isEmpty()) "No" else locations.size.toString(),
                     if(locations.size > 1) "s" else ""
-                ),
+                )),
                 R.drawable.ic_add,
                 {
                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
@@ -179,14 +208,14 @@ class HomeSettingsFragment : Fragment() {
                 }
             ),
             HomeSetting(
-                R.string.preferences_theme,
-                R.string.theme_and_color_description,
+                HomeSettingStringUtils.ResId(R.string.preferences_theme),
+                HomeSettingStringUtils.ResId(R.string.theme_and_color_description),
                 R.drawable.ic_palette,
                 { SettingsActivity.launch(requireContext(), Settings.SECTION_THEME, "") }
             ),
             HomeSetting(
-                R.string.about,
-                R.string.about_description,
+                HomeSettingStringUtils.ResId(R.string.about),
+                HomeSettingStringUtils.ResId(R.string.about_description),
                 R.drawable.ic_info_outline,
                 {
                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
