@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeSettingsFragment_to_driverManagerFragment"
             app:destination="@id/driverManagerFragment" />
+        <action
+            android:id="@+id/action_homeSettingsFragment_to_searchLocationFragment"
+            app:destination="@id/searchLocationFragment" />
     </fragment>
 
     <fragment
