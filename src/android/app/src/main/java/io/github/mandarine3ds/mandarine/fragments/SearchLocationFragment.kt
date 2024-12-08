@@ -99,7 +99,7 @@ class SearchLocationFragment : Fragment() {
                         getString(R.string.search_location_delete_success),
                         Snackbar.LENGTH_LONG
                     ).setAction(R.string.undo) {
-                        adapter.run { addItemAt(position, this@apply) }
+                        adapter?.run { addItemAt(position, this@apply) }
                     }.addCallback(object : Snackbar.Callback() {
                         override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                             if (event != DISMISS_EVENT_ACTION) {
@@ -111,7 +111,7 @@ class SearchLocationFragment : Fragment() {
             })
         }
 
-        adapter.selectAndNotify(items)
+        adapter.updateItems(items)
     }
 
     private fun setInsets() =
