@@ -74,6 +74,10 @@ class SearchLocationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbar.setTitle(getString(R.string.search_location))
         
+        binding.toolbar.setNavigationOnClickListener {
+            binding.root.findNavController().popBackStack()
+        }
+        
         homeViewModel.setNavigationVisibility(visible = false, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = false)
 
