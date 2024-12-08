@@ -15,6 +15,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
+import io.github.mandarine3ds.mandarine.utils.HomeSettingStringUtils
 import kotlinx.coroutines.launch
 import io.github.mandarine3ds.mandarine.databinding.CardHomeOptionBinding
 import io.github.mandarine3ds.mandarine.fragments.MessageDialogFragment
@@ -63,8 +64,14 @@ class HomeSettingAdapter(
         fun bind(option: HomeSetting) {
             this.option = option
 
-            binding.optionTitle.text = activity.resources.getString(option.titleId)
-            binding.optionDescription.text = activity.resources.getString(option.descriptionId)
+            binding.optionTitle.text = when (val title = option.title) {
+                is HomeSettingStringUtils.Text -> title.value
+                is HomeSettingStringUtils.ResId -> activity.resources.getString(title.id)
+            }
+            binding.optionDescription.text = when (val desc = option.description) {
+                is HomeSettingStringUtils.Text -> desc.value
+                is HomeSettingStringUtils.ResId -> activity.resources.getString(desc.id)
+            }
             binding.optionIcon.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     activity.resources,
