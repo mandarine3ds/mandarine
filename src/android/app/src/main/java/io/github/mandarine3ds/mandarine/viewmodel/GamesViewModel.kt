@@ -40,6 +40,9 @@ class GamesViewModel : ViewModel() {
     val searchFocused get() = _searchFocused.asStateFlow()
     private val _searchFocused = MutableStateFlow(false)
 
+    private val _filteredGames = MutableStateFlow<List<Game>>(emptyList())
+    val filteredGames get() = _filteredGames.asStateFlow()
+
     init {
         // Retrieve list of cached games
         val storedGames = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
@@ -99,6 +102,10 @@ class GamesViewModel : ViewModel() {
 
     fun setSearchFocused(searchFocused: Boolean) {
         _searchFocused.value = searchFocused
+    }
+
+    fun setFilteredGames(games: List<Game>) {
+        _filteredGames.value = games
     }
 
     fun reloadGames(directoryChanged: Boolean) {

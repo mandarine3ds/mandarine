@@ -234,35 +234,20 @@ class HomeSettingsFragment : Fragment() {
     }
 
     private fun setInsets() =
-        ViewCompat.setOnApplyWindowInsetsListener(
-            binding.root
-        ) { view: View, windowInsets: WindowInsetsCompat ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
             val barInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             val cutoutInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout())
-            val spacingNavigation = resources.getDimensionPixelSize(R.dimen.spacing_navigation)
-            val spacingNavigationRail =
-                resources.getDimensionPixelSize(R.dimen.spacing_navigation_rail)
-
-            val leftInsets = barInsets.left + cutoutInsets.left
-            val rightInsets = barInsets.right + cutoutInsets.right
 
             binding.scrollViewSettings.updatePadding(
                 top = barInsets.top,
-                bottom = barInsets.bottom
             )
 
-            val mlpScrollSettings = binding.scrollViewSettings.layoutParams as MarginLayoutParams
-            mlpScrollSettings.leftMargin = leftInsets
-            mlpScrollSettings.rightMargin = rightInsets
-            binding.scrollViewSettings.layoutParams = mlpScrollSettings
-
-            binding.linearLayoutSettings.updatePadding(bottom = spacingNavigation)
-
-            if (ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_LTR) {
-                binding.linearLayoutSettings.updatePadding(left = spacingNavigationRail)
-            } else {
-                binding.linearLayoutSettings.updatePadding(right = spacingNavigationRail)
-            }
+            binding.homeSettingsList.updatePadding(
+                left = barInsets.left + cutoutInsets.left,
+                top = cutoutInsets.top,
+                right = barInsets.right + cutoutInsets.right,
+                bottom = barInsets.bottom
+            )
 
             windowInsets
         }
