@@ -145,7 +145,7 @@ void HostRoomWindow::Host() {
                 ui->room_name->text().toStdString(),
                 ui->room_description->toPlainText().toStdString(), "", port, password,
                 ui->max_player->value(), ui->username->text().toStdString(),
-                game_name.toStdString(), game_id, CreateVerifyBackend(is_public), ban_list, true);
+                game_name.toStdString(), game_id, CreateVerifyBackend(is_public), ban_list);
             if (!created) {
                 NetworkMessage::ErrorManager::ShowError(
                     NetworkMessage::ErrorManager::COULD_NOT_CREATE_ROOM);
