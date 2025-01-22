@@ -138,6 +138,12 @@ class HomeSettingsFragment : Fragment() {
                         ?.navigate(R.id.action_homeSettingsFragment_to_managmentFragment) }
             ),
             HomeSetting(
+                R.string.multiplayer,
+                R.string.multiplayer_description,
+                R.drawable.ic_multiplayer,
+                { mainActivity.displayMultiplayerDialog() }
+            ),
+            HomeSetting(
                 R.string.share_log,
                 R.string.share_log_description,
                 R.drawable.ic_share,

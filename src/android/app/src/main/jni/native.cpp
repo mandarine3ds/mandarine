@@ -56,6 +56,8 @@
 #include "video_core/debug_utils/debug_utils.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
+#include "multiplayer.h"
+
 
 #if defined(ENABLE_VULKAN) && MANDARINE_ARCH(arm64)
 #include <adrenotools/driver.h>
@@ -664,6 +666,86 @@ void Java_io_github_mandarine3ds_mandarine_NativeLibrary_removeAmiibo(
 
     nfc->RemoveAmiibo();
 }
+
+JNIEXPORT jint JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayCreateRoom(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port,
+    jstring username, jstring password, jstring room_name, jint max_players) {
+    return static_cast<jint>(
+        NetPlayCreateRoom(GetJString(env, ipaddress), port,
+                         GetJString(env, username), GetJString(env, password),
+                         GetJString(env, room_name), max_players));
+}
+
+JNIEXPORT jint JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayJoinRoom(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port,
+    jstring username, jstring password) {
+    return static_cast<jint>(
+        NetPlayJoinRoom(GetJString(env, ipaddress), port,
+                       GetJString(env, username), GetJString(env, password)));
+}
+
+JNIEXPORT jobjectArray JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayRoomInfo(
+    JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return ToJStringArray(env, NetPlayRoomInfo());
+}
+
+JNIEXPORT jboolean JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayIsJoined(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return NetPlayIsJoined();
+}
+
+JNIEXPORT jboolean JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayIsHostedRoom(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return NetPlayIsHostedRoom();
+}
+
+JNIEXPORT void JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlaySendMessage(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring msg) {
+    NetPlaySendMessage(GetJString(env, msg));
+}
+
+JNIEXPORT void JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayKickUser(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring username) {
+    NetPlayKickUser(GetJString(env, username));
+}
+
+JNIEXPORT void JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayLeaveRoom(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
+    NetPlayLeaveRoom();
+}
+
+JNIEXPORT jstring JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayGetConsoleId(
+    JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return ToJString(env, NetPlayGetConsoleId());
+}
+
+JNIEXPORT jboolean JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayIsModerator(
+    [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return NetPlayIsModerator();
+}
+
+JNIEXPORT jobjectArray JNICALL
+Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayGetBanList(
+    JNIEnv* env, [[maybe_unused]] jobject obj) {
+    return ToJStringArray(env, NetPlayGetBanList());
+}
+
+JNIEXPORT void JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayBanUser(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring username) {
+    NetPlayBanUser(GetJString(env, username));
+}
+
+JNIEXPORT void JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayUnbanUser(
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring username) {
+    NetPlayUnbanUser(GetJString(env, username));
+}
+
 
 JNIEXPORT jobject JNICALL Java_io_github_mandarine3ds_mandarine_utils_CiaInstallWorker_installCIA(
     JNIEnv* env, jobject jobj, jstring jpath) {
