@@ -159,7 +159,7 @@ class HomeSettingsFragment : Fragment() {
                 R.string.select_mandarine_user_folder,
                 R.string.select_mandarine_user_folder_home_description,
                 R.drawable.ic_home,
-                { mainActivity.openMandarineDirectory.launch(Uri.parse(null)) },
+                { mainActivity.openMandarineDirectory.launch(null) },
                 details = homeViewModel.userDir
             ),
             HomeSetting(
