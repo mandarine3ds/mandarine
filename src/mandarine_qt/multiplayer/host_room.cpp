@@ -144,8 +144,8 @@ void HostRoomWindow::Host() {
             bool created = room->Create(
                 ui->room_name->text().toStdString(),
                 ui->room_description->toPlainText().toStdString(), "", port, password,
-                ui->max_player->value(), NetSettings::values.mandarine_username,
-                game_name.toStdString(), game_id, CreateVerifyBackend(is_public), ban_list);
+                ui->max_player->value(), ui->username->text().toStdString(),
+                game_name.toStdString(), game_id, CreateVerifyBackend(is_public), ban_list, true);
             if (!created) {
                 NetworkMessage::ErrorManager::ShowError(
                     NetworkMessage::ErrorManager::COULD_NOT_CREATE_ROOM);
