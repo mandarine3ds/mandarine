@@ -213,11 +213,10 @@ jobs:
               echo "GIT_TAG_NAME=$GITHUB_REF_NAME" >> $GITHUB_ENV
           fi
           echo $GIT_TAG_NAME
-      - name: Deps
-        run: |
-          sudo add-apt-repository -y ppa:theofficialgman/gpu-tools
-          sudo apt-get update -y
-          sudo apt-get install ccache apksigner -y
+      - name: Update deb repositories 
+        run: sudo apt-get update 
+      - name: Install New Packages
+        run: sudo apt-get -y install zip unzip python3 ccache apksigner && sudo apt-get clean
       - name: Build
         run: JAVA_HOME=$JAVA_HOME_17_X64 ./.ci/android.sh
         env:
