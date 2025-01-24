@@ -6,7 +6,7 @@ package io.github.mandarine3ds.mandarine.model
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import io.github.borked3ds.android.utils.HomeSettingStringUtils
+import io.github.mandarine3ds.mandarine.utils.HomeSettingStringUtils
 
 data class HomeSetting(
     val title: HomeSettingStringUtils,
