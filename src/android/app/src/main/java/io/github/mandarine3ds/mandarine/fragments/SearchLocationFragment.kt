@@ -152,7 +152,8 @@ class SearchLocationFragment : Fragment() {
                 left = leftInsets,
                 right = rightInsets,
                 bottom = barInsets.bottom +
-                requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_fab_list)
+                    requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_fab_list)
+            )
             
             val mlpFab = binding.addLocationButton.layoutParams as MarginLayoutParams
             val fabPadding = requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_large)
