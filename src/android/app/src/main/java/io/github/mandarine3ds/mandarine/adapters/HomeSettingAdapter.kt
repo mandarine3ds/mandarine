@@ -72,7 +72,7 @@ class HomeSettingAdapter(
             binding.optionDescription.text = when (val desc = option.description) {
                 is HomeSettingStringUtils.Text -> desc.value
                 is HomeSettingStringUtils.ResId -> activity.resources.getString(desc.id)
-                else -> activity.resources.getString(title.id)
+                else -> activity.resources.getString(desc.id)
             }
             binding.optionIcon.setImageDrawable(
                 ResourcesCompat.getDrawable(
