@@ -99,6 +99,6 @@
 
     <fragment 
         android:id="@+id/searchLocationFragment"
-        android:name="io.github.borked3ds.android.fragments.SearchLocationFragment"
+        android:name="io.github.mandarine3ds.mandarine.fragments.SearchLocationFragment"
         android:label="SearchLocationFragment" />
 </navigation>
