@@ -31,7 +31,7 @@ import io.github.mandarine3ds.mandarine.databinding.FragmentSearchLocationBindin
 import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import io.github.mandarine3ds.mandarine.utils.SearchLocationResult
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
-import io.github.borked3ds.android.viewmodel.GamesViewModel
+import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 
 /**
  * This fragment is used to manage the selected search locations to use.
