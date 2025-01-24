@@ -32,7 +32,10 @@ object GameHelper {
         gamesDirs.forEach { searchLocation ->
             addGamesRecursive(games, FileUtil.listFiles(searchLocation), 3)
             NativeLibrary.getInstalledGamePaths().forEach {
-                games.add(getGame(Uri.parse(it), isInstalled = true, addedToLibrary = true))
+                val game = getGame(Uri.parse(it), isInstalled = true, addedToLibrary = true)
+                if (!games.containsGame(game)) {
+                    games.add(game)
+                }
             }
         }
 
@@ -63,7 +66,10 @@ object GameHelper {
                 addGamesRecursive(games, FileUtil.listFiles(it.uri), depth - 1)
             } else {
                 if (Game.allExtensions.contains(FileUtil.getExtension(it.uri))) {
-                    games.add(getGame(it.uri, isInstalled = false, addedToLibrary = true))
+                    val game = getGame(it.uri, isInstalled = false, addedToLibrary = true)
+                    if (!games.containsGame(game)) {
+                        games.add(game)
+                    }
                 }
             }
         }
@@ -105,5 +111,9 @@ object GameHelper {
         }
 
         return newGame
+    }
+    
+    private fun MutableList<Game>.containsGame(game: Game): Boolean {
+        return this.any { it.path == game.path }
     }
 }

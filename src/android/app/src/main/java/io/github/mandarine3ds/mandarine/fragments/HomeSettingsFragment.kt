@@ -86,15 +86,9 @@ class HomeSettingsFragment : Fragment() {
                 { SettingsActivity.launch(requireContext(), SettingsFile.FILE_NAME_CONFIG, "") }
             ),
             HomeSetting(
-<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
-                R.string.artic_base_connect,
-                R.string.artic_base_connect_description,
-                R.drawable.ic_network,
-=======
                 HomeSettingStringUtils.ResId(R.string.artic_base_connect),
                 HomeSettingStringUtils.ResId(R.string.artic_base_connect_description),
-                R.drawable.ic_artic_base,
->>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
+                R.drawable.ic_network,
                 {
                     val inflater = LayoutInflater.from(context)
                     val inputBinding = DialogSoftwareKeyboardBinding.inflate(inflater)
@@ -146,32 +140,15 @@ class HomeSettingsFragment : Fragment() {
                 { mainActivity.ciaFileInstaller.launch(true) }
             ),
             HomeSetting(
-<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
-                R.string.share_log,
-                R.string.share_log_description,
-=======
-                HomeSettingStringUtils.ResId(R.string.multiplayer),
-                HomeSettingStringUtils.ResId(R.string.multiplayer_description),
-                R.drawable.ic_network,
-                { mainActivity.displayMultiplayerDialog() }
-            ),
-            HomeSetting(
                 HomeSettingStringUtils.ResId(R.string.share_log),
                 HomeSettingStringUtils.ResId(R.string.share_log_description),
->>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
                 R.drawable.ic_share,
                 { shareLog() }
             ),
             HomeSetting(
-<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
-                R.string.gpu_driver_manager,
-                R.string.install_gpu_driver_description,
-                R.drawable.ic_install_driver,
-=======
                 HomeSettingStringUtils.ResId(R.string.gpu_driver_manager),
                 HomeSettingStringUtils.ResId(R.string.install_gpu_driver_description),
-                R.drawable.ic_build,
->>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
+                R.drawable.ic_install_driver,
                 {
                     binding.root.findNavController()
                         .navigate(R.id.action_homeSettingsFragment_to_driverManagerFragment)
@@ -182,13 +159,8 @@ class HomeSettingsFragment : Fragment() {
                 driverViewModel.selectedDriverMetadata
             ),
             HomeSetting(
-<<<<<<< HEAD:src/android/app/src/main/java/io/github/mandarine3ds/mandarine/fragments/HomeSettingsFragment.kt
-                R.string.select_mandarine_user_folder,
-                R.string.select_mandarine_user_folder_home_description,
-=======
-                HomeSettingStringUtils.ResId(R.string.select_borked3ds_user_folder),
-                HomeSettingStringUtils.ResId(R.string.select_borked3ds_user_folder_home_description),
->>>>>>> f81f974d4 (Update HomeSettingsFragment.kt):src/android/app/src/main/java/io/github/borked3ds/android/fragments/HomeSettingsFragment.kt
+                HomeSettingStringUtils.ResId(R.string.select_mandarine_user_folder),
+                HomeSettingStringUtils.ResId(R.string.select_mandarine_user_folder_home_description),
                 R.drawable.ic_home,
                 { mainActivity.openMandarineDirectory.launch(null) },
                 details = homeViewModel.userDir
@@ -200,7 +172,7 @@ class HomeSettingsFragment : Fragment() {
                     if(locations.isEmpty()) "No" else locations.size.toString(),
                     if(locations.size > 1) "s" else ""
                 )),
-                R.drawable.ic_add,
+                R.drawable.ic_folder,
                 {
                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
                     parentFragmentManager.primaryNavigationFragment?.findNavController()

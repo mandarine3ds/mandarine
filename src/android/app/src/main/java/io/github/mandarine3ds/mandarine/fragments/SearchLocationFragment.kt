@@ -14,6 +14,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -30,6 +31,7 @@ import io.github.mandarine3ds.mandarine.databinding.FragmentSearchLocationBindin
 import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import io.github.mandarine3ds.mandarine.utils.SearchLocationResult
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
+import io.github.borked3ds.android.viewmodel.GamesViewModel
 
 /**
  * This fragment is used to manage the selected search locations to use.
@@ -40,6 +42,7 @@ class SearchLocationFragment : Fragment() {
 
     private val adapter = SelectableAdapter(0)
     private val homeViewModel: HomeViewModel by activityViewModels()
+    private val gamesViewModel: GamesViewModel by activityViewModels()
 
     private val documentPicker =
         registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
@@ -52,7 +55,10 @@ class SearchLocationFragment : Fragment() {
                 val result = SearchLocationHelper.addLocation(requireContext(), it)
                 Snackbar.make(binding.root, resolveActionResultString(result), Snackbar.LENGTH_LONG)
                     .show()
-                if (result == SearchLocationResult.Success) populateAdapter()
+                if (result == SearchLocationResult.Success) {
+                    populateAdapter()
+                    gamesViewModel.reloadGames(false)
+                }
             }
         }
 
@@ -110,10 +116,13 @@ class SearchLocationFragment : Fragment() {
                         Snackbar.LENGTH_LONG
                     ).setAction(R.string.undo) {
                         adapter?.run { addItemAt(position, this@apply) }
+                        populateAdapter()
                     }.addCallback(object : Snackbar.Callback() {
                         override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                             if (event != DISMISS_EVENT_ACTION) {
                                 SearchLocationHelper.deleteLocation(requireContext(), uri!!)
+                                populateAdapter()
+                                gamesViewModel.reloadGames(false)
                             }
                         }
                     }).show()
@@ -139,12 +148,23 @@ class SearchLocationFragment : Fragment() {
             mlpAppBar.rightMargin = rightInsets
             binding.toolbar.layoutParams = mlpAppBar
 
-            val mlpScrollAbout = binding.locationsList.layoutParams as MarginLayoutParams
-            mlpScrollAbout.leftMargin = leftInsets
-            mlpScrollAbout.rightMargin = rightInsets
-            binding.locationsList.layoutParams = mlpScrollAbout
-
-            binding.root.updatePadding(bottom = barInsets.bottom)
+            binding.locationsList.updatePadding(
+                left = leftInsets,
+                right = rightInsets,
+                bottom = barInsets.bottom +
+                requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_fab_list)
+            
+            val mlpFab = binding.addLocationButton.layoutParams as MarginLayoutParams
+            val fabPadding = requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_large)
+            mlpFab.leftMargin = leftInsets + fabPadding
+            mlpFab.bottomMargin = barInsets.bottom + fabPadding
+            mlpFab.rightMargin = rightInsets + fabPadding
+            binding.addLocationButton.layoutParams = mlpFab
+            
+            binding.locationsList.post {
+                binding.locationsList.invalidate()
+                binding.locationsList.requestLayout()
+            }
 
             windowInsets
         }
