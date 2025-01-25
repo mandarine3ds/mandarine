@@ -132,6 +132,7 @@ class SearchLocationFragment : Fragment() {
         }
 
         adapter.updateItems(items)
+        adapter.notifyDataSetChanged()
     }
 
     private fun setInsets() =
