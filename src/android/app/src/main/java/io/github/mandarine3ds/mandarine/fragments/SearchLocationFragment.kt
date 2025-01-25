@@ -102,6 +102,7 @@ class SearchLocationFragment : Fragment() {
         }
 
         populateAdapter()
+        setInsets()
     }
 
     private fun populateAdapter() {
