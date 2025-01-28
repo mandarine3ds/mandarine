@@ -22,6 +22,10 @@
         <action
             android:id="@+id/action_homeSettingsFragment_to_driverManagerFragment"
             app:destination="@id/driverManagerFragment" />
+        <action
+            android:id="@+id/action_homeSettingsFragment_to_managmentFragment"
+            app:destination="@id/managementFragment" />
+
     </fragment>
 
     <fragment
@@ -93,5 +97,10 @@
         android:id="@+id/driverManagerFragment"
         android:name="io.github.mandarine3ds.mandarine.fragments.DriverManagerFragment"
         android:label="DriverManagerFragment" />
+
+    <fragment
+        android:id="@+id/managementFragment"
+        android:name="io.github.mandarine3ds.mandarine.fragments.ManagementFragment"
+        android:label="ManagementFragment" />
 
 </navigation>

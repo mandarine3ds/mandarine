@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -7,6 +7,7 @@ package io.github.mandarine3ds.mandarine.utils
 import android.content.SharedPreferences
 import android.net.Uri
 import androidx.preference.PreferenceManager
+import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import io.github.mandarine3ds.mandarine.MandarineApplication
@@ -26,12 +27,16 @@ object GameHelper {
         val games = mutableListOf<Game>()
         val context = MandarineApplication.appContext
         preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val gamesDir = preferences.getString(KEY_GAME_PATH, "")
-        val gamesUri = Uri.parse(gamesDir)
+        val gamesDirs = SearchLocationHelper.getSearchLocations(context)
 
-        addGamesRecursive(games, FileUtil.listFiles(gamesUri), 3)
-        NativeLibrary.getInstalledGamePaths().forEach {
-            games.add(getGame(Uri.parse(it), isInstalled = true, addedToLibrary = true))
+        gamesDirs.forEach { searchLocation ->
+            addGamesRecursive(games, FileUtil.listFiles(searchLocation), 3)
+            NativeLibrary.getInstalledGamePaths().forEach {
+                val game = getGame(Uri.parse(it), isInstalled = true, addedToLibrary = true)
+                if (!games.containsGame(game)) {
+                    games.add(game)
+                }
+            }
         }
 
         // Cache list of games found on disk
@@ -61,7 +66,10 @@ object GameHelper {
                 addGamesRecursive(games, FileUtil.listFiles(it.uri), depth - 1)
             } else {
                 if (Game.allExtensions.contains(FileUtil.getExtension(it.uri))) {
-                    games.add(getGame(it.uri, isInstalled = false, addedToLibrary = true))
+                    val game = getGame(it.uri, isInstalled = false, addedToLibrary = true)
+                    if (!games.containsGame(game)) {
+                        games.add(game)
+                    }
                 }
             }
         }
@@ -103,5 +111,9 @@ object GameHelper {
         }
 
         return newGame
+    }
+
+    private fun MutableList<Game>.containsGame(game: Game): Boolean {
+        return this.any { it.path == game.path }
     }
 }
