@@ -1,4 +1,4 @@
-// Copyright 2014 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -238,6 +238,14 @@ custom_bottom_x =
 custom_bottom_y =
 custom_bottom_width =
 custom_bottom_height =
+
+# Orientation option for the emulator
+# 2 (default): Automatic
+# 0: Landscape
+# 8: Landscape (Flipped)
+# 1: Portrait
+# 9: Portrait (Flipped)
+screen_orientation =
 
 # Layout for the portrait mode
 # 0 (default): Top and bottom screens at top, full width

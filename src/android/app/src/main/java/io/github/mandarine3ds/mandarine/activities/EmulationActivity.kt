@@ -47,6 +47,7 @@ import io.github.mandarine3ds.mandarine.utils.ThemeUtil
 import io.github.mandarine3ds.mandarine.viewmodel.EmulationViewModel
 import io.github.mandarine3ds.mandarine.utils.NetPlayManager
 import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
+import io.github.mandarine3ds.mandarine.features.settings.model.IntSetting
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
@@ -79,7 +80,7 @@ class EmulationActivity : AppCompatActivity() {
         NativeLibrary.enableAdrenoTurboMode(BooleanSetting.ADRENO_GPU_BOOST.boolean)
 
         binding = ActivityEmulationBinding.inflate(layoutInflater)
-        screenAdjustmentUtil = ScreenAdjustmentUtil(windowManager, settingsViewModel.settings)
+        screenAdjustmentUtil = ScreenAdjustmentUtil(this, windowManager, settingsViewModel.settings)
         hotkeyUtility = HotkeyUtility(screenAdjustmentUtil, this)
         setContentView(binding.root)
 
@@ -113,6 +114,8 @@ class EmulationActivity : AppCompatActivity() {
 
         isEmulationRunning = true
         instance = this
+
+        applyOrientationSettings() // Check for orientation settings at startup
     }
 
     // On some devices, the system bars will not disappear on first boot or after some
@@ -121,6 +124,7 @@ class EmulationActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         enableFullscreenImmersive()
+        applyOrientationSettings() // Check for orientation settings changes on runtime
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -228,6 +232,11 @@ class EmulationActivity : AppCompatActivity() {
             controller.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
+    }
+
+    private fun applyOrientationSettings() {
+        val orientationOption = IntSetting.ORIENTATION_OPTION.int
+        screenAdjustmentUtil.changeActivityOrientation(orientationOption)
     }
 
     // Gets button presses

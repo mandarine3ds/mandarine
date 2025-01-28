@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -998,6 +998,17 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
     private fun addLayoutSettings(sl: ArrayList<SettingsItem>) {
         settingsActivity.setToolbarTitle(settingsActivity.getString(R.string.preferences_layout))
         sl.apply {
+            add(
+                SingleChoiceSetting(
+                    IntSetting.ORIENTATION_OPTION,
+                    R.string.layout_screen_orientation,
+                    0,
+                    R.array.screenOrientations,
+                    R.array.screenOrientationValues,
+                    IntSetting.ORIENTATION_OPTION.key,
+                    IntSetting.ORIENTATION_OPTION.defaultValue
+                )
+            )
             add(
                 SingleChoiceSetting(
                     IntSetting.SCREEN_LAYOUT,
