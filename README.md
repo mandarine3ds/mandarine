@@ -6,8 +6,8 @@
 </h1>
 
 <p align="center">
-  <strong>A Citra fork with new features and hacks which are expeirmetnal and may not be present upstream. </strong>
-  </strong>Feel free to download this build and test it, if you run into any bugs please open an issue on GitHub or contact us on the Discord</strong>
+  <strong>A Citra fork with new features and hacks which are experimetnal and may not be present upstream. </strong>
+  </strong>Feel free to download Mandarine and test it, if you run into any bugs please open an issue on GitHub or contact us on Discord</strong>
 </p>
 
 <p align="center">
