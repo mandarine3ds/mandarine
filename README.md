@@ -1,7 +1,3 @@
-# Note
-
-Mandarine won't be updated anymore till azahar (another WIP citra emulator fork) gets released. Mandarine will be rebased and reworked on.
-
 <h1 align="center">
   <img src="https://github.com/mandarine3ds/mandarine/blob/master/dist/mandarine.svg" alt="mandarine" width="188"/>
 </p>
@@ -10,8 +6,8 @@ Mandarine won't be updated anymore till azahar (another WIP citra emulator fork)
 </h1>
 
 <p align="center">
-  <strong>This fork is just Citra with tweaks/additions which should result in better performance than the original Citra</strong>
-  </strong>Feel free to download this build and test it, if you run into any bugs please open an issue on GitHub or contact me on the Discord / Telegram</strong>
+  <strong>A Citra fork with new features and hacks which are expeirmetnal and may not be present upstream. </strong>
+  </strong>Feel free to download this build and test it, if you run into any bugs please open an issue on GitHub or contact us on the Discord</strong>
 </p>
 
 <p align="center">
@@ -23,10 +19,17 @@ Mandarine won't be updated anymore till azahar (another WIP citra emulator fork)
   <a href="https://discord.gg/8xjMHWEuf6">
     <img src="https://dcbadge.limes.pink/api/server/8xjMHWEuf6" alt="Discord"/>
   </a>
-  <a href="https://t.me/mandarine3ds">
-    <img src="https://patrolavia.github.io/telegram-badge/chat.png" alt="Telegram"/>
-  </a>
 </p>
+
+
+# Installation
+
+Grab the appropriate release for your operating system of choice from the `Releases` section of the page
+
+> [!NOTE]  
+> For Windows, we reccomend MSYS2 since it doesnt need the `Microsoft Visual C++ runtime` in order to work
+
+---
 
 # Recommended specs
 
@@ -48,35 +51,9 @@ GPU: OpenGL ES 3.2 or Vulkan 1.1 support
 Memory: 2GB of RAM. 4GB is recommended
 ```
 
-# Installation
-
-### Stable builds
-
-|Platform|Link|
-|--------|--------|
-| 🪟 Windows|[MSVC](https://github.com/mandarine3ds/mandarine/releases/latest/download/windows-msvc.zip)|
-| 📱 Android|[APK](https://github.com/mandarine3ds/mandarine/releases/latest/download/Android-APK.zip)|
-| 🐧 Linux|[AppImage](https://github.com/mandarine3ds/mandarine/releases/latest/download/linux-appimage.zip)|
-| 🍎 Mac OS|[Universal](https://github.com/mandarine3ds/mandarine/releases/latest/download/macos-universal.zip)|
-
-# Which build should I use?
-
-- MSVC is generally good for most users
-- MSYS2 is good for users who may not want to install Microsoft Visual C++ runtime
-
-## ⚠️ Dev Builds (Pre-release software, may be buggy)
-
-|Platform|Status|Download|
-|--------|------------|--------|
-| 🪟 Windows|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Windows MSVC](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/windows-msvc.zip)|
-| 📱 Android|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Android-APK](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/android-universal.zip)|
-| 🐧 Linux|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Linux AppImage](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/linux-appimage.zip)|
-| 🍎 Mac OS|[![Qt Build](https://github.com/mandarine3ds/mandarine/actions/workflows/build.yml/badge.svg)](https://github.com/mandarine3ds/mandarine/actions/workflows/Qt_Build.yml)|[Mac OS Universal](https://nightly.link/mandarine3ds/mandarine/workflows/build/master/macos-universal.zip)|
-
 # Contributions
 
-if you know what you're doing, feel free to open a PR, we will review it in due time and it most likely will get approved and merged.
+if you know what you're doing, feel free to open a PR, we will review it in due time. 
 
-# Support
-
-In case you want to support my work and motivate me more with the project, feel free to check my [paypal](https://paypal.me/TLOZP).
+> [!WARNING]
+> Keep in mind to properly test your chnages before opening a PR and please follow respect code formatting and license headers
