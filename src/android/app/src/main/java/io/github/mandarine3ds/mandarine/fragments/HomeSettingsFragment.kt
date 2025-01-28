@@ -1,18 +1,16 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
 package io.github.mandarine3ds.mandarine.fragments
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -27,8 +25,8 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialSharedAxis
-import io.github.mandarine3ds.mandarine.HomeNavigationDirections
 import io.github.mandarine3ds.mandarine.MandarineApplication
+import io.github.mandarine3ds.mandarine.HomeNavigationDirections
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.adapters.HomeSettingAdapter
 import io.github.mandarine3ds.mandarine.databinding.DialogSoftwareKeyboardBinding
@@ -39,8 +37,8 @@ import io.github.mandarine3ds.mandarine.features.settings.utils.SettingsFile
 import io.github.mandarine3ds.mandarine.model.Game
 import io.github.mandarine3ds.mandarine.model.HomeSetting
 import io.github.mandarine3ds.mandarine.ui.main.MainActivity
-import io.github.mandarine3ds.mandarine.utils.GameHelper
 import io.github.mandarine3ds.mandarine.utils.GpuDriverHelper
+import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
 import io.github.mandarine3ds.mandarine.utils.Log
 import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.viewmodel.DriverViewModel
@@ -74,6 +72,7 @@ class HomeSettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mainActivity = requireActivity() as MainActivity
+        SearchLocationHelper.getSearchLocations(requireContext())
 
         val optionsList = listOf(
             HomeSetting(
@@ -131,10 +130,12 @@ class HomeSettingsFragment : Fragment() {
                 }
             ),
             HomeSetting(
-                R.string.install_game_content,
-                R.string.install_game_content_description,
-                R.drawable.ic_install,
-                { mainActivity.ciaFileInstaller.launch(true) }
+                R.string.manage_emulator_data_title,
+                R.string.manage_emulator_data_description,
+                R.drawable.ic_folder_data,
+                {                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+                    parentFragmentManager.primaryNavigationFragment?.findNavController()
+                        ?.navigate(R.id.action_homeSettingsFragment_to_managmentFragment) }
             ),
             HomeSetting(
                 R.string.share_log,
@@ -154,20 +155,6 @@ class HomeSettingsFragment : Fragment() {
                 R.string.custom_driver_not_supported,
                 R.string.custom_driver_not_supported_description,
                 driverViewModel.selectedDriverMetadata
-            ),
-            HomeSetting(
-                R.string.select_mandarine_user_folder,
-                R.string.select_mandarine_user_folder_home_description,
-                R.drawable.ic_home,
-                { mainActivity.openMandarineDirectory.launch(null) },
-                details = homeViewModel.userDir
-            ),
-            HomeSetting(
-                R.string.select_games_folder,
-                R.string.select_games_folder_description,
-                R.drawable.ic_add,
-                { getGamesDirectory.launch(Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).data) },
-                details = homeViewModel.gamesDir
             ),
             HomeSetting(
                 R.string.preferences_theme,
@@ -213,32 +200,6 @@ class HomeSettingsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private val getGamesDirectory =
-        registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { result ->
-            if (result == null) {
-                return@registerForActivityResult
-            }
-
-            requireContext().contentResolver.takePersistableUriPermission(
-                result,
-                Intent.FLAG_GRANT_READ_URI_PERMISSION
-            )
-
-            // When a new directory is picked, we currently will reset the existing games
-            // database. This effectively means that only one game directory is supported.
-            preferences.edit()
-                .putString(GameHelper.KEY_GAME_PATH, result.toString())
-                .apply()
-
-            Toast.makeText(
-                MandarineApplication.appContext,
-                R.string.games_dir_selected,
-                Toast.LENGTH_LONG
-            ).show()
-
-            homeViewModel.setGamesDir(requireActivity(), result.path!!)
-        }
 
     private fun shareLog() {
         val logDirectory = DocumentFile.fromTreeUri(

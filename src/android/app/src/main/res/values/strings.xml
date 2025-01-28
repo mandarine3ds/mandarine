@@ -27,12 +27,10 @@
     <string name="custom_driver_not_supported">Custom drivers not supported</string>
     <string name="custom_driver_not_supported_description">Custom driver loading isn\'t currently supported for this device.\nCheck this option again in the future to see if support was added!</string>
     <string name="share_log_not_found">No log file found</string>
-    <string name="select_games_folder">Select Games Folder</string>
-    <string name="select_games_folder_description">Allows Mandarine to populate the games list</string>
+    <string name="undo">Undo</string>
     <string name="about">About</string>
     <string name="about_description">Build version, credits, and more</string>
     <string name="games_dir_selected">Games directory selected</string>
-    <string name="select_mandarine_user_folder_home_description">Changes the files that Mandarine uses to load games</string>
     <string name="theme_and_color_description">Modify the look of the app</string>
     <string name="install_cia_title">Install CIA</string>
 
@@ -786,5 +784,20 @@
     <string name="use_artic_base_controller_desc">Use the controls provided by Artic Base Server when connected to it instead of the configured input device.</string>
     <string name="instant_debug_log">Flush log output on every message</string>
     <string name="instant_debug_log_desc">Immediately commits the debug log to file. Use this if mandarine crashes and the log output is being cut.</string>
+
+    <!-- Emulator Data -->
+    <string name="search_location">Game Folder Search Locations</string>
+    <string name="add">Add</string>
+    <string name="search_location_duplicated">Search location already added</string>
+    <string name="search_location_description">These locations will be used as search locations for your game files</string>
+    <string name="manage_emulator_data_title">Manage Emulator Data</string>
+    <string name="manage_emulator_data_description">Modify data folder locations and install Games</string>
+    <string name="manage_emulator_data">Emulator Data</string>
+    <string name="export">Export</string>
+    <string name="string_import">Import</string>
+    <string name="string_set">Set</string>
+    <string name="select_mandarine_user_folder_home_description">Changes the files that Mandarine uses to load games</string>
+    <string name="directory_already_added">This directory has already been added</string>
+    <string name="delete_search_location">Delete Game Folder Search Location</string>
 
 </resources>
