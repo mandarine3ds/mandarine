@@ -54,7 +54,7 @@
 
     <item
         android:id="@+id/menu_multiplayer"
-        android:icon="@drawable/ic_network"
+        android:icon="@drawable/ic_multiplayer"
         android:title="@string/multiplayer" />
 
     <item
