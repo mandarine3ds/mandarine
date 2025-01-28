@@ -801,7 +801,7 @@
     <string name="delete_search_location">Delete Game Folder Search Location</string>
 
     <!-- Multiplayer -->
-    <string name="multiplayer">Multiplayer</string>
+    <string name="multiplayer">Multiplayer (Experimental)</string>
     <string name="multiplayer_description">Host your own game room or join an existing one to play with people</string>
     <string name="multiplayer_room_title">Room: %1$s</string>
     <string name="multiplayer_console_id">Console ID：%1$s</string>

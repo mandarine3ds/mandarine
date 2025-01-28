@@ -1,4 +1,4 @@
-// Copyright 2019 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -33,7 +33,6 @@ jmethodID GetRequestCameraPermission();
 jmethodID GetRequestMicPermission();
 jmethodID GetAddNetPlayMessage();
 jmethodID ClearChat();
-
 
 jclass GetCheatClass();
 jfieldID GetCheatPointer();

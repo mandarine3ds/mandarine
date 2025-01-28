@@ -1,4 +1,4 @@
-// Copyright 2017 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -373,12 +373,10 @@ void Room::RoomImpl::HandleJoinRequest(const ENetEvent* event) {
     }
     member.user_data = verify_backend->LoadUserData(uid, token);
 
-
     if (nickname == room_information.host_username) {
         member.user_data.moderator = true;
         LOG_INFO(Network, "User {} is a moderator", std::string(room_information.host_username));
     }
-
 
     std::string ip;
     {

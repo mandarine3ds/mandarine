@@ -1,4 +1,4 @@
-// Copyright 2024 Mandarine Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -45,11 +45,11 @@ enum class NetPlayStatus : s32 {
 };
 
 bool NetworkInit();
-NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
-                                const std::string& username, const std::string& password,
-                                const std::string& room_name, int max_players);
-NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port,
-                              const std::string& username, const std::string& password);
+NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port, const std::string& username,
+                                const std::string& password, const std::string& room_name,
+                                int max_players);
+NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std::string& username,
+                              const std::string& password);
 std::vector<std::string> NetPlayRoomInfo();
 bool NetPlayIsJoined();
 bool NetPlayIsHostedRoom();

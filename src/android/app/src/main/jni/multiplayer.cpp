@@ -1,4 +1,4 @@
-// Copyright 2024 Mandarine Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -10,11 +10,9 @@
 #include "core/core.h"
 #include "core/hle/service/cfg/cfg.h"
 #include "network/network.h"
-#include "android/log.h"
 
-
-#include <thread>
 #include <chrono>
+#include <thread>
 
 void AddNetPlayMessage(jint type, jstring msg) {
     IDCache::GetEnvForThread()->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
@@ -53,14 +51,14 @@ bool NetworkInit() {
                 NetPlayStatus status;
                 std::string msg;
                 switch (state) {
-                    case Network::RoomMember::State::Joined:
-                        status = NetPlayStatus::ROOM_JOINED;
-                        break;
-                    case Network::RoomMember::State::Moderator:
-                        status = NetPlayStatus::ROOM_MODERATOR;
-                        break;
-                    default:
-                        return;
+                case Network::RoomMember::State::Joined:
+                    status = NetPlayStatus::ROOM_JOINED;
+                    break;
+                case Network::RoomMember::State::Moderator:
+                    status = NetPlayStatus::ROOM_MODERATOR;
+                    break;
+                default:
+                    return;
                 }
                 AddNetPlayMessage(static_cast<int>(status), msg);
             }
@@ -69,46 +67,46 @@ bool NetworkInit() {
             NetPlayStatus status;
             std::string msg;
             switch (error) {
-                case Network::RoomMember::Error::LostConnection:
-                    status = NetPlayStatus::LOST_CONNECTION;
-                    break;
-                case Network::RoomMember::Error::HostKicked:
-                    status = NetPlayStatus::HOST_KICKED;
-                    break;
-                case Network::RoomMember::Error::UnknownError:
-                    status = NetPlayStatus::UNKNOWN_ERROR;
-                    break;
-                case Network::RoomMember::Error::NameCollision:
-                    status = NetPlayStatus::NAME_COLLISION;
-                    break;
-                case Network::RoomMember::Error::MacCollision:
-                    status = NetPlayStatus::MAC_COLLISION;
-                    break;
-                case Network::RoomMember::Error::ConsoleIdCollision:
-                    status = NetPlayStatus::CONSOLE_ID_COLLISION;
-                    NetPlayGenerateConsoleId();
-                    break;
-                case Network::RoomMember::Error::WrongVersion:
-                    status = NetPlayStatus::WRONG_VERSION;
-                    break;
-                case Network::RoomMember::Error::WrongPassword:
-                    status = NetPlayStatus::WRONG_PASSWORD;
-                    break;
-                case Network::RoomMember::Error::CouldNotConnect:
-                    status = NetPlayStatus::COULD_NOT_CONNECT;
-                    break;
-                case Network::RoomMember::Error::RoomIsFull:
-                    status = NetPlayStatus::ROOM_IS_FULL;
-                    break;
-                case Network::RoomMember::Error::HostBanned:
-                    status = NetPlayStatus::HOST_BANNED;
-                    break;
-                case Network::RoomMember::Error::PermissionDenied:
-                    status = NetPlayStatus::PERMISSION_DENIED;
-                    break;
-                case Network::RoomMember::Error::NoSuchUser:
-                    status = NetPlayStatus::NO_SUCH_USER;
-                    break;
+            case Network::RoomMember::Error::LostConnection:
+                status = NetPlayStatus::LOST_CONNECTION;
+                break;
+            case Network::RoomMember::Error::HostKicked:
+                status = NetPlayStatus::HOST_KICKED;
+                break;
+            case Network::RoomMember::Error::UnknownError:
+                status = NetPlayStatus::UNKNOWN_ERROR;
+                break;
+            case Network::RoomMember::Error::NameCollision:
+                status = NetPlayStatus::NAME_COLLISION;
+                break;
+            case Network::RoomMember::Error::MacCollision:
+                status = NetPlayStatus::MAC_COLLISION;
+                break;
+            case Network::RoomMember::Error::ConsoleIdCollision:
+                status = NetPlayStatus::CONSOLE_ID_COLLISION;
+                NetPlayGenerateConsoleId();
+                break;
+            case Network::RoomMember::Error::WrongVersion:
+                status = NetPlayStatus::WRONG_VERSION;
+                break;
+            case Network::RoomMember::Error::WrongPassword:
+                status = NetPlayStatus::WRONG_PASSWORD;
+                break;
+            case Network::RoomMember::Error::CouldNotConnect:
+                status = NetPlayStatus::COULD_NOT_CONNECT;
+                break;
+            case Network::RoomMember::Error::RoomIsFull:
+                status = NetPlayStatus::ROOM_IS_FULL;
+                break;
+            case Network::RoomMember::Error::HostBanned:
+                status = NetPlayStatus::HOST_BANNED;
+                break;
+            case Network::RoomMember::Error::PermissionDenied:
+                status = NetPlayStatus::PERMISSION_DENIED;
+                break;
+            case Network::RoomMember::Error::NoSuchUser:
+                status = NetPlayStatus::NO_SUCH_USER;
+                break;
             }
             AddNetPlayMessage(static_cast<int>(status), msg);
         });
@@ -116,21 +114,21 @@ bool NetworkInit() {
             NetPlayStatus status = NetPlayStatus::NO_ERROR;
             std::string msg(status_message.nickname);
             switch (status_message.type) {
-                case Network::IdMemberJoin:
-                    status = NetPlayStatus::MEMBER_JOIN;
-                    break;
-                case Network::IdMemberLeave:
-                    status = NetPlayStatus::MEMBER_LEAVE;
-                    break;
-                case Network::IdMemberKicked:
-                    status = NetPlayStatus::MEMBER_KICKED;
-                    break;
-                case Network::IdMemberBanned:
-                    status = NetPlayStatus::MEMBER_BANNED;
-                    break;
-                case Network::IdAddressUnbanned:
-                    status = NetPlayStatus::ADDRESS_UNBANNED;
-                    break;
+            case Network::IdMemberJoin:
+                status = NetPlayStatus::MEMBER_JOIN;
+                break;
+            case Network::IdMemberLeave:
+                status = NetPlayStatus::MEMBER_LEAVE;
+                break;
+            case Network::IdMemberKicked:
+                status = NetPlayStatus::MEMBER_KICKED;
+                break;
+            case Network::IdMemberBanned:
+                status = NetPlayStatus::MEMBER_BANNED;
+                break;
+            case Network::IdAddressUnbanned:
+                status = NetPlayStatus::ADDRESS_UNBANNED;
+                break;
             }
             AddNetPlayMessage(static_cast<int>(status), msg);
         });
@@ -146,11 +144,9 @@ bool NetworkInit() {
     return true;
 }
 
-NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
-                              const std::string& username, const std::string& password,
-                              const std::string& room_name, int max_players) {
-
-    __android_log_print(ANDROID_LOG_INFO, "NetPlay", "NetPlayCreateRoom called with ipaddress: %s, port: %d, username: %s, room_name: %s, max_players: %d", ipaddress.c_str(), port, username.c_str(), room_name.c_str(), max_players);
+NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port, const std::string& username,
+                                const std::string& password, const std::string& room_name,
+                                int max_players) {
 
     auto member = Network::GetRoomMember().lock();
     if (!member) {
@@ -170,8 +166,8 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
-    if (!room->Create(room_name, "", ipaddress, port, password,
-                     std::min(max_players, 16), username, "", 0, nullptr, {})) {
+    if (!room->Create(room_name, "", ipaddress, port, password, std::min(max_players, 16), username,
+                      "", 0, nullptr, {})) {
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
@@ -195,8 +191,8 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port,
     return NetPlayStatus::CREATE_ROOM_ERROR;
 }
 
-NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port,
-                            const std::string& username, const std::string& password) {
+NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std::string& username,
+                              const std::string& password) {
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;

@@ -1,4 +1,4 @@
-// Copyright 2017 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -141,11 +141,11 @@ void HostRoomWindow::Host() {
             ban_list = UISettings::values.ban_list;
         }
         if (auto room = Network::GetRoom().lock()) {
-            bool created = room->Create(
-                ui->room_name->text().toStdString(),
-                ui->room_description->toPlainText().toStdString(), "", port, password,
-                ui->max_player->value(), ui->username->text().toStdString(),
-                game_name.toStdString(), game_id, CreateVerifyBackend(is_public), ban_list);
+            bool created = room->Create(ui->room_name->text().toStdString(),
+                                        ui->room_description->toPlainText().toStdString(), "", port,
+                                        password, ui->max_player->value(),
+                                        ui->username->text().toStdString(), game_name.toStdString(),
+                                        game_id, CreateVerifyBackend(is_public), ban_list);
             if (!created) {
                 NetworkMessage::ErrorManager::ShowError(
                     NetworkMessage::ErrorManager::COULD_NOT_CREATE_ROOM);

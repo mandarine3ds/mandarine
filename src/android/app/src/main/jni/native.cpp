@@ -1,4 +1,4 @@
-// Copyright 2019 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -53,11 +53,10 @@
 #include "jni/input_manager.h"
 #include "jni/ndk_motion.h"
 #include "jni/util.h"
+#include "multiplayer.h"
 #include "video_core/debug_utils/debug_utils.h"
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
-#include "multiplayer.h"
-
 
 #if defined(ENABLE_VULKAN) && MANDARINE_ARCH(arm64)
 #include <adrenotools/driver.h>
@@ -668,20 +667,18 @@ void Java_io_github_mandarine3ds_mandarine_NativeLibrary_removeAmiibo(
 }
 
 JNIEXPORT jint JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayCreateRoom(
-    JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port,
-    jstring username, jstring password, jstring room_name, jint max_players) {
-    return static_cast<jint>(
-        NetPlayCreateRoom(GetJString(env, ipaddress), port,
-                         GetJString(env, username), GetJString(env, password),
-                         GetJString(env, room_name), max_players));
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port, jstring username,
+    jstring password, jstring room_name, jint max_players) {
+    return static_cast<jint>(NetPlayCreateRoom(GetJString(env, ipaddress), port,
+                                               GetJString(env, username), GetJString(env, password),
+                                               GetJString(env, room_name), max_players));
 }
 
 JNIEXPORT jint JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManager_netPlayJoinRoom(
-    JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port,
-    jstring username, jstring password) {
-    return static_cast<jint>(
-        NetPlayJoinRoom(GetJString(env, ipaddress), port,
-                       GetJString(env, username), GetJString(env, password)));
+    JNIEnv* env, [[maybe_unused]] jobject obj, jstring ipaddress, jint port, jstring username,
+    jstring password) {
+    return static_cast<jint>(NetPlayJoinRoom(GetJString(env, ipaddress), port,
+                                             GetJString(env, username), GetJString(env, password)));
 }
 
 JNIEXPORT jobjectArray JNICALL
@@ -745,7 +742,6 @@ JNIEXPORT void JNICALL Java_io_github_mandarine3ds_mandarine_utils_NetPlayManage
     JNIEnv* env, [[maybe_unused]] jobject obj, jstring username) {
     NetPlayUnbanUser(GetJString(env, username));
 }
-
 
 JNIEXPORT jobject JNICALL Java_io_github_mandarine3ds_mandarine_utils_CiaInstallWorker_installCIA(
     JNIEnv* env, jobject jobj, jstring jpath) {

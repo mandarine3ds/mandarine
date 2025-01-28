@@ -1,4 +1,4 @@
-// Copyright 2022 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
