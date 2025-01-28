@@ -1,4 +1,4 @@
-// Copyright 2025 Citra / Mandarine Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -136,6 +136,12 @@ class HomeSettingsFragment : Fragment() {
                 {                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
                     parentFragmentManager.primaryNavigationFragment?.findNavController()
                         ?.navigate(R.id.action_homeSettingsFragment_to_managmentFragment) }
+            ),
+            HomeSetting(
+                R.string.multiplayer,
+                R.string.multiplayer_description,
+                R.drawable.ic_multiplayer,
+                { mainActivity.displayMultiplayerDialog() }
             ),
             HomeSetting(
                 R.string.share_log,

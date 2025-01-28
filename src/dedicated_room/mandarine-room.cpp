@@ -1,4 +1,4 @@
-// Copyright 2017 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -174,7 +174,6 @@ int main(int argc, char** argv) {
     u64 preferred_game_id = 0;
     u16 port = Network::DefaultRoomPort;
     u32 max_members = 16;
-    bool enable_mandarine_mods = false;
 
     static struct option long_options[] = {
         {"room-name", required_argument, 0, 'n'},
@@ -234,9 +233,6 @@ int main(int argc, char** argv) {
                 break;
             case 'l':
                 log_file.assign(optarg);
-                break;
-            case 'e':
-                enable_mandarine_mods = true;
                 break;
             case 'h':
                 PrintHelp(argv[0]);
@@ -300,10 +296,6 @@ int main(int argc, char** argv) {
             NetSettings::values.mandarine_token = token;
         }
     }
-    if (!announce && enable_mandarine_mods) {
-        enable_mandarine_mods = false;
-        std::cout << "Can not enable Mandarine Moderators for private rooms\n\n";
-    }
 
     InitializeLogging(log_file);
 
@@ -330,8 +322,7 @@ int main(int argc, char** argv) {
     Network::Init();
     if (std::shared_ptr<Network::Room> room = Network::GetRoom().lock()) {
         if (!room->Create(room_name, room_description, "", port, password, max_members, username,
-                          preferred_game, preferred_game_id, std::move(verify_backend), ban_list,
-                          enable_mandarine_mods)) {
+                          preferred_game, preferred_game_id, std::move(verify_backend), ban_list)) {
             std::cout << "Failed to create room: \n\n";
             return -1;
         }

@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -45,6 +45,8 @@ import io.github.mandarine3ds.mandarine.utils.EmulationLifecycleUtil
 import io.github.mandarine3ds.mandarine.utils.EmulationMenuSettings
 import io.github.mandarine3ds.mandarine.utils.ThemeUtil
 import io.github.mandarine3ds.mandarine.viewmodel.EmulationViewModel
+import io.github.mandarine3ds.mandarine.utils.NetPlayManager
+import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
@@ -195,6 +197,15 @@ class EmulationActivity : AppCompatActivity() {
             getString(R.string.emulation_menu_help),
             Toast.LENGTH_LONG
         ).show()
+    }
+
+    fun displayMultiplayerDialog() {
+        val dialog = NetPlayDialog(this)
+        dialog.show()
+    }
+
+    fun addNetPlayMessages(type: Int, msg: String) {
+        NetPlayManager.addNetPlayMessage(type, msg)
     }
 
     private fun enableFullscreenImmersive() {

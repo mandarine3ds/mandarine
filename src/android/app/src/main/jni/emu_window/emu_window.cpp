@@ -1,4 +1,4 @@
-// Copyright 2019 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -66,8 +66,6 @@ EmuWindow_Android::EmuWindow_Android(ANativeWindow* surface) : host_window{surfa
 
     window_width = ANativeWindow_getWidth(surface);
     window_height = ANativeWindow_getHeight(surface);
-
-    Network::Init();
 }
 
 EmuWindow_Android::~EmuWindow_Android() {
