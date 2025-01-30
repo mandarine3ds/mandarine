@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.core.widget.doOnTextChanged
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -19,14 +20,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.adapters.DriverAdapter
 import io.github.mandarine3ds.mandarine.databinding.FragmentDriverManagerBinding
+import io.github.mandarine3ds.mandarine.databinding.DialogSoftwareKeyboardBinding
 import io.github.mandarine3ds.mandarine.utils.FileUtil.asDocumentFile
 import io.github.mandarine3ds.mandarine.utils.FileUtil.inputStream
 import io.github.mandarine3ds.mandarine.utils.GpuDriverHelper
+import io.github.mandarine3ds.mandarine.utils.DriversFetcher
+import io.github.mandarine3ds.mandarine.utils.DriversFetcher.DownloadResult
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.DriverViewModel
 import java.io.IOException
@@ -66,12 +74,33 @@ class DriverManagerFragment : Fragment() {
             )
         }
 
+        if (!GpuDriverHelper.supportsCustomDriverLoading()) {
+            binding.buttonInstall.visibility = View.GONE
+        }
+
         binding.toolbarDrivers.setNavigationOnClickListener {
             binding.root.findNavController().popBackStack()
         }
 
         binding.buttonInstall.setOnClickListener {
-            getDriver.launch(arrayOf("application/zip"))
+            val items = arrayOf("Import", "Install")
+            var checkedItem = 0
+            var selectedItem: String? = items[0]
+    
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose")
+                .setSingleChoiceItems(items, checkedItem) { dialog, which ->
+                    selectedItem = items[which]
+                }
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    if (selectedItem == "Install") {
+                        getDriver.launch(arrayOf("application/zip"))
+                    } else {
+                        handleGpuDriverImport()
+                    }
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
         }
 
         binding.listDrivers.apply {
@@ -108,6 +137,73 @@ class DriverManagerFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         driverViewModel.onCloseDriverManager()
+    }
+
+    private fun handleGpuDriverImport() {
+        val inflater = LayoutInflater.from(requireContext())
+        val inputBinding = DialogSoftwareKeyboardBinding.inflate(inflater)
+        var textInputValue: String = "https://github.com/K11MCH1/AdrenoToolsDrivers"
+
+        inputBinding.editTextInput.setText(textInputValue)
+        inputBinding.editTextInput.doOnTextChanged { text, _, _, _ ->
+            textInputValue = text.toString()
+        }
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setView(inputBinding.root)
+            .setTitle("Enter repo url")
+            .setPositiveButton("Fetch") { _, _ ->
+                if (textInputValue.isNotEmpty()) {
+                     fetchAndShowDrivers(textInputValue)
+                }
+            }
+            .setNegativeButton(android.R.string.cancel) {_, _ -> }
+            .show()
+    }
+
+    private fun fetchAndShowDrivers(repoUrl: String) {
+        lifecycleScope.launch(Dispatchers.Main) {
+            val releases = DriversFetcher.fetchReleases(repoUrl)
+            if (releases.isEmpty()) {
+                Snackbar.make(binding.root, "Failed to fetch ${repoUrl}: validation failed or check your internet connection", Snackbar.LENGTH_SHORT).show()
+                return@launch
+            }
+        
+            val releaseNames = releases.map { it.first }
+            val releaseUrls = releases.map { it.second }
+            var chosenUrl: String? = releaseUrls[0]
+            var chosenName: String? = releaseNames[0]
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Drivers")
+                .setSingleChoiceItems(releaseNames.toTypedArray(), 0) { _, which ->
+                    chosenUrl = releaseUrls[which]
+                    chosenName = releaseNames[which]
+                }
+                .setPositiveButton("Import") { _, _ ->
+                    downloadDriver(chosenUrl!!, chosenName!!)
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        }
+    }
+
+    private fun downloadDriver(chosenUrl: String, chosenName: String) {
+        GlobalScope.launch(Dispatchers.Main) {
+            var driverFile = GpuDriverHelper.driverStoragePath.findFile("${chosenName}.zip")
+            if (driverFile == null) {
+                driverFile = GpuDriverHelper.driverStoragePath.createFile("application/zip", "${chosenName}.zip")
+                val result = DriversFetcher.downloadAsset(requireContext(), chosenUrl!!, driverFile!!.uri!!)
+                when (result) { 
+                    is DownloadResult.Success -> {
+                        val driverData = GpuDriverHelper.getMetadataFromZip(driverFile!!.inputStream())
+                        driverViewModel.addDriver(Pair(driverFile!!.uri!!, driverData!!))
+                        driverViewModel.setNewDriverInstalled(true)
+                    }
+                    is DownloadResult.Error -> Snackbar.make(binding.root, "Failed to import ${chosenName}: ${result.message}", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun setInsets() =
