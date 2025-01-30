@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -162,8 +162,15 @@ class SettingsAdapter(
 
     fun onBooleanClick(item: SwitchSetting, position: Int, checked: Boolean) {
         val setting = item.setChecked(checked)
+        val settingsFragment = fragmentView as SettingsFragment
         fragmentView.putSetting(setting)
         fragmentView.onSettingChanged()
+
+        // For the switch animation ro run smoothly
+        // Later this should be imrpoved to also animate the item itself
+        settingsFragment.view?.postDelayed({
+            settingsFragment.loadSettingsList()
+        }, 200)
     }
 
     private fun onSingleChoiceClick(item: SingleChoiceSetting) {

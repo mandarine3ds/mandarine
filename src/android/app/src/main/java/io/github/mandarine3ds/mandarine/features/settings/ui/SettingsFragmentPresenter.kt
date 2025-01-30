@@ -241,18 +241,20 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.CUSTOM_CPU_TICKS.defaultValue
                 )
             )
-            add(
-                SliderSetting(
-                    IntSetting.CPU_TICKS,
-                    R.string.cpu_ticks,
-                    0,
-                    77,
-                    65535,
-                    "",
-                    IntSetting.CPU_TICKS.key,
-                    IntSetting.CPU_TICKS.defaultValue.toFloat()
+            if (IntSetting.CUSTOM_CPU_TICKS.int == 1) {
+                add(
+                    SliderSetting(
+                        IntSetting.CPU_TICKS,
+                        R.string.cpu_ticks,
+                        0,
+                        77,
+                        65535,
+                        "",
+                        IntSetting.CPU_TICKS.key,
+                        IntSetting.CPU_TICKS.defaultValue.toFloat()
+                    )
                 )
-            )
+            }
             add(
                 SwitchSetting(
                     IntSetting.USE_FRAME_LIMIT,
@@ -262,18 +264,20 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.USE_FRAME_LIMIT.defaultValue
                 )
             )
-            add(
-                SliderSetting(
-                    IntSetting.FRAME_LIMIT,
-                    R.string.frame_limit_slider,
-                    R.string.frame_limit_slider_description,
-                    1,
-                    200,
-                    "%",
-                    IntSetting.FRAME_LIMIT.key,
-                    IntSetting.FRAME_LIMIT.defaultValue.toFloat()
+            if (IntSetting.USE_FRAME_LIMIT.int == 1) {
+                add(
+                    SliderSetting(
+                        IntSetting.FRAME_LIMIT,
+                        R.string.frame_limit_slider,
+                        R.string.frame_limit_slider_description,
+                        1,
+                        200,
+                        "%",
+                        IntSetting.FRAME_LIMIT.key,
+                        IntSetting.FRAME_LIMIT.defaultValue.toFloat()
+                    )
                 )
-            )
+            }
         }
     }
 
