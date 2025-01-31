@@ -1,15 +1,17 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
 package io.github.mandarine3ds.mandarine.fragments
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -41,6 +43,14 @@ class GamesFragment : Fragment() {
     private val gamesViewModel: GamesViewModel by activityViewModels()
     private val homeViewModel: HomeViewModel by activityViewModels()
 
+    private val openImageLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        adapter.handleImageResult(uri)
+    }
+
+    private lateinit var adapter: GameAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enterTransition = MaterialFadeThrough()
@@ -62,12 +72,18 @@ class GamesFragment : Fragment() {
         homeViewModel.setStatusBarShadeVisibility(visible = true)
         val inflater = LayoutInflater.from(requireContext())
 
+        adapter = GameAdapter(
+            requireActivity() as AppCompatActivity,
+            inflater,
+            openImageLauncher
+        )
+
         binding.gridGames.apply {
             layoutManager = GridLayoutManager(
                 requireContext(),
                 resources.getInteger(R.integer.game_grid_columns)
             )
-            adapter = GameAdapter(requireActivity() as AppCompatActivity, inflater)
+            adapter = this@GamesFragment.adapter
         }
 
         binding.swipeRefresh.apply {

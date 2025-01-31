@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -78,8 +78,11 @@ class SearchFragment : Fragment() {
                 requireContext(),
                 resources.getInteger(R.integer.game_grid_columns)
             )
-            adapter = GameAdapter(requireActivity() as AppCompatActivity, inflater)
-        }
+            adapter = GameAdapter(
+                requireActivity() as AppCompatActivity,
+                inflater,
+                null
+            )}
 
         binding.chipGroup.setOnCheckedStateChangeListener { _, _ -> filterAndSearch() }
 

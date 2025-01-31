@@ -1,10 +1,16 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
 package io.github.mandarine3ds.mandarine.adapters
 
 import android.content.Context
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.SystemClock
 import android.text.TextUtils
@@ -13,10 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.Bitmap
-import android.content.pm.ShortcutInfo
-import android.content.pm.ShortcutManager
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModelProvider
@@ -26,10 +29,6 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import android.graphics.drawable.Icon
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.CoroutineScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.color.MaterialColors
@@ -40,15 +39,29 @@ import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.adapters.GameAdapter.GameViewHolder
 import io.github.mandarine3ds.mandarine.databinding.CardGameBinding
 import io.github.mandarine3ds.mandarine.databinding.DialogAboutGameBinding
+import io.github.mandarine3ds.mandarine.databinding.DialogShortcutBinding
 import io.github.mandarine3ds.mandarine.features.cheats.ui.CheatsFragmentDirections
 import io.github.mandarine3ds.mandarine.model.Game
 import io.github.mandarine3ds.mandarine.utils.GameIconUtils
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater) :
+class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater,  private val openImageLauncher: ActivityResultLauncher<String>?) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
     View.OnClickListener, View.OnLongClickListener {
     private var lastClickTime = 0L
+    private var imagePath: String? = null
+    private var dialogShortcutBinding: DialogShortcutBinding? = null
+
+    fun handleImageResult(uri: Uri?) {
+        val path = uri?.toString()
+        if (path != null) {
+            imagePath = path
+            refreshDialogIcon()
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         // Create a new view.
@@ -218,21 +231,47 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
 
         binding.gameShortcut.setOnClickListener {
-            val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
+            fun showShortcutDialog(game: Game) {
+            dialogShortcutBinding = DialogShortcutBinding.inflate(activity.layoutInflater)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                val bitmap = (binding.gameIcon.drawable as BitmapDrawable).bitmap
-                val icon = Icon.createWithBitmap(bitmap)
+            dialogShortcutBinding!!.shortcutNameInput.setText(game.title)
+            GameIconUtils.loadGameIcon(activity, game, dialogShortcutBinding!!.shortcutIcon)
 
-                val shortcut = ShortcutInfo.Builder(context, game.title)
-                    .setShortLabel(game.title)
+            dialogShortcutBinding!!.shortcutIcon.setOnClickListener {
+                openImageLauncher?.launch("image/*")
+            }
+
+            MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.create_shortcut)
+                .setView(dialogShortcutBinding!!.root)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                val shortcutName = dialogShortcutBinding!!.shortcutNameInput.text.toString()
+                if (shortcutName.isEmpty()) {
+                    Toast.makeText(context, R.string.shortcut_name_empty, Toast.LENGTH_LONG).show()
+                    return@setPositiveButton
+                }
+                val iconBitmap = (dialogShortcutBinding!!.shortcutIcon.drawable as BitmapDrawable).bitmap
+                val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    val icon = Icon.createWithBitmap(iconBitmap)
+                    val shortcut = ShortcutInfo.Builder(context, shortcutName)
+                    .setShortLabel(shortcutName)
                     .setIcon(icon)
                     .setIntent(game.launchIntent.apply {
                         putExtra("launchedFromShortcut", true)
                     })
                     .build()
-                shortcutManager.requestPinShortcut(shortcut, null)
+
+                    shortcutManager?.requestPinShortcut(shortcut, null)
+                }
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
             }
+
+            showShortcutDialog(game)
+            bottomSheetDialog.dismiss()
         }
 
         binding.cheats.setOnClickListener {
@@ -246,6 +285,18 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         bottomSheetDialog.show()
+    }
+
+    private fun refreshDialogIcon() {
+        if (imagePath != null) {
+            val originalBitmap = BitmapFactory.decodeStream(
+                MandarineApplication.appContext.contentResolver.openInputStream(
+                    Uri.parse(imagePath)
+                )
+            )
+            val scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, 108, 108, true)
+            dialogShortcutBinding?.shortcutIcon?.setImageBitmap(scaledBitmap)
+        }
     }
 
     private fun isValidGame(extension: String): Boolean {
