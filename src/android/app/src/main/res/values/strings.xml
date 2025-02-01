@@ -875,5 +875,6 @@
     <string name="multiplayer_unban">Unban</string>
     <string name="multiplayer_unban_message">Are you sure you want to unban %1$s?</string>
     <string name="multiplayer_ban">Ban User</string>
+    <string name="_0">0%</string>
 
 </resources>
