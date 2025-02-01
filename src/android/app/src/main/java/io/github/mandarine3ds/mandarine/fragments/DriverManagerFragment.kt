@@ -1,10 +1,12 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
 package io.github.mandarine3ds.mandarine.fragments
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,24 +21,27 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.transition.MaterialSharedAxis
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.google.android.material.transition.MaterialSharedAxis
+import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
 import io.github.mandarine3ds.mandarine.adapters.DriverAdapter
-import io.github.mandarine3ds.mandarine.databinding.FragmentDriverManagerBinding
 import io.github.mandarine3ds.mandarine.databinding.DialogSoftwareKeyboardBinding
-import io.github.mandarine3ds.mandarine.utils.FileUtil.asDocumentFile
-import io.github.mandarine3ds.mandarine.utils.FileUtil.inputStream
-import io.github.mandarine3ds.mandarine.utils.GpuDriverHelper
+import io.github.mandarine3ds.mandarine.databinding.FragmentDriverManagerBinding
+import io.github.mandarine3ds.mandarine.utils.DirectoryInitialization
+import io.github.mandarine3ds.mandarine.utils.DirectoryInitialization.userDirectory
 import io.github.mandarine3ds.mandarine.utils.DriversFetcher
 import io.github.mandarine3ds.mandarine.utils.DriversFetcher.DownloadResult
-import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
+import io.github.mandarine3ds.mandarine.utils.FileUtil
+import io.github.mandarine3ds.mandarine.utils.FileUtil.inputStream
+import io.github.mandarine3ds.mandarine.utils.GpuDriverHelper
 import io.github.mandarine3ds.mandarine.viewmodel.DriverViewModel
+import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.io.IOException
 
 class DriverManagerFragment : Fragment() {
@@ -45,6 +50,19 @@ class DriverManagerFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by activityViewModels()
     private val driverViewModel: DriverViewModel by activityViewModels()
+    private val tempDriverZipFile: DocumentFile
+        get() {
+            val root = DocumentFile.fromTreeUri(
+                MandarineApplication.appContext,
+                Uri.parse(DirectoryInitialization.userPath)
+            )!!
+            var driverDirectory = root.findFile("cache")
+            if (driverDirectory == null) {
+                driverDirectory = FileUtil.createDir(root.uri.toString(), "cache")
+            }
+            return driverDirectory!!
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +94,13 @@ class DriverManagerFragment : Fragment() {
 
         if (!GpuDriverHelper.supportsCustomDriverLoading()) {
             binding.buttonInstall.visibility = View.GONE
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Unsupported")
+                .setMessage(R.string.custom_driver_not_supported_description)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    driverViewModel.setSelectedDriverIndex(0)
+                }
+                .show()
         }
 
         binding.toolbarDrivers.setNavigationOnClickListener {
@@ -86,7 +111,7 @@ class DriverManagerFragment : Fragment() {
             val items = arrayOf("Import", "Install")
             var checkedItem = 0
             var selectedItem: String? = items[0]
-    
+
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Choose")
                 .setSingleChoiceItems(items, checkedItem) { dialog, which ->
@@ -168,7 +193,7 @@ class DriverManagerFragment : Fragment() {
                 Snackbar.make(binding.root, "Failed to fetch ${repoUrl}: validation failed or check your internet connection", Snackbar.LENGTH_SHORT).show()
                 return@launch
             }
-        
+
             val releaseNames = releases.map { it.first }
             val releaseUrls = releases.map { it.second }
             var chosenUrl: String? = releaseUrls[0]
@@ -190,18 +215,64 @@ class DriverManagerFragment : Fragment() {
 
     private fun downloadDriver(chosenUrl: String, chosenName: String) {
         GlobalScope.launch(Dispatchers.Main) {
-            var driverFile = GpuDriverHelper.driverStoragePath.findFile("${chosenName}.zip")
-            if (driverFile == null) {
-                driverFile = GpuDriverHelper.driverStoragePath.createFile("application/zip", "${chosenName}.zip")
-                val result = DriversFetcher.downloadAsset(requireContext(), chosenUrl!!, driverFile!!.uri!!)
-                when (result) { 
-                    is DownloadResult.Success -> {
-                        val driverData = GpuDriverHelper.getMetadataFromZip(driverFile!!.inputStream())
-                        driverViewModel.addDriver(Pair(driverFile!!.uri!!, driverData!!))
-                        driverViewModel.setNewDriverInstalled(true)
+            val createZipFile = tempDriverZipFile.createFile("application/zip", chosenName)
+            val driverFile: DocumentFile
+
+            val progressDialog = MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Downloading Driver")
+                .setView(R.layout.dialog_progress)
+                .setCancelable(false)
+                .create()
+            progressDialog.show()
+
+            val result = DriversFetcher.downloadAsset(requireContext(), chosenUrl, createZipFile!!.uri)
+            progressDialog.dismiss()
+
+            when (result) {
+                is DownloadResult.Success -> {
+                    try {
+                        driverFile =
+                            GpuDriverHelper.copyDriverToExternalStorage(createZipFile.uri)
+                                ?: throw IOException("Driver failed validation!")
+                    } catch (_: IOException) {
+                        Snackbar.make(
+                            binding.root,
+                            "Failed to import ${chosenName}: ${"Driver failed validation!"}",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                        return@launch
                     }
-                    is DownloadResult.Error -> Snackbar.make(binding.root, "Failed to import ${chosenName}: ${result.message}", Snackbar.LENGTH_SHORT).show()
+                    IndeterminateProgressDialogFragment.newInstance(
+                        requireActivity(),
+                        R.string.installing_driver,
+                        false
+                    ) {
+                        val driverData =
+                            GpuDriverHelper.getMetadataFromZip(driverFile.inputStream())
+                        val driverInList =
+                            driverViewModel.driverList.value.firstOrNull { it.second == driverData }
+                        if (driverInList != null) {
+                            driverFile.delete()
+                            Snackbar.make(
+                                binding.root,
+                                "Driver $chosenName already installed",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            driverViewModel.addDriver(Pair(driverFile.uri, driverData))
+                            driverViewModel.setNewDriverInstalled(true)
+                        }
+                        return@newInstance Any()
+                    }.show(childFragmentManager, IndeterminateProgressDialogFragment.TAG)
+
+                    tempDriverZipFile.delete()
                 }
+
+                is DownloadResult.Error -> Snackbar.make(
+                    binding.root,
+                    "Failed to import ${chosenName}: ${result.message}",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
     }
