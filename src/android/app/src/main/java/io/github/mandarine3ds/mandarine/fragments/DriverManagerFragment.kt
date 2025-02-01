@@ -235,11 +235,7 @@ class DriverManagerFragment : Fragment() {
                             GpuDriverHelper.copyDriverToExternalStorage(createZipFile.uri)
                                 ?: throw IOException("Driver failed validation!")
                     } catch (_: IOException) {
-                        Snackbar.make(
-                            binding.root,
-                            "Failed to import ${chosenName}: ${"Driver failed validation!"}",
-                            Snackbar.LENGTH_SHORT
-                        ).show()
+                        showErrorDialog("Failed to import ${chosenName}: ${"Driver failed validation!"}")
                         return@launch
                     }
                     IndeterminateProgressDialogFragment.newInstance(
@@ -265,16 +261,24 @@ class DriverManagerFragment : Fragment() {
                         return@newInstance Any()
                     }.show(childFragmentManager, IndeterminateProgressDialogFragment.TAG)
 
-                    tempDriverZipFile.delete()
+                    createZipFile.delete()
                 }
 
-                is DownloadResult.Error -> Snackbar.make(
-                    binding.root,
-                    "Failed to import ${chosenName}: ${result.message}",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                is DownloadResult.Error -> { 
+                    showErrorDialog("Failed to import ${chosenName}: ${result.message}")
+                    createZipFile.delete()
+                }
             }
         }
+    }
+
+    private fun showErrorDialog(message: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Error")
+            .setMessage(message)
+            .setPositiveButton(android.R.string.ok, null)
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun setInsets() =
