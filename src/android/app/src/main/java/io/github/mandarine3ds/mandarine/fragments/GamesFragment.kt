@@ -286,11 +286,6 @@ class GamesFragment : Fragment() {
             val chipSpacing = resources.getDimensionPixelSize(R.dimen.spacing_chip)
             val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-
-            binding.gridGames.updatePadding(
-                bottom = barInsets.bottom + spacingNavigation + extraListSpacing
-            )
-
             binding.swipeRefresh.setProgressViewEndTarget(
                 false,
                 barInsets.top + resources.getDimensionPixelSize(R.dimen.spacing_refresh_end)
@@ -310,11 +305,9 @@ class GamesFragment : Fragment() {
 
             binding.noticeText.updatePadding(bottom = spacingNavigation)
             if (ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_LTR) {
-                binding.frameSearch.updatePadding(left = 0, top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
-                binding.filterButton.updatePadding(left = chipSpacing, top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
+                binding.header.updatePadding(top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
             } else {
-                binding.frameSearch.updatePadding(right = 0, top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
-                binding.filterButton.updatePadding(right = chipSpacing, top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
+                binding.header.updatePadding(top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
             }
 
             val mlpFab = binding.addDirectory.layoutParams as MarginLayoutParams
