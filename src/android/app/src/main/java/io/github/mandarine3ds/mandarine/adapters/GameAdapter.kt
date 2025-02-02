@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Icon
+import android.content.Intent
 import android.net.Uri
 import android.os.SystemClock
 import android.text.TextUtils
@@ -29,6 +30,10 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.PopupMenu
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.color.MaterialColors
@@ -41,12 +46,11 @@ import io.github.mandarine3ds.mandarine.databinding.CardGameBinding
 import io.github.mandarine3ds.mandarine.databinding.DialogAboutGameBinding
 import io.github.mandarine3ds.mandarine.databinding.DialogShortcutBinding
 import io.github.mandarine3ds.mandarine.features.cheats.ui.CheatsFragmentDirections
+import io.github.mandarine3ds.mandarine.fragments.IndeterminateProgressDialogFragment
 import io.github.mandarine3ds.mandarine.model.Game
+import io.github.mandarine3ds.mandarine.utils.FileUtil
 import io.github.mandarine3ds.mandarine.utils.GameIconUtils
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater,  private val openImageLauncher: ActivityResultLauncher<String>?) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
@@ -213,6 +217,121 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
     }
 
+    private data class GameDirectories(
+        val gameDir: String,
+        val saveDir: String,
+        val modsDir: String,
+        val texturesDir: String,
+        val appDir: String,
+        val dlcDir: String,
+        val updatesDir: String,
+        val extraDir: String
+    )
+    private fun getGameDirectories(game: Game): GameDirectories {
+        return GameDirectories(
+            gameDir = game.path.substringBeforeLast("/"),
+            saveDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/${String.format("%016x", game.titleId).lowercase().substring(0, 8)}/${String.format("%016x", game.titleId).lowercase().substring(8)}/data/00000001",
+            modsDir = "load/mods/${String.format("%016X", game.titleId)}",
+            texturesDir = "load/textures/${String.format("%016X", game.titleId)}",
+            appDir = game.path.substringBeforeLast("/").split("/").filter { it.isNotEmpty() }.joinToString("/"),
+            dlcDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004008c/${String.format("%016x", game.titleId).lowercase().substring(8)}/content",
+            updatesDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/${String.format("%016x", game.titleId).lowercase().substring(8)}/content",
+            extraDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/extdata/00000000/${String.format("%016X", game.titleId).substring(8, 14).padStart(8, '0')}"
+        )
+    }
+
+    private fun showOpenContextMenu(view: View, game: Game) {
+        val dirs = getGameDirectories(game)
+
+        val popup = PopupMenu(view.context, view).apply {
+            menuInflater.inflate(R.menu.game_context_menu_open, menu)
+            listOf(
+                R.id.game_context_open_app to dirs.appDir,
+                R.id.game_context_open_save_dir to dirs.saveDir,
+                R.id.game_context_open_dlc to dirs.dlcDir,
+                R.id.game_context_open_updates to dirs.updatesDir
+            ).forEach { (id, dir) ->
+                menu.findItem(id)?.isEnabled =
+                    MandarineApplication.documentsTree.folderUriHelper(dir)?.let {
+                        DocumentFile.fromTreeUri(view.context, it)?.exists()
+                    } ?: false
+            }
+            menu.findItem(R.id.game_context_open_extra)?.let { item ->
+                if (MandarineApplication.documentsTree.folderUriHelper(dirs.extraDir)?.let {
+                        DocumentFile.fromTreeUri(view.context, it)?.exists()
+                    } != true) {
+                    menu.removeItem(item.itemId)
+                }
+            }
+        }
+
+        popup.setOnMenuItemClickListener { menuItem ->
+            val intent = Intent(Intent.ACTION_VIEW)
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .setType("*/*")
+
+            val uri = when (menuItem.itemId) {
+                R.id.game_context_open_app -> MandarineApplication.documentsTree.folderUriHelper(dirs.appDir)
+                R.id.game_context_open_save_dir -> MandarineApplication.documentsTree.folderUriHelper(dirs.saveDir)
+                R.id.game_context_open_dlc -> MandarineApplication.documentsTree.folderUriHelper(dirs.dlcDir)
+                R.id.game_context_open_textures -> MandarineApplication.documentsTree.folderUriHelper(dirs.texturesDir, true)
+                R.id.game_context_open_mods -> MandarineApplication.documentsTree.folderUriHelper(dirs.modsDir, true)
+                R.id.game_context_open_extra -> MandarineApplication.documentsTree.folderUriHelper(dirs.extraDir)
+                else -> null
+            }
+
+            uri?.let {
+                intent.data = it
+                view.context.startActivity(intent)
+                true
+            } ?: false
+        }
+
+        popup.show()
+    }
+
+    private fun showUninstallContextMenu(view: View, game: Game, bottomSheetDialog: BottomSheetDialog) {
+        val dirs = getGameDirectories(game)
+        val popup = PopupMenu(view.context, view).apply {
+            menuInflater.inflate(R.menu.game_context_menu_uninstall, menu)
+            listOf(
+                R.id.game_context_uninstall to dirs.gameDir,
+                R.id.game_context_uninstall_dlc to dirs.dlcDir,
+                R.id.game_context_uninstall_updates to dirs.updatesDir
+            ).forEach { (id, dir) ->
+                menu.findItem(id)?.isEnabled =
+                    MandarineApplication.documentsTree.folderUriHelper(dir)?.let {
+                        DocumentFile.fromTreeUri(view.context, it)?.exists()
+                    } ?: false
+            }
+        }
+
+        popup.setOnMenuItemClickListener { menuItem ->
+            val uninstallAction: () -> Unit = {
+                when (menuItem.itemId) {
+                    R.id.game_context_uninstall -> MandarineApplication.documentsTree.deleteDocument(dirs.gameDir)
+                    R.id.game_context_uninstall_dlc -> FileUtil.deleteDocument(MandarineApplication.documentsTree.folderUriHelper(dirs.dlcDir)
+                        .toString())
+                    R.id.game_context_uninstall_updates -> FileUtil.deleteDocument(MandarineApplication.documentsTree.folderUriHelper(dirs.updatesDir)
+                        .toString())
+                }
+                ViewModelProvider(activity)[GamesViewModel::class.java].reloadGames(true)
+                bottomSheetDialog.dismiss()
+            }
+
+            if (menuItem.itemId in listOf(R.id.game_context_uninstall, R.id.game_context_uninstall_dlc, R.id.game_context_uninstall_updates)) {
+                IndeterminateProgressDialogFragment.newInstance(activity, R.string.uninstalling, false, uninstallAction)
+                    .show(activity.supportFragmentManager, IndeterminateProgressDialogFragment.TAG)
+                true
+            } else {
+                false
+            }
+        }
+
+        popup.show()
+    }
+
     private fun showAboutGameDialog(context: Context, game: Game, holder: GameViewHolder, view: View) {
         val binding = DialogAboutGameBinding.inflate(activity.layoutInflater)
 
@@ -272,6 +391,14 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
 
             showShortcutDialog(game)
             bottomSheetDialog.dismiss()
+        }
+
+        binding.menuButtonOpen.setOnClickListener {
+            showOpenContextMenu(it, game)
+        }
+
+        binding.menuButtonUninstall.setOnClickListener {
+            showUninstallContextMenu(it, game, bottomSheetDialog)
         }
 
         binding.cheats.setOnClickListener {
