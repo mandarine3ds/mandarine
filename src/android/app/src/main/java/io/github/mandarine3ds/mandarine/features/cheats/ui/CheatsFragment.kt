@@ -62,8 +62,6 @@ class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        homeViewModel.setNavigationVisibility(visible = false, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = false)
 
         cheatsViewModel.initialize(args.titleId)

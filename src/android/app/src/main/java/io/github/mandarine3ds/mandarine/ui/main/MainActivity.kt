@@ -117,32 +117,8 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         setUpNavigation(navHostFragment.navController)
-        (binding.navigationView as NavigationBarView).setOnItemReselectedListener {
-            when (it.itemId) {
-                R.id.gamesFragment -> gamesViewModel.setShouldScrollToTop(true)
-                R.id.searchFragment -> gamesViewModel.setSearchFocused(true)
-                R.id.homeSettingsFragment -> SettingsActivity.launch(
-                    this,
-                    SettingsFile.FILE_NAME_CONFIG,
-                    ""
-                )
-            }
-        }
-
-        // Prevents navigation from being drawn for a short time on recreation if set to hidden
-        if (!homeViewModel.navigationVisible.value.first) {
-            binding.navigationView.visibility = View.INVISIBLE
-            binding.statusBarShade.visibility = View.INVISIBLE
-        }
 
         lifecycleScope.apply {
-            launch {
-                repeatOnLifecycle(Lifecycle.State.CREATED) {
-                    homeViewModel.navigationVisible.collect {
-                        showNavigation(it.first, it.second)
-                    }
-                }
-            }
             launch {
                 repeatOnLifecycle(Lifecycle.State.CREATED) {
                     homeViewModel.statusBarShadeVisible.collect {
@@ -199,7 +175,6 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
 
     fun finishSetup(navController: NavController) {
         navController.navigate(R.id.action_firstTimeSetupFragment_to_gamesFragment)
-        (binding.navigationView as NavigationBarView).setupWithNavController(navController)
     }
 
     private fun setUpNavigation(navController: NavController) {
@@ -209,66 +184,7 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         if (firstTimeSetup && !homeViewModel.navigatedToSetup) {
             navController.navigate(R.id.firstTimeSetupFragment)
             homeViewModel.navigatedToSetup = true
-        } else {
-            (binding.navigationView as NavigationBarView).setupWithNavController(navController)
         }
-    }
-
-    private fun showNavigation(visible: Boolean, animated: Boolean) {
-        if (!animated) {
-            if (visible) {
-                binding.navigationView.visibility = View.VISIBLE
-            } else {
-                binding.navigationView.visibility = View.INVISIBLE
-            }
-            return
-        }
-
-        val smallLayout = resources.getBoolean(R.bool.small_layout)
-        binding.navigationView.animate().apply {
-            if (visible) {
-                binding.navigationView.visibility = View.VISIBLE
-                duration = 300
-                interpolator = PathInterpolator(0.05f, 0.7f, 0.1f, 1f)
-
-                if (smallLayout) {
-                    binding.navigationView.translationY =
-                        binding.navigationView.height.toFloat() * 2
-                    translationY(0f)
-                } else {
-                    if (ViewCompat.getLayoutDirection(binding.navigationView) ==
-                        ViewCompat.LAYOUT_DIRECTION_LTR
-                    ) {
-                        binding.navigationView.translationX =
-                            binding.navigationView.width.toFloat() * -2
-                        translationX(0f)
-                    } else {
-                        binding.navigationView.translationX =
-                            binding.navigationView.width.toFloat() * 2
-                        translationX(0f)
-                    }
-                }
-            } else {
-                duration = 300
-                interpolator = PathInterpolator(0.3f, 0f, 0.8f, 0.15f)
-
-                if (smallLayout) {
-                    translationY(binding.navigationView.height.toFloat() * 2)
-                } else {
-                    if (ViewCompat.getLayoutDirection(binding.navigationView) ==
-                        ViewCompat.LAYOUT_DIRECTION_LTR
-                    ) {
-                        translationX(binding.navigationView.width.toFloat() * -2)
-                    } else {
-                        translationX(binding.navigationView.width.toFloat() * 2)
-                    }
-                }
-            }
-        }.withEndAction {
-            if (!visible) {
-                binding.navigationView.visibility = View.INVISIBLE
-            }
-        }.start()
     }
 
     private fun showStatusBarShade(visible: Boolean) {
@@ -281,7 +197,7 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
                 interpolator = PathInterpolator(0.05f, 0.7f, 0.1f, 1f)
             } else {
                 duration = 300
-                translationY(binding.navigationView.height.toFloat() * -2)
+                translationY(binding.statusBarShade.height.toFloat() * -2)
                 interpolator = PathInterpolator(0.3f, 0f, 0.8f, 0.15f)
             }
         }.withEndAction {

@@ -89,7 +89,6 @@ class SystemFilesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        homeViewModel.setNavigationVisibility(visible = false, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = false)
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)

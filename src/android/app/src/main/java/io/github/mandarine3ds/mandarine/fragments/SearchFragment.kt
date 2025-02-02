@@ -62,7 +62,6 @@ class SearchFragment : Fragment() {
     // This is using the correct scope, lint is just acting up
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = true)
 
         preferences = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
@@ -135,7 +134,6 @@ class SearchFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = true)
     }
 

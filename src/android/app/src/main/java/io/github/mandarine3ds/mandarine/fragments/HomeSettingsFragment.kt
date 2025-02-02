@@ -198,7 +198,6 @@ class HomeSettingsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         exitTransition = null
-        homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = true)
     }
 
