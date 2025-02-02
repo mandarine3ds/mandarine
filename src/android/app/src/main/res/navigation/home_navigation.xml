@@ -48,11 +48,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="io.github.mandarine3ds.mandarine.fragments.SearchFragment"
-        android:label="SearchFragment" />
-
-    <fragment
         android:id="@+id/aboutFragment"
         android:name="io.github.mandarine3ds.mandarine.fragments.AboutFragment"
         android:label="AboutFragment" >

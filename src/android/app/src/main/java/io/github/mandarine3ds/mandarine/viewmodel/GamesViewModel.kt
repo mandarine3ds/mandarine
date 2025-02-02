@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.model.Game
@@ -25,7 +24,6 @@ class GamesViewModel : ViewModel() {
     val games get() = _games.asStateFlow()
     private val _games = MutableStateFlow(emptyList<Game>())
 
-    val searchedGames get() = _searchedGames.asStateFlow()
     private val _searchedGames = MutableStateFlow(emptyList<Game>())
 
     val isReloading get() = _isReloading.asStateFlow()
@@ -37,11 +35,9 @@ class GamesViewModel : ViewModel() {
     val shouldScrollToTop get() = _shouldScrollToTop.asStateFlow()
     private val _shouldScrollToTop = MutableStateFlow(false)
 
-    val searchFocused get() = _searchFocused.asStateFlow()
     private val _searchFocused = MutableStateFlow(false)
 
     private val _filteredGames = MutableStateFlow<List<Game>>(emptyList())
-    val filteredGames get() = _filteredGames.asStateFlow()
 
     init {
         // Retrieve list of cached games
