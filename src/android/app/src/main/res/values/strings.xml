@@ -92,12 +92,16 @@
     <string name="cannot_skip_directory_description">This step is required to allow Mandarine to work. Please select a directory and then you can continue.</string>
     <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
 
-    <!-- Search Strings -->
+    <!-- GameFragment Strings -->
     <string name="search_and_filter_games">Search and Filter Games</string>
     <string name="home_search_games">Search Games</string>
     <string name="search_recently_played">Recently Played</string>
     <string name="search_recently_added">Recently Added</string>
     <string name="search_installed">Installed</string>
+    <string name="view_list">Default</string>
+    <string name="view_grid">Grid</string>
+    <string name="folder">Folder</string>
+
 
     <!-- Input related strings -->
     <string name="controller_circlepad">Circle Pad</string>
@@ -317,6 +321,7 @@
     <string name="layout_screen_orientation_portrait_reverse">Reverse Portrait</string>
 
     <!-- Miscellaneous -->
+    <string name="alphabetical">Alphabetical</string>
     <string name="clear">Clear</string>
     <string name="slider_default">Default</string>
     <string name="ini_saved">Saved settings</string>

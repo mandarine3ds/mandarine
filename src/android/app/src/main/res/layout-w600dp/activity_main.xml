@@ -21,18 +21,6 @@
         app:navGraph="@navigation/home_navigation"
         tools:layout="@layout/fragment_games" />
 
-    <com.google.android.material.navigationrail.NavigationRailView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:labelVisibilityMode="selected"
-        app:menu="@menu/menu_navigation"
-        tools:visibility="visible" />
-
     <View
         android:id="@+id/status_bar_shade"
         android:layout_width="0dp"

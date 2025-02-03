@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.model.Game
@@ -25,7 +24,6 @@ class GamesViewModel : ViewModel() {
     val games get() = _games.asStateFlow()
     private val _games = MutableStateFlow(emptyList<Game>())
 
-    val searchedGames get() = _searchedGames.asStateFlow()
     private val _searchedGames = MutableStateFlow(emptyList<Game>())
 
     val isReloading get() = _isReloading.asStateFlow()
@@ -37,8 +35,9 @@ class GamesViewModel : ViewModel() {
     val shouldScrollToTop get() = _shouldScrollToTop.asStateFlow()
     private val _shouldScrollToTop = MutableStateFlow(false)
 
-    val searchFocused get() = _searchFocused.asStateFlow()
     private val _searchFocused = MutableStateFlow(false)
+
+    private val _filteredGames = MutableStateFlow<List<Game>>(emptyList())
 
     init {
         // Retrieve list of cached games
@@ -99,6 +98,10 @@ class GamesViewModel : ViewModel() {
 
     fun setSearchFocused(searchFocused: Boolean) {
         _searchFocused.value = searchFocused
+    }
+
+    fun setFilteredGames(games: List<Game>) {
+        _filteredGames.value = games
     }
 
     fun reloadGames(directoryChanged: Boolean) {

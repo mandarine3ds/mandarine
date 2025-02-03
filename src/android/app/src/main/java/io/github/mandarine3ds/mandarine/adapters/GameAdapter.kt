@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.PopupMenu
+import android.widget.TextView
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CoroutineScope
@@ -50,6 +51,8 @@ import io.github.mandarine3ds.mandarine.fragments.IndeterminateProgressDialogFra
 import io.github.mandarine3ds.mandarine.model.Game
 import io.github.mandarine3ds.mandarine.utils.FileUtil
 import io.github.mandarine3ds.mandarine.utils.GameIconUtils
+import androidx.viewbinding.ViewBinding
+import io.github.mandarine3ds.mandarine.databinding.CardGameBigBinding
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 
 class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater,  private val openImageLauncher: ActivityResultLauncher<String>?) :
@@ -58,6 +61,22 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
     private var lastClickTime = 0L
     private var imagePath: String? = null
     private var dialogShortcutBinding: DialogShortcutBinding? = null
+
+    companion object {
+        const val VIEW_TYPE_LIST = 0
+        const val VIEW_TYPE_GRID = 1
+    }
+
+    private var viewType = VIEW_TYPE_LIST
+
+    fun setViewType(type: Int) {
+        viewType = type
+        notifyDataSetChanged()
+    }
+
+    fun getViewType(): Int = viewType
+
+    override fun getItemViewType(position: Int): Int = viewType
 
     fun handleImageResult(uri: Uri?) {
         val path = uri?.toString()
@@ -68,14 +87,14 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-        // Create a new view.
-        val binding = CardGameBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        binding.cardGame.setOnClickListener(this)
-        binding.cardGame.setOnLongClickListener(this)
-
-        // Use that view to create a ViewHolder.
-        return GameViewHolder(binding)
+        val binding = when (viewType) {
+            VIEW_TYPE_LIST -> CardGameBinding.inflate(inflater, parent, false)
+            VIEW_TYPE_GRID -> CardGameBigBinding.inflate(inflater, parent, false)
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
+        return GameViewHolder(binding, viewType)
     }
+
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         holder.bind(currentList[position])
@@ -157,16 +176,29 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
     }
 
-    inner class GameViewHolder(val binding: CardGameBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class GameViewHolder(
+        private val binding: ViewBinding,
+        private val viewType: Int
+    ) : RecyclerView.ViewHolder(binding.root) {
         lateinit var game: Game
 
         init {
-            binding.cardGame.tag = this
+            binding.root.tag = this
+            binding.root.setOnClickListener(this@GameAdapter)
+            binding.root.setOnLongClickListener(this@GameAdapter)
         }
 
         fun bind(game: Game) {
             this.game = game
+
+            when (viewType) {
+                VIEW_TYPE_LIST -> bindListView(binding as CardGameBinding, game)
+                VIEW_TYPE_GRID -> bindGridView(binding as CardGameBigBinding, game)
+            }
+        }
+
+        private fun bindListView(binding: CardGameBinding, game: Game) {
+            binding.gameTitle.text = game.title
 
             binding.imageGameScreen.scaleType = ImageView.ScaleType.CENTER_CROP
             GameIconUtils.loadGameIcon(activity, game, binding.imageGameScreen)
@@ -215,6 +247,19 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                 3000
             )
         }
+    }
+
+    private fun bindGridView(binding: CardGameBigBinding, game: Game) {
+        binding.textGameTitle.text = game.title
+        binding.textGameTitle.visibility = if (game.title.isEmpty()) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+        GameIconUtils.loadGameIcon(activity, game, binding.imageGameScreen)
+        binding.textGameTitle.postDelayed({
+            binding.textGameTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
+            binding.textGameTitle.isSelected = true }, 3000)
     }
 
     private data class GameDirectories(
