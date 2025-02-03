@@ -68,12 +68,12 @@ class GamesFragment : Fragment() {
     private val openImageLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-        adapter.handleImageResult(uri)
+        gameAdapter.handleImageResult(uri)
     }
 
     private lateinit var preferences: SharedPreferences
 
-    private lateinit var adapter: GameAdapter
+    private lateinit var gameAdapter: GameAdapter
 
     private val documentPicker =
         registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
@@ -125,14 +125,13 @@ class GamesFragment : Fragment() {
 
         val inflater = LayoutInflater.from(requireContext())
 
-        adapter = GameAdapter(
+        gameAdapter = GameAdapter(
             requireActivity() as AppCompatActivity,
             inflater,
             openImageLauncher
         )
 
         binding.gridGames.apply {
-            val gameAdapter = GameAdapter(requireActivity() as AppCompatActivity, inflater, openImageLauncher)
             val savedViewType = preferences.getInt(PREF_VIEW_TYPE, GameAdapter.VIEW_TYPE_LIST)
             gameAdapter.setViewType(savedViewType)
             currentFilter = preferences.getInt(PREF_SORT_TYPE, View.NO_ID)
