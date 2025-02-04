@@ -141,7 +141,7 @@ class CopyDirProgressDialog : DialogFragment() {
 
                             override fun onComplete() {
                                 MandarineDirectoryHelper.initializeMandarineDirectory(path)
-                                callback?.onStepCompleted()
+                                callback?.onStepCompleted(0, false)
                                 viewModel.setCopyComplete(true)
                             }
                         })

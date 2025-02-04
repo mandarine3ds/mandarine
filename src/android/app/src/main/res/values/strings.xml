@@ -72,6 +72,10 @@
     <string name="notifications">Notifications</string>
     <string name="notifications_description">Grant the notification permission with the button below.</string>
     <string name="give_permission">Grant permission</string>
+    <string name="permissions">Permissions</string>
+    <string name="permissions_description">Grant optional permissions to use specific features of the emulator</string>
+    <string name="select_emulalator_data_folder">Emulator Data Folders</string>
+    <string name="select_emulalator_data_folder_description">Select emulator data folders (User folder is required)</string>
     <string name="notification_warning">Skip granting the notification permission?</string>
     <string name="notification_warning_description">Mandarine won\'t be able to notify you of important information.</string>
     <string name="camera_permission">Camera</string>
@@ -892,5 +896,4 @@
     <string name="multiplayer_unban_message">Are you sure you want to unban %1$s?</string>
     <string name="multiplayer_ban">Ban User</string>
     <string name="_0">0%</string>
-
 </resources>

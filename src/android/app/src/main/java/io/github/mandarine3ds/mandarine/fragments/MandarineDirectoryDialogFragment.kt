@@ -22,7 +22,6 @@ import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 
 class MandarineDirectoryDialogFragment : DialogFragment() {
     private lateinit var binding: DialogMandarineDirectoryBinding
-
     private val homeViewModel: HomeViewModel by activityViewModels()
 
     fun interface Listener {
