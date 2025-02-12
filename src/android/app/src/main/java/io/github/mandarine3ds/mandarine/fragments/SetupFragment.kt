@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +47,6 @@ import io.github.mandarine3ds.mandarine.utils.PermissionsHandler
 import io.github.mandarine3ds.mandarine.utils.ViewUtils
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 import io.github.mandarine3ds.mandarine.model.ButtonState
-import android.util.Log
 
 class SetupFragment : Fragment() {
     private var _binding: FragmentSetupBinding? = null
@@ -141,30 +141,32 @@ class SetupFragment : Fragment() {
                     false,
                     0,
                     pageButton = mutableListOf<PageButton>().apply {
-                        add(
-                            PageButton(
-                                R.drawable.ic_notification,
-                                R.string.notifications,
-                                R.string.notifications_description,
-                                buttonAction = {
-                                    pageButtonCallback = it
-                                    permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                                },
-                                buttonState = {
-                                    if (NotificationManagerCompat.from(requireContext())
-                                            .areNotificationsEnabled()
-                                    ) {
-                                        ButtonState.BUTTON_ACTION_COMPLETE
-                                    } else {
-                                        ButtonState.BUTTON_ACTION_INCOMPLETE
-                                    }
-                                },
-                                isUnskippable = false,
-                                hasWarning = true,
-                                R.string.notification_warning,
-                                R.string.notification_warning_description,
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            add(
+                                PageButton(
+                                    R.drawable.ic_notification,
+                                    R.string.notifications,
+                                    R.string.notifications_description,
+                                    buttonAction = {
+                                        pageButtonCallback = it
+                                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                    },
+                                    buttonState = {
+                                        if (NotificationManagerCompat.from(requireContext())
+                                                .areNotificationsEnabled()
+                                        ) {
+                                            ButtonState.BUTTON_ACTION_COMPLETE
+                                        } else {
+                                            ButtonState.BUTTON_ACTION_INCOMPLETE
+                                        }
+                                    },
+                                    isUnskippable = false,
+                                    hasWarning = true,
+                                    R.string.notification_warning,
+                                    R.string.notification_warning_description,
+                                )
                             )
-                        )
+                        }
                         add(
                             PageButton(
                                 R.drawable.ic_microphone,
@@ -360,9 +362,10 @@ class SetupFragment : Fragment() {
         binding.buttonNext.setOnClickListener {
             val index = binding.viewPager2.currentItem
             val currentPage = pages[index]
+
+            // This allows multiple sets of warning messages to be displayed om the same dialog if necessary
             val warningMessages = mutableListOf<Triple<Int, Int, Int>>() // title, description, helpLink
 
-            // Check each button individually
             currentPage.pageButton?.forEach { button ->
                 if (button.hasWarning || button.isUnskippable) {
                     val buttonState = button.buttonState()
@@ -438,7 +441,6 @@ class SetupFragment : Fragment() {
     private val checkForButtonState: () -> Unit = {
         val page = pages[binding.viewPager2.currentItem]
         page.pageButton?.forEach {
-            Log.d("SetupFragment", "Checking button state for ${it.buttonAction}")
             if (it.buttonState() == ButtonState.BUTTON_ACTION_COMPLETE) {
                 pageButtonCallback.onStepCompleted(it.titleId, pageFullyCompleted = false)
             }
@@ -499,7 +501,7 @@ class SetupFragment : Fragment() {
             checkForButtonState.invoke()
         }
 
-        private fun finishSetup() {
+    private fun finishSetup() {
         preferences.edit()
             .putBoolean(Settings.PREF_FIRST_APP_LAUNCH, false)
             .apply()

@@ -25,9 +25,8 @@ data class PageButton(
     val hasWarning: Boolean = false,
     val warningTitleId: Int = 0,
     val warningDescriptionId: Int = 0,
-    val warningHelpLinkId: Int = 0,
+    val warningHelpLinkId: Int = 0
 )
-
 
 interface SetupCallback {
     fun onStepCompleted(pageButtonId : Int, pageFullyCompleted: Boolean)
