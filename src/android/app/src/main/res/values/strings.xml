@@ -92,7 +92,7 @@
     <string name="select_mandarine_user_folder">Select User Folder</string>
     <string name="select_mandarine_user_folder_description"><![CDATA[Select your <a href="https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
     <string name="select">Select</string>
-    <string name="cannot_skip">You can\'t skip this step</string>
+    <string name="cannot_skip">You can\'t skip setting the user folder</string>
     <string name="cannot_skip_directory_description">This step is required to allow Mandarine to work. Please select a directory and then you can continue.</string>
     <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
 
