@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -141,7 +141,7 @@ class CopyDirProgressDialog : DialogFragment() {
 
                             override fun onComplete() {
                                 MandarineDirectoryHelper.initializeMandarineDirectory(path)
-                                callback?.onStepCompleted()
+                                callback?.onStepCompleted(0, false)
                                 viewModel.setCopyComplete(true)
                             }
                         })

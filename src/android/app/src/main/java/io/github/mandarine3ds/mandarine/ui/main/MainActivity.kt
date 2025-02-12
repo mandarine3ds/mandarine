@@ -230,7 +230,7 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
             return@registerForActivityResult
         }
 
-        MandarineDirectoryHelper(this@MainActivity).showMandarineDirectoryDialog(result)
+        MandarineDirectoryHelper(this@MainActivity).showMandarineDirectoryDialog(result, buttonState = {})
     }
 
     val ciaFileInstaller = registerForActivityResult(
