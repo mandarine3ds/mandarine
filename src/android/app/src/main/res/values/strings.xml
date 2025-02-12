@@ -84,7 +84,7 @@
     <string name="microphone_permission_description">Grant the microphone permission below to emulate the 3DS microphone.</string>
     <string name="permission_denied">Permission denied</string>
     <string name="add_games_warning">Skip selecting games folder?</string>
-    <string name="add_games_warning_description">Games won\'t be displayed in the Games list if a folder isn\'t selected.</string>
+    <string name="add_games_warning_description">External Roms won\'t be displayed in the Games list if a folder isn\'t selected.</string>
     <string name="add_games_warning_help">https://citra-emu.org/wiki/dumping-game-cartridges/</string>
     <string name="warning_help">Help</string>
     <string name="warning_skip">Skip</string>
