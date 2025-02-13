@@ -167,9 +167,11 @@ class SettingsAdapter(
         fragmentView.onSettingChanged()
 
         // For the switch animation ro run smoothly
-        // Later this should be imrpoved to also animate the item itself
+        // Later this should be improved to also animate the item itself
         settingsFragment.view?.postDelayed({
-            settingsFragment.loadSettingsList()
+            // Don't load the settings list twice on activity recreate
+            if (settingsFragment.activityView != null)
+                settingsFragment.loadSettingsList()
         }, 200)
     }
 
