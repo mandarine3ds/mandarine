@@ -126,6 +126,7 @@ jobject ToJavaValidationError(Frontend::ValidationError error) {
             "Lio/github/mandarine3ds/mandarine/applets/SoftwareKeyboard$ValidationError;"));
 }
 
+extern "C"
 jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateFilters(
     JNIEnv* env, jclass clazz, jstring text) {
 
@@ -134,11 +135,12 @@ jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateF
     return ToJavaValidationError(ret);
 }
 
+extern "C"
 jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateInput(JNIEnv* env,
                                                                                      jclass clazz,
                                                                                      jstring text) {
 
     const auto ret =
-        Core::System::GetInstance().GetSoftwareKeyboard()->ValidateInput(GetJString(env, text));
+            Core::System::GetInstance().GetSoftwareKeyboard()->ValidateInput(GetJString(env, text));
     return ToJavaValidationError(ret);
 }
