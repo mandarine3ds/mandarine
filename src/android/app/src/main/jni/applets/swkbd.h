@@ -1,4 +1,4 @@
-// Copyright 2020 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -29,8 +29,8 @@ void CleanupJNI(JNIEnv* env);
 extern "C" {
 JNIEXPORT jobject JNICALL
 Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateInput(JNIEnv* env,
-                                                                               jclass clazz,
-                                                                               jstring text);
+                                                                             jclass clazz,
+                                                                             jstring text);
 
 JNIEXPORT jobject JNICALL
 Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateInput(JNIEnv* env,
