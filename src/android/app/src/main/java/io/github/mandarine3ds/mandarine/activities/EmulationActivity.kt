@@ -48,6 +48,9 @@ import io.github.mandarine3ds.mandarine.viewmodel.EmulationViewModel
 import io.github.mandarine3ds.mandarine.utils.NetPlayManager
 import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 import io.github.mandarine3ds.mandarine.features.settings.model.IntSetting
+import androidx.core.os.BundleCompat
+import io.github.mandarine3ds.mandarine.utils.PlayTimeTracker
+import io.github.mandarine3ds.mandarine.model.Game
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
@@ -62,6 +65,7 @@ class EmulationActivity : AppCompatActivity() {
     private lateinit var hotkeyUtility: HotkeyUtility
 
     private var isEmulationRunning: Boolean = false
+    private var emulationStartTime: Long = 0
 
     private val emulationFragment: EmulationFragment
         get() {
@@ -115,6 +119,8 @@ class EmulationActivity : AppCompatActivity() {
         isEmulationRunning = true
         instance = this
 
+        emulationStartTime = System.currentTimeMillis()
+
         applyOrientationSettings() // Check for orientation settings at startup
     }
 
@@ -150,6 +156,17 @@ class EmulationActivity : AppCompatActivity() {
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
+        val sessionTime = System.currentTimeMillis() - emulationStartTime
+
+        val game = try {
+            intent.extras?.let { extras ->
+                BundleCompat.getParcelable(extras, "game", Game::class.java)
+            } ?: throw IllegalStateException("Missing game data in intent extras")
+        } catch (e: Exception) {
+            throw IllegalStateException("Failed to retrieve game data: ${e.message}", e)
+        }
+
+        PlayTimeTracker.addPlayTime(game, sessionTime)
         stopForegroundService(this)
         isEmulationRunning = false
         instance = null
