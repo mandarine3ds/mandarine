@@ -510,6 +510,8 @@
     <string name="game_context_open_extra">Open Extra Folder</string>
     <string name="game_context_uninstall_dlc">Uninstall DLC</string>
     <string name="game_context_uninstall_updates">Uninstall Updates</string>
+    <string name="delete_play_time">Delete Play Time</string>
+    <string name="separator">Separator</string>
 
     <!-- Cheats -->
     <string name="cheats">Cheats</string>

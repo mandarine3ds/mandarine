@@ -9,4 +9,7 @@
     <item
         android:id="@+id/game_context_uninstall_updates"
         android:title="@string/game_context_uninstall_updates" />
+    <item
+        android:id="@+id/game_context_delete_playtime"
+        android:title="@string/delete_play_time" />
 </menu>

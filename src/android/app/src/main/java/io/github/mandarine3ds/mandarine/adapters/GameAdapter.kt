@@ -53,6 +53,7 @@ import io.github.mandarine3ds.mandarine.utils.FileUtil
 import io.github.mandarine3ds.mandarine.utils.GameIconUtils
 import androidx.viewbinding.ViewBinding
 import io.github.mandarine3ds.mandarine.databinding.CardGameBigBinding
+import io.github.mandarine3ds.mandarine.utils.PlayTimeTracker
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 
 class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater,  private val openImageLauncher: ActivityResultLauncher<String>?) :
@@ -343,12 +344,25 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             listOf(
                 R.id.game_context_uninstall to dirs.gameDir,
                 R.id.game_context_uninstall_dlc to dirs.dlcDir,
-                R.id.game_context_uninstall_updates to dirs.updatesDir
+                R.id.game_context_uninstall_updates to dirs.updatesDir,
+                R.id.game_context_delete_playtime to ""
+
             ).forEach { (id, dir) ->
-                menu.findItem(id)?.isEnabled =
-                    MandarineApplication.documentsTree.folderUriHelper(dir)?.let {
-                        DocumentFile.fromTreeUri(view.context, it)?.exists()
-                    } ?: false
+                if (id == R.id.game_context_delete_playtime) {
+                    menu.findItem(id)?.isEnabled =
+                        PlayTimeTracker.getPlayTime(game.titleId) != "0s"
+                    menu.findItem(id)?.setOnMenuItemClickListener {
+                        PlayTimeTracker.deletePlayTime(game.titleId)
+                        ViewModelProvider(activity)[GamesViewModel::class.java].reloadGames(true)
+                        bottomSheetDialog.dismiss()
+                        true
+                    }
+                } else {
+                    menu.findItem(id)?.isEnabled =
+                        MandarineApplication.documentsTree.folderUriHelper(dir)?.let {
+                            DocumentFile.fromTreeUri(view.context, it)?.exists()
+                        } ?: false
+                }
             }
         }
 
@@ -451,6 +465,9 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             view.findNavController().navigate(action)
             bottomSheetDialog.dismiss()
         }
+
+        binding.aboutGamePlaytime.text =
+            "Playtime: " + PlayTimeTracker.getPlayTime(game.titleId)
 
         val bottomSheetBehavior = bottomSheetDialog.getBehavior()
         bottomSheetBehavior.skipCollapsed = true
