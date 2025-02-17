@@ -226,6 +226,7 @@
     <color name="mandarine_surfaceTint_gray">#B7B7B7</color>
 
     <!-- Common Colors Across All Themes -->
+    <color name="mandarine_transparent_black_50">#80000000</color>
     <color name="mandarine_error">#FFB4AB</color>
     <color name="mandarine_errorContainer">#93000A</color>
     <color name="mandarine_onError">#690005</color>

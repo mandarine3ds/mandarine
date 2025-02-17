@@ -206,6 +206,7 @@
     <color name="mandarine_onErrorContainer">#410002</color>
 
     <!-- Values used in dark mode but here are just white / black values-->
+    <color name="mandarine_transparent_black_50">#80000000</color>
     <color name="mandarine_onPrimary_blue">#FFFFFF</color>
     <color name="mandarine_onSecondary_blue">#FFFFFF</color>
     <color name="mandarine_onTertiary_blue">#FFFFFF</color>

@@ -70,7 +70,8 @@ enum class IntSetting(
     DISABLE_SURFACE_TEXTURE_COPY("disable_surface_texture_copy", Settings.SECTION_RENDERER, 0),
     DISABLE_FLUSH_CPU_WRITE("disable_flush_cpu_write", Settings.SECTION_RENDERER, 0),
     ORIENTATION_OPTION("screen_orientation", Settings.SECTION_LAYOUT, 2),
-    USE_ARTIC_BASE_CONTROLLER("use_artic_base_controller", Settings.SECTION_CONTROLS, 0);
+    USE_ARTIC_BASE_CONTROLLER("use_artic_base_controller", Settings.SECTION_CONTROLS, 0),
+    PERF_OVERLAY_POSITION("perf_overlay_position", Settings.SECTION_LAYOUT, 0),;
 
     override var int: Int = defaultValue
 
