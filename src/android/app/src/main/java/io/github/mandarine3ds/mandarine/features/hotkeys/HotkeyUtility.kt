@@ -14,6 +14,7 @@ import io.github.mandarine3ds.mandarine.display.ScreenAdjustmentUtil
 class HotkeyUtility(private val screenAdjustmentUtil: ScreenAdjustmentUtil, private val context: Context) {
 
     val hotkeyButtons = Hotkey.entries.map { it.button }
+    var HotkeyIsPressed = false
 
     fun handleHotkey(bindedButton: Int): Boolean {
         if (hotkeyButtons.contains(bindedButton)) {
@@ -41,6 +42,7 @@ class HotkeyUtility(private val screenAdjustmentUtil: ScreenAdjustmentUtil, priv
                 }
                 else -> {}
             }
+            HotkeyIsPressed = true
             return true
         }
         return false
