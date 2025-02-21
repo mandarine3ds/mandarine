@@ -426,7 +426,7 @@ camera_inner_flip =
 [Miscellaneous]
 # A filter which removes logs below a certain logging level.
 # Examples: *:Debug Kernel.SVC:Trace Service.*:Critical
-log_filter = *:Info
+log_filter = *:Trace
 
 [Debugging]
 # Record frame time data, can be found in the log directory. Boolean value
