@@ -31,7 +31,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.PopupMenu
-import android.widget.TextView
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CoroutineScope
@@ -42,7 +41,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.mandarine3ds.mandarine.HomeNavigationDirections
 import io.github.mandarine3ds.mandarine.MandarineApplication
 import io.github.mandarine3ds.mandarine.R
-import io.github.mandarine3ds.mandarine.adapters.GameAdapter.GameViewHolder
 import io.github.mandarine3ds.mandarine.databinding.CardGameBinding
 import io.github.mandarine3ds.mandarine.databinding.DialogAboutGameBinding
 import io.github.mandarine3ds.mandarine.databinding.DialogShortcutBinding
@@ -55,9 +53,15 @@ import androidx.viewbinding.ViewBinding
 import io.github.mandarine3ds.mandarine.databinding.CardGameBigBinding
 import io.github.mandarine3ds.mandarine.utils.PlayTimeTracker
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
+import io.github.mandarine3ds.mandarine.model.GameListItem
 
-class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater,  private val openImageLauncher: ActivityResultLauncher<String>?) :
-    ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
+class GameAdapter(
+    private val activity: AppCompatActivity,
+    private val inflater: LayoutInflater,
+    private val openImageLauncher: ActivityResultLauncher<String>?,
+    private val filerGamesCallBack: ((Int, Int) -> Unit)? = null
+) :
+    ListAdapter<GameListItem, RecyclerView.ViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
     View.OnClickListener, View.OnLongClickListener {
     private var lastClickTime = 0L
     private var imagePath: String? = null
@@ -66,6 +70,7 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
     companion object {
         const val VIEW_TYPE_LIST = 0
         const val VIEW_TYPE_GRID = 1
+        const val SEPARATOR = 2
     }
 
     private var viewType = VIEW_TYPE_LIST
@@ -75,9 +80,13 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         notifyDataSetChanged()
     }
 
+
     fun getViewType(): Int = viewType
 
-    override fun getItemViewType(position: Int): Int = viewType
+    override fun getItemViewType(position: Int): Int = when (getItem(position)) {
+        is GameListItem.GameItem -> viewType
+        is GameListItem.Separator -> SEPARATOR
+    }
 
     fun handleImageResult(uri: Uri?) {
         val path = uri?.toString()
@@ -87,18 +96,27 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-        val binding = when (viewType) {
-            VIEW_TYPE_LIST -> CardGameBinding.inflate(inflater, parent, false)
-            VIEW_TYPE_GRID -> CardGameBigBinding.inflate(inflater, parent, false)
-            else -> throw IllegalArgumentException("Invalid view type")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            SEPARATOR -> SeparatorViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.list_item_separator, parent, false)
+            )
+            else -> GameViewHolder(
+                when (viewType) {
+                    VIEW_TYPE_LIST -> CardGameBinding.inflate(inflater, parent, false)
+                    VIEW_TYPE_GRID -> CardGameBigBinding.inflate(inflater, parent, false)
+                    else -> CardGameBigBinding.inflate(inflater, parent, false)
+                },
+                viewType
+            )
         }
-        return GameViewHolder(binding, viewType)
     }
 
-
-    override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        holder.bind(currentList[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val item = getItem(position)) {
+            is GameListItem.GameItem -> (holder as GameViewHolder).bind(item.game)
+            is GameListItem.Separator -> { }
+        }
     }
 
     override fun getItemCount(): Int = currentList.size
@@ -215,7 +233,15 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                 View.VISIBLE
             }
 
+            val preferences = PreferenceManager.getDefaultSharedPreferences(binding.root.context)
+            val isFavorite = game.keyIsFavorite.let {
+                preferences.getBoolean(it, false)
+            }
+
+            binding.favoriteIcon.setImageResource(R.drawable.ic_star)
+
             binding.gameTitle.text = game.title
+            binding.favoriteIcon.visibility = if (isFavorite) View.VISIBLE else View.GONE
             binding.gameRegion.text = game.regions
             binding.filename.text = game.filename
 
@@ -250,13 +276,24 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
     }
 
+    inner class SeparatorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
     private fun bindGridView(binding: CardGameBigBinding, game: Game) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(binding.root.context)
+        val isFavorite = game.keyIsFavorite.let {
+            preferences.getBoolean(it, false)
+        }
+
+        binding.favoriteIcon.setImageResource(R.drawable.ic_star)
+
+
         binding.textGameTitle.text = game.title
         binding.textGameTitle.visibility = if (game.title.isEmpty()) {
             View.GONE
         } else {
             View.VISIBLE
         }
+        binding.favoriteIcon.visibility = if (isFavorite) View.VISIBLE else View.GONE
         GameIconUtils.loadGameIcon(activity, game, binding.imageGameScreen)
         binding.textGameTitle.postDelayed({
             binding.textGameTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
@@ -408,6 +445,29 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             bottomSheetDialog.dismiss()
         }
 
+        binding.favoriteGame.apply {
+            val isFavorite = holder.game.keyIsFavorite.let {
+                PreferenceManager.getDefaultSharedPreferences(context).getBoolean(it, false)
+            }
+            binding.favoriteGame.setIconResource(if (isFavorite) R.drawable.ic_star else R.drawable.ic_star_frame)
+
+            binding.favoriteGame.setOnClickListener {
+                val newFavoriteState = !isFavorite
+                val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+                preferences.edit()
+                    .putBoolean(holder.game.keyIsFavorite, newFavoriteState)
+                    .apply()
+                binding.favoriteGame.setIconResource(if (newFavoriteState) R.drawable.ic_star else R.drawable.ic_star_frame)
+
+                val position = currentList.indexOf(GameListItem.GameItem(game))
+
+                filerGamesCallBack?.invoke(position, if (newFavoriteState) 1 else -1)
+                notifyDataSetChanged()
+                bottomSheetDialog.dismiss()
+            }
+        }
+
+
         binding.gameShortcut.setOnClickListener {
             fun showShortcutDialog(game: Game) {
             dialogShortcutBinding = DialogShortcutBinding.inflate(activity.layoutInflater)
@@ -493,13 +553,23 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             .noneMatch { extension == it.lowercase() }
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<Game>() {
-        override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
-            return oldItem.titleId == newItem.titleId
+    private class DiffCallback : DiffUtil.ItemCallback<GameListItem>() {
+        override fun areItemsTheSame(oldItem: GameListItem, newItem: GameListItem): Boolean {
+            return when {
+                oldItem is GameListItem.GameItem && newItem is GameListItem.GameItem ->
+                    oldItem.game.titleId == newItem.game.titleId
+                oldItem is GameListItem.Separator && newItem is GameListItem.Separator -> true
+                else -> false
+            }
         }
 
-        override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
-            return oldItem == newItem
+        override fun areContentsTheSame(oldItem: GameListItem, newItem: GameListItem): Boolean {
+            return when {
+                oldItem is GameListItem.GameItem && newItem is GameListItem.GameItem ->
+                    oldItem.game == newItem.game
+                oldItem is GameListItem.Separator && newItem is GameListItem.Separator -> true
+                else -> false
+            }
         }
     }
 }

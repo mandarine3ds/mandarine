@@ -30,6 +30,7 @@ class Game(
 ) : Parcelable {
     val keyAddedToLibraryTime get() = "${filename}_AddedToLibraryTime"
     val keyLastPlayedTime get() = "${filename}_LastPlayed"
+    val keyIsFavorite get() = "${titleId}_IsFavorite"
 
     val launchIntent: Intent
         get() = Intent(MandarineApplication.appContext, EmulationActivity::class.java).apply {

@@ -51,6 +51,7 @@ import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 import java.time.temporal.ChronoField
 import java.util.*
+import io.github.mandarine3ds.mandarine.model.GameListItem
 
 class GamesFragment : Fragment() {
     private var _binding: FragmentGamesBinding? = null
@@ -70,6 +71,9 @@ class GamesFragment : Fragment() {
     ) { uri: Uri? ->
         gameAdapter.handleImageResult(uri)
     }
+
+    private val filerGamesCallBack =
+        { _: Int, _: Int -> filterAndSearch() }
 
     private lateinit var preferences: SharedPreferences
 
@@ -128,7 +132,8 @@ class GamesFragment : Fragment() {
         gameAdapter = GameAdapter(
             requireActivity() as AppCompatActivity,
             inflater,
-            openImageLauncher
+            openImageLauncher,
+            filerGamesCallBack
         )
 
         binding.gridGames.apply {
@@ -143,7 +148,16 @@ class GamesFragment : Fragment() {
                 } else {
                     R.integer.game_grid_columns
                 }
-                layoutManager = GridLayoutManager(requireContext(), resources.getInteger(columnResId))
+                val layoutManager = GridLayoutManager(requireContext(), resources.getInteger(columnResId))
+                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when (gameAdapter.getItemViewType(position)) {
+                            GameAdapter.SEPARATOR -> layoutManager.spanCount
+                            else -> 1
+                        }
+                    }
+                }
+                this.layoutManager = layoutManager
             }
 
             updateLayoutManager()
@@ -261,7 +275,7 @@ class GamesFragment : Fragment() {
         if (currentSearchText.isNotEmpty() || currentFilter != View.NO_ID) {
             filterAndSearch(baseList)
         } else {
-            (binding.gridGames.adapter as GameAdapter).submitList(baseList)
+            (binding.gridGames.adapter as GameAdapter).submitList(baseList.map { GameListItem.GameItem(it) })
             gamesViewModel.setFilteredGames(baseList)
         }
     }
@@ -402,46 +416,76 @@ class GamesFragment : Fragment() {
     // Track current filter
     private var currentFilter = View.NO_ID
 
-    private fun filterAndSearch(baseList: List<Game> = gamesViewModel.games.value) {
-        val filteredList: List<Game> = when (currentFilter) {
-            R.id.alphabetical -> baseList.sortedBy { it.title }
-            R.id.filter_recently_played -> {
-                baseList.filter {
-                    val lastPlayedTime = preferences.getLong(it.keyLastPlayedTime, 0L)
-                    lastPlayedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
-                }
+
+    fun filterAndSearch(baseList: List<Game> = gamesViewModel.games.value) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
+
+        val (favorites, others) = baseList.partition { game ->
+            preferences.getBoolean(game.keyIsFavorite, false)
+        }
+
+        val filteredFavorites = when (currentFilter) {
+            R.id.alphabetical -> favorites.sortedBy { it.title }
+            R.id.filter_recently_played -> favorites.filter {
+                val lastPlayedTime = preferences.getLong(it.keyLastPlayedTime, 0L)
+                lastPlayedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
             }
-            R.id.filter_recently_added -> {
-                baseList.filter {
-                    val addedTime = preferences.getLong(it.keyAddedToLibraryTime, 0L)
-                    addedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
-                }
+            R.id.filter_recently_added -> favorites.filter {
+                val addedTime = preferences.getLong(it.keyAddedToLibraryTime, 0L)
+                addedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
             }
-            R.id.filter_installed -> baseList.filter { it.isInstalled }
-            else -> baseList
+            R.id.filter_installed -> favorites.filter { it.isInstalled }
+            else -> favorites
+        }
+
+        val filteredOthers = when (currentFilter) {
+            R.id.alphabetical -> others.sortedBy { it.title }
+            R.id.filter_recently_played -> others.filter {
+                val lastPlayedTime = preferences.getLong(it.keyLastPlayedTime, 0L)
+                lastPlayedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
+            }
+            R.id.filter_recently_added -> others.filter {
+                val addedTime = preferences.getLong(it.keyAddedToLibraryTime, 0L)
+                addedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
+            }
+            R.id.filter_installed -> others.filter { it.isInstalled }
+            else -> others
         }
 
         val searchTerm = binding.searchText.text.toString().lowercase(Locale.getDefault())
-        if (searchTerm.isEmpty()) {
-            (binding.gridGames.adapter as GameAdapter).submitList(filteredList)
-            gamesViewModel.setFilteredGames(filteredList)
-            return
+        val finalList = if (searchTerm.isEmpty()) {
+            val combined = mutableListOf<GameListItem>()
+            combined.addAll(filteredFavorites.map { GameListItem.GameItem(it) })
+            if (filteredFavorites.isNotEmpty() && filteredOthers.isNotEmpty()) {
+                combined.add(GameListItem.Separator)
+            }
+            combined.addAll(filteredOthers.map { GameListItem.GameItem(it) })
+            combined
+        } else {
+            val searchAlgorithm = if (searchTerm.length > 1) Jaccard(2) else JaroWinkler()
+            val searchFavorites = filteredFavorites.mapNotNull { game ->
+                val score = searchAlgorithm.similarity(searchTerm, game.title.lowercase())
+                if (score > 0.03) ScoredGame(score, game) else null
+            }.sortedByDescending { it.score }.map { it.item }
+
+            val searchOthers = filteredOthers.mapNotNull { game ->
+                val score = searchAlgorithm.similarity(searchTerm, game.title.lowercase())
+                if (score > 0.03) ScoredGame(score, game) else null
+            }.sortedByDescending { it.score }.map { it.item }
+
+            val combined = mutableListOf<GameListItem>()
+            combined.addAll(searchFavorites.map { GameListItem.GameItem(it) })
+            if (searchFavorites.isNotEmpty() && searchOthers.isNotEmpty()) {
+                combined.add(GameListItem.Separator)
+            }
+            combined.addAll(searchOthers.map { GameListItem.GameItem(it) })
+            combined
         }
 
-        val searchAlgorithm = if (searchTerm.length > 1) Jaccard(2) else JaroWinkler()
-        val sortedList = filteredList.mapNotNull { game ->
-            val title = game.title.lowercase(Locale.getDefault())
-            val score = searchAlgorithm.similarity(searchTerm, title)
-            if (score > 0.03) {
-                ScoredGame(score, game)
-            } else {
-                null
-            }
-        }.sortedByDescending { it.score }.map { it.item }
-
-        (binding.gridGames.adapter as GameAdapter).submitList(sortedList)
-        gamesViewModel.setFilteredGames(sortedList)
+        (binding.gridGames.adapter as GameAdapter).submitList(finalList)
+        gamesViewModel.setFilteredGames(finalList.filterIsInstance<GameListItem.GameItem>().map { it.game })
     }
+
 
     private inner class ScoredGame(val score: Double, val item: Game)
 

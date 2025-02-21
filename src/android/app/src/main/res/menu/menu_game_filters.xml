@@ -4,6 +4,9 @@
         <item android:id="@+id/alphabetical"
             android:title="@string/alphabetical"
             android:checked="true"/>
+        <item android:id="@+id/favorites"
+            android:title="Favorites"
+            android:checked="true"/>
         <item
             android:id="@+id/filter_recently_played"
             android:title="@string/search_recently_played" />

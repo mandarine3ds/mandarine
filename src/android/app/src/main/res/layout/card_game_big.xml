@@ -57,4 +57,16 @@
                 android:requiresFadingEdge="horizontal"
                 tools:text="Nintendo" />
 
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:padding="4dp"
+                android:contentDescription=""
+                android:src="@drawable/ic_star"
+                android:visibility="gone"
+                app:tint="?attr/colorPrimary"
+                app:layout_constraintBottom_toBottomOf= "@id/text_game_title"
+                app:layout_constraintEnd_toEndOf="@id/text_game_title" />
+
       </LinearLayout>
