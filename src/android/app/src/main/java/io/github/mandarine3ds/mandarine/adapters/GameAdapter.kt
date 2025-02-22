@@ -462,7 +462,11 @@ class GameAdapter(
                 val position = currentList.indexOf(GameListItem.GameItem(game))
 
                 filerGamesCallBack?.invoke(position, if (newFavoriteState) 1 else -1)
-                notifyDataSetChanged()
+
+                if (position != -1) {
+                    notifyItemChanged(position)
+                }
+
                 bottomSheetDialog.dismiss()
             }
         }

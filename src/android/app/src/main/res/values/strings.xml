@@ -54,6 +54,7 @@
     <string name="licenses_description">Projects that make Mandarine for Android possible</string>
     <string name="build">Build</string>
     <string name="licenses">Licenses</string>
+    <string name="favorite">Favorites</string>
     <string name="support_link" translatable="false">https://discord.gg/8xjMHWEuf6</string>
     <string name="website_link" translatable="false">https://mandarine3ds.github.io/</string>
     <string name="github_link" translatable="false">https://github.com/mandarine3ds</string>

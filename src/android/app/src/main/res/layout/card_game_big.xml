@@ -44,6 +44,17 @@
                 android:requiresFadingEdge="horizontal"
                 tools:text="The Legend of Zelda\nOcarina of Time 3D" />
 
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:contentDescription="@string/favorite"
+                android:src="@drawable/ic_star"
+                android:visibility="gone"
+                app:tint="?attr/colorPrimary"
+                />
+
             <TextView
                 android:id="@+id/text_company"
                 style="@style/TextAppearance.Material3.BodySmall"
@@ -57,16 +68,5 @@
                 android:requiresFadingEdge="horizontal"
                 tools:text="Nintendo" />
 
-            <ImageView
-                android:id="@+id/favoriteIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:padding="4dp"
-                android:contentDescription=""
-                android:src="@drawable/ic_star"
-                android:visibility="gone"
-                app:tint="?attr/colorPrimary"
-                app:layout_constraintBottom_toBottomOf= "@id/text_game_title"
-                app:layout_constraintEnd_toEndOf="@id/text_game_title" />
 
       </LinearLayout>
