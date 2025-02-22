@@ -114,6 +114,15 @@
                 app:icon="@drawable/ic_shortcut"
                 app:iconGravity="textStart" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/favorite_game"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription=""
+                app:iconGravity="textStart" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
