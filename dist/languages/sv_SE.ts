@@ -1,3 +1,6 @@
+// Copyright 2025 Citra Project / Mandarine Project
+// Licensed under GPLv2 or any later version
+// Refer to the license.txt file included.
 <?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv">
 <context>
     <name>ARMRegisters</name>
