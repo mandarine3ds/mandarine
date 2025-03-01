@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -104,6 +104,40 @@ class DocumentsTree {
     fun getUri(filepath: String): Uri {
         val node = resolvePath(filepath) ?: return Uri.EMPTY
         return node.uri ?: return Uri.EMPTY
+    }
+
+    @Synchronized
+    fun folderUriHelper(path: String, createIfNotExists: Boolean = false): Uri? {
+        root ?: return null
+        val components = path.split(DELIMITER).filter { it.isNotEmpty() }
+        var current = root
+
+        for (component in components) {
+            if (!current!!.loaded) {
+                structTree(current)
+            }
+
+            var child = current.findChild(component)
+
+            // Create directory if it doesn't exist and creation is enabled
+            if (child == null && createIfNotExists) {
+                try {
+                    val createdDir = FileUtil.createDir(current.uri.toString(), component) ?: return null
+                    child = DocumentsNode(createdDir, true).apply {
+                        parent = current
+                    }
+                    current.addChild(child)
+                } catch (e: Exception) {
+                    error("[DocumentsTree]: Cannot create directory, error: " + e.message)
+                    return null
+                }
+            } else if (child == null) {
+                return null
+            }
+
+            current = child
+        }
+        return current?.uri
     }
 
     @Synchronized

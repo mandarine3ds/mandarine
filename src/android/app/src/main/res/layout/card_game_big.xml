@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?attr/materialCardViewOutlinedStyle"
+    android:id="@+id/card_game"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:foreground="@drawable/rounded_selectable_item_background"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_contents"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:shapeAppearance="?attr/shapeAppearanceCornerLarge"
+        app:cardCornerRadius="10dp"
+        app:strokeWidth="0dp">
+
+        <ImageView
+            android:id="@+id/image_game_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:id="@+id/text_game_title"
+                style="?attr/textAppearanceTitleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                tools:text="The Legend of Zelda\nOcarina of Time 3D" />
+
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:contentDescription="@string/favorite"
+                android:src="@drawable/ic_star"
+                android:visibility="gone"
+                app:tint="?attr/colorPrimary"
+                />
+
+            <TextView
+                android:id="@+id/text_company"
+                style="@style/TextAppearance.Material3.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                tools:text="Nintendo" />
+
+
+      </LinearLayout>

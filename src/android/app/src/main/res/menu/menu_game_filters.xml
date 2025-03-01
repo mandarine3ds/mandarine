@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/alphabetical"
+            android:title="@string/alphabetical"
+            android:checked="true"/>
+        <item android:id="@+id/favorites"
+            android:title="Favorites"
+            android:checked="true"/>
+        <item
+            android:id="@+id/filter_recently_played"
+            android:title="@string/search_recently_played" />
+        <item
+            android:id="@+id/filter_recently_added"
+            android:title="@string/search_recently_added" />
+        <item
+            android:id="@+id/filter_installed"
+            android:title="@string/search_installed" />
+    </group>
+</menu>

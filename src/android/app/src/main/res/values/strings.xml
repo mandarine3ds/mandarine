@@ -54,6 +54,7 @@
     <string name="licenses_description">Projects that make Mandarine for Android possible</string>
     <string name="build">Build</string>
     <string name="licenses">Licenses</string>
+    <string name="favorite">Favorites</string>
     <string name="support_link" translatable="false">https://discord.gg/8xjMHWEuf6</string>
     <string name="website_link" translatable="false">https://mandarine3ds.github.io/</string>
     <string name="github_link" translatable="false">https://github.com/mandarine3ds</string>
@@ -72,6 +73,10 @@
     <string name="notifications">Notifications</string>
     <string name="notifications_description">Grant the notification permission with the button below.</string>
     <string name="give_permission">Grant permission</string>
+    <string name="permissions">Permissions</string>
+    <string name="permissions_description">Grant optional permissions to use specific features of the emulator</string>
+    <string name="select_emulalator_data_folder">Emulator Data Folders</string>
+    <string name="select_emulalator_data_folder_description">Select emulator data folders (User folder is required)</string>
     <string name="notification_warning">Skip granting the notification permission?</string>
     <string name="notification_warning_description">Mandarine won\'t be able to notify you of important information.</string>
     <string name="camera_permission">Camera</string>
@@ -80,7 +85,7 @@
     <string name="microphone_permission_description">Grant the microphone permission below to emulate the 3DS microphone.</string>
     <string name="permission_denied">Permission denied</string>
     <string name="add_games_warning">Skip selecting games folder?</string>
-    <string name="add_games_warning_description">Games won\'t be displayed in the Games list if a folder isn\'t selected.</string>
+    <string name="add_games_warning_description">External Roms won\'t be displayed in the Games list if a folder isn\'t selected.</string>
     <string name="add_games_warning_help">https://citra-emu.org/wiki/dumping-game-cartridges/</string>
     <string name="warning_help">Help</string>
     <string name="warning_skip">Skip</string>
@@ -88,16 +93,20 @@
     <string name="select_mandarine_user_folder">Select User Folder</string>
     <string name="select_mandarine_user_folder_description"><![CDATA[Select your <a href="https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">user data</a> directory with the button below.]]></string>
     <string name="select">Select</string>
-    <string name="cannot_skip">You can\'t skip this step</string>
+    <string name="cannot_skip">You can\'t skip setting the user folder</string>
     <string name="cannot_skip_directory_description">This step is required to allow Mandarine to work. Please select a directory and then you can continue.</string>
     <string name="cannot_skip_directory_help">https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage</string>
 
-    <!-- Search Strings -->
+    <!-- GameFragment Strings -->
     <string name="search_and_filter_games">Search and Filter Games</string>
     <string name="home_search_games">Search Games</string>
     <string name="search_recently_played">Recently Played</string>
     <string name="search_recently_added">Recently Added</string>
     <string name="search_installed">Installed</string>
+    <string name="view_list">Default</string>
+    <string name="view_grid">Grid</string>
+    <string name="folder">Folder</string>
+
 
     <!-- Input related strings -->
     <string name="controller_circlepad">Circle Pad</string>
@@ -317,6 +326,7 @@
     <string name="layout_screen_orientation_portrait_reverse">Reverse Portrait</string>
 
     <!-- Miscellaneous -->
+    <string name="alphabetical">Alphabetical</string>
     <string name="clear">Clear</string>
     <string name="slider_default">Default</string>
     <string name="ini_saved">Saved settings</string>
@@ -485,6 +495,24 @@
     <!-- About Game Dialog -->
     <string name="play">Play</string>
     <string name="shortcut">Shortcut</string>
+    <string name="shortcut_name">Shortcut Name</string>
+    <string name="edit_icon">Edit icon</string>
+    <string name="create_shortcut">Create Shortcut</string>
+    <string name="shortcut_name_empty">Shortcut name cannot be empty</string>
+    <string name="menu">More...</string>
+    <string name="uninstall_cia">Uninstall Game</string>
+    <string name="uninstalling">Uninstalling...</string>
+    <string name="game_context_open_save_dir">Open Save Data Folder</string>
+    <string name="game_context_open_app">Open Application Folder</string>
+    <string name="game_context_open_mods">Open Mods Folder</string>
+    <string name="game_context_open_textures">Open Textures Folder</string>
+    <string name="game_context_open_dlc">Open DLC Folder</string>
+    <string name="game_context_open_updates">Open Updates Folder</string>
+    <string name="game_context_open_extra">Open Extra Folder</string>
+    <string name="game_context_uninstall_dlc">Uninstall DLC</string>
+    <string name="game_context_uninstall_updates">Uninstall Updates</string>
+    <string name="delete_play_time">Delete Play Time</string>
+    <string name="separator">Separator</string>
 
     <!-- Cheats -->
     <string name="cheats">Cheats</string>
@@ -537,6 +565,36 @@
     <!-- Material You theme -->
     <string name="material_you">Material You</string>
     <string name="material_you_description">Use the operating system\'s color theme across the app (Overrides the "Theme Color" setting when enabled)</string>
+
+    <!-- Stats Overlay settings -->
+    <string name="stats_overlay_customization">Customization</string>
+    <string name="stats_overlay_items">Visibility</string>
+    <string name="stats_overlay_options">Performance Stats Overlay</string>
+    <string name="enable_stats_overlay_">Enable Performance Stats Overlay</string>
+    <string name="stats_overlay_options_description">Configure what information is shown in the performance stats overlay</string>
+    <string name="show_stats_overlay">Show Performance Stats Overlay</string>
+    <string name="show_fps">Show FPS</string>
+    <string name="show_fps_description">Display current frames per second</string>
+    <string name="show_speed">Show Speed</string>
+    <string name="show_speed_description">Display current emulation speed percentage</string>
+    <string name="show_app_ram_usage">Show App Memory Usage</string>
+    <string name="show_app_ram_usage_description">Display the amount of RAM getting used by the emulator</string>
+    <string name="show_system_ram_usage">Show System Memory Usage</string>
+    <string name="show_system_ram_usage_description">Display the amount of RAM getting used by the system</string>
+    <string name="show_bat_temperature">Show Battery Temperature</string>
+    <string name="show_bat_temperature_description">Display current Battery temperature in Celsius and Fahrenheit</string>
+    <string name="overlay_position">Overlay Position</string>
+    <string name="overlay_position_description">Choose where the performance stats overlay is displayed on the screen</string>
+    <string name="overlay_position_top_left">Top Left</string>
+    <string name="overlay_position_top_right">Top Right</string>
+    <string name="overlay_position_bottom_left">Bottom Left</string>
+    <string name="overlay_position_bottom_right">Bottom Right</string>
+    <string name="overlay_position_center_top">Center Top</string>
+    <string name="overlay_position_center_bottom">Center Bottom</string>
+    <string name="overlay_background">Overlay Background</string>
+    <string name="overlay_background_description">Adds a background behind the overlay for easier reading</string>
+
+
 
     <!-- Static theme color -->
     <string name="static_theme_color">Theme Color</string>
@@ -875,5 +933,5 @@
     <string name="multiplayer_unban">Unban</string>
     <string name="multiplayer_unban_message">Are you sure you want to unban %1$s?</string>
     <string name="multiplayer_ban">Ban User</string>
-
+    <string name="_0">0%</string>
 </resources>

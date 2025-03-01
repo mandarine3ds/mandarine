@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -30,6 +30,7 @@ class Game(
 ) : Parcelable {
     val keyAddedToLibraryTime get() = "${filename}_AddedToLibraryTime"
     val keyLastPlayedTime get() = "${filename}_LastPlayed"
+    val keyIsFavorite get() = "${titleId}_IsFavorite"
 
     val launchIntent: Intent
         get() = Intent(MandarineApplication.appContext, EmulationActivity::class.java).apply {

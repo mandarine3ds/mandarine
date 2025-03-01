@@ -1,4 +1,4 @@
-// Copyright 2020 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -126,7 +126,7 @@ jobject ToJavaValidationError(Frontend::ValidationError error) {
             "Lio/github/mandarine3ds/mandarine/applets/SoftwareKeyboard$ValidationError;"));
 }
 
-jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateFilters(
+extern "C" jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateFilters(
     JNIEnv* env, jclass clazz, jstring text) {
 
     const auto ret =
@@ -134,9 +134,8 @@ jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateF
     return ToJavaValidationError(ret);
 }
 
-jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateInput(JNIEnv* env,
-                                                                                     jclass clazz,
-                                                                                     jstring text) {
+extern "C" jobject Java_io_github_mandarine3ds_mandarine_applets_SoftwareKeyboard_validateInput(
+    JNIEnv* env, jclass clazz, jstring text) {
 
     const auto ret =
         Core::System::GetInstance().GetSoftwareKeyboard()->ValidateInput(GetJString(env, text));

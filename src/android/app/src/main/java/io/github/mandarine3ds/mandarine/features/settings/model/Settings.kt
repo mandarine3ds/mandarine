@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -111,6 +111,7 @@ class Settings {
         const val SECTION_THEME = "Theme"
         const val SECTION_CUSTOM_LANDSCAPE = "Custom Landscape"
         const val SECTION_CUSTOM_PORTRAIT = "Custom Portrait"
+        const val SECTION_STATS_OVERLAY = "Stats Overlay"
 
         const val KEY_BUTTON_A = "button_a"
         const val KEY_BUTTON_B = "button_b"

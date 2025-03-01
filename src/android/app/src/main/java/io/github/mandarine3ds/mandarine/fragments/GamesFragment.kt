@@ -1,28 +1,42 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
 package io.github.mandarine3ds.mandarine.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
+import android.view.inputmethod.InputMethodManager
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.transition.MaterialFadeThrough
+import info.debatty.java.stringsimilarity.Jaccard
+import info.debatty.java.stringsimilarity.JaroWinkler
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import io.github.mandarine3ds.mandarine.MandarineApplication
@@ -31,15 +45,66 @@ import io.github.mandarine3ds.mandarine.adapters.GameAdapter
 import io.github.mandarine3ds.mandarine.databinding.FragmentGamesBinding
 import io.github.mandarine3ds.mandarine.features.settings.model.Settings
 import io.github.mandarine3ds.mandarine.model.Game
+import io.github.mandarine3ds.mandarine.utils.SearchLocationHelper
+import io.github.mandarine3ds.mandarine.utils.SearchLocationResult
 import io.github.mandarine3ds.mandarine.viewmodel.GamesViewModel
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
+import java.time.temporal.ChronoField
+import java.util.*
+import io.github.mandarine3ds.mandarine.model.GameListItem
 
 class GamesFragment : Fragment() {
     private var _binding: FragmentGamesBinding? = null
     private val binding get() = _binding!!
 
+    companion object {
+        private const val SEARCH_TEXT = "SearchText"
+        private const val PREF_VIEW_TYPE = "GamesViewType"
+        private const val PREF_SORT_TYPE = "GamesSortType"
+    }
+
     private val gamesViewModel: GamesViewModel by activityViewModels()
     private val homeViewModel: HomeViewModel by activityViewModels()
+
+    private val openImageLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        gameAdapter.handleImageResult(uri)
+    }
+
+    private val filerGamesCallBack =
+        { _: Int, _: Int -> filterAndSearch() }
+
+    private lateinit var preferences: SharedPreferences
+
+    private lateinit var gameAdapter: GameAdapter
+
+    private val documentPicker =
+        registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+            uri?.let {
+                requireContext().contentResolver.takePersistableUriPermission(
+                    it,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+
+                // Show a toast message if we're adding the same directory again
+                val existingLocations = SearchLocationHelper.getSearchLocations(requireContext())
+                if (existingLocations.any { existing -> existing.path == it.path }) {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.directory_already_added,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@let
+                }
+
+                val result = SearchLocationHelper.addLocation(requireContext(), it)
+                if (result == SearchLocationResult.Success) {
+                    gamesViewModel.reloadGames(false)
+                }
+            }
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,16 +123,50 @@ class GamesFragment : Fragment() {
     // This is using the correct scope, lint is just acting up
     @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = true)
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
+
         val inflater = LayoutInflater.from(requireContext())
 
+        gameAdapter = GameAdapter(
+            requireActivity() as AppCompatActivity,
+            inflater,
+            openImageLauncher,
+            filerGamesCallBack
+        )
+
         binding.gridGames.apply {
-            layoutManager = GridLayoutManager(
-                requireContext(),
-                resources.getInteger(R.integer.game_grid_columns)
-            )
-            adapter = GameAdapter(requireActivity() as AppCompatActivity, inflater)
+            val savedViewType = preferences.getInt(PREF_VIEW_TYPE, GameAdapter.VIEW_TYPE_LIST)
+            gameAdapter.setViewType(savedViewType)
+            currentFilter = preferences.getInt(PREF_SORT_TYPE, View.NO_ID)
+            adapter = gameAdapter
+
+            fun updateLayoutManager() {
+                val columnResId = if (gameAdapter.getViewType() == GameAdapter.VIEW_TYPE_GRID) {
+                    R.integer.game_grid_columns_big
+                } else {
+                    R.integer.game_grid_columns
+                }
+                val layoutManager = GridLayoutManager(requireContext(), resources.getInteger(columnResId))
+                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when (gameAdapter.getItemViewType(position)) {
+                            GameAdapter.SEPARATOR -> layoutManager.spanCount
+                            else -> 1
+                        }
+                    }
+                }
+                this.layoutManager = layoutManager
+            }
+
+            updateLayoutManager()
+            // Check for layout changes
+            gameAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+                override fun onChanged() {
+                    updateLayoutManager()
+                }
+            })
         }
 
         binding.swipeRefresh.apply {
@@ -90,13 +189,16 @@ class GamesFragment : Fragment() {
                 )
             )
 
-            // Make sure the loading indicator appears even if the layout is told to refresh before being fully drawn
-            post {
-                if (_binding == null) {
-                    return@post
-                }
-                binding.swipeRefresh.isRefreshing = gamesViewModel.isReloading.value
-            }
+            setProgressViewOffset(
+                false,
+                0,
+                resources.getDimensionPixelSize(R.dimen.spacing_refresh_end)
+            )
+
+        }
+
+        if (savedInstanceState != null) {
+            binding.searchText.setText(savedInstanceState.getString(SEARCH_TEXT))
         }
 
         viewLifecycleOwner.lifecycleScope.apply {
@@ -140,6 +242,11 @@ class GamesFragment : Fragment() {
         }
 
         setInsets()
+        setupTopView()
+
+        binding.addDirectory.setOnClickListener {
+            documentPicker.launch(null)
+        }
     }
 
     override fun onDestroyView() {
@@ -147,13 +254,29 @@ class GamesFragment : Fragment() {
         _binding = null
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (_binding != null) {
+            outState.putString(SEARCH_TEXT, binding.searchText.text.toString())
+        }
+    }
+
     private fun setAdapter(games: List<Game>) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
-        if (preferences.getBoolean(Settings.PREF_SHOW_HOME_APPS, false)) {
-            (binding.gridGames.adapter as GameAdapter).submitList(games)
+        val currentSearchText = binding.searchText.text.toString()
+        val currentFilter = binding.filterButton.id
+
+        val baseList = if (preferences.getBoolean(Settings.PREF_SHOW_HOME_APPS, false)) {
+            games
         } else {
-            val filteredList = games.filter { !it.isSystemTitle }
-            (binding.gridGames.adapter as GameAdapter).submitList(filteredList)
+            games.filter { !it.isSystemTitle }
+        }
+
+        if (currentSearchText.isNotEmpty() || currentFilter != View.NO_ID) {
+            filterAndSearch(baseList)
+        } else {
+            (binding.gridGames.adapter as GameAdapter).submitList(baseList.map { GameListItem.GameItem(it) })
+            gamesViewModel.setFilteredGames(baseList)
         }
     }
 
@@ -173,11 +296,8 @@ class GamesFragment : Fragment() {
             val spacingNavigation = resources.getDimensionPixelSize(R.dimen.spacing_navigation)
             val spacingNavigationRail =
                 resources.getDimensionPixelSize(R.dimen.spacing_navigation_rail)
-
-            binding.gridGames.updatePadding(
-                top = barInsets.top + extraListSpacing,
-                bottom = barInsets.bottom + spacingNavigation + extraListSpacing
-            )
+            val chipSpacing = resources.getDimensionPixelSize(R.dimen.spacing_chip)
+            val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
             binding.swipeRefresh.setProgressViewEndTarget(
                 false,
@@ -188,16 +308,191 @@ class GamesFragment : Fragment() {
             val rightInsets = barInsets.right + cutoutInsets.right
             val mlpSwipe = binding.swipeRefresh.layoutParams as MarginLayoutParams
             if (ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_LTR) {
-                mlpSwipe.leftMargin = leftInsets + spacingNavigationRail
+                mlpSwipe.leftMargin = leftInsets
                 mlpSwipe.rightMargin = rightInsets
             } else {
                 mlpSwipe.leftMargin = leftInsets
-                mlpSwipe.rightMargin = rightInsets + spacingNavigationRail
+                mlpSwipe.rightMargin = rightInsets
             }
             binding.swipeRefresh.layoutParams = mlpSwipe
 
             binding.noticeText.updatePadding(bottom = spacingNavigation)
+            if (ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_LTR) {
+                binding.header.updatePadding(top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
+            } else {
+                binding.header.updatePadding(top = cutoutInsets.top + if (isLandscape) barInsets.top else 0)
+            }
+
+            val mlpFab = binding.addDirectory.layoutParams as MarginLayoutParams
+            val fabPadding = resources.getDimensionPixelSize(R.dimen.spacing_large)
+            mlpFab.leftMargin = leftInsets + fabPadding
+            mlpFab.bottomMargin = barInsets.bottom + fabPadding
+            mlpFab.rightMargin = rightInsets + fabPadding
+            binding.addDirectory.layoutParams = mlpFab
 
             windowInsets
         }
+
+    private fun setupTopView() {
+        binding.searchText.doOnTextChanged { text: CharSequence?, _: Int, _: Int, _: Int ->
+            if (text.toString().isNotEmpty()) {
+                binding.clearButton.visibility = View.VISIBLE
+            } else {
+                binding.clearButton.visibility = View.INVISIBLE
+            }
+            filterAndSearch()
+        }
+
+        binding.clearButton.setOnClickListener { binding.searchText.setText("") }
+        binding.searchBackground.setOnClickListener { focusSearch() }
+
+        // Setup filter button
+        binding.filterButton.setOnClickListener { showFilterMenu(it) }
+
+        // Setup view button
+        binding.viewButton.setOnClickListener { showViewMenu(it) }
+
+        // Setup settings button
+        binding.settingsButton.setOnClickListener { navigateToSettings() }
+    }
+
+    private fun navigateToSettings() {
+        val navController = findNavController()
+        navController.navigate(R.id.action_gamesFragment_to_homeSettingsFragment)}
+
+    private fun showFilterMenu(anchor: View) {
+        val popup = PopupMenu(requireContext(), anchor)
+        popup.menuInflater.inflate(R.menu.menu_game_filters, popup.menu)
+
+        // Set checked state based on current filter
+        when (currentFilter) {
+            R.id.alphabetical -> popup.menu.findItem(R.id.alphabetical).isChecked = true
+            R.id.filter_recently_played -> popup.menu.findItem(R.id.filter_recently_played).isChecked = true
+            R.id.filter_recently_added -> popup.menu.findItem(R.id.filter_recently_added).isChecked = true
+            R.id.filter_installed -> popup.menu.findItem(R.id.filter_installed).isChecked = true
+        }
+
+        popup.setOnMenuItemClickListener { item ->
+            currentFilter = item.itemId
+            preferences.edit().putInt(PREF_SORT_TYPE, currentFilter).apply()
+            filterAndSearch()
+            true
+        }
+
+        popup.show()
+    }
+
+    private fun showViewMenu(anchor: View) {
+        val popup = PopupMenu(requireContext(), anchor)
+        popup.menuInflater.inflate(R.menu.menu_game_views, popup.menu)
+
+        val currentViewType = (binding.gridGames.adapter as GameAdapter).getViewType()
+        when (currentViewType) {
+            GameAdapter.VIEW_TYPE_LIST -> popup.menu.findItem(R.id.view_list).isChecked = true
+            GameAdapter.VIEW_TYPE_GRID -> popup.menu.findItem(R.id.view_grid).isChecked = true
+        }
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.view_list -> {
+                    (binding.gridGames.adapter as GameAdapter).setViewType(GameAdapter.VIEW_TYPE_LIST)
+                    preferences.edit().putInt(PREF_VIEW_TYPE, GameAdapter.VIEW_TYPE_LIST).apply()
+                    item.isChecked = true
+                    true
+                }
+                R.id.view_grid -> {
+                    (binding.gridGames.adapter as GameAdapter).setViewType(GameAdapter.VIEW_TYPE_GRID)
+                    preferences.edit().putInt(PREF_VIEW_TYPE, GameAdapter.VIEW_TYPE_GRID).apply()
+                    item.isChecked = true
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popup.show()
+    }
+
+    // Track current filter
+    private var currentFilter = View.NO_ID
+
+
+    fun filterAndSearch(baseList: List<Game> = gamesViewModel.games.value) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(MandarineApplication.appContext)
+
+        val (favorites, others) = baseList.partition { game ->
+            preferences.getBoolean(game.keyIsFavorite, false)
+        }
+
+        val filteredFavorites = when (currentFilter) {
+            R.id.alphabetical -> favorites.sortedBy { it.title }
+            R.id.filter_recently_played -> favorites.filter {
+                val lastPlayedTime = preferences.getLong(it.keyLastPlayedTime, 0L)
+                lastPlayedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
+            }
+            R.id.filter_recently_added -> favorites.filter {
+                val addedTime = preferences.getLong(it.keyAddedToLibraryTime, 0L)
+                addedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
+            }
+            R.id.filter_installed -> favorites.filter { it.isInstalled }
+            else -> favorites
+        }
+
+        val filteredOthers = when (currentFilter) {
+            R.id.alphabetical -> others.sortedBy { it.title }
+            R.id.filter_recently_played -> others.filter {
+                val lastPlayedTime = preferences.getLong(it.keyLastPlayedTime, 0L)
+                lastPlayedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
+            }
+            R.id.filter_recently_added -> others.filter {
+                val addedTime = preferences.getLong(it.keyAddedToLibraryTime, 0L)
+                addedTime > (System.currentTimeMillis() - ChronoField.MILLI_OF_DAY.range().maximum)
+            }
+            R.id.filter_installed -> others.filter { it.isInstalled }
+            else -> others
+        }
+
+        val searchTerm = binding.searchText.text.toString().lowercase(Locale.getDefault())
+        val finalList = if (searchTerm.isEmpty()) {
+            val combined = mutableListOf<GameListItem>()
+            combined.addAll(filteredFavorites.map { GameListItem.GameItem(it) })
+            if (filteredFavorites.isNotEmpty() && filteredOthers.isNotEmpty()) {
+                combined.add(GameListItem.Separator)
+            }
+            combined.addAll(filteredOthers.map { GameListItem.GameItem(it) })
+            combined
+        } else {
+            val searchAlgorithm = if (searchTerm.length > 1) Jaccard(2) else JaroWinkler()
+            val searchFavorites = filteredFavorites.mapNotNull { game ->
+                val score = searchAlgorithm.similarity(searchTerm, game.title.lowercase())
+                if (score > 0.03) ScoredGame(score, game) else null
+            }.sortedByDescending { it.score }.map { it.item }
+
+            val searchOthers = filteredOthers.mapNotNull { game ->
+                val score = searchAlgorithm.similarity(searchTerm, game.title.lowercase())
+                if (score > 0.03) ScoredGame(score, game) else null
+            }.sortedByDescending { it.score }.map { it.item }
+
+            val combined = mutableListOf<GameListItem>()
+            combined.addAll(searchFavorites.map { GameListItem.GameItem(it) })
+            if (searchFavorites.isNotEmpty() && searchOthers.isNotEmpty()) {
+                combined.add(GameListItem.Separator)
+            }
+            combined.addAll(searchOthers.map { GameListItem.GameItem(it) })
+            combined
+        }
+
+        (binding.gridGames.adapter as GameAdapter).submitList(finalList)
+        gamesViewModel.setFilteredGames(finalList.filterIsInstance<GameListItem.GameItem>().map { it.game })
+    }
+
+
+    private inner class ScoredGame(val score: Double, val item: Game)
+
+    private fun focusSearch() {
+        binding.searchText.requestFocus()
+        val imm = requireActivity()
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.showSoftInput(binding.searchText, InputMethodManager.SHOW_IMPLICIT)
+    }
 }

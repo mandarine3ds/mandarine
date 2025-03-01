@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra Project / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -26,11 +26,11 @@ object EmulationMenuSettings {
                 .putBoolean("EmulationMenuSettings_DpadSlideEnable", value)
                 .apply()
         }
-    var showFps: Boolean
-        get() = preferences.getBoolean("EmulationMenuSettings_ShowFps", false)
+    var showStatsOvelray: Boolean
+        get() = preferences.getBoolean("EmulationMenuSettings_showStatsOvelray", false)
         set(value) {
             preferences.edit()
-                    .putBoolean("EmulationMenuSettings_ShowFps", value)
+                    .putBoolean("EmulationMenuSettings_showStatsOvelray", value)
                     .apply()
         }
     var hapticFeedback: Boolean

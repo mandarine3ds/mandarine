@@ -44,7 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewStart"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Detective Pikachu" />
@@ -66,6 +67,17 @@
                 app:layout_constraintStart_toStartOf="@id/about_game_company"
                 app:layout_constraintTop_toBottomOf="@id/about_game_company"
                 tools:text="00040000001C1E00" />
+
+            <TextView
+                android:id="@+id/about_game_playtime"
+                style="?attr/textAppearanceBodyMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/about_game_title"
+                app:layout_constraintTop_toBottomOf="@+id/about_game_id"
+                tools:text="Game Playtime" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,6 +114,15 @@
                 app:icon="@drawable/ic_shortcut"
                 app:iconGravity="textStart" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/favorite_game"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription=""
+                app:iconGravity="textStart" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -129,6 +150,25 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/cheats"
                 android:text="@string/cheats" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/menu_button_open"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="62dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:icon="@drawable/ic_open"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/menu_button_uninstall"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="62dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:icon="@drawable/ic_uninstall"
+                app:iconGravity="textStart" />
+
 
         </LinearLayout>
 

@@ -125,7 +125,6 @@ class ManagementFragment : Fragment() {
             val barInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout())
 
-            homeViewModel.setNavigationVisibility(visible = false, animated = true)
             homeViewModel.setStatusBarShadeVisibility(visible = false)
 
             binding.listInstallables.updatePadding(bottom = barInsets.bottom)

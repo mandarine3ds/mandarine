@@ -48,6 +48,9 @@ import io.github.mandarine3ds.mandarine.viewmodel.EmulationViewModel
 import io.github.mandarine3ds.mandarine.utils.NetPlayManager
 import io.github.mandarine3ds.mandarine.dialogs.NetPlayDialog
 import io.github.mandarine3ds.mandarine.features.settings.model.IntSetting
+import androidx.core.os.BundleCompat
+import io.github.mandarine3ds.mandarine.utils.PlayTimeTracker
+import io.github.mandarine3ds.mandarine.model.Game
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
@@ -62,6 +65,7 @@ class EmulationActivity : AppCompatActivity() {
     private lateinit var hotkeyUtility: HotkeyUtility
 
     private var isEmulationRunning: Boolean = false
+    private var emulationStartTime: Long = 0
 
     private val emulationFragment: EmulationFragment
         get() {
@@ -115,6 +119,8 @@ class EmulationActivity : AppCompatActivity() {
         isEmulationRunning = true
         instance = this
 
+        emulationStartTime = System.currentTimeMillis()
+
         applyOrientationSettings() // Check for orientation settings at startup
     }
 
@@ -150,6 +156,17 @@ class EmulationActivity : AppCompatActivity() {
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
+        val sessionTime = System.currentTimeMillis() - emulationStartTime
+
+        val game = try {
+            intent.extras?.let { extras ->
+                BundleCompat.getParcelable(extras, "game", Game::class.java)
+            } ?: throw IllegalStateException("Missing game data in intent extras")
+        } catch (e: Exception) {
+            throw IllegalStateException("Failed to retrieve game data: ${e.message}", e)
+        }
+
+        PlayTimeTracker.addPlayTime(game, sessionTime)
         stopForegroundService(this)
         isEmulationRunning = false
         instance = null
@@ -255,20 +272,28 @@ class EmulationActivity : AppCompatActivity() {
         val button = preferences.getInt(InputBindingSetting.getInputButtonKey(event), event.scanCode)
         val action: Int = when (event.action) {
             KeyEvent.ACTION_DOWN -> {
+                hotkeyUtility.handleHotkey(button)
+
                 // On some devices, the back gesture / button press is not intercepted by androidx
                 // and fails to open the emulation menu. So we're stuck running deprecated code to
                 // cover for either a fault on androidx's side or in OEM skins (MIUI at least)
                 if (event.keyCode == KeyEvent.KEYCODE_BACK) {
-                    onBackPressed()
+                    // If the hotkey is pressed, we don't want to open the drawer
+                    if (hotkeyUtility.HotkeyIsPressed) {
+                        return true
+                    } else {
+                        onBackPressed()
+                    }
                 }
-
-                hotkeyUtility.handleHotkey(button)
 
                 // Normal key events.
                 NativeLibrary.ButtonState.PRESSED
             }
 
-            KeyEvent.ACTION_UP -> NativeLibrary.ButtonState.RELEASED
+            KeyEvent.ACTION_UP -> {
+                hotkeyUtility.HotkeyIsPressed = false
+                NativeLibrary.ButtonState.RELEASED
+            }
             else -> return false
         }
         val input = event.device

@@ -226,6 +226,16 @@ disable_flush_cpu_write =
 # 6: (default) Large screen / small screen
 layout_option =
 
+
+# Position of the performance overlay
+# 0: Top Left
+# 1: Center Top
+# 2: Top Right
+# 3: Bottom Left
+# 4: Center Bottom
+# 5: Bottom Right
+perf_overlay_position =
+
 # Screen placement when using Custom layout option
 # 0x, 0y is the top left corner of the render window.
 # suggested aspect ratio for top screen is 5:3
@@ -416,7 +426,7 @@ camera_inner_flip =
 [Miscellaneous]
 # A filter which removes logs below a certain logging level.
 # Examples: *:Debug Kernel.SVC:Trace Service.*:Critical
-log_filter = *:Info
+log_filter = *:Trace
 
 [Debugging]
 # Record frame time data, can be found in the log directory. Boolean value

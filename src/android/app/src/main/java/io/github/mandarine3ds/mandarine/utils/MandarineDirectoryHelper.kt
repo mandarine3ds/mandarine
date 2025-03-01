@@ -1,4 +1,4 @@
-// Copyright 2023 Citra Emulator Project
+// Copyright 2025 Citra / Mandarine Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -8,8 +8,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import io.github.mandarine3ds.mandarine.fragments.MandarineDirectoryDialogFragment
 import io.github.mandarine3ds.mandarine.fragments.CopyDirProgressDialog
+import io.github.mandarine3ds.mandarine.fragments.MandarineDirectoryDialogFragment
 import io.github.mandarine3ds.mandarine.model.SetupCallback
 import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
 
@@ -17,7 +17,7 @@ import io.github.mandarine3ds.mandarine.viewmodel.HomeViewModel
  * Mandarine directory initialization ui flow controller.
  */
 class MandarineDirectoryHelper(private val fragmentActivity: FragmentActivity) {
-    fun showMandarineDirectoryDialog(result: Uri, callback: SetupCallback? = null) {
+    fun showMandarineDirectoryDialog(result: Uri, callback: SetupCallback? = null, buttonState: () -> Unit) {
         val mandarineDirectoryDialog = MandarineDirectoryDialogFragment.newInstance(
             fragmentActivity,
             result.toString(),
@@ -36,8 +36,8 @@ class MandarineDirectoryHelper(private val fragmentActivity: FragmentActivity) {
                 )
                 if (!moveData || previous.toString().isEmpty()) {
                     initializeMandarineDirectory(path)
-                    callback?.onStepCompleted()
                     val viewModel = ViewModelProvider(fragmentActivity)[HomeViewModel::class.java]
+                    buttonState()
                     viewModel.setUserDir(fragmentActivity, path.path!!)
                     viewModel.setPickingUserDir(false)
                     return@Listener
