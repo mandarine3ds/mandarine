@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="sv_SE" sourcelanguage="en_US">
+    <extra-po-header-language>sv_SE</extra-po-header-language>
+    <extra-po-header-language_team></extra-po-header-language_team>
+    <extra-po-header-last_translator>Daniel Nylander &lt;github@danielnylander.se&gt;</extra-po-header-last_translator>
+    <extra-po-header-po_revision_date></extra-po-header-po_revision_date>
+    <extra-po-header-pot_creation_date></extra-po-header-pot_creation_date>
+    <extra-po-header-project_id_version></extra-po-header-project_id_version>
+    <extra-po-header-x_generator>Poedit 3.5</extra-po-header-x_generator>
+    <extra-po-headers>Project-Id-Version,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,Language,MIME-Version,Content-Type,Content-Transfer-Encoding,Plural-Forms,X-Language,X-Source-Language,X-Qt-Contexts,X-Generator</extra-po-headers>
 <context>
     <name>ARMRegisters</name>
     <message>
@@ -63,39 +71,39 @@ p, li { white-space: pre-wrap; }
     <name>BreakPointModel</name>
     <message>
         <source>Pica command loaded</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pica-kommandot laddat</translation>
     </message>
     <message>
         <source>Pica command processed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pica-kommando bearbetat</translation>
     </message>
     <message>
         <source>Incoming primitive batch</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inkommande primitiv batch</translation>
     </message>
     <message>
         <source>Finished primitive batch</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Färdig primitiv batch</translation>
     </message>
     <message>
         <source>Vertex shader invocation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anrop av vertex shader</translation>
     </message>
     <message>
         <source>Incoming display transfer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Överföring av inkommande display</translation>
     </message>
     <message>
         <source>GSP command processed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GSP-kommando behandlat</translation>
     </message>
     <message>
         <source>Buffers swapped</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Buffertar utbytta</translation>
     </message>
     <message>
         <source>Unknown debug context event</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Okänd händelse i debug-kontext</translation>
     </message>
 </context>
 <context>
@@ -109,20 +117,20 @@ p, li { white-space: pre-wrap; }
         <translation>Avbryt</translation>
     </message>
     <message>
-        <source>Touch the top left corner &lt;br&gt;of your touchpad.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Now touch the bottom right corner &lt;br&gt;of your touchpad.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Configuration completed!</source>
         <translation>Konfigurationen är färdig!</translation>
     </message>
     <message>
         <source>OK</source>
         <translation>Ok</translation>
+    </message>
+    <message>
+        <source>Touch the top left corner &lt;br&gt;of your touchpad.</source>
+        <translation>Tryck på det övre vänstra hörnet &lt;br&gt;på din pekplatta.</translation>
+    </message>
+    <message>
+        <source>Now touch the bottom right corner &lt;br&gt;of your touchpad.</source>
+        <translation>Tryck nu på det nedre högra hörnet &lt;br&gt;på din pekplatta.</translation>
     </message>
 </context>
 <context>
@@ -433,24 +441,12 @@ Detta skulle bannlysa både deras forumanvändarnamn och deras IP-adress.</trans
         <translation>Kamera att konfigurera:</translation>
     </message>
     <message>
-        <source>Select the camera mode (single or double)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Camera mode:</source>
         <translation>Kameraläge:</translation>
     </message>
     <message>
-        <source>Select the position of camera to configure</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Camera position:</source>
         <translation>Kameraposition:</translation>
-    </message>
-    <message>
-        <source>Select where the image of the emulated camera comes from. It may be an image or a real camera.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Camera Image Source:</source>
@@ -473,12 +469,24 @@ Detta skulle bannlysa både deras forumanvändarnamn och deras IP-adress.</trans
         <translation>Vänd:</translation>
     </message>
     <message>
-        <source>Select an image file every time before the camera is loaded</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Click to preview</source>
         <translation>Klicka för att förhandsvisa</translation>
+    </message>
+    <message>
+        <source>Select the camera mode (single or double)</source>
+        <translation>Välj kameraläge (enkel eller dubbel)</translation>
+    </message>
+    <message>
+        <source>Select the position of camera to configure</source>
+        <translation>Välj den kameraposition som ska konfigureras</translation>
+    </message>
+    <message>
+        <source>Select where the image of the emulated camera comes from. It may be an image or a real camera.</source>
+        <translation>Välj varifrån bilden av den emulerade kameran kommer. Det kan vara en bild eller en riktig kamera.</translation>
+    </message>
+    <message>
+        <source>Select an image file every time before the camera is loaded</source>
+        <translation>Välj en bildfil varje gång innan kameran laddas</translation>
     </message>
 </context>
 <context>
@@ -561,28 +569,8 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Loggning</translation>
     </message>
     <message>
-        <source>Global Log Filter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flush log output on every message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CPU</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use global clock speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Set clock speed:</source>
         <translation>Ställ in klockhastighet:</translation>
-    </message>
-    <message>
-        <source>CPU Clock Speed</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables the use of the ARM JIT compiler for emulating the 3DS CPUs. Don&apos;t disable unless for debugging purposes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -597,30 +585,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Visa loggkonsol (endast Windows)</translation>
     </message>
     <message>
-        <source>Regex Log Filter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open Log Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Validation layer not available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to enable debug renderer because the layer &lt;strong&gt;VK_LAYER_KHRONOS_validation&lt;/strong&gt; is missing. Please install the Vulkan SDK or the appropriate package of your distribution</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Command buffer dumping not available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to enable command buffer dumping because the layer &lt;strong&gt;VK_LAYER_LUNARG_api_dump&lt;/strong&gt; is missing. Please install the Vulkan SDK or the appropriate package of your distribution</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>GDB</source>
         <translation>GDB</translation>
     </message>
@@ -633,24 +597,8 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Port:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;body&gt;Immediately commits the debug log to file. Use this if mandarine crashes and the log output is being cut.&lt;br&gt;Enabling this feature will decrease performance, only use it for debugging purposes.&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;body&gt;Changes the emulated CPU clock frequency.&lt;br&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable CPU JIT</source>
         <translation>Aktivera CPU JIT</translation>
-    </message>
-    <message>
-        <source>Enable debug renderer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dump command buffers</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Core</source>
@@ -661,28 +609,88 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;När funktionen är aktiverad begränsas kärnnedräkningen till en mindre tidsrymd, vilket minskar CPU-användningen. Det kan förbättra prestandan för enheter med låg kapacitet eller GPU-krävande spel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <source>Miscellaneus</source>
+        <translation>Diverse</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;br/&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br/&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Information om CPU-klockhastighet&lt;/p&gt;&lt;p&gt;Underklockning kan öka prestandan men kan leda till att spelet fryser.&lt;br /&gt;Överklockning kan minska fördröjningen i spelet men kan också leda till att spelet fryser&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Global Log Filter</source>
+        <translation>Globalt loggfilter</translation>
+    </message>
+    <message>
+        <source>Regex Log Filter</source>
+        <translation>Regex loggfilter</translation>
+    </message>
+    <message>
+        <source>Open Log Location</source>
+        <translation>Öppna loggplats</translation>
+    </message>
+    <message>
+        <source>Flush log output on every message</source>
+        <translation>Töm loggutmatningen vid varje meddelande</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;body&gt;Immediately commits the debug log to file. Use this if mandarine crashes and the log output is being cut.&lt;br&gt;Enabling this feature will decrease performance, only use it for debugging purposes.&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;body&gt;Skriver omedelbart ner felsökningsloggen till fil. Använd detta om Mandarine kraschar och loggutmatningen skärs.&lt;br&gt;Om du aktiverar den här funktionen kommer prestandan att minska, använd den endast för felsökningsändamål.&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>CPU</source>
+        <translation>CPU</translation>
+    </message>
+    <message>
+        <source>Use global clock speed</source>
+        <translation>Använd global klockhastighet</translation>
+    </message>
+    <message>
+        <source>CPU Clock Speed</source>
+        <translation>CPU-klockhastighet</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;body&gt;Changes the emulated CPU clock frequency.&lt;br&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;body&gt;Ändrar den emulerade CPU-klockfrekvensen.&lt;br&gt;Underklockning kan öka prestandan men kan leda till att spelet fryser.&lt;br&gt;Överklockning kan minska fördröjningen i spelet men kan också leda till att spelet fryser&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Enable debug renderer</source>
+        <translation>Aktivera felsökningsrendering</translation>
+    </message>
+    <message>
+        <source>Dump command buffers</source>
+        <translation>Dumpa kommandobuffertar</translation>
+    </message>
+    <message>
         <source>Reduce Downcount Slice</source>
-        <translation type="unfinished"></translation>
+        <translation>Minska nedräknings-slice</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. This may improve the performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Förstärk lågprioriterade trådar under omplaneringen i kärnan. Detta kan förbättra prestandan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Priority Boost Starved Threads</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Miscellaneus</source>
-        <translation>Diverse</translation>
-    </message>
-    <message>
         <source>Delay app start for LLE module initialization</source>
-        <translation type="unfinished"></translation>
+        <translation>Fördröj appstart för initialisering av LLE-modul</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;br/&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br/&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Information om CPU-klockhastighet&lt;/p&gt;&lt;p&gt;Underklockning kan öka prestandan men kan leda till att spelet fryser.&lt;br /&gt;Överklockning kan minska fördröjningen i spelet men kan också leda till att spelet fryser&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>Validation layer not available</source>
+        <translation>Valideringslager inte tillgängligt</translation>
+    </message>
+    <message>
+        <source>Unable to enable debug renderer because the layer &lt;strong&gt;VK_LAYER_KHRONOS_validation&lt;/strong&gt; is missing. Please install the Vulkan SDK or the appropriate package of your distribution</source>
+        <translation>Det går inte att aktivera felsökningsrendering eftersom lagret &lt;strong&gt;VK_LAYER_KHRONOS_validation&lt;/strong&gt; saknas. Installera Vulkan SDK eller lämpligt paket för din distribution</translation>
+    </message>
+    <message>
+        <source>Command buffer dumping not available</source>
+        <translation>Dumpning av kommandobuffert inte tillgänglig</translation>
+    </message>
+    <message>
+        <source>Unable to enable command buffer dumping because the layer &lt;strong&gt;VK_LAYER_LUNARG_api_dump&lt;/strong&gt; is missing. Please install the Vulkan SDK or the appropriate package of your distribution</source>
+        <translation>Det går inte att aktivera dumpning av kommandobuffert eftersom lagret &lt;strong&gt;VK_LAYER_LUNARG_api_dump&lt;/strong&gt; saknas. Installera Vulkan SDK eller lämpligt paket i din distribution</translation>
     </message>
 </context>
 <context>
@@ -827,14 +835,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>MMPX</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load custom textures asynchronously with background threads to reduce loading stutter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Async Custom Texture Loading</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Post-Processing Shader</source>
         <translation>Shader för efterbehandling</translation>
     </message>
@@ -871,24 +871,12 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Anaglyfisk</translation>
     </message>
     <message>
-        <source>Interlaced</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reverse Interlaced</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Depth</source>
         <translation>Djup</translation>
     </message>
     <message>
         <source>%</source>
         <translation>%</translation>
-    </message>
-    <message>
-        <source>Eye to Render in Monoscopic Mode</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Left Eye (default)</source>
@@ -919,10 +907,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Dumpa texturer</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load all custom textures into memory on boot, instead of loading them when the game requires them.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Preload Custom Textures</source>
         <translation>Förinläs anpassade texturer</translation>
     </message>
@@ -933,6 +917,30 @@ Vill du ignorera felet och fortsätta?</translation>
     <message>
         <source>Off</source>
         <translation>Av</translation>
+    </message>
+    <message>
+        <source>Interlaced</source>
+        <translation>Interlaced</translation>
+    </message>
+    <message>
+        <source>Reverse Interlaced</source>
+        <translation>Omvänd interlaced</translation>
+    </message>
+    <message>
+        <source>Eye to Render in Monoscopic Mode</source>
+        <translation>Ögon för rendering i monoskopiskt läge</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load all custom textures into memory on boot, instead of loading them when the game requires them.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Läs in alla anpassade texturer i minnet vid uppstart, istället för att läsa in dem när spelet kräver dem.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load custom textures asynchronously with background threads to reduce loading stutter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Läs in anpassade texturer asynkront med bakgrundstrådar för att minska inläsningsskakning&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Async Custom Texture Loading</source>
+        <translation>Asynkron inläsning av anpassade texturer</translation>
     </message>
 </context>
 <context>
@@ -958,14 +966,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Skärmbilder</translation>
     </message>
     <message>
-        <source>Use global screenshot path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set screenshot path:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save Screenshots To</source>
         <translation>Spara skärmbilder till</translation>
     </message>
@@ -976,10 +976,6 @@ Vill du ignorera felet och fortsätta?</translation>
     <message>
         <source>Updates</source>
         <translation>Uppdateringar</translation>
-    </message>
-    <message>
-        <source>Mute audio when in background</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Emulation</source>
@@ -998,20 +994,12 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Nollställ alla inställningar</translation>
     </message>
     <message>
-        <source>unthrottled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select Screenshot Directory</source>
         <translation>Välj katalog för skärmdump</translation>
     </message>
     <message>
         <source>Mandarine</source>
         <translation>Mandarine</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to &lt;b&gt;reset your settings&lt;/b&gt; and close Mandarine?</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Confirm exit while emulation is running</source>
@@ -1034,10 +1022,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Osynlig automatisk uppdatering efter avslut</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;body&gt;The number of frames to skip. It may cause emulation speed desync issues.&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Frame Skip</source>
         <translation>Hoppa över bildrutor</translation>
     </message>
@@ -1058,24 +1042,48 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>x8</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they&apos;re too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Custom CPU Ticks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ticks:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Region:</source>
         <translation>Region:</translation>
     </message>
     <message>
         <source>Auto-select</source>
         <translation>Välj automatiskt</translation>
+    </message>
+    <message>
+        <source>Mute audio when in background</source>
+        <translation>Inget ljud när i bakgrunden</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;body&gt;The number of frames to skip. It may cause emulation speed desync issues.&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;body&gt;Antalet bildrutor som ska hoppas över. Det kan orsaka problem med desynkronisering av emuleringshastigheten.&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they&apos;re too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;body&gt;Ställ in ett anpassat värde för CPU-ticks. Högre värden kan öka prestandan, men om de är för höga kan det leda till att spelet fryser. Ett intervall på 77-21000 rekommenderas.&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Custom CPU Ticks</source>
+        <translation>Anpassade CPU-ticks</translation>
+    </message>
+    <message>
+        <source>Ticks:</source>
+        <translation>Ticks:</translation>
+    </message>
+    <message>
+        <source>Use global screenshot path</source>
+        <translation>Använd global sökväg för skärmbilder</translation>
+    </message>
+    <message>
+        <source>Set screenshot path:</source>
+        <translation>Ange sökväg för skärmbilder:</translation>
+    </message>
+    <message>
+        <source>unthrottled</source>
+        <translation>full hastighet</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to &lt;b&gt;reset your settings&lt;/b&gt; and close Mandarine?</source>
+        <translation>Är du säker på att du vill &lt;b&gt;nollställa dina inställningar&lt;/b&gt; och stänga Mandarine?</translation>
     </message>
 </context>
 <context>
@@ -1113,10 +1121,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>OpenGL-renderare</translation>
     </message>
     <message>
-        <source>SPIR-V Shader Generation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Renderer</source>
         <translation>Renderare</translation>
     </message>
@@ -1129,124 +1133,128 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utför presentationen i separata trådar. Förbättrar prestandan när Vulkan används i de flesta spel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>Texture Sampling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nearest Neighbor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Linear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use Disk Shader Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use global</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use per-game</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delays the emulated game render thread the specified amount of milliseconds every time it submits render commands to the GPU.&lt;/p&gt;&lt;p&gt;Adjust this feature in the (very few) dynamic-fps games to fix performance issues.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Correctly handle all edge cases in multiplication operation in shaders. &lt;/p&gt;&lt;p&gt;Some games requires this to be enabled for the hardware shader to render properly.&lt;/p&gt;&lt;p&gt;However this would reduce performance in most games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OpenGL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Hardware Shader</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accurate Multiplication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the JIT engine instead of the interpreter for software shader emulation. &lt;/p&gt;&lt;p&gt;Enable this for better performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Shader JIT</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compile shaders using background threads to avoid shader compilation stutter. Expect temporary graphical glitches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Async Shader Compilation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Async Presentation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Advanced</source>
         <translation>Avancerat</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides the sampling filter used by games. This can be useful in certain cases with poorly behaved games when upscaling. If unsure set this to Game Controlled&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Game Controlled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don&apos;t notice a performance difference.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable VSync</source>
         <translation>Aktivera VSync</translation>
     </message>
     <message>
+        <source>OpenGL</source>
+        <translation>OpenGL</translation>
+    </message>
+    <message>
+        <source>SPIR-V Shader Generation</source>
+        <translation>SPIR-V Shader-generering</translation>
+    </message>
+    <message>
+        <source>Enable Hardware Shader</source>
+        <translation>Aktivera hårdvaru-shader</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Correctly handle all edge cases in multiplication operation in shaders. &lt;/p&gt;&lt;p&gt;Some games requires this to be enabled for the hardware shader to render properly.&lt;/p&gt;&lt;p&gt;However this would reduce performance in most games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hanterar korrekt alla kantfall i multiplikationsoperationer i shaders. &lt;/p&gt; &lt;p&gt;I vissa spel måste detta vara aktiverat för att hårdvaru-shadern ska renderas korrekt.&lt;/p&gt; &lt;p&gt;Det skulle dock minska prestandan i de flesta spel.&lt;/p&gt; &lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Accurate Multiplication</source>
+        <translation>Exakt multiplikation</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the JIT engine instead of the interpreter for software shader emulation. &lt;/p&gt;&lt;p&gt;Enable this for better performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Använd JIT-motorn istället för tolken för emulering av programvaru-shaders. &lt;/p&gt; &lt;p&gt;Aktivera detta för bättre prestanda.&lt;/p&gt; &lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Enable Shader JIT</source>
+        <translation>Aktivera Shader JIT</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compile shaders using background threads to avoid shader compilation stutter. Expect temporary graphical glitches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kompilera shaders med hjälp av bakgrundstrådar för att undvika att shaderkompileringen hackar. Förvänta dig tillfälliga grafiska störningar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Enable Async Shader Compilation</source>
+        <translation>Aktivera asynkron shader-kompilering</translation>
+    </message>
+    <message>
+        <source>Enable Async Presentation</source>
+        <translation>Aktivera asynkron presentation</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides the sampling filter used by games. This can be useful in certain cases with poorly behaved games when upscaling. If unsure set this to Game Controlled&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Åsidosätter samplingsfiltret som används av spel. Detta kan vara användbart i vissa fall med spel som uppför sig illa vid uppskalning. Om du är osäker, ställ in detta på Spelkontrollerat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Texture Sampling</source>
+        <translation>Textursampling</translation>
+    </message>
+    <message>
+        <source>Game Controlled</source>
+        <translation>Spelkontrollerat</translation>
+    </message>
+    <message>
+        <source>Nearest Neighbor</source>
+        <translation>Närmaste granne</translation>
+    </message>
+    <message>
+        <source>Linear</source>
+        <translation>Linjär</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Minska stuttering genom att lagra och läsa in genererade shaders till disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Use Disk Shader Cache</source>
+        <translation>Använd disk shadercache</translation>
+    </message>
+    <message>
+        <source>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don&apos;t notice a performance difference.</source>
+        <translation>VSync förhindrar grafikproblem, men vissa grafikkort har lägre prestanda med VSync aktiverat. Låt det vara aktiverat om du inte märker någon prestandaskillnad.</translation>
+    </message>
+    <message>
+        <source>Use global</source>
+        <translation>Använd globalt</translation>
+    </message>
+    <message>
+        <source>Use per-game</source>
+        <translation>Använd per-spel</translation>
+    </message>
+    <message>
         <source>Delay game render thread:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fördröj tråd för spelrendering:</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delays the emulated game render thread the specified amount of milliseconds every time it submits render commands to the GPU.&lt;/p&gt;&lt;p&gt;Adjust this feature in the (very few) dynamic-fps games to fix performance issues.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fördröjer den emulerade spelrenderingstråden med det angivna antalet millisekunder varje gång den skickar renderingskommandon till GPU:n.&lt;/p&gt;&lt;p&gt;Justera den här funktionen i de (mycket få) dynamiska fps-spelen för att åtgärda prestandaproblem.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Tweaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Justeringar</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores software vertex shaders from PICA core. Enable this may lead a small performance boost, but may cause graphical bugs as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignorerar programvaru-vertex-shaders från PICA-kärnan. Om du aktiverar detta kan det leda till en liten prestandaökning, men det kan också orsaka grafiska buggar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Force Hardware Vertex Shaders</source>
-        <translation type="unfinished"></translation>
+        <translation>Tvinga hårdvaru-vertex-shaders</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores texture copies if src_surface_id is null. Enable this may lead a small performance boost, but may cause graphical bugs as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignorerar texturkopior om src_surface_id är null. Om du aktiverar detta kan det leda till en liten prestandaökning, men det kan också orsaka grafiska buggar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable Surface Texture Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivera kopiering av yttextur</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignores CPU write if there is a region to invalidate from rasterizer cache. Enable this may lead a small performance boost, but may cause graphical bugs as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ignorerar CPU-skrivning om det finns en region att inaktivera från rasterizer-cache. Om du aktiverar detta kan det leda till en liten prestandaökning, men det kan också orsaka grafiska buggar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Disable Flush CPU Write</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivera tömning av CPU-skrivning</translation>
     </message>
 </context>
 <context>
@@ -1276,10 +1284,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Snabbtangent</translation>
     </message>
     <message>
-        <source>The entered key sequence is already assigned to: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>A 3ds button</source>
         <translation>En 3ds-knapp</translation>
     </message>
@@ -1292,20 +1296,20 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Töm</translation>
     </message>
     <message>
-        <source>The default key sequence is already assigned to: %1</source>
-        <translation type="unfinished"></translation>
+        <source>Conflicting Key Sequence</source>
+        <translation>Tangentsekvens i konflikt</translation>
     </message>
     <message>
-        <source>Conflicting Key Sequence</source>
-        <translation type="unfinished"></translation>
+        <source>The entered key sequence is already assigned to: %1</source>
+        <translation>Den inmatade tangentsekvensen är redan tilldelad: %1</translation>
+    </message>
+    <message>
+        <source>The default key sequence is already assigned to: %1</source>
+        <translation>Standardknappsekvensen är redan tilldelad till: %1</translation>
     </message>
 </context>
 <context>
     <name>ConfigureInput</name>
-    <message>
-        <source>ConfigureInput</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Profile</source>
         <translation>Profil</translation>
@@ -1367,56 +1371,16 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Div.</translation>
     </message>
     <message>
-        <source>Start:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select:</source>
         <translation>Välj:</translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Power:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Circle Mod:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>GPIO14:</source>
         <translation>GPIO14:</translation>
     </message>
     <message>
-        <source>Debug:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Circle Pad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Deadzone: 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Set Analog Stick</source>
         <translation>Ställ in analog spak</translation>
-    </message>
-    <message>
-        <source>C-Stick</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use Artic Controller when connected to Artic Base Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Shoulder Buttons</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ZR:</source>
@@ -1433,14 +1397,6 @@ Vill du ignorera felet och fortsätta?</translation>
     <message>
         <source>R:</source>
         <translation>R:</translation>
-    </message>
-    <message>
-        <source>Motion / Touch...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto Map</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clear All</source>
@@ -1467,28 +1423,12 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Information</translation>
     </message>
     <message>
-        <source>After pressing OK, first move your joystick horizontally, and then vertically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Deadzone: %1%</source>
         <translation>Dödläge: %1%</translation>
     </message>
     <message>
-        <source>Modifier Scale: %1%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Warning</source>
         <translation>Varning</translation>
-    </message>
-    <message>
-        <source>Auto mapping failed. Your controller may not have a corresponding mapping</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>After pressing OK, press any button on your joystick</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>[press key]</source>
@@ -1497,10 +1437,6 @@ Vill du ignorera felet och fortsätta?</translation>
     <message>
         <source>Error!</source>
         <translation>Fel!</translation>
-    </message>
-    <message>
-        <source>You&apos;re using a key that&apos;s already bound.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New Profile</source>
@@ -1527,12 +1463,84 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Nytt namn:</translation>
     </message>
     <message>
-        <source>Duplicate profile name</source>
+        <source>Profile name already exists. Please choose a different name.</source>
+        <translation>Profilnamnet finns redan. Välj ett annat namn.</translation>
+    </message>
+    <message>
+        <source>ConfigureInput</source>
+        <translation>Konfigurera ingång</translation>
+    </message>
+    <message>
+        <source>Start:</source>
+        <translation>Start:</translation>
+    </message>
+    <message>
+        <source>Home:</source>
+        <translation>Home:</translation>
+    </message>
+    <message>
+        <source>Power:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Profile name already exists. Please choose a different name.</source>
-        <translation>Profilnamnet finns redan. Välj ett annat namn.</translation>
+        <source>Circle Mod:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Debug:</source>
+        <translation>Felsök:</translation>
+    </message>
+    <message>
+        <source>Circle Pad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deadzone: 0</source>
+        <translation>Dödläge: 0</translation>
+    </message>
+    <message>
+        <source>C-Stick</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shoulder Buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motion / Touch...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto Map</source>
+        <translation>Automatisk mappning</translation>
+    </message>
+    <message>
+        <source>Use Artic Controller when connected to Artic Base Server</source>
+        <translation>Använd Artic Controller när du är ansluten till Artic Base Server</translation>
+    </message>
+    <message>
+        <source>After pressing OK, first move your joystick horizontally, and then vertically.</source>
+        <translation>När du har tryckt på OK flyttar du först joysticken horisontellt och sedan vertikalt.</translation>
+    </message>
+    <message>
+        <source>Modifier Scale: %1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto mapping failed. Your controller may not have a corresponding mapping</source>
+        <translation>Automatisk mappning misslyckades. Din styrenhet kanske inte har en motsvarande mappning</translation>
+    </message>
+    <message>
+        <source>After pressing OK, press any button on your joystick</source>
+        <translation>När du har tryckt på OK, tryck på valfri knapp på din joystick</translation>
+    </message>
+    <message>
+        <source>You&apos;re using a key that&apos;s already bound.</source>
+        <translation>Du använder en tangent som redan är bunden.</translation>
+    </message>
+    <message>
+        <source>Duplicate profile name</source>
+        <translation>Dubbletta profilnamn</translation>
     </message>
 </context>
 <context>
@@ -1583,102 +1591,78 @@ Vill du ignorera felet och fortsätta?</translation>
     </message>
     <message>
         <source>Rotate Screens Upright</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotera skärmarna upprätt</translation>
     </message>
     <message>
         <source>Large Screen Proportion</source>
-        <translation type="unfinished"></translation>
+        <translation>Proportion på stor skärm</translation>
     </message>
     <message>
         <source>Background Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Single Screen Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Bakgrundsfärg</translation>
     </message>
     <message>
         <source>Top Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stretch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>px</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Bottom Screen Opacity % (OpenGL Only)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Left/Right Padding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Top/Bottom Padding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bottom Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Note: These settings affect the Single Screen and Separate Windows layouts</source>
-        <translation type="unfinished"></translation>
+        <translation>Översta skärmen</translation>
     </message>
     <message>
         <source>X Position</source>
-        <translation type="unfinished"></translation>
+        <translation>X-position</translation>
+    </message>
+    <message>
+        <source>px</source>
+        <translation>px</translation>
     </message>
     <message>
         <source>Y Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Y-position</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Bredd</translation>
     </message>
     <message>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Höjd</translation>
+    </message>
+    <message>
+        <source>Bottom Screen</source>
+        <translation>Nedre skärmen</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Bottom Screen Opacity % (OpenGL Only)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Opacitet för nedre skärmen % (endast OpenGL)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Single Screen Layout</source>
+        <translation>Layout för En skärm</translation>
+    </message>
+    <message>
+        <source>Stretch</source>
+        <translation>Sträck ut</translation>
+    </message>
+    <message>
+        <source>Left/Right Padding</source>
+        <translation>Vänster/höger utfyllnad</translation>
+    </message>
+    <message>
+        <source>Top/Bottom Padding</source>
+        <translation>Överst/nederst utfyllnad</translation>
+    </message>
+    <message>
+        <source>Note: These settings affect the Single Screen and Separate Windows layouts</source>
+        <translation>Obs: Dessa inställningar påverkar layouterna En skärm och Separata fönster</translation>
     </message>
 </context>
 <context>
     <name>ConfigureMotionTouch</name>
     <message>
-        <source>Configure Motion / Touch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Motion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Motion Provider:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sensitivity:</source>
         <translation>Känslighet:</translation>
     </message>
     <message>
-        <source>Controller:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Configure</source>
         <translation>Konfigurera</translation>
-    </message>
-    <message>
-        <source>Touch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Touch Provider:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Calibration:</source>
@@ -1693,10 +1677,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Använd mappning av knappar:</translation>
     </message>
     <message>
-        <source>CemuhookUDP Config</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You may use any Cemuhook compatible UDP input source to provide motion and touch input.</source>
         <translation>Du kan använda vilken UDP-ingångskälla som helst som är kompatibel med Cemuhook för att tillhandahålla rörelse- och pekinmatning.</translation>
     </message>
@@ -1707,30 +1687,6 @@ Vill du ignorera felet och fortsätta?</translation>
     <message>
         <source>Port:</source>
         <translation>Port:</translation>
-    </message>
-    <message>
-        <source>Pad:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pad 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pad 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pad 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pad 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Learn More</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Test</source>
@@ -1745,24 +1701,12 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>CemuhookUDP</translation>
     </message>
     <message>
-        <source>SDL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Emulator Window</source>
         <translation>Emulatorfönster</translation>
     </message>
     <message>
-        <source>&lt;a href=&apos;https://citra-emu.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Learn More&lt;/span&gt;&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Information</source>
         <translation>Information</translation>
-    </message>
-    <message>
-        <source>After pressing OK, press a button on the controller whose motion you want to track.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>[press button]</source>
@@ -1773,32 +1717,96 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Testar</translation>
     </message>
     <message>
-        <source>Configuring</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Test Successful</source>
         <translation>Testet lyckades</translation>
-    </message>
-    <message>
-        <source>Successfully received data from the server.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Test Failed</source>
         <translation>Testet misslyckades</translation>
     </message>
     <message>
-        <source>Could not receive valid data from the server.&lt;br&gt;Please verify that the server is set up correctly and the address and port are correct.</source>
+        <source>Configure Motion / Touch</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Motion Provider:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Controller:</source>
+        <translation>Kontroller:</translation>
+    </message>
+    <message>
+        <source>Touch</source>
+        <translation type="unfinished">Beröring</translation>
+    </message>
+    <message>
+        <source>Touch Provider:</source>
+        <translation type="unfinished">Touch Provider:</translation>
+    </message>
+    <message>
+        <source>CemuhookUDP Config</source>
+        <translation>CemuhookUDP-konfiguration</translation>
+    </message>
+    <message>
+        <source>Pad:</source>
+        <translation type="unfinished">Pad:</translation>
+    </message>
+    <message>
+        <source>Pad 1</source>
+        <translation type="unfinished">Pad 1</translation>
+    </message>
+    <message>
+        <source>Pad 2</source>
+        <translation type="unfinished">Pad 2</translation>
+    </message>
+    <message>
+        <source>Pad 3</source>
+        <translation type="unfinished">Pad 3</translation>
+    </message>
+    <message>
+        <source>Pad 4</source>
+        <translation type="unfinished">Pad 4</translation>
+    </message>
+    <message>
+        <source>Learn More</source>
+        <translation>Läs mer</translation>
+    </message>
+    <message>
+        <source>SDL</source>
+        <translation>SDL</translation>
+    </message>
+    <message>
+        <source>&lt;a href=&apos;https://citra-emu.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Learn More&lt;/span&gt;&lt;/a&gt;</source>
+        <translation>&lt;a href=&apos;https://citra-emu.org/wiki/using-a-controller-or-android-phone-for-motion-or-touch-input&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Lär dig mer&lt;/span&gt;&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <source>After pressing OK, press a button on the controller whose motion you want to track.</source>
+        <translation>När du har tryckt på OK trycker du på en knapp på kontrollern vars rörelse du vill följa.</translation>
+    </message>
+    <message>
+        <source>Configuring</source>
+        <translation>Konfigurering</translation>
+    </message>
+    <message>
+        <source>Successfully received data from the server.</source>
+        <translation>Har tagit emot data från servern.</translation>
+    </message>
+    <message>
+        <source>Could not receive valid data from the server.&lt;br&gt;Please verify that the server is set up correctly and the address and port are correct.</source>
+        <translation>Kunde inte ta emot giltiga data från servern.&lt;br&gt;Kontrollera att servern är korrekt konfigurerad och att adress och port är korrekta.</translation>
     </message>
     <message>
         <source>Mandarine</source>
-        <translation type="unfinished"></translation>
+        <translation>Mandarine</translation>
     </message>
     <message>
         <source>UDP Test or calibration configuration is in progress.&lt;br&gt;Please wait for them to finish.</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP-test eller kalibreringskonfiguration pågår.&lt;br&gt;Vänta tills de är klara.</translation>
     </message>
 </context>
 <context>
@@ -2082,20 +2090,8 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>HH:mm:ss</translation>
     </message>
     <message>
-        <source>Initial System Ticks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fixed</source>
         <translation>Fast</translation>
-    </message>
-    <message>
-        <source>Initial System Ticks Override</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Play Coins</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Number of steps per hour reported by the pedometer. Range from 0 to 65,535.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -2106,48 +2102,12 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Stegmätare steg per timme</translation>
     </message>
     <message>
-        <source>Console ID:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Regenerate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The New 3DS has different memory and processor, and some games can only start on the New 3DS.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nya 3DS har annat minne och processor och några spel kan endast starta på Nya 3DS.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>Use LLE applets (if installed)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Note: this can be overridden when region setting is auto-select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Offset time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Random</source>
         <translation>Slumpmässig</translation>
-    </message>
-    <message>
-        <source>Run System Setup when Home Menu is launched</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3GX Plugin Loader:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable 3GX plugin loader</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Allow games to change plugin loader state</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Download System Files from Nitendo servers</source>
@@ -2196,10 +2156,6 @@ Vill du ignorera felet och fortsätta?</translation>
     <message>
         <source>Download</source>
         <translation>Hämta</translation>
-    </message>
-    <message>
-        <source>Real Console Unique Data</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SecureInfo_A/B</source>
@@ -2786,10 +2742,6 @@ Vill du ignorera felet och fortsätta?</translation>
         <translation>Mandarine saknar nycklar för att hämta systemfiler. &lt;br&gt;&lt;a href=&apos;https://citra-emu.org/wiki/aes-keys/&apos;&gt;&lt;span style=&quot;text-decoration: underline; color:#039be5;&quot;&gt;Hur får man tag på nycklarna?&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
-        <source>Console ID: 0x%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This will replace your current virtual 3DS with a new one. Your current virtual 3DS will not be recoverable. This might have unexpected effects in games. This might fail, if you use an outdated config savegame. Continue?</source>
         <translation>Detta kommer att ersätta din nuvarande virtuella 3DS med en ny. Din nuvarande virtuella 3DS kommer inte att kunna återställas. Detta kan ha oväntade effekter i spel. Det här kan misslyckas om du använder ett föråldrat konfigurationssparspel. Fortsätta?</translation>
     </message>
@@ -2841,6 +2793,62 @@ Vill du ignorera felet och fortsätta?</translation>
         <source>Startup time</source>
         <translation>Uppstartstid</translation>
     </message>
+    <message>
+        <source>Use LLE applets (if installed)</source>
+        <translation>Använda LLE-applets (om installerade)</translation>
+    </message>
+    <message>
+        <source>Note: this can be overridden when region setting is auto-select</source>
+        <translation>Obs: detta kan åsidosättas när regioninställningen är automatiskt vald</translation>
+    </message>
+    <message>
+        <source>Offset time</source>
+        <translation>Offset-tid</translation>
+    </message>
+    <message>
+        <source>Initial System Ticks</source>
+        <translation>Initiala systemticks</translation>
+    </message>
+    <message>
+        <source>Initial System Ticks Override</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play Coins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Run System Setup when Home Menu is launched</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Console ID:</source>
+        <translation>Konsol-ID:</translation>
+    </message>
+    <message>
+        <source>Regenerate</source>
+        <translation>Generera om</translation>
+    </message>
+    <message>
+        <source>3GX Plugin Loader:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable 3GX plugin loader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow games to change plugin loader state</source>
+        <translation>Tillåt spel att ändra tillstånd för insticksmodulinläsare</translation>
+    </message>
+    <message>
+        <source>Real Console Unique Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Console ID: 0x%1</source>
+        <translation>Konsol-ID: 0x%1</translation>
+    </message>
 </context>
 <context>
     <name>ConfigureTouchFromButton</name>
@@ -2858,20 +2866,11 @@ Vill du ignorera felet och fortsätta?</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <source>Rename</source>
-        <translation type="unfinished">Byt namn</translation>
-    </message>
-    <message>
-        <source>Click the bottom area to add a point, then press a button to bind.
-Drag points to change position, or double-click table cells to edit values.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete Point</source>
-        <translation type="unfinished"></translation>
+        <translation>Byt namn</translation>
     </message>
     <message>
         <source>Button</source>
@@ -2889,23 +2888,23 @@ Drag points to change position, or double-click table cells to edit values.</sou
     </message>
     <message>
         <source>New Profile</source>
-        <translation type="unfinished">Ny profil</translation>
+        <translation>Ny profil</translation>
     </message>
     <message>
         <source>Enter the name for the new profile.</source>
-        <translation type="unfinished">Ange namnet för nya profilen.</translation>
+        <translation>Ange namnet för nya profilen.</translation>
     </message>
     <message>
         <source>Delete Profile</source>
-        <translation type="unfinished">Ta bort profil</translation>
+        <translation>Ta bort profil</translation>
     </message>
     <message>
         <source>Delete profile %1?</source>
-        <translation type="unfinished">Ta bort profilen %1?</translation>
+        <translation>Ta bort profilen %1?</translation>
     </message>
     <message>
         <source>Rename Profile</source>
-        <translation type="unfinished">Byt namn på profil</translation>
+        <translation>Byt namn på profil</translation>
     </message>
     <message>
         <source>New name:</source>
@@ -2913,7 +2912,17 @@ Drag points to change position, or double-click table cells to edit values.</sou
     </message>
     <message>
         <source>[press key]</source>
-        <translation type="unfinished">[tryck knapp]</translation>
+        <translation>[tryck knapp]</translation>
+    </message>
+    <message>
+        <source>Click the bottom area to add a point, then press a button to bind.
+Drag points to change position, or double-click table cells to edit values.</source>
+        <translation>Klicka på det nedre området för att lägga till en punkt och tryck sedan på en knapp för att binda.
+Dra punkterna för att ändra position, eller dubbelklicka på tabellcellerna för att redigera värden.</translation>
+    </message>
+    <message>
+        <source>Delete Point</source>
+        <translation>Ta bort punkt</translation>
     </message>
 </context>
 <context>
@@ -2943,20 +2952,12 @@ Drag points to change position, or double-click table cells to edit values.</sou
         <translation>Liten (24x24)</translation>
     </message>
     <message>
-        <source>Row 1 Text:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>File Name</source>
         <translation>Filnamn</translation>
     </message>
     <message>
         <source>Full Path</source>
         <translation>Fullständig sökväg</translation>
-    </message>
-    <message>
-        <source>Row 2 Text:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hide Titles without Icon</source>
@@ -2973,10 +2974,6 @@ Drag points to change position, or double-click table cells to edit values.</sou
     <message>
         <source>Title Name (long)</source>
         <translation>Titelnamn (långt)</translation>
-    </message>
-    <message>
-        <source>Single Line Mode</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;System&gt;</source>
@@ -3001,6 +2998,18 @@ Drag points to change position, or double-click table cells to edit values.</sou
     <message>
         <source>English</source>
         <translation>Engelska</translation>
+    </message>
+    <message>
+        <source>Row 1 Text:</source>
+        <translation>Rad 1-text:</translation>
+    </message>
+    <message>
+        <source>Row 2 Text:</source>
+        <translation>Rad 2-text:</translation>
+    </message>
+    <message>
+        <source>Single Line Mode</source>
+        <translation>Enkel rad-läge</translation>
     </message>
 </context>
 <context>
@@ -3091,10 +3100,6 @@ Drag points to change position, or double-click table cells to edit values.</sou
         <translation>Ljud</translation>
     </message>
     <message>
-        <source>Please specify the output path.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mandarine</source>
         <translation>Mandarine</translation>
     </message>
@@ -3111,17 +3116,8 @@ Drag points to change position, or double-click table cells to edit values.</sou
         <translation>ljudenkodare</translation>
     </message>
     <message>
-        <source>Could not find any available %1.
-Please check your FFmpeg installation used for compilation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 (%2)</source>
         <translation>%1 (%2)</translation>
-    </message>
-    <message>
-        <source>Select Video Output Path</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dump Video</source>
@@ -3147,21 +3143,23 @@ Please check your FFmpeg installation used for compilation.</source>
         <source>Bitrate:</source>
         <translation>Bitfrekvens:</translation>
     </message>
+    <message>
+        <source>Please specify the output path.</source>
+        <translation>Ange sökvägen för utdata.</translation>
+    </message>
+    <message>
+        <source>Could not find any available %1.
+Please check your FFmpeg installation used for compilation.</source>
+        <translation>Kunde inte hitta någon tillgänglig %1.
+Kontrollera din FFmpeg-installation som användes för kompilering.</translation>
+    </message>
+    <message>
+        <source>Select Video Output Path</source>
+        <translation>Välj sökväg för videoutdata</translation>
+    </message>
 </context>
 <context>
     <name>GMainWindow</name>
-    <message>
-        <source>Current emulation speed. Values higher or lower than 100% indicate emulation is running faster or slower than a 3DS.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>How many frames per second the game is currently displaying. This will vary from game to game and scene to scene.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Time taken to emulate a 3DS frame, not counting framelimiting or v-sync. For full-speed emulation this should be at most 16.67 ms.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Clear Recent Files</source>
         <translation>Töm senaste filer</translation>
@@ -3212,32 +3210,8 @@ Om du vill rensa upp bland de filer som fanns kvar på den gamla dataplatsen kan
         <translation>Ogiltigt ROM-format</translation>
     </message>
     <message>
-        <source>Your ROM format is not supported.&lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ROM Corrupted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your ROM is corrupted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ROM Encrypted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No Suitable Vulkan Devices Detected</source>
         <translation>Inga lämpliga Vulkan-enheter upptäcktes</translation>
-    </message>
-    <message>
-        <source>Vulkan initialization failed during boot.&lt;br/&gt;Your GPU may not support Vulkan 1.1, or you do not have the latest graphics driver.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Current Artic Base traffic speed. Higher values indicate bigger transfer loads.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Continue</source>
@@ -3290,16 +3264,8 @@ Om du vill rensa upp bland de filer som fanns kvar på den gamla dataplatsen kan
         <translation>Plats %1 - %2 %3</translation>
     </message>
     <message>
-        <source>Error Opening %1 Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Folder does not exist!</source>
         <translation>Mappen finns inte!</translation>
-    </message>
-    <message>
-        <source>Remove Play Time Data</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset play time?</source>
@@ -3322,16 +3288,8 @@ Om du vill rensa upp bland de filer som fanns kvar på den gamla dataplatsen kan
         <translation>Detta kommer att skapa en genväg till den aktuella AppImage. Detta kanske inte fungerar så bra om du uppdaterar. Fortsätta?</translation>
     </message>
     <message>
-        <source>Failed to create a shortcut to %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Create Icon</source>
         <translation>Skapa ikon</translation>
-    </message>
-    <message>
-        <source>Cannot create icon file. Path &quot;%1&quot; does not exist and cannot be created.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dumping...</source>
@@ -3340,11 +3298,6 @@ Om du vill rensa upp bland de filer som fanns kvar på den gamla dataplatsen kan
     <message>
         <source>Cancel</source>
         <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Could not dump base RomFS.
-Refer to the log for details.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error Opening %1</source>
@@ -3388,10 +3341,6 @@ Refer to the log for details.</source>
         <translation>Anslut till Artic Base</translation>
     </message>
     <message>
-        <source>%1 has been installed successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Unable to open File</source>
         <translation>Kunde inte öppna filen</translation>
     </message>
@@ -3402,10 +3351,6 @@ Refer to the log for details.</source>
     <message>
         <source>Installation aborted</source>
         <translation>Installationen avbröts</translation>
-    </message>
-    <message>
-        <source>The installation of %1 was aborted. Please see the log for more details</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Invalid File</source>
@@ -3436,10 +3381,6 @@ Refer to the log for details.</source>
         <translation>Misslyckades med att avinstallera &quot;%1&quot;.</translation>
     </message>
     <message>
-        <source>Successfully uninstalled &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>File not found</source>
         <translation>Filen hittades inte</translation>
     </message>
@@ -3452,22 +3393,8 @@ Refer to the log for details.</source>
         <translation>Sparade tillstånd</translation>
     </message>
     <message>
-        <source>Warning: Savestates are NOT a replacement for in-game saves, and are not meant to be reliable.
-
-Use at your own risk!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error opening amiibo data file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>A tag is already in use.</source>
         <translation>En tagg är redan i bruk.</translation>
-    </message>
-    <message>
-        <source>Game is not looking for amiibos.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Amiibo File (%1);; All Files (*.*)</source>
@@ -3486,52 +3413,8 @@ Use at your own risk!</source>
         <translation>Spela in film</translation>
     </message>
     <message>
-        <source>Movie recording cancelled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Movie Saved</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The movie is successfully saved.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Game will unpause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The game will be unpaused, and the next frame will be captured. Is this okay?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invalid Screenshot Directory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot create specified screenshot directory. Screenshot path is set back to its default value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not load video dumper</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select FFmpeg Directory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>The provided FFmpeg directory is missing %1. Please make sure the correct directory was selected.</source>
         <translation>Den angivna FFmpeg-katalogen saknar %1. Kontrollera att rätt katalog har valts.</translation>
-    </message>
-    <message>
-        <source>FFmpeg has been sucessfully installed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installation of FFmpeg failed. Check the log file for details.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Could not start video dumping.&lt;br&gt;Please ensure that the video encoder is configured correctly.&lt;br&gt;Refer to the log for details.</source>
@@ -3544,30 +3427,6 @@ Use at your own risk!</source>
     <message>
         <source>Playing %1 / %2</source>
         <translation>Spelar %1 / %2</translation>
-    </message>
-    <message>
-        <source>Movie Finished</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(Accessing SharedExtData)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(Accessing SystemSaveData)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(Accessing BossExtData)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(Accessing ExtData)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(Accessing SaveData)</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MB/s</source>
@@ -3599,10 +3458,6 @@ Use at your own risk!</source>
         <translation>VOLYM: %1%</translation>
     </message>
     <message>
-        <source>A fatal error occurred. &lt;a href=&apos;https://community.citra-emu.org/t/how-to-upload-the-log-file/296&apos;&gt;Check the log&lt;/a&gt; for details.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Primary Window</source>
         <translation>Primärt fönster</translation>
     </message>
@@ -3615,40 +3470,8 @@ Use at your own risk!</source>
         <translation>Spel: %1 bilder/s</translation>
     </message>
     <message>
-        <source>Your ROM is encrypted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>GBA Virtual Console ROMs are not supported by Mandarine.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mandarine</source>
         <translation>Mandarine</translation>
-    </message>
-    <message>
-        <source>Enter Artic Base server address:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 must be decrypted before being used with Mandarine. A real 3DS is required.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>FFmpeg could not be loaded. Make sure you have a compatible version installed.
-
-To install FFmpeg to Mandarine, press Open and select your FFmpeg directory.
-
-To view a guide on how to install FFmpeg, press Help.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Frame: %1 ms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 is missing. Please &lt;a href=&apos;https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;dump your system archives&lt;/a&gt;.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>A system archive</source>
@@ -3663,16 +3486,8 @@ To view a guide on how to install FFmpeg, press Help.</source>
         <translation>Systemarkiv saknas</translation>
     </message>
     <message>
-        <source>Save/load Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fatal Error</source>
         <translation>Ödesdigert fel</translation>
-    </message>
-    <message>
-        <source>Fatal Error encountered</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Continue</source>
@@ -3699,8 +3514,210 @@ To view a guide on how to install FFmpeg, press Help.</source>
         <translation>Uppspelningen är färdig</translation>
     </message>
     <message>
+        <source>Vulkan initialization failed during boot.&lt;br/&gt;Your GPU may not support Vulkan 1.1, or you do not have the latest graphics driver.</source>
+        <translation>Vulkan-initialiseringen misslyckades under uppstarten.&lt;br/&gt;Din GPU kanske inte stöder Vulkan 1.1, eller så har du inte den senaste grafikdrivrutinen.</translation>
+    </message>
+    <message>
+        <source>Current Artic Base traffic speed. Higher values indicate bigger transfer loads.</source>
+        <translation>Aktuell hastighet för Artic Base-trafiken. Högre värden indikerar större överföringar.</translation>
+    </message>
+    <message>
+        <source>Current emulation speed. Values higher or lower than 100% indicate emulation is running faster or slower than a 3DS.</source>
+        <translation>Aktuell emuleringshastighet. Värden som är högre eller lägre än 100% indikerar att emuleringen körs snabbare eller långsammare än 3DS.</translation>
+    </message>
+    <message>
+        <source>How many frames per second the game is currently displaying. This will vary from game to game and scene to scene.</source>
+        <translation>Hur många bildrutor per sekund spelet visar för närvarande. Detta varierar från spel till spel och från scen till scen.</translation>
+    </message>
+    <message>
+        <source>Time taken to emulate a 3DS frame, not counting framelimiting or v-sync. For full-speed emulation this should be at most 16.67 ms.</source>
+        <translation>Tidsåtgång för att emulera en 3DS-bildruta, utan att räkna med framelimiting eller v-sync. För emulering med full hastighet bör detta vara högst 16,67 ms.</translation>
+    </message>
+    <message>
+        <source>Your ROM format is not supported.&lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
+        <translation>Ditt ROM-format stöds inte.&lt;br/&gt;Följ guiderna för att återskapa dina &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;spelkassetter&lt;/a&gt; eller &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installerade titlar&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>ROM Corrupted</source>
+        <translation>ROM skadat</translation>
+    </message>
+    <message>
+        <source>Your ROM is corrupted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
+        <translation>Ditt ROM är skadat. &lt;br/&gt; Följ guiderna för att återskapa dina &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;spelkassetter&lt;/a&gt; eller &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installerade titlar&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>ROM Encrypted</source>
+        <translation>ROM krypterat</translation>
+    </message>
+    <message>
+        <source>Your ROM is encrypted. &lt;br/&gt;Please follow the guides to redump your &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;game cartridges&lt;/a&gt; or &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installed titles&lt;/a&gt;.</source>
+        <translation>Ditt ROM är krypterat. &lt;br/&gt; Följ guiderna för att återskapa dina &lt;a href=&apos;https://citra-emu.org/wiki/dumping-game-cartridges/&apos;&gt;spelkassetter&lt;/a&gt; eller &lt;a href=&apos;https://citra-emu.org/wiki/dumping-installed-titles/&apos;&gt;installerade titlar&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>GBA Virtual Console ROMs are not supported by Mandarine.</source>
+        <translation>ROM för GBA Virtual Console stöds inte av Mandarine.</translation>
+    </message>
+    <message>
+        <source>Error Opening %1 Folder</source>
+        <translation>Fel vid öppning av mappen %1</translation>
+    </message>
+    <message>
+        <source>Remove Play Time Data</source>
+        <translation>Ta bort data om speltid</translation>
+    </message>
+    <message>
+        <source>Failed to create a shortcut to %1</source>
+        <translation>Misslyckades med att skapa en genväg till %1</translation>
+    </message>
+    <message>
+        <source>Cannot create icon file. Path &quot;%1&quot; does not exist and cannot be created.</source>
+        <translation>Det går inte att skapa en ikonfil. Sökvägen &quot;%1&quot; finns inte och kan inte skapas.</translation>
+    </message>
+    <message>
+        <source>Could not dump base RomFS.
+Refer to the log for details.</source>
+        <translation>Kunde inte dumpa RomFS-basen.
+Se loggen för mer information.</translation>
+    </message>
+    <message>
+        <source>Enter Artic Base server address:</source>
+        <translation>Ange Artic Base-serveradress:</translation>
+    </message>
+    <message>
+        <source>%1 has been installed successfully.</source>
+        <translation>%1 har installerats.</translation>
+    </message>
+    <message>
+        <source>The installation of %1 was aborted. Please see the log for more details</source>
+        <translation>Installationen av %1 avbröts. Se loggen för mer information</translation>
+    </message>
+    <message>
+        <source>%1 must be decrypted before being used with Mandarine. A real 3DS is required.</source>
+        <translation>%1 måste dekrypteras innan den kan användas med Mandarine. En riktig 3DS krävs.</translation>
+    </message>
+    <message>
+        <source>Successfully uninstalled &apos;%1&apos;.</source>
+        <translation>Avinstallationen av &quot;%1&quot; har lyckats.</translation>
+    </message>
+    <message>
+        <source>Warning: Savestates are NOT a replacement for in-game saves, and are not meant to be reliable.
+
+Use at your own risk!</source>
+        <translation>Varning: Sparade tillstånd är INTE en ersättning för sparade filer i spelet och är inte avsedda att vara tillförlitliga.
+
+Använd på egen risk!</translation>
+    </message>
+    <message>
+        <source>Error opening amiibo data file</source>
+        <translation>Fel vid öppning av amiibo datafil</translation>
+    </message>
+    <message>
+        <source>Game is not looking for amiibos.</source>
+        <translation>Spelet letar inte efter amiibos.</translation>
+    </message>
+    <message>
+        <source>Movie recording cancelled.</source>
+        <translation>Filminspelning avbruten.</translation>
+    </message>
+    <message>
+        <source>Movie Saved</source>
+        <translation>Filmen sparades</translation>
+    </message>
+    <message>
+        <source>The movie is successfully saved.</source>
+        <translation>Filmen sparades.</translation>
+    </message>
+    <message>
+        <source>Game will unpause</source>
+        <translation>Spelet kommer att startas</translation>
+    </message>
+    <message>
+        <source>The game will be unpaused, and the next frame will be captured. Is this okay?</source>
+        <translation>Spelet kommer att startas efter pausen och nästa bildruta kommer att fångas. Är det här okej?</translation>
+    </message>
+    <message>
+        <source>Invalid Screenshot Directory</source>
+        <translation>Ogiltig katalog för skärmbilder</translation>
+    </message>
+    <message>
+        <source>Cannot create specified screenshot directory. Screenshot path is set back to its default value.</source>
+        <translation>Det går inte att skapa angiven skärmbildskatalog. Sökvägen för skärmbilder återställs till sitt standardvärde.</translation>
+    </message>
+    <message>
+        <source>Could not load video dumper</source>
+        <translation>Kunde inte läsa in videodumpern</translation>
+    </message>
+    <message>
+        <source>FFmpeg could not be loaded. Make sure you have a compatible version installed.
+
+To install FFmpeg to Mandarine, press Open and select your FFmpeg directory.
+
+To view a guide on how to install FFmpeg, press Help.</source>
+        <translation>FFmpeg kunde inte läsas in. Se till att du har en kompatibel version installerad.
+
+För att installera FFmpeg till Mandarine, tryck på Öppna och välj din FFmpeg-katalog.
+
+Om du vill visa en guide om hur du installerar FFmpeg trycker du på Hjälp.</translation>
+    </message>
+    <message>
+        <source>Select FFmpeg Directory</source>
+        <translation>Välj FFmpeg-katalog</translation>
+    </message>
+    <message>
+        <source>FFmpeg has been sucessfully installed.</source>
+        <translation>FFmpeg har installerats.</translation>
+    </message>
+    <message>
+        <source>Installation of FFmpeg failed. Check the log file for details.</source>
+        <translation>Installationen av FFmpeg misslyckades. Kontrollera loggfilen för mer information.</translation>
+    </message>
+    <message>
+        <source>Movie Finished</source>
+        <translation>Filmen är färdig</translation>
+    </message>
+    <message>
+        <source>(Accessing SharedExtData)</source>
+        <translation>(Åtkomst till SharedExtData)</translation>
+    </message>
+    <message>
+        <source>(Accessing SystemSaveData)</source>
+        <translation>(Åtkomst till SystemSaveData)</translation>
+    </message>
+    <message>
+        <source>(Accessing BossExtData)</source>
+        <translation>(Åtkomst till BossExtData)</translation>
+    </message>
+    <message>
+        <source>(Accessing ExtData)</source>
+        <translation>(Åtkomst till ExtData)</translation>
+    </message>
+    <message>
+        <source>(Accessing SaveData)</source>
+        <translation>(Åtkomst till SaveData)</translation>
+    </message>
+    <message>
+        <source>Frame: %1 ms</source>
+        <translation>Bildruta: %1 ms</translation>
+    </message>
+    <message>
+        <source>%1 is missing. Please &lt;a href=&apos;https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;dump your system archives&lt;/a&gt;.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
+        <translation>%1 saknas. &lt;a href=&apos;https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/&apos;&gt;Dumpa dina systemarkiv&lt;/a&gt;.&lt;br/&gt;Fortsatt emulering kan resultera i krascher och buggar.</translation>
+    </message>
+    <message>
+        <source>Save/load Error</source>
+        <translation>Fel vid spara/läs in</translation>
+    </message>
+    <message>
+        <source>A fatal error occurred. &lt;a href=&apos;https://community.citra-emu.org/t/how-to-upload-the-log-file/296&apos;&gt;Check the log&lt;/a&gt; for details.&lt;br/&gt;Continuing emulation may result in crashes and bugs.</source>
+        <translation>Ett allvarligt fel har inträffat. &lt;a href=&apos;https://community.citra-emu.org/t/how-to-upload-the-log-file/296&apos;&gt;Kontrollera loggen&lt;/a&gt; för mer information.&lt;br/&gt;Fortsatt emulering kan leda till krascher och buggar.</translation>
+    </message>
+    <message>
+        <source>Fatal Error encountered</source>
+        <translation>Allvarligt fel uppstod</translation>
+    </message>
+    <message>
         <source>Movie playback completed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppspelning av film slutförd.</translation>
     </message>
 </context>
 <context>
@@ -3725,20 +3742,20 @@ To view a guide on how to install FFmpeg, press Help.</source>
 <context>
     <name>GPUCommandListWidget</name>
     <message>
-        <source>Pica Command List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Start Tracing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copy All</source>
         <translation>Kopiera allt</translation>
     </message>
     <message>
+        <source>Pica Command List</source>
+        <translation>Pica kommandolista</translation>
+    </message>
+    <message>
+        <source>Start Tracing</source>
+        <translation>Starta spårning</translation>
+    </message>
+    <message>
         <source>Finish Tracing</source>
-        <translation type="unfinished"></translation>
+        <translation>Avsluta spårning</translation>
     </message>
 </context>
 <context>
@@ -3810,52 +3827,8 @@ To view a guide on how to install FFmpeg, press Help.</source>
         <translation>Öppna</translation>
     </message>
     <message>
-        <source>Application Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save Data Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extra Data Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update Data Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>DLC Data Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Texture Dump Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Custom Texture Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mods Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Dump RomFS</source>
         <translation>Dumpa RomFS</translation>
-    </message>
-    <message>
-        <source>Disk Shader Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open Shader Cache Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete OpenGL Shader Cache</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Uninstall</source>
@@ -3878,10 +3851,6 @@ To view a guide on how to install FFmpeg, press Help.</source>
         <translation>DLC</translation>
     </message>
     <message>
-        <source>Remove Play Time Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Create Shortcut</source>
         <translation>Skapa genväg</translation>
     </message>
@@ -3900,12 +3869,6 @@ To view a guide on how to install FFmpeg, press Help.</source>
     <message>
         <source>Mandarine</source>
         <translation>Mandarine</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to completely uninstall &apos;%1&apos;?
-
-This will delete the game if installed, as well as any installed updates or DLC.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 (Update)</source>
@@ -3944,10 +3907,6 @@ This will delete the game if installed, as well as any installed updates or DLC.
         <translation>Flytta ner</translation>
     </message>
     <message>
-        <source>Open Directory Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Clear</source>
         <translation>Töm</translation>
     </message>
@@ -3958,6 +3917,66 @@ This will delete the game if installed, as well as any installed updates or DLC.
     <message>
         <source>File type</source>
         <translation>Filtyp</translation>
+    </message>
+    <message>
+        <source>Application Location</source>
+        <translation>Programplats</translation>
+    </message>
+    <message>
+        <source>Save Data Location</source>
+        <translation>Plats för sparat data</translation>
+    </message>
+    <message>
+        <source>Extra Data Location</source>
+        <translation>Plats för extradata</translation>
+    </message>
+    <message>
+        <source>Update Data Location</source>
+        <translation>Plats för uppdateringsdata</translation>
+    </message>
+    <message>
+        <source>DLC Data Location</source>
+        <translation>Plats för DLC-data</translation>
+    </message>
+    <message>
+        <source>Texture Dump Location</source>
+        <translation>Plats för texturdumpar</translation>
+    </message>
+    <message>
+        <source>Custom Texture Location</source>
+        <translation>Plats för anpassade texturer</translation>
+    </message>
+    <message>
+        <source>Mods Location</source>
+        <translation>Plats för mods</translation>
+    </message>
+    <message>
+        <source>Disk Shader Cache</source>
+        <translation>Disk shadercache</translation>
+    </message>
+    <message>
+        <source>Open Shader Cache Location</source>
+        <translation>Öppna plats för shadercache</translation>
+    </message>
+    <message>
+        <source>Delete OpenGL Shader Cache</source>
+        <translation>Ta bort OpenGL-shadercache</translation>
+    </message>
+    <message>
+        <source>Remove Play Time Data</source>
+        <translation>Ta bort data för speltid</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely uninstall &apos;%1&apos;?
+
+This will delete the game if installed, as well as any installed updates or DLC.</source>
+        <translation>Är du säker på att du vill avinstallera &quot;%1&quot; helt?
+
+Detta kommer att ta bort spelet om det är installerat såväl som installerade uppdateringar eller DLC.</translation>
+    </message>
+    <message>
+        <source>Open Directory Location</source>
+        <translation>Öppna katalogplats</translation>
     </message>
 </context>
 <context>
@@ -4101,10 +4120,6 @@ Skärmen.</translation>
 <context>
     <name>GraphicsBreakPointsWidget</name>
     <message>
-        <source>Pica Breakpoints</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Emulation running</source>
         <translation>Emulering körs</translation>
     </message>
@@ -4113,27 +4128,19 @@ Skärmen.</translation>
         <translation>Återuppta</translation>
     </message>
     <message>
+        <source>Pica Breakpoints</source>
+        <translation>Pica-brytpunkter</translation>
+    </message>
+    <message>
         <source>Emulation halted at breakpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Emulering stoppad vid brytpunkt</translation>
     </message>
 </context>
 <context>
     <name>GraphicsSurfaceWidget</name>
     <message>
-        <source>Pica Surface Viewer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Color Buffer</source>
         <translation>Färgbuffert</translation>
-    </message>
-    <message>
-        <source>Depth Buffer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stencil Buffer</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Texture 0</source>
@@ -4188,22 +4195,6 @@ Skärmen.</translation>
         <translation>Y:</translation>
     </message>
     <message>
-        <source>Pixel out of bounds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(unable to access pixel data)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(invalid surface address)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(unknown surface format)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Portable Network Graphic (*.png)</source>
         <translation>Portable Network Graphic (*.png)</translation>
     </message>
@@ -4212,32 +4203,56 @@ Skärmen.</translation>
         <translation>Binärdata (*.bin)</translation>
     </message>
     <message>
-        <source>Save Surface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
     <message>
+        <source>Pica Surface Viewer</source>
+        <translation type="unfinished">Pica ytvisare</translation>
+    </message>
+    <message>
+        <source>Depth Buffer</source>
+        <translation>Djupbuffert</translation>
+    </message>
+    <message>
+        <source>Stencil Buffer</source>
+        <translation type="unfinished">Stencilbuffert</translation>
+    </message>
+    <message>
+        <source>Pixel out of bounds</source>
+        <translation type="unfinished">Pixel utanför gränserna</translation>
+    </message>
+    <message>
+        <source>(unable to access pixel data)</source>
+        <translation>(kan inte komma åt pixeldata)</translation>
+    </message>
+    <message>
+        <source>(invalid surface address)</source>
+        <translation>(ogiltig ytadress)</translation>
+    </message>
+    <message>
+        <source>(unknown surface format)</source>
+        <translation>(okänt ytformat)</translation>
+    </message>
+    <message>
+        <source>Save Surface</source>
+        <translation>Spara yta</translation>
+    </message>
+    <message>
         <source>Failed to open file &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Misslyckades med att öppna filen &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Failed to save surface data to file &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Misslyckades med att spara ytdata till filen &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Failed to completely write surface data to file. The saved data will likely be corrupt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Misslyckades med att helt skriva ytdata till filen. De sparade uppgifterna kommer troligen att vara korrupta.</translation>
     </message>
 </context>
 <context>
     <name>GraphicsTracingWidget</name>
-    <message>
-        <source>CiTrace Recorder</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Start Recording</source>
         <translation>Starta inspelning</translation>
@@ -4259,23 +4274,27 @@ Skärmen.</translation>
         <translation>CiTrace-fil (*.ctf)</translation>
     </message>
     <message>
+        <source>CiTrace Recorder</source>
+        <translation>CiTrace-inspelare</translation>
+    </message>
+    <message>
         <source>CiTracing still active</source>
-        <translation type="unfinished"></translation>
+        <translation>CiTracing fortfarande aktiv</translation>
     </message>
     <message>
         <source>A CiTrace is still being recorded. Do you want to save it? If not, all recorded data will be discarded.</source>
-        <translation type="unfinished"></translation>
+        <translation>En CiTrace håller fortfarande på att spelas in. Vill du spara den? Om inte, kommer alla inspelade data att förkastas.</translation>
     </message>
 </context>
 <context>
     <name>GraphicsVertexShaderModel</name>
     <message>
         <source>Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Offset</translation>
     </message>
     <message>
         <source>Raw</source>
-        <translation type="unfinished"></translation>
+        <translation>Rå</translation>
     </message>
     <message>
         <source>Disassembly</source>
@@ -4285,36 +4304,8 @@ Skärmen.</translation>
 <context>
     <name>GraphicsVertexShaderWidget</name>
     <message>
-        <source>Save Shader Dump</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Shader Binary (*.shbin)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pica Vertex Shader</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(data only available at vertex shader invocation breakpoints)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dump</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Input Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Attribute %1</source>
         <translation>Attribut %1</translation>
-    </message>
-    <message>
-        <source>Cycle Index:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SRC1: %1, %2, %3, %4
@@ -4335,52 +4326,86 @@ Skärmen.</translation>
 </translation>
     </message>
     <message>
-        <source>DEST_IN: %1, %2, %3, %4
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>DEST_OUT: %1, %2, %3, %4
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Address Registers: %1, %2
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Compare Result: %1, %2
 </source>
         <translation>Jämför resultat: %1, %2
 </translation>
     </message>
     <message>
-        <source>Static Condition: %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dynamic Conditions: %1, %2
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Loop Parameters: %1 (repeats), %2 (initializer), %3 (increment), %4
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Instruction offset: 0x%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source> -&gt; 0x%2</source>
         <translation> -&gt; 0x%2</translation>
     </message>
     <message>
+        <source>Save Shader Dump</source>
+        <translation>Spara shader-dump</translation>
+    </message>
+    <message>
+        <source>Shader Binary (*.shbin)</source>
+        <translation>Shader-binär (*.shbin)</translation>
+    </message>
+    <message>
+        <source>Pica Vertex Shader</source>
+        <translation>Pica Vertex-shader</translation>
+    </message>
+    <message>
+        <source>(data only available at vertex shader invocation breakpoints)</source>
+        <translation>(data endast tillgängliga vid brytpunkter för anrop av vertex shader)</translation>
+    </message>
+    <message>
+        <source>Dump</source>
+        <translation>Dumpa</translation>
+    </message>
+    <message>
+        <source>Input Data</source>
+        <translation>Inmatningsdata</translation>
+    </message>
+    <message>
+        <source>Cycle Index:</source>
+        <translation>Cykelindex:</translation>
+    </message>
+    <message>
+        <source>DEST_IN: %1, %2, %3, %4
+</source>
+        <translation>DEST_IN: %1, %2, %3, %4
+</translation>
+    </message>
+    <message>
+        <source>DEST_OUT: %1, %2, %3, %4
+</source>
+        <translation>DEST_OUT: %1, %2, %3, %4
+</translation>
+    </message>
+    <message>
+        <source>Address Registers: %1, %2
+</source>
+        <translation>Adressregister: %1, %2
+</translation>
+    </message>
+    <message>
+        <source>Static Condition: %1
+</source>
+        <translation>Statiskt villkor: %1
+</translation>
+    </message>
+    <message>
+        <source>Dynamic Conditions: %1, %2
+</source>
+        <translation>Dynamiska villkor: %1, %2
+</translation>
+    </message>
+    <message>
+        <source>Loop Parameters: %1 (repeats), %2 (initializer), %3 (increment), %4
+</source>
+        <translation>Loop-parametrar: %1 (upprepningar), %2 (initiering), %3 (ökning), %4
+</translation>
+    </message>
+    <message>
+        <source>Instruction offset: 0x%1</source>
+        <translation>Instruktionsoffset: 0x%1</translation>
+    </message>
+    <message>
         <source> (last instruction)</source>
-        <translation type="unfinished"></translation>
+        <translation> (sista instruktionen)</translation>
     </message>
 </context>
 <context>
@@ -4435,7 +4460,15 @@ Skärmen.</translation>
     </message>
     <message>
         <source>Host Room</source>
-        <translation>Värdrum</translation>
+        <translation>Stå värd för rum</translation>
+    </message>
+    <message>
+        <source>Server Address:</source>
+        <translation>Serveradress:</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopiera</translation>
     </message>
 </context>
 <context>
@@ -4447,7 +4480,12 @@ Skärmen.</translation>
     <message>
         <source>Failed to announce the room to the public lobby. In order to host a room publicly, you must have a valid Mandarine account configured in Emulation -&gt; Configure -&gt; Web. If you do not want to publish a room in the public lobby, then select Unlisted instead.
 Debug Message: </source>
-        <translation type="unfinished"></translation>
+        <translation>Misslyckades med att meddela rummet till den offentliga lobbyn. För att kunna vara värd för ett rum offentligt måste du ha ett giltigt Mandarine-konto som konfigurerats i Emulering -&gt; Konfigurera -&gt; Webb. Om du inte vill publicera ett rum i den offentliga lobbyn väljer du Olistat istället.
+Felsökningsmeddelande: </translation>
+    </message>
+    <message>
+        <source>Enter Server Address</source>
+        <translation>Ange serveradress</translation>
     </message>
 </context>
 <context>
@@ -4496,24 +4534,12 @@ Debug Message: </source>
         <translation>Ogiltig</translation>
     </message>
     <message>
-        <source>Sent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Handling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Success</source>
         <translation>Lyckades</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Fel</translation>
-    </message>
-    <message>
-        <source>HLE Unimplemented</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>HLE</source>
@@ -4527,12 +4553,24 @@ Debug Message: </source>
         <source>Unknown</source>
         <translation>Okänt</translation>
     </message>
+    <message>
+        <source>Sent</source>
+        <translation>Skickat</translation>
+    </message>
+    <message>
+        <source>Handling</source>
+        <translation>Hantering</translation>
+    </message>
+    <message>
+        <source>HLE Unimplemented</source>
+        <translation>HLE inte implementerad</translation>
+    </message>
 </context>
 <context>
     <name>LLEServiceModulesWidget</name>
     <message>
         <source>Toggle LLE Service Modules</source>
-        <translation type="unfinished"></translation>
+        <translation>Växla mellan LLE-tjänstmoduler</translation>
     </message>
 </context>
 <context>
@@ -4758,10 +4796,6 @@ Debug Message: </source>
         <translation>Konfigurera...</translation>
     </message>
     <message>
-        <source>Display Dock Widget Headers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Show Filter Bar</source>
         <translation>Visa filterrad</translation>
     </message>
@@ -4770,28 +4804,12 @@ Debug Message: </source>
         <translation>Visa statusrad</translation>
     </message>
     <message>
-        <source>Create Pica Surface Viewer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Advance Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Capture Screenshot</source>
         <translation>Fånga skärmbild</translation>
     </message>
     <message>
         <source>Opens the Mandarine Log folder</source>
         <translation>Öppnar Mandarines loggmapp</translation>
-    </message>
-    <message>
-        <source>Modify Mandarine Install</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Opens the maintenance tool to modify your Mandarine installation</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open Mandarine Folder</source>
@@ -4839,7 +4857,7 @@ Debug Message: </source>
     </message>
     <message>
         <source>Play...</source>
-        <translation>Spela...</translation>
+        <translation>Spela upp...</translation>
     </message>
     <message>
         <source>Close</source>
@@ -4852,10 +4870,6 @@ Debug Message: </source>
     <message>
         <source>Read-Only Mode</source>
         <translation>Skrivskyddat läge</translation>
-    </message>
-    <message>
-        <source>Browse Public Game Lobby</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create Room</source>
@@ -4914,16 +4928,8 @@ Debug Message: </source>
         <translation>Växla skärmar</translation>
     </message>
     <message>
-        <source>Rotate Upright</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Check for Updates</source>
         <translation>Leta efter uppdateringar</translation>
-    </message>
-    <message>
-        <source>Report Issues</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Restart</source>
@@ -4944,6 +4950,38 @@ Debug Message: </source>
     <message>
         <source>Dump Video</source>
         <translation>Dumpa video</translation>
+    </message>
+    <message>
+        <source>Display Dock Widget Headers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create Pica Surface Viewer</source>
+        <translation>Skapa Pica Surface-visare</translation>
+    </message>
+    <message>
+        <source>Advance Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse Public Game Lobby</source>
+        <translation>Bläddra i publik spellobby</translation>
+    </message>
+    <message>
+        <source>Modify Mandarine Install</source>
+        <translation>Ändra Mandarine-installation</translation>
+    </message>
+    <message>
+        <source>Opens the maintenance tool to modify your Mandarine installation</source>
+        <translation>Öppnar underhållsverktyget för att ändra din Mandarine-installation</translation>
+    </message>
+    <message>
+        <source>Rotate Upright</source>
+        <translation>Rotera upprätt</translation>
+    </message>
+    <message>
+        <source>Report Issues</source>
+        <translation>Rapportera fel</translation>
     </message>
 </context>
 <context>
@@ -5012,48 +5050,48 @@ Debug Message: </source>
         <translation>Upphovsperson:</translation>
     </message>
     <message>
-        <source>Rerecord Count:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Length:</source>
         <translation>Längd:</translation>
-    </message>
-    <message>
-        <source>Current running game will be stopped.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;br&gt;Current recording will be discarded.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mandarine TAS Movie (*.ctm)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invalid movie file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Revision dismatch, playback may desync.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Indicated length is incorrect, file may be corrupted.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>(unknown)</source>
         <translation>(okänt)</translation>
     </message>
     <message>
-        <source>Game used in this movie is not in game list.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>(&gt;1 day)</source>
         <translation>(&gt;1 dag)</translation>
+    </message>
+    <message>
+        <source>Rerecord Count:</source>
+        <translation>Antal ominspelningar:</translation>
+    </message>
+    <message>
+        <source>Current running game will be stopped.</source>
+        <translation>Nuvarande körande spelet kommer att stoppas.</translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;Current recording will be discarded.</source>
+        <translation>&lt;br&gt;Den aktuella inspelningen kommer att förkastas.</translation>
+    </message>
+    <message>
+        <source>Mandarine TAS Movie (*.ctm)</source>
+        <translation>Mandarine TAS-film (*.ctm)</translation>
+    </message>
+    <message>
+        <source>Invalid movie file.</source>
+        <translation>Ogiltig filmfil.</translation>
+    </message>
+    <message>
+        <source>Revision dismatch, playback may desync.</source>
+        <translation>Revision matchar inte. Uppspelning kan vara ur synk.</translation>
+    </message>
+    <message>
+        <source>Indicated length is incorrect, file may be corrupted.</source>
+        <translation>Angiven längd är felaktig, filen kan vara skadad.</translation>
+    </message>
+    <message>
+        <source>Game used in this movie is not in game list.</source>
+        <translation>Spelet som används i denna film finns inte i spellistan.</translation>
     </message>
 </context>
 <context>
@@ -5064,31 +5102,31 @@ Debug Message: </source>
     </message>
     <message>
         <source>File:</source>
-        <translation type="unfinished">Fil:</translation>
-    </message>
-    <message>
-        <source>Author:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil:</translation>
     </message>
     <message>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <source>Current running game will be restarted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;br&gt;Current recording will be discarded.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Recording will start once you boot a game.</source>
         <translation>Inspelningen kommer att starta när du startar ett spel.</translation>
     </message>
     <message>
+        <source>Author:</source>
+        <translation>Upphovsperson:</translation>
+    </message>
+    <message>
+        <source>Current running game will be restarted.</source>
+        <translation>Nuvarande körande spel kommer att startas om.</translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;Current recording will be discarded.</source>
+        <translation>&lt;br&gt;Den aktuella inspelningen kommer att förkastas.</translation>
+    </message>
+    <message>
         <source>Mandarine TAS Movie (*.ctm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mandarine TAS-film (*.ctm)</translation>
     </message>
 </context>
 <context>
@@ -5127,52 +5165,8 @@ Felsökningsmeddelande: </translation>
 <context>
     <name>NetworkMessage</name>
     <message>
-        <source>Username is not valid. Must be 4 to 20 alphanumeric characters.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Room name is not valid. Must be 4 to 20 alphanumeric characters.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username is already in use or not valid. Please choose another.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IP is not a valid IPv4 address.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Port must be a number between 0 to 65535.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You must choose a Preferred Game to host a room. If you do not have any games in your game list yet, add a game folder by clicking on the plus icon in the game list.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Unable to find an internet connection. Check your internet settings.</source>
         <translation>Det går inte att hitta en internetanslutning. Kontrollera dina internetinställningar.</translation>
-    </message>
-    <message>
-        <source>Unable to connect to the host. Verify that the connection settings are correct. If you still cannot connect, contact the room host and verify that the host is properly configured with the external port forwarded.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unable to connect to the room because it is already full.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The host of the room has banned you. Speak with the host to unban you or try a different room.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Creating a room failed. Please retry. Restarting Mandarine might be necessary.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Version mismatch! Please update to the latest version of Mandarine. If the problem persists, contact the room host and ask them to update the server.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Incorrect password.</source>
@@ -5187,43 +5181,90 @@ Felsökningsmeddelande: </translation>
         <translation>Anslutningen till rummet förlorades. Försök att återansluta.</translation>
     </message>
     <message>
-        <source>You have been kicked by the room host.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>MAC address is already in use. Please choose another.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your Console ID conflicted with someone else&apos;s in the room.
-
-Please go to Emulation &gt; Configure &gt; System to regenerate your Console ID.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You do not have enough permission to perform this action.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The user you are trying to kick/ban could not be found.
-They may have left the room.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Leave Room</source>
         <translation>Lämna rum</translation>
-    </message>
-    <message>
-        <source>You are about to close the room. Any network connections will be closed.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Disconnect</source>
         <translation>Koppla från</translation>
     </message>
     <message>
+        <source>Username is not valid. Must be 4 to 20 alphanumeric characters.</source>
+        <translation>Användarnamnet är inte giltigt. Måste innehålla 4 till 20 alfanumeriska tecken.</translation>
+    </message>
+    <message>
+        <source>Room name is not valid. Must be 4 to 20 alphanumeric characters.</source>
+        <translation>Rumsnamnet är inte giltigt. Måste innehålla 4 till 20 alfanumeriska tecken.</translation>
+    </message>
+    <message>
+        <source>Username is already in use or not valid. Please choose another.</source>
+        <translation>Användarnamnet används redan eller är ogiltigt. Välj ett annat.</translation>
+    </message>
+    <message>
+        <source>IP is not a valid IPv4 address.</source>
+        <translation>IP är inte en giltig IPv4-adress.</translation>
+    </message>
+    <message>
+        <source>Port must be a number between 0 to 65535.</source>
+        <translation>Port måste vara ett nummer mellan 0 och 65535.</translation>
+    </message>
+    <message>
+        <source>You must choose a Preferred Game to host a room. If you do not have any games in your game list yet, add a game folder by clicking on the plus icon in the game list.</source>
+        <translation>Du måste välja ett Föredraget spel för att vara värd för ett rum. Om du inte har några spel i din spellista ännu kan du lägga till en spelmapp genom att klicka på plusikonen i spellistan.</translation>
+    </message>
+    <message>
+        <source>Unable to connect to the host. Verify that the connection settings are correct. If you still cannot connect, contact the room host and verify that the host is properly configured with the external port forwarded.</source>
+        <translation>Det går inte att ansluta till värden. Kontrollera att anslutningsinställningarna är korrekta. Om du fortfarande inte kan ansluta kontaktar du rumsvärden och kontrollerar att värden är korrekt konfigurerad med den externa porten vidarebefordrad.</translation>
+    </message>
+    <message>
+        <source>Unable to connect to the room because it is already full.</source>
+        <translation>Det går inte att ansluta till rummet eftersom det redan är fullt.</translation>
+    </message>
+    <message>
+        <source>Creating a room failed. Please retry. Restarting Mandarine might be necessary.</source>
+        <translation>Skapandet av ett rum misslyckades. Försök igen. Det kan vara nödvändigt att starta om Mandarine.</translation>
+    </message>
+    <message>
+        <source>The host of the room has banned you. Speak with the host to unban you or try a different room.</source>
+        <translation>Värden för rummet har bannlyst dig. Prata med värden för att häva bannlysningen eller prova ett annat rum.</translation>
+    </message>
+    <message>
+        <source>Version mismatch! Please update to the latest version of Mandarine. If the problem persists, contact the room host and ask them to update the server.</source>
+        <translation>Felaktig versionsmatchning! Uppdatera till den senaste versionen av Mandarine. Om problemet kvarstår kan du kontakta rumsvärden och be dem uppdatera servern.</translation>
+    </message>
+    <message>
+        <source>You have been kicked by the room host.</source>
+        <translation>Du har blivit utsparkad av rumsvärden.</translation>
+    </message>
+    <message>
+        <source>MAC address is already in use. Please choose another.</source>
+        <translation>MAC-adressen är redan i bruk. Välj en annan.</translation>
+    </message>
+    <message>
+        <source>Your Console ID conflicted with someone else&apos;s in the room.
+
+Please go to Emulation &gt; Configure &gt; System to regenerate your Console ID.</source>
+        <translation>Ditt konsol-ID stämde inte överens med någon annans i rummet.
+
+Gå till Emulering &gt; Konfigurera &gt; System för att generera om ditt konsol-ID.</translation>
+    </message>
+    <message>
+        <source>You do not have enough permission to perform this action.</source>
+        <translation>Du har inte tillräcklig behörighet för att utföra den här åtgärden.</translation>
+    </message>
+    <message>
+        <source>The user you are trying to kick/ban could not be found.
+They may have left the room.</source>
+        <translation>Användaren som du försöker sparka ut/bannlysa kunde inte hittas.
+De kan ha lämnat rummet.</translation>
+    </message>
+    <message>
+        <source>You are about to close the room. Any network connections will be closed.</source>
+        <translation>Du är på väg att stänga rummet. Alla nätverksanslutningar kommer att stängas.</translation>
+    </message>
+    <message>
         <source>You are about to leave the room. Any network connections will be closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du är på väg att lämna rummet. Alla nätverksanslutningar kommer att stängas.</translation>
     </message>
 </context>
 <context>
@@ -5240,10 +5281,6 @@ They may have left the room.</source>
         <translation>Alternativ</translation>
     </message>
     <message>
-        <source>Unset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>okänt</translation>
     </message>
@@ -5252,16 +5289,20 @@ They may have left the room.</source>
         <translation>%1 &amp;lt;%2&gt; %3</translation>
     </message>
     <message>
-        <source>Range: %1 - %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>custom</source>
         <translation>anpassad</translation>
     </message>
     <message>
         <source>%1 (0x%2) %3</source>
         <translation>%1 (0x%2) %3</translation>
+    </message>
+    <message>
+        <source>Unset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Range: %1 - %2</source>
+        <translation>Intervall: %1 - %2</translation>
     </message>
 </context>
 <context>
@@ -5330,24 +5371,8 @@ They may have left the room.</source>
         <translation>[inte inställd]</translation>
     </message>
     <message>
-        <source>Hat %1 %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Axis %1%2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Button %1</source>
         <translation>Knapp %1</translation>
-    </message>
-    <message>
-        <source>GC Axis %1%2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>GC Button %1</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>[unknown]</source>
@@ -5409,6 +5434,22 @@ They may have left the room.</source>
         <source>%1 is playing %2</source>
         <translation>%1 spelar %2</translation>
     </message>
+    <message>
+        <source>Hat %1 %2</source>
+        <translation type="unfinished">Hatt %1 %2</translation>
+    </message>
+    <message>
+        <source>Axis %1%2</source>
+        <translation type="unfinished">Axel %1%2</translation>
+    </message>
+    <message>
+        <source>GC Axis %1%2</source>
+        <translation type="unfinished">GC Axis %1%2</translation>
+    </message>
+    <message>
+        <source>GC Button %1</source>
+        <translation>GC-knapp %1</translation>
+    </message>
 </context>
 <context>
     <name>QtKeyboard</name>
@@ -5420,24 +5461,24 @@ They may have left the room.</source>
 <context>
     <name>QtKeyboardDialog</name>
     <message>
+        <source>Validation error</source>
+        <translation>Valideringsfel</translation>
+    </message>
+    <message>
         <source>Text length is not correct (should be %1 characters)</source>
-        <translation type="unfinished"></translation>
+        <translation>Textlängden är inte korrekt (ska vara %1 tecken)</translation>
     </message>
     <message>
         <source>Text is too long (should be no more than %1 characters)</source>
-        <translation type="unfinished"></translation>
+        <translation>Texten är för lång (bör inte innehålla mer än %1 tecken)</translation>
     </message>
     <message>
         <source>Blank input is not allowed</source>
-        <translation type="unfinished"></translation>
+        <translation>Blank inmatning är inte tillåten</translation>
     </message>
     <message>
         <source>Empty input is not allowed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Validation error</source>
-        <translation>Valideringsfel</translation>
+        <translation>Tomma inmatningar är inte tillåtna</translation>
     </message>
 </context>
 <context>
@@ -5470,32 +5511,8 @@ They may have left the room.</source>
         <translation>Allmänt</translation>
     </message>
     <message>
-        <source>Command Buffer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Request Untranslated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Request Translated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reply Untranslated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reply Translated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation>Ok</translation>
-    </message>
-    <message>
-        <source>null</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Process:</source>
@@ -5525,6 +5542,30 @@ They may have left the room.</source>
         <source>Select:</source>
         <translation>Välj:</translation>
     </message>
+    <message>
+        <source>Command Buffer</source>
+        <translation>Kommandobuffert</translation>
+    </message>
+    <message>
+        <source>Request Untranslated</source>
+        <translation>Begär oöversatt</translation>
+    </message>
+    <message>
+        <source>Request Translated</source>
+        <translation>Begär översatt</translation>
+    </message>
+    <message>
+        <source>Reply Untranslated</source>
+        <translation>Svara oöversatt</translation>
+    </message>
+    <message>
+        <source>Reply Translated</source>
+        <translation>Svara översatt</translation>
+    </message>
+    <message>
+        <source>null</source>
+        <translation>null</translation>
+    </message>
 </context>
 <context>
     <name>RegistersWidget</name>
@@ -5545,16 +5586,16 @@ They may have left the room.</source>
         <translation>Vektorlängd</translation>
     </message>
     <message>
-        <source>Vector Stride</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Rounding Mode</source>
         <translation>Avrundningsläge</translation>
     </message>
     <message>
+        <source>Vector Stride</source>
+        <translation>Vector Stride</translation>
+    </message>
+    <message>
         <source>Vector Iteration Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal iterationer för vektorn</translation>
     </message>
 </context>
 <context>
@@ -5568,7 +5609,7 @@ They may have left the room.</source>
     <name>WaitTreeEvent</name>
     <message>
         <source>reset type = %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">återställningstyp = %1</translation>
     </message>
 </context>
 <context>
@@ -5586,7 +5627,7 @@ They may have left the room.</source>
     <name>WaitTreeMutexList</name>
     <message>
         <source>holding mutexes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">hålla mutexar</translation>
     </message>
 </context>
 <context>
@@ -5630,20 +5671,8 @@ They may have left the room.</source>
         <translation>sover</translation>
     </message>
     <message>
-        <source>waiting for IPC response</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>waiting for objects</source>
         <translation>väntar på objekt</translation>
-    </message>
-    <message>
-        <source>waiting for HLE return</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>dormant</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>dead</source>
@@ -5674,16 +5703,8 @@ They may have left the room.</source>
         <translation>Okänd processor %1</translation>
     </message>
     <message>
-        <source>object id = %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>processor = %1</source>
         <translation>processor = %1</translation>
-    </message>
-    <message>
-        <source>thread id = %1</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>process = %1 (%2)</source>
@@ -5694,34 +5715,54 @@ They may have left the room.</source>
         <translation>prioritet = %1(aktuell) / %2(normal)</translation>
     </message>
     <message>
+        <source>waiting for IPC response</source>
+        <translation>väntar på IPC-svar</translation>
+    </message>
+    <message>
+        <source>waiting for HLE return</source>
+        <translation>väntar på HLE return</translation>
+    </message>
+    <message>
+        <source>dormant</source>
+        <translation>vilande</translation>
+    </message>
+    <message>
+        <source>object id = %1</source>
+        <translation>objekt-id = %1</translation>
+    </message>
+    <message>
+        <source>thread id = %1</source>
+        <translation>tråd-id = %1</translation>
+    </message>
+    <message>
         <source>last running ticks = %1</source>
-        <translation type="unfinished"></translation>
+        <translation>senaste körande ticks = %1</translation>
     </message>
     <message>
         <source>not holding mutex</source>
-        <translation type="unfinished"></translation>
+        <translation>håller inte mutex</translation>
     </message>
 </context>
 <context>
     <name>WaitTreeThreadList</name>
     <message>
         <source>waited by thread</source>
-        <translation type="unfinished"></translation>
+        <translation>väntade på tråden</translation>
     </message>
 </context>
 <context>
     <name>WaitTreeTimer</name>
     <message>
         <source>reset type = %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">återställningstyp = %1</translation>
     </message>
     <message>
         <source>initial delay = %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">initial fördröjning = %1</translation>
     </message>
     <message>
         <source>interval delay = %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">intervallfördröjning = %1</translation>
     </message>
 </context>
 <context>
@@ -5732,26 +5773,26 @@ They may have left the room.</source>
     </message>
     <message>
         <source>waited by no thread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">väntade på ingen tråd</translation>
     </message>
     <message>
         <source>one shot</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ett skott</translation>
     </message>
     <message>
         <source>sticky</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sticky</translation>
     </message>
     <message>
         <source>pulse</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">puls</translation>
     </message>
 </context>
 <context>
     <name>WaitTreeWidget</name>
     <message>
         <source>Wait Tree</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vänta träd</translation>
     </message>
 </context>
 </TS>
