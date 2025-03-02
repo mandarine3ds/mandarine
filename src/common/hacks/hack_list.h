@@ -10,9 +10,11 @@ namespace Common::Hacks {
 
 enum class HackType : int {
     RIGHT_EYE_DISABLE,
+    SURFACE_TEX_COPY_DISABLE,
+    FORCE_HW_VERTEX_SHADERS,
     ACCURATE_MULTIPLICATION,
 };
 
 class UserHackData {};
 
-} // namespace Common::Hacks
+} // namespace Common::Hacks

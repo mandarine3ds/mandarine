@@ -37,4 +37,4 @@ struct HackManager {
 
 extern HackManager hack_manager;
 
-} // namespace Common::Hacks
+} // namespace Common::Hacks

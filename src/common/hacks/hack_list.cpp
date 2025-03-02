@@ -59,4 +59,4 @@ HackManager hack_manager = {
          }},
 
     }};
-}
+}

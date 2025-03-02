@@ -3,8 +3,8 @@
 // Refer to the license.txt file included.
 
 #include "common/archives.h"
-#include "common/hacks/hack_manager.h"
 #include "common/common_types.h"
+#include "common/hacks/hack_manager.h"
 #include "common/profiling.h"
 #include "common/settings.h"
 #include "core/core.h"

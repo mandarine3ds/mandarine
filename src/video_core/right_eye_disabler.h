@@ -38,4 +38,4 @@ private:
 
     GPU& gpu;
 };
-} // namespace VideoCore
+} // namespace VideoCore

@@ -45,4 +45,4 @@ struct GPU::Impl {
           sw_blitter{std::make_unique<SwRenderer::SwBlitter>(memory, rasterizer)} {}
     ~Impl() = default;
 };
-} // namespace VideoCore
+} // namespace VideoCore
