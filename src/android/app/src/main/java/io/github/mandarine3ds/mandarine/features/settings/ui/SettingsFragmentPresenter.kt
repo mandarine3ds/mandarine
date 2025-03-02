@@ -25,6 +25,7 @@ import io.github.mandarine3ds.mandarine.features.settings.model.ScaledFloatSetti
 import io.github.mandarine3ds.mandarine.features.settings.model.Settings
 import io.github.mandarine3ds.mandarine.features.settings.model.StringSetting
 import io.github.mandarine3ds.mandarine.features.settings.model.AbstractShortSetting
+import io.github.mandarine3ds.mandarine.features.settings.model.FloatSetting
 import io.github.mandarine3ds.mandarine.features.settings.model.view.DateTimeSetting
 import io.github.mandarine3ds.mandarine.features.settings.model.view.HeaderSetting
 import io.github.mandarine3ds.mandarine.features.settings.model.view.InputBindingSetting
@@ -1042,6 +1043,29 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.stats_overlay_options_description,
                     R.drawable.ic_frames,
                     Settings.SECTION_STATS_OVERLAY
+                )
+            )
+            add(
+                SingleChoiceSetting(
+                    IntSetting.SMALL_SCREEN_POSITION,
+                    R.string.emulation_small_screen_position,
+                    R.string.small_screen_position_description,
+                    R.array.smallScreenPositions,
+                    R.array.smallScreenPositionValues,
+                    IntSetting.SMALL_SCREEN_POSITION.key,
+                    IntSetting.SMALL_SCREEN_POSITION.defaultValue
+                )
+            )
+            add(
+                SliderSetting(
+                    FloatSetting.LARGE_SCREEN_PROPORTION,
+                    R.string.large_screen_proportion,
+                    R.string.large_screen_proportion_description,
+                    1,
+                    5,
+                    "",
+                    FloatSetting.LARGE_SCREEN_PROPORTION.key,
+                    FloatSetting.LARGE_SCREEN_PROPORTION.defaultValue
                 )
             )
             add(

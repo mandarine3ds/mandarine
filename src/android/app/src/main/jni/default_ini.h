@@ -217,15 +217,24 @@ disable_flush_cpu_write =
 
 [Layout]
 # Layout for the screen inside the render window, landscape mode
-# 0: Top/Bottom *currently unsupported on android*
+# 0: Original (screens vertically aligned)
 # 1: Single Screen Only,
-# 2: *currently unsupported on android*
+# 2: Large Screen (Default on android)
 # 3: Side by Side
 # 4: Hybrid
 # 5: Custom Layout
-# 6: (default) Large screen / small screen
 layout_option =
 
+# Large Screen Proportion - Relative size of large:small in large screen mode
+# Default value is 2.25
+large_screen_proportion =
+
+# Small Screen Position - where is the small screen relative to the large
+# Default value is 0
+# 0: Top Right    1: Middle Right    2: Bottom Right
+# 3: Top Left     4: Middle left     5: Bottom Left
+# 6: Above the large screen          7: Below the large screen
+small_screen_position =
 
 # Position of the performance overlay
 # 0: Top Left
