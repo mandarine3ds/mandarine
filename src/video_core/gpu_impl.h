@@ -6,7 +6,6 @@
 #pragma once
 
 #include "common/archives.h"
-#include "common/microprofile.h"
 #include "core/core.h"
 #include "core/core_timing.h"
 #include "core/hle/service/gsp/gsp_gpu.h"
