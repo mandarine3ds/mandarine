@@ -203,6 +203,8 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <string name="texture_filter_description">Mejora los gráficos visuales de los juegos al aplicar un filtro a las texturas. Los filtros soportados son Anime4K Ultrafast, Bicubic, ScaleForce, y xBRZ freescale.</string>
     <string name="delay_render_thread">Retrasa el hilo de dibujado del juego</string>
     <string name="delay_render_thread_description">Retrasa el hilo de dibujado del juego cuando envía datos a la GPU. Ayuda con problemas de rendimiento en los (muy pocos) juegos de fps dinámicos.</string>
+    <string name="disable_right_eye_render">Desactivar dibujado de ojo derecho</string>
+    <string name="disable_right_eye_render_desc">Mejora considerablemente el rendimiento en algunos juegos, pero puede producir parpadeos en otros.</string>
     <string name="hw_shaders">Activar Sombreador de Hardware</string>
     <string name="hw_shaders_description">Usa el hardware para emular los sombreadores de 3DS. Cuando se active, el rendimiento mejorará notablemente.</string>
     <string name="shaders_accurate_mul">Multiplicación Precisa</string>

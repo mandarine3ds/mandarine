@@ -155,6 +155,7 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
     ReadSetting("Renderer", Settings::values.delay_game_render_thread_us);
+    ReadSetting("Renderer", Settings::values.disable_right_eye_render);
     ReadSetting("Renderer", Settings::values.force_hw_vertex_shaders);
     ReadSetting("Renderer", Settings::values.disable_surface_texture_copy);
     ReadSetting("Renderer", Settings::values.disable_flush_cpu_write);

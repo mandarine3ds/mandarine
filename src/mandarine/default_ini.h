@@ -157,6 +157,11 @@ texture_filter =
 # Set to 0 for no delay, only useful in dynamic-fps games to simulate GPU delay.
 delay_game_render_thread_us =
 
+# Disables rendering the right eye image.
+# Greatly improves performance in some games, but can cause flickering in others.
+# 0: Enable right eye rendering, 1 (default): Disable right eye rendering
+disable_right_eye_render =
+
 # Ignores software vertex shaders from PICA core
 # 0: Off, 1 (default): On
 force_hw_vertex_shaders =
