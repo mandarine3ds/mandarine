@@ -283,11 +283,6 @@ elseif (WIN32)
     endif()
 endif()
 
-if (ENABLE_SDL2)
-    target_link_libraries(mandarine-qt PRIVATE SDL2::SDL2)
-    target_compile_definitions(mandarine-qt PRIVATE HAVE_SDL2)
-endif()
-
 create_target_directory_groups(mandarine-qt)
 
 target_link_libraries(mandarine-qt PRIVATE audio_core mandarine_common mandarine_core input_common network video_core)

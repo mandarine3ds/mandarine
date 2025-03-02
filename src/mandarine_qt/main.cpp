@@ -4,7 +4,6 @@
 
 #include <clocale>
 #include <memory>
-#include <optional>
 #include <thread>
 #include <QFileDialog>
 #include <QFutureWatcher>
@@ -23,9 +22,6 @@
 #ifdef _WIN32
 #include <shlobj.h>
 #include <windows.h>
-#else
-#include <iostream>
-#include <getopt.h>
 #endif
 #ifdef __unix__
 #include <QVariant>
@@ -158,14 +154,6 @@ static QString PrettyProductName() {
     return QSysInfo::prettyProductName();
 }
 
-void GMainWindow::ShowCommandOutput(std::string title, std::string message) {
-#ifdef _WIN32
-    QMessageBox::information(this, QString::fromStdString(title), QString::fromStdString(message));
-#else
-    std::cout << message << std::endl;
-#endif
-}
-
 GMainWindow::GMainWindow(Core::System& system_)
     : ui{std::make_unique<Ui::MainWindow>()}, system{system_}, movie{system.Movie()},
       emu_thread{nullptr} {
@@ -174,137 +162,9 @@ GMainWindow::GMainWindow(Core::System& system_)
 
     Debugger::ToggleConsole();
 
-    this->config = std::make_unique<Config>();
-
-    QStringList args = QApplication::arguments();
-    QString game_path;
-    std::optional<bool> fullscreen_override;
-    for (int i = 1; i < args.size(); ++i) {
-        // Preserves drag/drop functionality
-        if (args.size() == 2 && !args[1].startsWith(QChar::fromLatin1('-'))) {
-            game_path = args[1];
-            break;
-        }
-
-        // Dump video
-        if (args[i] == QStringLiteral("-d")) {
-            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
-                continue;
-            }
-            if (!DynamicLibrary::FFmpeg::LoadFFmpeg()) {
-                ShowFFmpegErrorMessage();
-                continue;
-            }
-            video_dumping_path = args[++i];
-            video_dumping_on_start = true;
-            continue;
-        }
-
-        // Launch game in fullscreen mode
-        if (args[i] == QStringLiteral("-f")) {
-            fullscreen_override = true;
-            continue;
-        }
-
-        // Enable GDB stub
-        if (args[i] == QStringLiteral("-g")) {
-            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
-                continue;
-            }
-            Settings::values.use_gdbstub = true;
-            Settings::values.gdbstub_port = strtoul(args[++i].toLatin1(), NULL, 0);
-            continue;
-        }
-
-        if (args[i] == QStringLiteral("-h")) {
-            const std::string help_string =
-                std::string("Usage: ") + args[0].toStdString() +
-                " [options] <file path>\n"
-                "-d [path]    Dump video recording of emulator playback to the given file path\n"
-                "-g [port]    Enable gdb stub on the given port\n"
-                "-f           Start in fullscreen mode\n"
-                "-h           Display this help and exit\n"
-                "-i [path]    Install a CIA file at the given path\n"
-                "-p [path]    Play a TAS movie located at the given path\n"
-                "-r [path]    Record a TAS movie to the given file path\n"
-                "-v           Output version information and exit";
-
-            ShowCommandOutput("Help", help_string);
-            exit(0);
-        }
-
-        if (args[i] == QStringLiteral("-i")) {
-            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
-                continue;
-            }
-            Service::AM::InstallStatus result = Service::AM::InstallCIA(args[++i].toStdString());
-            if (result != Service::AM::InstallStatus::Success) {
-                std::string failure_reason;
-
-                if (result == Service::AM::InstallStatus::ErrorFailedToOpenFile)
-                    failure_reason = "Unable to open file.";
-
-                if (result == Service::AM::InstallStatus::ErrorFileNotFound)
-                    failure_reason = "File not found.";
-
-                if (result == Service::AM::InstallStatus::ErrorAborted)
-                    failure_reason = "Install was aborted.";
-
-                if (result == Service::AM::InstallStatus::ErrorInvalid)
-                    failure_reason = "CIA is invalid.";
-
-                if (result == Service::AM::InstallStatus::ErrorEncrypted)
-                    failure_reason = "CIA is encrypted.";
-
-                std::string failure_string = "Failed to install CIA: " + failure_reason;
-                ShowCommandOutput("Failure", failure_string);
-                exit((int)result +
-                     2); // 2 is added here to avoid stepping on the toes of
-                         // exit codes 1 and 2 which have pre-established conventional meanings
-            }
-            ShowCommandOutput("Success", "Installed CIA successfully.");
-            exit(0);
-        }
-
-        if (args[i] == QStringLiteral("-p")) {
-            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
-                continue;
-            }
-            movie_playback_path = args[++i];
-            movie_playback_on_start = true;
-            continue;
-        }
-
-        if (args[i] == QStringLiteral("-r")) {
-            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
-                continue;
-            }
-            movie_record_path = args[++i];
-            movie_record_on_start = true;
-            continue;
-        }
-
-        if (args[i] == QStringLiteral("-v")) {
-            const std::string version_string =
-                std::string("Mandarine ") + Common::g_scm_branch + " " + Common::g_scm_desc;
-            ShowCommandOutput("Version", version_string);
-            exit(0);
-        }
-
-        // Launch game in windowed mode
-        if (args[i] == QStringLiteral("-w")) {
-            fullscreen_override = false;
-            continue;
-        }
-
-        // Launch game at path
-        if (i == args.size() - 1 && !args[i].startsWith(QChar::fromLatin1('-'))) {
-            game_path = args[i];
-            continue;
-        }
-    }
-
     CheckForMigration();
+
+    this->config = std::make_unique<Config>();
 
 #ifdef __unix__
     SetGamemodeEnabled(Settings::values.enable_gamemode.GetValue());
@@ -354,12 +214,6 @@ GMainWindow::GMainWindow(Core::System& system_)
 
     SetDefaultUIGeometry();
     RestoreUIState();
-
-    ui->action_Dump_Video->setChecked(video_dumping_on_start);
-    if (fullscreen_override) {
-        ui->action_Fullscreen->setChecked(*fullscreen_override);
-    }
-    ui->action_Close_Movie->setEnabled(movie_playback_on_start || movie_record_on_start);
 
     ConnectAppEvents();
     ConnectMenuEvents();
@@ -426,6 +280,45 @@ GMainWindow::GMainWindow(Core::System& system_)
         CheckForUpdates();
     }
 #endif
+
+    QStringList args = QApplication::arguments();
+    if (args.size() < 2) {
+        return;
+    }
+
+    QString game_path;
+    for (int i = 1; i < args.size(); ++i) {
+        // Preserves drag/drop functionality
+        if (args.size() == 2 && !args[1].startsWith(QChar::fromLatin1('-'))) {
+            game_path = args[1];
+            break;
+        }
+
+        // Launch game in fullscreen mode
+        if (args[i] == QStringLiteral("-f")) {
+            ui->action_Fullscreen->setChecked(true);
+            continue;
+        }
+
+        // Launch game in windowed mode
+        if (args[i] == QStringLiteral("-w")) {
+            ui->action_Fullscreen->setChecked(false);
+            continue;
+        }
+
+        // Launch game at path
+        if (args[i] == QStringLiteral("-g")) {
+            if (i >= args.size() - 1) {
+                continue;
+            }
+
+            if (args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+
+            game_path = args[++i];
+        }
+    }
 
     if (!game_path.isEmpty()) {
         BootGame(game_path);
@@ -2874,31 +2767,6 @@ void GMainWindow::OnCaptureScreenshot() {
     }
 }
 
-void GMainWindow::ShowFFmpegErrorMessage() {
-    QMessageBox message_box;
-    message_box.setWindowTitle(tr("Could not load video dumper"));
-    message_box.setText(
-        tr("FFmpeg could not be loaded. Make sure you have a compatible version installed."
-#ifdef _WIN32
-           "\n\nTo install FFmpeg to Mandarine, press Open and select your FFmpeg directory."
-#endif
-           "\n\nTo view a guide on how to install FFmpeg, press Help."));
-    message_box.setStandardButtons(QMessageBox::Ok | QMessageBox::Help
-#ifdef _WIN32
-                                   | QMessageBox::Open
-#endif
-    );
-    auto result = message_box.exec();
-    if (result == QMessageBox::Help) {
-        QDesktopServices::openUrl(QUrl(
-            QStringLiteral("https://citra-emu.org/wiki/installing-ffmpeg-for-the-video-dumper/")));
-#ifdef _WIN32
-    } else if (result == QMessageBox::Open) {
-        OnOpenFFmpeg();
-#endif
-    }
-}
-
 void GMainWindow::OnDumpVideo() {
     if (DynamicLibrary::FFmpeg::LoadFFmpeg()) {
         if (ui->action_Dump_Video->isChecked()) {
@@ -2908,7 +2776,29 @@ void GMainWindow::OnDumpVideo() {
         }
     } else {
         ui->action_Dump_Video->setChecked(false);
-        ShowFFmpegErrorMessage();
+
+        QMessageBox message_box;
+        message_box.setWindowTitle(tr("Could not load video dumper"));
+        message_box.setText(
+            tr("FFmpeg could not be loaded. Make sure you have a compatible version installed."
+#ifdef _WIN32
+               "\n\nTo install FFmpeg to Mandarine, press Open and select your FFmpeg directory."
+#endif
+               "\n\nTo view a guide on how to install FFmpeg, press Help."));
+        message_box.setStandardButtons(QMessageBox::Ok | QMessageBox::Help
+#ifdef _WIN32
+                                       | QMessageBox::Open
+#endif
+        );
+        auto result = message_box.exec();
+        if (result == QMessageBox::Help) {
+            QDesktopServices::openUrl(QUrl(QStringLiteral(
+                "https://citra-emu.org/wiki/installing-ffmpeg-for-the-video-dumper/")));
+#ifdef _WIN32
+        } else if (result == QMessageBox::Open) {
+            OnOpenFFmpeg();
+#endif
+        }
     }
 }
 
@@ -2994,8 +2884,7 @@ void GMainWindow::StartVideoDumping(const QString& path) {
     } else {
         QMessageBox::critical(
             this, tr("Mandarine"),
-            tr("Could not start video dumping.<br>Please ensure that the video encoder is "
-               "configured correctly.<br>Refer to the log for details."));
+            tr("Could not start video dumping.<br>Refer to the log for details."));
         ui->action_Dump_Video->setChecked(false);
     }
 }
