@@ -189,8 +189,6 @@ add_executable(mandarine-qt
     util/util.h
 )
 
-set_target_properties(mandarine-qt PROPERTIES OUTPUT_NAME "mandarine")
-
 file(GLOB COMPAT_LIST
      ${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.qrc
      ${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.json)
@@ -281,6 +279,11 @@ elseif (WIN32)
     elseif (MINGW)
         set_target_properties(mandarine-qt PROPERTIES LINK_FLAGS_RELEASE "-mwindows")
     endif()
+endif()
+
+if (ENABLE_SDL2)
+    target_link_libraries(mandarine-qt PRIVATE SDL2::SDL2)
+    target_compile_definitions(mandarine-qt PRIVATE HAVE_SDL2)
 endif()
 
 create_target_directory_groups(mandarine-qt)
