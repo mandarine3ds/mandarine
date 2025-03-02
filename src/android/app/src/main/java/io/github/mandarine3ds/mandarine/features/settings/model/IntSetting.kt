@@ -67,12 +67,13 @@ enum class IntSetting(
     CPU_TICKS("cpu_ticks", Settings.SECTION_CORE, 16000),
     USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),
     DELAY_RENDER_THREAD_US("delay_game_render_thread_us", Settings.SECTION_RENDERER, 0),
+    DISABLE_RIGHT_EYE_RENDER("disable_right_eye_render", Settings.SECTION_RENDERER, 0),
     FORCE_HW_VERTEX_SHADERS("force_hw_vertex_shaders", Settings.SECTION_RENDERER, 0),
     DISABLE_SURFACE_TEXTURE_COPY("disable_surface_texture_copy", Settings.SECTION_RENDERER, 0),
     DISABLE_FLUSH_CPU_WRITE("disable_flush_cpu_write", Settings.SECTION_RENDERER, 0),
     ORIENTATION_OPTION("screen_orientation", Settings.SECTION_LAYOUT, 2),
     USE_ARTIC_BASE_CONTROLLER("use_artic_base_controller", Settings.SECTION_CONTROLS, 0),
-    PERF_OVERLAY_POSITION("perf_overlay_position", Settings.SECTION_LAYOUT, 0),;
+    PERF_OVERLAY_POSITION("perf_overlay_position", Settings.SECTION_LAYOUT, 0);
 
     override var int: Int = defaultValue
 
@@ -102,7 +103,8 @@ enum class IntSetting(
             CPU_JIT,
             ASYNC_CUSTOM_LOADING,
             AUDIO_INPUT_TYPE,
-            USE_ARTIC_BASE_CONTROLLER
+            USE_ARTIC_BASE_CONTROLLER,
+            SHADERS_ACCURATE_MUL
         )
 
         fun from(key: String): IntSetting? = IntSetting.values().firstOrNull { it.key == key }

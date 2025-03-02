@@ -9,6 +9,7 @@
 #include <boost/serialization/shared_ptr.hpp>
 #include "common/archives.h"
 #include "common/bit_field.h"
+#include "common/hacks/hack_manager.h"
 #include "common/settings.h"
 #include "core/core.h"
 #include "core/hle/ipc_helpers.h"
@@ -20,6 +21,7 @@
 #include "video_core/gpu.h"
 #include "video_core/gpu_debugger.h"
 #include "video_core/pica/regs_lcd.h"
+#include "video_core/right_eye_disabler.h"
 
 SERIALIZE_EXPORT_IMPL(Service::GSP::SessionData)
 SERIALIZE_EXPORT_IMPL(Service::GSP::GSP_GPU)
@@ -600,6 +602,13 @@ Result GSP_GPU::AcquireGpuRight(const Kernel::HLERequestContext& ctx,
 
     LOG_DEBUG(Service_GSP, "called flag={:08X} process={} thread_id={}", flag, process->process_id,
               session_data->thread_id);
+
+    bool right_eye_disable_allow =
+        Common::Hacks::hack_manager.GetHackAllowMode(Common::Hacks::HackType::RIGHT_EYE_DISABLE,
+                                                     process->codeset->program_id) !=
+        Common::Hacks::HackAllowMode::DISALLOW;
+    auto& gpu = system.GPU();
+    gpu.GetRightEyeDisabler().SetEnabled(right_eye_disable_allow);
 
     if (active_thread_id == session_data->thread_id) {
         return {ErrorDescription::AlreadyDone, ErrorModule::GX, ErrorSummary::Success,

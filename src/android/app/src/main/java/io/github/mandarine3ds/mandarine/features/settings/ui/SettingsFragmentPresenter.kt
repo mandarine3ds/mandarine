@@ -869,6 +869,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(HeaderSetting(R.string.tweaks))
             add(
                 SwitchSetting(
+                    IntSetting.DISABLE_RIGHT_EYE_RENDER,
+                    R.string.disable_right_eye_render,
+                    R.string.disable_right_eye_render_desc,
+                    IntSetting.DISABLE_RIGHT_EYE_RENDER.key,
+                    IntSetting.DISABLE_RIGHT_EYE_RENDER.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
                     IntSetting.FORCE_HW_VERTEX_SHADERS,
                     R.string.force_hw_vertex_shaders,
                     R.string.force_hw_vertex_shaders_description,

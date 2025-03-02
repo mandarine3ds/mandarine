@@ -169,7 +169,7 @@ void RasterizerOpenGL::TickFrame() {
 
 void RasterizerOpenGL::LoadDiskResources(const std::atomic_bool& stop_loading,
                                          const VideoCore::DiskResourceLoadCallback& callback) {
-    shader_manager.LoadDiskCache(stop_loading, callback);
+    shader_manager.LoadDiskCache(stop_loading, callback, accurate_mul);
 }
 
 void RasterizerOpenGL::SyncFixedState() {
@@ -265,7 +265,7 @@ void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
 
 bool RasterizerOpenGL::SetupVertexShader() {
     MANDARINE_PROFILE("OpenGL", "Vertex Shader Setup");
-    return shader_manager.UseProgrammableVertexShader(regs, pica.vs_setup);
+    return shader_manager.UseProgrammableVertexShader(regs, pica.vs_setup, accurate_mul);
 }
 
 bool RasterizerOpenGL::SetupGeometryShader() {
@@ -327,7 +327,7 @@ bool RasterizerOpenGL::AccelerateDrawBatchInternal(bool is_indexed) {
     SetupVertexArray(buffer_ptr, buffer_offset, vs_input_index_min, vs_input_index_max);
     vertex_buffer.Unmap(vs_input_size);
 
-    shader_manager.ApplyTo(state);
+    shader_manager.ApplyTo(state, accurate_mul);
     state.Apply();
 
     if (is_indexed) {
@@ -452,7 +452,7 @@ bool RasterizerOpenGL::Draw(bool accelerate, bool is_indexed) {
         state.draw.vertex_buffer = vertex_buffer.GetHandle();
         shader_manager.UseTrivialVertexShader();
         shader_manager.UseTrivialGeometryShader();
-        shader_manager.ApplyTo(state);
+        shader_manager.ApplyTo(state, accurate_mul);
         state.Apply();
 
         std::size_t max_vertices = 3 * (VERTEX_BUFFER_SIZE / (3 * sizeof(HardwareVertex)));

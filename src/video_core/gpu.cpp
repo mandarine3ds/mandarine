@@ -4,6 +4,7 @@
 
 #include "common/archives.h"
 #include "common/common_types.h"
+#include "common/hacks/hack_manager.h"
 #include "common/profiling.h"
 #include "common/settings.h"
 #include "core/core.h"
@@ -13,10 +14,12 @@
 #include "video_core/debug_utils/debug_utils.h"
 #include "video_core/gpu.h"
 #include "video_core/gpu_debugger.h"
+#include "video_core/gpu_impl.h"
 #include "video_core/pica/pica_core.h"
 #include "video_core/pica/regs_lcd.h"
 #include "video_core/renderer_base.h"
 #include "video_core/renderer_software/sw_blitter.h"
+#include "video_core/right_eye_disabler.h"
 #include "video_core/video_core.h"
 
 namespace VideoCore {
@@ -31,32 +34,10 @@ static u64 frame_count;
 /// True if the last frame was skipped
 static bool last_skip_frame;
 
-struct GPU::Impl {
-    Core::Timing& timing;
-    Core::System& system;
-    Memory::MemorySystem& memory;
-    std::shared_ptr<Pica::DebugContext> debug_context;
-    Pica::PicaCore pica;
-    GraphicsDebugger gpu_debugger;
-    std::unique_ptr<RendererBase> renderer;
-    RasterizerInterface* rasterizer;
-    std::unique_ptr<SwRenderer::SwBlitter> sw_blitter;
-    Core::TimingEventType* vblank_event;
-    Service::GSP::InterruptHandler signal_interrupt;
-
-    explicit Impl(Core::System& system, Frontend::EmuWindow& emu_window,
-                  Frontend::EmuWindow* secondary_window)
-        : timing{system.CoreTiming()}, system{system}, memory{system.Memory()},
-          debug_context{Pica::g_debug_context}, pica{memory, debug_context},
-          renderer{VideoCore::CreateRenderer(emu_window, secondary_window, pica, system)},
-          rasterizer{renderer->Rasterizer()},
-          sw_blitter{std::make_unique<SwRenderer::SwBlitter>(memory, rasterizer)} {}
-    ~Impl() = default;
-};
-
 GPU::GPU(Core::System& system, Frontend::EmuWindow& emu_window,
          Frontend::EmuWindow* secondary_window)
-    : impl{std::make_unique<Impl>(system, emu_window, secondary_window)} {
+    : right_eye_disabler{std::make_unique<RightEyeDisabler>(*this)},
+      impl{std::make_unique<Impl>(system, emu_window, secondary_window)} {
     frame_count = 0;
     last_skip_frame = false;
     g_skip_frame = false;
@@ -240,6 +221,7 @@ void GPU::SetBufferSwap(u32 screen_id, const Service::GSP::FrameBufferInfo& info
 
     if (screen_id == 0) {
         impl->system.perf_stats->EndGameFrame();
+        right_eye_disabler->ReportEndFrame();
     }
 }
 
@@ -340,6 +322,26 @@ GraphicsDebugger& GPU::Debugger() {
     return impl->gpu_debugger;
 }
 
+void GPU::ReportLoadingProgramID(u64 program_ID) {
+    auto hack = Common::Hacks::hack_manager.GetHack(
+        Common::Hacks::HackType::ACCURATE_MULTIPLICATION, program_ID);
+    bool use_accurate_mul = Settings::values.shaders_accurate_mul.GetValue();
+    if (hack) {
+        switch (hack->mode) {
+        case Common::Hacks::HackAllowMode::DISALLOW:
+            use_accurate_mul = false;
+            break;
+        case Common::Hacks::HackAllowMode::FORCE:
+            use_accurate_mul = true;
+            break;
+        case Common::Hacks::HackAllowMode::ALLOW:
+        default:
+            break;
+        }
+    }
+    impl->rasterizer->SetAccurateMul(use_accurate_mul);
+}
+
 void GPU::SubmitCmdList(u32 index) {
     // Check if a command list was triggered.
     auto& config = impl->pica.regs.internal.pipeline.command_buffer;
@@ -352,7 +354,8 @@ void GPU::SubmitCmdList(u32 index) {
     // Forward command list processing to the PICA core.
     const PAddr addr = config.GetPhysicalAddress(index);
     const u32 size = config.GetSize(index);
-    impl->pica.ProcessCmdList(addr, size);
+    impl->pica.ProcessCmdList(addr, size,
+                              !right_eye_disabler->ShouldAllowCmdQueueTrigger(addr, size));
     config.trigger[index] = 0;
 }
 
@@ -404,8 +407,11 @@ void GPU::MemoryTransfer() {
         }
     } else {
         MANDARINE_PROFILE("GPU", "Display Transfer");
-        if (!impl->rasterizer->AccelerateDisplayTransfer(config)) {
-            impl->sw_blitter->DisplayTransfer(config);
+        if (right_eye_disabler->ShouldAllowDisplayTransfer(config.GetPhysicalInputAddress(),
+                                                           config.input_height)) {
+            if (!impl->rasterizer->AccelerateDisplayTransfer(config)) {
+                impl->sw_blitter->DisplayTransfer(config);
+            }
         }
     }
 
