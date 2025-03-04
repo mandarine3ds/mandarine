@@ -155,6 +155,7 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
     ReadSetting("Renderer", Settings::values.delay_game_render_thread_us);
+    ReadSetting("Renderer", Settings::values.disable_right_eye_render);
     ReadSetting("Renderer", Settings::values.force_hw_vertex_shaders);
     ReadSetting("Renderer", Settings::values.disable_surface_texture_copy);
     ReadSetting("Renderer", Settings::values.disable_flush_cpu_write);
@@ -191,10 +192,11 @@ void Config::ReadValues() {
         layoutInt = static_cast<int>(Settings::LayoutOption::LargeScreen);
     }
     Settings::values.layout_option = static_cast<Settings::LayoutOption>(layoutInt);
-
     Settings::values.large_screen_proportion =
         static_cast<float>(sdl2_config->GetReal("Layout", "large_screen_proportion", 2.25));
-
+    Settings::values.small_screen_position = static_cast<Settings::SmallScreenPosition>(
+        sdl2_config->GetInteger("Layout", "small_screen_position",
+                                static_cast<int>(Settings::SmallScreenPosition::TopRight)));
     ReadSetting("Layout", Settings::values.custom_top_x);
     ReadSetting("Layout", Settings::values.custom_top_y);
     ReadSetting("Layout", Settings::values.custom_top_width);

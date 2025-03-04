@@ -382,10 +382,11 @@ void Config::ReadControlValues() {
             std::string default_param = InputCommon::GenerateAnalogParamFromKeys(
                 default_analogs[i][0], default_analogs[i][1], default_analogs[i][2],
                 default_analogs[i][3], default_analogs[i][4], 0.5f);
-            profile.analogs[i] = ReadSetting(QString::fromUtf8(Settings::NativeAnalog::mapping[i]),
-                                             QString::fromStdString(default_param))
-                                     .toString()
-                                     .toStdString();
+            profile.analogs[i] =
+                ReadSetting(QString::fromStdString(Settings::NativeAnalog::mapping[i]),
+                            QString::fromStdString(default_param))
+                    .toString()
+                    .toStdString();
             if (profile.analogs[i].empty())
                 profile.analogs[i] = default_param;
         }
@@ -523,6 +524,7 @@ void Config::ReadLayoutValues() {
     ReadGlobalSetting(Settings::values.swap_screen);
     ReadGlobalSetting(Settings::values.upright_screen);
     ReadGlobalSetting(Settings::values.large_screen_proportion);
+    ReadGlobalSetting(Settings::values.small_screen_position);
 
     if (global) {
         ReadBasicSetting(Settings::values.mono_render_option);
@@ -694,6 +696,7 @@ void Config::ReadRendererValues() {
 
     ReadGlobalSetting(Settings::values.delay_game_render_thread_us);
 
+    ReadGlobalSetting(Settings::values.disable_right_eye_render);
     ReadGlobalSetting(Settings::values.force_hw_vertex_shaders);
     ReadGlobalSetting(Settings::values.disable_surface_texture_copy);
     ReadGlobalSetting(Settings::values.disable_flush_cpu_write);
@@ -1094,6 +1097,7 @@ void Config::SaveLayoutValues() {
     WriteGlobalSetting(Settings::values.swap_screen);
     WriteGlobalSetting(Settings::values.upright_screen);
     WriteGlobalSetting(Settings::values.large_screen_proportion);
+    WriteGlobalSetting(Settings::values.small_screen_position);
 
     if (global) {
         WriteBasicSetting(Settings::values.mono_render_option);
@@ -1232,6 +1236,7 @@ void Config::SaveRendererValues() {
 
     WriteGlobalSetting(Settings::values.delay_game_render_thread_us);
 
+    WriteGlobalSetting(Settings::values.disable_right_eye_render);
     WriteGlobalSetting(Settings::values.force_hw_vertex_shaders);
     WriteGlobalSetting(Settings::values.disable_surface_texture_copy);
     WriteGlobalSetting(Settings::values.disable_flush_cpu_write);

@@ -40,7 +40,7 @@ std::string_view GetGraphicsAPIName(GraphicsAPI api) {
 
 std::string_view GetTextureFilterName(TextureFilter filter) {
     switch (filter) {
-    case TextureFilter::None:
+    case TextureFilter::NoFilter:
         return "None";
     case TextureFilter::Anime4K:
         return "Anime4K";
@@ -114,6 +114,7 @@ void LogSettings() {
     log_setting("Renderer_TextureSampling",
                 GetTextureSamplingName(values.texture_sampling.GetValue()));
     log_setting("Renderer_DelayGameRenderThreasUs", values.delay_game_render_thread_us.GetValue());
+    log_setting("Renderer_DisableRightEyeRender", values.disable_right_eye_render.GetValue());
     log_setting("Stereoscopy_Render3d", values.render_3d.GetValue());
     log_setting("Stereoscopy_Factor3d", values.factor_3d.GetValue());
     log_setting("Stereoscopy_MonoRenderOption", values.mono_render_option.GetValue());
@@ -125,6 +126,7 @@ void LogSettings() {
     log_setting("Layout_SwapScreen", values.swap_screen.GetValue());
     log_setting("Layout_UprightScreen", values.upright_screen.GetValue());
     log_setting("Layout_LargeScreenProportion", values.large_screen_proportion.GetValue());
+    log_setting("Layout_SmallScreenPosition", values.small_screen_position.GetValue());
     log_setting("Utility_DumpTextures", values.dump_textures.GetValue());
     log_setting("Utility_CustomTextures", values.custom_textures.GetValue());
     log_setting("Utility_PreloadTextures", values.preload_textures.GetValue());
@@ -224,6 +226,7 @@ void RestoreGlobalState(bool is_powered_on) {
     values.swap_screen.SetGlobal(true);
     values.upright_screen.SetGlobal(true);
     values.large_screen_proportion.SetGlobal(true);
+    values.small_screen_position.SetGlobal(true);
     values.bg_red.SetGlobal(true);
     values.bg_green.SetGlobal(true);
     values.bg_blue.SetGlobal(true);
@@ -235,6 +238,7 @@ void RestoreGlobalState(bool is_powered_on) {
     values.dump_textures.SetGlobal(true);
     values.custom_textures.SetGlobal(true);
     values.preload_textures.SetGlobal(true);
+    values.disable_right_eye_render.SetGlobal(true);
 }
 
 void LoadProfile(int index) {

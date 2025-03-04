@@ -37,9 +37,9 @@
         android:name="io.github.mandarine3ds.mandarine.MandarineApplication"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
+        android:appCategory="game"
         android:allowBackup="false"
         android:supportsRtl="true"
-        android:isGame="true"
         android:banner="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
 
