@@ -162,7 +162,7 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.factor_3d);
     std::string default_shader = "None (builtin)";
     if (Settings::values.render_3d.GetValue() == Settings::StereoRenderOption::Anaglyph)
-        default_shader = "Dubois (builtin)";
+        default_shader = "Rendepth (builtin)";
     else if (Settings::values.render_3d.GetValue() == Settings::StereoRenderOption::Interlaced)
         default_shader = "Horizontal (builtin)";
     Settings::values.pp_shader_name =

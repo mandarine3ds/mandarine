@@ -376,7 +376,7 @@ void RendererOpenGL::ReloadShader() {
     // Link shaders and get variable locations
     std::string shader_data = fragment_shader_precision_OES;
     if (Settings::values.render_3d.GetValue() == Settings::StereoRenderOption::Anaglyph) {
-        if (Settings::values.anaglyph_shader_name.GetValue() == "Dubois (builtin)") {
+        if (Settings::values.anaglyph_shader_name.GetValue() == "Rendepth (builtin)") {
             shader_data += HostShaders::OPENGL_PRESENT_ANAGLYPH_FRAG;
         } else {
             std::string shader_text = OpenGL::GetPostProcessingShaderCode(

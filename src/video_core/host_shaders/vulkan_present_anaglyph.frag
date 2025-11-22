@@ -8,17 +8,22 @@
 layout (location = 0) in vec2 frag_tex_coord;
 layout (location = 0) out vec4 color;
 
-// Anaglyph Red-Cyan shader based on Dubois algorithm
-// Constants taken from the paper:
-// "Conversion of a Stereo Pair to Anaglyph with
-// the Least-Squares Projection Method"
-// Eric Dubois, March 2009
-const mat3 l = mat3( 0.437, 0.449, 0.164,
-              -0.062,-0.062,-0.024,
-              -0.048,-0.050,-0.017);
-const mat3 r = mat3(-0.011,-0.032,-0.007,
-               0.377, 0.761, 0.009,
-              -0.026,-0.093, 1.234);
+// Rendepth: Red/Cyan Anaglyph Filter Optimized for Stereoscopic 3D on LCD Monitors by Andres Hernandez.
+// Based on the paper "Producing Anaglyphs from Synthetic Images" by William Sanders, David F. McAllister.
+// Using concepts from "Methods for computing color anaglyphs" by David F. McAllister, Ya Zhou, Sophia Sullivan.
+// Original research from "Conversion of a Stereo Pair to Anaglyph with the Least-Squares Projection Method" by Eric Dubois
+
+const mat3 l = mat3(
+    vec3(0.4561, 0.500484, 0.176381),
+    vec3(-0.400822, -0.0378246, -0.0157589),
+    vec3(-0.0152161, -0.0205971, -0.00546856));
+
+const mat3 r = mat3(
+    vec3(-0.0434706, -0.0879388, -0.00155529),
+    vec3(0.378476, 0.73364, -0.0184503),
+    vec3(-0.0721527, -0.112961, 1.2264));
+
+const vec3 g = vec3(1.6, 0.8, 1.0);
 
 layout (push_constant, std140) uniform DrawInfo {
     mat4 modelview_matrix;
@@ -47,8 +52,18 @@ vec4 GetScreen(int screen_id) {
 #endif
 }
 
+vec3 correct_color(vec3 col) {
+    vec3 result;
+    result.r = pow(col.r, 1.0 / g.r);
+    result.g = pow(col.g, 1.0 / g.g);
+    result.b = pow(col.b, 1.0 / g.b);
+    return result;
+}
+
 void main() {
     vec4 color_tex_l = GetScreen(screen_id_l);
     vec4 color_tex_r = GetScreen(screen_id_r);
-    color = vec4(color_tex_l.rgb*l+color_tex_r.rgb*r, color_tex_l.a);
+    vec3 color_anaglyph = clamp(color_tex_l.rgb * l, vec3(0.0), vec3(1.0)) + clamp(color_tex_r.rgb * r, vec3(0.0), vec3(1.0));
+    vec3 color_corrected = correct_color(color_anaglyph);
+    color = vec4(color_corrected, color_tex_l.a);
 }
