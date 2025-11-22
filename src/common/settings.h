@@ -519,7 +519,7 @@ struct Values {
 
     // Mandarine Tweaks
     SwitchableSetting<bool> use_custom_cpu_ticks{false, "use_custom_cpu_ticks"};
-    SwitchableSetting<u32, true> custom_cpu_ticks{16000, 77, 65535, "custom_cpu_ticks"};
+    SwitchableSetting<u64, true> custom_cpu_ticks{16000, 77, 65535, "custom_cpu_ticks"};
 
     SwitchableSetting<LayoutOption> layout_option{LayoutOption::Default, "layout_option"};
     SwitchableSetting<bool> swap_screen{false, "swap_screen"};

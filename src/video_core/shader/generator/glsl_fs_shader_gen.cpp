@@ -832,7 +832,7 @@ void FragmentModule::WriteFog() {
 void FragmentModule::WriteGas() {
     // TODO: Implement me
     LOG_CRITICAL(Render, "Unimplemented gas mode");
-    out += "discard; }";
+    out += "color = vec4(0.0);\n}";
 }
 
 void FragmentModule::WriteShadow() {
