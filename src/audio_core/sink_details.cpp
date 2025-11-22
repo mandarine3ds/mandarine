@@ -8,6 +8,9 @@
 #include <vector>
 #include "audio_core/null_sink.h"
 #include "audio_core/sink_details.h"
+#ifdef ANDROID
+#include "audio_core/oboe_sink.h"
+#endif
 #ifdef HAVE_SDL2
 #include "audio_core/sdl2_sink.h"
 #endif
@@ -36,6 +39,13 @@ constexpr std::array sink_details = {
                     return std::make_unique<OpenALSink>(std::string(device_id));
                 },
                 &ListOpenALSinkDevices},
+#endif
+#ifdef ANDROID
+    SinkDetails{SinkType::Oboe, "Oboe",
+                [](std::string_view device_id) -> std::unique_ptr<Sink> {
+                    return std::make_unique<OboeSink>(device_id);
+                },
+                &ListOboeSinkDevices},
 #endif
 #ifdef HAVE_SDL2
     SinkDetails{SinkType::SDL2, "SDL2",

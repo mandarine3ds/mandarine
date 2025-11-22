@@ -62,6 +62,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_adreno_tools_text
             ),
             License(
+                R.string.license_oboe,
+                R.string.license_oboe_description,
+                R.string.license_oboe_link,
+                R.string.license_oboe_copyright,
+                R.string.license_oboe_text
+            ),
+            License(
                 R.string.license_cubeb,
                 R.string.license_cubeb_description,
                 R.string.license_cubeb_link,
