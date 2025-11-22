@@ -152,6 +152,11 @@ resolution_factor =
 # 0 (default): Off, 1: On
 vsync_enabled =
 
+# Set a custom value of CPU ticks.
+# 0 (default): Off, 1: On
+use_custom_cpu_ticks =
+custom_cpu_ticks =
+
 # Turns on the frame limiter, which will limit frames output to the target game speed
 # 0: Off, 1: On (default)
 use_frame_limit =

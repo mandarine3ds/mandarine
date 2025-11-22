@@ -136,6 +136,11 @@ resolution_factor =
 # 0: None, 1: Anime4K, 2: Bicubic, 3: Nearest Neighbor, 4: ScaleForce, 5: xBRZ
 texture_filter =
 
+# Set a custom value of CPU ticks.
+# 0 (default): Off, 1: On
+use_custom_cpu_ticks =
+custom_cpu_ticks =
+
 # Limits the speed of the game to run no faster than this value as a percentage of target speed.
 # Will not have an effect if unthrottled is enabled.
 # 5 - 995: Speed limit as a percentage of target game speed. 0 for unthrottled. 100 (default)
