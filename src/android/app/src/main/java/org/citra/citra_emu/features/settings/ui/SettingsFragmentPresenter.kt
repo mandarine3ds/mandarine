@@ -219,7 +219,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SwitchSetting(
                     BooleanSetting.USE_CUSTOM_CPU_TICKS,
                     R.string.custom_cpu_ticks_enable,
-                    R.string.custom_cpu_ticks,
+                    R.string.custom_cpu_ticks_enable_description,
                     BooleanSetting.USE_CUSTOM_CPU_TICKS.key,
                     BooleanSetting.USE_CUSTOM_CPU_TICKS.defaultValue
                 )
