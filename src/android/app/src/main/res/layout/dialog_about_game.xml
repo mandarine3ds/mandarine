@@ -54,7 +54,7 @@
                 style="?attr/textAppearanceBodyMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/about_game_filename"
+                app:layout_constraintStart_toStartOf="@id/about_game_region"
                 app:layout_constraintTop_toBottomOf="@+id/about_game_title"
                 tools:text="Company" />
 
@@ -72,18 +72,9 @@
                 style="?attr/textAppearanceBodyMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/about_game_filename"
+                app:layout_constraintStart_toStartOf="@id/about_game_filetype"
                 app:layout_constraintTop_toBottomOf="@+id/about_game_region"
                 tools:text="Game ID" />
-
-            <TextView
-                android:id="@+id/about_game_filename"
-                style="?attr/textAppearanceBodyMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/about_game_title"
-                app:layout_constraintTop_toBottomOf="@+id/about_game_id"
-                tools:text="Application Filename" />
 
             <TextView
                 android:id="@+id/about_game_filetype"
@@ -91,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/about_game_title"
-                app:layout_constraintTop_toBottomOf="@+id/about_game_filename"
+                app:layout_constraintTop_toBottomOf="@+id/about_game_id"
                 tools:text="Game Filetype" />
 
             <TextView
