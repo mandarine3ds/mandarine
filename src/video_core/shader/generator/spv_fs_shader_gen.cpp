@@ -15,8 +15,6 @@ using Pica::TexturingRegs;
 using TevStageConfig = TexturingRegs::TevStageConfig;
 using TextureType = TexturingRegs::TextureConfig::TextureType;
 
-constexpr u32 SPIRV_VERSION_1_3 = 0x00010300;
-
 FragmentModule::FragmentModule(const FSConfig& config_, const Profile& profile_)
     : Sirit::Module{SPIRV_VERSION_1_3}, config{config_}, profile{profile_},
       use_fragment_shader_barycentric{profile.has_fragment_shader_barycentric &&
