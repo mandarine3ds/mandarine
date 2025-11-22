@@ -83,6 +83,8 @@ void LogSettings() {
     };
 
     LOG_INFO(Config, "Azahar Configuration:");
+    log_setting("Core_UseCustomCPUTicks", values.use_custom_cpu_ticks.GetValue());
+    log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
     log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
@@ -187,6 +189,8 @@ void RestoreGlobalState(bool is_powered_on) {
     values.volume.SetGlobal(true);
 
     // Core
+    values.use_custom_cpu_ticks.SetGlobal(true);
+    values.custom_cpu_ticks.SetGlobal(true);
     values.cpu_clock_percentage.SetGlobal(true);
     values.is_new_3ds.SetGlobal(true);
     values.lle_applets.SetGlobal(true);

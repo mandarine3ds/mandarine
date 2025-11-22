@@ -45,6 +45,7 @@ enum class BooleanSetting(
     HW_SHADER("use_hw_shader", Settings.SECTION_RENDERER, true),
     SHADER_JIT("use_shader_jit", Settings.SECTION_RENDERER, true),
     VSYNC("use_vsync_new", Settings.SECTION_RENDERER, true),
+    USE_CUSTOM_CPU_TICKS("use_custom_cpu_ticks", Settings.SECTION_CORE, false),
     USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, true),
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, false),
     DISABLE_RIGHT_EYE_RENDER("disable_right_eye_render", Settings.SECTION_RENDERER, false),

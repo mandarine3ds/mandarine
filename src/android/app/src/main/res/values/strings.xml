@@ -253,6 +253,9 @@
     <string name="shaders_accurate_mul_description">Uses more accurate multiplication in hardware shaders, which may fix some graphical bugs. When enabled, performance will be reduced.</string>
     <string name="asynchronous_gpu">Enable Asynchronous GPU Emulation</string>
     <string name="asynchronous_gpu_description">Uses a separate thread to emulate the GPU asynchronously. When enabled, performance will be improved.</string>
+    <string name="custom_cpu_ticks_enable">Custom CPU Ticks</string>
+    <string name="custom_cpu_ticks_enable_description">Set a custom value of CPU ticks. Higher values can increase performance but if they\'re too high, it may cause the game to freeze. A range of 77–21000 is recommended.</string>
+    <string name="custom_cpu_ticks">Ticks</string>
     <string name="frame_limit_enable">Limit Speed</string>
     <string name="frame_limit_enable_description">When enabled, emulation speed will be limited to a specified percentage of normal speed. If disabled, emulation speed will be uncapped and the turbo speed hotkey will not work.</string>
     <string name="frame_limit_slider">Limit Speed Percent</string>

@@ -517,6 +517,10 @@ struct Values {
     SwitchableSetting<u16, true> delay_game_render_thread_us{0, 0, 16000,
                                                              "delay_game_render_thread_us"};
 
+    // Mandarine Tweaks
+    SwitchableSetting<bool> use_custom_cpu_ticks{false, "use_custom_cpu_ticks"};
+    SwitchableSetting<u32, true> custom_cpu_ticks{16000, 77, 65535, "custom_cpu_ticks"};
+
     SwitchableSetting<LayoutOption> layout_option{LayoutOption::Default, "layout_option"};
     SwitchableSetting<bool> swap_screen{false, "swap_screen"};
     SwitchableSetting<bool> upright_screen{false, "upright_screen"};

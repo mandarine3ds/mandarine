@@ -460,6 +460,8 @@ void QtConfig::ReadUtilityValues() {
 void QtConfig::ReadCoreValues() {
     qt_config->beginGroup(QStringLiteral("Core"));
 
+    ReadGlobalSetting(Settings::values.use_custom_cpu_ticks);
+    ReadGlobalSetting(Settings::values.custom_cpu_ticks);
     ReadGlobalSetting(Settings::values.cpu_clock_percentage);
 
     if (global) {
@@ -1031,6 +1033,8 @@ void QtConfig::SaveUtilityValues() {
 void QtConfig::SaveCoreValues() {
     qt_config->beginGroup(QStringLiteral("Core"));
 
+    WriteGlobalSetting(Settings::values.use_custom_cpu_ticks);
+    WriteGlobalSetting(Settings::values.custom_cpu_ticks);
     WriteGlobalSetting(Settings::values.cpu_clock_percentage);
 
     if (global) {
